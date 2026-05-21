@@ -247,3 +247,4 @@ ModelManifest.xml
 /LexEnaTrs.Web/LexEnaTrs.Web.csproj.user
 *.config
 /LexEnaTrs.Web/Properties/PublishProfiles/Profile1.pubxml.user
+WebConfigs
