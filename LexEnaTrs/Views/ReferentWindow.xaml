@@ -1,0 +1,49 @@
+﻿<controls:ChildWindow
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+            xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+           xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+       xmlns:telerikGrid="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.GridView"
+             xmlns:local="clr-namespace:LexEnaTrs"
+	        xmlns:my="clr-namespace:LexEnaTrs.Web"
+           xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="LexEnaTrs.Views.ReferentWindow"
+           Width="400" Height="300" 
+           Title="Wybór referenta w sprawie" Loaded="ChildWindow_Loaded">
+    <Grid x:Name="LayoutRoot" Margin="2">
+        <Grid.RowDefinitions>
+            <RowDefinition  />
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="31"/>
+             
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Margin="2,2,0,3"  Width="280" HorizontalAlignment="Left">
+        	 <telerik:RadButton Content="Nowa dekretacja" Command="telerikGrid:RadGridViewCommands.BeginInsert"  CommandTarget="{Binding ElementName=gridViewJednostkiSprawy}" x:Name="Adddekret"  Width="99" HorizontalAlignment="Left"/>
+            <Button Content="Usuń dekretację" x:Name="Deldekret" Width="99"    HorizontalAlignment="Left" Margin="10,0,0,0" Click="Deldekret_Click" />
+        </StackPanel>
+        <telerik:RadGridView x:Name ="gridViewJednostkiSprawy"  RowIndicatorVisibility="Collapsed" ItemsSource="{Binding DataView, ElementName=ReferentDomainDataSource}" AutoGenerateColumns="False" Margin="0,1" ShowGroupPanel="False" Grid.Row="1" AddingNewDataItem="gridViewJednostkiSprawy_AddingNewDataItem">
+            <telerik:RadGridView.Columns>
+            	<local:DateTimePickerColumn MinWidth="20" Header="Data Dekretacji"   DataMemberBinding="{Binding DataDekretUser, Mode=TwoWay}" DataFormatString="{}{0:yyyy-MM-dd}" IsFilterable="false"  SortMemberPath="Value" SortingState="Ascending" HeaderTextAlignment="Center"  TextAlignment="Center"  />
+
+            	<telerik:GridViewComboBoxColumn EditTriggers="CellClick"  Header="Referent" Width="*"  DataMemberBinding="{Binding Uzytkownik_Id, Mode=TwoWay}" IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5" TextAlignment="Center"  
+            		ItemsSource="{Binding dictionaryUzytkownicy, Source={StaticResource UzytkownicyJednostki}}"
+            		SelectedValueMemberPath="Id" 
+            		DisplayMemberPath="Nazwisko"
+							
+							/>
+            </telerik:RadGridView.Columns>
+
+        </telerik:RadGridView>
+        <telerik:RadDomainDataSource AutoLoad="False"  x:Name="ReferentDomainDataSource" QueryName="GetDekretacjaReferentByIdSprawyQuery" Width="0"  Margin="200,111,178,89" Grid.Row="1" >
+            <telerik:RadDomainDataSource.DomainContext>
+                <my:LexEnaMeritumDomainContext />
+            </telerik:RadDomainDataSource.DomainContext>
+            <telerik:RadDomainDataSource.QueryParameters>
+            	<telerik:QueryParameter ParameterName="IdSprawy" />
+            </telerik:RadDomainDataSource.QueryParameters>
+        </telerik:RadDomainDataSource>
+
+
+        <Button x:Name="CancelButton" Content="Anuluj"  Width="75" Height="23" HorizontalAlignment="Right" Margin="0,0,0,5" VerticalAlignment="Bottom" d:LayoutOverrides="Height" Grid.Row="2" Click="CancelButton_Click" />
+        <Button x:Name="OKButton" Content="OK"  Width="75" Height="23" HorizontalAlignment="Right" Margin="0,0,79,5" VerticalAlignment="Bottom" d:LayoutOverrides="Height" Grid.Row="2" Click="OKButton_Click" />
+    </Grid>
+</controls:ChildWindow>

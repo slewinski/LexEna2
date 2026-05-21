@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<curr:Pozwy OznaczeniePaczki="Paczka 5/2011-11-24j" xmlns:curr="http://www.currenda.pl/epu">
+    <curr:PozewEPU ID="6869" version="1.0" dataZlozenia="2011-11-27">
+        <curr:Adresat ID="1">
+            <curr:Nazwa>Sąd Rejonowy w Lublinie</curr:Nazwa>
+            <curr:Wydzial>XV Wydział Cywilny</curr:Wydzial>
+        </curr:Adresat>
+        <curr:OsobaSkladajaca pelnomocnik="0" podstawa="Pelnomocnictwo z dnia 22.12.2009">
+            <curr:Osoba>
+                <curr:Imie>Maciej</curr:Imie>
+                <curr:Nazwisko>Kosmulski</curr:Nazwisko>
+                <curr:PESEL>42061389023</curr:PESEL>
+            </curr:Osoba>
+            <curr:Adres ulica="Tezeusza" nr_domu="2" kod="80-299" miejscowosc="Gdańsk" kraj="PL" wojewodztwo="pomorskie"></curr:Adres>
+        </curr:OsobaSkladajaca>
+        <curr:ListaPowodow>
+            <curr:Powod ID="1">
+                <curr:reprezentacja>1</curr:reprezentacja>
+                <curr:rodzajStrony>3</curr:rodzajStrony>
+                <curr:Instytucja>
+                    <curr:Nazwa>Gmina Wrocław</curr:Nazwa>
+                    <curr:Siedziba>Wrocławiu</curr:Siedziba>
+                    <curr:czyRejestr>0</curr:czyRejestr>
+                </curr:Instytucja>
+                <curr:Adres ulica="Pl. Nowy Targ" nr_domu="1/8" kod="50-141" miejscowosc="Wrocław" />
+            </curr:Powod>
+        </curr:ListaPowodow>
+        <curr:ListaPozwanych>
+            <curr:Pozwany ID="20910">
+                <curr:reprezentacja>1</curr:reprezentacja>
+                <curr:rodzajStrony>0</curr:rodzajStrony>
+                <curr:OsobaFizyczna>
+                    <curr:Imie>TOMASZ</curr:Imie>
+                    <curr:Nazwisko>ANDRYSIAK</curr:Nazwisko>
+                </curr:OsobaFizyczna>
+                <curr:Adres ulica="SUDECKA" nr_domu="39/8" kod="58-500" miejscowosc="JELENIA GÓRA" />
+            </curr:Pozwany>
+        </curr:ListaPozwanych>
+        <curr:SprawaWgPowoda>6869</curr:SprawaWgPowoda>
+        <curr:WartoscSporu>122.4</curr:WartoscSporu>
+        <curr:OplataSadowa wartosc="30.00" zwolnienie="0" zasadzenie="1" />
+        <curr:KosztyZastepstwa wartosc="180" zasadzenie="0" wgNorm="0" />
+        <curr:ListaRoszczen>
+            <curr:Roszczenie numer="1" wartosc="122.4" waluta="PLN" odsetki="1" solidarnie="0" typ="0">
+                <curr:Odsetki>
+                    <curr:OkresOdsetkowy czyUstawowe="0" dataOd="2010-10-10" />
+                </curr:Odsetki>
+            </curr:Roszczenie>
+        </curr:ListaRoszczen>
+        <curr:ListaDowodow>
+            <curr:Dowod dataDowodu="2009-09-19" numer="1" oznaczenie="Wezwanie nr 11668" typDowodu="inny">
+                <curr:FaktStwierdzany>Stwierdzenie przejazdu bez biletu oraz powstanie po stronie pozwanej obowiązku uiszczenia opłaty dodatkowej, jak również opłaty za przejazd.</curr:FaktStwierdzany>
+            </curr:Dowod>
+            <curr:Dowod dataDowodu="2009-10-20" numer="2" oznaczenie="Wezwanie przedsądowe nr 6869 wraz z dowodem doręczenia" typDowodu="inny">
+                <curr:FaktStwierdzany>Nie wykonanie przez pozwanego zobowiązania do uiszczenia opłaty dodatkowej oraz opłaty za przejazd</curr:FaktStwierdzany>
+            </curr:Dowod>
+        </curr:ListaDowodow>
+        <curr:Uzasadnienie>         Powód, wykonując zadania własne Gminy w zakresie lokalnego transportu zbiorowego powierzył Spółce Miejskie Przedsiębiorstwo Komunikacyjne Spółka z ograniczoną odpowiedzialnością wykonywanie zadań przewozowych polegających na świadczeniu usług przewozowych w komunikacji tramwajowej i autobusowej  na terenie miasta Wrocławia oraz prowadzenie kontroli dokumentów przewozu osób i bagażu jak również windykację należności wynikających z prowadzonej przez Spółkę kontroli.           Na podstawie pełnomocnictwa udzielonego przez powoda Spółka upoważniona jest do reprezentowania Gminy przed Sądami w zakresie dochodzenia należności za brak odpowiedniego dokumentu przewozu osób lub bagażu.           W czasie prowadzonej kontroli dokumentów przewozu prowadzonej przez Spółkę w dniu 19-09-2009r. na linii 938  kontroler stwierdził, że pozwany nie posiadał ważnego biletu na przejazd.          Zgodnie z treścią par. 8 ust. 2 załącznika do Uchwały nr XXI/682/08 Rady Miejskiej Wrocławia z dnia 15.05.2008r. w sprawie zmiany uchwały nr VIII/275/99 Rady Miejskiej Wrocławia w sprawie zasad odpłatności za usługi przewozowe świadczone środkami lokalnego transportu zbiorowego - zasady odpłatności za przejazdy środkami komunikacji zbiorowej organizowanej przez Gminę Wrocław (Dz. Urz. Woj. Dolnośląskiego z 10.06.2008r. Nr 158, poz. 1831), w razie stwierdzenia braku ważnego biletu na przejazd osoby lub przewóz bagażu pasażer jest zobowiązany do uiszczenia należności przewozowej oraz opłaty dodatkowej.           Zgodnie z wyżej cytowaną uchwałą pozwany zobowiązany jest zatem do zapłaty łącznej kwoty 122,4 zł tj. należności przewozowej w kwocie 2,40 zł oraz opłaty dodatkowej w kwocie 120,00 zł.           Spółka w imieniu powoda wezwała pozwanego do zapłaty dochodzonej kwoty. Pomimo upływu terminu określonego w wezwaniu do zapłaty pozwany do dnia dzisiejszego nie uregulował dochodzonej kwoty w związku z czym pozew niniejszy jest konieczny i uzasadniony.        Właściwość Sądu uzasadnia treść art. 34 kpc. w związku z art. 454 par. 1 zdanie drugie.Opłatę sądową w kwocie 30,00 zł powód uiszcza w znakach opłaty sądowej. </curr:Uzasadnienie>
+    </curr:PozewEPU>
+    <curr:PozewEPU ID="6146" version="1.0" dataZlozenia="2011-11-27">
+        <curr:Adresat ID="1">
+            <curr:Nazwa>Sąd Rejonowy w Lublinie</curr:Nazwa>
+            <curr:Wydzial>XV Wydział Cywilny</curr:Wydzial>
+        </curr:Adresat>
+        <curr:OsobaSkladajaca pelnomocnik="0" podstawa="Pelnomocnictwo z dnia 22.12.2009">
+            <curr:Osoba>
+                <curr:Imie>Maciej</curr:Imie>
+                <curr:Nazwisko>Kosmulski</curr:Nazwisko>
+                <curr:PESEL>42061389023</curr:PESEL>
+            </curr:Osoba>
+            <curr:Adres ulica="Tezeusza" nr_domu="2" kod="80-299" miejscowosc="Gdańsk" kraj="PL" wojewodztwo="pomorskie"></curr:Adres>
+        </curr:OsobaSkladajaca>
+        <curr:ListaPowodow>
+            <curr:Powod ID="1">
+                <curr:reprezentacja>1</curr:reprezentacja>
+                <curr:rodzajStrony>3</curr:rodzajStrony>
+                <curr:Instytucja>
+                    <curr:Nazwa>Gmina Wrocław</curr:Nazwa>
+                    <curr:Siedziba>Wrocławiu</curr:Siedziba>
+                    <curr:czyRejestr>0</curr:czyRejestr>
+                </curr:Instytucja>
+                <curr:Adres ulica="Pl. Nowy Targ" nr_domu="1/8" kod="50-141" miejscowosc="Wrocław" />
+            </curr:Powod>
+        </curr:ListaPowodow>
+        <curr:ListaPozwanych>
+            <curr:Pozwany ID="19428">
+                <curr:reprezentacja>1</curr:reprezentacja>
+                <curr:rodzajStrony>0</curr:rodzajStrony>
+                <curr:OsobaFizyczna>
+                    <curr:Imie>JADWIGA</curr:Imie>
+                    <curr:Nazwisko>ANDRZEJAK</curr:Nazwisko>
+                </curr:OsobaFizyczna>
+                <curr:Adres ulica="ŚLICZNA" nr_domu="32/13" kod="50-550" miejscowosc="WROCŁAW" />
+            </curr:Pozwany>
+        </curr:ListaPozwanych>
+        <curr:SprawaWgPowoda>6146</curr:SprawaWgPowoda>
+        <curr:WartoscSporu>122.4</curr:WartoscSporu>
+        <curr:OplataSadowa wartosc="30.00" zwolnienie="0" zasadzenie="1" />
+        <curr:KosztyZastepstwa wartosc="180" zasadzenie="0" wgNorm="0" />
+        <curr:ListaRoszczen>
+            <curr:Roszczenie numer="1" wartosc="122.4" waluta="PLN" odsetki="1" solidarnie="0" typ="0">
+                <curr:Odsetki>
+                    <curr:OkresOdsetkowy czyUstawowe="0" dataOd="2009-09-30" />
+                </curr:Odsetki>
+            </curr:Roszczenie>
+        </curr:ListaRoszczen>
+        <curr:ListaDowodow>
+            <curr:Dowod dataDowodu="2009-09-15" numer="1" oznaczenie="Wezwanie nr 8345" typDowodu="inny">
+                <curr:FaktStwierdzany>Stwierdzenie przejazdu bez biletu oraz powstanie po stronie pozwanej obowiązku uiszczenia opłaty dodatkowej, jak również opłaty za przejazd.</curr:FaktStwierdzany>
+            </curr:Dowod>
+            <curr:Dowod dataDowodu="2009-10-16" numer="2" oznaczenie="Wezwanie przedsądowe nr 6146 wraz z dowodem doręczenia" typDowodu="inny">
+                <curr:FaktStwierdzany>Nie wykonanie przez pozwanego zobowiązania do uiszczenia opłaty dodatkowej oraz opłaty za przejazd</curr:FaktStwierdzany>
+            </curr:Dowod>
+        </curr:ListaDowodow>
+        <curr:Uzasadnienie>         Powód, wykonując zadania własne Gminy w zakresie lokalnego transportu zbiorowego powierzył Spółce Miejskie Przedsiębiorstwo Komunikacyjne Spółka z ograniczoną odpowiedzialnością wykonywanie zadań przewozowych polegających na świadczeniu usług przewozowych w komunikacji tramwajowej i autobusowej  na terenie miasta Wrocławia oraz prowadzenie kontroli dokumentów przewozu osób i bagażu jak również windykację należności wynikających z prowadzonej przez Spółkę kontroli.           Na podstawie pełnomocnictwa udzielonego przez powoda Spółka upoważniona jest do reprezentowania Gminy przed Sądami w zakresie dochodzenia należności za brak odpowiedniego dokumentu przewozu osób lub bagażu.           W czasie prowadzonej kontroli dokumentów przewozu prowadzonej przez Spółkę w dniu 15-09-2009r. na linii 974  kontroler stwierdził, że pozwany nie posiadał ważnego biletu na przejazd.          Zgodnie z treścią par. 8 ust. 2 załącznika do Uchwały nr XXI/682/08 Rady Miejskiej Wrocławia z dnia 15.05.2008r. w sprawie zmiany uchwały nr VIII/275/99 Rady Miejskiej Wrocławia w sprawie zasad odpłatności za usługi przewozowe świadczone środkami lokalnego transportu zbiorowego - zasady odpłatności za przejazdy środkami komunikacji zbiorowej organizowanej przez Gminę Wrocław (Dz. Urz. Woj. Dolnośląskiego z 10.06.2008r. Nr 158, poz. 1831), w razie stwierdzenia braku ważnego biletu na przejazd osoby lub przewóz bagażu pasażer jest zobowiązany do uiszczenia należności przewozowej oraz opłaty dodatkowej.           Zgodnie z wyżej cytowaną uchwałą pozwany zobowiązany jest zatem do zapłaty łącznej kwoty 122,4 zł tj. należności przewozowej w kwocie 2,40 zł oraz opłaty dodatkowej w kwocie 120,00 zł.           Spółka w imieniu powoda wezwała pozwanego do zapłaty dochodzonej kwoty. Pomimo upływu terminu określonego w wezwaniu do zapłaty pozwany do dnia dzisiejszego nie uregulował dochodzonej kwoty w związku z czym pozew niniejszy jest konieczny i uzasadniony.        Właściwość Sądu uzasadnia treść art. 34 kpc. w związku z art. 454 par. 1 zdanie drugie.Opłatę sądową w kwocie 30,00 zł powód uiszcza w znakach opłaty sądowej. </curr:Uzasadnienie>
+    </curr:PozewEPU>
+    <curr:PozewEPU ID="982" version="1.0" dataZlozenia="2011-11-27">
+        <curr:Adresat ID="1">
+            <curr:Nazwa>Sąd Rejonowy w Lublinie</curr:Nazwa>
+            <curr:Wydzial>XV Wydział Cywilny</curr:Wydzial>
+        </curr:Adresat>
+        <curr:OsobaSkladajaca pelnomocnik="0" podstawa="Pelnomocnictwo z dnia 22.12.2009">
+            <curr:Osoba>
+                <curr:Imie>Maciej</curr:Imie>
+                <curr:Nazwisko>Kosmulski</curr:Nazwisko>
+                <curr:PESEL>42061389023</curr:PESEL>
+            </curr:Osoba>
+            <curr:Adres ulica="Tezeusza" nr_domu="2" kod="80-299" miejscowosc="Gdańsk" kraj="PL" wojewodztwo="pomorskie"></curr:Adres>
+        </curr:OsobaSkladajaca>
+        <curr:ListaPowodow>
+            <curr:Powod ID="1">
+                <curr:reprezentacja>1</curr:reprezentacja>
+                <curr:rodzajStrony>2</curr:rodzajStrony>
+                <curr:Instytucja>
+                    <curr:Nazwa>Gmina Wrocław</curr:Nazwa>
+                    <curr:Siedziba>Wrocławiu</curr:Siedziba>
+                    <curr:czyRejestr>0</curr:czyRejestr>
+                </curr:Instytucja>
+                <curr:Adres ulica="Pl. Nowy Targ" nr_domu="1/8" kod="50-141" miejscowosc="Wrocław" />
+            </curr:Powod>
+        </curr:ListaPowodow>
+        <curr:ListaPozwanych>
+            <curr:Pozwany ID="32439">
+                <curr:reprezentacja>1</curr:reprezentacja>
+                <curr:rodzajStrony>0</curr:rodzajStrony>
+                <curr:OsobaFizyczna>
+                    <curr:Imie>TOMASZ</curr:Imie>
+                    <curr:Nazwisko>ANDRZEJAK</curr:Nazwisko>
+                </curr:OsobaFizyczna>
+                <curr:Adres ulica="LAKIERNICZA" nr_domu="21/2" kod="53-205" miejscowosc="WROCŁAW" />
+            </curr:Pozwany>
+        </curr:ListaPozwanych>
+        <curr:SprawaWgPowoda>982</curr:SprawaWgPowoda>
+        <curr:WartoscSporu>122.8</curr:WartoscSporu>
+        <curr:OplataSadowa wartosc="30.00" zwolnienie="0" zasadzenie="1" />
+        <curr:KosztyZastepstwa wartosc="180" zasadzenie="0" wgNorm="0" />
+        <curr:ListaRoszczen>
+            <curr:Roszczenie numer="1" wartosc="122.8" waluta="PLN" odsetki="1" solidarnie="0" typ="0">
+                <curr:Odsetki>
+                    <curr:OkresOdsetkowy czyUstawowe="0" dataOd="2009-12-06" />
+                </curr:Odsetki>
+            </curr:Roszczenie>
+        </curr:ListaRoszczen>
+        <curr:ListaDowodow>
+            <curr:Dowod dataDowodu="2009-11-21" numer="1" oznaczenie="Wezwanie nr 23747" typDowodu="inny">
+                <curr:FaktStwierdzany>Stwierdzenie przejazdu bez biletu oraz powstanie po stronie pozwanej obowiązku uiszczenia opłaty dodatkowej, jak również opłaty za przejazd.</curr:FaktStwierdzany>
+            </curr:Dowod>
+            <curr:Dowod dataDowodu="2010-01-14" numer="2" oznaczenie="Wezwanie przedsądowe nr 982 wraz z dowodem doręczenia" typDowodu="inny">
+                <curr:FaktStwierdzany>Nie wykonanie przez pozwanego zobowiązania do uiszczenia opłaty dodatkowej oraz opłaty za przejazd</curr:FaktStwierdzany>
+            </curr:Dowod>
+        </curr:ListaDowodow>
+        <curr:Uzasadnienie>         Powód, wykonując zadania własne Gminy w zakresie lokalnego transportu zbiorowego powierzył Spółce Miejskie Przedsiębiorstwo Komunikacyjne Spółka z ograniczoną odpowiedzialnością wykonywanie zadań przewozowych polegających na świadczeniu usług przewozowych w komunikacji tramwajowej i autobusowej  na terenie miasta Wrocławia oraz prowadzenie kontroli dokumentów przewozu osób i bagażu jak również windykację należności wynikających z prowadzonej przez Spółkę kontroli.           Na podstawie pełnomocnictwa udzielonego przez powoda Spółka upoważniona jest do reprezentowania Gminy przed Sądami w zakresie dochodzenia należności za brak odpowiedniego dokumentu przewozu osób lub bagażu.           W czasie prowadzonej kontroli dokumentów przewozu prowadzonej przez Spółkę w dniu 21-11-2009r. na linii 957  kontroler stwierdził, że pozwany nie posiadał ważnego biletu na przejazd.          Zgodnie z treścią par. 8 ust. 2 załącznika do Uchwały nr XXI/682/08 Rady Miejskiej Wrocławia z dnia 15.05.2008r. w sprawie zmiany uchwały nr VIII/275/99 Rady Miejskiej Wrocławia w sprawie zasad odpłatności za usługi przewozowe świadczone środkami lokalnego transportu zbiorowego - zasady odpłatności za przejazdy środkami komunikacji zbiorowej organizowanej przez Gminę Wrocław (Dz. Urz. Woj. Dolnośląskiego z 10.06.2008r. Nr 158, poz. 1831), w razie stwierdzenia braku ważnego biletu na przejazd osoby lub przewóz bagażu pasażer jest zobowiązany do uiszczenia należności przewozowej oraz opłaty dodatkowej.           Zgodnie z wyżej cytowaną uchwałą pozwany zobowiązany jest zatem do zapłaty łącznej kwoty 122,8 zł tj. należności przewozowej w kwocie 2,80 zł oraz opłaty dodatkowej w kwocie 120,00 zł.           Spółka w imieniu powoda wezwała pozwanego do zapłaty dochodzonej kwoty. Pomimo upływu terminu określonego w wezwaniu do zapłaty pozwany do dnia dzisiejszego nie uregulował dochodzonej kwoty w związku z czym pozew niniejszy jest konieczny i uzasadniony.        Właściwość Sądu uzasadnia treść art. 34 kpc. w związku z art. 454 par. 1 zdanie drugie.Opłatę sądową w kwocie 30,00 zł powód uiszcza w znakach opłaty sądowej. </curr:Uzasadnienie>
+    </curr:PozewEPU>
+</curr:Pozwy>

@@ -1,0 +1,32 @@
+﻿<navigation:Page 
+  x:Class="LexEnaTrs.About" 
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
+  mc:Ignorable="d" d:DesignWidth="640" d:DesignHeight="480"  
+  Style="{StaticResource PageStyle}" Loaded="Page_Loaded">
+
+    <Grid x:Name="LayoutRoot">
+        <ScrollViewer x:Name="PageScrollViewer" Style="{StaticResource PageScrollViewerStyle}" Margin="0,0,35,0">
+
+            <StackPanel x:Name="ContentStackPanel" Style="{StaticResource ContentStackPanelStyle}">
+
+                <TextBlock x:Name="HeaderText" Style="{StaticResource HeaderTextStyle}" 
+                           Text="{Binding Path=ApplicationStrings.AboutPageTitle, Source={StaticResource ResourceWrapper}}"/>
+                <TextBlock Height="29" Name="textBlock1" Text="System LexEna" FontSize="20" />
+                <TextBlock Name="textBlock2"  TextWrapping="Wrap" Text="System wspomagający dochodzenie należnosci przed sądem w trybie Elektronicznego Postępowania Upominawczego" Width="565" HorizontalAlignment="Left" />
+                <TextBlock Height="23" Name="textBlock3" Text="Wszelkie prawa zastrzeżone - (c) Energa " />
+                <TextBlock Height="23" Name="textBlock5" Text="Wersja:" HorizontalAlignment="Left" />
+                <TextBlock Height="22" x:Name="version" HorizontalAlignment="Left" Width="422" FontSize="14" FontWeight="Normal" FontFamily="Courier New" />
+                <TextBlock Height="23" x:Name="textBlock5_Copy" Text="Baza danych:" HorizontalAlignment="Left"  />
+                <TextBlock Height="22" x:Name="lexenadbname" HorizontalAlignment="Left" Width="575" FontSize="14" FontWeight="Normal" FontFamily="Courier New" />
+
+                <!--  <Button Content="Button1" Height="23" Name="button2" Width="75" Click="button2_Click" />
+                <Button Content="Button3" Height="23" Name="button3" Width="75" Click="button3_Click" /> -->
+            </StackPanel>
+
+        </ScrollViewer>
+    </Grid>
+
+</navigation:Page>

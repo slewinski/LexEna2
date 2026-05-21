@@ -1,0 +1,63 @@
+﻿<navigation:Page
+  x:Class="LexEnaTrs.Admin" 
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
+  mc:Ignorable="d" d:DesignWidth="774" d:DesignHeight="528"  
+  Style="{StaticResource PageStyle}" xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit" 
+  xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+  xmlns:telerikNavigation="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Navigation">
+
+  <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="28" />
+            <RowDefinition Height="500*" />
+        </Grid.RowDefinitions>
+
+        <Border BorderBrush="Black" BorderThickness="1" Background="#FFF1ECEC" Height="28" VerticalAlignment="Top">
+            <telerikNavigation:RadMenu d:LayoutOverrides="GridBox" HorizontalAlignment="Left" FontSize="10.667" VerticalAlignment="Top" Background="#FFD9E9ED" ItemClick="RadMenu_ItemClick">
+               
+                <telerikNavigation:RadMenuItem Header=" Konta EPU" Visibility="{Binding VisibleForAdmin, Source={StaticResource IsSuperAdminRole}}" Tag="KontaEPU" BorderThickness="1,1,2,2">
+                    <!--
+                    <telerikNavigation:RadMenuItem Header="Użytkownicy"/>
+                    <telerikNavigation:RadMenuItem Header="Komunikacja z e-Sądem"/> -->
+                </telerikNavigation:RadMenuItem>
+                <telerikNavigation:RadMenuItem Visibility="{Binding VisibleForSuperAdmin, Source={StaticResource IsSuperAdminRole}}" Header="Jednostki windykacji" Tag="Jednostki" BorderThickness="1,1,2,2" >
+                     
+                   
+                </telerikNavigation:RadMenuItem>
+                <telerikNavigation:RadMenuItem Header="Użytkownicy" Tag="Users" BorderThickness="1,1,2,2" >
+                </telerikNavigation:RadMenuItem>
+
+                <telerikNavigation:RadMenuItem Header="Słowniki"  BorderThickness="1,1,2,2" >
+                    <telerikNavigation:RadMenuItem Tag="Uzasadnienia" Header="Uzasadnienia"/>
+                    <telerikNavigation:RadMenuItem Tag="Fakty" Header="Opis stwierdzonych faktów"/>
+                    <telerikNavigation:RadMenuItem Tag="Komornicy" Header="Lista Kancelarii Komorniczych"/>
+                    <telerikNavigation:RadMenuItem Tag="SzablonWniosku" Header="Szablon Wniosku Egzekucyjnego"/>
+                    <telerikNavigation:RadMenuItem Tag="OdsetkiUstawowe" Header="Tabela Odsetek Ustawowych"/>
+                </telerikNavigation:RadMenuItem>
+                <telerikNavigation:RadMenuItem Header="Mapowania"  BorderThickness="1,1,2,2" >
+                    <telerikNavigation:RadMenuItem Tag="CzynKomo" Header="Czynności komornicze"/>
+        
+                </telerikNavigation:RadMenuItem>
+                <telerikNavigation:RadMenuItem Header="Raporty"  BorderThickness="1,1,2,2" >
+                    <telerikNavigation:RadMenuItem Tag="TerminowoscPozwow" Header="Terminowość sporządzania pozwów"/>
+                    
+                </telerikNavigation:RadMenuItem>
+                <telerikNavigation:RadMenuItem Header="Zadania - komunikacja" Tag="Zadania" BorderThickness="1,1,2,2" >
+                </telerikNavigation:RadMenuItem>
+
+                <telerikNavigation:RadMenuItem Visibility="{Binding VisibleForSuperAdmin, Source={StaticResource IsSuperAdminRole}}" Header="Komunikacja z KRD" Tag="KrdKonfig" BorderThickness="1,1,2,2" >
+                </telerikNavigation:RadMenuItem>
+                <telerikNavigation:RadMenuItem Visibility="{Binding VisibleForSuperAdmin, Source={StaticResource IsSuperAdminRole}}" Header="Parametry dla ulg na złe długi" Tag="UzDKonfig" BorderThickness="1,1,2,2" >
+                </telerikNavigation:RadMenuItem>
+            </telerikNavigation:RadMenu>
+        </Border>
+        <Grid HorizontalAlignment="Stretch" Name="grid1" VerticalAlignment="Stretch" Grid.Row="1" Margin="0,0,0,0" >
+        <Border BorderBrush="#FFCBCBCB" BorderThickness="1" x:Name="MainWorkspace" 
+							Background="White" Margin="6,6,0,8"/>
+        </Grid>
+    </Grid>
+
+</navigation:Page>

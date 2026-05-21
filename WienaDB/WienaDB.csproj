@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{315C79D1-FEE1-466C-8709-3C6B09E9F0EF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WienaDB</RootNamespace>
+    <AssemblyName>WienaDB</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="Models\dluz_adresy.cs">
+      <DependentUpon>Wiena.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\dok_odebr.cs">
+      <DependentUpon>Wiena.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\dok_odebr_nazwy.cs">
+      <DependentUpon>Wiena.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\dowod_slownik.cs">
+      <DependentUpon>Wiena.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\firma.cs">
+      <DependentUpon>Wiena.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\komoall.cs">
+      <DependentUpon>Wiena.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\konto.cs">
+      <DependentUpon>Wiena.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\konto_anal.cs">
+      <DependentUpon>Wiena.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\koszt.cs">
+      <DependentUpon>Wiena.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\naleznosc.cs">
+      <DependentUpon>Wiena.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\nal_stan.cs">
+      <DependentUpon>Wiena.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\notki.cs">
+      <DependentUpon>Wiena.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\obroty.cs">
+      <DependentUpon>Wiena.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ods_sprawy.cs">
+      <DependentUpon>Wiena.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ods_tab.cs">
+      <DependentUpon>Wiena.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ods_tab_nazwy.cs">
+      <DependentUpon>Wiena.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\pisma_wys.cs">
+      <DependentUpon>Wiena.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\radca.cs">
+      <DependentUpon>Wiena.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sad.cs">
+      <DependentUpon>Wiena.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\skan.cs">
+      <DependentUpon>Wiena.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\skazani.cs">
+      <DependentUpon>Wiena.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\slow_rodzaj.cs">
+      <DependentUpon>Wiena.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sprawa.cs">
+      <DependentUpon>Wiena.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\spr_dluz.cs">
+      <DependentUpon>Wiena.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\spr_egz.cs">
+      <DependentUpon>Wiena.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\spr_sadowa.cs">
+      <DependentUpon>Wiena.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\spr_stan.cs">
+      <DependentUpon>Wiena.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\status.cs">
+      <DependentUpon>Wiena.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\status_spr.cs">
+      <DependentUpon>Wiena.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\symbol.cs">
+      <DependentUpon>Wiena.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\typ_nal.cs">
+      <DependentUpon>Wiena.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vw_import_Symbole.cs">
+      <DependentUpon>Wiena.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vw_KosztyEgz.cs">
+      <DependentUpon>Wiena.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Wiena.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Wiena.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Wiena.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Wiena.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Wiena.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Wiena.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\wplata.cs">
+      <DependentUpon>Wiena.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\wplata_podz.cs">
+      <DependentUpon>Wiena.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\wzor_tree.cs">
+      <DependentUpon>Wiena.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\xls_import.cs">
+      <DependentUpon>Wiena.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\xls_zalkom_det.cs">
+      <DependentUpon>Wiena.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\zlecenia_ksiegowe.cs">
+      <DependentUpon>Wiena.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Models\Wiena.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Wiena.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Models\Wiena.edmx.diagram">
+      <DependentUpon>Wiena.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\Wiena.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Wiena.edmx</DependentUpon>
+      <LastGenOutput>Wiena.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Wiena.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Wiena.edmx</DependentUpon>
+      <LastGenOutput>Wiena.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

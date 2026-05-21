@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3991d6a3dec14c1cb5917984c56433ce" Name="Diagram1" ZoomLevel="101">
+        <EntityTypeShape EntityType="WienaModel.dok_odebr" Width="2.375" PointX="5.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WienaModel.dok_odebr_nazwy" Width="1.5" PointX="3.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WienaModel.konto" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WienaModel.konto_anal" Width="1.5" PointX="8.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WienaModel.koszt" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WienaModel.nal_stan" Width="1.5" PointX="6.875" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="WienaModel.obroty" Width="1.5" PointX="11" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WienaModel.ods_sprawy" Width="1.5" PointX="5.25" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WienaModel.pisma_wys" Width="1.5" PointX="3" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WienaModel.zlecenia_ksiegowe" Width="1.5" PointX="8.75" PointY="9.75" IsExpanded="true" />
+        <AssociationConnector Association="WienaModel.FK_dok_odebr_dok_odebr_nazwy" ManuallyRouted="false" />
+        <AssociationConnector Association="WienaModel.FK_obroty_konto_anal" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="WienaModel.firma" Width="1.5" PointX="0.75" PointY="20.875" />
+        <EntityTypeShape EntityType="WienaModel.vw_KosztyEgz" Width="1.5" PointX="11.375" PointY="9.75" />
+        <EntityTypeShape EntityType="WienaModel.spr_egz" Width="1.5" PointX="13.375" PointY="0.75" />
+        <EntityTypeShape EntityType="WienaModel.spr_sadowa" Width="1.5" PointX="13.375" PointY="7.75" />
+        <EntityTypeShape EntityType="WienaModel.slow_rodzaj" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="WienaModel.status" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="WienaModel.status_spr" Width="1.5" PointX="15.375" PointY="0.75" />
+        <EntityTypeShape EntityType="WienaModel.wzor_tree" Width="1.5" PointX="15.375" PointY="4.75" />
+        <EntityTypeShape EntityType="WienaModel.skan" Width="1.5" PointX="15.375" PointY="9.75" />
+        <EntityTypeShape EntityType="WienaModel.radca" Width="1.5" PointX="3" PointY="30.375" />
+        <AssociationConnector Association="WienaModel.FK_id_firmy" />
+        <EntityTypeShape EntityType="WienaModel.sprawa" Width="1.5" PointX="3" PointY="35.125" />
+        <AssociationConnector Association="WienaModel.FK_dok_odebr_sprawa" />
+        <AssociationConnector Association="WienaModel.FK_sprawa_firma" />
+        <AssociationConnector Association="WienaModel.FK_koszt_sprawa" />
+        <AssociationConnector Association="WienaModel.FK_pisma_wys_sprawa" />
+        <EntityTypeShape EntityType="WienaModel.sad" Width="1.5" PointX="0.75" PointY="5.75" />
+        <EntityTypeShape EntityType="WienaModel.wplata_podz" Width="1.5" PointX="5.25" PointY="21.875" />
+        <EntityTypeShape EntityType="WienaModel.komoall" Width="1.5" PointX="15.375" PointY="13.75" />
+        <EntityTypeShape EntityType="WienaModel.wplata" Width="1.5" PointX="5.25" PointY="38.25" />
+        <AssociationConnector Association="WienaModel.FK_wplata_sprawa" />
+        <AssociationConnector Association="WienaModel.FK_wplata_podz_wplata" />
+        <EntityTypeShape EntityType="WienaModel.spr_stan" Width="1.5" PointX="5.25" PointY="44" />
+        <AssociationConnector Association="WienaModel.FK_spr_stan_sprawa" />
+        <EntityTypeShape EntityType="WienaModel.ods_tab" Width="1.5" PointX="19.625" PointY="0.875" />
+        <EntityTypeShape EntityType="WienaModel.ods_tab_nazwy" Width="1.5" PointX="17.375" PointY="1.125" />
+        <AssociationConnector Association="WienaModel.fk_ods_typ_ods" />
+        <AssociationConnector Association="WienaModel.FK_tab_ods" />
+        <EntityTypeShape EntityType="WienaModel.symbol" Width="1.5" PointX="17.375" PointY="4.75" />
+        <EntityTypeShape EntityType="WienaModel.dowod_slownik" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="WienaModel.vw_import_Symbole" Width="1.5" PointX="17.375" PointY="8.75" />
+        <EntityTypeShape EntityType="WienaModel.dluz_adresy" Width="1.5" PointX="17.375" PointY="11.75" />
+        <EntityTypeShape EntityType="WienaModel.skazani" Width="1.5" PointX="11.375" PointY="17.75" />
+        <EntityTypeShape EntityType="WienaModel.spr_dluz" Width="1.5" PointX="13.625" PointY="30.875" />
+        <AssociationConnector Association="WienaModel.FK_spr_dluz_skazani" />
+        <AssociationConnector Association="WienaModel.FK_spr_dluz_sprawa" />
+        <EntityTypeShape EntityType="WienaModel.notki" Width="1.5" PointX="17.375" PointY="15.75" />
+        <EntityTypeShape EntityType="WienaModel.xls_import" Width="1.5" PointX="13.375" PointY="18.75" />
+        <EntityTypeShape EntityType="WienaModel.xls_zalkom_det" Width="1.5" PointX="19.375" PointY="4.75" />
+        <EntityTypeShape EntityType="WienaModel.typ_nal" Width="1.5" PointX="0.75" PointY="10.25" />
+        <AssociationConnector Association="WienaModel.FK_koszt_typ_nal" />
+        <EntityTypeShape EntityType="WienaModel.naleznosc" Width="1.5" PointX="5.25" PointY="26" />
+        <AssociationConnector Association="WienaModel.FK_nal_stan" />
+        <AssociationConnector Association="WienaModel.FK_naleznosc_sprawa" />
+        <AssociationConnector Association="WienaModel.FK_naleznosc_typ_nal" />
+        <AssociationConnector Association="WienaModel.FK_ods_sprawy_naleznosc" />
+        <AssociationConnector Association="WienaModel.FK_wplata_podz_naleznosc" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,267 @@
+﻿<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+    xmlns:local="clr-namespace:LexEnaTrs"
+	xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk" xmlns:ee="http://schemas.microsoft.com/expression/2010/effects" 
+    xmlns:my="clr-namespace:LexEnaTrs.Web"
+    x:Class="LexEnaTrs.Views.DokumentEPUView"	
+	mc:Ignorable="d" BorderThickness="3" BorderBrush="#FF1D0C0C" Height="521" Width="781" Loaded="UserControl_Loaded">
+    <!--
+	<UserControl.Resources>
+		<local:ListaDowodowSampleData x:Key="ListaDowodowSampleDataDataSource" d:IsDataSource="True"/>
+	</UserControl.Resources>
+    -->
+    <Grid x:Name="LayoutRoot" Language="pl-PL" Background="White" Margin="1,1,-1,-1" >
+    	<Grid.Resources>
+    			<telerik:EnumDataSource x:Name="EnumTypDowodSource"  />
+				
+     
+            
+            <DataTemplate x:Key="DowodyRowDetailsTemplateRO">
+        	<Grid Height="180" Width="585" Background="Transparent">
+        		<Grid.ColumnDefinitions>
+        			<ColumnDefinition Width="95"/>
+        			<ColumnDefinition Width="281"/>
+        			<ColumnDefinition Width="Auto" MinWidth="236"/>
+        		</Grid.ColumnDefinitions>
+        		<Grid.RowDefinitions>
+        			<RowDefinition Height="Auto" MinHeight="36"/>
+        			<RowDefinition Height="Auto" MinHeight="36"/>
+        			<RowDefinition Height="Auto" MinHeight="54"/>
+        			<RowDefinition Height="Auto" MinHeight="68"/>
+        		</Grid.RowDefinitions>
+        	
+				<telerik:DataFormDataField  Label = "Nr" x:Name="Numer" DataMemberBinding="{Binding Numer, Mode=TwoWay}"  d:LayoutOverrides="HorizontalAlignment"  />
+				<telerik:DataFormComboBoxField Margin="2" TabIndex="1" Label = "Rodz. dow."  x:Name="TypDowodu"  DataMemberBinding="{Binding TypDowodu, Mode=TwoWay}" SelectedValuePath="Value"  ItemsSource="{Binding Source={StaticResource EnumTypDowodSource}}" VerticalAlignment="Center" Grid.Column="1"/>
+					<telerik:DataFormDateField  Grid.Column="2" TabIndex="2" Margin="2" Label="Data dowodu"  DataMemberBinding="{Binding DataDowodu, Converter={StaticResource DateConverter}, Mode=TwoWay}"  x:Name="DataDowodu"  VerticalAlignment="Center" FontSize="10.667" ToolTipService.ToolTip="Data dokumentu stanowiacego dowód ( jeśli istnieje)"/>
+				<telerik:DataFormDataField Margin="0,0,0,0" Grid.Row="2" Label = "Fakt podlegający stwierdzeniu" x:Name="FaktStwierdzony" DataMemberBinding="{Binding FaktStwierdzany, Mode=TwoWay}" LabelPosition="Above" d:LayoutOverrides="HorizontalAlignment" Grid.ColumnSpan="3" RenderTransformOrigin="0.5,0.5" Background="#00E2BCBC"/>
+				<telerik:DataFormDataField  x:Name="Oznaczenie" Label="Oznaczenie dowodu" Grid.ColumnSpan="3" DataMemberBinding="{Binding Oznaczenie, Mode=TwoWay}" Margin="2,2,27,2" Grid.Row="1" ToolTipService.ToolTip="Podaj oznaczenie dokumentu - dowodu ( numer faktury, oznaczenie aktu notarialnego , numer umowy ) "/>
+				<telerik:DataFormDataField   VerticalAlignment="Top" VerticalContentAlignment="Stretch"  Grid.Row="3" x:Name="Opis" Label="Opis"  DataMemberBinding="{Binding Opis, Mode=TwoWay}" LabelPosition="Beside" Grid.ColumnSpan="3" Margin="0,0,35,0" Background="#00A36969" >                            
+         		<TextBox Text="{Binding Opis, Mode=TwoWay}"
+         		    Height="50"
+					Width="520"
+					IsReadOnly="True"
+             		VerticalScrollBarVisibility="Auto"
+            		
+					TextWrapping="Wrap"
+            		AcceptsReturn="True" Margin="-132,0,-34,0"  />
+				</telerik:DataFormDataField>
+		   	</Grid>
+        </DataTemplate>  	
+	 		  <DataTemplate x:Key="DowodyRowDetailsTemplateUI">
+        	<Grid Height="186" Width="585">
+        		<Grid.ColumnDefinitions>
+        			<ColumnDefinition Width="95"/>
+        			<ColumnDefinition Width="281"/>
+        			<ColumnDefinition Width="Auto" MinWidth="236"/>
+        		</Grid.ColumnDefinitions>
+        		<Grid.RowDefinitions>
+        			<RowDefinition Height="Auto" MinHeight="36"/>
+        			<RowDefinition Height="Auto" MinHeight="36"/>
+        			<RowDefinition Height="Auto" MinHeight="78"/>
+        			<RowDefinition Height="Auto" MinHeight="56"/>
+        		</Grid.RowDefinitions>
+        	
+				<telerik:DataFormDataField Margin="0,0,0,0"  Label = "Nr" x:Name="Numer" DataMemberBinding="{Binding Numer, Mode=TwoWay}"  d:LayoutOverrides="HorizontalAlignment"  />
+				<telerik:DataFormComboBoxField Margin="2" TabIndex="1" Label = "Rodz. dow."  x:Name="TypDowodu"  DataMemberBinding="{Binding TypDowodu, Mode=TwoWay}" SelectedValuePath="Value"  ItemsSource="{Binding Source={StaticResource EnumTypDowodSource}}" VerticalAlignment="Center" Grid.Column="1"/>
+					<telerik:DataFormDateField  Grid.Column="2" TabIndex="2" Margin="2" Label="Data dowodu"  DataMemberBinding="{Binding DataDowodu, Converter={StaticResource DateConverter}, Mode=TwoWay}"  x:Name="DataDowodu"  VerticalAlignment="Center" FontSize="10.667" ToolTipService.ToolTip="Data dokumentu stanowiacego dowód ( jeśli istnieje)"/>
+				<!--<telerik:DataFormDataField Margin="0,0,27,3" Grid.Row="2" Label = "Fakt podlegający stwierdzeniu" x:Name="FaktStwierdzony" DataMemberBinding="{Binding FaktStwierdzany, Mode=TwoWay}" LabelPosition="Above" d:LayoutOverrides="HorizontalAlignment" Grid.ColumnSpan="3" RenderTransformOrigin="0.5,0.5" Background="#00E2BCBC"/> -->
+				 <telerik:DataFormDataField  Grid.Row="2" LabelPosition="Above" x:Name="FaktStwierdzony" Grid.ColumnSpan="2" DataMemberBinding="{Binding FaktStwierdzany, Mode=TwoWay}" Margin="2,2,-2,17" >
+                            <telerik:DataFormDataField.Content>
+                                <TextBox Text="{Binding FaktStwierdzany, Mode=TwoWay}" AcceptsReturn="True"   VerticalScrollBarVisibility="Auto"   Height="51" Width="520" Margin="50,0,-236,0" TextWrapping="Wrap" />
+                            </telerik:DataFormDataField.Content>
+                        </telerik:DataFormDataField>
+				<telerik:DataFormDataField x:Name="Oznaczenie"  Grid.ColumnSpan="3" DataMemberBinding="{Binding Oznaczenie, Mode=TwoWay}" Margin="-125,2,72,2" Grid.Row="1" ToolTipService.ToolTip="Podaj oznaczenie dokumentu - dowodu ( numer faktury, oznaczenie aktu notarialnego , numer umowy ) "/>
+				<telerik:DataFormDataField   VerticalAlignment="Top" VerticalContentAlignment="Stretch"  Grid.Row="3" x:Name="Opis" Label="Opis"  DataMemberBinding="{Binding Opis, Mode=TwoWay}" LabelPosition="Beside" Grid.ColumnSpan="3" Margin="1,-19,34,0" Background="#00A36969" Height="48" >                            
+         		<TextBox Text="{Binding Opis, Mode=TwoWay}"
+					Height="50"
+					Width="520"
+             		VerticalScrollBarVisibility="Auto"
+            		HorizontalScrollBarVisibility="Auto"
+					TextWrapping="Wrap"
+            		AcceptsReturn="True" Margin="-131,-23,-36,-7"  />
+				</telerik:DataFormDataField>
+
+				
+		   	</Grid>
+        </DataTemplate>
+	 		   <DataTemplate x:Key="dataFormTemplateRoszczenia">
+	 		  	<Grid Height="115" d:DesignWidth="285" Width="342" >
+        		<Grid.ColumnDefinitions>
+        			<ColumnDefinition Width="144"/>
+        			<ColumnDefinition/>
+        		</Grid.ColumnDefinitions>
+        		<Grid.RowDefinitions>
+        			<RowDefinition Height="211"/>
+        		</Grid.RowDefinitions>
+	 		  		<telerik:DataFormDataField x:Name="Numer" LabelPosition="Beside" Label="Nr" DataMemberBinding="{Binding Numer, Mode=TwoWay}" Margin="2,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="105"/>
+					<telerik:DataFormDataField   VerticalAlignment="Top" LabelPosition="Beside" VerticalContentAlignment="Stretch" Grid.Column="1" x:Name="Wartosc" Label="Wartość"  DataMemberBinding="{Binding Wartosc, Mode=TwoWay}" HorizontalAlignment="Left" Width="194" Margin="0,2,0,0"  >
+                        <telerik:RadMaskedCurrencyInput  HorizontalContentAlignment="Right" Value="{Binding Wartosc, Mode=TwoWay}"  EmptyContent="kwota"  Culture="pl-PL" Mask="#9.2" Margin="2,0,-12,0" Grid.Row="2" VerticalAlignment="Center" FontSize="10.667" Canvas.ZIndex="6" RenderTransformOrigin="0.82,0.545"/>
+					</telerik:DataFormDataField>
+					<telerik:DataFormDataField Margin="0,20,4,0"  Label = "Typ" LabelPosition="Above" x:Name="Typ"  DataMemberBinding="{Binding Typ, Mode=TwoWay}"   VerticalAlignment="Top" Grid.ColumnSpan="1" d:LayoutOverrides="GridBox">
+                        <telerik:RadComboBox  ItemsSource="{Binding rodzajRoszczenia, Source={StaticResource RodzajeRoszczen}}"  SelectedIndex="{Binding Typ, Mode=TwoWay}" DisplayMemberPath="Nazwa"  SelectedValuePath="Numer" Margin="0,0,-23,0" />	
+					</telerik:DataFormDataField>
+					<telerik:DataFormDataField Margin="8,20,0,0"  LabelPosition="Above"   DataMemberBinding="{Binding Solidarnie, Mode=TwoWay}"   VerticalAlignment="Top" Grid.Column="1" Grid.ColumnSpan="1" HorizontalAlignment="Left" Width="182" d:LayoutOverrides="GridBox" Height="46">
+							<telerik:RadComboBox  ItemsSource="{Binding rodzajSolidarnosci, Source={StaticResource RodzajeSolidarnosci}}"  SelectedIndex="{Binding Solidarnie, Mode=TwoWay}" DisplayMemberPath="Nazwa" SelectedValuePath="Numer"  Margin="50,0,-16,0" />	
+					</telerik:DataFormDataField>
+					<telerik:DataFormDataField   VerticalAlignment="Top" VerticalContentAlignment="Stretch" x:Name="Opis" Label="Opis"  DataMemberBinding="{Binding Opis, Mode=TwoWay}" LabelPosition="Beside" Grid.ColumnSpan="2" Margin="0,66,0,0" Background="#00A36969" >                            
+         		<TextBox Text="{Binding Opis, Mode=TwoWay}"
+         		    Height="43"
+					IsReadOnly="False"
+             		VerticalScrollBarVisibility="Auto"
+            		HorizontalScrollBarVisibility="Auto"
+            		AcceptsReturn="True" Margin="-71,0,-7,0"  />
+				</telerik:DataFormDataField>
+					<TextBlock HorizontalAlignment="Right" TextAlignment="Right"	 Margin="0,29,140,0" TextWrapping="Wrap" Text="Sposób zasądzenia" VerticalAlignment="Top" Height="34" Width="72" Grid.Column="1"/>
+					</Grid>
+				
+				
+				
+	 		  </DataTemplate>
+            <DataTemplate x:Key="dataFormTemplateRoszczeniaRO">
+                <Grid Height="115" d:DesignWidth="285" Width="342" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="144"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="211"/>
+                    </Grid.RowDefinitions>
+                    <telerik:DataFormDataField x:Name="Numer" LabelPosition="Beside" Label="Nr" DataMemberBinding="{Binding Numer, Mode=TwoWay}" Margin="2,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="105"/>
+                    <telerik:DataFormDataField   VerticalAlignment="Top" LabelPosition="Beside" VerticalContentAlignment="Stretch" Grid.Column="1" x:Name="Wartosc" Label="Wartość"  DataMemberBinding="{Binding Wartosc, Mode=TwoWay}" HorizontalAlignment="Left" Width="194" Margin="0,2,0,0"  >
+                        <telerik:RadMaskedCurrencyInput HorizontalContentAlignment="Right" Value="{Binding Wartosc, Mode=TwoWay}"  EmptyContent="kwota"  Culture="pl-PL" Mask="c2" Margin="2,0,-12,0" Grid.Row="2" VerticalAlignment="Center" FontSize="10.667" Canvas.ZIndex="6" RenderTransformOrigin="0.82,0.545"/>
+                    </telerik:DataFormDataField>
+                    <telerik:DataFormDataField Margin="0,20,4,0"  Label = "Typ" LabelPosition="Above" x:Name="Typ"  DataMemberBinding="{Binding Typ, Mode=TwoWay}"   VerticalAlignment="Top" Grid.ColumnSpan="1" d:LayoutOverrides="GridBox">
+                        <telerik:RadComboBox  ItemsSource="{Binding rodzajRoszczenia, Source={StaticResource RodzajeRoszczen}}"  SelectedIndex="{Binding Typ, Mode=TwoWay}" DisplayMemberPath="Nazwa"  SelectedValuePath="Numer" Margin="0,0,-23,0" />
+                    </telerik:DataFormDataField>
+                    <telerik:DataFormDataField Margin="8,20,0,0"  LabelPosition="Above"   DataMemberBinding="{Binding Solidarnie, Mode=TwoWay}"   VerticalAlignment="Top" Grid.Column="1" Grid.ColumnSpan="1" HorizontalAlignment="Left" Width="182" d:LayoutOverrides="GridBox" Height="46">
+                        <telerik:RadComboBox  ItemsSource="{Binding rodzajSolidarnosci, Source={StaticResource RodzajeSolidarnosci}}"  SelectedIndex="{Binding Solidarnie, Mode=TwoWay}" DisplayMemberPath="Nazwa" SelectedValuePath="Numer"  Margin="50,0,-16,0" />
+                    </telerik:DataFormDataField>
+                    <telerik:DataFormDataField   VerticalAlignment="Top" VerticalContentAlignment="Stretch" x:Name="Opis" Label="Opis"  DataMemberBinding="{Binding Opis, Mode=TwoWay}" LabelPosition="Beside" Grid.ColumnSpan="2" Margin="0,66,0,0" Background="#00A36969" >
+                        <TextBox Text="{Binding Opis, Mode=TwoWay}"
+         		    Height="43"
+					IsReadOnly="True"
+             		VerticalScrollBarVisibility="Auto"
+            		HorizontalScrollBarVisibility="Auto"
+            		AcceptsReturn="True" Margin="-71,0,-7,0"  />
+                    </telerik:DataFormDataField>
+                    <TextBlock HorizontalAlignment="Right" TextAlignment="Right"	 Margin="0,29,140,0" TextWrapping="Wrap" Text="Sposób zasądzenia" VerticalAlignment="Top" Height="34" Width="72" Grid.Column="1"/>
+                </Grid>
+
+
+
+            </DataTemplate>
+
+        </Grid.Resources>
+		
+    	<Grid.RowDefinitions>
+    		<RowDefinition Height="37"/>
+    		<RowDefinition Height="0.134*"/>
+    		<RowDefinition Height="0.866*"/>
+    	</Grid.RowDefinitions>
+		
+    	<telerik:RadTabControl Margin="1,0,-1,-8"  Grid.Row="1"  Grid.RowSpan="2">
+            <telerik:RadTabItem x:Name="MainDokumentTabItem" Header="Dokument"  Foreground="Black" IsSelected="True">
+                <Grid Margin="-1,0,2,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.061*"/>
+                        <RowDefinition Height="0.702*"/>
+                    
+                    </Grid.RowDefinitions>
+
+                    <TextBox TextWrapping="NoWrap"  IsReadOnly="True" Height="21" x:Name="Sygnatura" Text="{Binding Sygnatura, Mode=TwoWay}" Margin="0,3,143,0"  VerticalAlignment="Top" HorizontalAlignment="Right" Width="198"/>
+                    <TextBlock TextWrapping="Wrap" Text="Sygnatura sprawy" TextAlignment="Right" VerticalAlignment="Top" Margin="304,6,347,0"  d:LayoutOverrides="GridBox" Height="20" FontWeight="Bold" Width="127" />
+                    <TextBlock TextWrapping="Wrap" Text="Data złożenia dokumentu" TextAlignment="Right" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,7,589,0"  d:LayoutOverrides="GridBox" Height="20"  Width="183" FontWeight="Bold"/>
+                    <telerik:RadDatePicker HorizontalAlignment="Left"  x:Name="DataDokumentu" Culture="pl-PL" Margin="195,4,0,0"  SelectedDate= "{Binding DataZlozenia, Mode=TwoWay}"   VerticalAlignment="Top" DateTimeWatermarkContent="Wprowdź datę"/>
+                    <telerik:RadComboBox Margin="153,0,0,368" SelectedValue="{Binding Rodzaj	, Mode=TwoWay}" ItemsSource="{Binding  RodzajeDokumentowEPU, Source={StaticResource SlownikRodzajeDokumentowEPU}}" DisplayMemberPath="Nazwa" SelectedValuePath="Numer"     VerticalAlignment="Bottom" Width="293" Grid.Row="1" HorizontalAlignment="Left" />
+                    <TextBox Height="20" HorizontalAlignment="Left"  Margin="153,12,0,0" Name="textBox1" Text="{Binding Przedmiot, Mode=TwoWay}" TextWrapping="NoWrap" VerticalAlignment="Top" Width="396" Grid.Row="1" />
+                    <TextBox Grid.Row="1" Height="307" HorizontalAlignment="Left" Margin="6,113,0,0" Name="textBox2" VerticalAlignment="Top" Text="{Binding Tresc, Mode=TwoWay}" AcceptsReturn="True"  Width="766" TextWrapping="Wrap" />
+                    <TextBlock FontWeight="Bold" Height="20" HorizontalAlignment="Right" Margin="0,12,631,0" Text="Przedmiot (tytuł)" TextAlignment="Right" TextWrapping="Wrap" VerticalAlignment="Top" Width="136" Grid.Row="1" />
+                    <TextBlock FontWeight="Bold" Height="20" HorizontalAlignment="Right" Margin="0,40,631,0" Text="Rodzaj" TextAlignment="Right" TextWrapping="Wrap" VerticalAlignment="Top" Width="125" Grid.Row="1" />
+                    <TextBlock FontWeight="Bold" Height="17" HorizontalAlignment="Right" Margin="0,98,727,0" Text="Treść:" TextAlignment="Right" TextWrapping="Wrap" VerticalAlignment="Top" Width="47" Grid.Row="1" />
+                    <TextBlock FontWeight="Bold" Height="20" HorizontalAlignment="Right" Margin="0,68,631,0" Visibility="{Binding Rodzaj, Converter={StaticResource TypDokEPU2VisibilityConverter}}" Text="PESEL pełnomocnika" TextAlignment="Right" TextWrapping="Wrap" VerticalAlignment="Top" Width="141" Grid.Row="1" />
+                    <TextBox Height="21" HorizontalAlignment="Left" Visibility="{Binding Rodzaj, Converter={StaticResource TypDokEPU2VisibilityConverter}}" Margin="153,67,0,0" Name="textBox3" Text="{Binding PESELPelnomocnika, Mode=TwoWay}"  TextWrapping="NoWrap" VerticalAlignment="Top" Width="145" Grid.Row="1" />
+                </Grid>
+            </telerik:RadTabItem>
+            <telerik:RadTabItem x:Name="PozwanyTabItem" Header="Pozwany(i)" Visibility="Collapsed"  Foreground="Black" >
+    			<Grid Margin="-1,0,2,0">
+    				<Grid.RowDefinitions>
+    					<RowDefinition Height="0.061*"/>
+    					<RowDefinition Height="0.702*"/>
+    					<RowDefinition Height="0.236*"/>
+    				</Grid.RowDefinitions>
+								
+    				<TextBox TextWrapping="NoWrap"  IsReadOnly="True" Height="21" x:Name="SprawaWgPowoda" Text="{Binding SprawaWgPowoda, Mode=TwoWay}" Margin="0,4,197,0"  VerticalAlignment="Top" HorizontalAlignment="Right" Width="112"/>
+    				<TextBlock TextWrapping="Wrap" Text="Oznaczenie sprawy wg. powoda" VerticalAlignment="Top" Margin="264,9,314,0"  d:LayoutOverrides="GridBox" Height="20" FontWeight="Bold"/>
+                    <TextBlock TextWrapping="Wrap" Text="Data wniesienia pozwu" VerticalAlignment="Top" Margin="4,9,0,0"  d:LayoutOverrides="GridBox" Height="20" HorizontalAlignment="Left" Width="147" FontWeight="Bold"/>
+    				<telerik:RadDataForm  x:Name="DataFormPozwani" Margin="0,-1,0,-17" Grid.Row="1" 	
+    					AutoGenerateFields="False"  
+    					ReadOnlyTemplate="{StaticResource OsobaTemplate}"
+    					EditTemplate="{StaticResource OsobaTemplate}" 
+    					NewItemTemplate="{StaticResource OsobaTemplate}" CancelButtonContent="Anuluj" AddedNewItem="DataFormPozwani_AddedNewItem" />
+    				<telerik:RadDatePicker HorizontalAlignment="Left"  x:Name="DataZlozenia" Culture="pl-PL" Margin="153,4,0,0"  SelectedDate= "{Binding DataZlozenia, Mode=TwoWay}"   VerticalAlignment="Top" DateTimeWatermarkContent="Wprowdź datę"/>
+    				<telerik:RadGridView x:Name="RadGridListaPozwanych" Margin="0,17,0,8" Grid.Row="2" ShowGroupPanel="False" EditTriggers="None" IsFilteringAllowed="False" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserInsertRows="False" RowIndicatorVisibility="Collapsed">
+    				<telerik:RadGridView.Columns>
+    				<telerik:GridViewDataColumn Width="*" DataMemberBinding="{Binding Item.NazwaStrony}"/>					
+					</telerik:RadGridView.Columns>	
+					</telerik:RadGridView>
+    				
+								
+    			</Grid>
+    		</telerik:RadTabItem>
+            <telerik:RadTabItem x:Name="PowodTabItem" Header="Powód"  ToolTipService.ToolTip="Definiowanie strony powodowej" >
+                <telerik:RadDataForm x:Name="DataFormPowod" Margin="0,2,0,0" Grid.Row="1" AutoGenerateFields="False" ReadOnlyTemplate="{StaticResource OsobaTemplate}" EditTemplate="{StaticResource OsobaTemplate}" NewItemTemplate="{StaticResource OsobaTemplate}" CancelButtonContent="Anuluj" AddedNewItem="DataFormPowod_AddedNewItem" Grid.RowSpan="2" Height="370" VerticalAlignment="Top" />
+            </telerik:RadTabItem>
+			<telerik:RadTabItem x:Name="ReprezTabItem" Header="Reprezentacja powoda" Background="{x:Null}">
+    			<Grid Background="Transparent" Margin="0,0,0,-1">
+    				<Grid.ColumnDefinitions>
+    					<ColumnDefinition/>
+    				</Grid.ColumnDefinitions>
+    				<Grid.RowDefinitions>
+    					<RowDefinition/>
+    				</Grid.RowDefinitions>
+					<telerik:RadDataForm x:Name="DataFormSkladajacy" Margin="0,2,0,29" EditTemplate="{StaticResource SkaldajacyTemplate}" NewItemTemplate="{StaticResource SkaldajacyTemplate}" ReadOnlyTemplate="{StaticResource SkaldajacyTemplate}" AutoGenerateFields="False" CancelButtonContent="Anuluj"/>
+    			</Grid>
+    		</telerik:RadTabItem>
+    		<telerik:RadTabItem x:Name="ChecktabItem" Header="Sprawdzenie">
+
+               
+                <Grid Background="White">
+                    <telerik:RadDomainDataSource AutoLoad="False" Height="0" PageSize="30"   x:Name="vw_KomunikacjaDocWysdds" QueryName="GetVw_KomunikacjaDocByIdDocQuery" Width="0"  >
+                        <telerik:RadDomainDataSource.DomainContext>
+                            <my:LexEnaMeritumDomainContext />
+                        </telerik:RadDomainDataSource.DomainContext>
+                        <telerik:RadDomainDataSource.QueryParameters>
+                            <telerik:QueryParameter ParameterName="IdDocWys" />
+                       </telerik:RadDomainDataSource.QueryParameters>
+                    </telerik:RadDomainDataSource>
+                    <telerik:RadGridView Name="GridViewDokKomunikacja" IsReadOnly="True"  ItemsSource="{Binding DataView, ElementName=vw_KomunikacjaDocWysdds}" AutoExpandGroups="False" CanUserFreezeColumns="False" RowIndicatorVisibility="Visible"  Margin="8,0,8,16" IsFilteringAllowed="False" AutoGenerateColumns="False" ShowGroupPanel="False" >
+                        <telerik:RadGridView.Columns>
+                         
+                            <telerik:GridViewDataColumn x:Name="Datadok" Header="Data Wysyłki" DataMemberBinding="{Binding d_kreacji}" IsReadOnly="True" HeaderTextAlignment="Center" MinWidth="10" TextAlignment="Center" />
+                            <telerik:GridViewDataColumn  Header="Status dokumentu" DataMemberBinding="{Binding Status, Converter={StaticResource StatusDocConverter}}"  IsReadOnly="True" IsFilterable="false" HeaderTextAlignment="Center" MinWidth="20" TextAlignment="Center" />
+                            <telerik:GridViewDataColumn  Header="Status walidacji" DataMemberBinding="{Binding KodWalidacjiPozwu}" HeaderTextAlignment="Center" MinWidth="15" TextAlignment="Center" />
+                            <telerik:GridViewDataColumn Header="Opis Walidacji" DataMemberBinding="{Binding OpisWalidacji}" Width="*" HeaderTextAlignment="Center" MinWidth="150" TextAlignment="Left" />
+                        </telerik:RadGridView.Columns>
+                    </telerik:RadGridView>
+    			</Grid>
+    		</telerik:RadTabItem>
+    		
+    	</telerik:RadTabControl>
+        
+    	<Button x:Name="ToXMLButton" Content="Test XML'a" Visibility="Collapsed" HorizontalAlignment="Left" Margin="694,9,0,7" Width="75" d:LayoutOverrides="Height" Click="ToXMLButton_Click"/>
+        <Button Content="Sprawa" x:Name="OpenSpr" HorizontalAlignment="Left" Margin="119,8,0,7" Width="75" d:LayoutOverrides="Height" Click="OpenSpr_Click"/>
+        <Button Content="Zapisz" Height="23" Margin="204,8,0,0" Name="SaveButton" VerticalAlignment="Top" Click="SaveButton_Click" HorizontalAlignment="Left" Width="75" d:LayoutOverrides="HorizontalAlignment" />
+        <telerik:RadDropDownButton Content="Pokaż" Height="23" HorizontalAlignment="Left" Margin="12,7,0,7" Name="ShowDocs" Width="100">
+            <telerik:RadDropDownButton.DropDownContent>
+                <ListBox Name="ListaAkcji" SelectionChanged="ListaAkcji_SelectionChanged">
+                    <ListBoxItem Content="Pokaż dokument" />
+                    <ListBoxItem Content="Zapisz dokument" />
+                </ListBox>
+            </telerik:RadDropDownButton.DropDownContent>
+        </telerik:RadDropDownButton>
+    </Grid>
+</UserControl>

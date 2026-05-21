@@ -1,0 +1,134 @@
+﻿<UserControl x:Class="LexEnaTrs.Views.SlownikiSposEgz"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d" xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" xmlns:my="clr-namespace:LexEnaTrs.Web"
+			   xmlns:local="clr-namespace:LexEnaTrs" Loaded="UserControl_Loaded">
+	<UserControl.Resources>
+		<DataTemplate x:Key="MultiLineTemplate">
+            <TextBox TextWrapping="Wrap" Text="{Binding Tresc,Mode=TwoWay}" /> 
+        </DataTemplate>
+        <DataTemplate x:Key="SlownikiFormTemplate" >
+            <Grid Margin="0" Height="453" Width="1011">
+                <TextBlock HorizontalAlignment="Left" Margin="0,7,0,0" TextWrapping="Wrap" Text="Kancelaria" VerticalAlignment="Top" d:LayoutOverrides="HorizontalAlignment" Height="22" Width="341" TextAlignment="Right" RenderTransformOrigin="1.942,0.682"/>
+            	<telerik:DataFormComboBoxField DataMemberBinding="{Binding JednostkaWindykacji_Id, Mode=TwoWay}"  ItemsSource= "{Binding dictionaryJednostkiWindykacji, Source={StaticResource JednostkaWindykacjiList}}"  DisplayMemberPath="Nazwa" SelectedValuePath="Id" Margin="19,2,-12,0" VerticalAlignment="Top" />
+  				
+            	<telerik:DataFormComboBoxField  DataMemberBinding="{Binding KancelariaKomornika_Id, Mode=TwoWay}"  ItemsSource= "{Binding dictionaryKancelariKomornicza, Source={StaticResource KomornikList}}"  DisplayMemberPath="Nazwa" SelectedValuePath="IdEPU" Margin="19,29,-12,0" VerticalAlignment="Top" />
+
+            	
+				<telerik:DataFormCheckBoxField Label="Egzekucja z ruchomości" DataMemberBinding="{Binding czyruch, Converter={StaticResource IntToBoolConverter},Mode=TwoWay}" HorizontalAlignment="Left" Margin="0,57,0,0" VerticalAlignment="Top" d:LayoutOverrides="HorizontalAlignment"/>
+				<telerik:DataFormDataField Margin="8,0,0,186" VerticalAlignment="Bottom" Height="176" HorizontalAlignment="Left" Width="333"  > 
+                   	<TextBox Margin="-114,-140,-16,24" TextWrapping="Wrap" Text="{Binding ruchopis, Mode=TwoWay}"  VerticalScrollBarVisibility="Auto" Height="86" AcceptsReturn="True"/>
+	           	</telerik:DataFormDataField>
+                
+            	<telerik:DataFormCheckBoxField Label="Egzekucja z rachunku bankowego" DataMemberBinding="{Binding czybank, Converter={StaticResource IntToBoolConverter},Mode=TwoWay}" HorizontalAlignment="Left" Margin="345,57,0,0" VerticalAlignment="Top"/>
+				<telerik:DataFormDataField Margin="345,0,333,186" VerticalAlignment="Bottom" Height="176"  > 
+                   	<TextBox Margin="-102,-140,-28,24" TextWrapping="Wrap" Text="{Binding bankopis, Mode=TwoWay}"  VerticalScrollBarVisibility="Auto" Height="86" AcceptsReturn="True"/>
+	           	</telerik:DataFormDataField>
+            		
+            	<telerik:DataFormCheckBoxField Label="Egzekucja z wynagrodzenia za pracę" DataMemberBinding="{Binding czypraca, Converter={StaticResource IntToBoolConverter},Mode=TwoWay}" HorizontalAlignment="Left" Margin="695,57,0,0" VerticalAlignment="Top" Width="673"/>
+				<telerik:DataFormDataField Margin="0,0,0,186" VerticalAlignment="Bottom" Height="176" HorizontalAlignment="Right" Width="333"  > 
+                   	<TextBox Margin="-103,-140,-27,24" TextWrapping="Wrap" Text="{Binding pracaopis, Mode=TwoWay}"  VerticalScrollBarVisibility="Auto" Height="86" AcceptsReturn="True"/>
+	           	</telerik:DataFormDataField>
+				
+				<telerik:DataFormCheckBoxField Label="Egzekucja z wierzytelności" DataMemberBinding="{Binding czywierzyt, Converter={StaticResource IntToBoolConverter}, Mode=TwoWay}" HorizontalAlignment="Left" Margin="0,200,0,0" d:LayoutOverrides="HorizontalAlignment" VerticalAlignment="Top"/>
+				<telerik:DataFormDataField Margin="8,0,0,38" VerticalAlignment="Bottom" Height="176" HorizontalAlignment="Left" Width="333" d:LayoutOverrides="VerticalAlignment"  > 
+					<TextBox Margin="-107,-140,-23,24" TextWrapping="Wrap" Text="{Binding wierzytopis, Mode=TwoWay}"  VerticalScrollBarVisibility="Auto" Height="86" AcceptsReturn="True"/>
+				</telerik:DataFormDataField>
+            
+            	<telerik:DataFormCheckBoxField Label="Egzekucja z nieruchomości" DataMemberBinding="{Binding czynieruch, Converter={StaticResource IntToBoolConverter}, Mode=TwoWay}" HorizontalAlignment="Left" Margin="345,200,0,0" VerticalAlignment="Top"/>
+				<telerik:DataFormDataField Margin="345,0,333,38" VerticalAlignment="Bottom" Height="176" d:LayoutOverrides="VerticalAlignment"  > 
+					<TextBox Margin="-107,-140,-23,24" TextWrapping="Wrap" Text="{Binding nieruchopis, Mode=TwoWay}"  VerticalScrollBarVisibility="Auto" Height="86" AcceptsReturn="True"/>
+				</telerik:DataFormDataField>
+				<telerik:DataFormComboBoxField Label="Zasądzenie KZA" DataMemberBinding="{Binding KZA, Mode=TwoWay}"  ItemsSource= "{Binding dictionaryKZA, Source={StaticResource SposobKZA}}"  DisplayMemberPath="Nazwa" SelectedValuePath="Numer" Margin="0,0,0,179" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="343" />
+				<telerik:DataFormCheckBoxField Label="Ustalenie majątku" DataMemberBinding="{Binding CzyMajatek, Converter={StaticResource IntToBoolConverter}, Mode=TwoWay}" HorizontalAlignment="Left" Margin="678,0,0,151" VerticalAlignment="Bottom" Width="361"/>
+				<telerik:DataFormCheckBoxField Label="Komornik z Wyboru" DataMemberBinding="{Binding CzyzWyboru, Converter={StaticResource IntToBoolConverter}, Mode=TwoWay}" HorizontalAlignment="Left" Margin="678,0,0,123" VerticalAlignment="Bottom" Width="361"/>
+          		<telerik:DataFormDataField Margin="0,0,0,-74" VerticalAlignment="Bottom" Height="176" d:LayoutOverrides="VerticalAlignment" HorizontalAlignment="Right" Width="1003"  > 
+					<TextBox Margin="-107,-140,-23,24" TextWrapping="Wrap" Text="{Binding Opis, Mode=TwoWay}"  VerticalScrollBarVisibility="Auto" Height="86" AcceptsReturn="True"/>
+				</telerik:DataFormDataField>
+          		<TextBlock HorizontalAlignment="Left" Margin="19,0,0,77" TextWrapping="Wrap" Text="Inne Informacje" VerticalAlignment="Bottom" Width="200"/>
+          		<TextBlock HorizontalAlignment="Left" Margin="141,37,0,0" TextAlignment="Right" TextWrapping="Wrap" Text="Inne Informacje" VerticalAlignment="Top" Width="200"/>	
+               
+            </Grid>
+        </DataTemplate>
+		
+      <DataTemplate x:Key="SlownikiROFormTemplate" >
+            <Grid Margin="0" Height="453" Width="1011">
+                <TextBlock HorizontalAlignment="Left" Margin="0,7,0,0" TextWrapping="Wrap" Text="Kancelaria" VerticalAlignment="Top" d:LayoutOverrides="HorizontalAlignment" Height="22" Width="341" TextAlignment="Right" RenderTransformOrigin="1.942,0.682"/>
+            	<telerik:DataFormComboBoxField DataMemberBinding="{Binding JednostkaWindykacji_Id, Mode=TwoWay}"  ItemsSource= "{Binding dictionaryJednostkiWindykacji, Source={StaticResource JednostkaWindykacjiList}}"  DisplayMemberPath="Nazwa" SelectedValuePath="Id" Margin="19,2,-12,0" VerticalAlignment="Top" />
+  				
+            	<telerik:DataFormComboBoxField  DataMemberBinding="{Binding KancelariaKomornika_Id, Mode=TwoWay}"  ItemsSource= "{Binding dictionaryKancelariKomornicza, Source={StaticResource KomornikList}}"  DisplayMemberPath="Nazwa" SelectedValuePath="IdEPU" Margin="19,29,-12,0" VerticalAlignment="Top" />
+
+            	
+				<telerik:DataFormCheckBoxField Label="Egzekucja z ruchomości" DataMemberBinding="{Binding czyruch, Converter={StaticResource IntToBoolConverter},Mode=TwoWay}" HorizontalAlignment="Left" Margin="0,57,0,0" VerticalAlignment="Top" d:LayoutOverrides="HorizontalAlignment"/>
+				<telerik:DataFormDataField Margin="8,0,0,186" VerticalAlignment="Bottom" Height="176" HorizontalAlignment="Left" Width="333"  > 
+                   	<TextBox Margin="-114,-140,-16,24" TextWrapping="Wrap" Text="{Binding ruchopis, Mode=TwoWay}"  VerticalScrollBarVisibility="Auto" Height="86" AcceptsReturn="True"/>
+	           	</telerik:DataFormDataField>
+                
+            	<telerik:DataFormCheckBoxField Label="Egzekucja z rachunku bankowego" DataMemberBinding="{Binding czybank, Converter={StaticResource IntToBoolConverter},Mode=TwoWay}" HorizontalAlignment="Left" Margin="345,57,0,0" VerticalAlignment="Top"/>
+				<telerik:DataFormDataField Margin="345,0,333,186" VerticalAlignment="Bottom" Height="176"  > 
+                   	<TextBox Margin="-102,-140,-28,24" TextWrapping="Wrap" Text="{Binding bankopis, Mode=TwoWay}"  VerticalScrollBarVisibility="Auto" Height="86" AcceptsReturn="True"/>
+	           	</telerik:DataFormDataField>
+            		
+            	<telerik:DataFormCheckBoxField Label="Egzekucja z wynagrodzenia za pracę" DataMemberBinding="{Binding czypraca, Converter={StaticResource IntToBoolConverter},Mode=TwoWay}" HorizontalAlignment="Left" Margin="695,57,0,0" VerticalAlignment="Top" Width="673"/>
+				<telerik:DataFormDataField Margin="0,0,0,186" VerticalAlignment="Bottom" Height="176" HorizontalAlignment="Right" Width="333"  > 
+                   	<TextBox Margin="-103,-140,-27,24" TextWrapping="Wrap" Text="{Binding pracaopis, Mode=TwoWay}"  VerticalScrollBarVisibility="Auto" Height="86" AcceptsReturn="True"/>
+	           	</telerik:DataFormDataField>
+				
+				<telerik:DataFormCheckBoxField Label="Egzekucja z wierzytelności" DataMemberBinding="{Binding czywierzyt, Converter={StaticResource IntToBoolConverter}, Mode=TwoWay}" HorizontalAlignment="Left" Margin="0,200,0,0" d:LayoutOverrides="HorizontalAlignment" VerticalAlignment="Top"/>
+				<telerik:DataFormDataField Margin="8,0,0,38" VerticalAlignment="Bottom" Height="176" HorizontalAlignment="Left" Width="333" d:LayoutOverrides="VerticalAlignment"  > 
+					<TextBox Margin="-107,-140,-23,24" TextWrapping="Wrap" Text="{Binding wierzytopis, Mode=TwoWay}"  VerticalScrollBarVisibility="Auto" Height="86" AcceptsReturn="True"/>
+				</telerik:DataFormDataField>
+            
+            	<telerik:DataFormCheckBoxField Label="Egzekucja z nieruchomości" DataMemberBinding="{Binding czynieruch, Converter={StaticResource IntToBoolConverter}, Mode=TwoWay}" HorizontalAlignment="Left" Margin="345,200,0,0" VerticalAlignment="Top"/>
+				<telerik:DataFormDataField Margin="345,0,333,38" VerticalAlignment="Bottom" Height="176" d:LayoutOverrides="VerticalAlignment"  > 
+					<TextBox Margin="-107,-140,-23,24" TextWrapping="Wrap" Text="{Binding nieruchopis, Mode=TwoWay}"  VerticalScrollBarVisibility="Auto" Height="86" AcceptsReturn="True"/>
+				</telerik:DataFormDataField>
+				<telerik:DataFormComboBoxField Label="Zasądzenie KZA" DataMemberBinding="{Binding KZA, Mode=TwoWay}"  ItemsSource= "{Binding dictionaryKZA, Source={StaticResource SposobKZA}}"  DisplayMemberPath="Nazwa" SelectedValuePath="Numer" Margin="0,0,0,179" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="343" />
+				<telerik:DataFormCheckBoxField Label="Ustalenie majątku" DataMemberBinding="{Binding CzyMajatek, Converter={StaticResource IntToBoolConverter}, Mode=TwoWay}" HorizontalAlignment="Left" Margin="678,0,0,151" VerticalAlignment="Bottom" Width="361"/>
+				<telerik:DataFormCheckBoxField Label="Komornik z Wyboru" DataMemberBinding="{Binding CzyzWyboru, Converter={StaticResource IntToBoolConverter}, Mode=TwoWay}" HorizontalAlignment="Left" Margin="678,0,0,123" VerticalAlignment="Bottom" Width="361"/>
+          		<telerik:DataFormDataField Margin="0,0,0,-74" VerticalAlignment="Bottom" Height="176" d:LayoutOverrides="VerticalAlignment" HorizontalAlignment="Right" Width="1003"  > 
+					<TextBox Margin="-107,-140,-23,24" TextWrapping="Wrap" Text="{Binding Opis, Mode=TwoWay}"  VerticalScrollBarVisibility="Auto" Height="86" AcceptsReturn="True"/>
+				</telerik:DataFormDataField>
+          		<TextBlock HorizontalAlignment="Left" Margin="19,0,0,77" TextWrapping="Wrap" Text="Inne Informacje" VerticalAlignment="Bottom" Width="200"/>
+          		<TextBlock HorizontalAlignment="Left" Margin="141,37,0,0" TextAlignment="Right" TextWrapping="Wrap" Text="Inne Informacje" VerticalAlignment="Top" Width="200"/>	
+               
+            </Grid>
+        </DataTemplate>    </UserControl.Resources>
+    
+    <Grid x:Name="LayoutRoot" Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="332" />
+            <ColumnDefinition Width="574*" />
+        </Grid.ColumnDefinitions>
+
+
+        <telerik:RadDomainDataSource AutoLoad="False" Height="0"   x:Name="Slownikidds" QueryName="GetSposobyEgzSlownikByJednostkaQuery" Width="0" Grid.Column="1" Margin="121,210,453,210" >
+            <telerik:RadDomainDataSource.DomainContext>
+                <my:LexEnaMeritumDomainContext />
+            </telerik:RadDomainDataSource.DomainContext>
+            <telerik:RadDomainDataSource.QueryParameters>
+                <telerik:QueryParameter ParameterName="IdJednostki" />
+
+            </telerik:RadDomainDataSource.QueryParameters>
+
+        </telerik:RadDomainDataSource>
+
+        <telerik:RadGridView HorizontalAlignment="Left" Name="SlownikiDataGrid" ItemsSource="{Binding DataView,ElementName=Slownikidds}" IsReadOnly="True" VerticalAlignment="Top"  IsFilteringAllowed="False" IsEnabled="True" AutoGenerateColumns="False" CanUserSortColumns="False" ShowGroupPanel="False" Width="343">
+            <telerik:RadGridView.Columns>
+
+                <telerik:GridViewDataColumn  Header="Jednostka Windykacji" Width="*" DataMemberBinding="{Binding JednostkaWindykacji.Nazwa}"   IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5" TextAlignment="Center"  />
+				
+            </telerik:RadGridView.Columns>
+        </telerik:RadGridView>
+       
+	    <telerik:RadDataForm Name="SlownikiDataForm" VerticalAlignment="Top" ItemsSource="{Binding DataView,ElementName=Slownikidds}" AutoGenerateFields="False" CancelButtonContent="Anuluj" Grid.Column="1" 
+                             ReadOnlyTemplate="{StaticResource SlownikiROFormTemplate}" HorizontalAlignment="Left"
+                             NewItemTemplate="{StaticResource SlownikiFormTemplate}"
+                             EditTemplate="{StaticResource SlownikiFormTemplate}" DeletingItem="SlownikiDataForm_DeletingItem"  AddedNewItem="SlownikiataForm_AddedNewItem" EditEnded="SlownikiDataForm_EditEnded" >
+
+        </telerik:RadDataForm>
+		
+    </Grid>
+</UserControl>

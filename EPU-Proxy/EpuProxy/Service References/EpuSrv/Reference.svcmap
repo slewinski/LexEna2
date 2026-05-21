@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d7801368-c314-4c36-bd75-ce907c474aed" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://www.e-sad.gov.pl/api2/EpuWS.EpuService.svc/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service1.wsdl" MetadataType="Wsdl" ID="82bd117c-c9fe-4a52-94a9-391adb32f00e" SourceId="1" SourceUrl="https://www.e-sad.gov.pl/api2/EpuWS.EpuService.svc/mex" />
+    <MetadataFile FileName="service2.xsd" MetadataType="Schema" ID="b657a1e2-b8f8-4251-9187-06900d436d6f" SourceId="1" SourceUrl="https://www.e-sad.gov.pl/api2/EpuWS.EpuService.svc/mex" />
+    <MetadataFile FileName="EpuWS.DataTypes1.xsd" MetadataType="Schema" ID="26363f20-87af-43b2-9264-21a21ecf747a" SourceId="1" SourceUrl="https://www.e-sad.gov.pl/api2/EpuWS.EpuService.svc/mex" />
+    <MetadataFile FileName="service21.xsd" MetadataType="Schema" ID="f4b9263b-e818-43ce-ae4a-56be5c7b68c3" SourceId="1" SourceUrl="https://www.e-sad.gov.pl/api2/EpuWS.EpuService.svc/mex" />
+    <MetadataFile FileName="epuLib.ZawiadomienieDluznikaOWszczeciuEgzekucji.xsd" MetadataType="Schema" ID="c0e68ee7-8c5f-479a-a474-b1de8c82ed62" SourceId="1" SourceUrl="https://www.e-sad.gov.pl/api2/EpuWS.EpuService.svc/mex" />
+    <MetadataFile FileName="epuLib.xsd" MetadataType="Schema" ID="eb921c4d-d349-460f-b435-4bec2d5ebbd0" SourceId="1" SourceUrl="https://www.e-sad.gov.pl/api2/EpuWS.EpuService.svc/mex" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="c9e09c92-7c5b-46d7-a03c-31b787940943" SourceId="1" SourceUrl="https://www.e-sad.gov.pl/api2/EpuWS.EpuService.svc/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,517 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A1819512-D916-4CFE-8182-AF317258F11B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LexEnaReporting</RootNamespace>
+    <AssemblyName>LexEnaReporting</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.7.2.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.7.2\lib\net40\DocumentFormat.OpenXml.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Telerik.Reporting, Version=10.2.16.1025, Culture=neutral, PublicKeyToken=a9d7983dfcc261be">
+      <SpecificVersion>True</SpecificVersion>
+    </Reference>
+    <Reference Include="Telerik.Reporting.OpenXmlRendering, Version=10.2.16.1025, Culture=neutral, PublicKeyToken=a9d7983dfcc261be, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EOB\BezUz2\BezUz2.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EOB\BezUz2\BezUz2.Designer.cs">
+      <DependentUpon>BezUz2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EOB\UmorzeniaZgony\UmorzZgony.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EOB\UmorzeniaZgony\UmorzZgony.Designer.cs">
+      <DependentUpon>UmorzZgony.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EOB\WgDokumentu\WgDokumentu.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EOB\WgDokumentu\WgDokumentu.Designer.cs">
+      <DependentUpon>WgDokumentu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EOB\WiekowanieKS\WiekowanieKS.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EOB\WiekowanieKS\WiekowanieKS.Designer.cs">
+      <DependentUpon>WiekowanieKS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EOB\WiekowanieNS\WiekowanieNS.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EOB\WiekowanieNS\WiekowanieNS.Designer.cs">
+      <DependentUpon>WiekowanieNS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EOB\WiekowanieES\WiekowanieES.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EOB\WiekowanieES\WiekowanieES.Designer.cs">
+      <DependentUpon>WiekowanieES.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EOB\WiekowanieOS\WiekowanieOS.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EOB\WiekowanieOS\WiekowanieOS.Designer.cs">
+      <DependentUpon>WiekowanieOS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EOB\WiekowanieNal\WiekowaneNal.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EOB\WiekowanieNal\WiekowaneNal.Designer.cs">
+      <DependentUpon>WiekowaneNal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EOB\WiekowanieSaldSummary\WiekowaneSaldSummary.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EOB\WiekowanieSaldSummary\WiekowaneSaldSummary.Designer.cs">
+      <DependentUpon>WiekowaneSaldSummary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EOB\WiekowanieSaldperSprawa\WiekowaneSaldperSprawa.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EOB\WiekowanieSaldperSprawa\WiekowaneSaldperSprawa.Designer.cs">
+      <DependentUpon>WiekowaneSaldperSprawa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EOB\WiekowanieSald\WiekowaneSald.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EOB\WiekowanieSald\WiekowaneSald.Designer.cs">
+      <DependentUpon>WiekowaneSald.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EOB\Wierzytelnosci\Wierzytelnosci.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EOB\Wierzytelnosci\Wierzytelnosci.Designer.cs">
+      <DependentUpon>Wierzytelnosci.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EOP\ZwrotyAkt\ZwrotyAkt.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EOP\ZwrotyAkt\ZwrotyAkt.Designer.cs">
+      <DependentUpon>ZwrotyAkt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EOP\Salda\SaldaOryg.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EOP\Salda\SaldaOryg.Designer.cs">
+      <DependentUpon>SaldaOryg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EOP\Oplaty\OplatyObroty.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EOP\Oplaty\OplatyObroty.Designer.cs">
+      <DependentUpon>OplatyObroty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EOP\Raty\Raty.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EOP\Raty\Raty.Designer.cs">
+      <DependentUpon>Raty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EOP\Naleznosci\Naleznosci.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EOP\Naleznosci\Naleznosci.Designer.cs">
+      <DependentUpon>Naleznosci.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EOP\KosztyRadcow\KosztyRadcow.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EOP\KosztyRadcow\KosztyRadcow.Designer.cs">
+      <DependentUpon>KosztyRadcow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EOP\RodzajeObciazen\RodzajeObciazen.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EOP\RodzajeObciazen\RodzajeObciazen.Designer.cs">
+      <DependentUpon>RodzajeObciazen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EOP\WiekowanieWplat\WiekowanieWplat.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EOP\WiekowanieWplat\WiekowanieWplat.Designer.cs">
+      <DependentUpon>WiekowanieWplat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExtractPdfValidate\ExtractPdfValidate.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExtractPdfValidate\ExtractPdfValidate.Designer.cs">
+      <DependentUpon>ExtractPdfValidate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExtractPdf\ExtractPdf.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExtractPdf\ExtractPdf.Designer.cs">
+      <DependentUpon>ExtractPdf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListaDokumentow\ListaDokumentow.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ListaDokumentow\ListaDokumentow.Designer.cs">
+      <DependentUpon>ListaDokumentow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NalSpraw\NaleznosciSpraw.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NalSpraw\NaleznosciSpraw.Designer.cs">
+      <DependentUpon>NaleznosciSpraw.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ObrotyDziennik\ObrotyDziennik.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ObrotyDziennik\ObrotyDziennik.Designer.cs">
+      <DependentUpon>ObrotyDziennik.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SaldoEgzFormat2\SaldoEgzFormat2.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SaldoEgzFormat2\SaldoEgzFormat2.Designer.cs">
+      <DependentUpon>SaldoEgzFormat2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SaldoEgz\SaldoEgz.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SaldoEgz\SaldoEgz.Designer.cs">
+      <DependentUpon>SaldoEgz.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SkutKanc\SkutKanc.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SkutKanc\SkutKanc.Designer.cs">
+      <DependentUpon>SkutKanc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SpadyzEPUDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SpadyzEPUDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="TerminowoscKlauzuli\TerminowoscKlauzuli.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TerminowoscKlauzuli\TerminowoscKlauzuli.Designer.cs">
+      <DependentUpon>TerminowoscKlauzuli.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="SkierowanieSaldaById\SkierowaneDoSaduById.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SkierowanieSaldaById\SkierowaneDoSaduById.Designer.cs">
+      <DependentUpon>SkierowaneDoSaduById.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SkierowanieSald\SkierowaneSad.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SkierowanieSald\SkierowaneSad.Designer.cs">
+      <DependentUpon>SkierowaneSad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SprawyDoSadu\SkierowaneDoSadu.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SprawyDoSadu\SkierowaneDoSadu.Designer.cs">
+      <DependentUpon>SkierowaneDoSadu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TerminowoscNakazu\TerminowoscNakazu.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TerminowoscNakazu\TerminowoscNakazu.Designer.cs">
+      <DependentUpon>TerminowoscNakazu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TerminowoscCzynn\TerminowoscCzynn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TerminowoscCzynn\TerminowoscCzynn.Designer.cs">
+      <DependentUpon>TerminowoscCzynn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DatyDekretacji\DatyDekretacji.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DatyDekretacji\DatyDekretacji.Designer.cs">
+      <DependentUpon>DatyDekretacji.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TerminowoscPozwu\TerminowoscPozwu.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TerminowoscPozwu\TerminowoscPozwu.Designer.cs">
+      <DependentUpon>TerminowoscPozwu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tools_SpadyEPU\SpadyEPUReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Tools_SpadyEPU\SpadyEPUReport.Designer.cs">
+      <DependentUpon>SpadyEPUReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UZD_EksportPrzypisSAP\UZD_EksportPrzypisSAP.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UZD_EksportPrzypisSAP\UZD_EksportPrzypisSAP.Designer.cs">
+      <DependentUpon>UZD_EksportPrzypisSAP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UZD_FakturyMain\UZD_FakturyMain.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UZD_FakturyMain\UZD_FakturyMain.Designer.cs">
+      <DependentUpon>UZD_FakturyMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UZD_FakturyPaczki\UZD_FakturyPaczki.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UZD_FakturyPaczki\UZD_FakturyPaczki.Designer.cs">
+      <DependentUpon>UZD_FakturyPaczki.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UZD_KontrahenciSAP\UZD_KontrahenciSAP.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UZD_KontrahenciSAP\UZD_KontrahenciSAP.Designer.cs">
+      <DependentUpon>UZD_KontrahenciSAP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UZD_WplatyNew\UZD_WplatyNew.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UZD_WplatyNew\UZD_WplatyNew.Designer.cs">
+      <DependentUpon>UZD_WplatyNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UZD_Wplaty\UZD_Wplaty.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UZD_Wplaty\UZD_Wplaty.Designer.cs">
+      <DependentUpon>UZD_Wplaty.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="SpadyzEPUDS.xsc">
+      <DependentUpon>SpadyzEPUDS.xsd</DependentUpon>
+    </None>
+    <None Include="SpadyzEPUDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SpadyzEPUDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SpadyzEPUDS.xss">
+      <DependentUpon>SpadyzEPUDS.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="EOB\BezUz2\BezUz2.resx">
+      <DependentUpon>BezUz2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EOB\UmorzeniaZgony\UmorzZgony.pl-PL.resx">
+      <DependentUpon>UmorzZgony.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EOB\UmorzeniaZgony\UmorzZgony.resx">
+      <DependentUpon>UmorzZgony.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EOB\WgDokumentu\WgDokumentu.resx">
+      <DependentUpon>WgDokumentu.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EOB\WiekowanieKS\WiekowanieKS.resx">
+      <DependentUpon>WiekowanieKS.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EOB\WiekowanieNS\WiekowanieNS.resx">
+      <DependentUpon>WiekowanieNS.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EOB\WiekowanieES\WiekowanieES.resx">
+      <DependentUpon>WiekowanieES.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EOB\WiekowanieOS\WiekowanieOS.resx">
+      <DependentUpon>WiekowanieOS.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EOB\WiekowanieNal\WiekowaneNal.resx">
+      <DependentUpon>WiekowaneNal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EOB\WiekowanieSaldSummary\WiekowaneSaldSummary.resx">
+      <DependentUpon>WiekowaneSaldSummary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EOB\WiekowanieSaldperSprawa\WiekowaneSaldperSprawa.resx">
+      <DependentUpon>WiekowaneSaldperSprawa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EOB\WiekowanieSald\WiekowaneSald.resx">
+      <DependentUpon>WiekowaneSald.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EOB\Wierzytelnosci\Wierzytelnosci.resx">
+      <DependentUpon>Wierzytelnosci.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EOP\ZwrotyAkt\ZwrotyAkt.resx">
+      <DependentUpon>ZwrotyAkt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EOP\Salda\SaldaOryg.resx">
+      <DependentUpon>SaldaOryg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EOP\Oplaty\OplatyObroty.resx">
+      <DependentUpon>OplatyObroty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EOP\Raty\Raty.resx">
+      <DependentUpon>Raty.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EOP\Naleznosci\Naleznosci.resx">
+      <DependentUpon>Naleznosci.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EOP\KosztyRadcow\KosztyRadcow.resx">
+      <DependentUpon>KosztyRadcow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EOP\RodzajeObciazen\RodzajeObciazen.resx">
+      <DependentUpon>RodzajeObciazen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EOP\WiekowanieWplat\WiekowanieWplat.resx">
+      <DependentUpon>WiekowanieWplat.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExtractPdfValidate\ExtractPdfValidate.resx">
+      <DependentUpon>ExtractPdfValidate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExtractPdf\ExtractPdf.resx">
+      <DependentUpon>ExtractPdf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListaDokumentow\ListaDokumentow.resx">
+      <DependentUpon>ListaDokumentow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NalSpraw\NaleznosciSpraw.resx">
+      <DependentUpon>NaleznosciSpraw.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ObrotyDziennik\ObrotyDziennik.resx">
+      <DependentUpon>ObrotyDziennik.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="SaldoEgzFormat2\SaldoEgzFormat2.resx">
+      <DependentUpon>SaldoEgzFormat2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaldoEgz\SaldoEgz.resx">
+      <DependentUpon>SaldoEgz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SkutKanc\SkutKanc.resx">
+      <DependentUpon>SkutKanc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TerminowoscKlauzuli\TerminowoscKlauzuli.resx">
+      <DependentUpon>TerminowoscKlauzuli.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SkierowanieSaldaById\SkierowaneDoSaduById.resx">
+      <DependentUpon>SkierowaneDoSaduById.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SkierowanieSald\SkierowaneSad.resx">
+      <DependentUpon>SkierowaneSad.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SprawyDoSadu\SkierowaneDoSadu.resx">
+      <DependentUpon>SkierowaneDoSadu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TerminowoscNakazu\TerminowoscNakazu.resx">
+      <DependentUpon>TerminowoscNakazu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TerminowoscCzynn\TerminowoscCzynn.resx">
+      <DependentUpon>TerminowoscCzynn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DatyDekretacji\DatyDekretacji.resx">
+      <DependentUpon>DatyDekretacji.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TerminowoscPozwu\TerminowoscPozwu.resx">
+      <DependentUpon>TerminowoscPozwu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tools_SpadyEPU\SpadyEPUReport.resx">
+      <DependentUpon>SpadyEPUReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UZD_EksportPrzypisSAP\UZD_EksportPrzypisSAP.resx">
+      <DependentUpon>UZD_EksportPrzypisSAP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UZD_FakturyMain\UZD_FakturyMain.resx">
+      <DependentUpon>UZD_FakturyMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UZD_FakturyPaczki\UZD_FakturyPaczki.resx">
+      <DependentUpon>UZD_FakturyPaczki.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UZD_KontrahenciSAP\UZD_KontrahenciSAP.resx">
+      <DependentUpon>UZD_KontrahenciSAP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UZD_WplatyNew\UZD_WplatyNew.resx">
+      <DependentUpon>UZD_WplatyNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UZD_Wplaty\UZD_Wplaty.resx">
+      <DependentUpon>UZD_Wplaty.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

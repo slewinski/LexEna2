@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/epuLib.ZawiadomienieDluznikaOWszczeciuEgzekucji" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/epuLib.ZawiadomienieDluznikaOWszczeciuEgzekucji" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="DoreczeniaOutputData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Informacja" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/epuLib" minOccurs="0" name="Kod" type="q1:KodOdpowiedzi" />
+      <xs:element minOccurs="0" name="ListaDoreczenOutputElement" nillable="true" type="tns:ArrayOfDoreczeniaOutputElement" />
+      <xs:element minOccurs="0" name="Opis" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DoreczeniaOutputData" nillable="true" type="tns:DoreczeniaOutputData" />
+  <xs:complexType name="ArrayOfDoreczeniaOutputElement">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DoreczeniaOutputElement" nillable="true" type="tns:DoreczeniaOutputElement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDoreczeniaOutputElement" nillable="true" type="tns:ArrayOfDoreczeniaOutputElement" />
+  <xs:complexType name="DoreczeniaOutputElement">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CzyOdp" type="xs:boolean" />
+      <xs:element minOccurs="0" name="DataDoreczenia" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DataWyslania" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdDoreczenia" type="xs:int" />
+      <xs:element minOccurs="0" name="IdZarzadzenia" type="xs:int" />
+      <xs:element minOccurs="0" name="IdentyfikatorTytuluWykonawczego" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Opis" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SygnaturaSprawyKomorniczej" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SygnaturaSprawySadowej" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TrescZarzadzeniaXml" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DoreczeniaOutputElement" nillable="true" type="tns:DoreczeniaOutputElement" />
+  <xs:complexType name="PismaValidationInfo">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Klasa zawiera informacje na temat walidacji przesłanych pismach przez komornika
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Informacja" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Informacja na temat uzytej metody
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/epuLib" minOccurs="0" name="Kod" type="q2:KodOdpowiedzi">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Kod odpowiedzi, jesli OK to paczka została zapisana do bazy
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="OznaczeniePaczki" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Oznaczenie paczki pism Komorniczych
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="WynikiWalidacji" nillable="true" type="tns:ArrayOfWynikWalidacjiOutputElement">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;W przypadku Kodu odpowiedzi innego niz OK zapisywane beda informacje na temat walidacji poszczegolnych pism
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PismaValidationInfo" nillable="true" type="tns:PismaValidationInfo" />
+  <xs:complexType name="ArrayOfWynikWalidacjiOutputElement">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="WynikWalidacjiOutputElement" nillable="true" type="tns:WynikWalidacjiOutputElement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfWynikWalidacjiOutputElement" nillable="true" type="tns:ArrayOfWynikWalidacjiOutputElement" />
+  <xs:complexType name="WynikWalidacjiOutputElement">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IdentyfikatorPisma" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SzczegolyWalidacji" nillable="true" type="tns:ArrayOfSzczegolyWalidacji" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WynikWalidacjiOutputElement" nillable="true" type="tns:WynikWalidacjiOutputElement" />
+  <xs:complexType name="ArrayOfSzczegolyWalidacji">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SzczegolyWalidacji" nillable="true" type="tns:SzczegolyWalidacji" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSzczegolyWalidacji" nillable="true" type="tns:ArrayOfSzczegolyWalidacji" />
+  <xs:complexType name="SzczegolyWalidacji">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Informacja" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Kod" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SzczegolyWalidacji" nillable="true" type="tns:SzczegolyWalidacji" />
+  <xs:complexType name="PismaOutputData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ListaPismKomorniczych" nillable="true" type="tns:ArrayOfPismoKomornika" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PismaOutputData" nillable="true" type="tns:PismaOutputData" />
+  <xs:complexType name="ArrayOfPismoKomornika">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PismoKomornika" nillable="true" type="tns:PismoKomornika" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPismoKomornika" nillable="true" type="tns:ArrayOfPismoKomornika" />
+  <xs:complexType name="PismoKomornika">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CzyPodpisany" type="xs:boolean" />
+      <xs:element minOccurs="0" name="DataDokumentu" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdDokumentu" type="xs:int" />
+      <xs:element minOccurs="0" name="IdPismaKomorniczego" type="xs:int" />
+      <xs:element minOccurs="0" name="SygnaturaSprawyKomorniczej" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SygnaturaSprawySadowej" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TrescDokumentXML" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WersjaTransformaty" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PismoKomornika" nillable="true" type="tns:PismoKomornika" />
+  <xs:complexType name="StatusDoreczeniaOutputInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CzyPodpisanaOdpowiedz" type="xs:boolean" />
+      <xs:element minOccurs="0" name="CzyPrzeslanoOdpowiedz" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IDKancelarii" type="xs:int" />
+      <xs:element minOccurs="0" name="Informacja" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StatusDoreczeniaOutputInfo" nillable="true" type="tns:StatusDoreczeniaOutputInfo" />
+  <xs:complexType name="OdpowiedziDoZarzadzeniaOutputData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IdZarzadzenia" type="xs:int" />
+      <xs:element minOccurs="0" name="ListaOdpowiedzi" nillable="true" type="tns:ArrayOfPismoKomornika" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OdpowiedziDoZarzadzeniaOutputData" nillable="true" type="tns:OdpowiedziDoZarzadzeniaOutputData" />
+  <xs:complexType name="DoreczeniaPDF">
+    <xs:sequence>
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/epuLib" minOccurs="0" name="Kod" type="q3:KodOdpowiedzi" />
+      <xs:element minOccurs="0" name="ListaDoreczenPDF" nillable="true" type="tns:ArrayOfDoreczeniePDF" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DoreczeniaPDF" nillable="true" type="tns:DoreczeniaPDF" />
+  <xs:complexType name="ArrayOfDoreczeniePDF">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DoreczeniePDF" nillable="true" type="tns:DoreczeniePDF" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDoreczeniePDF" nillable="true" type="tns:ArrayOfDoreczeniePDF" />
+  <xs:complexType name="DoreczeniePDF">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DoreczeniePDFbase64" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdDoreczenie" type="xs:int" />
+      <xs:element minOccurs="0" name="Informacja" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NazwaPliku" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WielkoscPliku" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DoreczeniePDF" nillable="true" type="tns:DoreczeniePDF" />
+  <xs:complexType name="OznaczenieDoreczenJakoPobraneOutputData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Wynik" nillable="true" type="tns:ArrayOfOznaczenieDoreczenJakoPobraneOutputElement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OznaczenieDoreczenJakoPobraneOutputData" nillable="true" type="tns:OznaczenieDoreczenJakoPobraneOutputData" />
+  <xs:complexType name="ArrayOfOznaczenieDoreczenJakoPobraneOutputElement">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OznaczenieDoreczenJakoPobraneOutputElement" nillable="true" type="tns:OznaczenieDoreczenJakoPobraneOutputElement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOznaczenieDoreczenJakoPobraneOutputElement" nillable="true" type="tns:ArrayOfOznaczenieDoreczenJakoPobraneOutputElement" />
+  <xs:complexType name="OznaczenieDoreczenJakoPobraneOutputElement">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CzyOznaczono" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IdDoreczenia" type="xs:int" />
+      <xs:element minOccurs="0" name="Informacja" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OznaczenieDoreczenJakoPobraneOutputElement" nillable="true" type="tns:OznaczenieDoreczenJakoPobraneOutputElement" />
+</xs:schema>

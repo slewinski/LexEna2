@@ -1,0 +1,989 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="LexEnaProModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="LexEnaProModelStoreContainer">
+          <EntitySet Name="Naleznosc" EntityType="LexEnaProModel.Store.Naleznosc" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="NazwyOdsetek" EntityType="LexEnaProModel.Store.NazwyOdsetek" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Odsetki" EntityType="LexEnaProModel.Store.Odsetki" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OdsTab" EntityType="LexEnaProModel.Store.OdsTab" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Sprawa" EntityType="LexEnaProModel.Store.Sprawa" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="StanNaleznosci" EntityType="LexEnaProModel.Store.StanNaleznosci" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="StanSprawy" EntityType="LexEnaProModel.Store.StanSprawy" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TypNaleznosci" EntityType="LexEnaProModel.Store.TypNaleznosci" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Wplata" EntityType="LexEnaProModel.Store.Wplata" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="WplataPodz" EntityType="LexEnaProModel.Store.WplataPodz" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_nal_stan" Association="LexEnaProModel.Store.FK_nal_stan">
+            <End Role="Naleznosc" EntitySet="Naleznosc" />
+            <End Role="StanNaleznosci" EntitySet="StanNaleznosci" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NaleznoscOdsetki" Association="LexEnaProModel.Store.FK_NaleznoscOdsetki">
+            <End Role="Naleznosc" EntitySet="Naleznosc" />
+            <End Role="Odsetki" EntitySet="Odsetki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NaleznoscWplataPodz" Association="LexEnaProModel.Store.FK_NaleznoscWplataPodz">
+            <End Role="Naleznosc" EntitySet="Naleznosc" />
+            <End Role="WplataPodz" EntitySet="WplataPodz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NazwyOdsetekOdsetki" Association="LexEnaProModel.Store.FK_NazwyOdsetekOdsetki">
+            <End Role="NazwyOdsetek" EntitySet="NazwyOdsetek" />
+            <End Role="Odsetki" EntitySet="Odsetki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_spr_stan_sprawa" Association="LexEnaProModel.Store.FK_spr_stan_sprawa">
+            <End Role="Sprawa" EntitySet="Sprawa" />
+            <End Role="StanSprawy" EntitySet="StanSprawy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SprawaNaleznosc" Association="LexEnaProModel.Store.FK_SprawaNaleznosc">
+            <End Role="Sprawa" EntitySet="Sprawa" />
+            <End Role="Naleznosc" EntitySet="Naleznosc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SprawaWplata" Association="LexEnaProModel.Store.FK_SprawaWplata">
+            <End Role="Sprawa" EntitySet="Sprawa" />
+            <End Role="Wplata" EntitySet="Wplata" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TypNaleznosciNaleznosc" Association="LexEnaProModel.Store.FK_TypNaleznosciNaleznosc">
+            <End Role="TypNaleznosci" EntitySet="TypNaleznosci" />
+            <End Role="Naleznosc" EntitySet="Naleznosc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WplataWplataPodz" Association="LexEnaProModel.Store.FK_WplataWplataPodz">
+            <End Role="Wplata" EntitySet="Wplata" />
+            <End Role="WplataPodz" EntitySet="WplataPodz" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Naleznosc">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PartitionKey" Type="int" Nullable="false" />
+          <Property Name="numer" Type="int" />
+          <Property Name="kwota" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="data_dok" Type="datetime" />
+          <Property Name="waluta" Type="int" />
+          <Property Name="TypRoszczenia" Type="int" />
+          <Property Name="TypNal" Type="int" />
+          <Property Name="opis" Type="varchar(max)" />
+          <Property Name="CzyOdsetki" Type="int" />
+          <Property Name="opis2" Type="varchar(max)" />
+          <Property Name="CzySolidarnie" Type="int" />
+          <Property Name="data_n" Type="datetime" />
+          <Property Name="d_kreacji" Type="datetime" />
+          <Property Name="d_modyfikacji" Type="datetime" />
+          <Property Name="kreator" Type="varchar" MaxLength="50" />
+          <Property Name="modyfikator" Type="varchar" MaxLength="50" />
+          <Property Name="IdWiena" Type="int" />
+          <Property Name="vat" Type="decimal" Scale="4" />
+          <Property Name="Sprawa_id" Type="int" />
+          <Property Name="TypNaleznosci_id" Type="int" />
+          <Property Name="CzyNowa" Type="int" />
+          <Property Name="zaleglosc" Type="decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="NazwyOdsetek">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PartitionKey" Type="int" Nullable="false" />
+          <Property Name="Nazwa" Type="varchar" Nullable="false" MaxLength="40" />
+          <Property Name="CzyUstawowe" Type="int" Nullable="false" />
+          <Property Name="IdWiena" Type="int" />
+        </EntityType>
+        <EntityType Name="Odsetki">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PartitionKey" Type="int" Nullable="false" />
+          <Property Name="DataPocz" Type="datetime" />
+          <Property Name="DataK" Type="datetime" />
+          <Property Name="Proc0" Type="decimal" Precision="10" Scale="5" />
+          <Property Name="Opis" Type="varchar" MaxLength="100" />
+          <Property Name="Kod" Type="char" MaxLength="1" />
+          <Property Name="TypStopy" Type="int" />
+          <Property Name="OdWniesienia" Type="int" />
+          <Property Name="DoZaplaty" Type="int" />
+          <Property Name="IdWiena" Type="int" />
+          <Property Name="Naleznosc_Id" Type="int" />
+          <Property Name="NazwyOdsetek_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="OdsTab">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IdTabOds" Type="int" />
+          <Property Name="IdWiena" Type="int" />
+          <Property Name="DataP" Type="datetime" />
+          <Property Name="DataK" Type="datetime" />
+          <Property Name="Proc0" Type="decimal" Scale="5" />
+        </EntityType>
+        <EntityType Name="Sprawa">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PartitionKey" Type="int" Nullable="false" />
+          <Property Name="sygnatura" Type="varchar" MaxLength="16" />
+          <Property Name="DataR" Type="datetime" />
+          <Property Name="DataKon" Type="datetime" />
+          <Property Name="Rok" Type="int" Nullable="false" />
+          <Property Name="Poz" Type="int" Nullable="false" />
+          <Property Name="CzyKoniec" Type="int" />
+          <Property Name="NrEwid" Type="char" MaxLength="15" />
+          <Property Name="IdSymbol" Type="int" />
+          <Property Name="d_kreacji" Type="datetime" />
+          <Property Name="d_modyfikacji" Type="datetime" />
+          <Property Name="kreator" Type="varchar" MaxLength="50" />
+          <Property Name="modyfikator" Type="varchar" MaxLength="50" />
+          <Property Name="czyus" Type="int" />
+          <Property Name="LiczPrzedplat" Type="int" />
+          <Property Name="LicznikMiejsce" Type="varchar" MaxLength="80" />
+          <Property Name="LicznikUlica" Type="varchar" MaxLength="80" />
+          <Property Name="Skrot" Type="varchar" MaxLength="10" />
+          <Property Name="IdWiena" Type="int" />
+          <Property Name="Uwagi" Type="varchar(max)" />
+          <Property Name="Radca_Id" Type="int" />
+          <Property Name="JednostkaOrgOddzial_Id" Type="int" />
+          <Property Name="JednostkaOrgRejon_Id" Type="int" />
+          <Property Name="WPS" Type="decimal" Scale="2" />
+          <Property Name="SygnNCe" Type="varchar" MaxLength="30" />
+          <Property Name="DataZloPozwu" Type="datetime" />
+          <Property Name="IdSprawyEPU" Type="int" />
+          <Property Name="KosztyZadane" Type="decimal" Scale="2" />
+          <Property Name="KosztyZasadzone" Type="decimal" Scale="2" />
+          <Property Name="KosztyPrawomocne" Type="decimal" Scale="2" />
+          <Property Name="KzpZadane" Type="decimal" Scale="2" />
+          <Property Name="KzpZasadzone" Type="decimal" Scale="2" />
+          <Property Name="KzpPrawomocne" Type="decimal" Scale="2" />
+          <Property Name="InneZadane" Type="decimal" Scale="2" />
+          <Property Name="InneZasadzone" Type="decimal" Scale="2" />
+          <Property Name="InnePrawomocne" Type="decimal" Scale="2" />
+        </EntityType>
+        <EntityType Name="StanNaleznosci">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Naleznosc_Id" Type="int" />
+          <Property Name="data_s" Type="datetime" />
+          <Property Name="kwota_n" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="kwota_k" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="kwota_o" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="ods_dzien" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="typ_stan" Type="int" />
+          <Property Name="oblicz" Type="int" />
+          <Property Name="CzyNowy" Type="int" />
+          <Property Name="IdWiena" Type="int" />
+        </EntityType>
+        <EntityType Name="StanSprawy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PartitionKey" Type="int" />
+          <Property Name="Sprawa_Id" Type="int" />
+          <Property Name="CzyNowy" Type="int" />
+          <Property Name="data_s" Type="datetime" />
+          <Property Name="kwota_n" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="kwota_o" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="kwota_k" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="ods_dzien" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="oblicz" Type="int" />
+          <Property Name="typ_stan" Type="int" />
+          <Property Name="IdWiena" Type="int" />
+        </EntityType>
+        <EntityType Name="TypNaleznosci">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PartitionKey" Type="int" Nullable="false" />
+          <Property Name="Nazwa" Type="varchar" Nullable="false" MaxLength="40" />
+          <Property Name="TypNal" Type="int" Nullable="false" />
+          <Property Name="TypSum" Type="int" Nullable="false" />
+          <Property Name="CzyProc" Type="bit" Nullable="false" />
+          <Property Name="TabOds" Type="int" />
+          <Property Name="CzyMem" Type="bit" />
+          <Property Name="CzyOdsKapital" Type="int" Nullable="false" />
+          <Property Name="IdWiena" Type="int" />
+        </EntityType>
+        <EntityType Name="Wplata">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PartitionKey" Type="int" Nullable="false" />
+          <Property Name="Kwota" Type="decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="DataWplaty" Type="datetime" />
+          <Property Name="AlgorytmZaliczania" Type="smallint" />
+          <Property Name="Uwagi" Type="varchar" MaxLength="120" />
+          <Property Name="NrDowodu" Type="varchar" MaxLength="50" />
+          <Property Name="d_kreacji" Type="datetime" />
+          <Property Name="d_modyfikacji" Type="datetime" />
+          <Property Name="kreator" Type="int" />
+          <Property Name="modyfikator" Type="int" />
+          <Property Name="IdWiena" Type="int" />
+          <Property Name="Sprawa_id" Type="int" />
+          <Property Name="IdKtoWplata" Type="int" />
+          <Property Name="CzyNowa" Type="int" />
+        </EntityType>
+        <EntityType Name="WplataPodz">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PartitionKey" Type="int" Nullable="false" />
+          <Property Name="SplataKapital" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="SplataOdsetki" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="ZalegloscKapital" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="ZalegloscOdsetki" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="SplataVat" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="ZalegloscVat" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="Naleznosc_Id" Type="int" />
+          <Property Name="Wplata_Id" Type="int" />
+          <Property Name="IdWiena" Type="int" />
+        </EntityType>
+        <Association Name="FK_nal_stan">
+          <End Role="Naleznosc" Type="LexEnaProModel.Store.Naleznosc" Multiplicity="0..1" />
+          <End Role="StanNaleznosci" Type="LexEnaProModel.Store.StanNaleznosci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Naleznosc">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StanNaleznosci">
+              <PropertyRef Name="Naleznosc_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NaleznoscOdsetki">
+          <End Role="Naleznosc" Type="LexEnaProModel.Store.Naleznosc" Multiplicity="0..1" />
+          <End Role="Odsetki" Type="LexEnaProModel.Store.Odsetki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Naleznosc">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Odsetki">
+              <PropertyRef Name="Naleznosc_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NaleznoscWplataPodz">
+          <End Role="Naleznosc" Type="LexEnaProModel.Store.Naleznosc" Multiplicity="0..1" />
+          <End Role="WplataPodz" Type="LexEnaProModel.Store.WplataPodz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Naleznosc">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WplataPodz">
+              <PropertyRef Name="Naleznosc_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NazwyOdsetekOdsetki">
+          <End Role="NazwyOdsetek" Type="LexEnaProModel.Store.NazwyOdsetek" Multiplicity="0..1" />
+          <End Role="Odsetki" Type="LexEnaProModel.Store.Odsetki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NazwyOdsetek">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Odsetki">
+              <PropertyRef Name="NazwyOdsetek_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_spr_stan_sprawa">
+          <End Role="Sprawa" Type="LexEnaProModel.Store.Sprawa" Multiplicity="0..1" />
+          <End Role="StanSprawy" Type="LexEnaProModel.Store.StanSprawy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sprawa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="StanSprawy">
+              <PropertyRef Name="Sprawa_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SprawaNaleznosc">
+          <End Role="Sprawa" Type="LexEnaProModel.Store.Sprawa" Multiplicity="0..1" />
+          <End Role="Naleznosc" Type="LexEnaProModel.Store.Naleznosc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sprawa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Naleznosc">
+              <PropertyRef Name="Sprawa_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SprawaWplata">
+          <End Role="Sprawa" Type="LexEnaProModel.Store.Sprawa" Multiplicity="0..1" />
+          <End Role="Wplata" Type="LexEnaProModel.Store.Wplata" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sprawa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Wplata">
+              <PropertyRef Name="Sprawa_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TypNaleznosciNaleznosc">
+          <End Role="TypNaleznosci" Type="LexEnaProModel.Store.TypNaleznosci" Multiplicity="0..1" />
+          <End Role="Naleznosc" Type="LexEnaProModel.Store.Naleznosc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypNaleznosci">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Naleznosc">
+              <PropertyRef Name="TypNaleznosci_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WplataWplataPodz">
+          <End Role="Wplata" Type="LexEnaProModel.Store.Wplata" Multiplicity="0..1" />
+          <End Role="WplataPodz" Type="LexEnaProModel.Store.WplataPodz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wplata">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WplataPodz">
+              <PropertyRef Name="Wplata_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LexEnaProModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="LexEnaProEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Naleznosc" EntityType="LexEnaProModel.Naleznosc" />
+          <EntitySet Name="NazwyOdsetek" EntityType="LexEnaProModel.NazwyOdsetek" />
+          <EntitySet Name="Odsetki" EntityType="LexEnaProModel.Odsetki" />
+          <EntitySet Name="OdsTab" EntityType="LexEnaProModel.OdsTab" />
+          <EntitySet Name="StanNaleznosci" EntityType="LexEnaProModel.StanNaleznosci" />
+          <EntitySet Name="StanSprawy" EntityType="LexEnaProModel.StanSprawy" />
+          <EntitySet Name="Wplata" EntityType="LexEnaProModel.Wplata" />
+          <EntitySet Name="WplataPodz" EntityType="LexEnaProModel.WplataPodz" />
+          <AssociationSet Name="FK_nal_stan" Association="LexEnaProModel.FK_nal_stan">
+            <End Role="Naleznosc" EntitySet="Naleznosc" />
+            <End Role="StanNaleznosci" EntitySet="StanNaleznosci" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NaleznoscOdsetki" Association="LexEnaProModel.FK_NaleznoscOdsetki">
+            <End Role="Naleznosc" EntitySet="Naleznosc" />
+            <End Role="Odsetki" EntitySet="Odsetki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NaleznoscWplataPodz" Association="LexEnaProModel.FK_NaleznoscWplataPodz">
+            <End Role="Naleznosc" EntitySet="Naleznosc" />
+            <End Role="WplataPodz" EntitySet="WplataPodz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NazwyOdsetekOdsetki" Association="LexEnaProModel.FK_NazwyOdsetekOdsetki">
+            <End Role="NazwyOdsetek" EntitySet="NazwyOdsetek" />
+            <End Role="Odsetki" EntitySet="Odsetki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WplataWplataPodz" Association="LexEnaProModel.FK_WplataWplataPodz">
+            <End Role="Wplata" EntitySet="Wplata" />
+            <End Role="WplataPodz" EntitySet="WplataPodz" />
+          </AssociationSet>
+          <EntitySet Name="Sprawa" EntityType="LexEnaProModel.Sprawa" />
+          <AssociationSet Name="FK_SprawaNaleznosc" Association="LexEnaProModel.FK_SprawaNaleznosc">
+            <End Role="Sprawa" EntitySet="Sprawa" />
+            <End Role="Naleznosc" EntitySet="Naleznosc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_spr_stan_sprawa" Association="LexEnaProModel.FK_spr_stan_sprawa">
+            <End Role="Sprawa" EntitySet="Sprawa" />
+            <End Role="StanSprawy" EntitySet="StanSprawy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SprawaWplata" Association="LexEnaProModel.FK_SprawaWplata">
+            <End Role="Sprawa" EntitySet="Sprawa" />
+            <End Role="Wplata" EntitySet="Wplata" />
+          </AssociationSet>
+          <EntitySet Name="TypNaleznosci" EntityType="LexEnaProModel.TypNaleznosci" />
+          <AssociationSet Name="FK_TypNaleznosciNaleznosc" Association="LexEnaProModel.FK_TypNaleznosciNaleznosc">
+            <End Role="TypNaleznosci" EntitySet="TypNaleznosci" />
+            <End Role="Naleznosc" EntitySet="Naleznosc" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Naleznosc">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PartitionKey" Type="Int32" Nullable="false" />
+          <Property Name="numer" Type="Int32" />
+          <Property Name="kwota" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="data_dok" Type="DateTime" />
+          <Property Name="waluta" Type="Int32" />
+          <Property Name="TypRoszczenia" Type="Int32" />
+          <Property Name="TypNal" Type="Int32" />
+          <Property Name="opis" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="CzyOdsetki" Type="Int32" />
+          <Property Name="opis2" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="CzySolidarnie" Type="Int32" />
+          <Property Name="data_n" Type="DateTime" />
+          <Property Name="d_kreacji" Type="DateTime" />
+          <Property Name="d_modyfikacji" Type="DateTime" />
+          <Property Name="kreator" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="modyfikator" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="IdWiena" Type="Int32" />
+          <Property Name="vat" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="Sprawa_id" Type="Int32" />
+          <Property Name="TypNaleznosci_id" Type="Int32" />
+          <Property Name="CzyNowa" Type="Int32" />
+          <Property Name="zaleglosc" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="StanNaleznosci" Relationship="LexEnaProModel.FK_nal_stan" FromRole="Naleznosc" ToRole="StanNaleznosci" />
+          <NavigationProperty Name="Odsetki" Relationship="LexEnaProModel.FK_NaleznoscOdsetki" FromRole="Naleznosc" ToRole="Odsetki" />
+          <NavigationProperty Name="WplataPodz" Relationship="LexEnaProModel.FK_NaleznoscWplataPodz" FromRole="Naleznosc" ToRole="WplataPodz" />
+          <NavigationProperty Name="Sprawa" Relationship="LexEnaProModel.FK_SprawaNaleznosc" FromRole="Naleznosc" ToRole="Sprawa" />
+          <NavigationProperty Name="TypNaleznosci" Relationship="LexEnaProModel.FK_TypNaleznosciNaleznosc" FromRole="Naleznosc" ToRole="TypNaleznosci" />
+        </EntityType>
+        <EntityType Name="NazwyOdsetek">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PartitionKey" Type="Int32" Nullable="false" />
+          <Property Name="Nazwa" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="CzyUstawowe" Type="Int32" Nullable="false" />
+          <Property Name="IdWiena" Type="Int32" />
+          <NavigationProperty Name="Odsetki" Relationship="LexEnaProModel.FK_NazwyOdsetekOdsetki" FromRole="NazwyOdsetek" ToRole="Odsetki" />
+        </EntityType>
+        <EntityType Name="Odsetki">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PartitionKey" Type="Int32" Nullable="false" />
+          <Property Name="DataPocz" Type="DateTime" />
+          <Property Name="DataK" Type="DateTime" />
+          <Property Name="Proc0" Type="Decimal" Precision="10" Scale="5" />
+          <Property Name="Opis" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Kod" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="TypStopy" Type="Int32" />
+          <Property Name="OdWniesienia" Type="Int32" />
+          <Property Name="DoZaplaty" Type="Int32" />
+          <Property Name="IdWiena" Type="Int32" />
+          <Property Name="Naleznosc_Id" Type="Int32" />
+          <Property Name="NazwyOdsetek_Id" Type="Int32" />
+          <NavigationProperty Name="Naleznosc" Relationship="LexEnaProModel.FK_NaleznoscOdsetki" FromRole="Odsetki" ToRole="Naleznosc" />
+          <NavigationProperty Name="NazwyOdsetek" Relationship="LexEnaProModel.FK_NazwyOdsetekOdsetki" FromRole="Odsetki" ToRole="NazwyOdsetek" />
+        </EntityType>
+        <EntityType Name="OdsTab">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdTabOds" Type="Int32" />
+          <Property Name="IdWiena" Type="Int32" />
+          <Property Name="DataP" Type="DateTime" />
+          <Property Name="DataK" Type="DateTime" />
+          <Property Name="Proc0" Type="Decimal" Precision="18" Scale="5" />
+        </EntityType>
+        <EntityType Name="StanNaleznosci">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naleznosc_Id" Type="Int32" />
+          <Property Name="data_s" Type="DateTime" />
+          <Property Name="kwota_n" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="kwota_k" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="kwota_o" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ods_dzien" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="typ_stan" Type="Int32" />
+          <Property Name="oblicz" Type="Int32" />
+          <Property Name="CzyNowy" Type="Int32" />
+          <Property Name="IdWiena" Type="Int32" />
+          <NavigationProperty Name="Naleznosc" Relationship="LexEnaProModel.FK_nal_stan" FromRole="StanNaleznosci" ToRole="Naleznosc" />
+        </EntityType>
+        <EntityType Name="StanSprawy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PartitionKey" Type="Int32" />
+          <Property Name="Sprawa_Id" Type="Int32" />
+          <Property Name="CzyNowy" Type="Int32" />
+          <Property Name="data_s" Type="DateTime" />
+          <Property Name="kwota_n" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="kwota_o" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="kwota_k" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ods_dzien" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="oblicz" Type="Int32" />
+          <Property Name="typ_stan" Type="Int32" />
+          <Property Name="IdWiena" Type="Int32" />
+          <NavigationProperty Name="Sprawa" Relationship="LexEnaProModel.FK_spr_stan_sprawa" FromRole="StanSprawy" ToRole="Sprawa" />
+        </EntityType>
+        <EntityType Name="Wplata">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PartitionKey" Type="Int32" Nullable="false" />
+          <Property Name="Kwota" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="DataWplaty" Type="DateTime" />
+          <Property Name="AlgorytmZaliczania" Type="Int16" />
+          <Property Name="Uwagi" Type="String" MaxLength="120" Unicode="false" FixedLength="false" />
+          <Property Name="NrDowodu" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="d_kreacji" Type="DateTime" />
+          <Property Name="d_modyfikacji" Type="DateTime" />
+          <Property Name="kreator" Type="Int32" />
+          <Property Name="modyfikator" Type="Int32" />
+          <Property Name="IdWiena" Type="Int32" />
+          <Property Name="Sprawa_id" Type="Int32" />
+          <Property Name="IdKtoWplata" Type="Int32" />
+          <Property Name="CzyNowa" Type="Int32" />
+          <NavigationProperty Name="WplataPodz" Relationship="LexEnaProModel.FK_WplataWplataPodz" FromRole="Wplata" ToRole="WplataPodz" />
+          <NavigationProperty Name="Sprawa" Relationship="LexEnaProModel.FK_SprawaWplata" FromRole="Wplata" ToRole="Sprawa" />
+        </EntityType>
+        <EntityType Name="WplataPodz">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PartitionKey" Type="Int32" Nullable="false" />
+          <Property Name="SplataKapital" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SplataOdsetki" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ZalegloscKapital" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ZalegloscOdsetki" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SplataVat" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ZalegloscVat" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Naleznosc_Id" Type="Int32" />
+          <Property Name="Wplata_Id" Type="Int32" />
+          <Property Name="IdWiena" Type="Int32" />
+          <NavigationProperty Name="Naleznosc" Relationship="LexEnaProModel.FK_NaleznoscWplataPodz" FromRole="WplataPodz" ToRole="Naleznosc" />
+          <NavigationProperty Name="Wplata" Relationship="LexEnaProModel.FK_WplataWplataPodz" FromRole="WplataPodz" ToRole="Wplata" />
+        </EntityType>
+        <Association Name="FK_nal_stan">
+          <End Role="Naleznosc" Type="LexEnaProModel.Naleznosc" Multiplicity="0..1" />
+          <End Role="StanNaleznosci" Type="LexEnaProModel.StanNaleznosci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Naleznosc">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StanNaleznosci">
+              <PropertyRef Name="Naleznosc_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NaleznoscOdsetki">
+          <End Role="Naleznosc" Type="LexEnaProModel.Naleznosc" Multiplicity="0..1" />
+          <End Role="Odsetki" Type="LexEnaProModel.Odsetki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Naleznosc">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Odsetki">
+              <PropertyRef Name="Naleznosc_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NaleznoscWplataPodz">
+          <End Role="Naleznosc" Type="LexEnaProModel.Naleznosc" Multiplicity="0..1" />
+          <End Role="WplataPodz" Type="LexEnaProModel.WplataPodz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Naleznosc">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WplataPodz">
+              <PropertyRef Name="Naleznosc_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NazwyOdsetekOdsetki">
+          <End Role="NazwyOdsetek" Type="LexEnaProModel.NazwyOdsetek" Multiplicity="0..1" />
+          <End Role="Odsetki" Type="LexEnaProModel.Odsetki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NazwyOdsetek">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Odsetki">
+              <PropertyRef Name="NazwyOdsetek_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WplataWplataPodz">
+          <End Role="Wplata" Type="LexEnaProModel.Wplata" Multiplicity="0..1" />
+          <End Role="WplataPodz" Type="LexEnaProModel.WplataPodz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wplata">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WplataPodz">
+              <PropertyRef Name="Wplata_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Sprawa">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="PartitionKey" Nullable="false" />
+          <Property Type="String" Name="sygnatura" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="DataR" />
+          <Property Type="DateTime" Name="DataKon" />
+          <Property Type="Int32" Name="Rok" Nullable="false" />
+          <Property Type="Int32" Name="Poz" Nullable="false" />
+          <Property Type="Int32" Name="CzyKoniec" />
+          <Property Type="String" Name="NrEwid" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="IdSymbol" />
+          <Property Type="DateTime" Name="d_kreacji" />
+          <Property Type="DateTime" Name="d_modyfikacji" />
+          <Property Type="String" Name="kreator" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="modyfikator" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="czyus" />
+          <Property Type="Int32" Name="LiczPrzedplat" />
+          <Property Type="String" Name="LicznikMiejsce" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LicznikUlica" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Skrot" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="IdWiena" />
+          <Property Type="String" Name="Uwagi" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Radca_Id" />
+          <Property Type="Int32" Name="JednostkaOrgOddzial_Id" />
+          <Property Type="Int32" Name="JednostkaOrgRejon_Id" />
+          <Property Type="Decimal" Name="WPS" Precision="18" Scale="2" />
+          <Property Type="String" Name="SygnNCe" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="DataZloPozwu" />
+          <Property Type="Int32" Name="IdSprawyEPU" />
+          <Property Type="Decimal" Name="KosztyZadane" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="KosztyZasadzone" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="KosztyPrawomocne" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="KzpZadane" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="KzpZasadzone" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="KzpPrawomocne" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="InneZadane" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="InneZasadzone" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="InnePrawomocne" Precision="18" Scale="2" />
+          <NavigationProperty Name="Naleznosc" Relationship="LexEnaProModel.FK_SprawaNaleznosc" FromRole="Sprawa" ToRole="Naleznosc" />
+          <NavigationProperty Name="StanSprawy" Relationship="LexEnaProModel.FK_spr_stan_sprawa" FromRole="Sprawa" ToRole="StanSprawy" />
+          <NavigationProperty Name="Wplata" Relationship="LexEnaProModel.FK_SprawaWplata" FromRole="Sprawa" ToRole="Wplata" />
+        </EntityType>
+        <Association Name="FK_SprawaNaleznosc">
+          <End Type="LexEnaProModel.Sprawa" Role="Sprawa" Multiplicity="0..1" />
+          <End Type="LexEnaProModel.Naleznosc" Role="Naleznosc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sprawa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Naleznosc">
+              <PropertyRef Name="Sprawa_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_spr_stan_sprawa">
+          <End Type="LexEnaProModel.Sprawa" Role="Sprawa" Multiplicity="0..1" />
+          <End Type="LexEnaProModel.StanSprawy" Role="StanSprawy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sprawa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="StanSprawy">
+              <PropertyRef Name="Sprawa_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SprawaWplata">
+          <End Type="LexEnaProModel.Sprawa" Role="Sprawa" Multiplicity="0..1" />
+          <End Type="LexEnaProModel.Wplata" Role="Wplata" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sprawa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Wplata">
+              <PropertyRef Name="Sprawa_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TypNaleznosci">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="PartitionKey" Nullable="false" />
+          <Property Type="String" Name="Nazwa" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="TypNal" Nullable="false" />
+          <Property Type="Int32" Name="TypSum" Nullable="false" />
+          <Property Type="Boolean" Name="CzyProc" Nullable="false" />
+          <Property Type="Int32" Name="TabOds" />
+          <Property Type="Boolean" Name="CzyMem" />
+          <Property Type="Int32" Name="CzyOdsKapital" Nullable="false" />
+          <Property Type="Int32" Name="IdWiena" />
+          <NavigationProperty Name="Naleznosc" Relationship="LexEnaProModel.FK_TypNaleznosciNaleznosc" FromRole="TypNaleznosci" ToRole="Naleznosc" />
+        </EntityType>
+        <Association Name="FK_TypNaleznosciNaleznosc">
+          <End Type="LexEnaProModel.TypNaleznosci" Role="TypNaleznosci" Multiplicity="0..1" />
+          <End Type="LexEnaProModel.Naleznosc" Role="Naleznosc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypNaleznosci">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Naleznosc">
+              <PropertyRef Name="TypNaleznosci_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LexEnaProModelStoreContainer" CdmEntityContainer="LexEnaProEntities">
+          <EntitySetMapping Name="Naleznosc"><EntityTypeMapping TypeName="LexEnaProModel.Naleznosc"><MappingFragment StoreEntitySet="Naleznosc">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="PartitionKey" ColumnName="PartitionKey" />
+            <ScalarProperty Name="numer" ColumnName="numer" />
+            <ScalarProperty Name="kwota" ColumnName="kwota" />
+            <ScalarProperty Name="data_dok" ColumnName="data_dok" />
+            <ScalarProperty Name="waluta" ColumnName="waluta" />
+            <ScalarProperty Name="TypRoszczenia" ColumnName="TypRoszczenia" />
+            <ScalarProperty Name="TypNal" ColumnName="TypNal" />
+            <ScalarProperty Name="opis" ColumnName="opis" />
+            <ScalarProperty Name="CzyOdsetki" ColumnName="CzyOdsetki" />
+            <ScalarProperty Name="opis2" ColumnName="opis2" />
+            <ScalarProperty Name="CzySolidarnie" ColumnName="CzySolidarnie" />
+            <ScalarProperty Name="data_n" ColumnName="data_n" />
+            <ScalarProperty Name="d_kreacji" ColumnName="d_kreacji" />
+            <ScalarProperty Name="d_modyfikacji" ColumnName="d_modyfikacji" />
+            <ScalarProperty Name="kreator" ColumnName="kreator" />
+            <ScalarProperty Name="modyfikator" ColumnName="modyfikator" />
+            <ScalarProperty Name="IdWiena" ColumnName="IdWiena" />
+            <ScalarProperty Name="vat" ColumnName="vat" />
+            <ScalarProperty Name="Sprawa_id" ColumnName="Sprawa_id" />
+            <ScalarProperty Name="TypNaleznosci_id" ColumnName="TypNaleznosci_id" />
+            <ScalarProperty Name="CzyNowa" ColumnName="CzyNowa" />
+            <ScalarProperty Name="zaleglosc" ColumnName="zaleglosc" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="NazwyOdsetek"><EntityTypeMapping TypeName="LexEnaProModel.NazwyOdsetek"><MappingFragment StoreEntitySet="NazwyOdsetek">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="PartitionKey" ColumnName="PartitionKey" />
+            <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+            <ScalarProperty Name="CzyUstawowe" ColumnName="CzyUstawowe" />
+            <ScalarProperty Name="IdWiena" ColumnName="IdWiena" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Odsetki"><EntityTypeMapping TypeName="LexEnaProModel.Odsetki"><MappingFragment StoreEntitySet="Odsetki">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="PartitionKey" ColumnName="PartitionKey" />
+            <ScalarProperty Name="DataPocz" ColumnName="DataPocz" />
+            <ScalarProperty Name="DataK" ColumnName="DataK" />
+            <ScalarProperty Name="Proc0" ColumnName="Proc0" />
+            <ScalarProperty Name="Opis" ColumnName="Opis" />
+            <ScalarProperty Name="Kod" ColumnName="Kod" />
+            <ScalarProperty Name="TypStopy" ColumnName="TypStopy" />
+            <ScalarProperty Name="OdWniesienia" ColumnName="OdWniesienia" />
+            <ScalarProperty Name="DoZaplaty" ColumnName="DoZaplaty" />
+            <ScalarProperty Name="IdWiena" ColumnName="IdWiena" />
+            <ScalarProperty Name="Naleznosc_Id" ColumnName="Naleznosc_Id" />
+            <ScalarProperty Name="NazwyOdsetek_Id" ColumnName="NazwyOdsetek_Id" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="OdsTab"><EntityTypeMapping TypeName="LexEnaProModel.OdsTab"><MappingFragment StoreEntitySet="OdsTab">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="IdTabOds" ColumnName="IdTabOds" />
+            <ScalarProperty Name="IdWiena" ColumnName="IdWiena" />
+            <ScalarProperty Name="DataP" ColumnName="DataP" />
+            <ScalarProperty Name="DataK" ColumnName="DataK" />
+            <ScalarProperty Name="Proc0" ColumnName="Proc0" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="StanNaleznosci"><EntityTypeMapping TypeName="LexEnaProModel.StanNaleznosci"><MappingFragment StoreEntitySet="StanNaleznosci">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Naleznosc_Id" ColumnName="Naleznosc_Id" />
+            <ScalarProperty Name="data_s" ColumnName="data_s" />
+            <ScalarProperty Name="kwota_n" ColumnName="kwota_n" />
+            <ScalarProperty Name="kwota_k" ColumnName="kwota_k" />
+            <ScalarProperty Name="kwota_o" ColumnName="kwota_o" />
+            <ScalarProperty Name="ods_dzien" ColumnName="ods_dzien" />
+            <ScalarProperty Name="typ_stan" ColumnName="typ_stan" />
+            <ScalarProperty Name="oblicz" ColumnName="oblicz" />
+            <ScalarProperty Name="CzyNowy" ColumnName="CzyNowy" />
+            <ScalarProperty Name="IdWiena" ColumnName="IdWiena" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="StanSprawy"><EntityTypeMapping TypeName="LexEnaProModel.StanSprawy"><MappingFragment StoreEntitySet="StanSprawy">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="PartitionKey" ColumnName="PartitionKey" />
+            <ScalarProperty Name="Sprawa_Id" ColumnName="Sprawa_Id" />
+            <ScalarProperty Name="CzyNowy" ColumnName="CzyNowy" />
+            <ScalarProperty Name="data_s" ColumnName="data_s" />
+            <ScalarProperty Name="kwota_n" ColumnName="kwota_n" />
+            <ScalarProperty Name="kwota_o" ColumnName="kwota_o" />
+            <ScalarProperty Name="kwota_k" ColumnName="kwota_k" />
+            <ScalarProperty Name="ods_dzien" ColumnName="ods_dzien" />
+            <ScalarProperty Name="oblicz" ColumnName="oblicz" />
+            <ScalarProperty Name="typ_stan" ColumnName="typ_stan" />
+            <ScalarProperty Name="IdWiena" ColumnName="IdWiena" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Wplata"><EntityTypeMapping TypeName="LexEnaProModel.Wplata"><MappingFragment StoreEntitySet="Wplata">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="PartitionKey" ColumnName="PartitionKey" />
+            <ScalarProperty Name="Kwota" ColumnName="Kwota" />
+            <ScalarProperty Name="DataWplaty" ColumnName="DataWplaty" />
+            <ScalarProperty Name="AlgorytmZaliczania" ColumnName="AlgorytmZaliczania" />
+            <ScalarProperty Name="Uwagi" ColumnName="Uwagi" />
+            <ScalarProperty Name="NrDowodu" ColumnName="NrDowodu" />
+            <ScalarProperty Name="d_kreacji" ColumnName="d_kreacji" />
+            <ScalarProperty Name="d_modyfikacji" ColumnName="d_modyfikacji" />
+            <ScalarProperty Name="kreator" ColumnName="kreator" />
+            <ScalarProperty Name="modyfikator" ColumnName="modyfikator" />
+            <ScalarProperty Name="IdWiena" ColumnName="IdWiena" />
+            <ScalarProperty Name="Sprawa_id" ColumnName="Sprawa_id" />
+            <ScalarProperty Name="IdKtoWplata" ColumnName="IdKtoWplata" />
+            <ScalarProperty Name="CzyNowa" ColumnName="CzyNowa" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="WplataPodz"><EntityTypeMapping TypeName="LexEnaProModel.WplataPodz"><MappingFragment StoreEntitySet="WplataPodz">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="PartitionKey" ColumnName="PartitionKey" />
+            <ScalarProperty Name="SplataKapital" ColumnName="SplataKapital" />
+            <ScalarProperty Name="SplataOdsetki" ColumnName="SplataOdsetki" />
+            <ScalarProperty Name="ZalegloscKapital" ColumnName="ZalegloscKapital" />
+            <ScalarProperty Name="ZalegloscOdsetki" ColumnName="ZalegloscOdsetki" />
+            <ScalarProperty Name="SplataVat" ColumnName="SplataVat" />
+            <ScalarProperty Name="ZalegloscVat" ColumnName="ZalegloscVat" />
+            <ScalarProperty Name="Naleznosc_Id" ColumnName="Naleznosc_Id" />
+            <ScalarProperty Name="Wplata_Id" ColumnName="Wplata_Id" />
+            <ScalarProperty Name="IdWiena" ColumnName="IdWiena" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Sprawa">
+            <EntityTypeMapping TypeName="LexEnaProModel.Sprawa">
+              <MappingFragment StoreEntitySet="Sprawa">
+                <ScalarProperty Name="InnePrawomocne" ColumnName="InnePrawomocne" />
+                <ScalarProperty Name="InneZasadzone" ColumnName="InneZasadzone" />
+                <ScalarProperty Name="InneZadane" ColumnName="InneZadane" />
+                <ScalarProperty Name="KzpPrawomocne" ColumnName="KzpPrawomocne" />
+                <ScalarProperty Name="KzpZasadzone" ColumnName="KzpZasadzone" />
+                <ScalarProperty Name="KzpZadane" ColumnName="KzpZadane" />
+                <ScalarProperty Name="KosztyPrawomocne" ColumnName="KosztyPrawomocne" />
+                <ScalarProperty Name="KosztyZasadzone" ColumnName="KosztyZasadzone" />
+                <ScalarProperty Name="KosztyZadane" ColumnName="KosztyZadane" />
+                <ScalarProperty Name="IdSprawyEPU" ColumnName="IdSprawyEPU" />
+                <ScalarProperty Name="DataZloPozwu" ColumnName="DataZloPozwu" />
+                <ScalarProperty Name="SygnNCe" ColumnName="SygnNCe" />
+                <ScalarProperty Name="WPS" ColumnName="WPS" />
+                <ScalarProperty Name="JednostkaOrgRejon_Id" ColumnName="JednostkaOrgRejon_Id" />
+                <ScalarProperty Name="JednostkaOrgOddzial_Id" ColumnName="JednostkaOrgOddzial_Id" />
+                <ScalarProperty Name="Radca_Id" ColumnName="Radca_Id" />
+                <ScalarProperty Name="Uwagi" ColumnName="Uwagi" />
+                <ScalarProperty Name="IdWiena" ColumnName="IdWiena" />
+                <ScalarProperty Name="Skrot" ColumnName="Skrot" />
+                <ScalarProperty Name="LicznikUlica" ColumnName="LicznikUlica" />
+                <ScalarProperty Name="LicznikMiejsce" ColumnName="LicznikMiejsce" />
+                <ScalarProperty Name="LiczPrzedplat" ColumnName="LiczPrzedplat" />
+                <ScalarProperty Name="czyus" ColumnName="czyus" />
+                <ScalarProperty Name="modyfikator" ColumnName="modyfikator" />
+                <ScalarProperty Name="kreator" ColumnName="kreator" />
+                <ScalarProperty Name="d_modyfikacji" ColumnName="d_modyfikacji" />
+                <ScalarProperty Name="d_kreacji" ColumnName="d_kreacji" />
+                <ScalarProperty Name="IdSymbol" ColumnName="IdSymbol" />
+                <ScalarProperty Name="NrEwid" ColumnName="NrEwid" />
+                <ScalarProperty Name="CzyKoniec" ColumnName="CzyKoniec" />
+                <ScalarProperty Name="Poz" ColumnName="Poz" />
+                <ScalarProperty Name="Rok" ColumnName="Rok" />
+                <ScalarProperty Name="DataKon" ColumnName="DataKon" />
+                <ScalarProperty Name="DataR" ColumnName="DataR" />
+                <ScalarProperty Name="sygnatura" ColumnName="sygnatura" />
+                <ScalarProperty Name="PartitionKey" ColumnName="PartitionKey" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypNaleznosci">
+            <EntityTypeMapping TypeName="LexEnaProModel.TypNaleznosci">
+              <MappingFragment StoreEntitySet="TypNaleznosci">
+                <ScalarProperty Name="IdWiena" ColumnName="IdWiena" />
+                <ScalarProperty Name="CzyOdsKapital" ColumnName="CzyOdsKapital" />
+                <ScalarProperty Name="CzyMem" ColumnName="CzyMem" />
+                <ScalarProperty Name="TabOds" ColumnName="TabOds" />
+                <ScalarProperty Name="CzyProc" ColumnName="CzyProc" />
+                <ScalarProperty Name="TypSum" ColumnName="TypSum" />
+                <ScalarProperty Name="TypNal" ColumnName="TypNal" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="PartitionKey" ColumnName="PartitionKey" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="LexEnaOdsetki">
+        <EntityTypeShape EntityType="LexEnaProModel.Naleznosc" Width="1.5" PointX="0.75" PointY="4.75" Height="6.0186165364583335" IsExpanded="true" />
+        <EntityTypeShape EntityType="LexEnaProModel.NazwyOdsetek" Width="1.5" PointX="0.75" PointY="1.75" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="LexEnaProModel.Odsetki" Width="1.5" PointX="3" PointY="5.875" Height="3.9033007812500005" IsExpanded="true" />
+        <EntityTypeShape EntityType="LexEnaProModel.OdsTab" Width="1.5" PointX="5.75" PointY="1" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="LexEnaProModel.StanNaleznosci" Width="1.5" PointX="3" PointY="10.75" Height="3.3263964843749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="LexEnaProModel.StanSprawy" Width="1.5" PointX="7.75" PointY="1" Height="3.3263964843749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="LexEnaProModel.Wplata" Width="1.5" PointX="3.75" PointY="0.75" Height="4.0956022135416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="LexEnaProModel.WplataPodz" Width="1.5" PointX="6" PointY="6" Height="3.5186979166666665" IsExpanded="true" />
+        <AssociationConnector Association="LexEnaProModel.FK_nal_stan" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="10.951609700520834" />
+          <ConnectorPoint PointX="3" PointY="10.951609700520834" />
+        </AssociationConnector>
+        <AssociationConnector Association="LexEnaProModel.FK_NaleznoscOdsetki" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="8.3614369882812483" />
+          <ConnectorPoint PointX="3" PointY="8.3614369882812483" />
+        </AssociationConnector>
+        <AssociationConnector Association="LexEnaProModel.FK_NaleznoscWplataPodz" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="10.264150390625" />
+          <ConnectorPoint PointX="6.75" PointY="10.264150390625" />
+          <ConnectorPoint PointX="6.75" PointY="9.5186979166666674" />
+        </AssociationConnector>
+        <AssociationConnector Association="LexEnaProModel.FK_NazwyOdsetekOdsetki" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="3.9225878906249996" />
+          <ConnectorPoint PointX="2.625" PointY="4.297587890625" />
+          <ConnectorPoint PointX="2.625" PointY="6.8195731953124987" />
+          <ConnectorPoint PointX="3" PointY="6.8195731953124987" />
+        </AssociationConnector>
+        <AssociationConnector Association="LexEnaProModel.FK_WplataWplataPodz" ManuallyRouted="false">
+          <ConnectorPoint PointX="5.25" PointY="4.1364957682291656" />
+          <ConnectorPoint PointX="7.40625" PointY="4.1364957682291656" />
+          <ConnectorPoint PointX="7.40625" PointY="6" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="LexEnaProModel.Sprawa" Width="1.5" PointX="0.75" PointY="1.5" Height="8.7108365885416674" />
+        <AssociationConnector Association="LexEnaProModel.FK_SprawaNaleznosc" >
+          <ConnectorPoint PointX="1.5" PointY="10.210836588541667" />
+          <ConnectorPoint PointX="1.5" PointY="11.403219401041666" />
+          <ConnectorPoint PointX="1.5" PointY="11.403219401041666" />
+          <ConnectorPoint PointX="1.5" PointY="11.153219401041666" />
+        </AssociationConnector>
+        <AssociationConnector Association="LexEnaProModel.FK_spr_stan_sprawa" >
+          <ConnectorPoint PointX="2.25" PointY="5.4564518229166659" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="5.456451822916665" />
+          <ConnectorPoint PointX="2.7083333333333335" PointY="5.4564518229166659" />
+          <ConnectorPoint PointX="7.322916666666667" PointY="5.456451822916665" />
+          <ConnectorPoint PointX="7.489583333333333" PointY="5.4564518229166659" />
+          <ConnectorPoint PointX="8.03125" PointY="5.4564518229166659" />
+          <ConnectorPoint PointX="8.03125" PointY="4.5186979166666656" />
+        </AssociationConnector>
+        <AssociationConnector Association="LexEnaProModel.FK_SprawaWplata" >
+          <ConnectorPoint PointX="2.25" PointY="2.6800414453125" />
+          <ConnectorPoint PointX="3.75" PointY="2.6800414453125" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="LexEnaProModel.TypNaleznosci" Width="1.5" PointX="8.375" PointY="6" Height="3.1340950520833344" />
+        <AssociationConnector Association="LexEnaProModel.FK_TypNaleznosciNaleznosc" >
+          <ConnectorPoint PointX="9.125" PointY="9.1340950520833353" />
+          <ConnectorPoint PointX="9.125" PointY="10.0212230859375" />
+          <ConnectorPoint PointX="6.833333333333333" PointY="10.0212230859375" />
+          <ConnectorPoint PointX="6.666666666666667" PointY="10.0212230859375" />
+          <ConnectorPoint PointX="2.25" PointY="10.0212230859375" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

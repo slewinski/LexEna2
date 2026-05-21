@@ -1,0 +1,265 @@
+﻿<UserControl x:Class="LexEnaTrs.MainView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+	xmlns:telerikNavigation="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Navigation"
+    xmlns:telerikQuickStart="clr-namespace:Telerik.Windows.Controls.QuickStart;assembly=Telerik.Windows.Controls"
+    xmlns:local="clr-namespace:LexEnaTrs"
+	xmlns:views="clr-namespace:LexEnaTrs.Views"
+    mc:Ignorable="d" d:DesignWidth="780" Loaded="UserControl_Loaded">
+	
+	
+   <Grid x:Name="LayoutRoot">
+        <Grid.Resources>
+
+                       <telerik:EnumDataSource x:Name="EnumTypDowodSource" />
+        </Grid.Resources>
+   	<Grid.RowDefinitions>
+   		<RowDefinition/>
+   	</Grid.RowDefinitions>
+        <Grid Margin="7,7,7,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <!--	*************
+						 OUTLOOK BAR
+						*************	-->
+            <telerik:RadOutlookBar  x:Name="outlookBar" Width="250"  MaxWidth="760" 
+							SelectionChanged="outlookBar_SelectionChanged" HorizontalAlignment="Stretch" Margin="0,0,0,8" >
+                <!--	******
+							 MAIL
+							******	-->
+                <telerik:RadOutlookBarItem x:Name="MojeSprawyBarItem" Header="Sprawy"  FontWeight="Bold"
+								Icon="/Images/Sprawy.png"
+								SmallIcon="../Images/mailSmall.png"
+								Tag="Sprawy">
+                    <telerikNavigation:RadOutlookBarItem.Style>
+                        <StaticResource ResourceKey="BarItemStyle"/>
+                    </telerikNavigation:RadOutlookBarItem.Style>
+                    <telerik:RadTreeView x:Name="LexEnaMainTreeView" IsLineEnabled="True"
+									
+									 Margin="0,0,0,1" Style="{StaticResource TreeViewStyle}" SelectionChanged="LexEnaMainTreeView_SelectionChanged" Loaded="LexEnaMainTreeView_Loaded">
+                        <telerik:RadTreeViewItem x:Name="SprawyTreeView" Header="Moje  sprawy"
+										DefaultImageSrc="../Images/1PersonalFolders.png"
+										IsExpanded="True"  >
+                            <telerikNavigation:RadTreeViewItem Header="Nowe" Tag="NoweZWieny"  x:Name="NoweZWieny" VerticalAlignment="Top" DefaultImageSrc="../Images/1PersonalFolders.png" />
+                            <telerikNavigation:RadTreeViewItem Header="Pobrane" Tag="Pobrane"  x:Name="Pobrane" VerticalAlignment="Top"/>
+                            <telerikNavigation:RadTreeViewItem Header="Z pozwem" Tag="ZPozwem"  x:Name="ZPozwem" VerticalAlignment="Top"  />
+                            <telerikNavigation:RadTreeViewItem Header="Wniesione do e-Sądu" Tag="WEPU"  x:Name="WEpu" VerticalAlignment="Top"  />
+                            <telerikNavigation:RadTreeViewItem Header="Z nakazem zapłaty" Tag="ZNakazemZaplaty" VerticalAlignment="Top"/>
+                            <telerikNavigation:RadTreeViewItem Header="Tytuły wykonawcze" Tag="TytulyWykonawcze"  VerticalAlignment="Top"/>
+                            <telerikNavigation:RadTreeViewItem Header="Zakończone" IsExpanded="True" VerticalAlignment="Top">
+                                <telerikNavigation:RadTreeViewItem Tag="DoEgzekucji" Header="Skierowane do egzekucji"  />
+                                <telerikNavigation:RadTreeViewItem Tag="Sprzeciw" Header="Przekaz. do sądu wł. sprzeciw"/>
+                                <telerikNavigation:RadTreeViewItem Tag="BrakPodstaw" Header="Przekaz. do sądu wł. brak podst"/>
+                                <telerikNavigation:RadTreeViewItem Tag="Umorzone" Header="Umorzone na wniosek"/>
+                                <telerikNavigation:RadTreeViewItem Tag="Inne" Header="z Innych powodów"/>
+                            </telerikNavigation:RadTreeViewItem>
+                            <telerikNavigation:RadTreeViewItem Tag ="Wycofano"  Header="Nie skierowane do sądu" VerticalAlignment="Top"/>
+                            <telerikNavigation:RadTreeViewItem Tag ="PozewPapierowy"  Header="Złożono pozew w trybie tradycyjnymu" VerticalAlignment="Top"/>
+                            <telerikNavigation:RadTreeViewItem Tag ="PozewpomorzeniuwEPU"  Header="Pozew po umorzeniu w EPU" VerticalAlignment="Top"/>
+                            <telerikNavigation:RadTreeViewItem Tag ="Zgloszonowierzytelnosc"  Header="Zgłoszono wierzytelność" VerticalAlignment="Top"/>
+                            <telerikNavigation:RadTreeViewItem Tag ="PoszukiwanieSpadkobiercow"  Header="Poszukiwanie spadkobierców" VerticalAlignment="Top"/>
+                        </telerik:RadTreeViewItem>
+                    </telerik:RadTreeView>
+                </telerik:RadOutlookBarItem>
+                <telerikNavigation:RadOutlookBarItem x:Name="MojeDokumentyBarItem" Header="Dokumenty"  FontWeight="Bold"
+								Icon="/Images/Dokumenty.png"
+								SmallIcon="../Images/contactsSmall.png"
+								Tag="Contacts" Style="{StaticResource BarItemStyle}" Loaded="MojeDokumentyBarItem_Loaded">
+                    <telerikNavigation:RadTreeView IsLineEnabled="True"  x:Name="AllDocuments"  Style="{StaticResource TreeViewStyle}" Margin="0,0,0,1" SelectionChanged="DokumntyWychodzace_SelectionChanged">
+                        <telerikNavigation:RadTreeViewItem Header="Dokumenty"
+                				DefaultImageSrc="../Images/3Drafts.png" Width="248" IsExpanded="True" >
+                            <telerikNavigation:RadTreeViewItem Header="Import z kancelarii" IsExpanded="True">
+                                <telerikNavigation:RadTreeViewItem x:Name="DokWnItem" Tag="DokWn" Header="Dokumenty sądowe i wnioski egz."/>
+                                <telerikNavigation:RadTreeViewItem x:Name="DokWnItemTrad" Tag="DokWnTrad" Header="Dokumenty w postępowaniu &quot;tradycyjnym&quot; " FontSize="9"/>
+                                <telerikNavigation:RadTreeViewItem x:Name="DokKomItem" Tag="DokKom" Visibility="Collapsed" Header="Dokumenty komornicze"/>
+                            </telerikNavigation:RadTreeViewItem>
+
+                            <telerikNavigation:RadTreeViewItem Header="Do  e-Sądu" IsExpanded="True">
+                                <telerikNavigation:RadTreeViewItem x:Name="PozwyItem" Tag="Pozwy" Header="Pozwy"/>
+                                <telerikNavigation:RadTreeViewItem x:Name="InneDoc" Tag="Inne" Header="Inne Dokumenty"/>
+                                <telerikNavigation:RadTreeViewItem x:Name="AllDocsItem" Header="Wszystkie" ToolTipService.ToolTip="Lista wszytkich dokumentów kierowanych do e-Sądu"/>
+                                <telerikNavigation:RadTreeViewItem Header="Robocze" IsExpanded="True">
+                                    <telerikNavigation:RadTreeViewItem Header="Projekty" Tag="ProjektyDok" ToolTipService.ToolTip="Dokumenty do e-Sądu - projekty"/>
+                                    <telerikNavigation:RadTreeViewItem Header="Do wysyłki" Tag="DoWysylkiDok" ToolTipService.ToolTip="Dokumenty do e- sądu gotowe do wysyłki"/>
+                                    <telerikNavigation:RadTreeViewItem Header="Zwrócone" Tag="ZwroconeDok" ToolTipService.ToolTip="Dokumenty do e-Sądu ze zwróconej paczki (bez błędu)" />
+                                    <telerikNavigation:RadTreeViewItem Header="Odrzucone" Tag="OdrzuconeDok" ToolTipService.ToolTip="Dokumenty do e-Sądu odrzucone - błędne"/>
+                                    <telerikNavigation:RadTreeViewItem Header="Usunięte" Tag="UsunieteDok" ToolTipService.ToolTip="Dokumenty usunięte"/>
+                                </telerikNavigation:RadTreeViewItem>
+                            </telerikNavigation:RadTreeViewItem>
+                            <telerikNavigation:RadTreeViewItem Header="Z  e-Sądu" IsExpanded="True">
+                                <telerikNavigation:RadTreeViewItem x:Name="NakazyZaplatyItem" Header="{Binding NakazyZaplatyItem}" FontWeight= "{Binding NakazyFontWeight}" Tag="Nakazy" ToolTipService.ToolTip="Nakazy zapłaty odebrane z e-Sądu w twoich sprawach "/>
+                                <telerikNavigation:RadTreeViewItem  Tag="Klauzule" Header="{Binding KlauzuleItem}" FontWeight= "{Binding KlauzuleFontWeight}"  ToolTipService.ToolTip="Postanowienia o nadaniu klauzuli wykonalności"/>
+                                <telerikNavigation:RadTreeViewItem  Tag="InneDecyzje" Header="{Binding InneItem}"  FontWeight= "{Binding InneFontWeight}"  ToolTipService.ToolTip="Inne decyzje - zarządzenia , postanowienia" />
+                                
+                            </telerikNavigation:RadTreeViewItem>
+                            <telerikNavigation:RadTreeViewItem x:Name="WnioskiEgzekucyjneItem" Header="WnioskiEgzekucyjne"/>
+                            <telerikNavigation:RadTreeViewItem Header="Paczki dokumentów" IsExpanded="True">
+                                <telerikNavigation:RadTreeViewItem Header="W przygotowaniu" Tag="PaczkiProjekty" Height="20"/>
+                                <telerikNavigation:RadTreeViewItem Header="Do wysyłki" Tag="PaczkiDoWysylki" Height="20"/>
+                                <telerikNavigation:RadTreeViewItem Header="Złożone w e-Sądzie" Tag="PaczkiWyslane" />
+                                <telerikNavigation:RadTreeViewItem Header="Rozpisane (na sprawy)" Tag="PaczkiRozpisane" />
+                                <telerikNavigation:RadTreeViewItem Header="Odrzucone" Tag="PaczkiOdrzucone" />
+                                <telerikNavigation:RadTreeViewItem Header="Usunięte" Tag="PaczkiUsuniete" />
+                            </telerikNavigation:RadTreeViewItem>
+                        </telerikNavigation:RadTreeViewItem>
+                    </telerikNavigation:RadTreeView>
+
+                </telerikNavigation:RadOutlookBarItem>
+                <telerikNavigation:RadOutlookBarItem x:Name="MojeDoreczeniaBarItem" Header="Doręczenia" FontWeight="Bold"
+								Icon="/Images/Doreczenia.png"
+								SmallIcon="../Images/tasksSmall.png" Style="{StaticResource BarItemStyle}">
+                    <telerikNavigation:RadTreeView Style="{StaticResource TreeViewStyle}" IsRootLinesEnabled="True" BorderThickness="1" IsLineEnabled="True">
+                        <telerikNavigation:RadTreeViewItem DropPosition="Inside" Header="Moje doręczenia" IsTabStop="True" TabNavigation="Once" IsExpanded="True" ToolTipService.ToolTip="Doreczenia w sprawach mi przypisanych" IsEditable="False">
+                            <telerikNavigation:RadTreeViewItem Header="Moich dokumentów" Height="18"/>
+                            <telerikNavigation:RadTreeViewItem Header="Strony pozwanej"/>
+                            <telerikNavigation:RadTreeViewItem Header="Wszystkie"/>
+                        </telerikNavigation:RadTreeViewItem>
+                    </telerikNavigation:RadTreeView>
+                </telerikNavigation:RadOutlookBarItem>
+
+                <telerik:RadOutlookBarItem Header="Kalendarz" FontWeight="Bold" Tag="Kalendarz" Name="CalendarBarItem"
+								Icon="/Images/Kalendarz.png"
+								SmallIcon="../Images/calendarSmall.png" Style="{StaticResource BarItemStyle}">
+                    <telerik:RadCalendar VerticalAlignment="Top" Margin="3" SelectionChanged="RadCalendar_SelectionChanged" />
+                   
+
+                </telerik:RadOutlookBarItem>
+                
+            
+            <telerik:RadOutlookBarItem Header="Zdarzenia" FontWeight="Bold" Tag="Zdarzenia" Name="ZdarzeniaBarItem"
+								Icon="/Images/Zadania.png"
+								SmallIcon="../Images/calendarSmall.png" Style="{StaticResource BarItemStyle}">
+                
+                   
+            </telerik:RadOutlookBarItem>
+                <telerik:RadOutlookBarItem Header="Wyszukiwanie" FontWeight="Bold" Tag="Wyszukiwanie" Name="SearchBarItem" 
+								Icon="/Images/Szukaj.png"
+								SmallIcon="/Images/Szukaj.png" Style="{StaticResource BarItemStyle}" >
+                    <views:SearchView MaxHeight="600" />
+                </telerik:RadOutlookBarItem>
+                <telerik:RadOutlookBarItem Header="Dekretacja" x:Name="DekretacjaBar"  FontWeight="Bold" Tag="Dekretacja" Visibility="{Binding VisibleForAnyAdmin, Source={StaticResource IsAnyAdminRole}}"
+								Icon="/Images/Dekretacja.png"
+								SmallIcon="../Images/User_single.png" Style="{StaticResource BarItemStyle}">
+                                <telerikNavigation:RadTreeView x:Name="Dekretacja"   Style="{StaticResource TreeViewStyle}" IsRootLinesEnabled="True" BorderThickness="1" IsLineEnabled="True" SelectionChanged="Dekretacja_SelectionChanged">
+                                <telerikNavigation:RadTreeViewItem DropPosition="Inside" Header="Dekretacja spraw" IsTabStop="True" TabNavigation="Once" IsExpanded="True" IsEditable="False">
+                            <telerikNavigation:RadTreeViewItem Header="Do jednostek"  Visibility="{Binding VisibleForSuperAdminAndEnerga, Source={StaticResource IsSuperAdminRole}}" Tag="DekretDojednostek"  x:Name="DekretDojednostek" />
+                                <telerikNavigation:RadTreeViewItem Header="Do referentów" Tag="DekretDoReferentow"/>
+                            <telerikNavigation:RadTreeViewItem Header="Zestawienie zwrotów"  Visibility="{Binding VisibleForSuperAdminAndEnerga, Source={StaticResource IsSuperAdminRole}}" Tag="ZestawienieZwrot"  x:Name="ZestawienieZwrot" />
+                            
+                        </telerikNavigation:RadTreeViewItem>
+                    </telerikNavigation:RadTreeView>
+                </telerik:RadOutlookBarItem>
+                <telerik:RadOutlookBarItem Header="Raporty" x:Name="ReportsBar"  FontWeight="Bold" Tag="Reports" 
+								Icon="/Images/Dekretacja.png"
+								SmallIcon="../Images/User_single.png" Style="{StaticResource BarItemStyle}">
+                    <telerikNavigation:RadTreeView x:Name="Raporty"   Style="{StaticResource TreeViewStyle}" IsRootLinesEnabled="True" BorderThickness="1" IsLineEnabled="True" SelectionChanged="Reports_SelectionChanged">
+                        <telerikNavigation:RadTreeViewItem DropPosition="Inside" Header="Raporty" IsTabStop="True" TabNavigation="Once" IsExpanded="True" ToolTipService.ToolTip="Raporty z ruchu spraw" IsEditable="False">
+                            <telerikNavigation:RadTreeViewItem Header="Terminowość pozwów"  Visibility="Visible" Tag="TerminPozwu"  x:Name="TerminPozwu" />
+                            <telerikNavigation:RadTreeViewItem Header="Terminowość nakazów" Visibility="Visible" Tag="TerminNakaz"/>
+                            <telerikNavigation:RadTreeViewItem Header="Terminowość czynności" Visibility="Visible" Tag="TerminCzynn"/>
+                        </telerikNavigation:RadTreeViewItem>
+                        <telerikNavigation:RadTreeViewItem DropPosition="Inside" Header="Pozostałe Raporty" IsTabStop="True" TabNavigation="Once" IsExpanded="True" ToolTipService.ToolTip="Pozostałe raporty z LexEny" IsEditable="False">
+                            <telerikNavigation:RadTreeViewItem Header="Daty dekretacji"  Visibility="Visible" Tag="DatyDekret"   />
+                            <telerikNavigation:RadTreeViewItem Header="Zestawienie wierzytelności" Visibility="{Binding Path=EOBVisible, Converter={StaticResource VisibilityConverter} }"  Tag="Wierzytelnosci"  />
+                        </telerikNavigation:RadTreeViewItem>
+
+                    </telerikNavigation:RadTreeView>
+                </telerik:RadOutlookBarItem>
+                <telerik:RadOutlookBarItem Header="Wpisy do KRD" x:Name="KRD"  FontWeight="Bold" Tag="KRD"  
+								 Icon="/Images/Lista.png"
+								SmallIcon="../Images/Lista.png" Style="{StaticResource BarItemStyle}">
+                    <telerikNavigation:RadTreeView x:Name="Krd"   Style="{StaticResource TreeViewStyle}" IsRootLinesEnabled="True" BorderThickness="1" IsLineEnabled="True" SelectionChanged="Krd_SelectionChanged" >
+                        <telerikNavigation:RadTreeViewItem DropPosition="Inside" Header="Wpisy do KRD" IsTabStop="True" TabNavigation="Once" IsExpanded="True" ToolTipService.ToolTip="Wpisy dłużników do KRD" IsEditable="False">
+                            <telerikNavigation:RadTreeViewItem Header="Dane do KRD"  Visibility="Visible" Tag="KRDNowe"  />
+                            <telerikNavigation:RadTreeViewItem Header="Dłużnicy w KRD" Visibility="Visible" Tag="KRDDluznicy"/>
+                            <telerikNavigation:RadTreeViewItem Header="Zobowiązania (należności)" Visibility="Visible" Tag="KRDOperacje"/>
+                        </telerikNavigation:RadTreeViewItem>
+                    </telerikNavigation:RadTreeView>
+                </telerik:RadOutlookBarItem>
+
+                <telerik:RadOutlookBarItem Header="Ulgi na złe długi" x:Name="UzD"  FontWeight="Bold" Tag="Uzd" 
+								 Icon="/Images/Lista.png"
+								SmallIcon="../Images/Lista.png" Style="{StaticResource BarItemStyle}">
+                    <telerikNavigation:RadTreeView x:Name="UZD"   Style="{StaticResource TreeViewStyle}" IsRootLinesEnabled="True" BorderThickness="1" IsLineEnabled="True" SelectionChanged="UZD_SelectionChanged"  >
+                        <telerikNavigation:RadTreeViewItem DropPosition="Inside" Header="Obsługa Uzd" IsTabStop="True" TabNavigation="Once" IsExpanded="True" ToolTipService.ToolTip="Typowanie do ulgi na złe długi" IsEditable="False">
+                            <telerikNavigation:RadTreeViewItem Header="Obsługa nowych deklaracji"  Visibility="Visible" Tag="UzDNowe"  />
+                            <telerikNavigation:RadTreeViewItem Header="Deklaracje korygujące" Visibility="Visible" Tag="UzDDeklaracje"/>
+                            <telerikNavigation:RadTreeViewItem Header="Inne" Visibility="Visible" Tag="UzDInne"/>
+                        </telerikNavigation:RadTreeViewItem>
+                    </telerikNavigation:RadTreeView>
+                </telerik:RadOutlookBarItem>
+                <telerik:RadOutlookBarItem Header="Narzędzia" x:Name="Inne"  FontWeight="Bold" Tag="Inne" 
+								Icon="/Images/Dekretacja.png"
+								SmallIcon="../Images/User_single.png" Style="{StaticResource BarItemStyle}">
+                    <telerikNavigation:RadTreeView x:Name="INNE"   Style="{StaticResource TreeViewStyle}" IsRootLinesEnabled="True" BorderThickness="1" IsLineEnabled="True" SelectionChanged="INNE_SelectionChanged"   >
+                        <telerikNavigation:RadTreeViewItem DropPosition="Inside" Header="Funkcje Narzędziowe" IsTabStop="True" TabNavigation="Once" IsExpanded="True" ToolTipService.ToolTip="Funkcje narzędziowe" IsEditable="False">
+                            <telerikNavigation:RadTreeViewItem Header="Konwersja zestawień"  Visibility="Visible" Tag="SpadyEPU"  />
+                            <telerikNavigation:RadTreeViewItem Header="Ekstrakcja pdf'ów"  Visibility="Visible" Tag="ExtractPdf"  />
+                            <telerikNavigation:RadTreeViewItem Header="Skuteczność kancelarii"  Visibility="Visible" Tag="SkutKanc"  />
+                            <telerikNavigation:RadTreeViewItem Header="Potwierdzenie sald do wniosków"  Visibility="Visible" Tag="PotwSald"  />
+                            <telerikNavigation:RadTreeViewItem Header="Należności w sprawach"  Visibility="Visible" Tag="NalSpr"  />
+                        </telerikNavigation:RadTreeViewItem>
+
+                        <telerikNavigation:RadTreeViewItem DropPosition="Inside" Header="Integracja z Wiena" IsTabStop="True" TabNavigation="Once" IsExpanded="True" ToolTipService.ToolTip="Funkcje narzędziowe" IsEditable="False">
+                      
+                            <telerikNavigation:RadTreeViewItem Header="Import danych z syst. billingowych"  Visibility="Visible" Tag="ImportBilling"  />
+                            <telerikNavigation:RadTreeViewItem Header="Import zaliczek komorniczych"  Visibility="Visible" Tag="ImportZaliczek"  />
+                            <telerikNavigation:RadTreeViewItem Header="Usuwanie kosztów po umorzeniu"  Visibility="Visible" Tag="UsunKoszty"  />
+                            <telerikNavigation:RadTreeViewItem Header="Sprawy bez Uz2"  Visibility="Visible" Tag="BezUz2"  />
+                            <telerikNavigation:RadTreeViewItem Header="Scalanie spraw"  Visibility="Visible" Tag="MergeCases"  />
+                            <telerikNavigation:RadTreeViewItem x:Name="RaportyWiena"  Header="Raporty"   BorderThickness="1" IsExpanded="True"  >
+                                <telerikNavigation:RadTreeViewItem Header="Obroty z nr dziennika"  Visibility="Visible"  Tag="ObrotyDziennik"  />
+                                <telerikNavigation:RadTreeViewItem Header="Koszty radców"  Visibility="Visible"  Tag="RaportKosztyRadcow"  />
+                                <telerikNavigation:RadTreeViewItem Header="Należności"  Visibility="Visible" Tag="RaportNaleznosci"  />
+                                <telerikNavigation:RadTreeViewItem Header="Raty"  Visibility="Visible" Tag="RaportRaty"  />
+                                <telerikNavigation:RadTreeViewItem Header="Umorzenia z powodu zgonów"  Visibility="Visible" Tag="RaportZgony"  />
+                                <telerikNavigation:RadTreeViewItem Header="Sprawy z dokumentem"  Visibility="Visible" Tag="RaportSprawyWgDok"  />
+                                <telerikNavigation:RadTreeViewItem Header="Egzekucje Bezskuteczne"     Visibility="{Binding Path=EOBVisible, Converter={StaticResource VisibilityConverter} }"  Tag="BezskutEgzekucje"  />
+                                <telerikNavigation:RadTreeViewItem  Name="WiekowanieSald"  Header="Wiekowanie sald księgowych" IsTabStop="True" TabNavigation="Once" ToolTipService.ToolTip="Wiekowanie sald księgowych" IsEditable="False" Tag="WiekowanieSald"/>
+                                <telerikNavigation:RadTreeViewItem  Name="WiekowanieNal"  Header="Wiekowanie wg należnosci" IsTabStop="True" TabNavigation="Once" ToolTipService.ToolTip="Wiekowanie wg należności" IsEditable="False" Tag="WiekowanieNal"/>
+                                <telerikNavigation:RadTreeViewItem  Name="RodzajeObciazen"  Header="Rodzaje obciążeń" IsTabStop="True" TabNavigation="Once" ToolTipService.ToolTip="Zestawienie wg. rodzajów obciążeń" IsEditable="False" Tag="RodzajeObciazen"/>
+                                <telerikNavigation:RadTreeViewItem  Name="ZestSaldOryg"  Header="Salda księgowe" IsTabStop="True" TabNavigation="Once"   ToolTipService.ToolTip="Zestawienie sald księgowych" IsEditable="False" Tag="ZestSaldaOryg"/>
+                                
+                                
+                                <telerikNavigation:RadTreeViewItem DropPosition="Inside" Name="NoweOplaty" Visibility="{Binding Path=EOPVisible, Converter={StaticResource VisibilityConverter} }"  Header="Nowe Opłaty EOP" IsTabStop="True" TabNavigation="Once" IsExpanded="True" ToolTipService.ToolTip="Zestawienia z nowymi rodzajami opłat EOP" IsEditable="False">
+                                    <telerikNavigation:RadTreeViewItem Header="Zestawienie obrotów"  Visibility="Visible" Tag="ZestObr"  />
+                                </telerikNavigation:RadTreeViewItem>
+                                <telerikNavigation:RadTreeViewItem  Name="WiekowanieWplat"  Header="Wiekowanie wpłat (zatory)" IsTabStop="True" TabNavigation="Once" ToolTipService.ToolTip="Zatory płatnicze - wiekowanie wpłat" Visibility="{Binding Path=EOPVisible, Converter={StaticResource VisibilityConverter} }" IsEditable="False" Tag="WiekowanieWplat"/>
+                                
+               
+
+                                <telerikNavigation:RadTreeViewItem DropPosition="Inside" Name="Wiekowanie" Visibility="{Binding Path=EOBVisible, Converter={StaticResource VisibilityConverter} }"  Header="Wiekowanie należności" IsTabStop="True" TabNavigation="Once" IsExpanded="True" ToolTipService.ToolTip="Wiekowanie należności" IsEditable="False">
+                                    <telerikNavigation:RadTreeViewItem Header="Oczek. na skierowanie do sądu"  Visibility="Visible" Tag="WiekOS"  />
+                                    <telerikNavigation:RadTreeViewItem Header="Nal. skierowane do sądu"  Visibility="Visible" Tag="WiekES"  />
+                                    <telerikNavigation:RadTreeViewItem Header="Nal. po orzeczeniach sądu"  Visibility="Visible" Tag="WiekNS"  />
+                                    <telerikNavigation:RadTreeViewItem Header="Nal. skierowane do egzekucji"  Visibility="Visible" Tag="WiekKS"  />
+                                </telerikNavigation:RadTreeViewItem>
+                            </telerikNavigation:RadTreeViewItem>
+                        
+                        </telerikNavigation:RadTreeViewItem>
+                    </telerikNavigation:RadTreeView>
+                </telerik:RadOutlookBarItem>
+            </telerik:RadOutlookBar>
+            
+
+
+            <Border BorderBrush="#FFCBCBCB" BorderThickness="1" x:Name="MainWorkspace"  Grid.Column="1"
+							Background="White" Margin="6,6,0,8">
+
+
+            
+
+                <!--<local:GridSprawy2 Margin="1"  />--> 
+                 <!--<local:Pozew   /> -->
+                <!--<local:SprawaView   /> -->
+            </Border>
+        </Grid>
+    </Grid>
+
+
+</UserControl>

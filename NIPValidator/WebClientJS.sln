@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2008
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebClientJS", "WebClientJS\WebClientJS.csproj", "{7C373228-DA95-47CA-B1A7-211500E87F96}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NipNetLib", "NipNetLib\NipNetLib.csproj", "{99D88F8B-0A23-4E9C-9C5B-C7CF5996D87D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7C373228-DA95-47CA-B1A7-211500E87F96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C373228-DA95-47CA-B1A7-211500E87F96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C373228-DA95-47CA-B1A7-211500E87F96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C373228-DA95-47CA-B1A7-211500E87F96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99D88F8B-0A23-4E9C-9C5B-C7CF5996D87D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99D88F8B-0A23-4E9C-9C5B-C7CF5996D87D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99D88F8B-0A23-4E9C-9C5B-C7CF5996D87D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99D88F8B-0A23-4E9C-9C5B-C7CF5996D87D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C91247F1-5F8D-49BD-9DBA-92123CD2294E}
+	EndGlobalSection
+EndGlobal

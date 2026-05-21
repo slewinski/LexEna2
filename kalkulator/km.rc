@@ -1,0 +1,799 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Polish resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_PLK)
+#ifdef _WIN32
+LANGUAGE LANG_POLISH, SUBLANG_DEFAULT
+#pragma code_page(1250)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "RES\\KKM.ICO"
+IDR_RRRTYPE             ICON                    "RES\\KKMDOC.ICO"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP                  "RES\\TOOLBAR.BMP"
+IDR_TBIN                BITMAP                  "res\\toolbar2.bmp"
+IDR_TBKALK              BITMAP                  "res\\bmp00001.bmp"
+IDR_TBOUT               BITMAP                  "res\\bmp00002.bmp"
+IDB_BITMAP1             BITMAP                  "res\\bitmap1.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU 
+BEGIN
+    POPUP " &Kalkulacje "
+    BEGIN
+        MENUITEM "&Nowa\tCtrl+N",               ID_FILE_NEW
+        MENUITEM "&Otwórz...\tCtrl+O",          ID_FILE_OPEN
+        MENUITEM SEPARATOR
+        MENUITEM "Poprzedni plik",              ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "&Koniec",                     ID_APP_EXIT
+    END
+    POPUP " &Podgl¹d "
+    BEGIN
+        MENUITEM "Pasek &narzêdzi",             ID_VIEW_TOOLBAR
+        MENUITEM "Pasek &stanu",                ID_VIEW_STATUS_BAR
+    END
+    POPUP "Po&moc"
+    BEGIN
+        MENUITEM "&Indeks",                     ID_HELP_INDEX
+        MENUITEM "Po&moc",                      ID_HELP_USING
+        MENUITEM SEPARATOR
+        MENUITEM "&O Kalkulacjach KM...",       ID_APP_ABOUT
+    END
+END
+
+IDR_RRRTYPE MENU 
+BEGIN
+    POPUP " &Kalkulacje "
+    BEGIN
+        MENUITEM "&Nowa\tCtrl+N",               ID_FILE_NEW
+        MENUITEM "&Otwórz...\tCtrl+O",          ID_FILE_OPEN
+        MENUITEM SEPARATOR
+        MENUITEM "Z&amknij\tCtrl+Z",            ID_FILE_CLOSE
+        MENUITEM "&Zachowaj\tCtrl+S",           ID_FILE_SAVE
+        MENUITEM "Zachowaj &jako...",           ID_FILE_SAVE_AS
+        MENUITEM SEPARATOR
+        MENUITEM "&Koniec",                     ID_APP_EXIT
+    END
+    POPUP " &Zapisy  "
+    BEGIN
+        MENUITEM "&Nowy zapis",                 ID_NEW_ELEM
+        MENUITEM "&Edycja zapisu",              ID_EDIT_ELEM
+        MENUITEM "&Usuñ zapis",                 ID_DEL_ELEM, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "&Drukuj...\tCtrl+P",          ID_FILE_PRINT
+        MENUITEM "Edycja &wyników\tCtrl+E",     ID_FILE_PRINT_PREVIEW
+    END
+    POPUP " &Podgl¹d "
+    BEGIN
+        MENUITEM "N&ale¿noœci",                 ID_NAL
+        MENUITEM "&Wp³aty",                     ID_WPL
+        MENUITEM "&Odsetki",                    ID_OKROD
+        MENUITEM SEPARATOR
+        MENUITEM "&Nastêpny",                   ID_NEXT
+        MENUITEM "&Poprzedni",                  ID_PREV
+        MENUITEM SEPARATOR
+        MENUITEM "Pasek &na&rzêdzi",            ID_VIEW_TOOLBAR
+        MENUITEM "Pasek &stanu",                ID_VIEW_STATUS_BAR
+    END
+    MENUITEM " &Oblicz ",                   ID_OBL_STANDATE
+    POPUP " Kon&figuracja"
+    BEGIN
+        MENUITEM "Odsetki &ustawowe",           ID_ODSETKI
+        MENUITEM "&Tabela stanów",              IDM_DO_WYDR, CHECKED
+        MENUITEM "Na&dp³aty do tabeli",         IDM_DO_WYDR_R, CHECKED
+        MENUITEM "&Nag³ówek wydruku",           IDM_NAG
+        MENUITEM "&Stopka wydruku",             IDM_STOP
+    END
+    POPUP "Ok&na"
+    BEGIN
+        MENUITEM "&Przepisz ikony",             ID_WINDOW_ARRANGE
+    END
+    POPUP "Po&moc"
+    BEGIN
+        MENUITEM "&Indeks",                     ID_HELP_INDEX
+        MENUITEM "Po&moc",                      ID_HELP_USING
+        MENUITEM SEPARATOR
+        MENUITEM "&O Kalkulacjach KM...",       ID_APP_ABOUT
+        MENUITEM "&Przyciski",                  IDM_POMOC
+    END
+END
+
+IDR_LIST MENU 
+BEGIN
+    POPUP " &Kalkulacje "
+    BEGIN
+        MENUITEM "&Nowa\tCtrl+N",               ID_FILE_NEW
+        MENUITEM "&Otwórz...\tCtrl+O",          ID_FILE_OPEN
+        MENUITEM "Konwertuj &daty",             ID_KONWERT
+        MENUITEM SEPARATOR
+        MENUITEM "Z&amknij\tCtrl+Z",            ID_FILE_CLOSE
+        MENUITEM "&Zachowaj\tCtrl+S",           ID_FILE_SAVE
+        MENUITEM "Zachowaj &jako...",           ID_FILE_SAVE_AS
+        MENUITEM SEPARATOR
+        MENUITEM "&Koniec",                     ID_APP_EXIT
+    END
+    POPUP " &Zapisy  "
+    BEGIN
+        MENUITEM "&Nowy zapis",                 ID_NEW_ELEM
+        MENUITEM "&Edycja zapisu",              ID_EDIT_ELEM
+        MENUITEM "&Usuñ zapis",                 ID_DEL_ELEM, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "&Drukuj...\tCtrl+P",          ID_FILE_PRINT
+        MENUITEM "Edycja &wyników\tCtrl+E",     ID_FILE_PRINT_PREVIEW
+    END
+    POPUP " &Podgl¹d "
+    BEGIN
+        MENUITEM "N&ale¿noœci",                 ID_NAL
+        MENUITEM "&Wp³aty",                     ID_WPL
+        MENUITEM "&Odsetki",                    ID_OKROD
+        MENUITEM SEPARATOR
+        MENUITEM "&Nastêpny",                   ID_NEXT
+        MENUITEM "&Poprzedni",                  ID_PREV
+        MENUITEM SEPARATOR
+        MENUITEM "Pasek &na&rzêdzi",            ID_VIEW_TOOLBAR
+        MENUITEM "Pasek &stanu",                ID_VIEW_STATUS_BAR
+    END
+    MENUITEM " &Oblicz ",                   ID_OBL_STANDATE
+    POPUP " Kon&figuracja"
+    BEGIN
+        MENUITEM "Odsetki &ustawowe",           ID_ODSETKI
+        MENUITEM "&Tabela stanów",              IDM_DO_WYDR, CHECKED
+        MENUITEM "Na&dp³aty do tabeli",         IDM_DO_WYDR_R, CHECKED
+        MENUITEM "&Nag³ówek wydruku",           IDM_NAG
+        MENUITEM "&Stopka wydruku",             IDM_STOP
+    END
+    POPUP "Ok&na"
+    BEGIN
+        MENUITEM "&Przepisz ikony",             ID_WINDOW_ARRANGE
+    END
+    POPUP "Po&moc"
+    BEGIN
+        MENUITEM "&Indeks",                     ID_HELP_INDEX
+        MENUITEM "Po&moc",                      ID_HELP_USING
+        MENUITEM SEPARATOR
+        MENUITEM "&O Kalkulacjach KM...",       ID_APP_ABOUT
+        MENUITEM "&Przyciski",                  IDM_POMOC
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS 
+BEGIN
+    "E",            ID_FILE_PRINT_PREVIEW,  VIRTKEY, CONTROL, NOINVERT
+    "L",            ID_OBL_STANDATE,        VIRTKEY, CONTROL, NOINVERT
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL, NOINVERT
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL, NOINVERT
+    "P",            ID_FILE_PRINT,          VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL, NOINVERT
+    "Z",            ID_FILE_CLOSE,          VIRTKEY, CONTROL, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 34, 22, 193, 44
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW | WS_EX_STATICEDGE
+CAPTION "O Kalkulacjach KM"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,9,10,20,20
+    LTEXT           "Kalkulacje KM v1.98",IDC_STATIC,39,10,119,8
+    LTEXT           "Copyright © Currenda 1999 - VIII 2009  ",IDC_STATIC,40,25,130,8
+    DEFPUSHBUTTON   "OK",IDOK,160,6,32,14,WS_GROUP
+END
+
+IDD_DWPL DIALOG  250, 100, 147, 66
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Wp³aty"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_DATE,32,23,50,14,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_GROSZY,32,42,50,14,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER
+    COMBOBOX        IDC_TYPW,108,5,34,63,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK",IDOK,108,32,34,12
+    PUSHBUTTON      "Anuluj",IDCANCEL,108,50,34,12
+    CTEXT           "Nr:",IDC_STATIC,4,6,26,9
+    CTEXT           "Data:",IDC_STATIC,5,24,26,9
+    CTEXT           "Kwota:",IDC_STATIC,5,43,26,9
+    EDITTEXT        IDC_WPLNO,32,4,19,12,ES_READONLY | NOT WS_TABSTOP
+    CTEXT           "Sposób:",IDC_STATIC_SP,77,7,27,8
+END
+
+IDD_DNAL DIALOG  10, 110, 199, 57
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Nale¿noœæ"
+FONT 8, "MS Sans Serif"
+BEGIN
+    COMBOBOX        IDC_TYPN,97,4,97,96,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_DATE,32,22,50,14,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_GROSZY,32,40,50,14,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "Brak odsetek",IDC_SKR_ODS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,137,24,59,10
+    DEFPUSHBUTTON   "OK",IDOK,113,41,36,12
+    PUSHBUTTON      "Anuluj",IDCANCEL,153,41,36,12
+    CTEXT           "Nr:",IDC_STATIC,5,6,26,9
+    EDITTEXT        IDC_NALNO,32,4,19,12,ES_READONLY | NOT WS_TABSTOP
+    CTEXT           "Nazwa:",IDC_STATIC,71,6,26,9
+    CTEXT           "Data:",IDC_STATIC,5,24,26,9
+    CTEXT           "Kwota:",IDC_STATIC,5,43,26,9
+END
+
+IDD_GET_STAN DIALOG  82, 30, 123, 151
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Parametry obliczeñ"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Miesi¹c",IDC_STATIC,1,4,120,30
+    CONTROL         "&kalendarzowy",IDC_STAN_KAL,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,5,17,58,10
+    CONTROL         "&bankowy",IDC_STAN_BANK,"Button",BS_AUTORADIOBUTTON,70,17,46,10
+    LTEXT           "Sprawa:",IDC_STATIC,21,41,27,8
+    EDITTEXT        IDC_EDIT1,51,39,50,13
+    GROUPBOX        "Liczyæ stan na dzieñ",IDC_STATIC,1,59,120,70,WS_GROUP
+    LISTBOX         IDC_STAN_LIST,8,74,48,51,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "&Dopisz",ID_NEW_ELEM,82,75,32,12
+    PUSHBUTTON      "&Edytuj",ID_EDIT_ELEM,82,93,32,12
+    PUSHBUTTON      "&Usuñ",ID_DEL_ELEM,82,111,32,12
+    DEFPUSHBUTTON   "&Oblicz",IDOK,14,133,40,14
+    PUSHBUTTON      "Anuluj",IDCANCEL,70,133,40,14
+END
+
+IDD_ODS_UST DIALOG  150, 30, 139, 161
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Odsetki ustawowe"
+FONT 9, "Courier New CE"
+BEGIN
+    LISTBOX         IDC_ODS_COMBO,2,5,135,137,WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "&Dopisz",ID_NEW_ELEM,3,144,36,14
+    DEFPUSHBUTTON   "Zachowaj",IDOK,44,144,42,14
+    PUSHBUTTON      "Anuluj",IDCANCEL,91,144,36,14
+END
+
+IDD_NEW_OKR DIALOG  10, 20, 94, 50
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Nowy okres"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_DATEP,4,16,43,14,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_STOPA,49,16,42,14,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER
+    DEFPUSHBUTTON   "Ok",IDOK,6,34,36,12
+    PUSHBUTTON      "Anuluj",IDCANCEL,51,34,36,12
+    CTEXT           "Od dnia",IDC_STATIC,4,6,39,9
+    CTEXT           "Stopa(%)",IDC_STATIC,49,6,37,9
+END
+
+IDD_DATE_STAN DIALOG  10, 12, 93, 38
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Liczyæ stan na dzieñ"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_DATEP,5,6,47,14,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER
+    DEFPUSHBUTTON   "Ok",IDOK,59,4,30,13
+    PUSHBUTTON      "Anuluj",IDCANCEL,59,21,30,13
+END
+
+IDD_DOKR DIALOG  10, 200, 195, 109
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Okresy  odsetkowe   "
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_DATEP,41,28,44,14,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_DATEK,41,49,44,14,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_STOPA,137,28,37,14,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "Ustawowe",IDC_RADIOO0,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,92,8,45,10
+    CONTROL         "Umowne",IDC_RADIOO1,"Button",BS_AUTORADIOBUTTON,140,8,45,10
+    CONTROL         "Miesiêczne",IDC_RADIOW0,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,139,72,48,9
+    CONTROL         "Roczne",IDC_RADIOW1,"Button",BS_AUTORADIOBUTTON,139,84,48,9
+    CONTROL         "Dzienne",IDC_RADIOW2,"Button",BS_AUTORADIOBUTTON,139,96,48,9
+    DEFPUSHBUTTON   "OK",IDOK,11,89,36,12,WS_GROUP
+    PUSHBUTTON      "Anuluj",IDCANCEL,53,89,36,12
+    RTEXT           "Nr",IDC_STATIC,8,7,10,9
+    EDITTEXT        IDC_OKRNO,23,5,19,12,ES_READONLY | NOT WS_TABSTOP
+    CTEXT           "Odsetki:",IDC_STATIC,55,7,30,8
+    GROUPBOX        "",IDC_STATIC,87,0,104,22
+    CTEXT           "Data pocz.:",IDC_STATIC,1,30,38,9
+    CTEXT           "Data koñc.:",IDC_STATIC,1,51,39,9
+    CTEXT           "Stopa:",IDC_STATIC,106,30,24,9
+    LTEXT           "(%)",IDC_STATIC,178,32,13,8
+    LTEXT           "Typ odsetek:",IDC_STATIC,90,72,43,8
+    GROUPBOX        "",IDC_STATIC,135,65,56,41
+    EDITTEXT        IDC_FACTOR,137,48,39,14,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER
+    CTEXT           "Mno¿nik:",IDC_STATIC,98,50,32,9
+END
+
+IDD_POMOC DIALOG  100, 50, 157, 147
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Przyciski"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,66,130,50,14
+    LTEXT           "- Stworzenie nowego zapisu",IDC_STATIC,39,26,114,8
+    LTEXT           "- Usuniêcie wybranego zapisu",IDC_STATIC,39,46,114,8
+    LTEXT           "- Obliczenie stanu",IDC_STATIC,39,66,114,8
+    LTEXT           "- Przejœcie do nastêpnego pola",IDC_STATIC,39,86,114,8
+    LTEXT           "- Powrót do g³ównego menu",IDC_STATIC,39,106,114,8
+    LTEXT           "- Edycja wybranego zapisu",IDC_STATIC,39,7,114,8
+    CONTROL         "",IDC_STATIC,"Static",SS_BLACKFRAME,4,24,31,12
+    CONTROL         "",IDC_STATIC,"Static",SS_BLACKFRAME,4,44,31,12
+    CONTROL         "",IDC_STATIC,"Static",SS_BLACKFRAME,4,64,31,13
+    CONTROL         "",IDC_STATIC,"Static",SS_BLACKFRAME,4,84,31,12
+    CONTROL         "",IDC_STATIC,"Static",SS_BLACKFRAME,4,104,31,12
+    CONTROL         "",IDC_STATIC,"Static",SS_BLACKFRAME,4,4,31,12
+    CTEXT           "INS",IDC_STATIC,7,26,26,8
+    CTEXT           "DEL",IDC_STATIC,7,46,26,8
+    CTEXT           "Gray+",IDC_STATIC,7,66,26,8
+    CTEXT           "TAB",IDC_STATIC,7,86,26,8
+    CTEXT           "ESC",IDC_STATIC,6,106,26,8
+    CTEXT           "ENTER",IDC_STATIC,7,6,26,8
+END
+
+IDD_NAG DIALOG  250, 40, 134, 49
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Nag³ówek wydruku"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,24,31,36,13
+    PUSHBUTTON      "Anuluj",IDCANCEL,73,31,36,13
+    LTEXT           "Nazwa pliku nag³ówka:",IDC_STATIC,6,9,76,8
+    EDITTEXT        IDC_EDIT1,87,9,41,13,ES_AUTOHSCROLL
+END
+
+IDD_STOP DIALOG  250, 40, 134, 49
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Stopka wydruku"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,24,31,36,13
+    PUSHBUTTON      "Anuluj",IDCANCEL,73,31,36,13
+    LTEXT           "Nazwa pliku stopki:",IDC_STATIC,6,9,77,8
+    EDITTEXT        IDC_EDIT1,87,9,41,13,ES_AUTOHSCROLL
+END
+
+IDD_DIALOG1 DIALOG  0, 0, 186, 95
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,129,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,129,24,50,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_DWPL DLGINIT
+BEGIN
+    IDC_TYPW, 0x403, 4, 0
+0x4f4b, 0x004e, 
+    IDC_TYPW, 0x403, 4, 0
+0x4e4b, 0x004f, 
+    IDC_TYPW, 0x403, 4, 0
+0x4b4f, 0x004e, 
+    IDC_TYPW, 0x403, 4, 0
+0x4e4f, 0x004b, 
+    IDC_TYPW, 0x403, 4, 0
+0x4b4e, 0x004f, 
+    IDC_TYPW, 0x403, 4, 0
+0x4f4e, 0x004b, 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_TBIN TOOLBAR  16, 15
+BEGIN
+    BUTTON      ID_FILE_CLOSE
+    BUTTON      ID_FILE_SAVE
+    SEPARATOR
+    BUTTON      ID_NEW_ELEM
+    BUTTON      ID_EDIT_ELEM
+    BUTTON      ID_DEL_ELEM
+    SEPARATOR
+    BUTTON      ID_PREV
+    BUTTON      ID_NEXT
+    SEPARATOR
+    BUTTON      ID_OBL_STANDATE
+    SEPARATOR
+    BUTTON      IDM_POMOC
+    BUTTON      ID_HELP_USING
+END
+
+IDR_TBKALK TOOLBAR  16, 15
+BEGIN
+    BUTTON      ID_FILE_CLOSE
+    BUTTON      ID_FILE_SAVE
+    SEPARATOR
+    BUTTON      ID_FILE_PRINT_PREVIEW
+    BUTTON      ID_FILE_PRINT
+    SEPARATOR
+    BUTTON      ID_OBL_STANDATE
+    BUTTON      IDM_KALK
+    SEPARATOR
+    BUTTON      IDM_POMOC
+    BUTTON      ID_HELP_USING
+END
+
+IDR_TBOUT TOOLBAR  16, 15
+BEGIN
+    BUTTON      ID_FILE_NEW
+    BUTTON      ID_FILE_OPEN
+    SEPARATOR
+    BUTTON      IDM_POMOC
+    BUTTON      ID_HELP_USING
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 1
+        RIGHTMARGIN, 192
+        TOPMARGIN, 1
+        BOTTOMMARGIN, 43
+    END
+
+    IDD_DOKR, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 108
+    END
+
+    IDD_DIALOG1, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 88
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDR_MAINFRAME           "Kalkulacje KM"
+    IDR_RRRTYPE             "Kalkulacja\nBEZ_NAZ\nKm Dokument\nKalkulacja (*.km)\n.km\nKM.Document\nKM Document"
+    IDR_LIST                "Dane dla obliczeñ\nBEZ_NAZ\n\nKalkulacje (*.km)\n.km\nKM.Document\nKM Document"
+    IDR_SKARB               "Kalkulacja\nBEZ_NAZ\nKm Dokument\nKalkulacja (*.sk)\n.sk\nSK.Document\nSK Document"
+    IDR_SKLIST              "Dane dla obliczeñ\nBEZ_NAZ\n\nKalkulacje (*.sk)\n.sk\nKM.Document\nKM Document"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_TOO_MANY_ROWS       "UWAGA: Brak wolnych wierszy."
+    IDS_INVALID_DOLLAR_CENT "WprowadŸ kwotê w formacie xxxx,xx."
+    IDS_INVALID_STOPA       "WprowadŸ stopê w formacie xxx,xxxxx."
+    IDS_CANNOT_ODS          "Nale¿noœæ nie mo¿e mieæ odsetek!"
+    IDS_INVALID_DATE        "WprowadŸ datê w formacie DD-MM-RR."
+    IDS_WCZ_DATA            "Pocz¹tek okresu odsetkowego nie mo¿e byæ wczeœniejszy od daty powstania nale¿noœci!"
+    IDS_ZLY_TYP             "Z³y typ nale¿noœci"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_NTYP0               "Nale¿noœæ g³ówna"
+    IDS_NTYP1               "Koszty procesu"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_NTYP2               "Koszt klauzuli"
+    IDS_NTYP3               "Adwokat w procesie"
+    IDS_NTYP4               "Adwokat w egzekucji"
+    IDS_NTYP5               "Koszty egzekucji"
+    IDS_NTYP6               "Odsetki zaleg³e"
+    IDS_NTYP7               "Odsetki od nale¿noœci"
+    IDS_NTYP8               "Grzywna"
+    IDS_NTYP9               "Kara pieniê¿na"
+    IDS_NTYP10              "Koszty inne"
+    IDS_NTYP11              "Kwota zabezpieczenia"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_WTYP0               "KON"
+    IDS_WTYP1               "KNO"
+    IDS_WTYP2               "OKN"
+    IDS_WTYP3               "ONK"
+    IDS_WTYP4               "NKO"
+    IDS_WTYP5               "NOK"
+    IDS_OTYP0               "UST"
+    IDS_OTYP1               "UMN"
+    IDS_OTYP2               "SKR"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_OWTYP0              "Miesiêczne"
+    IDS_OWTYP1              "Roczne"
+    IDS_OWTYP2              "Dzienne"
+    IDS_OOTYP0              "Ustawowe"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_OOTYP1              "Umowne"
+    IDS_OOTYP2              "Skarbowe"
+    IDS_P_DEL_OKROD         "Czy na pewno chcesz usun¹æ okres Nr %u?"
+    IDS_P_DEL_NAL           "Czy na pewno chcesz usun¹æ nale¿noœæ Nr %u?"
+    IDS_P_DEL_WPL           "Czy na pewno chcesz usun¹æ wp³atê Nr %u?"
+    IDS_PROMPT_SAVE         "Zachowaæ kalkulacjê %s?"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_NAL                  "Wprowadzanie lub edycja nale¿noœci"
+    ID_WPL                  "Wprowadzanie lub edycja wp³aty"
+    ID_OKROD                "Wprowadzanie lub edycja okresu odsetkowego"
+    ID_NEW_ELEM             "Wprowadzanie nowego zapisu\nNowy zapis"
+    ID_EDIT_ELEM            "Edycja zapisu\nEdycja zapisu"
+    ID_DEL_ELEM             "Usuniêcie zapisu\nUsuniêcie "
+END
+
+STRINGTABLE 
+BEGIN
+    ID_NEXT                 "Nastêpny zapis\nNastêpny"
+    ID_PREV                 "Poprzedni zapis\nPoprzedni"
+    IDM_KALK                "Powrót\nPowrót"
+    ID_OBL_STANDATE         "Obliczenia\nObliczenia"
+    IDM_POMOC               "Pomoc\nO Kalkulacjach KM"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_INDICATOR_REC0       "                         "
+    ID_ODSETKI              "Tabela odsetek ustawowych"
+    IDS_NUMER               "Nr"
+    IDS_DATA                "Data"
+    IDS_KWOTA               "Kwota"
+    IDS_NALEZNOSCI          "N A L E ¯ N O Œ C I"
+    IDS_TYP_NALEZ           "Typ nale¿noœci"
+    IDS_WPLATY              "W P £ A T Y"
+    IDS_SPOSOB              "Sposób"
+    IDS_OKRODS              "O K R E S Y   O D S E T K O W E"
+    IDS_DATAPOCZ            "Od dnia"
+    IDS_DATAKONC            "Do dnia"
+    IDS_STOPA_              "Stopa (%)"
+    IDS_ODSETKI             "Odsetki"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_FILE_NEW             "Za³o¿enie nowej kalkulacji\n Nowa"
+    ID_FILE_OPEN            "Otworzenie kalkulacji\nOtwórz"
+    ID_FILE_CLOSE           "Zamkniêcie kalkulacji\nZamkniêcie"
+    ID_FILE_SAVE            "Zachowanie kalkulacji\nZachowaj"
+    ID_FILE_SAVE_AS         "Zachowanie kalkulacji pod now¹ nazw¹"
+    ID_FILE_PAGE_SETUP      "Zmiana sposobu wydruku"
+    ID_FILE_PRINT_SETUP     "Ustawienie drukarki i sposobu wydruku"
+    ID_FILE_PRINT           "Wydruk kalkulacji\nDrukuj"
+    ID_FILE_PRINT_PREVIEW   "Edycja wydruku kalkulacji\nEdycja"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_APP_ABOUT            "Pomoc"
+    ID_APP_EXIT             "Wyjœcie z zapisem"
+    ID_HELP_INDEX           "Spis tematów pomocy"
+    ID_HELP_USING           "Wyœwietlenie opisu korzystania z podpowiedzi\nPomoc"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_FILE_MRU_FILE1       "Otworzenie dokumentu"
+    ID_FILE_MRU_FILE2       "Otworzenie dokumentu"
+    ID_FILE_MRU_FILE3       "Otworzenie dokumentu"
+    ID_FILE_MRU_FILE4       "Otworzenie dokumentu"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_NEXT_PANE            "Switch to the next window pane"
+    ID_PREV_PANE            "Switch back to the previous window pane"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_WINDOW_NEW           "Open another window for the active document"
+    ID_WINDOW_ARRANGE       "Przenieœ ikony na dó³ okna"
+    ID_WINDOW_CASCADE       "Arrange windows so they overlap"
+    ID_WINDOW_TILE_HORZ     "Arrange windows as non-overlapping tiles"
+    ID_WINDOW_TILE_VERT     "Arrange windows as non-overlapping tiles"
+    ID_WINDOW_SPLIT         "Split the active window into panes"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_EDIT_CLEAR           "Erase the selection"
+    ID_EDIT_CLEAR_ALL       "Erase everything"
+    ID_EDIT_COPY            "Copy the selection and put it on the Clipboard"
+    ID_EDIT_CUT             "Cut the selection and put it on the Clipboard"
+    ID_EDIT_FIND            "Find the specified text"
+    ID_EDIT_PASTE           "Insert Clipboard contents"
+    ID_EDIT_REPEAT          "Repeat the last action"
+    ID_EDIT_REPLACE         "Replace specific text with different text"
+    ID_EDIT_SELECT_ALL      "Select the entire document"
+    ID_EDIT_UNDO            "Undo the last action"
+    ID_EDIT_REDO            "Redo the previously undone action"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_VIEW_TOOLBAR         "Poka¿ pasek narzêdzi"
+    ID_VIEW_STATUS_BAR      "Poka¿ pasek stanu"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "Kalkulacje KM"
+    AFX_IDS_IDLEMESSAGE     "Gotowe"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_SCSIZE          "Zmiana rozmiaru okna"
+    AFX_IDS_SCMOVE          "Przesuniêcie okna"
+    AFX_IDS_SCMINIMIZE      "Zmimimalizuj"
+    AFX_IDS_SCMAXIMIZE      "Maksymalizuj"
+    AFX_IDS_SCNEXTWINDOW    "Nastêpne okno"
+    AFX_IDS_SCPREVWINDOW    "Poprzednie okno"
+    AFX_IDS_SCCLOSE         "Wyjœcie z zapisem"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_SCRESTORE       "Przywróæ"
+    AFX_IDS_MDICHILD        "Przejœcie do nowego okna"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_ODS_SKR_YES         "+"
+    IDS_ODS_SKR_NO          "-"
+    IDS_TST                 ":      Dnia      :  Nale¿noœci :   Odsetki   :    Koszty   :    Razem    :"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_INVALID_START       "Brak edytora lub jest zajêty innym zadaniem!"
+    IDS_KSP                 "Ks.P."
+END
+
+STRINGTABLE 
+BEGIN
+    IDM_DO_WYDR             "Wydruk tabeli stanów"
+    IDM_NAG                 "Wprowadzanie nazwy pliku nag³ówka"
+    IDM_STOP                "Wprowadzanie nazwy pliku stopki"
+    IDM_DO_WYDR_R           "Rozliczenie nadp³at w tabeli stanów"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_KONWERT              "Konwersja dat"
+END
+
+#endif    // Polish resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Russian resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_RUS)
+#ifdef _WIN32
+LANGUAGE LANG_RUSSIAN, SUBLANG_DEFAULT
+#pragma code_page(1251)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#include ""res\\kkm.rc2""  // non-App Studio edited resources\r\n"
+    "\r\n"
+    "#include ""afxres.rc""  \t// Standard components\r\n"
+    "#include ""afxprint.rc""\t// printing/print preview resources\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // Russian resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#include "res\kkm.rc2"  // non-App Studio edited resources
+
+#include "afxres.rc"  	// Standard components
+#include "afxprint.rc"	// printing/print preview resources
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

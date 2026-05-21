@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EB290EDD-9BC6-4B34-9F8A-AF7287EFF67A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EpuProxy</RootNamespace>
+    <AssemblyName>EpuProxy</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="NReco.PdfGenerator">
+      <HintPath>..\..\lib\NReco.PdfGenerator.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\ZadanieTimer\ZadanieTimerMain\Utils.cs">
+      <Link>Utils.cs</Link>
+    </Compile>
+    <Compile Include="EpuProxyClient.cs" />
+    <Compile Include="Models.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\EpuSrv\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EpuSrv\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EpuSrv\epuLib.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EpuSrv\epuLib.ZawiadomienieDluznikaOWszczeciuEgzekucji.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EpuSrv\EpuProxy.EpuSrv.DoreczeniaOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EpuSrv\EpuProxy.EpuSrv.DoreczeniaPDF.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EpuSrv\EpuProxy.EpuSrv.GetDataOdnotowaniaOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EpuSrv\EpuProxy.EpuSrv.HistoriaSprawyOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EpuSrv\EpuProxy.EpuSrv.ListaAdnotacjiKomorniczychOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EpuSrv\EpuProxy.EpuSrv.ListaKancelariiKomoniczychOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EpuSrv\EpuProxy.EpuSrv.ListaSprawKomornikaOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EpuSrv\EpuProxy.EpuSrv.ListaSprawZNakazemOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EpuSrv\EpuProxy.EpuSrv.ListaTresciNakazowPDFOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EpuSrv\EpuProxy.EpuSrv.ListaTresciNakazowPDFOutputDataVer2.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EpuSrv\EpuProxy.EpuSrv.ListaTresciNakazowPDFOutputDataVer3.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EpuSrv\EpuProxy.EpuSrv.ListaWnioskowEgzekucyjnychPDFOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EpuSrv\EpuProxy.EpuSrv.ListaWnioskowEgzekucyjnychPDFOutputDataVer2.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EpuSrv\EpuProxy.EpuSrv.MojeDoreczeniaOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EpuSrv\EpuProxy.EpuSrv.MojeDoreczeniaVer2OutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EpuSrv\EpuProxy.EpuSrv.MojeNakazyOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EpuSrv\EpuProxy.EpuSrv.MojeOrzeczeniaOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EpuSrv\EpuProxy.EpuSrv.MojeOrzeczeniaVer2OutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EpuSrv\EpuProxy.EpuSrv.MojePismaOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EpuSrv\EpuProxy.EpuSrv.MojeSprawyOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EpuSrv\EpuProxy.EpuSrv.OdpowiedziDoZarzadzeniaOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EpuSrv\EpuProxy.EpuSrv.OznaczenieDoreczenJakoPobraneOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EpuSrv\EpuProxy.EpuSrv.OznaczSprawyJakoPobraneOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EpuSrv\EpuProxy.EpuSrv.PismaOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EpuSrv\EpuProxy.EpuSrv.PismaValidationInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EpuSrv\EpuProxy.EpuSrv.PobierzIdKancelariiOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EpuSrv\EpuProxy.EpuSrv.SprawdzStatusCzynnosciOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EpuSrv\EpuProxy.EpuSrv.SprawyDoPodjeciaOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EpuSrv\EpuProxy.EpuSrv.StatusDoreczeniaOutputInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EpuSrv\EpuProxy.EpuSrv.ZlozCzynnosciEgzekucyjneOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EpuSrv\EpuProxy.EpuSrv.ZlozDokumentyOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EpuSrv\EpuProxy.EpuSrv.ZlozPozwyOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EpuSrv\EpuProxy.EpuSrv.ZlozSkargiOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EpuSrv\EpuProxy.EpuSrv.ZlozSprzeciwyOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EpuSrv\EpuProxy.EpuSrv.ZlozWnioskiEgzekucyjneOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EpuSrv\EpuProxy.EpuSrv.ZlozZawiadomieniaEgzekucyjneOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EpuSrv\EpuProxy.EpuSrv.ZlozZazaleniaOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EpuSrv\EpuWS.DataTypes1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EpuSrv\service1.wsdl" />
+    <None Include="Service References\EpuSrv\service2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EpuSrv\service21.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\EpuSrv\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\EpuSrv\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\EpuSrv\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\EpuSrv\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="lib\itextsharp.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

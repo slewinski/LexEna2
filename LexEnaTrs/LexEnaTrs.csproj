@@ -1,0 +1,1014 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1BD69374-9B41-436D-B0BD-4B2D30818C3A}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LexEnaTrs</RootNamespace>
+    <AssemblyName>LexEnaTrs</AssemblyName>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>en-US</SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>LexEnaTrs.xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>LexEnaTrs.App</SilverlightAppEntry>
+    <TestPageFileName>TestPage.html</TestPageFileName>
+    <CreateTestPage>true</CreateTestPage>
+    <ValidateXaml>true</ValidateXaml>
+    <EnableOutOfBrowser>false</EnableOutOfBrowser>
+    <OutOfBrowserSettingsFile>Properties\OutOfBrowserSettings.xml</OutOfBrowserSettingsFile>
+    <UsePlatformExtensions>true</UsePlatformExtensions>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <LinkedServerProject>..\LexEnaTrs.Web\LexEnaTrs.Web.csproj</LinkedServerProject>
+    <Utf8Output>true</Utf8Output>
+    <ExpressionBlendVersion>4.0.20901.0</ExpressionBlendVersion>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>TRACE;DEBUG;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows" />
+    <Reference Include="mscorlib" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Controls.Data, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Data.DataForm.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libs\System.Windows.Controls.Data.DataForm.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Data.Input" />
+    <Reference Include="System.ServiceModel.DomainServices.Client" />
+    <Reference Include="System.ServiceModel.DomainServices.Client.Web" />
+    <Reference Include="System.ServiceModel.Web.Extensions" />
+    <Reference Include="System.Windows.Controls.DomainServices, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="System.Windows.Data, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Xna" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Windows.Browser" />
+    <Reference Include="System.Windows.Controls" />
+    <Reference Include="System.Windows.Controls.Navigation" />
+    <Reference Include="System.Xml.Linq, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Serialization, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.ReportViewer.Silverlight">
+      <HintPath>C:\Program Files (x86)\Telerik\Reporting R3 2016\Bin\Telerik.ReportViewer.Silverlight.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls, Version=2016.3.914.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Telerik\UI for Silverlight R3 2016\Binaries.NoXaml\Silverlight\Telerik.Windows.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Data, Version=2016.3.914.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Telerik\UI for Silverlight R3 2016\Binaries\Silverlight\Telerik.Windows.Controls.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Diagrams, Version=2016.3.1024.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Controls.Diagrams.Extensions, Version=2016.3.1024.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Controls.Docking, Version=2016.3.1024.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Controls.DomainServices, Version=2016.3.914.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Telerik\UI for Silverlight R3 2016\Binaries.NoXaml\Silverlight\Telerik.Windows.Controls.DomainServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Expressions, Version=2016.3.914.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Telerik\UI for Silverlight R3 2016\Binaries.NoXaml\Silverlight\Telerik.Windows.Controls.Expressions.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.FixedDocumentViewers, Version=2016.3.1024.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Telerik\UI for Silverlight R3 2016\Binaries.NoXaml\Silverlight\Telerik.Windows.Controls.FixedDocumentViewers.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.FixedDocumentViewersUI, Version=2016.3.1024.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Telerik\UI for Silverlight R3 2016\Binaries.NoXaml\Silverlight\Telerik.Windows.Controls.FixedDocumentViewersUI.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.GridView, Version=2016.3.914.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Telerik\UI for Silverlight R3 2016\Binaries.NoXaml\Silverlight\Telerik.Windows.Controls.GridView.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Input, Version=2016.3.914.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Telerik\UI for Silverlight R3 2016\Binaries.NoXaml\Silverlight\Telerik.Windows.Controls.Input.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Navigation, Version=2016.3.914.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Telerik\UI for Silverlight R3 2016\Binaries.NoXaml\Silverlight\Telerik.Windows.Controls.Navigation.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.RibbonView, Version=2016.3.1024.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Data, Version=2016.3.914.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Telerik\UI for Silverlight R3 2016\Binaries.NoXaml\Silverlight\Telerik.Windows.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Diagrams.Core, Version=2016.3.1024.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Documents, Version=2016.3.914.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Telerik\UI for Silverlight R3 2016\Binaries.NoXaml\Silverlight\Telerik.Windows.Documents.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Core, Version=2016.3.913.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Telerik\UI for Silverlight R3 2016\Binaries.NoXaml\Silverlight\Telerik.Windows.Documents.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Fixed, Version=2016.3.1021.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Telerik\UI for Silverlight R3 2016\Binaries.NoXaml\Silverlight\Telerik.Windows.Documents.Fixed.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Themes.Windows7, Version=2016.3.914.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Telerik\UI for Silverlight R3 2016\Binaries.NoXaml\Silverlight\Telerik.Windows.Themes.Windows7.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Zip, Version=2016.3.913.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Telerik\UI for Silverlight R3 2016\Binaries.NoXaml\Silverlight\Telerik.Windows.Zip.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\LexEnaTrs.Web\Models\BillingImportClasses.cs">
+      <Link>BillingImportClasses.cs</Link>
+    </Compile>
+    <Compile Include="..\LexEnaTrs.Web\Models\CCNB.cs">
+      <Link>Models\CCNB.cs</Link>
+    </Compile>
+    <Compile Include="..\LexEnaTrs.Web\Models\CountDokOdebr.cs">
+      <Link>Models\CountDokOdebr.cs</Link>
+    </Compile>
+    <Compile Include="..\LexEnaTrs.Web\Models\EPUParamModel.cs">
+      <Link>Models\EPUParamModel.cs</Link>
+    </Compile>
+    <Compile Include="..\LexEnaTrs.Web\Resources\RegistrationDataResources.Designer.cs">
+      <Link>Web\Resources\RegistrationDataResources.Designer.cs</Link>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RegistrationDataResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="..\LexEnaTrs.Web\Resources\ValidationErrorResources.Designer.cs">
+      <Link>Web\Resources\ValidationErrorResources.Designer.cs</Link>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ValidationErrorResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Assets\Resources\ApplicationStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ApplicationStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Assets\Resources\ErrorResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ErrorResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DataFormPasswordBoxField.cs" />
+    <Compile Include="GetDateWindow.xaml.cs">
+      <DependentUpon>GetDateWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Helpers\DaysOffCalculator.cs" />
+    <Compile Include="Models\Converters.cs" />
+    <Compile Include="Models\CountPozewData.cs" />
+    <Compile Include="Models\DesignerCategoryAttribute.cs" />
+    <Compile Include="Models\DokumentEPU.cs" />
+    <Compile Include="Models\EPUCommonClasses.cs" />
+    <Compile Include="Models\EPUDictionaries.cs" />
+    <Compile Include="Models\LoginInfo.cs" />
+    <Compile Include="Models\MessagesWindows.cs" />
+    <Compile Include="Models\ModelExtensions.cs" />
+    <Compile Include="Models\NakazEPU.cs" />
+    <Compile Include="Models\OrzeczenieEPU.cs" />
+    <Compile Include="Models\PasswordService.cs" />
+    <Compile Include="Models\PozewContext.cs" />
+    <Compile Include="Models\Pozwy.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\SearchFilter.cs" />
+    <Compile Include="Models\SerializableAttribute.cs" />
+    <Compile Include="Models\Sprawa2Pozew.cs" />
+    <Compile Include="Models\TreeViewMenu.cs" />
+    <Compile Include="Models\TypyDanychEPU.cs" />
+    <Compile Include="Models\UserExtensions.cs" />
+    <Compile Include="Models\RegistrationDataExtensions.cs" />
+    <Compile Include="Controls\BusyIndicator.cs" />
+    <Compile Include="Controls\VisualStates.cs" />
+    <Compile Include="Controls\CustomDataForm.cs" />
+    <Compile Include="Helpers\DataBindingExtensions.cs" />
+    <Compile Include="Helpers\DataFieldExtensions.cs" />
+    <Compile Include="Helpers\NotOperatorValueConverter.cs" />
+    <Compile Include="Helpers\StringFormatValueConverter.cs" />
+    <Compile Include="Helpers\TargetNullValueConverter.cs" />
+    <Compile Include="Helpers\ResourceWrapper.cs" />
+    <Compile Include="Assets\Resources\SecurityQuestions.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SecurityQuestions.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Validators.cs" />
+    <Compile Include="Models\WniosekEPU.cs" />
+    <Compile Include="Models\Zadania.cs" />
+    <Compile Include="System\Diagnostics\ProcessStartInfo.cs" />
+    <Compile Include="TelerikLocalize\PdfViewerResources.Designer.cs" />
+    <Compile Include="Views\AddOutDocumentWindow.xaml.cs">
+      <DependentUpon>AddOutDocumentWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddSadSprawa.xaml.cs">
+      <DependentUpon>AddSadSprawa.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ChangePassword.xaml.cs">
+      <DependentUpon>ChangePassword.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DispHtmlContent.xaml.cs">
+      <DependentUpon>DispHtmlContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GetDateRangeWindow.xaml.cs">
+      <DependentUpon>GetDateRangeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GetReturnReasonsWindow.xaml.cs">
+      <DependentUpon>GetReturnReasonsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LargeReportWindow.xaml.cs">
+      <DependentUpon>LargeReportWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListaSprawGridDekretacja.xaml.cs">
+      <DependentUpon>ListaSprawGridDekretacja.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tools\ToolsUmorzeniaKoszty.xaml.cs">
+      <DependentUpon>ToolsUmorzeniaKoszty.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tools\ToolsImportZal.xaml.cs">
+      <DependentUpon>ToolsImportZal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tools\ToolsNaleznosciSpraw.xaml.cs">
+      <DependentUpon>ToolsNaleznosciSpraw.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UmorzeniaZgony.xaml.cs">
+      <DependentUpon>UmorzeniaZgony.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MergeCases\MergeCases.xaml.cs">
+      <DependentUpon>MergeCases.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ImportBilling\ImportBilling.xaml.cs">
+      <DependentUpon>ImportBilling.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NewPasswordWindow.xaml.cs">
+      <DependentUpon>NewPasswordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GetDluData.xaml.cs">
+      <DependentUpon>GetDluData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GetMoneyWindow.xaml.cs">
+      <DependentUpon>GetMoneyWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HtmlViewer.xaml.cs">
+      <DependentUpon>HtmlViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\KrdDluznicy.xaml.cs">
+      <DependentUpon>KrdDluznicy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\KrdOperacje.xaml.cs">
+      <DependentUpon>KrdOperacje.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\KrdNoweOperacje.xaml.cs">
+      <DependentUpon>KrdNoweOperacje.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListaImportTradGrid.xaml.cs">
+      <DependentUpon>ListaImportTradGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListaImportGrid.xaml.cs">
+      <DependentUpon>ListaImportGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BigKrdKonfig.xaml.cs">
+      <DependentUpon>BigKrdKonfig.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OdsetkiUstawowe.xaml.cs">
+      <DependentUpon>OdsetkiUstawowe.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PdfViewer.xaml.cs">
+      <DependentUpon>PdfViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SetStatusSprawy.xaml.cs">
+      <DependentUpon>SetStatusSprawy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SetStatusSprDok.xaml.cs">
+      <DependentUpon>SetStatusSprDok.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ResetPassword.xaml.cs">
+      <DependentUpon>ResetPassword.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ShowXML.xaml.cs">
+      <DependentUpon>ShowXML.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MapCzynView.xaml.cs">
+      <DependentUpon>MapCzynView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SlownikSposEgz.xaml.cs">
+      <DependentUpon>SlownikSposEgz.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListaKomornikow.xaml.cs">
+      <DependentUpon>ListaKomornikow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GetDatetimeWindow.xaml.cs">
+      <DependentUpon>GetDatetimeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListaTerminow.xaml.cs">
+      <DependentUpon>ListaTerminow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DokumentEPUView.xaml.cs">
+      <DependentUpon>DokumentEPUView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListaDokOdebrGrid.xaml.cs">
+      <DependentUpon>ListaDokOdebrGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PozewView.xaml.cs">
+      <DependentUpon>PozewView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\ReportWindow.xaml.cs">
+      <DependentUpon>ReportWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SadySprView.xaml.cs">
+      <DependentUpon>SadySprView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SadySprawyWindow.xaml.cs">
+      <DependentUpon>SadySprawyWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TestPdf.xaml.cs">
+      <DependentUpon>TestPdf.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tools\ToolsSaldoEgz.xaml.cs">
+      <DependentUpon>ToolsSaldoEgz.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tools\ToolsSkutKanc.xaml.cs">
+      <DependentUpon>ToolsSkutKanc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tools\ToolsExtractPdf.xaml.cs">
+      <DependentUpon>ToolsExtractPdf.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tools\Tools1.xaml.cs">
+      <DependentUpon>Tools1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UpdateNalWindow.xaml.cs">
+      <DependentUpon>UpdateNalWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UzD\UzDKonfig.xaml.cs">
+      <DependentUpon>UzDKonfig.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UzD\UzdWplaty.xaml.cs">
+      <DependentUpon>UzdWplaty.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UzD\UzDNoweOperacje.xaml.cs">
+      <DependentUpon>UzDNoweOperacje.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WienaReports\WienaReportView.xaml.cs">
+      <DependentUpon>WienaReportView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WyborDekretuWindow.xaml.cs">
+      <DependentUpon>WyborDekretuWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WyborDekretuWindowMasowo.xaml.cs">
+      <DependentUpon>WyborDekretuWindowMasowo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ZadaniaView.xaml.cs">
+      <DependentUpon>ZadaniaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DaneDoEksportuReady.xaml.cs">
+      <DependentUpon>DaneDoEksportuReady.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReferentWindow.xaml.cs">
+      <DependentUpon>ReferentWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SlownikiView.xaml.cs">
+      <DependentUpon>SlownikiView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UsersKonfigView.xaml.cs">
+      <DependentUpon>UsersKonfigView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\JednostkiKonfigView.xaml.cs">
+      <DependentUpon>JednostkiKonfigView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\KontaEPUView.xaml.cs">
+      <DependentUpon>KontaEPUView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListaSprawById.xaml.cs">
+      <DependentUpon>ListaSprawById.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListaPaczek.xaml.cs">
+      <DependentUpon>ListaPaczek.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListaDokWysGrid.xaml.cs">
+      <DependentUpon>ListaDokWysGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PozewViewWindow.xaml.cs">
+      <DependentUpon>PozewViewWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SearchView.xaml.cs">
+      <DependentUpon>SearchView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SelTypDokWindow.xaml.cs">
+      <DependentUpon>SelTypDokWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WyborDekretuReferentWindow.xaml.cs">
+      <DependentUpon>WyborDekretuReferentWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListaSprawGrid.xaml.cs">
+      <DependentUpon>ListaSprawGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DateTimeColumnPicker.xaml.cs">
+      <DependentUpon>DateTimeColumnPicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ErrorWindow.xaml.cs">
+      <DependentUpon>ErrorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\About.xaml.cs">
+      <DependentUpon>About.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin.xaml.cs">
+      <DependentUpon>Admin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\JednostkiWindykView.xaml.cs">
+      <DependentUpon>JednostkiWindykView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\JednostkiWindykWindow.xaml.cs">
+      <DependentUpon>JednostkiWindykWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Login\LoginStatus.xaml.cs">
+      <DependentUpon>LoginStatus.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Login\LoginForm.xaml.cs">
+      <DependentUpon>LoginForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Login\LoginRegistrationWindow.xaml.cs">
+      <DependentUpon>LoginRegistrationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Login\RegistrationForm.xaml.cs">
+      <DependentUpon>RegistrationForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SprawaView.xaml.cs">
+      <DependentUpon>SprawaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SprawaWindow.xaml.cs">
+      <DependentUpon>SprawaWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StatusSprawyWindow.xaml.cs">
+      <DependentUpon>StatusSprawyWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StatusyView.xaml.cs">
+      <DependentUpon>StatusyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WyborKontaJednostki.xaml.cs">
+      <DependentUpon>WyborKontaJednostki.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WyborPaczkiWindow.xaml.cs">
+      <DependentUpon>WyborPaczkiWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WyborStatusuPaczki.xaml.cs">
+      <DependentUpon>WyborStatusuPaczki.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="Assets\Styles.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Controls\BusyIndicator.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GetDateWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Properties\DesignTimeResources.xaml" Condition="'$(DesignTime)'=='true' OR ('$(SolutionPath)'!='' AND Exists('$(SolutionPath)') AND '$(BuildingInsideVisualStudio)'!='true' AND '$(BuildingInsideExpressionBlend)'!='true')">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <ContainsDesignTimeResources>true</ContainsDesignTimeResources>
+    </Page>
+    <Page Include="Themes\System.Windows.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Telerik.ReportViewer.Silverlight.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Telerik.Windows.Controls.Data.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Telerik.Windows.Controls.Expressions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Telerik.Windows.Controls.GridView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Telerik.Windows.Controls.Input.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Telerik.Windows.Controls.Navigation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Telerik.Windows.Controls.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Telerik.Windows.Documents.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddOutDocumentWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddSadSprawa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ChangePassword.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DispHtmlContent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GetDateRangeWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\GetReturnReasonsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LargeReportWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ListaSprawGridDekretacja.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Tools\ToolsUmorzeniaKoszty.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Tools\ToolsImportZal.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Tools\ToolsNaleznosciSpraw.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UmorzeniaZgony.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MergeCases\MergeCases.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ImportBilling\ImportBilling.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\NewPasswordWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\GetDluData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\GetMoneyWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\HtmlViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\KrdDluznicy.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\KrdOperacje.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\KrdNoweOperacje.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ListaImportTradGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ListaImportGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\BigKrdKonfig.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\OdsetkiUstawowe.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PdfViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SetStatusSprawy.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SetStatusSprDok.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ResetPassword.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ShowXML.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MapCzynView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SlownikSposEgz.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ListaKomornikow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\GetDatetimeWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ListaTerminow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DokumentEPUView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ListaDokOdebrGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PozewView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ReportWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SadySprView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SadySprawyWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\TestPdf.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Tools\ToolsSaldoEgz.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Tools\ToolsSkutKanc.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Tools\ToolsExtractPdf.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Tools\Tools1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UpdateNalWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UzD\UzDKonfig.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UzD\UzdWplaty.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UzD\UzDNoweOperacje.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\WienaReports\WienaReportView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\WyborDekretuWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WyborDekretuWindowMasowo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ZadaniaView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DaneDoEksportuReady.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ReferentWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SlownikiView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UsersKonfigView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\JednostkiKonfigView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\KontaEPUView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ListaSprawById.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ListaPaczek.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ListaDokWysGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PozewViewWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SearchView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SelTypDokWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WyborDekretuReferentWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ListaSprawGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DateTimeColumnPicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ErrorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+    <Page Include="Views\About.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+    <Page Include="Views\Admin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+    <Page Include="MainPage.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\JednostkiWindykView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\JednostkiWindykWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Login\LoginStatus.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Login\LoginForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+    <Page Include="Views\Login\LoginRegistrationWindow.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Login\RegistrationForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+    <Page Include="Views\MainView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SprawaView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SprawaWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StatusSprawyWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StatusyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WyborKontaJednostki.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WyborPaczkiWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WyborStatusuPaczki.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\AppManifest.xml" />
+    <Content Include="ClientBin\LexEnaTrs.xap" />
+    <Content Include="ServiceReferences.ClientConfig" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Libs\System.Windows.Controls.Data.DataForm.Toolkit.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\LexEnaTrs.Web\Resources\RegistrationDataResources.resx">
+      <Link>Web\Resources\RegistrationDataResources.resx</Link>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RegistrationDataResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\LexEnaTrs.Web\Resources\ValidationErrorResources.resx">
+      <Link>Web\Resources\ValidationErrorResources.resx</Link>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ValidationErrorResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\Resources\ApplicationStrings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ApplicationStrings.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>LexEnaTrs</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\Resources\ErrorResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ErrorResources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>LexEnaTrs</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\Resources\SecurityQuestions.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SecurityQuestions.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>LexEnaTrs</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TelerikLocalize\PdfViewerResources.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\DataSources\LexEnaTrs.Web.EpuContext.datasource" />
+    <None Include="Properties\DataSources\LexEnaTrs.Web.LexEnaMeritumDomainContext.datasource" />
+    <None Include="Properties\DataSources\LexEnaTrs.Web.UserRegistrationContext.datasource" />
+    <None Include="Properties\OutOfBrowserSettings.xml">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Localization\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

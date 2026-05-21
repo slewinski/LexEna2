@@ -1,0 +1,18 @@
+﻿<controls:ChildWindow
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+           xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+           xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="LexEnaTrs.Views.GetDatetimeWindow"
+           Width="318" Height="108" 
+           Title="Podaj datę i godzinę" Loaded="ChildWindow_Loaded">
+    <Grid x:Name="LayoutRoot" Margin="2" Height="74" VerticalAlignment="Top" Width="302" HorizontalAlignment="Left">
+        <Grid.RowDefinitions>
+            
+            <RowDefinition Height="181" />
+        </Grid.RowDefinitions>
+<telerik:RadDateTimePicker HorizontalAlignment="Center"  x:Name="DataDokumentu" Culture="pl-PL" Margin="68,12,65,0"   DateTimeWatermarkContent="Wprowdź datę i czas" Height="23" VerticalAlignment="Top" ErrorTooltipContent="Błąd formatu" Width="169" />
+        <Button x:Name="CancelButton" Content="Anuluj" Click="CancelButton_Click" Width="75" Height="23" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="215,46,0,0" RenderTransformOrigin="0.493,1.043" />
+        <Button x:Name="OKButton" Content="OK" Click="OKButton_Click" Width="75" Height="23" HorizontalAlignment="Left" Margin="136,46,0,0" VerticalAlignment="Top" />
+    </Grid>
+</controls:ChildWindow>

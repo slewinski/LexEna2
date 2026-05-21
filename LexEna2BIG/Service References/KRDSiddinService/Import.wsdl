@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://Siddin.ServiceContracts/2006/09" xmlns:s1="http://Siddin.DataTypes/2006/09" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s2="http://microsoft.com/wsdl/types/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://Siddin.ServiceContracts/2006/09" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://Siddin.ServiceContracts/2006/09">
+      <s:import namespace="http://Siddin.DataTypes/2006/09" />
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="LoginRequest" type="tns:LoginRequest" />
+      <s:complexType name="LoginRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="LoginResult" type="s:string" />
+      <s:element name="LoginExRequest" type="tns:LoginExRequest" />
+      <s:complexType name="LoginExRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:LoginRequest" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="LoginResponse" type="tns:LoginResponse" />
+      <s:complexType name="LoginResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Ticket" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FullName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MustChangePassword" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PasswordExpireDaysCount" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="LogoutRequest" type="tns:LogoutRequest" />
+      <s:complexType name="LogoutRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:SignedRequest" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="SignedRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Ticket" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpladChunkBagRequest" type="tns:UpladChunkRequest" />
+      <s:complexType name="UpladChunkRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:SignedRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ChunkBag" type="s1:ChunkBag" />
+              <s:element minOccurs="0" maxOccurs="1" name="Data" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="CloseChunkRequest" type="tns:CloseChunkBagRequest" />
+      <s:complexType name="CloseChunkBagRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:SignedRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ChunkBag" type="s1:ChunkBag" />
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="GetDifference" type="s:boolean" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="CloseChunkBagResult" type="s2:guid" />
+      <s:element name="CloseChunkRequestEx" type="tns:CloseChunkBagRequestEx" />
+      <s:complexType name="CloseChunkBagRequestEx">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:SignedRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ChunkBagEx" type="s1:ChunkBagEx" />
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="GetDifference" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="ExecuteDifference" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="Parameters" type="tns:ArrayOfParameterType" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfParameterType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Parameter" type="tns:ParameterType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ParameterType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Key" type="tns:KeyEnum" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="KeyEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="CsvSeparator" />
+          <s:enumeration value="CsvStartLine" />
+          <s:enumeration value="CsvStartColumn" />
+          <s:enumeration value="CsvAdditionalColumnCount" />
+          <s:enumeration value="CsvGetCasesResponseOperation" />
+          <s:enumeration value="CsvGetCasesResponseOperationExtension" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="CloseChunkBagExResult" type="s2:guid" />
+      <s:element name="GetChunkBagRequest" type="tns:GetChunkBagRequest" />
+      <s:complexType name="GetChunkBagRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:SignedRequest">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="JobId" type="s2:guid" />
+              <s:element minOccurs="1" maxOccurs="1" name="ChunkSize" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetChunkBagRequestEx" type="tns:GetChunkBagRequestEx" />
+      <s:complexType name="GetChunkBagRequestEx">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GetChunkBagRequest" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetRepeatFileRequest" type="tns:GetRepeatFileRequest" />
+      <s:complexType name="GetRepeatFileRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:SignedRequest">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="JobId" type="s2:guid" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetRepeatFileResult" type="s:string" />
+      <s:element name="DownloadChunkRequest" type="tns:DownloadChunkRequest" />
+      <s:complexType name="DownloadChunkRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:SignedRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ChunkBag" type="s1:ChunkBag" />
+              <s:element minOccurs="1" maxOccurs="1" name="Number" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="DownloadChunkResult" type="s:string" />
+      <s:element name="GetJobsRequest" type="tns:GetJobsRequest" />
+      <s:complexType name="GetJobsRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:SignedRequest">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="GetAll" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="LastGet" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="LastNumber" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="JobId" type="s2:guid" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetJobsResult" type="tns:ArrayOfJob" />
+      <s:complexType name="ArrayOfJob">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Job" nillable="true" type="s1:Job" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CancelJobRequest" type="tns:CancelJobRequest" />
+      <s:complexType name="CancelJobRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:SignedRequest">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="JobId" type="s2:guid" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="RemoveChunkBagRequest" type="tns:RemoveChunkBagRequest" />
+      <s:complexType name="RemoveChunkBagRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:SignedRequest">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="ChunkBagId" type="s2:guid" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://Siddin.DataTypes/2006/09">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:complexType name="ChunkBag">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s2:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="Count" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Size" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="NicciVersion" type="s1:NicciVersionEnum" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="NicciVersionEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="NotSpecified" />
+          <s:enumeration value="Version_1_1" />
+          <s:enumeration value="Version_1_2" />
+          <s:enumeration value="Version_2_0" />
+          <s:enumeration value="Version_2_1" />
+          <s:enumeration value="Version_3_0" />
+          <s:enumeration value="Version_3_1" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="UploadChunkResult" type="s1:ChunkBag" />
+      <s:complexType name="ChunkBagEx">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s2:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="Count" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Size" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProtocolVersion" type="s1:ProtocolVersionEnum" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProtocolType" type="s1:ProtocolEnum" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ProtocolVersionEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="NotSpecified" />
+          <s:enumeration value="Version_1_1" />
+          <s:enumeration value="Version_1_2" />
+          <s:enumeration value="Version_2_0" />
+          <s:enumeration value="Version_2_1" />
+          <s:enumeration value="Version_3_0" />
+          <s:enumeration value="Version_1_0" />
+          <s:enumeration value="Version_3_1" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="ProtocolEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="NotSpecified" />
+          <s:enumeration value="Nicci" />
+          <s:enumeration value="Kip" />
+          <s:enumeration value="Neal" />
+          <s:enumeration value="Tovi" />
+          <s:enumeration value="Najari" />
+          <s:enumeration value="Veta" />
+          <s:enumeration value="Pasha" />
+          <s:enumeration value="Violet" />
+          <s:enumeration value="Warren" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetChunkBagResult" type="s1:ChunkBag" />
+      <s:element name="GetChunkBagExResult" type="s1:ChunkBagEx" />
+      <s:complexType name="Job">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="JobNumber" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="QueueNumber" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="QueueDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="StatusCode" type="s1:JobStatusCodeEnum" />
+          <s:element minOccurs="1" maxOccurs="1" name="Progress" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="QueueLogin" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="JobID" type="s2:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="JobStatusCodeEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="CANCELED" />
+          <s:enumeration value="FAILED" />
+          <s:enumeration value="PROCESSED" />
+          <s:enumeration value="QUEUED" />
+          <s:enumeration value="STARTED" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="LoginSoapIn">
+    <wsdl:part name="loginRequest" element="tns:LoginRequest" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapOut">
+    <wsdl:part name="LoginResult" element="tns:LoginResult" />
+  </wsdl:message>
+  <wsdl:message name="LoginExSoapIn">
+    <wsdl:part name="loginRequest" element="tns:LoginExRequest" />
+  </wsdl:message>
+  <wsdl:message name="LoginExSoapOut">
+    <wsdl:part name="LoginExResult" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="LogoutSoapIn">
+    <wsdl:part name="logoutRequest" element="tns:LogoutRequest" />
+  </wsdl:message>
+  <wsdl:message name="LogoutSoapOut" />
+  <wsdl:message name="UploadChunkSoapIn">
+    <wsdl:part name="uploadChunkRequest" element="tns:UpladChunkBagRequest" />
+  </wsdl:message>
+  <wsdl:message name="UploadChunkSoapOut">
+    <wsdl:part name="UploadChunkResult" element="s1:UploadChunkResult" />
+  </wsdl:message>
+  <wsdl:message name="CloseChunkBagSoapIn">
+    <wsdl:part name="closeChunkBagRequest" element="tns:CloseChunkRequest" />
+  </wsdl:message>
+  <wsdl:message name="CloseChunkBagSoapOut">
+    <wsdl:part name="CloseChunkBagResult" element="tns:CloseChunkBagResult" />
+  </wsdl:message>
+  <wsdl:message name="CloseChunkBagExSoapIn">
+    <wsdl:part name="closeChunkBagRequest" element="tns:CloseChunkRequestEx" />
+  </wsdl:message>
+  <wsdl:message name="CloseChunkBagExSoapOut">
+    <wsdl:part name="CloseChunkBagExResult" element="tns:CloseChunkBagExResult" />
+  </wsdl:message>
+  <wsdl:message name="GetChunkBagSoapIn">
+    <wsdl:part name="getChunkBagRequest" element="tns:GetChunkBagRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetChunkBagSoapOut">
+    <wsdl:part name="GetChunkBagResult" element="s1:GetChunkBagResult" />
+  </wsdl:message>
+  <wsdl:message name="GetChunkBagExSoapIn">
+    <wsdl:part name="getChunkBagRequest" element="tns:GetChunkBagRequestEx" />
+  </wsdl:message>
+  <wsdl:message name="GetChunkBagExSoapOut">
+    <wsdl:part name="GetChunkBagExResult" element="s1:GetChunkBagExResult" />
+  </wsdl:message>
+  <wsdl:message name="GetRepeatFileSoapIn">
+    <wsdl:part name="getRepeatFileRequest" element="tns:GetRepeatFileRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetRepeatFileSoapOut">
+    <wsdl:part name="GetRepeatFileResult" element="tns:GetRepeatFileResult" />
+  </wsdl:message>
+  <wsdl:message name="DownloadChunkSoapIn">
+    <wsdl:part name="downloadChunkRequest" element="tns:DownloadChunkRequest" />
+  </wsdl:message>
+  <wsdl:message name="DownloadChunkSoapOut">
+    <wsdl:part name="DownloadChunkResult" element="tns:DownloadChunkResult" />
+  </wsdl:message>
+  <wsdl:message name="GetJobsSoapIn">
+    <wsdl:part name="getJobsRequest" element="tns:GetJobsRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetJobsSoapOut">
+    <wsdl:part name="GetJobsResult" element="tns:GetJobsResult" />
+  </wsdl:message>
+  <wsdl:message name="CancelJobSoapIn">
+    <wsdl:part name="cancelJobRequest" element="tns:CancelJobRequest" />
+  </wsdl:message>
+  <wsdl:message name="CancelJobSoapOut" />
+  <wsdl:message name="RemoveChunkBagSoapIn">
+    <wsdl:part name="removeChunkBagRequest" element="tns:RemoveChunkBagRequest" />
+  </wsdl:message>
+  <wsdl:message name="RemoveChunkBagSoapOut" />
+  <wsdl:portType name="Import">
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginSoapIn" />
+      <wsdl:output message="tns:LoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoginEx">
+      <wsdl:input message="tns:LoginExSoapIn" />
+      <wsdl:output message="tns:LoginExSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <wsdl:input message="tns:LogoutSoapIn" />
+      <wsdl:output message="tns:LogoutSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadChunk">
+      <wsdl:input message="tns:UploadChunkSoapIn" />
+      <wsdl:output message="tns:UploadChunkSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CloseChunkBag">
+      <wsdl:input message="tns:CloseChunkBagSoapIn" />
+      <wsdl:output message="tns:CloseChunkBagSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CloseChunkBagEx">
+      <wsdl:input message="tns:CloseChunkBagExSoapIn" />
+      <wsdl:output message="tns:CloseChunkBagExSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetChunkBag">
+      <wsdl:input message="tns:GetChunkBagSoapIn" />
+      <wsdl:output message="tns:GetChunkBagSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetChunkBagEx">
+      <wsdl:input message="tns:GetChunkBagExSoapIn" />
+      <wsdl:output message="tns:GetChunkBagExSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRepeatFile">
+      <wsdl:input message="tns:GetRepeatFileSoapIn" />
+      <wsdl:output message="tns:GetRepeatFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadChunk">
+      <wsdl:input message="tns:DownloadChunkSoapIn" />
+      <wsdl:output message="tns:DownloadChunkSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetJobs">
+      <wsdl:input message="tns:GetJobsSoapIn" />
+      <wsdl:output message="tns:GetJobsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelJob">
+      <wsdl:input message="tns:CancelJobSoapIn" />
+      <wsdl:output message="tns:CancelJobSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveChunkBag">
+      <wsdl:input message="tns:RemoveChunkBagSoapIn" />
+      <wsdl:output message="tns:RemoveChunkBagSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Import" type="tns:Import">
+    <wsdl:documentation>
+      <wsi:Claim conformsTo="http://ws-i.org/profiles/basic/1.1" xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/" />
+    </wsdl:documentation>
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://Siddin.ServiceContracts/2006/09/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginEx">
+      <soap:operation soapAction="http://Siddin.ServiceContracts/2006/09/LoginEx" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <soap:operation soapAction="http://Siddin.ServiceContracts/2006/09/Logout" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadChunk">
+      <soap:operation soapAction="http://Siddin.ServiceContracts/2006/09/UploadChunk" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CloseChunkBag">
+      <soap:operation soapAction="http://Siddin.ServiceContracts/2006/09/CloseChunkBag" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CloseChunkBagEx">
+      <soap:operation soapAction="http://Siddin.ServiceContracts/2006/09/CloseChunkBagEx" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetChunkBag">
+      <soap:operation soapAction="http://Siddin.ServiceContracts/2006/09/GetChunkBag" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetChunkBagEx">
+      <soap:operation soapAction="http://Siddin.ServiceContracts/2006/09/GetChunkBagEx" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRepeatFile">
+      <soap:operation soapAction="http://Siddin.ServiceContracts/2006/09/GetRepeatFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadChunk">
+      <soap:operation soapAction="http://Siddin.ServiceContracts/2006/09/DownloadChunk" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetJobs">
+      <soap:operation soapAction="http://Siddin.ServiceContracts/2006/09/GetJobs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelJob">
+      <soap:operation soapAction="http://Siddin.ServiceContracts/2006/09/CancelJob" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveChunkBag">
+      <soap:operation soapAction="http://Siddin.ServiceContracts/2006/09/RemoveChunkBag" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Import">
+    <wsdl:port name="Import" binding="tns:Import">
+      <soap:address location="https://demo.krd.pl/Siddin/2.1/Import.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

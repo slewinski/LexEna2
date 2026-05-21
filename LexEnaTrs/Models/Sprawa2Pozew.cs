@@ -1,0 +1,2134 @@
+﻿using System;
+using System.Net;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Documents;
+using System.Windows.Ink;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
+using System.Windows.Shapes;
+using LexEnaTrs.Web;
+using System.ServiceModel.DomainServices.Client;
+using System.Collections.Generic;
+using System.Linq;
+using System.Globalization;
+using LexEnaTrs.Helpers;
+
+namespace LexEnaTrs
+{
+
+    
+    public class pozewEventArgs : EventArgs
+    {
+        private string msg;
+        private int status;
+        private int pozewId;
+        private string pozewSerialized;
+        private Pozew mypozew;
+        private NalToCorrect odsKapital;
+
+        public string Message
+        {
+            get { return msg; }
+            set { this.msg = value; }
+
+        }
+
+        public int  Status
+        {
+            get { return status; }
+            set { this.status = value; }
+
+        }
+        public int PozewId
+        {
+            get { return pozewId; }
+            set { this.pozewId = value; }
+
+        }
+
+        public string PozewSerialized
+        {
+            get { return pozewSerialized; }
+            set { this.pozewSerialized = value; }
+
+        }
+
+        public Pozew MyPozew
+        {
+
+            get { return mypozew; }
+            set { this.mypozew = value; }
+
+        }
+
+    }
+    public class statusSprawEventArgs : pozewEventArgs
+    {
+        private StatusSprawy _statspr;
+
+        public StatusSprawy StatSpr
+        {
+
+            get { return this._statspr; }
+            set { this._statspr = value; }
+        }
+    
+    }
+
+    public class PozewExtend
+    {
+        private NalToCorrect odsKapital = null;
+        private NalToCorrect koszty40E  = null;
+        public int IdSprawy { get; set; }
+        public DateTime dZlozenia;
+        public decimal WPS;
+        public decimal Oplata;
+        public decimal InneKoszty;
+        public string sygnatura { get; set; }
+        public List<Slownik> fakty { get; set; }
+        public int generatemode = 0;   // tryb generacji pozwu   
+        private Sprawa _sprawa {get; set;}
+        private int  nalCounter = 0 ;
+        private PozewEPU _pozew;
+        private pozewEventArgs evargs;
+        public List<StanNaleznosci> StNal;
+        public int CreationMode = 0; // tryb kreacji 0 - bez kapitalizacji odsetek, 1 z kapitalizacją
+        public ItemsForLawsuit extraData { get; set; }
+
+        private readonly string[] SpecialTags = new string[] { "<$DataUmowy$>",
+                                                                 "<$NumerUmowy$>",
+                                                                 "<$ListaDok$>",
+                                                                   "<$ListaFaktur$>",
+                                                                      "<$ListaNot$>",
+                                                                        "<$DataWezwania$>",
+                                                                            "<$WPS$>",
+                                                                              "<$DataDowodu$>",
+                                                                                 "<$Adres$>",
+                                                                                     "<$Miejsce$>",
+                                                                                        "<$NumerKontrahenta$>"
+                                                            };
+
+
+    public event EventHandler pozewCompleted;
+
+     public event EventHandler pozewInserted;
+
+     public event EventHandler pozewUpdated;
+
+     public event EventHandler statusSprawyLoaded;
+
+     protected virtual void OnpozewCompleted(pozewEventArgs e)
+     {
+         if (pozewCompleted != null)
+             pozewCompleted(this, e);
+     }
+
+     protected virtual void OnpozewInserted(pozewEventArgs e)
+     {
+         if (pozewInserted != null)
+             pozewInserted(this, e);
+     }
+
+     protected virtual void OnpozewUpdated(pozewEventArgs e)
+     {
+         if (pozewUpdated != null)
+             pozewUpdated(this, e);
+     }
+
+     protected virtual void OnstatusSprawyLoaded(pozewEventArgs e)
+     {
+         if (statusSprawyLoaded != null)
+             statusSprawyLoaded(this, e);
+     }
+     public PozewExtend()
+     {
+         
+
+         evargs = new pozewEventArgs();
+         
+     }
+
+
+     public void PozewFromSprawa(NalToCorrect odsk = null, NalToCorrect k40 = null) 
+     {
+        
+        LexEnaMeritumDomainContext _context = new LexEnaMeritumDomainContext();
+        LoadOperation<Sprawa> loadop;
+
+            if (odsk != null)
+                this.odsKapital = odsk;
+            else
+                this.odsKapital = null;
+
+            if (k40 != null)
+                this.koszty40E = k40;
+            else
+                this.koszty40E = null;
+
+           EntityQuery <Sprawa> query =
+                from c in _context.GetSprawaIncludeQuery(this.IdSprawy)
+                select c;
+           
+            try
+           {
+               loadop = _context.Load(query);
+               loadop.Completed += new EventHandler(loadop_Completed);
+           }
+           catch (System.ServiceModel.DomainServices.Client.DomainException ex)
+           {
+               evargs.Status = -1;
+               evargs.Message = "Błąd oodczytu danych " + ex.Message;
+               OnpozewCompleted(evargs);
+           }
+
+     }
+
+     private void loadop_Completed(object sender, object e)
+     {
+         try
+         {
+         LoadOperation<Sprawa> loadop = (LoadOperation<Sprawa>) sender;
+            
+         
+             foreach (var r in loadop.Entities)
+             {
+                 _sprawa = r;
+                 if (_sprawa.Naleznosc.Count > 0)
+                 {
+                     if (CreationMode == 100) { this.GetStanNal(); break; }
+                     
+                         this.getOdsetki();
+                 }
+                 else
+                 {
+                     evargs.Status = -2;
+                     evargs.Message = "Błąd oodczytu danych - brak  Należnosci dla sprawy  " + _sprawa.sygnatura;
+                     ErrorWindow.CreateNew(evargs.Message);
+                     OnpozewCompleted(evargs);
+                     return;
+                 }
+
+             }
+         }
+         catch (System.ServiceModel.DomainServices.Client.DomainOperationException ex)
+         {
+             evargs.Status = -2;
+             evargs.Message = "Błąd oodczytu danych Należnosci " + ex.Message;
+             OnpozewCompleted(evargs); 
+         }
+         // sprawa odczytana -= można przejś cdalej
+     }
+        // konwersja 
+    //StatusSprawy na pozew EPU
+
+// odczyt danytch powoda
+
+     private void GetStanNal()
+     { 
+       LexEnaMeritumDomainContext _context = new LexEnaMeritumDomainContext();
+         LoadOperation<StanNaleznosci> loadop;
+        EntityQuery<StanNaleznosci> query =
+                          from c in _context.GetStanNaleznosciByDateNSprIdQuery(this.IdSprawy,dZlozenia.AddDays(-1))
+                          select c;
+
+                     loadop = _context.Load(query);
+                     loadop.Completed += new EventHandler(loadop_StanNalCompleted);
+
+     
+     }
+
+     private void loadop_StanNalCompleted(object sender, object e)
+     {
+         StanNaleznosci stn;
+         LoadOperation<StanNaleznosci> loadop;
+         Naleznosc nal;
+         bool found;
+         try
+         {
+             loadop = (LoadOperation<StanNaleznosci>)sender;
+
+             StNal = new List<StanNaleznosci>();
+             foreach (var r in loadop.Entities)
+             {
+                 // typ należnosci
+                 stn = new StanNaleznosci();
+                 stn.data_s = r.data_s;
+                 stn.Id = r.Id;
+                 stn.IdWiena = r.IdWiena;
+                 stn.Naleznosc_Id = r.Naleznosc_Id;
+                 stn.kwota_k = r.kwota_k;
+                 stn.kwota_o = r.kwota_o;
+                 stn.kwota_n = r.kwota_n;
+                 found = false;
+                 nal = null;
+                 foreach ( Naleznosc snal in _sprawa.Naleznosc)
+                 {
+                     if (snal.Id == stn.Naleznosc_Id)
+                     {
+                         nal = snal;
+                         found = true;
+                         break;
+                     }
+                 
+                 }
+                 if (found)
+                 {
+                     nal.StanNaleznosci.Add(stn);
+                 }
+
+
+
+             }
+             getOdsetki(); 
+         }
+         catch (Exception ex)
+         {
+             evargs.Status = -35;
+             evargs.Message = "Błąd oodczytu danych Stany Należności" + ex.Message;
+             OnpozewCompleted(evargs);
+         }
+
+     }
+     private void getOdsetki()
+     {
+
+         int i;
+         int idNal;
+         idNal = 0;
+         LexEnaMeritumDomainContext _context = new LexEnaMeritumDomainContext();
+         LoadOperation<Naleznosc> loadop;
+         if (nalCounter < _sprawa.Naleznosc.Count)
+         {
+             i = 0;
+
+             try
+             {
+                 foreach (var r in (_sprawa.Naleznosc))
+                 {
+                     if (i == nalCounter)
+                     {
+
+                         idNal = r.Id;
+                         break;
+                     }
+                     i++;
+                 }
+                 if (i == nalCounter)
+                 {
+
+                     EntityQuery<Naleznosc> query =
+                          from c in _context.GetOdsetkiNalIncludeQuery(idNal)
+                          select c;
+
+                     loadop = _context.Load(query);
+                     loadop.Completed += new EventHandler(loadop_OdsCompleted);
+
+                 }
+
+             }
+             catch (Exception ex)
+             {
+                 evargs.Status = -4;
+                 evargs.Message = "Błąd oodczytu danych Należnosci/Odsetki " + ex.Message;
+                 OnpozewCompleted(evargs);
+             }
+         }
+     }
+            private void loadop_OdsCompleted (object sender, object e)
+            {
+                LoadOperation<Naleznosc> loadop;
+                Odsetki _odsetki;
+                TypNaleznosci _typNal;
+                WplataPodz _wplpodz;
+                try
+                {
+                     loadop = (LoadOperation<Naleznosc>)sender;
+
+                //ErrorWindow.CreateNew("genaratemod =  " + generatemode.ToString() + "Nleżności");
+
+                    foreach (var r in    loadop.Entities ) 
+                    {
+                        // typ należnosci
+                        foreach (var rx in _sprawa.Naleznosc)
+                        {
+                            if (rx.Id == r.Id)
+                            {
+                                _typNal = new TypNaleznosci();
+
+                                _typNal.CzyOdsKapital = r.TypNaleznosci.CzyOdsKapital;
+                                _typNal.TypNal = r.TypNaleznosci.TypNal;
+                                _typNal.IdWiena = r.TypNaleznosci.IdWiena;
+                                _typNal.CzyProc = r.TypNaleznosci.CzyProc;
+                                _typNal.TabOds = r.TypNaleznosci.TabOds;
+                                _typNal.id = r.TypNaleznosci.id;
+                                if (generatemode == 0 && UserProfile.Firma == 1 && r.TypNaleznosci.CzyOdsKapital==1)
+                                { // jeśli odsetki skapitalizowane
+                                    r.CzyOdsetki = 1;
+                                if (rx.Odsetki == null || rx.Odsetki.Count == 0)
+                                {
+                                    Odsetki _ods = new Odsetki();
+                                    _ods.OdWniesienia = 1;
+                                    _ods.DoZaplaty = 1;
+                                    _ods.NazwyOdsetek_Id = 8;
+                                    _ods.PartitionKey = 0;
+                                    _ods.TypStopy = 0;
+                                    rx.Odsetki.Add(_ods); 
+                                }
+
+                            }
+                            rx.TypNaleznosci = _typNal;
+                            }
+                        }
+
+                        foreach (var rx in _sprawa.Naleznosc )
+                        {
+                            if (rx.Id == r.Id)
+                            {
+                                // przepisz odsetki
+                                foreach (var ods in r.Odsetki)
+                                {
+                                    _odsetki = new Odsetki();
+                                    _odsetki.DataK = ods.DataK;
+                                    _odsetki.DataPocz = ods.DataPocz;
+                                    _odsetki.DoZaplaty = ods.DoZaplaty;
+                                    _odsetki.Id = ods.Id;
+                                    _odsetki.IdWiena = ods.IdWiena;
+                                    _odsetki.Kod = ods.Kod;
+                                    _odsetki.Naleznosc_Id = ods.Naleznosc_Id;
+                                    _odsetki.NazwyOdsetek = ods.NazwyOdsetek;
+                                    _odsetki.OdWniesienia = ods.OdWniesienia;
+                                    if (ods.OdWniesienia == 1) _odsetki.DataPocz = ( generatemode==1 && UserProfile.Firma== 1 && rx.TypNaleznosci.CzyOdsKapital== 1)? ods.DataPocz :  new DateTime(2000, 1, 1);
+                                    _odsetki.NazwyOdsetek_Id = ods.NazwyOdsetek_Id;
+                                    _odsetki.Opis =  ods.Opis;
+                                    _odsetki.PartitionKey = ods.PartitionKey;
+                                    _odsetki.Proc0 = ods.Proc0;
+                                    _odsetki.TypStopy = ods.TypStopy;
+                                    
+                                    rx.Odsetki.Add(_odsetki);
+                                }
+                                foreach (var wp in r.WplataPodz)
+                                {
+                                    _wplpodz = new WplataPodz();
+                                    _wplpodz.Id = wp.Id;
+                                    _wplpodz.IdWiena = wp.IdWiena;
+                                    _wplpodz.Naleznosc_Id = wp.Naleznosc_Id;
+                                    _wplpodz.PartitionKey = wp.PartitionKey;
+                                    _wplpodz.SplataKapital = wp.SplataKapital;
+                                    _wplpodz.SplataOdsetki = wp.SplataOdsetki;
+                                    _wplpodz.SplataVat = wp.SplataVat;
+                                    _wplpodz.Wplata_Id = wp.Wplata_Id;
+                                    _wplpodz.ZalegloscKapital = wp.ZalegloscKapital;
+                                    _wplpodz.ZalegloscOdsetki = wp.ZalegloscOdsetki;
+                                    _wplpodz.ZalegloscVat = wp.ZalegloscVat;
+                              
+                                    
+                                    rx.WplataPodz.Add(_wplpodz);
+
+                                }
+
+                                              
+                            
+                            }
+                        
+                        
+                        }
+
+                    }
+                    if (++nalCounter == _sprawa.Naleznosc.Count)
+                    {
+                        calculatePozew();    // po ostatniej należnosci przejdź do wykonania pozwu
+                    }
+                    else
+                    {
+                        getOdsetki();
+                    }
+                }
+                catch (Exception ex)
+                {
+                     ErrorWindow.CreateNew(ex, "Błąd odczytu należności/odsetek/typów dla sprawy " +_sprawa.sygnatura);
+                     evargs.Status = -6;
+                     evargs.Message = "Błąd oodczytu danych Należnosci/Odsetki/Typ Należności " + ex.Message;
+                     OnpozewCompleted(evargs); 
+                 
+                }
+            
+            }
+
+            public PozewEPU GetPozew ()
+            {
+                return _pozew;
+            }
+
+
+            public string GetPozewSerialized()
+            {
+            if (_pozew != null)
+            {
+                this.sygnatura = this._pozew.SprawaWgPowoda;   
+                return ToXMLSerializers.SerializePozew(this._pozew, generatemode);
+            }
+            else
+                return null;
+            }
+
+            public string GetOdsNaliczSerialized()
+            {
+                if (_pozew != null)
+                {
+                    if (_pozew.OdsetkiSkapitalizowne != null)
+                    {
+                        return ToXMLSerializers.SerializeToString(_pozew.OdsetkiSkapitalizowne, typeof(typSprawaOds));
+                    }
+                    else
+                        return null;
+                }
+                else
+                    return null;
+            }
+            private List<typRoszczenie> _buildRoszczenie(Naleznosc nal)
+            {
+                // dodanie roszczenia w przypadku wpłat
+                int _idWiena;
+                DateTime _dataWpl;
+                bool found;
+                WplataPodz wpPodzMain;
+                Decimal _kwota;
+                Wplata wpl;
+                 List<typRoszczenie> roszcz = new List<typRoszczenie>();
+                typRoszczenie _ro;
+                typOkresOdsetkowy  _ods;
+                decimal zalOds, zalKapital;
+                decimal sumaWplatKapital, sumaWplatOdsetki; 
+                _dataWpl = new DateTime();
+                _idWiena = 0; 
+                wpPodzMain = new WplataPodz();
+               
+                if (nal.WplataPodz.Count > 0)
+                { // znajdź wplata podz z najwyższą datą ( IdWiena)
+                    sumaWplatKapital =  0 ;
+                    sumaWplatOdsetki  = 0;
+                    foreach (var wplpo in nal.WplataPodz)
+                    {
+                        found = false;
+                        sumaWplatKapital += (decimal)wplpo.SplataKapital;
+                        sumaWplatOdsetki += (decimal)wplpo.SplataOdsetki;
+                        wpl = _sprawa.Wplata.FirstOrDefault();
+                        foreach (var w in _sprawa.Wplata)
+                        {
+                            if (w.Id == wplpo.Wplata_Id)
+                            {
+                                wpl = w as Wplata;
+                                found = true;
+                                break;
+                            }
+
+                        }
+                        if (found)
+                        {
+                            if (wpl.DataWplaty > _dataWpl || ((wpl.DataWplaty == _dataWpl) && (wpl.IdWiena > _idWiena)))
+                            {
+                                wpPodzMain = wplpo;
+                                _dataWpl = (DateTime)wpl.DataWplaty;
+                                _idWiena = (int)wpl.IdWiena;
+                                _kwota = (decimal)wpl.Kwota;
+                            }
+
+                        }
+                      }
+                     if      (wpPodzMain.Id > 0 )
+                     { // jeśli jest wpłata podz
+                         zalOds = (decimal)wpPodzMain.ZalegloscOdsetki - (decimal)wpPodzMain.SplataOdsetki;
+                         zalKapital = (decimal)wpPodzMain.ZalegloscKapital - (decimal)wpPodzMain.SplataKapital;
+                         if (zalKapital  > 0)
+                         {
+                             _ro = new typRoszczenie();
+                             _ro.dataWymagalnosci = Convert.ToDateTime(nal.data_n).ToString("yyyy-MM-dd");
+                             _ro.Wartosc = zalKapital;
+                             _ro.Waluta  = typWaluta.PLN;
+                             _ro.Solidarnie = (int) nal.CzySolidarnie;
+                             _ro.Typ = (int) nal.TypRoszczenia;
+                             _ro.Odsetki = new System.Collections.ObjectModel.ObservableCollection<typOkresOdsetkowy>();
+                             if (nal.Odsetki.Count > 0 )
+                             {   
+                                 _ro.czyodsetki = 1 ;
+                                 _ods = new typOkresOdsetkowy ();
+                                 _ods.Od_Wniesienia = 1;
+                                 _ods.DataOd = new DateTime(2000, 1, 1); 
+                                 _ods.Do_Zaplaty = 1;
+
+
+                            if (nal.Odsetki.FirstOrDefault().NazwyOdsetek_Id == 2) // ustawowe 
+                                _ods.CzyUstawowe = 0;
+                            else
+                                 if (nal.Odsetki.FirstOrDefault().NazwyOdsetek_Id == 1) // umowne ( dotychczasowe)
+                            {
+                                _ods.CzyUstawowe = 1;
+                                _ods.Stopa = (decimal)nal.Odsetki.FirstOrDefault().Proc0;
+                                _ods.Okres = (int)nal.Odsetki.FirstOrDefault().TypStopy;
+                            }
+                            else
+                            {
+                                _ods.CzyUstawowe = nal.Odsetki.FirstOrDefault().NazwyOdsetek_Id.Value;
+                                switch (nal.Odsetki.FirstOrDefault().NazwyOdsetek_Id)
+                                {
+                                    case 0:
+                                        _ods.CzyUstawowe = 0;
+                                        break;
+                                    case 2:
+                                        _ods.Stopa = (decimal)(nal.Odsetki.FirstOrDefault().Proc0 ?? 0);
+                                        _ods.Okres = (int)(nal.Odsetki.FirstOrDefault().TypStopy ?? 0);
+                                        //Umowne o podanej stopie nie większe niż 4x stopa lombardowa
+                                        break;
+
+                                    case 3://  Umowne = 4x stopa lombardowa
+                                        _ods.Stopa = (decimal)(nal.Odsetki.FirstOrDefault().Proc0 ??  0);
+                                        _ods.Okres = (int)(nal.Odsetki.FirstOrDefault().TypStopy ?? 0);
+                                        break;
+                                    case 4: //   Umowne, nie więcej niż ods maks.od dnia/do dnia
+                                        _ods.Stopa = (decimal)(nal.Odsetki.FirstOrDefault().Proc0 ?? 0);
+                                        _ods.Okres = (int)(nal.Odsetki.FirstOrDefault().TypStopy ?? 0);
+                                        break;   
+                                    case 5: //   Umowne 4x stopa lombardowa, nie więcej niż ods maks.od dnia/do dnia
+                                        _ods.Stopa = (decimal)(nal.Odsetki.FirstOrDefault().Proc0 ?? 0);
+                                        _ods.Okres = (int)(nal.Odsetki.FirstOrDefault().TypStopy ?? 0);
+                                        break;
+                                    case 6: //   Umowne 4x lombardowa do 31.12.2015 i 4x stopa lombardowa.nie więcej niż w wys.ods maks. od dnia 01.01.2016
+                                        _ods.Stopa = (decimal)(nal.Odsetki.FirstOrDefault().Proc0 ?? 0);
+                                        _ods.Okres = (int)(nal.Odsetki.FirstOrDefault().TypStopy ?? 0);
+                                        break;
+                                    case 7: //   Umowne w wys.ods.maks.od dnia/do dnia
+                                        _ods.Stopa = (decimal)(nal.Odsetki.FirstOrDefault().Proc0 ?? 0);
+                                        _ods.Okres = (int)(nal.Odsetki.FirstOrDefault().TypStopy ?? 0);
+                                        break;
+                                    case 8: //   Ustawowe za opóźnienie
+                                        break;
+                                    case 9: //   Ustawowa do 31.12.2015  i ustawowe za opóźnienie od dnia 1.01.2016
+                                        break;
+                                    case 10: //  Umowne, nie więcej niż w wys.ods.maks.za opóźnienie
+                                        _ods.Stopa = (decimal)(nal.Odsetki.FirstOrDefault().Proc0 ?? 0);
+                                        _ods.Okres = (int)(nal.Odsetki.FirstOrDefault().TypStopy ?? 0);
+                                        break;
+                                    case 11: //  Umowne w wys.ods.maks.za opóźnienie
+                                        _ods.Stopa = (decimal)(nal.Odsetki.FirstOrDefault().Proc0 ?? 0);
+                                        _ods.Okres = (int)(nal.Odsetki.FirstOrDefault().TypStopy ?? 0);
+                                        break;
+                                    case 12: //  Umowne, 4x stopa lombardowa do 31.12.2015 i umowne 4x lombardowa, nie więcej niż w wys. ods.maks.za opóźnienie od 1.01.2016
+                                        _ods.Stopa = (decimal)(nal.Odsetki.FirstOrDefault().Proc0 ?? 0);
+                                        _ods.Okres = (int)(nal.Odsetki.FirstOrDefault().TypStopy ?? 0);
+                                        break;
+                                    case 13: //  Umowne, 4x stopa lombardowa, nie więcej niż w wys.ods.maks.za opóźnienie
+                                        _ods.Stopa = (decimal)(nal.Odsetki.FirstOrDefault().Proc0 ?? 0);
+                                        _ods.Okres = (int)(nal.Odsetki.FirstOrDefault().TypStopy ?? 0);
+                                        break;
+                                    case 14: //  Umowne, nie więcej niż 4x stopa lombardowa do 31.12.2015 i umowne, nie więcej niż w wys. ods.maks.za opóźnienie od 1.01.2016
+                                        _ods.Stopa = (decimal)(nal.Odsetki.FirstOrDefault().Proc0 ?? 0);
+                                        _ods.Okres = (int)(nal.Odsetki.FirstOrDefault().TypStopy ?? 0);
+                                        break;
+                                    case 15: //  Ustawowe za opóźnienie w transakcjach handlowych
+                                        break;
+                                    case 16: //  Ustawowe do 31.12.2015 i ustawowe za opóźnienie w transakcjach handlowych od 01.01.2016
+                                        break;
+                                    case 17: //  Wys odsetek za zwłokę  na podstawie Ordynacji podatkowej do dnia 31 grudnia 2015 roku z odsetkami ustawowymi za opóźnienie w transakcjach handlowych od  1.01.2016
+                                        _ods.Stopa = (decimal)(nal.Odsetki.FirstOrDefault().Proc0 ?? 0);
+                                        _ods.Okres = (int)(nal.Odsetki.FirstOrDefault().TypStopy ?? 0);
+                                        break;
+                                    case 18: //  Zgodnie z opisem
+                                    
+                                        if (_ods.Od_Wniesienia == 1)
+                                                 _ods.Opis = "Odsetki za opóźnienie w transakcjach handlowych, w których dłużnikiem jest podmiot publiczny będący podmiotem leczniczym od dnia wniesienia pozwu do dnia zapłaty";
+                                        else
+                                                 _ods.Opis = "Odsetki za opóźnienie w transakcjach handlowych, w których dłużnikiem jest podmiot publiczny będący podmiotem leczniczym od dnia " + (_ods.DataOd).ToString("dd-MM-yyyy") + " do dnia zapłaty";
+                                        _ods.CzyUstawowe = 18;
+                                        break;
+                                    case 20: // podm lecznicze
+                                 
+                                        _ods.Opis = "Odsetki za opóźnienie w transakcjach handlowych, w których dłużnikiem jest podmiot publiczny będący podmiotem leczniczym od dnia wniesienia pozwu do dnia zapłaty";
+                                        _ods.CzyUstawowe = 18;
+                                        break;   
+                                    default:
+                                        _ods.CzyUstawowe = 1;
+                                        break;
+
+                                }
+                            }
+                                
+
+
+
+                            _ro.Odsetki.Add(_ods);  // od wnisienia do  dnia zapłaty
+                             }
+                             else
+	                                _ro.czyodsetki = 0;
+                             _ro.Opis = "należność główna wynikająca z ";
+                              if (nal.TypNaleznosci.CzyOdsKapital == 1)
+                                _ro.Opis += " noty odsetkowej ";
+                             else
+                                _ro.Opis += " faktury VAT ";
+                              _ro.Opis += " nr " + nal.opis  + " pozostała po uiszczeniu kwoty "   + sumaWplatKapital.ToString("C", new CultureInfo("pl-PL"));
+                             
+			       // Zmiana 2014-04-22
+                              if (_ro.Opis == null) _ro.Opis = "";
+                              _ro.Opis += " Id=*" + nal.Id.ToString() + "*";
+                              
+                             // End Zmiana 2014-04-22	   
+                             roszcz.Add(_ro);     
+                             }
+
+                         if (((zalOds) > 0 || (zalKapital) > 0) && nal.TypNaleznosci.CzyOdsKapital != 1)      // jeśli to jest faktura a nie odsetki skapitalizowena 
+                        {
+                      
+                           TimeSpan tms;
+                           DateTime tmpDate, tmpDate2;
+                           OdsTab _odsTabSave;
+                           
+                           int inFlag = 0;
+                           decimal odsKwt = 0 ;
+
+                          
+                           tms = new TimeSpan();
+                           _odsTabSave = TabelaOdsetekUstawowych.Tabela.FirstOrDefault();
+                            odsKwt = 0 ;
+                            foreach (var  _odsTab   in TabelaOdsetekUstawowych.Tabela)
+                            {
+                                if (
+                                    ((_odsTab as OdsTab).DataP <= _dataWpl) &&
+                                      (((_odsTab as OdsTab).DataK >= _dataWpl) || ((_odsTab as OdsTab).DataK == null))
+                                    )
+                                {   inFlag = 1 ;
+                                    _odsTabSave = _odsTab;
+                                }
+                                if (inFlag == 1 )
+                                {
+                                    inFlag = 1 ;
+                                    if (_odsTab.DataK == null )
+                                        tms = _pozew.DataZlozenia.Subtract(_dataWpl);        
+                                    else
+                                        {
+                                         tmpDate =  Convert.ToDateTime(_odsTabSave.DataK); //  .DataK);
+                                         tms = (tmpDate).Subtract(_dataWpl);
+                                        }
+                                
+                                
+                                }
+                                if  ( inFlag > 1 ) 
+                                    {
+                                        if (_odsTab.DataK == null )
+                                        {
+                                         tmpDate =  Convert.ToDateTime(_odsTab.DataP); //  .DataK);
+                                         tms = _pozew.DataZlozenia.Subtract(tmpDate);
+                                        }else
+                                        {
+                                            tmpDate =  Convert.ToDateTime(_odsTab.DataK);
+                                            tmpDate2 = Convert.ToDateTime(_odsTab.DataP);
+                                            tms = tmpDate.Subtract (tmpDate2);
+                                        }
+                                            
+                                     }
+                                if (inFlag > 0 ) 
+                                odsKwt += zalKapital*(decimal)_odsTab.Proc0 / 36500 * tms.Days; 
+                                                                   
+                                if (inFlag > 0) inFlag ++;
+
+                            }
+                            odsKwt = Math.Round(odsKwt, 2);
+                            zalOds += odsKwt;
+                            if (zalOds > 0)
+                            {
+                                _ro = new typRoszczenie();
+                                _ro.dataWymagalnosci =  Convert.ToDateTime(nal.data_n).ToString("yyyy-MM-dd");
+                                _ro.Wartosc = zalOds;
+                                _ro.Waluta = typWaluta.PLN;
+                                _ro.Solidarnie = (int)nal.CzySolidarnie;
+                                _ro.Typ = (int)nal.TypRoszczenia;
+                                _ro.Odsetki = new System.Collections.ObjectModel.ObservableCollection<typOkresOdsetkowy>();
+                                _ro.Opis = "Skapitalizowana kwota odsetek za opóźnienie w zapłacie kwoty głównej w wysokości " + nal.kwota.Value.ToString("C", new CultureInfo("pl-PL")) + " wynikajacej z faktury VAT " + nal.opis; 
+                                if (zalKapital <= 0)
+                                _ro.Opis +=  " odsetki wyliczone za okres od " +  Convert.ToDateTime(nal.data_n).AddDays(1).ToString("yyyy-MM-dd") +
+                                           " do dnia " + _dataWpl.AddDays(-1).ToString("yyyy-MM-dd");
+                                else
+                                _ro.Opis +=  " odsetki wyliczone za okres od " +  Convert.ToDateTime(nal.data_n).AddDays(1).ToString("yyyy-MM-dd") +
+                                           " do dnia " + _pozew.DataZlozenia.AddDays(-1).ToString("yyyy-MM-dd");
+                                // Zmiana 2014-04-22
+				 if (_ro.Opis == null) _ro.Opis = "";
+                                _ro.Opis += " Id=*" + nal.Id.ToString() + "*";
+                                // End Zmiana 2014-04-22
+                                // za jaki okres , dodac  wpłate jako dowód wpłata na kwoatę 
+                                if (nal.Odsetki.Count > 0)
+                                {
+                                    _ro.czyodsetki = 1;
+                                    _ods = new typOkresOdsetkowy();
+                                    _ods.Od_Wniesienia = 1;
+                                    _ods.DataOd = new DateTime(2000, 1, 1); 
+                                    _ods.Do_Zaplaty = 1;
+
+                                     if (nal.Odsetki.FirstOrDefault().NazwyOdsetek_Id == 2) // ustawowe 
+                                        _ods.CzyUstawowe = 0;
+                                    else
+                                    if ( nal.Odsetki.FirstOrDefault().NazwyOdsetek_Id == 1)
+                                    {
+                                        _ods.CzyUstawowe = 1;
+                                        _ods.Stopa = (decimal)nal.Odsetki.FirstOrDefault().Proc0;
+                                        _ods.Okres = (int)nal.Odsetki.FirstOrDefault().TypStopy;
+                                    }
+                                else
+                                {
+                                    _ods.CzyUstawowe = nal.Odsetki.FirstOrDefault().NazwyOdsetek_Id.Value;
+                                    switch (nal.Odsetki.FirstOrDefault().NazwyOdsetek_Id)
+                                    {
+                                        case 0:
+                                            _ods.CzyUstawowe = 0;
+                                            break;
+                                        case 2:
+                                            _ods.Stopa = (decimal)nal.Odsetki.FirstOrDefault().Proc0;
+                                            _ods.Okres = (int)(nal.Odsetki.FirstOrDefault().TypStopy ?? 0);
+                                            //Umowne o podanej stopie nie większe niż 4x stopa lombardowa
+                                            break;
+
+                                        case 3://  Umowne = 4x stopa lombardowa
+                                            _ods.Stopa = (decimal)(nal.Odsetki.FirstOrDefault().Proc0 ?? 0);
+                                            _ods.Okres = (int)(nal.Odsetki.FirstOrDefault().TypStopy ?? 0);
+                                            break;
+                                        case 4: //   Umowne, nie więcej niż ods maks.od dnia/do dnia
+                                            _ods.Stopa = (decimal)(nal.Odsetki.FirstOrDefault().Proc0 ?? 0);
+                                            _ods.Okres = (int)(nal.Odsetki.FirstOrDefault().TypStopy ?? 0);
+                                            break;
+                                        case 5: //   Umowne 4x stopa lombardowa, nie więcej niż ods maks.od dnia/do dnia
+                                            _ods.Stopa = (decimal)(nal.Odsetki.FirstOrDefault().Proc0 ?? 0);
+                                            _ods.Okres = (int)(nal.Odsetki.FirstOrDefault().TypStopy ?? 0);
+                                            break;
+                                        case 6: //   Umowne 4x lombardowa do 31.12.2015 i 4x stopa lombardowa.nie więcej niż w wys.ods maks. od dnia 01.01.2016
+                                            _ods.Stopa = (decimal)(nal.Odsetki.FirstOrDefault().Proc0 ?? 0);
+                                            _ods.Okres = (int)(nal.Odsetki.FirstOrDefault().TypStopy ?? 0);
+                                            break;
+                                        case 7: //   Umowne w wys.ods.maks.od dnia/do dnia
+                                            _ods.Stopa = (decimal)(nal.Odsetki.FirstOrDefault().Proc0 ?? 0);
+                                            _ods.Okres = (int)(nal.Odsetki.FirstOrDefault().TypStopy ?? 0);
+                                            break;
+                                        case 8: //   Ustawowe za opóźnienie
+                                            break;
+                                        case 9: //   Ustawowa do 31.12.2015  i ustawowe za opóźnienie od dnia 1.01.2016
+                                            break;
+                                        case 10: //  Umowne, nie więcej niż w wys.ods.maks.za opóźnienie
+                                            _ods.Stopa = (decimal)(nal.Odsetki.FirstOrDefault().Proc0 ?? 0);
+                                            _ods.Okres = (int)(nal.Odsetki.FirstOrDefault().TypStopy ?? 0);
+                                            break;
+                                        case 11: //  Umowne w wys.ods.maks.za opóźnienie
+                                            _ods.Stopa = (decimal)(nal.Odsetki.FirstOrDefault().Proc0 ?? 0);
+                                            _ods.Okres = (int)(nal.Odsetki.FirstOrDefault().TypStopy ?? 0);
+                                            break;
+                                        case 12: //  Umowne, 4x stopa lombardowa do 31.12.2015 i umowne 4x lombardowa, nie więcej niż w wys. ods.maks.za opóźnienie od 1.01.2016
+                                            _ods.Stopa = (decimal)(nal.Odsetki.FirstOrDefault().Proc0 ?? 0);
+                                            _ods.Okres = (int)(nal.Odsetki.FirstOrDefault().TypStopy ?? 0);
+                                            break;
+                                        case 13: //  Umowne, 4x stopa lombardowa, nie więcej niż w wys.ods.maks.za opóźnienie
+                                            _ods.Stopa = (decimal)(nal.Odsetki.FirstOrDefault().Proc0 ?? 0);
+                                            _ods.Okres = (int)(nal.Odsetki.FirstOrDefault().TypStopy ?? 0);
+                                            break;
+                                        case 14: //  Umowne, nie więcej niż 4x stopa lombardowa do 31.12.2015 i umowne, nie więcej niż w wys. ods.maks.za opóźnienie od 1.01.2016
+                                            _ods.Stopa = (decimal)(nal.Odsetki.FirstOrDefault().Proc0 ?? 0);
+                                            _ods.Okres = (int)(nal.Odsetki.FirstOrDefault().TypStopy ?? 0);
+                                            break;
+                                        case 15: //  Ustawowe za opóźnienie w transakcjach handlowych
+                                            break;
+                                        case 16: //  Ustawowe do 31.12.2015 i ustawowe za opóźnienie w transakcjach handlowych od 01.01.2016
+                                            break;
+                                        case 17: //  Wys odsetek za zwłokę  na podstawie Ordynacji podatkowej do dnia 31 grudnia 2015 roku z odsetkami ustawowymi za opóźnienie w transakcjach handlowych od  1.01.2016
+                                            _ods.Stopa = (decimal)(nal.Odsetki.FirstOrDefault().Proc0 ?? 0);
+                                            _ods.Okres = (int)(nal.Odsetki.FirstOrDefault().TypStopy ?? 0);
+                                            break;
+                                        case 18: //  Zgodnie z opisem
+                                        
+                                            _ods.CzyUstawowe = 18;
+                                            if (_ods.Od_Wniesienia == 1)
+                                                _ods.Opis = "Odsetki za opóźnienie w transakcjach handlowych, w których dłużnikiem jest podmiot publiczny będący podmiotem leczniczym od dnia wniesienia pozwu do dnia zapłaty";
+                                            else
+                                                _ods.Opis = "Odsetki za opóźnienie w transakcjach handlowych, w których dłużnikiem jest podmiot publiczny będący podmiotem leczniczym od dnia " + (_ods.DataOd).ToString("dd-MM-yyyy") + " do dnia zapłaty";
+                                            break;
+                                        case 20:
+                                            // break;    
+                                       
+                                            _ods.CzyUstawowe = 18;
+                                            if (_ods.Od_Wniesienia == 1)
+                                                _ods.Opis = "Odsetki za opóźnienie w transakcjach handlowych, w których dłużnikiem jest podmiot publiczny będący podmiotem leczniczym od dnia wniesienia pozwu do dnia zapłaty";
+                                            else
+                                                _ods.Opis = "Odsetki za opóźnienie w transakcjach handlowych, w których dłużnikiem jest podmiot publiczny będący podmiotem leczniczym od dnia " + ( _ods.DataOd).ToString("dd-MM-yyyy") + " do dnia zapłaty";
+                                            break; 
+                                        default:
+                                            _ods.CzyUstawowe = 1;
+                                            break;
+
+                                    }
+                                }
+
+
+                                _ro.Odsetki.Add(_ods);  // od wnisienia do  dnia zapłaty
+                                }
+                                else
+                                    _ro.czyodsetki = 0;
+                                roszcz.Add(_ro);     
+                            
+                            }
+
+                        }
+                     }
+                
+                }
+                
+
+
+                return roszcz;
+            }
+
+        private  string ParseUzasadnienie(string uzasadnienie, PozewEPU pozew, string adres, string miejsce, string nrEwid)
+        {
+
+            string value;
+            int nr = 0;
+
+            foreach (string uitem in SpecialTags)
+            {
+                if (uzasadnienie.Contains(uitem))
+                {
+                    value = "";
+                    switch (uitem)
+                    {
+                        case "<$NumerKontrahenta$>":
+                            value =nrEwid;
+                            break;
+
+                        case "<$DataUmowy$>":
+                            foreach (typDowod rr in pozew.ListaDowodow)
+                            {
+                                if (rr.TypDowodu == typRodzajDowodu.umowa)
+                                {
+                                    if (value.Length > 0)
+                                        value += " ";
+                                    value += rr.DataDowodu;
+
+                                }
+                            }
+
+                            break;
+                        case "<$NumerUmowy$>":
+                            foreach (typDowod rr in pozew.ListaDowodow)
+                            {
+                                if (rr.TypDowodu == typRodzajDowodu.umowa)
+                                {
+                                    if (value.Length > 0)
+                                        value += " ";
+                                    value += rr.Oznaczenie;
+
+                                }
+                            }
+
+                            break;
+                        case "<$ListaFaktur$>":
+                            value = "";
+                            foreach (typDowod rr in pozew.ListaDowodow)
+                            {
+                                if (rr.TypDowodu == typRodzajDowodu.faktura)
+                                {
+                                    if (value.Length > 0)
+                                        value += "\n";
+                                    nr++;
+                                    value += nr.ToString()+ " " +  rr.Opis + " o numerze " + rr.Oznaczenie +  (rr.DataDowodu!= null && rr.DataDowodu !=""  ?   " z dnia " + rr.DataDowodu :"");
+
+                                }
+                            }
+                            break;
+                        case "<$ListaDok$>":
+                            value = "";
+                            foreach (typDowod rr in pozew.ListaDowodow)
+                            {
+                                if ((rr.TypDowodu == typRodzajDowodu.faktura) || (rr.TypDowodu == typRodzajDowodu.inny && (rr.Opis.ToLower().Contains("not") && rr.Opis.ToLower().Contains("odsetkow"))) || (rr.TypDowodu == typRodzajDowodu.inny && (rr.Opis.ToLower().Contains("wezwanie") && rr.Opis.ToLower().Contains("termin"))))
+                                {
+                                    if (value.Length > 0)
+                                        value += "\n";
+                                    nr++;
+                                    value += nr.ToString() + " " + rr.Opis + " o numerze " + rr.Oznaczenie + (rr.DataDowodu != null && rr.DataDowodu != ""?  " z dnia " + rr.DataDowodu:"");
+
+                                }
+                            }
+                            break;
+                        case "<$ListaNot$>":
+                            value = "";
+                            foreach (typDowod rr in pozew.ListaDowodow)
+                            {
+                                if (rr.TypDowodu == typRodzajDowodu.inny && (rr.Opis.ToLower().Contains("not") && rr.Opis.ToLower().Contains("odsetkow")))
+                                {
+                                    if (value.Length > 0)
+                                        value += "\n\r";
+                                    nr++;
+                                    value += nr.ToString()+ " " + rr.Opis + " o numerze " + rr.Oznaczenie + (rr.DataDowodu != null && rr.DataDowodu != "" ? " z dnia " + rr.DataDowodu : "");
+
+                                }
+                            }
+                            break;
+
+                        case "<$WPS$>":
+                            value = String.Format(new CultureInfo("pl-PL"), "{0:C}",  pozew.WartoscSporu);
+                            break;
+
+
+                        case "<$Adres$>":
+                            value = adres;
+                            break;
+
+                        case "<$Miejsce$>":
+                            value = miejsce;
+                            break;
+                    }
+
+                    uzasadnienie = uzasadnienie.Replace(uitem, value);
+                }
+            }
+            return uzasadnienie;
+        }
+
+        private void ParseDowody(PozewEPU pozew)
+        {
+            string dUmowy = string.Empty;
+            string nrUmowy = string.Empty;
+
+            if (pozew.ListaDowodow != null)
+            {
+                foreach (typDowod rr in pozew.ListaDowodow)
+                {
+                    if (rr.TypDowodu == typRodzajDowodu.umowa)
+                    {
+
+                        nrUmowy = rr.Oznaczenie;
+                        dUmowy = rr.DataDowodu;
+                       
+                    }
+
+
+                }
+                foreach (typDowod rr in pozew.ListaDowodow)
+                {
+                    if (rr.Opis.Contains("<$DataUmowy$>") && !string.IsNullOrWhiteSpace(dUmowy))
+                    {
+                        rr.Opis.Replace("<$DataUmowy$>", dUmowy);
+
+                    }
+                    if (rr.FaktStwierdzany.Contains("<$DataUmowy$>") && !string.IsNullOrWhiteSpace(dUmowy))
+                    {
+                        rr.FaktStwierdzany.Replace("<$DataUmowy$>", dUmowy);
+
+                    }
+                    if (rr.Opis.Contains("<$NumerUmowy$>") && !string.IsNullOrWhiteSpace(nrUmowy))
+                    {
+                        rr.Opis.Replace("<$NumerUmowy$>", nrUmowy);
+
+                    }
+                    if (rr.FaktStwierdzany.Contains("<$NumerUmowy$>") && !string.IsNullOrWhiteSpace(nrUmowy))
+                    {
+                        rr.FaktStwierdzany.Replace("<$NumerUmowy$>",nrUmowy);
+
+                    }
+
+                }
+                    
+
+            }
+        }
+
+
+        private void calculatePozew()
+            {
+                typStrona _powod;
+                typAdres _adres;
+                typInstytucja _instytucja;
+                typOsobaFizyczna _osoba;
+                typStrona _pozwany;
+                typInnyRejestr _innyRejestr;
+                typDowod _dowod;
+                typRoszczenie _roszczenie;
+                typOkresOdsetkowy _odsetki;
+                List<int> nr_dowodow = new List<int>();
+                List<typRoszczenie> listaPoWplacie;
+                string diagnostic = String.Empty;
+                string step = String.Empty;
+                typSprawaOds odskap = null;
+                typDowoduOds fakturaOdsKap;
+                DateTime dayBefore;
+                string nrEwid = string.Empty;
+
+                int i;
+                string adres = string.Empty;
+            string miejsce = string.Empty;    
+             
+                bool czyodsskap; // czy odsetki są skapitalizowane
+                bool czyfiz = false;
+                bool czypraw = false;
+                bool czydzial = false;
+                typOsoba podpis;
+                
+
+                try
+                {
+                step = "XX";
+                nrEwid = _sprawa.NrEwid ?? string.Empty;
+                step = "00";
+                    dayBefore = dZlozenia.AddDays(-1);
+                    _pozew = new PozewEPU();  // nie ma daty złożenia
+                    _pozew.DataZlozenia = this.dZlozenia;
+                    _pozew.version = "2.0";
+                    _pozew.ID = IdSprawy;
+                    _pozew.OplataSadowa = new typOplata();
+                    _pozew.Oswiadczenie = "nie";
+                    if (generatemode > 0 && _sprawa.NrEwid != null) // jeśli brudny pozew
+                        _pozew.SprawaWgPowoda = _sprawa.sygnatura + "@" + _sprawa.id.ToString() + "#" + @_sprawa.NrEwid.Trim();
+                    else
+                        _pozew.SprawaWgPowoda = _sprawa.sygnatura + "@" + _sprawa.id.ToString();
+
+                step = "AA";
+                _pozew.Adresat = new typAdresat();
+                    _pozew.Adresat.ID = 1;   // sąd 
+                    _pozew.Adresat.Nazwa = "Sąd Rejonowy Lublin-Zachód w Lublinie";
+                    _pozew.Adresat.Wydzial = "VI Wydział Cywilny";
+                    _pozew.Adresat.Adres = new typAdres();
+                    _pozew.Adresat.Adres.Kraj = "PL";
+                    _pozew.Adresat.Adres.Gmina = "Lublin";
+                    _pozew.Adresat.Adres.Miejscowosc = "Lublin";
+                    _pozew.Adresat.Adres.Kod = "20070";
+                    _pozew.Adresat.Adres.Poczta = "Lublin";
+                    _pozew.Adresat.Adres.NrDomu = "13";
+                    _pozew.Adresat.Adres.Ulica = "ul. Boczna Lubomelskiej";
+                    _pozew.Adresat.Adres.Wojewodztwo = "lubelskie";
+                step = "BB";
+                _pozew.OsobaSkladajaca = new typSkladajacy();
+                    _pozew.OsobaSkladajaca.Adres = new typAdres();
+                    _pozew.OsobaSkladajaca.pelnomocnik = UserProfile.kontoEPU.CzyZawodowy;
+                    _pozew.OsobaSkladajaca.podstawa = UserProfile.kontoEPU.Pelnomocnictwo;
+                    _pozew.OsobaSkladajaca.Nazwa = UserProfile.kontoEPU.Nazwa;
+                    _pozew.OsobaSkladajaca.Osoba = new typOsoba();
+                    _pozew.OsobaSkladajaca.Osoba.Imie = UserProfile.kontoEPU.Imie;
+                    _pozew.OsobaSkladajaca.Osoba.Imie2 = UserProfile.kontoEPU.Imie2;
+                    _pozew.OsobaSkladajaca.Osoba.Nazwisko = UserProfile.kontoEPU.Nazwisko;
+                    _pozew.OsobaSkladajaca.Osoba.PESEL = UserProfile.kontoEPU.PESEL;
+                    _pozew.OsobaSkladajaca.Osoba.stanowisko = UserProfile.kontoEPU.Stanowisko;
+                    _pozew.OsobaSkladajaca.Adres = new typAdres();
+                    _pozew.OsobaSkladajaca.Adres.Kraj = "PL";
+                step = "CC";
+                _pozew.OsobaSkladajaca.Adres.Kod = UserProfile.kontoEPU.kod_pocztowy;
+                    _pozew.OsobaSkladajaca.Adres.Miejscowosc = UserProfile.kontoEPU.miejscowosc;
+                    _pozew.OsobaSkladajaca.Adres.NrDomu = UserProfile.kontoEPU.numer_domu;
+                    _pozew.OsobaSkladajaca.Adres.NrMieszkania = UserProfile.kontoEPU.numer_mieszkania;
+                    _pozew.OsobaSkladajaca.Adres.Poczta = UserProfile.kontoEPU.poczta;
+                    _pozew.OsobaSkladajaca.Adres.Ulica = UserProfile.kontoEPU.ulica;
+                    _pozew.OsobaSkladajaca.Adres.Wojewodztwo = UserProfile.kontoEPU.wojewodztwo;
+                step = "DD";
+                _pozew.ListaPowodow = new System.Collections.ObjectModel.ObservableCollection<typStrona>();
+                    _powod = new typStrona();
+                    _adres = new typAdres();
+                    _adres.Kraj = "PL";
+                    _adres.Miejscowosc = _sprawa.JednostkaOrg.Miejscowosc;
+                    _adres.NrDomu = _sprawa.JednostkaOrg.Nr_domu;
+                    if (_adres.NrDomu == null) _adres.NrDomu = "";
+                    _adres.NrMieszkania = _sprawa.JednostkaOrg.Nr_mieszkania;
+                    _adres.Poczta = _sprawa.JednostkaOrg.Poczta;
+                    _adres.Ulica = _sprawa.JednostkaOrg.Ulica;
+                    _adres.Wojewodztwo = _sprawa.JednostkaOrg.Wojewodztwo;
+                    _adres.Kod = _sprawa.JednostkaOrg.Kod;
+                    _powod.Adres = new System.Collections.ObjectModel.ObservableCollection<typAdres>();
+                    _powod.Adres.Add(_adres);
+                    _powod.ID = _sprawa.JednostkaOrg.Id;
+                    _powod.numerKonta = _sprawa.JednostkaOrg.konto;
+                    _powod.Reprezentacja = 1;
+                    _powod.RodzajStrony = 2;   // osoba prawna;
+                    _powod.ObcokrajowiecString = "";
+                    _powod.Obcokrajowiec = false;
+                    _powod.BrakNumerowIdentyfikacyjnych = false;
+                    _powod.NIP = _sprawa.JednostkaOrg.NIP;
+                    _instytucja = new typInstytucja();  // osoba prawna; - powód
+                    _instytucja.Nazwa = _sprawa.JednostkaOrg.Nazwa;
+                    _instytucja.Siedziba = _sprawa.JednostkaOrg.Siedziba;
+                    _instytucja.REGON = _sprawa.JednostkaOrg.REGON;
+                    _instytucja.CzyRejestr = 1;
+                    _instytucja.Item = _sprawa.JednostkaOrg.KRS;
+                    _powod.Item = _instytucja;
+                    _pozew.ListaPowodow.Add(_powod);
+                step = "DD";
+                _pozew.RachunekDoZwrotuOplat = new typRachunekDoZwrotuOplat();
+                    _pozew.RachunekDoZwrotuOplat.NumerRachunkuDoZwrotuOplat = _sprawa.JednostkaOrg.kontoZwrotOplaty;
+                    _pozew.RachunekDoZwrotuOplat.WlascicielRachunku = _sprawa.JednostkaOrg.Nazwa;
+                step = "EE";
+                _pozew.ListaPozwanych = new System.Collections.ObjectModel.ObservableCollection<typStrona>();
+                    _pozew.ListaPodpisow = new System.Collections.ObjectModel.ObservableCollection<typOsoba>();
+                    podpis = new typOsoba();
+                    podpis.Imie = _pozew.OsobaSkladajaca.Osoba.Imie;
+                    podpis.Imie2 = _pozew.OsobaSkladajaca.Osoba.Imie2;
+                    podpis.Nazwisko = _pozew.OsobaSkladajaca.Osoba.Nazwisko;
+                step = "FF";
+                    podpis.PESEL = _pozew.OsobaSkladajaca.Osoba.PESEL;
+                step = "GG";
+                podpis.stanowisko = _pozew.OsobaSkladajaca.Osoba.stanowisko;
+                step = "HH";
+                _pozew.ListaPodpisow.Add(podpis);
+
+                step += "11";
+                    foreach (DaneDluznika dd in _sprawa.DaneDluznika)
+                    {
+                        _pozwany = new typStrona();
+                        _pozwany.ID = dd.id;
+                        _pozwany.NIP = dd.nip;
+                        _pozwany.Reprezentacja = 1;
+                        _pozwany.RodzajStrony = (int)dd.FizPraw;
+                        _pozwany.BrakNumerowIdentyfikacyjnych = false;
+                        _adres = new typAdres();
+                        _adres.Kod = dd.kod_pocztowy;
+                        _adres.Kraj = "PL";
+                        _adres.Miejscowosc = dd.miejscowosc;
+                        _adres.NrDomu = dd.numer_domu;
+                        if (_adres.NrDomu == null) _adres.NrDomu = "";
+                        _adres.NrMieszkania = dd.numer_mieszkania;
+                        _adres.Poczta = dd.poczta;
+                        _adres.Wojewodztwo = dd.wojewodztwo;
+                        _adres.Ulica = dd.ulica;
+                        if (generatemode > 0) // jeśli brudny pozew
+                        {
+                            ;//_adres.Powiat = _sprawa.NrEwid;
+                                                }
+                        // to jest w konstruktorze
+                        _pozwany.Adres = new System.Collections.ObjectModel.ObservableCollection<typAdres>();
+                        _pozwany.Adres.Add(_adres);
+                    if (String.IsNullOrWhiteSpace(adres))
+                    {
+                        adres = (dd.miejscowosc + ", " + dd.ulica + " " + dd.numer_domu + (!string.IsNullOrWhiteSpace(dd.numer_domu) && !string.IsNullOrWhiteSpace(dd.numer_mieszkania) ? "/" + dd.numer_mieszkania : dd.numer_mieszkania)).Trim();
+                        miejsce = dd.miejscowosc; 
+
+                    }
+                        if (dd.FizPraw == 0 || dd.FizPraw == 1) // odoba fizyczna
+                        {
+                            _pozwany.ObcokrajowiecString = "Obywatelstwo polskie";
+                            _pozwany.Obcokrajowiec = false;
+                            _osoba = new typOsobaFizyczna();
+                            _osoba.Imie = dd.Imie;
+                            _osoba.Nazwisko = dd.Nazwisko;
+                            _osoba.Imie2 = dd.Imie2;
+                            if (!String.IsNullOrWhiteSpace(dd.Pesel))
+                            {
+                                if (!LexEnaValidators.PeselValidator.ValidatePesel(dd.Pesel))
+                                {
+                                    if (generatemode == 0)
+                                    {
+                                        string msg = "Błąd podczas generacji pozwu " + _sprawa.sygnatura + " błędny numer Pesel " + dd.Pesel;
+                                        //AlertMsg.Show(msg + " " + ex.Message);
+                                        ErrorWindow.CreateNew(msg);
+                                        evargs.Status = -7;
+                                        evargs.Message = "Błąd generacji pozwu błędny numer PESEL";
+                                        OnpozewCompleted(evargs);
+                                        return;
+                                    }
+                                }
+                                _osoba.PESEL = dd.Pesel;
+                            }
+                            czyfiz = true;
+                            if (dd.FizPraw == 1)
+                            {
+                                _osoba.Nazwa = dd.Nazwa;
+                                czydzial = true;
+                            }
+                            _pozwany.Item = _osoba;
+                        }
+                        else // osoba prawna
+                        {
+                            _pozwany.ObcokrajowiecString = "";
+                            _pozwany.Obcokrajowiec = false;
+                            _instytucja = new typInstytucja();  // osoba prawna; - powód
+                            _instytucja.Nazwa = dd.Nazwa;
+                            if ( !string.IsNullOrWhiteSpace(dd.siedziba))
+                                _instytucja.Siedziba = dd.siedziba;
+                            _instytucja.REGON = dd.regon;
+                            czypraw = true;
+                            _instytucja.CzyRejestr = (int)dd.czyrejestr;
+
+                            switch ((int)dd.czyrejestr)
+                            {
+                                case 1:  // krs
+                                    _instytucja.Item = dd.krs.Trim();
+                                    break;
+                                case 2:
+                                    _innyRejestr = new typInnyRejestr();
+                                    _innyRejestr.Organ = dd.organ_rejestru;
+                                    _innyRejestr.Numer = dd.numer_rejestru;
+                                    _innyRejestr.Typ = dd.typ_rejestru;
+                                    _instytucja.Item = _innyRejestr;
+                                    _instytucja.CzyRejestr = 1;
+                                    _instytucja.Item = _innyRejestr;
+                                    // tu zmiana - uwaga !!!!!  podmian  2 na 1  do serializacji 
+                                    break;
+                                default:
+                                    _instytucja.CzyRejestr = 0;
+                                    break;
+                            }
+                            _pozwany.Item = _instytucja;
+                            //_pozew.ListaPozwanych.Add
+                           }
+                        _pozew.ListaPozwanych.Add(_pozwany);
+                        }
+                        // lista dowodów
+                        i = 0;
+                step += "22";
+                _pozew.ListaDowodow = new System.Collections.ObjectModel.ObservableCollection<typDowod>();
+
+                        foreach (var rr in _sprawa.Naleznosc.OrderBy(a => a.numer))
+                        {  // faktury 
+                            if (rr.TypNaleznosci.TypNal != 1 && rr.TypNaleznosci.TypNal != 4) continue;
+                           // if (rr.TypNaleznosci.TypNal != 1 ) continue;
+                            _dowod = new typDowod();
+                            _dowod.Numer = ++i;
+                    if (rr.data_dok != null)
+                    {
+                        _dowod.DataDowodu = ((DateTime)(rr.data_dok)).ToString("yyyy-MM-dd"); //(DateTime)rr.data_dok; 
+
+                    }
+                    else
+                    {
+                        _dowod.DataDowodu = null;
+                        if (generatemode == 0)
+                        {
+                            /* 
+                            ErrorWindow.CreateNew("Należność  w sprawie " + _sprawa.sygnatura + " brak daty dokumentu ");
+                            evargs.Status = -100;
+                            evargs.Message = "Success ";
+                            OnpozewCompleted(evargs);
+                            return;
+                            */
+                        }
+                    }
+                                    
+                            _dowod.Oznaczenie = rr.opis;
+                            _dowod.Opis = rr.opis2;   // do zmiany KSEF
+
+                            if (rr.TypNaleznosci.CzyOdsKapital == 1)
+                            {// nota odsetkowa z dnia
+                                _dowod.TypDowodu = typRodzajDowodu.inny;
+                                _dowod.FaktStwierdzany = "Istnienie zobowiązania, jego wysokość i termin zapłaty";
+                                _dowod.Opis = "Nota odsetkowa na kwotę " +  rr.kwota.Value.ToString("C", new CultureInfo ( "pl-PL")) + " z terminem płatności przypadajacym na " + ((DateTime)(rr.data_n)).ToString("yyyy-MM-dd");
+                            }
+                            else
+                            {
+                                if (rr.TypNaleznosci.TypNal == 4)
+                                {
+                                    _dowod.TypDowodu = typRodzajDowodu.inny;
+                                    _dowod.Opis = "Wezwanie strony pozwanej do dobrowolnego spełnienia świadczenia z terminem płatności przypadającym na " + ((DateTime)(rr.data_n)).ToString("yyyy-MM-dd") + " - koszt wezwania:  " + rr.kwota.Value.ToString("C", new CultureInfo("pl-PL"));
+                                    _dowod.FaktStwierdzany = "Istnienie zobowiązania, jego wysokość i termin zapłaty";
+                                }
+                                else 
+                                {
+                                    _dowod.TypDowodu = typRodzajDowodu.faktura;
+                                    _dowod.Opis = "Faktura VAT na kwotę " + rr.kwota.Value.ToString("C", new CultureInfo("pl-PL")) + " z terminem płatności przypadającym na " + ((DateTime)(rr.data_n)).ToString("yyyy-MM-dd");
+                                    if (generatemode > 0 )
+                                    {
+                                    if (!String.IsNullOrWhiteSpace(rr.Nr_KSEF))
+                                    _dowod.Opis += "[Nr KSEF:" + rr.Nr_KSEF + "|data przyjęcia KSEF:" + (rr.Data_prz_KSEF != null ? ((DateTime)(rr.Data_prz_KSEF)).ToString("yyyy-MM-dd"):"") + "]";
+
+                                    }
+                                    _dowod.FaktStwierdzany = "Istnienie zobowiązania, jego wysokość i termin zapłaty";
+                                }
+                            }
+                            _pozew.ListaDowodow.Add(_dowod);
+                        }
+
+                step += "33";
+                foreach (var rx in _sprawa.DokOdebr)
+                        {  // pozostałe dowody 
+                            _dowod = new typDowod();
+                            _dowod.Numer = ++i;
+                    if (rx.DataDokumentu != null)
+                        _dowod.DataDowodu = ((DateTime)(rx.DataDokumentu)).ToString("yyyy-MM-dd"); // (DateTime)rx.DataDokumentu; 
+                    else
+                        _dowod.DataDowodu = null;
+                            _dowod.Opis = rx.Nazwa;
+                            _dowod.TypDowodu = typRodzajDowodu.inny;
+                            _dowod.FaktStwierdzany = "Istnienie zobowiązania";
+                            _pozew.ListaDowodow.Add(_dowod);
+                        }
+
+                if (this.extraData != null && this.extraData.DowodyLst != null )
+                foreach (var rf in this.extraData.DowodyLst)
+                {
+                        if (rf.Choosen)
+                        {
+                            
+                            _dowod = new typDowod();
+                            _dowod.Numer = ++i;
+                            if (rf.Nazwa.ToLower().Contains("umowa"))
+                            {
+                                _dowod.TypDowodu = typRodzajDowodu.umowa;
+                                if (string.IsNullOrWhiteSpace(rf.Tekst))
+                                    _dowod.Oznaczenie = "NR KL " + (_sprawa.NrEwid != null ? _sprawa.NrEwid:"").Trim();
+                                else
+                                    _dowod.Oznaczenie = rf.Tekst + " NR KL " + (_sprawa.NrEwid != null ? _sprawa.NrEwid : "").Trim();
+                            }
+                            else
+                            {
+                                _dowod.TypDowodu = typRodzajDowodu.inny;
+                                _dowod.Oznaczenie = rf.Tekst;
+                            }
+                            _dowod.DataDowodu = rf.DataDowodu != null ? rf.DataDowodu.Value.ToString("yyyy-MM-dd") : "";
+                            _dowod.Opis = rf.Nazwa;
+                            
+                            _dowod.FaktStwierdzany = rf.Opis;
+                            nr_dowodow.Add(_dowod.Numer);
+                            _pozew.ListaDowodow.Add(_dowod);
+                        }
+                }
+                ParseDowody(_pozew); 
+
+
+                /*
+                foreach (var rf in fakty)
+                        {
+
+                            switch (rf.filtr)
+                            {case 0:
+                                    continue;
+                                case 1: // zawsze dołączaj
+                                    break;
+                                case 2:  // jeśli oczoba rowana
+                                    if (czypraw)
+                                        break;
+                                    else
+                                        continue;
+                                case 3:   // jeśli działąlnośc gospodarcza
+                                    if (czydzial)
+                                        break;
+                                    else
+                                        continue;
+                                case 4:
+                                    if (czyfiz)
+                                        break;
+                                    else
+                                        continue;
+                                default:
+                                   continue;
+                            }
+                            _dowod = new typDowod();
+                            _dowod.Numer = ++i;
+                            if (rf.Nazwa.ToLower().Contains("umowa"))
+                            _dowod.TypDowodu = typRodzajDowodu.umowa;
+                            else
+                            _dowod.TypDowodu = typRodzajDowodu.inny;
+                            _dowod.Opis = rf.Nazwa;
+                            _dowod.FaktStwierdzany = rf.Tresc;
+                            nr_dowodow.Add(_dowod.Numer);
+                            _pozew.ListaDowodow.Add(_dowod);
+                        }
+                    */
+                      // Dowody dopisane z liosty 
+                        _pozew.ListaRoszczen = new System.Collections.ObjectModel.ObservableCollection<typRoszczenie>();
+                // roszczenia
+
+                step += "44";
+                //ErrorWindow.CreateNew("CR Mode = " + CreationMode.ToString());
+                    if (CreationMode == 100)   // fejkowe
+                    {
+                        odskap = new typSprawaOds();
+                        odskap.Dowod = new System.Collections.ObjectModel.ObservableCollection<typDowoduOds>();
+                        odskap.oznaczenie = _sprawa.sygnatura + '@' + _sprawa.id.ToString() + (String.IsNullOrEmpty(_sprawa.NrEwid) ? "": '#' + _sprawa.NrEwid.Trim());
+                        foreach (var ry in _sprawa.Naleznosc)
+                        {
+                            if (ry.TypNaleznosci.TypNal != 1 && ry.TypNaleznosci.TypNal != 4) continue;
+                            _roszczenie = new typRoszczenie();
+                            diagnostic = "0.Błędna data wymagalności należności " + Convert.ToString(ry.numer) + " " + Convert.ToString(ry.kwota);
+                            _roszczenie.dataWymagalnosci = Convert.ToDateTime(ry.data_n).ToString("yyyy-MM-dd");
+                            diagnostic = "0.Błędny Numer należności " + " " + Convert.ToString(ry.kwota);
+                            _roszczenie.Numer = (int)ry.numer;
+                            _roszczenie.Waluta = typWaluta.PLN;
+
+                            if (ry.Odsetki.Count > 0)
+                                _roszczenie.czyodsetki = 1;
+                            else
+                                _roszczenie.czyodsetki = 0;
+
+
+                            if (ry.WplataPodz.Count > 0)  // były wpłaty - będzie inna zaległość 
+                            {
+
+                                listaPoWplacie = _buildRoszczenie(ry);
+                                if (listaPoWplacie.Count > 0)
+                                {
+                                    _roszczenie = listaPoWplacie.First();
+                                    _roszczenie.Numer = (int)ry.numer;
+                                    _roszczenie.Dowody = new System.Collections.ObjectModel.ObservableCollection<int>();
+                                    _roszczenie.Dowody.Add(_roszczenie.Numer);  // jeden dowód domyślnie
+                                    foreach (int ix in nr_dowodow)
+                                    {
+                                        _roszczenie.Dowody.Add(ix);
+                                    }
+                                    _pozew.ListaRoszczen.Add(_roszczenie);
+                                    if (listaPoWplacie.Count == 2)
+                                    {
+                                        _roszczenie = listaPoWplacie.Last();
+                                        _roszczenie.Numer = (int) ry.numer;
+                                        _roszczenie.Dowody = new System.Collections.ObjectModel.ObservableCollection<int>();
+                                        _roszczenie.Dowody.Add(_roszczenie.Numer);  // jeden dowód domyślnie
+                                        foreach (int ix in nr_dowodow)
+                                        {
+                                            _roszczenie.Dowody.Add(ix);
+                                        }
+                                        _pozew.ListaRoszczen.Add(_roszczenie);
+
+                                    }
+                                    continue;
+                                }
+                                else
+                                    continue;
+                            }
+                            else
+                            {
+                                czyodsskap = false;
+                                //
+                               
+                                if (ry.StanNaleznosci != null)
+                                {
+                                    if (ry.StanNaleznosci.Count > 0)
+                                    {
+                                        
+
+                                        if (ry.TypNaleznosci.CzyOdsKapital == 1)
+                                            _roszczenie.Wartosc = (decimal)ry.StanNaleznosci.FirstOrDefault().kwota_n;
+                                        else
+                                        {
+                                            _roszczenie.Wartosc = (decimal)ry.StanNaleznosci.FirstOrDefault().kwota_n + (decimal)ry.StanNaleznosci.FirstOrDefault().kwota_o;
+                                            
+                                        }
+                                        czyodsskap = true;
+                                    }
+                                    else
+                                       _roszczenie.Wartosc = (decimal)ry.kwota;
+                                }
+                                else
+                                    _roszczenie.Wartosc = (decimal)ry.kwota;
+                            }
+                            if (czyodsskap)
+                             {// jeśli skapitalizowano
+                                 if (ry.TypNaleznosci.CzyOdsKapital == 1)
+                                 {
+                                     _roszczenie.Opis = "Tytułem niezapłaconej noty odsetkowej " + (String.IsNullOrEmpty(ry.opis) ? "" : ry.opis);
+                                     fakturaOdsKap = new typDowoduOds();
+                                     fakturaOdsKap.Faktura = (String.IsNullOrEmpty(ry.opis) ? "" : ry.opis);
+                                     fakturaOdsKap.DataPlatnosci = Convert.ToDateTime(ry.data_n).ToString("yyyy-MM-dd");
+                                     fakturaOdsKap.Kapital = Convert.ToString(ry.kwota);
+                                     fakturaOdsKap.Odsetki = "0";
+                                     fakturaOdsKap.Id = ry.Id;
+                                     odskap.Dowod.Add(fakturaOdsKap);
+                                 }
+                                 else
+                                 {
+                                     _roszczenie.Opis = "Tytułem niezpłaconej faktury VAT " + (String.IsNullOrEmpty(ry.opis) ? "" : ry.opis);
+                                     if ((decimal)ry.StanNaleznosci.FirstOrDefault().kwota_o > 0)
+                                     {
+                                         _roszczenie.Opis += " wraz z odsetkami ustawowymi za opóźnienie w kwocie " + Convert.ToString((decimal)ry.StanNaleznosci.FirstOrDefault().kwota_o) + " zł ";
+                                         if (_roszczenie.czyodsetki == 1)
+                                         {
+                                             _roszczenie.Opis += " liczonymi : ";
+                                             _roszczenie.Opis += " od dnia " + Convert.ToDateTime(ry.Odsetki.FirstOrDefault().DataPocz).ToString("yyyy-MM-dd");
+                                             _roszczenie.Opis += " do dnia " + Convert.ToDateTime(dayBefore).ToString("yyyy-MM-dd");
+                                             _roszczenie.Opis += " od kwoty " + Convert.ToString(ry.kwota);
+                                             
+                                             fakturaOdsKap = new typDowoduOds();
+                                             fakturaOdsKap.Faktura = (String.IsNullOrEmpty(ry.opis) ? "" : ry.opis);
+                                             fakturaOdsKap.DataPlatnosci = Convert.ToDateTime(ry.data_n).ToString("yyyy-MM-dd");
+                                             fakturaOdsKap.DataOd = Convert.ToDateTime(ry.Odsetki.FirstOrDefault().DataPocz).ToString("yyyy-MM-dd");
+                                             fakturaOdsKap.DataDo = Convert.ToDateTime(dayBefore).ToString("yyyy-MM-dd");
+                                             fakturaOdsKap.Kapital = Convert.ToString(ry.kwota);
+                                             fakturaOdsKap.Odsetki = Convert.ToString((decimal)ry.StanNaleznosci.FirstOrDefault().kwota_o);
+                                             fakturaOdsKap.Id = ry.Id;
+                                             odskap.Dowod.Add(fakturaOdsKap);
+
+                                         }
+                                     } 
+
+                                 }
+
+
+                             }
+                           
+                           
+                            _roszczenie.Solidarnie = (int)ry.CzySolidarnie;
+                            _roszczenie.Typ = (int)ry.TypRoszczenia;
+                            _roszczenie.Dowody = new System.Collections.ObjectModel.ObservableCollection<int>();
+                            _roszczenie.Dowody.Add( (int)ry.numer  );  // jeden dowód domyślnie
+                            foreach (int ix in nr_dowodow)
+                            {
+                                _roszczenie.Dowody.Add(ix);
+                            }
+                            _roszczenie.Odsetki = new System.Collections.ObjectModel.ObservableCollection<typOkresOdsetkowy>();
+                            if (ry.Odsetki.Count > 0)  // jeśli sa odsetki
+                            {
+                                foreach (var rz in ry.Odsetki)
+                                {
+                                    _odsetki = new typOkresOdsetkowy();//_odsetki = new
+                                    if (rz.NazwyOdsetek_Id == 2) // ustawowe 
+                                        _odsetki.CzyUstawowe = 0;
+                                    else
+                                    {
+                                        _odsetki.CzyUstawowe = 1;
+                                        _odsetki.Stopa = (decimal)rz.Proc0;
+                                        _odsetki.Okres = (int)rz.TypStopy;
+                                    }
+                                    if (ry.TypNaleznosci.CzyOdsKapital == 1 || czyodsskap) // jesli odseki skapitalizowane to zmiana daty : od wniesienia pozwu 
+                                    {
+                                        rz.OdWniesienia = 1;
+                                        _odsetki.DataOd = new DateTime(2000, 1, 1);
+                                    }
+                                    if (rz.OdWniesienia == 1)
+                                    {
+                                        _odsetki.Od_Wniesienia = 1;
+                                        _odsetki.DataOd = new DateTime(2000, 1, 1);
+                                    }
+                                    else
+                                    {
+                                        _odsetki.Od_Wniesienia = 0;
+                                        diagnostic = "0.Błędna data początku okresu odsetkowego " + Convert.ToString(ry.numer) + " " + Convert.ToString(ry.kwota);
+                                        _odsetki.DataOd = (DateTime)rz.DataPocz;
+                                        diagnostic = String.Empty;
+                                    }
+                                    if (rz.DoZaplaty == 1)
+                                        _odsetki.Do_Zaplaty = 1;
+                                    else
+                                    {
+                                        _odsetki.Do_Zaplaty = 0;
+                                        _odsetki.DataDo = (DateTime)rz.DataK;
+                                    }
+
+                                    // dodać kwotę jeśli   są wpłaty - tu trzeba poprawić
+
+                                    //if
+                                    // dołączenie dowodów
+                                    _roszczenie.Odsetki.Add(_odsetki);
+
+                                }
+
+                            }
+                        step += "55";
+                        // Zmiana 2014-04-22
+                        if (_roszczenie.Opis == null) _roszczenie.Opis = "";
+                            _roszczenie.Opis += " Id=*" + ry.Id.ToString() + "*";
+                            // End Zmiana 2014-04-22
+			
+			   _pozew.ListaRoszczen.Add(_roszczenie);
+                        }
+
+                    }
+                    else
+                    {
+                    int maxNr = 0;
+                    int jakie_odsetki = 0;
+
+                    //
+                        foreach (var ry in _sprawa.Naleznosc.OrderBy(a=>a.numer))
+                        {
+                            if (ry.TypNaleznosci.TypNal != 1 && ry.TypNaleznosci.TypNal != 4) continue;
+                            _roszczenie = new typRoszczenie();
+                            diagnostic = "Błędna data wymagalności należności " + Convert.ToString(ry.numer) + " " + Convert.ToString(ry.kwota) ;
+                        if (generatemode == 0)
+                        {
+                            //ErrorWindow.CreateNew("Data wymag " + (ry.data_n.Value).ToString("yyyy-MM-dd") + "  NBD " + DaysOffCalculator.GetNearestNextWorkDay(ry.data_n.Value).ToString("yyyy-MM-dd"));
+                            _roszczenie.dataWymagalnosci = (ry.data_n != null ?  DaysOffCalculator.GetNearestNextWorkDay(ry.data_n.Value).ToString("yyyy-MM-dd") : null);
+                             
+                        }
+                        else
+                            _roszczenie.dataWymagalnosci = Convert.ToDateTime(ry.data_n).ToString("yyyy-MM-dd");
+                            diagnostic = "Błędny Numer należności " + " " + Convert.ToString(ry.kwota);
+                            _roszczenie.Numer = (int)ry.numer;
+                            _roszczenie.Waluta = typWaluta.PLN;
+                        if (_roszczenie.Numer > maxNr)
+                        {
+                            maxNr = _roszczenie.Numer;
+
+                        }
+                            if (ry.WplataPodz.Count > 0)  // były wpłaty - będzie inna zaległość 
+                            {
+
+                                listaPoWplacie = _buildRoszczenie(ry);
+                                if (listaPoWplacie.Count > 0)
+                                {
+                                    _roszczenie = listaPoWplacie.First();
+                                    _roszczenie.Numer = (int)ry.numer;
+                                    _roszczenie.Dowody = new System.Collections.ObjectModel.ObservableCollection<int>();
+                                    _roszczenie.Dowody.Add((int)ry.numer);  // jeden dowód domyślnie
+                                    foreach (int ix in nr_dowodow)
+                                    {
+                                        _roszczenie.Dowody.Add(ix);
+                                    }
+                                    _pozew.ListaRoszczen.Add(_roszczenie);
+                                    if (listaPoWplacie.Count == 2)
+                                    {
+                                        _roszczenie = listaPoWplacie.Last();
+                                        _roszczenie.Numer = (int)ry.numer;
+                                        _roszczenie.Dowody = new System.Collections.ObjectModel.ObservableCollection<int>();
+                                        _roszczenie.Dowody.Add((int) ry.numer);  // jeden dowód domyślnie
+                                        foreach (int ix in nr_dowodow)
+                                        {
+                                            _roszczenie.Dowody.Add(ix);
+                                        }
+                                        _pozew.ListaRoszczen.Add(_roszczenie);
+
+                                    }
+                                    continue;
+                                }
+                                else
+                                    continue;
+                                }
+                            else
+                                _roszczenie.Wartosc = (decimal)ry.kwota;
+                         
+                            if (ry.Odsetki.Count > 0)
+                                _roszczenie.czyodsetki = 1;
+                            else
+                                _roszczenie.czyodsetki = 0;
+
+                            _roszczenie.Solidarnie = (int)ry.CzySolidarnie;
+                            _roszczenie.Typ = (int)ry.TypRoszczenia;
+                            _roszczenie.Dowody = new System.Collections.ObjectModel.ObservableCollection<int>();
+                            
+
+                            _roszczenie.Dowody.Add((int)ry.numer);  // jeden dowód domyślnie
+                            foreach (int ix in nr_dowodow)
+                            {
+                                _roszczenie.Dowody.Add(ix);
+                            }
+                            _roszczenie.Odsetki = new System.Collections.ObjectModel.ObservableCollection<typOkresOdsetkowy>();
+                            /////////////
+                          
+                            ////////////////
+                            if (ry.Odsetki.Count > 0)  // jeśli sa odsetki
+                            {
+                                foreach (var rz in ry.Odsetki)
+                                {
+                                    _odsetki = new typOkresOdsetkowy();//_odsetki = new
+
+                               
+                                if (rz.NazwyOdsetek_Id == 2) // ustawowe 
+                                    _odsetki.CzyUstawowe = 0;
+                                else if (rz.NazwyOdsetek_Id == 1) // umowne ( dotychczasowe)
+                                {
+                                    _odsetki.CzyUstawowe = 1;
+                                    _odsetki.Stopa = (decimal)rz.Proc0;
+                                    _odsetki.Okres = (int)rz.TypStopy;
+                                }
+                                else
+                                {
+                                    _odsetki.CzyUstawowe = rz.NazwyOdsetek_Id.Value;
+                                    //_odsetki.Od_Wniesienia = 1;
+                                    switch (rz.NazwyOdsetek_Id)
+                                    {
+                                        case 0:
+                                            _odsetki.CzyUstawowe = 0;
+                                            break;
+                                        case 2:
+                                            _odsetki.Stopa = (decimal)(rz.Proc0 ?? 0);
+                                            _odsetki.Okres = (int)(rz.TypStopy ?? 0);
+                                            //Umowne o podanej stopie nie większe niż 4x stopa lombardowa
+                                            break;
+
+                                        case 3://  Umowne = 4x stopa lombardowa
+                                            _odsetki.Stopa = (decimal)(rz.Proc0 ?? 0);
+                                            _odsetki.Okres = (int)(rz.TypStopy ?? 0);
+                                            break;
+                                        case 4: //   Umowne, nie więcej niż ods maks.od dnia/do dnia
+                                            _odsetki.Stopa = (decimal)(rz.Proc0 ?? 0);
+                                            _odsetki.Okres = (int)(rz.TypStopy ?? 0);
+                                            break;
+                                        case 5: //   Umowne 4x stopa lombardowa, nie więcej niż ods maks.od dnia/do dnia
+                                            _odsetki.Stopa = (decimal)(rz.Proc0 ?? 0);
+                                            _odsetki.Okres = (int)(rz.TypStopy ?? 0);
+                                            break;
+                                        case 6: //   Umowne 4x lombardowa do 31.12.2015 i 4x stopa lombardowa.nie więcej niż w wys.ods maks. od dnia 01.01.2016
+                                            _odsetki.Stopa = (decimal)(rz.Proc0 ?? 0);
+                                            _odsetki.Okres = (int)(rz.TypStopy ?? 0);
+                                            break;
+                                        case 7: //   Umowne w wys.ods.maks.od dnia/do dnia
+                                            _odsetki.Stopa = (decimal)(rz.Proc0 ?? 0);
+                                            _odsetki.Okres = (int)(rz.TypStopy ?? 0);
+                                            break;
+                                        case 8: //   Ustawowe za opóźnienie
+                                            break;
+                                        case 9: //   Ustawowa do 31.12.2015  i ustawowe za opóźnienie od dnia 1.01.2016
+                                            break;
+                                        case 10: //  Umowne, nie więcej niż w wys.ods.maks.za opóźnienie
+                                            _odsetki.Stopa = (decimal)(rz.Proc0 ?? 0);
+                                            _odsetki.Okres = (int)(rz.TypStopy ?? 0);
+                                            break;
+                                        case 11: //  Umowne w wys.ods.maks.za opóźnienie
+                                            _odsetki.Stopa = (decimal)(rz.Proc0 ?? 0);
+                                            _odsetki.Okres = (int)(rz.TypStopy ?? 0);
+                                            break;
+                                        case 12: //  Umowne, 4x stopa lombardowa do 31.12.2015 i umowne 4x lombardowa, nie więcej niż w wys. ods.maks.za opóźnienie od 1.01.2016
+                                            _odsetki.Stopa = (decimal)(rz.Proc0 ?? 0);
+                                            _odsetki.Okres = (int)(rz.TypStopy ?? 0);
+                                            break;
+                                        case 13: //  Umowne, 4x stopa lombardowa, nie więcej niż w wys.ods.maks.za opóźnienie
+                                            _odsetki.Stopa = (decimal)(rz.Proc0 ?? 0);
+                                            _odsetki.Okres = (int)(rz.TypStopy ?? 0);
+                                            break;
+                                        case 14: //  Umowne, nie więcej niż 4x stopa lombardowa do 31.12.2015 i umowne, nie więcej niż w wys. ods.maks.za opóźnienie od 1.01.2016
+                                            _odsetki.Stopa = (decimal)(rz.Proc0 ?? 0);
+                                            _odsetki.Okres = (int)(rz.TypStopy ?? 0);
+                                            break;
+                                        case 15: //  Ustawowe za opóźnienie w transakcjach handlowych
+                                            break;
+                                        case 16: //  Ustawowe do 31.12.2015 i ustawowe za opóźnienie w transakcjach handlowych od 01.01.2016
+                                            break;
+                                        case 17: //  Wys odsetek za zwłokę  na podstawie Ordynacji podatkowej do dnia 31 grudnia 2015 roku z odsetkami ustawowymi za opóźnienie w transakcjach handlowych od  1.01.2016
+                                            _odsetki.Stopa = (decimal)(rz.Proc0 ?? 0);
+                                            _odsetki.Okres = (int)(rz.TypStopy ?? 0);
+                                            break;
+                                        case 18: //  Zgodnie z opisem
+                                         
+                                            _odsetki.CzyUstawowe = 18;
+                                            if (rz.OdWniesienia == 0)
+                                                _odsetki.Opis = "Odsetki za opóźnienie w transakcjach handlowych, w których dłużnikiem jest podmiot publiczny będący podmiotem leczniczym od dnia " + ((DateTime)rz.DataPocz).ToString("dd-MM-yyyy") + " do dnia zapłaty";
+                                            else
+                                                _odsetki.Opis = "Odsetki za opóźnienie w transakcjach handlowych, w których dłużnikiem jest podmiot publiczny będący podmiotem leczniczym od dnia wniesienia pozwu do dnia zapłaty";
+
+                                            break;
+                                        case 20:// podm lecznicze
+                                         //   AlertMsg.Show("4444 Od wniesienia " + _odsetki.Od_Wniesienia.ToString());
+                                            _odsetki.CzyUstawowe = 18;
+                                            if (rz.OdWniesienia == 0)
+                                                _odsetki.Opis = "Odsetki za opóźnienie w transakcjach handlowych, w których dłużnikiem jest podmiot publiczny będący podmiotem leczniczym od dnia " +  ((DateTime)rz.DataPocz).ToString("dd-MM-yyyy") + " do dnia zapłaty";
+                                            else
+                                                _odsetki.Opis = "Odsetki za opóźnienie w transakcjach handlowych, w których dłużnikiem jest podmiot publiczny będący podmiotem leczniczym od dnia wniesienia pozwu do dnia zapłaty";
+
+                                            break;
+                                        default:
+                                            _odsetki.CzyUstawowe = 1;
+                                            break;
+
+                                    }
+                                    _odsetki.Od_Wniesienia = 1;
+                                }
+                                
+                                if (ry.TypNaleznosci.CzyOdsKapital == 1 ||  this.odsKapital != null)    // jesli odseki skapitalizowane to zmiana daty : od wniesienia pozwu 
+                                    {
+                                    
+                                        rz.OdWniesienia = 1;
+                                        _odsetki.DataOd =  new DateTime(2000, 1, 1);
+                                        _odsetki.CzyUstawowe = 8;                           
+                                    }
+                                    if (rz.OdWniesienia == 1)
+                                    {
+                                        _odsetki.Od_Wniesienia = 1;
+                                        _odsetki.DataOd = new DateTime(2000, 1, 1);
+                                    if (ry.TypNaleznosci.CzyOdsKapital == 1 && generatemode == 1 && UserProfile.Firma == 1)
+                                    {
+                                        if (ry.Odsetki != null && ry.Odsetki.Count > 0)
+                                        {
+                                          _odsetki.DataOd = ry.data_n.Value.AddDays(1);
+                                        }
+                                    }
+                                       
+                                    }
+                                    else
+                                    {
+                                        _odsetki.Od_Wniesienia = 0;
+                                        diagnostic = "1.Błędna data początku okresu odsetkowego " + Convert.ToString(ry.numer) + " " + Convert.ToString(ry.kwota);
+                                    //ErrorWindow.CreateNew("Data wymag " + _roszczenie.dataWymagalnosci);
+                                    if (generatemode == 0 && Convert.ToDateTime(_roszczenie.dataWymagalnosci) > (DateTime)rz.DataPocz)
+                                    {
+                                        _odsetki.DataOd = Convert.ToDateTime(_roszczenie.dataWymagalnosci);
+
+                                    }
+                                    else
+                                    {
+                                        _odsetki.DataOd = (DateTime)rz.DataPocz;
+                                    }      
+                                        diagnostic = String.Empty;
+                                    }
+                                    if (rz.DoZaplaty == 1)
+                                        _odsetki.Do_Zaplaty = 1;
+                                    else
+                                    {
+                                        _odsetki.Do_Zaplaty = 0;
+                                        _odsetki.DataDo = (DateTime)rz.DataK;
+                                    }
+
+                                   _roszczenie.Odsetki.Add(_odsetki);
+                                if (_roszczenie.Odsetki.Count == 1)
+                                    break; 
+                                   
+                                }
+
+                            }
+                         
+                            _pozew.ListaRoszczen.Add(_roszczenie);
+                            
+                        }
+                    // dodanie odsetek skapitalizowanych
+                    if (this.odsKapital != null)
+                    {
+                        _roszczenie = new typRoszczenie();
+                        _roszczenie.czyodsetki = 1;
+                        _roszczenie.dataWymagalnosci = Convert.ToDateTime(odsKapital.data_n).ToString("yyyy-MM-dd");
+                        _roszczenie.Numer = maxNr + 1;
+                        _roszczenie.Solidarnie = 0;
+                        _roszczenie.Opis = " Odsetki skapitalizowane od wyżej wymienionych należności na dzień wniesienia pozwu";
+                        _roszczenie.Wartosc = odsKapital.kwota.Value;
+                        _roszczenie.Waluta = typWaluta.PLN;
+                        _odsetki = new typOkresOdsetkowy();
+                        _odsetki.Od_Wniesienia = 1;
+                        _odsetki.DataOd = _odsetki.DataOd = new DateTime(2000, 1, 1);
+                        _odsetki.CzyUstawowe = 8;
+                        _odsetki.Do_Zaplaty = 1;
+                        _roszczenie.Odsetki = new System.Collections.ObjectModel.ObservableCollection<typOkresOdsetkowy>();
+                        _roszczenie.Odsetki.Add(_odsetki);
+                        _pozew.ListaRoszczen.Add(_roszczenie);
+
+                    }
+
+                }
+                step += "66";
+                // dołączenie 
+                if (odskap != null)
+                     _pozew.OdsetkiSkapitalizowne = odskap;
+
+                        // opłata sądowa
+                       
+                        _pozew.ObliczSumy();
+                        this.Oplata = _pozew.OplataSadowa.WartoscOplaty;
+                        this.WPS = _pozew.WartoscSporu;
+                        this.dZlozenia = _pozew.DataZlozenia;
+                        
+                        _pozew.OplataSadowa.Zasadzenie = 1;
+                        _pozew.OplataSadowa.Zwolnienie = 0;
+                        _pozew.KosztyZastepstwa = new typKoszty();
+                        _pozew.KosztyZastepstwa.Zasadzenie = 1;
+                        _pozew.KosztyZastepstwa.WgNorm = 1;
+                // oplata od prowizji 
+                if (UserProfile.Firma == 1)
+                {
+                    ;
+                   // _pozew.InneKoszty = new typKoszty();
+                   // _pozew.InneKoszty.WgNorm = 0;
+                   // _pozew.InneKoszty.Zasadzenie = 1;
+                   // _pozew.InneKoszty.Opis = "opłata manipulacyjna dla dostawcy usług płatności";
+                   // _pozew.InneKoszty.Wartosc = EPUCalc.countProwizja(this.Oplata);
+                   // this.InneKoszty = _pozew.InneKoszty.Wartosc;
+                }
+                else
+                {
+                    if (this.koszty40E != null && this.koszty40E.kwota > (decimal)0)
+                    {
+                        _pozew.InneKoszty = new typKoszty();
+                        _pozew.InneKoszty.WgNorm = 0;
+                        _pozew.InneKoszty.Zasadzenie = 1;
+                        _pozew.InneKoszty.Opis = koszty40E.opis;
+                        _pozew.InneKoszty.Wartosc = koszty40E.kwota.Value;
+                        this.InneKoszty = _pozew.InneKoszty.Wartosc;
+                        
+                    }
+
+
+
+                }
+                if (extraData != null && extraData.UzasadnieniaLst != null && extraData.UzasadnieniaLst.Count > 0)
+                {
+                    TypDowod tdw = extraData.UzasadnieniaLst.Where(a => a.Choosen).FirstOrDefault();
+                    if (tdw != null)
+                        _pozew.Uzasadnienie = ParseUzasadnienie(tdw.Opis,_pozew, adres, miejsce, nrEwid);
+                    else
+                        _pozew.Uzasadnienie = "";
+                }
+                else
+                    _pozew.Uzasadnienie = " ";
+
+
+
+                evargs.Status = 100;
+                evargs.Message = "Success ";
+                step += "77";
+                OnpozewCompleted(evargs);
+                
+
+            }  // try
+                catch (Exception ex)
+                {
+                    string msg = "Błąd podczas generacji pozwu dla sprawy " + _sprawa.sygnatura + " " + diagnostic + "krok "+step;
+                    //AlertMsg.Show(ex.Message);
+                    ErrorWindow.CreateNew(ex,msg);
+                    _pozew = null;
+                    evargs.Status = -7;
+                    evargs.Message = "Błąd generacji pozwu " + ex.Message;
+                    OnpozewCompleted(evargs); 
+                    
+                }
+
+              
+                        
+            }
+
+        /// <summary>
+        ///  Dodawanie do  pozwu do bazy danych wraz z zakładaniem DocWysi zmianą statusu
+        /// </summary>
+            protected Pozew AddPozewDokWys()
+            {
+                DokWys _dokWys;
+                Pozew __pozew;
+                _dokWys = new DokWys();
+
+                try
+                {
+                    __pozew = new Pozew();
+                    __pozew.DataZlozenia = this.dZlozenia;
+                    __pozew.WPS = this.WPS;
+                    __pozew.Koszty = this.Oplata;
+                    __pozew.Tresc = this.GetPozewSerialized();
+
+                    _dokWys = new DokWys();
+                    _dokWys.Nazwa = "Pozew";
+                    _dokWys.Opis = "Pozew w EPU";
+                    _dokWys.RodzajDok = 10; // pozew
+                    _dokWys.StatusDok = 1; // projekt
+                    _dokWys.TypDok = 10;
+                    _dokWys.DataDok = this.dZlozenia;
+                    _dokWys.Sprawa_id = this.IdSprawy;
+                    _dokWys.WPS = this.WPS;
+                    _dokWys.Koszty = this.Oplata;
+                    _dokWys.InneKoszty = this.InneKoszty;
+                    _dokWys.NotyOdsetkowe = (_pozew.OdsKapital == null ? 0 : _pozew.OdsKapital );
+                    _dokWys.OdsetkiKapital = (_pozew.OdsNalicz == null ? 0 : _pozew.OdsNalicz);
+                    _dokWys.OdsNalicz = (_pozew.OdsetkiSkapitalizowne != null ? ToXMLSerializers.SerializeToString(_pozew.OdsetkiSkapitalizowne, typeof(typSprawaOds)) : null); ;
+ 
+                    _dokWys.Kzp = EPUCalc.countKZP(this.WPS);
+                    _dokWys.Tresc = __pozew.Tresc;
+                    __pozew.DokWys = _dokWys;
+
+                }
+                catch (Exception ex)
+                {
+
+                    ErrorWindow.CreateNew(ex, "Błąd dodawania pozwu");
+                    return null;
+                }
+                return __pozew;
+            }
+
+            protected void LoadSprStatus(int Krok)
+            {
+                StatusSprawy _stspr;
+                LexEnaMeritumDomainContext _dbcontext;
+                LoadOperation loadop;
+                int idNazwy;
+                _dbcontext = new LexEnaMeritumDomainContext();
+
+                idNazwy = 0;
+                EntityQuery<NazwaStatusu>query =
+                from c in _dbcontext.GetNazwaStatusbyKrokQuery(Krok)
+                select c;
+                loadop = _dbcontext.Load(query);
+                try
+                {
+                    loadop.Completed += (sender, e) =>
+                       {
+                           foreach (var r in loadop.Entities)
+                           {
+                               idNazwy = (r as NazwaStatusu).Id;
+                           }
+                           if (idNazwy > 0)
+                           {
+                               _stspr = new StatusSprawy();
+                               _stspr.Sprawa_id = this.IdSprawy;
+                               _stspr.NazwaStatusu_Id = idNazwy;
+                               _stspr.czyus = 0;
+                               _stspr.DataStatusu = DateTime.Now;
+                              
+                               statusSprawEventArgs ea = new statusSprawEventArgs();
+                               ea.Status = 100;
+                               ea.Message = "Success";
+                               ea.StatSpr = _stspr;
+                               OnstatusSprawyLoaded(ea);
+                           }
+                       };
+
+                }
+
+                catch (Exception ex)
+                {
+                    statusSprawEventArgs ea = new statusSprawEventArgs();
+                    
+                    ea.Status = -10;
+                    ea.Message = "Błąd oodczytu danych " + ex.Message;
+                    OnstatusSprawyLoaded(ea);
+                }
+
+            }
+        
+        public  void InsertPozew()
+            {
+              LexEnaMeritumDomainContext _dbcontext;
+               Pozew  mypozew;
+                if (this._pozew == null)
+                {
+                    evargs.Status = -9;
+                    evargs.Message = "Błąd dodawania pozwu ";
+                    OnpozewInserted(evargs);
+                    return;
+                 }
+                
+                _dbcontext = new LexEnaMeritumDomainContext();
+                mypozew = AddPozewDokWys();
+                if (mypozew == null)
+                {
+                    evargs.Status = -10;
+                    evargs.Message = "Błąd zapisu pozwu ";
+                    OnpozewInserted(evargs);
+                    return; 
+                }
+                 _dbcontext.Pozews.Add(mypozew);
+                   
+                  this.LoadSprStatus(2);
+                  this.statusSprawyLoaded += (sender, ea) =>
+                      {
+                          if ((ea as statusSprawEventArgs).Status < 0)
+                          {
+                              evargs.Status = -10;
+                              evargs.Message = "Błąd dodawania statusu ";
+                              OnpozewInserted(evargs);
+                              return;
+                          }
+                          else
+                          {
+                              try
+                              {
+                                  _dbcontext.StatusSprawies.Add((ea as statusSprawEventArgs).StatSpr);
+                                  
+                                  _dbcontext.SubmitChanges().Completed += (ob, eva) =>
+                                      {
+                                          evargs.Status = 100;
+                                          evargs.Message = "Success";
+                                          evargs.MyPozew = mypozew;
+                                          OnpozewInserted(evargs);
+                                          return;
+                                      };
+
+                       
+                              
+                              }
+                              catch(Exception e)
+                              {
+                                  evargs.Status = -11;
+                                  evargs.Message = "Błąd zapisu " + e.Message;
+                                  OnpozewInserted(evargs);
+                                  return;
+                                                              
+                              }
+                          }
+
+                      };
+  
+            }   
+
+          }
+           
+    
+  
+
+}

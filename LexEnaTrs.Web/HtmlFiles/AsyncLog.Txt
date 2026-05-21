@@ -1,0 +1,3526 @@
+21:54:01 poniedziałek, 15 lipca 2019
+ProceedFile strct 	
+21:54:08 poniedziałek, 15 lipca 2019
+Lst Loaded 	
+21:54:08 poniedziałek, 15 lipca 2019
+Except błąd podczas przetwarzania struktury wejściowej Ciąg nie został rozpoznany jako prawidłowy element DateTime. 	
+22:03:39 poniedziałek, 15 lipca 2019
+ProceedFile strct 	
+22:03:41 poniedziałek, 15 lipca 2019
+Lst Loaded 	
+22:03:41 poniedziałek, 15 lipca 2019
+Except błąd podczas przetwarzania struktury wejściowej Ciąg nie został rozpoznany jako prawidłowy element DateTime. 	
+3:56:11 PM Tuesday, February 18, 2020
+Executing del CCnB	
+3:59:11 PM Tuesday, February 18, 2020
+Executing del CCnB	
+4:37:12 PM Tuesday, February 18, 2020
+Executing del CCnB	
+4:38:33 PM Tuesday, February 18, 2020
+Executing del CCnB	
+6:36:01 PM Tuesday, February 18, 2020
+Executing del CCnB	
+6:50:50 PM Tuesday, February 18, 2020
+Executing del CCnB	
+6:53:22 PM Tuesday, February 18, 2020
+Executing del CCnB	
+7:00:27 PM Tuesday, February 18, 2020
+Executing del CCnB	
+7:08:28 PM Tuesday, February 18, 2020
+Executing del CCnB	
+2:46:34 PM Wednesday, February 19, 2020
+Executing del CCnB	
+3:42:30 PM Wednesday, February 19, 2020
+Executing del CCnB	
+2:02:16 PM Monday, March 23, 2020
+ProceedFile strct 	
+2:02:17 PM Monday, March 23, 2020
+Lst Loaded 	
+2:02:17 PM Monday, March 23, 2020
+Klient 11711368	
+2:02:17 PM Monday, March 23, 2020
+Except błąd podczas przetwarzania struktury wejściowej Ciąg nie został rozpoznany jako prawidłowy element DateTime. 11711368	
+2:07:20 PM Monday, March 23, 2020
+ProceedFile strct 	
+2:07:21 PM Monday, March 23, 2020
+Lst Loaded 	
+2:07:21 PM Monday, March 23, 2020
+Klient 11711368	
+2:07:21 PM Monday, March 23, 2020
+Except błąd podczas przetwarzania struktury wejściowej Ciąg nie został rozpoznany jako prawidłowy element DateTime. 11711368	
+2:10:43 PM Monday, March 23, 2020
+ProceedFile strct 	
+2:10:44 PM Monday, March 23, 2020
+Lst Loaded 	
+2:10:44 PM Monday, March 23, 2020
+Klient 11711368	
+2:10:44 PM Monday, March 23, 2020
+Except błąd podczas przetwarzania struktury wejściowej Ciąg nie został rozpoznany jako prawidłowy element DateTime. 11711368	
+2:12:55 PM Monday, March 23, 2020
+ProceedFile strct 	
+2:13:04 PM Monday, March 23, 2020
+Lst Loaded 	
+2:13:06 PM Monday, March 23, 2020
+Klient 11711368	
+3:06:44 PM Monday, March 23, 2020
+Except błąd podczas przetwarzania struktury wejściowej Ciąg nie został rozpoznany jako prawidłowy element DateTime. 11711368	
+9:12:15 AM Tuesday, March 24, 2020
+ProceedFile strct 	
+9:12:16 AM Tuesday, March 24, 2020
+Lst Loaded 	
+9:12:16 AM Tuesday, March 24, 2020
+Klient 11711368	
+9:12:18 AM Tuesday, March 24, 2020
+Klient 11711368	
+9:12:19 AM Tuesday, March 24, 2020
+Klient 11711368	
+9:12:19 AM Tuesday, March 24, 2020
+Klient 719999069	
+9:12:21 AM Tuesday, March 24, 2020
+Klient 719999069	
+9:12:25 AM Tuesday, March 24, 2020
+Klient 11536278	
+9:12:26 AM Tuesday, March 24, 2020
+Klient 11536278	
+9:12:27 AM Tuesday, March 24, 2020
+Klient 11536278	
+9:12:27 AM Tuesday, March 24, 2020
+Klient 11536825	
+9:12:27 AM Tuesday, March 24, 2020
+Klient 11536825	
+9:12:28 AM Tuesday, March 24, 2020
+Klient 899050075	
+9:12:29 AM Tuesday, March 24, 2020
+Klient 739999110	
+9:12:29 AM Tuesday, March 24, 2020
+Klient 739999110	
+9:12:30 AM Tuesday, March 24, 2020
+Klient 759999035	
+9:12:30 AM Tuesday, March 24, 2020
+Klient 759999035	
+9:12:31 AM Tuesday, March 24, 2020
+Klient 11931240	
+9:12:31 AM Tuesday, March 24, 2020
+Klient 11921617	
+9:12:32 AM Tuesday, March 24, 2020
+Klient 11840748	
+9:12:32 AM Tuesday, March 24, 2020
+Klient 11840748	
+9:12:33 AM Tuesday, March 24, 2020
+Klient 369.992.481	
+9:12:34 AM Tuesday, March 24, 2020
+Klient 369.992.481	
+9:12:35 AM Tuesday, March 24, 2020
+Klient 349.902.556	
+9:12:36 AM Tuesday, March 24, 2020
+Klient 379.903.584	
+9:12:37 AM Tuesday, March 24, 2020
+Klient 379.903.584	
+9:12:38 AM Tuesday, March 24, 2020
+Klient 379.903.584	
+9:12:38 AM Tuesday, March 24, 2020
+Klient 379.903.584	
+9:12:38 AM Tuesday, March 24, 2020
+Klient 970386295	
+9:12:39 AM Tuesday, March 24, 2020
+Klient 970386295	
+9:12:40 AM Tuesday, March 24, 2020
+Klient 970386295	
+9:12:40 AM Tuesday, March 24, 2020
+Klient 979900867	
+9:12:41 AM Tuesday, March 24, 2020
+Klient 979900867	
+9:12:42 AM Tuesday, March 24, 2020
+Klient 979900867	
+9:12:42 AM Tuesday, March 24, 2020
+Klient 979900208	
+9:12:43 AM Tuesday, March 24, 2020
+Klient 979900208	
+9:12:44 AM Tuesday, March 24, 2020
+Klient 979900208	
+9:12:44 AM Tuesday, March 24, 2020
+Klient 979900664	
+9:12:45 AM Tuesday, March 24, 2020
+Klient 979900664	
+9:12:45 AM Tuesday, March 24, 2020
+Klient 979900068	
+9:12:46 AM Tuesday, March 24, 2020
+Klient 979900068	
+9:12:47 AM Tuesday, March 24, 2020
+Klient 970373234	
+9:12:48 AM Tuesday, March 24, 2020
+Klient 970411356	
+9:12:49 AM Tuesday, March 24, 2020
+Klient 970408075	
+9:12:50 AM Tuesday, March 24, 2020
+Klient 970431331	
+9:12:51 AM Tuesday, March 24, 2020
+Klient 970339501	
+9:12:52 AM Tuesday, March 24, 2020
+Klient 979900106	
+9:12:53 AM Tuesday, March 24, 2020
+Klient 379.003.216	
+9:12:54 AM Tuesday, March 24, 2020
+Klient 379.003.216	
+9:12:54 AM Tuesday, March 24, 2020
+Klient 359.902.235	
+9:12:55 AM Tuesday, March 24, 2020
+Klient 359.902.235	
+9:12:56 AM Tuesday, March 24, 2020
+Klient 379.903.834	
+9:12:57 AM Tuesday, March 24, 2020
+Klient 379.903.834	
+9:12:58 AM Tuesday, March 24, 2020
+Klient 11970396	
+9:12:59 AM Tuesday, March 24, 2020
+Klient 11970396	
+9:13:00 AM Tuesday, March 24, 2020
+Klient 11970396	
+9:13:00 AM Tuesday, March 24, 2020
+Klient 11970396	
+9:13:00 AM Tuesday, March 24, 2020
+Klient 11970396	
+9:13:00 AM Tuesday, March 24, 2020
+Klient 10635865	
+9:13:01 AM Tuesday, March 24, 2020
+Klient 11496753	
+9:13:02 AM Tuesday, March 24, 2020
+Klient 11496820	
+9:13:03 AM Tuesday, March 24, 2020
+Klient 11496928	
+9:13:04 AM Tuesday, March 24, 2020
+Klient 11496947	
+9:13:04 AM Tuesday, March 24, 2020
+Klient 11496971	
+9:13:05 AM Tuesday, March 24, 2020
+Klient 11929037	
+9:13:06 AM Tuesday, March 24, 2020
+Klient 11497333	
+9:13:07 AM Tuesday, March 24, 2020
+Klient 11497024	
+9:13:08 AM Tuesday, March 24, 2020
+Klient 11497092	
+9:13:09 AM Tuesday, March 24, 2020
+Klient 11497253	
+9:13:10 AM Tuesday, March 24, 2020
+Klient 11497680	
+9:13:11 AM Tuesday, March 24, 2020
+Klient 11497897	
+9:13:12 AM Tuesday, March 24, 2020
+Klient 11693855	
+9:13:13 AM Tuesday, March 24, 2020
+Klient 719999069	
+9:13:14 AM Tuesday, March 24, 2020
+Klient 719999069	
+9:13:14 AM Tuesday, March 24, 2020
+Klient 719999069	
+9:13:14 AM Tuesday, March 24, 2020
+Klient 719999069	
+9:13:14 AM Tuesday, March 24, 2020
+Klient 739999110	
+9:13:14 AM Tuesday, March 24, 2020
+Klient 739999110	
+9:13:14 AM Tuesday, March 24, 2020
+Klient 759999035	
+9:13:15 AM Tuesday, March 24, 2020
+Klient 759999035	
+9:13:15 AM Tuesday, March 24, 2020
+Klient 769906094	
+9:13:16 AM Tuesday, March 24, 2020
+Klient 769906094	
+9:13:17 AM Tuesday, March 24, 2020
+Klient 769906094	
+9:13:17 AM Tuesday, March 24, 2020
+Klient 769906094	
+9:13:17 AM Tuesday, March 24, 2020
+Klient 759999043	
+9:13:18 AM Tuesday, March 24, 2020
+Klient 759999043	
+9:13:19 AM Tuesday, March 24, 2020
+Klient 759999043	
+9:13:19 AM Tuesday, March 24, 2020
+Klient 759999043	
+9:13:19 AM Tuesday, March 24, 2020
+Klient 749904038	
+9:13:20 AM Tuesday, March 24, 2020
+Klient 749904038	
+9:13:21 AM Tuesday, March 24, 2020
+Klient 749904038	
+9:13:21 AM Tuesday, March 24, 2020
+Klient 769906684	
+9:13:22 AM Tuesday, March 24, 2020
+Klient 769906684	
+9:13:23 AM Tuesday, March 24, 2020
+Klient 769906684	
+9:13:23 AM Tuesday, March 24, 2020
+Klient 769909296	
+9:13:24 AM Tuesday, March 24, 2020
+Klient 769909296	
+9:13:24 AM Tuesday, March 24, 2020
+Klient 769909296	
+9:13:25 AM Tuesday, March 24, 2020
+Klient 769909296	
+9:13:25 AM Tuesday, March 24, 2020
+EndForeach 769909296/5110118969/769909296/11/W/2019/20200121	
+9:13:25 AM Tuesday, March 24, 2020
+Step 1 	
+9:13:26 AM Tuesday, March 24, 2020
+Step 2	
+9:13:26 AM Tuesday, March 24, 2020
+Step 4 	
+9:13:27 AM Tuesday, March 24, 2020
+Step 5 OK 	
+9:29:10 AM Tuesday, March 24, 2020
+ProceedFile strct 	
+9:29:11 AM Tuesday, March 24, 2020
+Lst Loaded 	
+9:29:11 AM Tuesday, March 24, 2020
+Klient 11711368	
+9:29:12 AM Tuesday, March 24, 2020
+Klient 11711368	
+9:29:12 AM Tuesday, March 24, 2020
+Klient 11711368	
+9:29:12 AM Tuesday, March 24, 2020
+Klient 719999069	
+9:29:13 AM Tuesday, March 24, 2020
+Klient 719999069	
+9:29:13 AM Tuesday, March 24, 2020
+Klient 11536278	
+9:29:14 AM Tuesday, March 24, 2020
+Klient 11536278	
+9:29:14 AM Tuesday, March 24, 2020
+Klient 11536278	
+9:29:14 AM Tuesday, March 24, 2020
+Klient 11536825	
+9:29:15 AM Tuesday, March 24, 2020
+Klient 11536825	
+9:29:15 AM Tuesday, March 24, 2020
+Klient 899050075	
+9:29:16 AM Tuesday, March 24, 2020
+Klient 739999110	
+9:29:17 AM Tuesday, March 24, 2020
+Klient 739999110	
+9:29:17 AM Tuesday, March 24, 2020
+Klient 759999035	
+9:29:18 AM Tuesday, March 24, 2020
+Klient 759999035	
+9:29:18 AM Tuesday, March 24, 2020
+Klient 11931240	
+9:29:19 AM Tuesday, March 24, 2020
+Klient 11921617	
+9:29:19 AM Tuesday, March 24, 2020
+Klient 11840748	
+9:29:20 AM Tuesday, March 24, 2020
+Klient 11840748	
+9:29:20 AM Tuesday, March 24, 2020
+Klient 369.992.481	
+9:29:21 AM Tuesday, March 24, 2020
+Klient 369.992.481	
+9:29:21 AM Tuesday, March 24, 2020
+Klient 349.902.556	
+9:29:22 AM Tuesday, March 24, 2020
+Klient 379.903.584	
+9:29:23 AM Tuesday, March 24, 2020
+Klient 379.903.584	
+9:29:23 AM Tuesday, March 24, 2020
+Klient 379.903.584	
+9:29:23 AM Tuesday, March 24, 2020
+Klient 379.903.584	
+9:29:23 AM Tuesday, March 24, 2020
+Klient 970386295	
+9:29:24 AM Tuesday, March 24, 2020
+Klient 970386295	
+9:29:24 AM Tuesday, March 24, 2020
+Klient 970386295	
+9:29:24 AM Tuesday, March 24, 2020
+Klient 979900867	
+9:29:25 AM Tuesday, March 24, 2020
+Klient 979900867	
+9:29:26 AM Tuesday, March 24, 2020
+Klient 979900867	
+9:29:26 AM Tuesday, March 24, 2020
+Klient 979900208	
+9:29:26 AM Tuesday, March 24, 2020
+Klient 979900208	
+9:29:27 AM Tuesday, March 24, 2020
+Klient 979900208	
+9:29:27 AM Tuesday, March 24, 2020
+Klient 979900664	
+9:29:29 AM Tuesday, March 24, 2020
+Klient 979900664	
+9:29:30 AM Tuesday, March 24, 2020
+Klient 979900068	
+9:29:31 AM Tuesday, March 24, 2020
+Klient 979900068	
+9:29:32 AM Tuesday, March 24, 2020
+Klient 970373234	
+9:29:34 AM Tuesday, March 24, 2020
+Klient 970411356	
+9:29:35 AM Tuesday, March 24, 2020
+Klient 970408075	
+9:29:36 AM Tuesday, March 24, 2020
+Klient 970431331	
+9:29:37 AM Tuesday, March 24, 2020
+Klient 970339501	
+9:29:38 AM Tuesday, March 24, 2020
+Klient 979900106	
+9:29:39 AM Tuesday, March 24, 2020
+Klient 379.003.216	
+9:29:40 AM Tuesday, March 24, 2020
+Klient 379.003.216	
+9:29:42 AM Tuesday, March 24, 2020
+Klient 359.902.235	
+9:29:43 AM Tuesday, March 24, 2020
+Klient 359.902.235	
+9:29:44 AM Tuesday, March 24, 2020
+Klient 379.903.834	
+9:29:45 AM Tuesday, March 24, 2020
+Klient 379.903.834	
+9:29:46 AM Tuesday, March 24, 2020
+Klient 11970396	
+9:29:48 AM Tuesday, March 24, 2020
+Klient 11970396	
+9:29:49 AM Tuesday, March 24, 2020
+Klient 11970396	
+9:29:49 AM Tuesday, March 24, 2020
+Klient 11970396	
+9:29:49 AM Tuesday, March 24, 2020
+Klient 11970396	
+9:29:49 AM Tuesday, March 24, 2020
+Klient 10635865	
+9:29:50 AM Tuesday, March 24, 2020
+Klient 11496753	
+9:29:52 AM Tuesday, March 24, 2020
+Klient 11496820	
+9:29:54 AM Tuesday, March 24, 2020
+Klient 11496928	
+9:29:55 AM Tuesday, March 24, 2020
+Klient 11496947	
+9:29:56 AM Tuesday, March 24, 2020
+Klient 11496971	
+9:29:57 AM Tuesday, March 24, 2020
+Klient 11929037	
+9:29:59 AM Tuesday, March 24, 2020
+Klient 11497333	
+9:30:00 AM Tuesday, March 24, 2020
+Klient 11497024	
+9:30:01 AM Tuesday, March 24, 2020
+Klient 11497092	
+9:30:02 AM Tuesday, March 24, 2020
+Klient 11497253	
+9:30:03 AM Tuesday, March 24, 2020
+Klient 11497680	
+9:30:04 AM Tuesday, March 24, 2020
+Klient 11497897	
+9:30:05 AM Tuesday, March 24, 2020
+Klient 11693855	
+9:30:06 AM Tuesday, March 24, 2020
+Klient 719999069	
+9:30:07 AM Tuesday, March 24, 2020
+Klient 719999069	
+9:30:07 AM Tuesday, March 24, 2020
+Klient 719999069	
+9:30:07 AM Tuesday, March 24, 2020
+Klient 719999069	
+9:30:07 AM Tuesday, March 24, 2020
+Klient 739999110	
+9:30:08 AM Tuesday, March 24, 2020
+Klient 739999110	
+9:30:08 AM Tuesday, March 24, 2020
+Klient 759999035	
+9:30:09 AM Tuesday, March 24, 2020
+Klient 759999035	
+9:30:09 AM Tuesday, March 24, 2020
+Klient 769906094	
+9:30:10 AM Tuesday, March 24, 2020
+Klient 769906094	
+9:30:11 AM Tuesday, March 24, 2020
+Klient 769906094	
+9:30:11 AM Tuesday, March 24, 2020
+Klient 769906094	
+9:30:11 AM Tuesday, March 24, 2020
+Klient 759999043	
+9:30:12 AM Tuesday, March 24, 2020
+Klient 759999043	
+9:30:13 AM Tuesday, March 24, 2020
+Klient 759999043	
+9:30:13 AM Tuesday, March 24, 2020
+Klient 759999043	
+9:30:13 AM Tuesday, March 24, 2020
+Klient 749904038	
+9:30:14 AM Tuesday, March 24, 2020
+Klient 749904038	
+9:30:15 AM Tuesday, March 24, 2020
+Klient 749904038	
+9:30:15 AM Tuesday, March 24, 2020
+Klient 769906684	
+9:30:16 AM Tuesday, March 24, 2020
+Klient 769906684	
+9:30:17 AM Tuesday, March 24, 2020
+Klient 769906684	
+9:30:17 AM Tuesday, March 24, 2020
+Klient 769909296	
+9:30:18 AM Tuesday, March 24, 2020
+Klient 769909296	
+9:30:19 AM Tuesday, March 24, 2020
+Klient 769909296	
+9:30:19 AM Tuesday, March 24, 2020
+Klient 769909296	
+9:30:19 AM Tuesday, March 24, 2020
+EndForeach 769909296/5110118969/769909296/11/W/2019/20200121	
+9:30:19 AM Tuesday, March 24, 2020
+Step 1 	
+9:30:19 AM Tuesday, March 24, 2020
+Step 4 	
+9:30:19 AM Tuesday, March 24, 2020
+Step 5 OK 	
+9:39:58 AM Tuesday, March 24, 2020
+ProceedFile strct 	
+9:40:00 AM Tuesday, March 24, 2020
+Lst Loaded 	
+9:40:00 AM Tuesday, March 24, 2020
+Klient 11711368	
+9:40:01 AM Tuesday, March 24, 2020
+Klient 11711368	
+9:40:02 AM Tuesday, March 24, 2020
+Klient 11711368	
+9:40:02 AM Tuesday, March 24, 2020
+Klient 719999069	
+9:40:03 AM Tuesday, March 24, 2020
+Klient 719999069	
+9:40:04 AM Tuesday, March 24, 2020
+Klient 11536278	
+9:40:05 AM Tuesday, March 24, 2020
+Klient 11536278	
+9:40:06 AM Tuesday, March 24, 2020
+Klient 11536278	
+9:40:06 AM Tuesday, March 24, 2020
+Klient 11536825	
+9:40:07 AM Tuesday, March 24, 2020
+Klient 11536825	
+9:40:08 AM Tuesday, March 24, 2020
+Klient 899050075	
+9:40:10 AM Tuesday, March 24, 2020
+Klient 739999110	
+9:40:11 AM Tuesday, March 24, 2020
+Klient 739999110	
+9:40:12 AM Tuesday, March 24, 2020
+Klient 759999035	
+9:40:13 AM Tuesday, March 24, 2020
+Klient 759999035	
+9:40:14 AM Tuesday, March 24, 2020
+Klient 11931240	
+9:40:15 AM Tuesday, March 24, 2020
+Klient 11921617	
+9:40:16 AM Tuesday, March 24, 2020
+Klient 11840748	
+9:40:17 AM Tuesday, March 24, 2020
+Klient 11840748	
+9:40:19 AM Tuesday, March 24, 2020
+Klient 369.992.481	
+9:40:20 AM Tuesday, March 24, 2020
+Klient 369.992.481	
+9:40:21 AM Tuesday, March 24, 2020
+Klient 349.902.556	
+9:40:22 AM Tuesday, March 24, 2020
+Klient 379.903.584	
+9:40:23 AM Tuesday, March 24, 2020
+Klient 379.903.584	
+9:40:24 AM Tuesday, March 24, 2020
+Klient 379.903.584	
+9:40:24 AM Tuesday, March 24, 2020
+Klient 379.903.584	
+9:40:24 AM Tuesday, March 24, 2020
+Klient 970386295	
+9:40:25 AM Tuesday, March 24, 2020
+Klient 970386295	
+9:40:26 AM Tuesday, March 24, 2020
+Klient 970386295	
+9:40:26 AM Tuesday, March 24, 2020
+Klient 979900867	
+9:40:27 AM Tuesday, March 24, 2020
+Klient 979900867	
+9:40:29 AM Tuesday, March 24, 2020
+Klient 979900867	
+9:40:29 AM Tuesday, March 24, 2020
+Klient 979900208	
+9:40:30 AM Tuesday, March 24, 2020
+Klient 979900208	
+9:40:31 AM Tuesday, March 24, 2020
+Klient 979900208	
+9:40:31 AM Tuesday, March 24, 2020
+Klient 979900664	
+9:40:32 AM Tuesday, March 24, 2020
+Klient 979900664	
+9:40:33 AM Tuesday, March 24, 2020
+Klient 979900068	
+9:40:34 AM Tuesday, March 24, 2020
+Klient 979900068	
+9:40:35 AM Tuesday, March 24, 2020
+Klient 970373234	
+9:40:36 AM Tuesday, March 24, 2020
+Klient 970411356	
+9:40:37 AM Tuesday, March 24, 2020
+Klient 970408075	
+9:40:39 AM Tuesday, March 24, 2020
+Klient 970431331	
+9:40:40 AM Tuesday, March 24, 2020
+Klient 970339501	
+9:40:41 AM Tuesday, March 24, 2020
+Klient 979900106	
+9:40:42 AM Tuesday, March 24, 2020
+Klient 379.003.216	
+9:40:43 AM Tuesday, March 24, 2020
+Klient 379.003.216	
+9:40:44 AM Tuesday, March 24, 2020
+Klient 359.902.235	
+9:40:45 AM Tuesday, March 24, 2020
+Klient 359.902.235	
+9:40:46 AM Tuesday, March 24, 2020
+Klient 379.903.834	
+9:40:47 AM Tuesday, March 24, 2020
+Klient 379.903.834	
+9:40:48 AM Tuesday, March 24, 2020
+Klient 11970396	
+9:40:49 AM Tuesday, March 24, 2020
+Klient 11970396	
+9:40:50 AM Tuesday, March 24, 2020
+Klient 11970396	
+9:40:50 AM Tuesday, March 24, 2020
+Klient 11970396	
+9:40:50 AM Tuesday, March 24, 2020
+Klient 11970396	
+9:40:51 AM Tuesday, March 24, 2020
+Klient 10635865	
+9:40:52 AM Tuesday, March 24, 2020
+Klient 11496753	
+9:40:54 AM Tuesday, March 24, 2020
+Klient 11496820	
+9:40:55 AM Tuesday, March 24, 2020
+Klient 11496928	
+9:40:56 AM Tuesday, March 24, 2020
+Klient 11496947	
+9:40:58 AM Tuesday, March 24, 2020
+Klient 11496971	
+9:40:59 AM Tuesday, March 24, 2020
+Klient 11929037	
+9:41:01 AM Tuesday, March 24, 2020
+Klient 11497333	
+9:41:02 AM Tuesday, March 24, 2020
+Klient 11497024	
+9:41:03 AM Tuesday, March 24, 2020
+Klient 11497092	
+9:41:05 AM Tuesday, March 24, 2020
+Klient 11497253	
+9:41:06 AM Tuesday, March 24, 2020
+Klient 11497680	
+9:41:07 AM Tuesday, March 24, 2020
+Klient 11497897	
+9:41:09 AM Tuesday, March 24, 2020
+Klient 11693855	
+9:41:10 AM Tuesday, March 24, 2020
+Klient 719999069	
+9:41:11 AM Tuesday, March 24, 2020
+Klient 719999069	
+9:41:11 AM Tuesday, March 24, 2020
+Klient 719999069	
+9:41:11 AM Tuesday, March 24, 2020
+Klient 719999069	
+9:41:11 AM Tuesday, March 24, 2020
+Klient 739999110	
+9:41:12 AM Tuesday, March 24, 2020
+Klient 739999110	
+9:41:12 AM Tuesday, March 24, 2020
+Klient 759999035	
+9:41:14 AM Tuesday, March 24, 2020
+Klient 759999035	
+9:41:14 AM Tuesday, March 24, 2020
+Klient 769906094	
+9:41:15 AM Tuesday, March 24, 2020
+Klient 769906094	
+9:41:16 AM Tuesday, March 24, 2020
+Klient 769906094	
+9:41:16 AM Tuesday, March 24, 2020
+Klient 769906094	
+9:41:16 AM Tuesday, March 24, 2020
+Klient 759999043	
+9:41:18 AM Tuesday, March 24, 2020
+Klient 759999043	
+9:41:19 AM Tuesday, March 24, 2020
+Klient 759999043	
+9:41:19 AM Tuesday, March 24, 2020
+Klient 759999043	
+9:41:19 AM Tuesday, March 24, 2020
+Klient 749904038	
+9:41:20 AM Tuesday, March 24, 2020
+Klient 749904038	
+9:41:21 AM Tuesday, March 24, 2020
+Klient 749904038	
+9:41:21 AM Tuesday, March 24, 2020
+Klient 769906684	
+9:41:22 AM Tuesday, March 24, 2020
+Klient 769906684	
+9:41:23 AM Tuesday, March 24, 2020
+Klient 769906684	
+9:41:24 AM Tuesday, March 24, 2020
+Klient 769909296	
+9:41:25 AM Tuesday, March 24, 2020
+Klient 769909296	
+9:41:26 AM Tuesday, March 24, 2020
+Klient 769909296	
+9:41:26 AM Tuesday, March 24, 2020
+Klient 769909296	
+9:41:26 AM Tuesday, March 24, 2020
+EndForeach 769909296/5110118969/769909296/11/W/2019/20200121	
+9:41:26 AM Tuesday, March 24, 2020
+Step 1 	
+9:41:26 AM Tuesday, March 24, 2020
+Step 4 	
+9:41:26 AM Tuesday, March 24, 2020
+Step 5 OK 	
+11:12:13 AM Tuesday, March 24, 2020
+ProceedFile strct 	
+11:12:14 AM Tuesday, March 24, 2020
+Lst Loaded 	
+11:12:14 AM Tuesday, March 24, 2020
+Klient 11711368	
+11:12:15 AM Tuesday, March 24, 2020
+Klient 11711368	
+11:12:16 AM Tuesday, March 24, 2020
+Klient 11711368	
+11:12:16 AM Tuesday, March 24, 2020
+Klient 719999069	
+11:12:17 AM Tuesday, March 24, 2020
+Klient 719999069	
+11:12:18 AM Tuesday, March 24, 2020
+Klient 11536278	
+11:12:19 AM Tuesday, March 24, 2020
+Klient 11536278	
+11:12:20 AM Tuesday, March 24, 2020
+Klient 11536278	
+11:12:20 AM Tuesday, March 24, 2020
+Klient 11536825	
+11:12:21 AM Tuesday, March 24, 2020
+Klient 11536825	
+11:12:22 AM Tuesday, March 24, 2020
+Klient 899050075	
+11:12:23 AM Tuesday, March 24, 2020
+Klient 739999110	
+11:12:24 AM Tuesday, March 24, 2020
+Klient 739999110	
+11:12:25 AM Tuesday, March 24, 2020
+Klient 759999035	
+11:12:26 AM Tuesday, March 24, 2020
+Klient 759999035	
+11:12:27 AM Tuesday, March 24, 2020
+Klient 11931240	
+11:12:27 AM Tuesday, March 24, 2020
+Klient 11921617	
+11:12:28 AM Tuesday, March 24, 2020
+Klient 11840748	
+11:12:29 AM Tuesday, March 24, 2020
+Klient 11840748	
+11:12:30 AM Tuesday, March 24, 2020
+Klient 369.992.481	
+11:12:31 AM Tuesday, March 24, 2020
+Klient 369.992.481	
+11:12:32 AM Tuesday, March 24, 2020
+Klient 349.902.556	
+11:12:33 AM Tuesday, March 24, 2020
+Klient 379.903.584	
+11:12:34 AM Tuesday, March 24, 2020
+Klient 379.903.584	
+11:12:35 AM Tuesday, March 24, 2020
+Klient 379.903.584	
+11:12:35 AM Tuesday, March 24, 2020
+Klient 379.903.584	
+11:12:36 AM Tuesday, March 24, 2020
+Klient 970386295	
+11:12:36 AM Tuesday, March 24, 2020
+Klient 970386295	
+11:12:36 AM Tuesday, March 24, 2020
+Klient 970386295	
+11:12:36 AM Tuesday, March 24, 2020
+Klient 979900867	
+11:12:37 AM Tuesday, March 24, 2020
+Klient 979900867	
+11:12:38 AM Tuesday, March 24, 2020
+Klient 979900867	
+11:12:38 AM Tuesday, March 24, 2020
+Klient 979900208	
+11:12:39 AM Tuesday, March 24, 2020
+Klient 979900208	
+11:12:40 AM Tuesday, March 24, 2020
+Klient 979900208	
+11:12:40 AM Tuesday, March 24, 2020
+Klient 979900664	
+11:12:41 AM Tuesday, March 24, 2020
+Klient 979900664	
+11:12:42 AM Tuesday, March 24, 2020
+Klient 979900068	
+11:12:43 AM Tuesday, March 24, 2020
+Klient 979900068	
+11:12:43 AM Tuesday, March 24, 2020
+Klient 970373234	
+11:12:44 AM Tuesday, March 24, 2020
+Klient 970411356	
+11:12:45 AM Tuesday, March 24, 2020
+Klient 970408075	
+11:12:46 AM Tuesday, March 24, 2020
+Klient 970431331	
+11:12:47 AM Tuesday, March 24, 2020
+Klient 970339501	
+11:12:48 AM Tuesday, March 24, 2020
+Klient 979900106	
+11:12:49 AM Tuesday, March 24, 2020
+Klient 379.003.216	
+11:12:50 AM Tuesday, March 24, 2020
+Klient 379.003.216	
+11:12:51 AM Tuesday, March 24, 2020
+Klient 359.902.235	
+11:12:52 AM Tuesday, March 24, 2020
+Klient 359.902.235	
+11:12:53 AM Tuesday, March 24, 2020
+Klient 379.903.834	
+11:12:54 AM Tuesday, March 24, 2020
+Klient 379.903.834	
+11:12:54 AM Tuesday, March 24, 2020
+Klient 11970396	
+11:12:55 AM Tuesday, March 24, 2020
+Klient 11970396	
+11:12:56 AM Tuesday, March 24, 2020
+Klient 11970396	
+11:12:56 AM Tuesday, March 24, 2020
+Klient 11970396	
+11:12:56 AM Tuesday, March 24, 2020
+Klient 11970396	
+11:12:56 AM Tuesday, March 24, 2020
+Klient 10635865	
+11:12:57 AM Tuesday, March 24, 2020
+Klient 11496753	
+11:12:58 AM Tuesday, March 24, 2020
+Klient 11496820	
+11:12:59 AM Tuesday, March 24, 2020
+Klient 11496928	
+11:13:00 AM Tuesday, March 24, 2020
+Klient 11496947	
+11:13:00 AM Tuesday, March 24, 2020
+Klient 11496971	
+11:13:01 AM Tuesday, March 24, 2020
+Klient 11929037	
+11:13:02 AM Tuesday, March 24, 2020
+Klient 11497333	
+11:13:03 AM Tuesday, March 24, 2020
+Klient 11497024	
+11:13:04 AM Tuesday, March 24, 2020
+Klient 11497092	
+11:13:04 AM Tuesday, March 24, 2020
+Klient 11497253	
+11:13:05 AM Tuesday, March 24, 2020
+Klient 11497680	
+11:13:06 AM Tuesday, March 24, 2020
+Klient 11497897	
+11:13:07 AM Tuesday, March 24, 2020
+Klient 11693855	
+11:13:08 AM Tuesday, March 24, 2020
+Klient 719999069	
+11:13:08 AM Tuesday, March 24, 2020
+Klient 719999069	
+11:13:08 AM Tuesday, March 24, 2020
+Klient 719999069	
+11:13:09 AM Tuesday, March 24, 2020
+Klient 719999069	
+11:13:09 AM Tuesday, March 24, 2020
+Klient 739999110	
+11:13:09 AM Tuesday, March 24, 2020
+Klient 739999110	
+11:13:09 AM Tuesday, March 24, 2020
+Klient 759999035	
+11:13:10 AM Tuesday, March 24, 2020
+Klient 759999035	
+11:13:10 AM Tuesday, March 24, 2020
+Klient 769906094	
+11:13:11 AM Tuesday, March 24, 2020
+Klient 769906094	
+11:13:12 AM Tuesday, March 24, 2020
+Klient 769906094	
+11:13:12 AM Tuesday, March 24, 2020
+Klient 769906094	
+11:13:12 AM Tuesday, March 24, 2020
+Klient 759999043	
+11:13:13 AM Tuesday, March 24, 2020
+Klient 759999043	
+11:13:13 AM Tuesday, March 24, 2020
+Klient 759999043	
+11:13:13 AM Tuesday, March 24, 2020
+Klient 759999043	
+11:13:14 AM Tuesday, March 24, 2020
+Klient 749904038	
+11:13:14 AM Tuesday, March 24, 2020
+Klient 749904038	
+11:13:15 AM Tuesday, March 24, 2020
+Klient 749904038	
+11:13:15 AM Tuesday, March 24, 2020
+Klient 769906684	
+11:13:16 AM Tuesday, March 24, 2020
+Klient 769906684	
+11:13:17 AM Tuesday, March 24, 2020
+Klient 769906684	
+11:13:17 AM Tuesday, March 24, 2020
+Klient 769909296	
+11:13:18 AM Tuesday, March 24, 2020
+Klient 769909296	
+11:13:18 AM Tuesday, March 24, 2020
+Klient 769909296	
+11:13:18 AM Tuesday, March 24, 2020
+Klient 769909296	
+11:13:19 AM Tuesday, March 24, 2020
+EndForeach 769909296/5110118969/769909296/11/W/2019/20200121	
+11:13:19 AM Tuesday, March 24, 2020
+Step 1 	
+11:13:19 AM Tuesday, March 24, 2020
+Step 2	
+11:13:20 AM Tuesday, March 24, 2020
+Step 4 	
+11:13:20 AM Tuesday, March 24, 2020
+Step 5 OK 	
+4:58:06 PM Wednesday, April 8, 2020
+ProceedFile strct 	
+4:58:07 PM Wednesday, April 8, 2020
+Lst Loaded 	
+4:58:07 PM Wednesday, April 8, 2020
+Klient 11711368	
+4:58:09 PM Wednesday, April 8, 2020
+Klient 11711368	
+4:58:09 PM Wednesday, April 8, 2020
+Klient 11711368	
+4:58:09 PM Wednesday, April 8, 2020
+Klient 11711368	
+4:58:09 PM Wednesday, April 8, 2020
+Klient 11711368	
+4:58:09 PM Wednesday, April 8, 2020
+Klient 11711368	
+4:58:09 PM Wednesday, April 8, 2020
+Klient 719999069	
+4:58:10 PM Wednesday, April 8, 2020
+Klient 719999069	
+4:58:10 PM Wednesday, April 8, 2020
+Klient 11536278	
+4:58:11 PM Wednesday, April 8, 2020
+Klient 11536278	
+4:58:11 PM Wednesday, April 8, 2020
+Klient 11536278	
+4:58:11 PM Wednesday, April 8, 2020
+Klient 11536278	
+4:58:11 PM Wednesday, April 8, 2020
+Klient 11536825	
+4:58:12 PM Wednesday, April 8, 2020
+Klient 11536825	
+4:58:12 PM Wednesday, April 8, 2020
+Klient 11536825	
+4:58:12 PM Wednesday, April 8, 2020
+Klient 899050075	
+4:58:13 PM Wednesday, April 8, 2020
+Klient 739999110	
+4:58:15 PM Wednesday, April 8, 2020
+Klient 739999110	
+4:58:15 PM Wednesday, April 8, 2020
+Klient 759999035	
+4:58:16 PM Wednesday, April 8, 2020
+Klient 759999035	
+4:58:16 PM Wednesday, April 8, 2020
+Klient 11931240	
+4:58:17 PM Wednesday, April 8, 2020
+Klient 11921617	
+4:58:18 PM Wednesday, April 8, 2020
+Klient 11921617	
+4:58:18 PM Wednesday, April 8, 2020
+Klient 11840748	
+4:58:19 PM Wednesday, April 8, 2020
+Klient 11840748	
+4:58:19 PM Wednesday, April 8, 2020
+Klient 369.992.481	
+4:58:20 PM Wednesday, April 8, 2020
+Klient 369.992.481	
+4:58:20 PM Wednesday, April 8, 2020
+Klient 349.902.556	
+4:58:21 PM Wednesday, April 8, 2020
+Klient 379.903.584	
+4:58:22 PM Wednesday, April 8, 2020
+Klient 379.903.584	
+4:58:22 PM Wednesday, April 8, 2020
+Klient 379.903.584	
+4:58:22 PM Wednesday, April 8, 2020
+Klient 379.903.584	
+4:58:22 PM Wednesday, April 8, 2020
+Klient 970386295	
+4:58:23 PM Wednesday, April 8, 2020
+Klient 970386295	
+4:58:23 PM Wednesday, April 8, 2020
+Klient 970386295	
+4:58:23 PM Wednesday, April 8, 2020
+Klient 979900867	
+4:58:24 PM Wednesday, April 8, 2020
+Klient 979900867	
+4:58:24 PM Wednesday, April 8, 2020
+Klient 979900867	
+4:58:24 PM Wednesday, April 8, 2020
+Klient 979900208	
+4:58:25 PM Wednesday, April 8, 2020
+Klient 979900208	
+4:58:25 PM Wednesday, April 8, 2020
+Klient 979900208	
+4:58:25 PM Wednesday, April 8, 2020
+Klient 979900664	
+4:58:26 PM Wednesday, April 8, 2020
+Klient 979900664	
+4:58:26 PM Wednesday, April 8, 2020
+Klient 979900068	
+4:58:27 PM Wednesday, April 8, 2020
+Klient 979900068	
+4:58:27 PM Wednesday, April 8, 2020
+Klient 970373234	
+4:58:28 PM Wednesday, April 8, 2020
+Klient 970411356	
+4:58:30 PM Wednesday, April 8, 2020
+Klient 970408075	
+4:58:31 PM Wednesday, April 8, 2020
+Klient 970431331	
+4:58:32 PM Wednesday, April 8, 2020
+Klient 379.003.216	
+4:58:33 PM Wednesday, April 8, 2020
+Klient 359.902.235	
+4:58:34 PM Wednesday, April 8, 2020
+Klient 359.902.235	
+4:58:34 PM Wednesday, April 8, 2020
+Klient 10635865	
+4:58:35 PM Wednesday, April 8, 2020
+Klient 11496753	
+4:58:36 PM Wednesday, April 8, 2020
+Klient 11496820	
+4:58:37 PM Wednesday, April 8, 2020
+Klient 11496971	
+4:58:38 PM Wednesday, April 8, 2020
+Klient 11929037	
+4:58:40 PM Wednesday, April 8, 2020
+Klient 11497333	
+4:58:41 PM Wednesday, April 8, 2020
+Klient 11497024	
+4:58:42 PM Wednesday, April 8, 2020
+Klient 11497897	
+4:58:43 PM Wednesday, April 8, 2020
+Klient 11693855	
+4:58:44 PM Wednesday, April 8, 2020
+Klient 719999069	
+4:58:45 PM Wednesday, April 8, 2020
+Klient 719999069	
+4:58:45 PM Wednesday, April 8, 2020
+Klient 719999069	
+4:58:45 PM Wednesday, April 8, 2020
+Klient 719999069	
+4:58:45 PM Wednesday, April 8, 2020
+Klient 739999110	
+4:58:47 PM Wednesday, April 8, 2020
+Klient 739999110	
+4:58:47 PM Wednesday, April 8, 2020
+Klient 759999035	
+4:58:48 PM Wednesday, April 8, 2020
+Klient 759999035	
+4:58:48 PM Wednesday, April 8, 2020
+Klient 769906094	
+4:58:49 PM Wednesday, April 8, 2020
+Klient 769906094	
+4:58:49 PM Wednesday, April 8, 2020
+Klient 769906094	
+4:58:49 PM Wednesday, April 8, 2020
+Klient 769906094	
+4:58:49 PM Wednesday, April 8, 2020
+Klient 759999043	
+4:58:50 PM Wednesday, April 8, 2020
+Klient 759999043	
+4:58:50 PM Wednesday, April 8, 2020
+Klient 759999043	
+4:58:50 PM Wednesday, April 8, 2020
+Klient 759999043	
+4:58:50 PM Wednesday, April 8, 2020
+Klient 749904038	
+4:58:51 PM Wednesday, April 8, 2020
+Klient 749904038	
+4:58:51 PM Wednesday, April 8, 2020
+Klient 749904038	
+4:58:51 PM Wednesday, April 8, 2020
+Klient 769906684	
+4:58:52 PM Wednesday, April 8, 2020
+Klient 769906684	
+4:58:52 PM Wednesday, April 8, 2020
+Klient 769906684	
+4:58:52 PM Wednesday, April 8, 2020
+Klient 769909296	
+4:58:53 PM Wednesday, April 8, 2020
+Klient 769909296	
+4:58:53 PM Wednesday, April 8, 2020
+Klient 769909296	
+4:58:53 PM Wednesday, April 8, 2020
+Klient 769909296	
+4:58:53 PM Wednesday, April 8, 2020
+Klient 11966618	
+4:58:55 PM Wednesday, April 8, 2020
+Klient 11966618	
+4:58:56 PM Wednesday, April 8, 2020
+Klient 11966618	
+4:58:56 PM Wednesday, April 8, 2020
+Klient 11966618	
+4:58:56 PM Wednesday, April 8, 2020
+Klient 11846610	
+4:58:57 PM Wednesday, April 8, 2020
+Klient 11846610	
+4:58:58 PM Wednesday, April 8, 2020
+Klient 11846610	
+4:58:59 PM Wednesday, April 8, 2020
+Klient 11846610	
+4:58:59 PM Wednesday, April 8, 2020
+Klient 11821832	
+4:59:00 PM Wednesday, April 8, 2020
+Klient 11821832	
+4:59:01 PM Wednesday, April 8, 2020
+Klient 11821832	
+4:59:01 PM Wednesday, April 8, 2020
+Klient 11821832	
+4:59:01 PM Wednesday, April 8, 2020
+Klient 11821832	
+4:59:01 PM Wednesday, April 8, 2020
+Klient 11821832	
+4:59:01 PM Wednesday, April 8, 2020
+Klient 11821832	
+4:59:01 PM Wednesday, April 8, 2020
+Klient 11821832	
+4:59:01 PM Wednesday, April 8, 2020
+Klient 11821832	
+4:59:01 PM Wednesday, April 8, 2020
+Klient 11821832	
+4:59:01 PM Wednesday, April 8, 2020
+Klient 11821832	
+4:59:01 PM Wednesday, April 8, 2020
+Klient 11768520	
+4:59:02 PM Wednesday, April 8, 2020
+Klient 11768520	
+4:59:04 PM Wednesday, April 8, 2020
+Klient 11768520	
+4:59:04 PM Wednesday, April 8, 2020
+Klient 11874179	
+4:59:05 PM Wednesday, April 8, 2020
+Klient 11874179	
+4:59:06 PM Wednesday, April 8, 2020
+Klient 11711126	
+4:59:07 PM Wednesday, April 8, 2020
+Klient 11711126	
+4:59:08 PM Wednesday, April 8, 2020
+Klient 11691359	
+4:59:09 PM Wednesday, April 8, 2020
+Klient 11691359	
+4:59:10 PM Wednesday, April 8, 2020
+Klient 11691359	
+4:59:10 PM Wednesday, April 8, 2020
+Klient 379003234	
+4:59:11 PM Wednesday, April 8, 2020
+Klient 379003234	
+4:59:12 PM Wednesday, April 8, 2020
+Klient 379909908	
+4:59:13 PM Wednesday, April 8, 2020
+Klient 729903399	
+4:59:14 PM Wednesday, April 8, 2020
+Klient 729903399	
+4:59:15 PM Wednesday, April 8, 2020
+Klient 729903399	
+4:59:15 PM Wednesday, April 8, 2020
+Klient 739903056	
+4:59:16 PM Wednesday, April 8, 2020
+Klient 739903056	
+4:59:17 PM Wednesday, April 8, 2020
+Klient 739903056	
+4:59:17 PM Wednesday, April 8, 2020
+Klient 719955160	
+4:59:18 PM Wednesday, April 8, 2020
+Klient 719955160	
+4:59:19 PM Wednesday, April 8, 2020
+Klient 780030356	
+4:59:20 PM Wednesday, April 8, 2020
+Klient 780030356	
+4:59:21 PM Wednesday, April 8, 2020
+Klient 780030356	
+4:59:21 PM Wednesday, April 8, 2020
+Klient 780030356	
+4:59:21 PM Wednesday, April 8, 2020
+Klient 779907508	
+4:59:22 PM Wednesday, April 8, 2020
+Klient 779907508	
+4:59:23 PM Wednesday, April 8, 2020
+Klient 779907508	
+4:59:24 PM Wednesday, April 8, 2020
+Klient 779907508	
+4:59:24 PM Wednesday, April 8, 2020
+Klient 779907508	
+4:59:24 PM Wednesday, April 8, 2020
+Klient 779907508	
+4:59:24 PM Wednesday, April 8, 2020
+Klient 779907508	
+4:59:24 PM Wednesday, April 8, 2020
+Klient 739909091	
+4:59:25 PM Wednesday, April 8, 2020
+Klient 739903860	
+4:59:26 PM Wednesday, April 8, 2020
+Klient 779999057	
+4:59:27 PM Wednesday, April 8, 2020
+Klient 779999057	
+4:59:28 PM Wednesday, April 8, 2020
+Klient 779907291	
+4:59:29 PM Wednesday, April 8, 2020
+Klient 779900030	
+4:59:30 PM Wednesday, April 8, 2020
+Klient 749904627	
+4:59:31 PM Wednesday, April 8, 2020
+Klient 719999091	
+4:59:32 PM Wednesday, April 8, 2020
+Klient 719999091	
+4:59:33 PM Wednesday, April 8, 2020
+Klient 719909077	
+4:59:34 PM Wednesday, April 8, 2020
+Klient 719909077	
+4:59:35 PM Wednesday, April 8, 2020
+Klient 719901041	
+4:59:36 PM Wednesday, April 8, 2020
+Klient 719901041	
+4:59:37 PM Wednesday, April 8, 2020
+Klient 739903045	
+4:59:38 PM Wednesday, April 8, 2020
+Klient 739903045	
+4:59:39 PM Wednesday, April 8, 2020
+Klient 739903693	
+4:59:40 PM Wednesday, April 8, 2020
+Klient 739903693	
+4:59:41 PM Wednesday, April 8, 2020
+Klient 759905577	
+4:59:42 PM Wednesday, April 8, 2020
+Klient 759905577	
+4:59:43 PM Wednesday, April 8, 2020
+Klient 769999264	
+4:59:44 PM Wednesday, April 8, 2020
+Klient 769999264	
+4:59:45 PM Wednesday, April 8, 2020
+Klient 769999264	
+4:59:45 PM Wednesday, April 8, 2020
+Klient 769999287	
+4:59:46 PM Wednesday, April 8, 2020
+Klient 769999287	
+4:59:47 PM Wednesday, April 8, 2020
+Klient 769906363	
+4:59:48 PM Wednesday, April 8, 2020
+Klient 769906363	
+4:59:49 PM Wednesday, April 8, 2020
+Klient 769999207	
+4:59:50 PM Wednesday, April 8, 2020
+Klient 769999207	
+4:59:51 PM Wednesday, April 8, 2020
+Klient 779907324	
+4:59:52 PM Wednesday, April 8, 2020
+Klient 779907324	
+4:59:53 PM Wednesday, April 8, 2020
+Klient 779907324	
+4:59:53 PM Wednesday, April 8, 2020
+Klient 779015133	
+4:59:54 PM Wednesday, April 8, 2020
+Klient 779015133	
+4:59:55 PM Wednesday, April 8, 2020
+Klient 759905072	
+4:59:56 PM Wednesday, April 8, 2020
+Klient 759905072	
+4:59:57 PM Wednesday, April 8, 2020
+Klient 719901608	
+4:59:58 PM Wednesday, April 8, 2020
+Klient 719900058	
+4:59:59 PM Wednesday, April 8, 2020
+Klient 719900139	
+5:00:00 PM Wednesday, April 8, 2020
+Klient 739999069	
+5:00:01 PM Wednesday, April 8, 2020
+Klient 739900391	
+5:00:02 PM Wednesday, April 8, 2020
+Klient 749999013	
+5:00:03 PM Wednesday, April 8, 2020
+Klient 769906579	
+5:00:04 PM Wednesday, April 8, 2020
+Klient 779907352	
+5:00:05 PM Wednesday, April 8, 2020
+Klient 789980857	
+5:00:06 PM Wednesday, April 8, 2020
+Klient 970237747	
+5:00:08 PM Wednesday, April 8, 2020
+Klient 970214785	
+5:00:09 PM Wednesday, April 8, 2020
+Klient 979900988	
+5:00:10 PM Wednesday, April 8, 2020
+Klient 970326065	
+5:00:11 PM Wednesday, April 8, 2020
+Klient 979900812	
+5:00:12 PM Wednesday, April 8, 2020
+Klient 899011923	
+5:00:13 PM Wednesday, April 8, 2020
+Klient 899011504	
+5:00:14 PM Wednesday, April 8, 2020
+Klient 899030410	
+5:00:15 PM Wednesday, April 8, 2020
+Klient 899111492	
+5:00:16 PM Wednesday, April 8, 2020
+Klient 899049950	
+5:00:17 PM Wednesday, April 8, 2020
+Klient 899049983	
+5:00:18 PM Wednesday, April 8, 2020
+Klient 899047307	
+5:00:19 PM Wednesday, April 8, 2020
+Klient 899049806	
+5:00:20 PM Wednesday, April 8, 2020
+Klient 	
+5:00:20 PM Wednesday, April 8, 2020
+Except błąd podczas przetwarzania struktury wejściowej Ciąg nie został rozpoznany jako prawidłowy element DateTime. 	
+5:05:17 PM Wednesday, April 8, 2020
+ProceedFile strct 	
+5:05:19 PM Wednesday, April 8, 2020
+Lst Loaded 	
+5:05:19 PM Wednesday, April 8, 2020
+Klient 11711368	
+5:05:56 PM Wednesday, April 8, 2020
+Klient 11711368	
+5:06:07 PM Wednesday, April 8, 2020
+Klient 11711368	
+5:06:07 PM Wednesday, April 8, 2020
+Klient 11711368	
+5:06:07 PM Wednesday, April 8, 2020
+Klient 11711368	
+5:06:07 PM Wednesday, April 8, 2020
+Klient 11711368	
+5:06:07 PM Wednesday, April 8, 2020
+Klient 719999069	
+5:06:07 PM Wednesday, April 8, 2020
+Klient 719999069	
+5:06:07 PM Wednesday, April 8, 2020
+Klient 11536278	
+5:06:08 PM Wednesday, April 8, 2020
+Klient 11536278	
+5:06:08 PM Wednesday, April 8, 2020
+Klient 11536278	
+5:06:08 PM Wednesday, April 8, 2020
+Klient 11536278	
+5:06:08 PM Wednesday, April 8, 2020
+Klient 11536825	
+5:06:09 PM Wednesday, April 8, 2020
+Klient 11536825	
+5:06:09 PM Wednesday, April 8, 2020
+Klient 11536825	
+5:06:09 PM Wednesday, April 8, 2020
+Klient 899050075	
+5:06:09 PM Wednesday, April 8, 2020
+Klient 739999110	
+5:06:10 PM Wednesday, April 8, 2020
+Klient 739999110	
+5:06:10 PM Wednesday, April 8, 2020
+Klient 759999035	
+5:06:11 PM Wednesday, April 8, 2020
+Klient 759999035	
+5:06:11 PM Wednesday, April 8, 2020
+Klient 11931240	
+5:06:12 PM Wednesday, April 8, 2020
+Klient 11921617	
+5:06:13 PM Wednesday, April 8, 2020
+Klient 11921617	
+5:06:14 PM Wednesday, April 8, 2020
+Klient 11840748	
+5:06:15 PM Wednesday, April 8, 2020
+Klient 11840748	
+5:06:15 PM Wednesday, April 8, 2020
+Klient 369.992.481	
+5:06:16 PM Wednesday, April 8, 2020
+Klient 369.992.481	
+5:06:16 PM Wednesday, April 8, 2020
+Klient 349.902.556	
+5:06:17 PM Wednesday, April 8, 2020
+Klient 379.903.584	
+5:06:18 PM Wednesday, April 8, 2020
+Klient 379.903.584	
+5:06:18 PM Wednesday, April 8, 2020
+Klient 379.903.584	
+5:06:18 PM Wednesday, April 8, 2020
+Klient 379.903.584	
+5:06:18 PM Wednesday, April 8, 2020
+Klient 970386295	
+5:06:19 PM Wednesday, April 8, 2020
+Klient 970386295	
+5:06:19 PM Wednesday, April 8, 2020
+Klient 970386295	
+5:06:19 PM Wednesday, April 8, 2020
+Klient 979900867	
+5:06:20 PM Wednesday, April 8, 2020
+Klient 979900867	
+5:06:20 PM Wednesday, April 8, 2020
+Klient 979900867	
+5:06:20 PM Wednesday, April 8, 2020
+Klient 979900208	
+5:06:21 PM Wednesday, April 8, 2020
+Klient 979900208	
+5:06:21 PM Wednesday, April 8, 2020
+Klient 979900208	
+5:06:21 PM Wednesday, April 8, 2020
+Klient 979900664	
+5:06:22 PM Wednesday, April 8, 2020
+Klient 979900664	
+5:06:22 PM Wednesday, April 8, 2020
+Klient 979900068	
+5:06:23 PM Wednesday, April 8, 2020
+Klient 979900068	
+5:06:23 PM Wednesday, April 8, 2020
+Klient 970373234	
+5:06:24 PM Wednesday, April 8, 2020
+Klient 970411356	
+5:06:25 PM Wednesday, April 8, 2020
+Klient 970408075	
+5:06:26 PM Wednesday, April 8, 2020
+Klient 970431331	
+5:06:27 PM Wednesday, April 8, 2020
+Klient 379.003.216	
+5:06:28 PM Wednesday, April 8, 2020
+Klient 359.902.235	
+5:06:29 PM Wednesday, April 8, 2020
+Klient 359.902.235	
+5:06:29 PM Wednesday, April 8, 2020
+Klient 10635865	
+5:06:30 PM Wednesday, April 8, 2020
+Klient 11496753	
+5:06:31 PM Wednesday, April 8, 2020
+Klient 11496820	
+5:06:32 PM Wednesday, April 8, 2020
+Klient 11496971	
+5:06:33 PM Wednesday, April 8, 2020
+Klient 11929037	
+5:06:34 PM Wednesday, April 8, 2020
+Klient 11497333	
+5:06:35 PM Wednesday, April 8, 2020
+Klient 11497024	
+5:06:36 PM Wednesday, April 8, 2020
+Klient 11497897	
+5:06:37 PM Wednesday, April 8, 2020
+Klient 11693855	
+5:06:38 PM Wednesday, April 8, 2020
+Klient 719999069	
+5:06:39 PM Wednesday, April 8, 2020
+Klient 719999069	
+5:06:39 PM Wednesday, April 8, 2020
+Klient 719999069	
+5:06:39 PM Wednesday, April 8, 2020
+Klient 719999069	
+5:06:39 PM Wednesday, April 8, 2020
+Klient 739999110	
+5:06:40 PM Wednesday, April 8, 2020
+Klient 739999110	
+5:06:40 PM Wednesday, April 8, 2020
+Klient 759999035	
+5:06:41 PM Wednesday, April 8, 2020
+Klient 759999035	
+5:06:41 PM Wednesday, April 8, 2020
+Klient 769906094	
+5:06:42 PM Wednesday, April 8, 2020
+Klient 769906094	
+5:06:42 PM Wednesday, April 8, 2020
+Klient 769906094	
+5:06:42 PM Wednesday, April 8, 2020
+Klient 769906094	
+5:06:42 PM Wednesday, April 8, 2020
+Klient 759999043	
+5:06:43 PM Wednesday, April 8, 2020
+Klient 759999043	
+5:06:43 PM Wednesday, April 8, 2020
+Klient 759999043	
+5:06:44 PM Wednesday, April 8, 2020
+Klient 759999043	
+5:06:44 PM Wednesday, April 8, 2020
+Klient 749904038	
+5:06:45 PM Wednesday, April 8, 2020
+Klient 749904038	
+5:06:45 PM Wednesday, April 8, 2020
+Klient 749904038	
+5:06:45 PM Wednesday, April 8, 2020
+Klient 769906684	
+5:06:46 PM Wednesday, April 8, 2020
+Klient 769906684	
+5:06:46 PM Wednesday, April 8, 2020
+Klient 769906684	
+5:06:46 PM Wednesday, April 8, 2020
+Klient 769909296	
+5:06:47 PM Wednesday, April 8, 2020
+Klient 769909296	
+5:06:47 PM Wednesday, April 8, 2020
+Klient 769909296	
+5:06:47 PM Wednesday, April 8, 2020
+Klient 769909296	
+5:06:47 PM Wednesday, April 8, 2020
+Klient 11966618	
+5:06:48 PM Wednesday, April 8, 2020
+Klient 11966618	
+5:06:49 PM Wednesday, April 8, 2020
+Klient 11966618	
+5:06:49 PM Wednesday, April 8, 2020
+Klient 11966618	
+5:06:49 PM Wednesday, April 8, 2020
+Klient 11846610	
+5:06:50 PM Wednesday, April 8, 2020
+Klient 11846610	
+5:06:51 PM Wednesday, April 8, 2020
+Klient 11846610	
+5:06:51 PM Wednesday, April 8, 2020
+Klient 11846610	
+5:06:51 PM Wednesday, April 8, 2020
+Klient 11821832	
+5:06:52 PM Wednesday, April 8, 2020
+Klient 11821832	
+5:06:53 PM Wednesday, April 8, 2020
+Klient 11821832	
+5:06:53 PM Wednesday, April 8, 2020
+Klient 11821832	
+5:06:53 PM Wednesday, April 8, 2020
+Klient 11821832	
+5:06:53 PM Wednesday, April 8, 2020
+Klient 11821832	
+5:06:53 PM Wednesday, April 8, 2020
+Klient 11821832	
+5:06:53 PM Wednesday, April 8, 2020
+Klient 11821832	
+5:06:53 PM Wednesday, April 8, 2020
+Klient 11821832	
+5:06:53 PM Wednesday, April 8, 2020
+Klient 11821832	
+5:06:53 PM Wednesday, April 8, 2020
+Klient 11821832	
+5:06:53 PM Wednesday, April 8, 2020
+Klient 11768520	
+5:06:54 PM Wednesday, April 8, 2020
+Klient 11768520	
+5:06:55 PM Wednesday, April 8, 2020
+Klient 11768520	
+5:06:55 PM Wednesday, April 8, 2020
+Klient 11874179	
+5:07:06 PM Wednesday, April 8, 2020
+Klient 11874179	
+5:07:08 PM Wednesday, April 8, 2020
+Klient 11711126	
+5:07:09 PM Wednesday, April 8, 2020
+Klient 11711126	
+5:07:10 PM Wednesday, April 8, 2020
+Klient 11691359	
+5:07:11 PM Wednesday, April 8, 2020
+Klient 11691359	
+5:07:12 PM Wednesday, April 8, 2020
+Klient 11691359	
+5:07:12 PM Wednesday, April 8, 2020
+Klient 379003234	
+5:07:13 PM Wednesday, April 8, 2020
+Klient 379003234	
+5:07:13 PM Wednesday, April 8, 2020
+Klient 379909908	
+5:07:14 PM Wednesday, April 8, 2020
+Klient 729903399	
+5:07:15 PM Wednesday, April 8, 2020
+Klient 729903399	
+5:07:16 PM Wednesday, April 8, 2020
+Klient 729903399	
+5:07:16 PM Wednesday, April 8, 2020
+Klient 739903056	
+5:07:17 PM Wednesday, April 8, 2020
+Klient 739903056	
+5:07:19 PM Wednesday, April 8, 2020
+Klient 739903056	
+5:07:19 PM Wednesday, April 8, 2020
+Klient 719955160	
+5:07:20 PM Wednesday, April 8, 2020
+Klient 719955160	
+5:07:21 PM Wednesday, April 8, 2020
+Klient 780030356	
+5:07:22 PM Wednesday, April 8, 2020
+Klient 780030356	
+5:07:23 PM Wednesday, April 8, 2020
+Klient 780030356	
+5:07:23 PM Wednesday, April 8, 2020
+Klient 780030356	
+5:07:23 PM Wednesday, April 8, 2020
+Klient 779907508	
+5:07:24 PM Wednesday, April 8, 2020
+Klient 779907508	
+5:07:25 PM Wednesday, April 8, 2020
+Klient 779907508	
+5:07:25 PM Wednesday, April 8, 2020
+Klient 779907508	
+5:07:25 PM Wednesday, April 8, 2020
+Klient 779907508	
+5:07:25 PM Wednesday, April 8, 2020
+Klient 779907508	
+5:07:25 PM Wednesday, April 8, 2020
+Klient 779907508	
+5:07:25 PM Wednesday, April 8, 2020
+Klient 739909091	
+5:07:26 PM Wednesday, April 8, 2020
+Klient 739903860	
+5:07:27 PM Wednesday, April 8, 2020
+Klient 779999057	
+5:07:28 PM Wednesday, April 8, 2020
+Klient 779999057	
+5:07:29 PM Wednesday, April 8, 2020
+Klient 779907291	
+5:07:30 PM Wednesday, April 8, 2020
+Klient 779900030	
+5:07:31 PM Wednesday, April 8, 2020
+Klient 749904627	
+5:07:32 PM Wednesday, April 8, 2020
+Klient 719999091	
+5:07:33 PM Wednesday, April 8, 2020
+Klient 719999091	
+5:07:34 PM Wednesday, April 8, 2020
+Klient 719909077	
+5:07:35 PM Wednesday, April 8, 2020
+Klient 719909077	
+5:07:36 PM Wednesday, April 8, 2020
+Klient 719901041	
+5:07:37 PM Wednesday, April 8, 2020
+Klient 719901041	
+5:07:38 PM Wednesday, April 8, 2020
+Klient 739903045	
+5:07:39 PM Wednesday, April 8, 2020
+Klient 739903045	
+5:07:40 PM Wednesday, April 8, 2020
+Klient 739903693	
+5:07:41 PM Wednesday, April 8, 2020
+Klient 739903693	
+5:07:42 PM Wednesday, April 8, 2020
+Klient 759905577	
+5:07:43 PM Wednesday, April 8, 2020
+Klient 759905577	
+5:07:44 PM Wednesday, April 8, 2020
+Klient 769999264	
+5:07:45 PM Wednesday, April 8, 2020
+Klient 769999264	
+5:07:46 PM Wednesday, April 8, 2020
+Klient 769999264	
+5:07:46 PM Wednesday, April 8, 2020
+Klient 769999287	
+5:07:47 PM Wednesday, April 8, 2020
+Klient 769999287	
+5:07:48 PM Wednesday, April 8, 2020
+Klient 769906363	
+5:07:49 PM Wednesday, April 8, 2020
+Klient 769906363	
+5:07:50 PM Wednesday, April 8, 2020
+Klient 769999207	
+5:07:51 PM Wednesday, April 8, 2020
+Klient 769999207	
+5:07:52 PM Wednesday, April 8, 2020
+Klient 779907324	
+5:07:53 PM Wednesday, April 8, 2020
+Klient 779907324	
+5:07:54 PM Wednesday, April 8, 2020
+Klient 779907324	
+5:07:54 PM Wednesday, April 8, 2020
+Klient 779015133	
+5:07:55 PM Wednesday, April 8, 2020
+Klient 779015133	
+5:07:56 PM Wednesday, April 8, 2020
+Klient 759905072	
+5:07:57 PM Wednesday, April 8, 2020
+Klient 759905072	
+5:07:58 PM Wednesday, April 8, 2020
+Klient 719901608	
+5:07:59 PM Wednesday, April 8, 2020
+Klient 719900058	
+5:08:00 PM Wednesday, April 8, 2020
+Klient 719900139	
+5:08:01 PM Wednesday, April 8, 2020
+Klient 739999069	
+5:08:02 PM Wednesday, April 8, 2020
+Klient 739900391	
+5:08:03 PM Wednesday, April 8, 2020
+Klient 749999013	
+5:08:04 PM Wednesday, April 8, 2020
+Klient 769906579	
+5:08:05 PM Wednesday, April 8, 2020
+Klient 779907352	
+5:08:16 PM Wednesday, April 8, 2020
+Klient 789980857	
+5:08:17 PM Wednesday, April 8, 2020
+Klient 970237747	
+5:08:18 PM Wednesday, April 8, 2020
+Klient 970214785	
+5:08:19 PM Wednesday, April 8, 2020
+Klient 979900988	
+5:08:20 PM Wednesday, April 8, 2020
+Klient 970326065	
+5:08:21 PM Wednesday, April 8, 2020
+Klient 979900812	
+5:08:22 PM Wednesday, April 8, 2020
+Klient 899011923	
+5:08:23 PM Wednesday, April 8, 2020
+Klient 899011504	
+5:08:24 PM Wednesday, April 8, 2020
+Klient 899030410	
+5:08:25 PM Wednesday, April 8, 2020
+Klient 899111492	
+5:08:26 PM Wednesday, April 8, 2020
+Klient 899049950	
+5:08:27 PM Wednesday, April 8, 2020
+Klient 899049983	
+5:08:28 PM Wednesday, April 8, 2020
+Klient 899047307	
+5:08:29 PM Wednesday, April 8, 2020
+Klient 899049806	
+5:08:30 PM Wednesday, April 8, 2020
+Klient 	
+6:23:35 PM Wednesday, April 8, 2020
+Except błąd podczas przetwarzania struktury wejściowej Ciąg nie został rozpoznany jako prawidłowy element DateTime. 	
+6:59:13 PM Wednesday, April 8, 2020
+ProceedFile strct 	
+6:59:14 PM Wednesday, April 8, 2020
+Lst Loaded 	
+6:59:14 PM Wednesday, April 8, 2020
+Klient 11711368	
+6:59:16 PM Wednesday, April 8, 2020
+Klient 11711368	
+6:59:16 PM Wednesday, April 8, 2020
+Klient 11711368	
+6:59:16 PM Wednesday, April 8, 2020
+Klient 11711368	
+6:59:16 PM Wednesday, April 8, 2020
+Klient 11711368	
+6:59:16 PM Wednesday, April 8, 2020
+Klient 11711368	
+6:59:16 PM Wednesday, April 8, 2020
+Klient 719999069	
+6:59:17 PM Wednesday, April 8, 2020
+Klient 719999069	
+6:59:17 PM Wednesday, April 8, 2020
+Klient 11536278	
+6:59:18 PM Wednesday, April 8, 2020
+Klient 11536278	
+6:59:18 PM Wednesday, April 8, 2020
+Klient 11536278	
+6:59:18 PM Wednesday, April 8, 2020
+Klient 11536278	
+6:59:18 PM Wednesday, April 8, 2020
+Klient 11536825	
+6:59:19 PM Wednesday, April 8, 2020
+Klient 11536825	
+6:59:19 PM Wednesday, April 8, 2020
+Klient 11536825	
+6:59:19 PM Wednesday, April 8, 2020
+Klient 899050075	
+6:59:20 PM Wednesday, April 8, 2020
+Klient 739999110	
+6:59:21 PM Wednesday, April 8, 2020
+Klient 739999110	
+6:59:22 PM Wednesday, April 8, 2020
+Klient 759999035	
+6:59:22 PM Wednesday, April 8, 2020
+Klient 759999035	
+6:59:23 PM Wednesday, April 8, 2020
+Klient 11931240	
+6:59:24 PM Wednesday, April 8, 2020
+Klient 11921617	
+6:59:25 PM Wednesday, April 8, 2020
+Klient 11921617	
+6:59:25 PM Wednesday, April 8, 2020
+Klient 11840748	
+6:59:26 PM Wednesday, April 8, 2020
+Klient 11840748	
+6:59:26 PM Wednesday, April 8, 2020
+Klient 369.992.481	
+6:59:27 PM Wednesday, April 8, 2020
+Klient 369.992.481	
+6:59:27 PM Wednesday, April 8, 2020
+Klient 349.902.556	
+6:59:28 PM Wednesday, April 8, 2020
+Klient 379.903.584	
+6:59:29 PM Wednesday, April 8, 2020
+Klient 379.903.584	
+6:59:29 PM Wednesday, April 8, 2020
+Klient 379.903.584	
+6:59:29 PM Wednesday, April 8, 2020
+Klient 379.903.584	
+6:59:29 PM Wednesday, April 8, 2020
+Klient 970386295	
+6:59:30 PM Wednesday, April 8, 2020
+Klient 970386295	
+6:59:30 PM Wednesday, April 8, 2020
+Klient 970386295	
+6:59:30 PM Wednesday, April 8, 2020
+Klient 979900867	
+6:59:31 PM Wednesday, April 8, 2020
+Klient 979900867	
+6:59:31 PM Wednesday, April 8, 2020
+Klient 979900867	
+6:59:31 PM Wednesday, April 8, 2020
+Klient 979900208	
+6:59:32 PM Wednesday, April 8, 2020
+Klient 979900208	
+6:59:32 PM Wednesday, April 8, 2020
+Klient 979900208	
+6:59:32 PM Wednesday, April 8, 2020
+Klient 979900664	
+6:59:33 PM Wednesday, April 8, 2020
+Klient 979900664	
+6:59:33 PM Wednesday, April 8, 2020
+Klient 979900068	
+6:59:34 PM Wednesday, April 8, 2020
+Klient 979900068	
+6:59:34 PM Wednesday, April 8, 2020
+Klient 970373234	
+6:59:35 PM Wednesday, April 8, 2020
+Klient 970411356	
+6:59:36 PM Wednesday, April 8, 2020
+Klient 970408075	
+6:59:37 PM Wednesday, April 8, 2020
+Klient 970431331	
+6:59:38 PM Wednesday, April 8, 2020
+Klient 379.003.216	
+6:59:39 PM Wednesday, April 8, 2020
+Klient 359.902.235	
+6:59:40 PM Wednesday, April 8, 2020
+Klient 359.902.235	
+6:59:40 PM Wednesday, April 8, 2020
+Klient 10635865	
+6:59:41 PM Wednesday, April 8, 2020
+Klient 11496753	
+6:59:42 PM Wednesday, April 8, 2020
+Klient 11496820	
+6:59:43 PM Wednesday, April 8, 2020
+Klient 11496971	
+6:59:44 PM Wednesday, April 8, 2020
+Klient 11929037	
+6:59:45 PM Wednesday, April 8, 2020
+Klient 11497333	
+6:59:47 PM Wednesday, April 8, 2020
+Klient 11497024	
+6:59:48 PM Wednesday, April 8, 2020
+Klient 11497897	
+6:59:49 PM Wednesday, April 8, 2020
+Klient 11693855	
+6:59:50 PM Wednesday, April 8, 2020
+Klient 719999069	
+6:59:52 PM Wednesday, April 8, 2020
+Klient 719999069	
+6:59:52 PM Wednesday, April 8, 2020
+Klient 719999069	
+6:59:52 PM Wednesday, April 8, 2020
+Klient 719999069	
+6:59:52 PM Wednesday, April 8, 2020
+Klient 739999110	
+6:59:53 PM Wednesday, April 8, 2020
+Klient 739999110	
+6:59:53 PM Wednesday, April 8, 2020
+Klient 759999035	
+6:59:54 PM Wednesday, April 8, 2020
+Klient 759999035	
+6:59:54 PM Wednesday, April 8, 2020
+Klient 769906094	
+6:59:55 PM Wednesday, April 8, 2020
+Klient 769906094	
+6:59:55 PM Wednesday, April 8, 2020
+Klient 769906094	
+6:59:55 PM Wednesday, April 8, 2020
+Klient 769906094	
+6:59:55 PM Wednesday, April 8, 2020
+Klient 759999043	
+6:59:56 PM Wednesday, April 8, 2020
+Klient 759999043	
+6:59:56 PM Wednesday, April 8, 2020
+Klient 759999043	
+6:59:56 PM Wednesday, April 8, 2020
+Klient 759999043	
+6:59:56 PM Wednesday, April 8, 2020
+Klient 749904038	
+6:59:57 PM Wednesday, April 8, 2020
+Klient 749904038	
+6:59:58 PM Wednesday, April 8, 2020
+Klient 749904038	
+6:59:58 PM Wednesday, April 8, 2020
+Klient 769906684	
+6:59:59 PM Wednesday, April 8, 2020
+Klient 769906684	
+6:59:59 PM Wednesday, April 8, 2020
+Klient 769906684	
+6:59:59 PM Wednesday, April 8, 2020
+Klient 769909296	
+7:00:00 PM Wednesday, April 8, 2020
+Klient 769909296	
+7:00:00 PM Wednesday, April 8, 2020
+Klient 769909296	
+7:00:00 PM Wednesday, April 8, 2020
+Klient 769909296	
+7:00:00 PM Wednesday, April 8, 2020
+Klient 11966618	
+7:00:01 PM Wednesday, April 8, 2020
+Klient 11966618	
+7:00:01 PM Wednesday, April 8, 2020
+Klient 11966618	
+7:00:01 PM Wednesday, April 8, 2020
+Klient 11966618	
+7:00:01 PM Wednesday, April 8, 2020
+Klient 11846610	
+7:00:02 PM Wednesday, April 8, 2020
+Klient 11846610	
+7:00:02 PM Wednesday, April 8, 2020
+Klient 11846610	
+7:00:02 PM Wednesday, April 8, 2020
+Klient 11846610	
+7:00:02 PM Wednesday, April 8, 2020
+Klient 11821832	
+7:00:03 PM Wednesday, April 8, 2020
+Klient 11821832	
+7:00:03 PM Wednesday, April 8, 2020
+Klient 11821832	
+7:00:03 PM Wednesday, April 8, 2020
+Klient 11821832	
+7:00:03 PM Wednesday, April 8, 2020
+Klient 11821832	
+7:00:03 PM Wednesday, April 8, 2020
+Klient 11821832	
+7:00:03 PM Wednesday, April 8, 2020
+Klient 11821832	
+7:00:03 PM Wednesday, April 8, 2020
+Klient 11821832	
+7:00:04 PM Wednesday, April 8, 2020
+Klient 11821832	
+7:00:04 PM Wednesday, April 8, 2020
+Klient 11821832	
+7:00:04 PM Wednesday, April 8, 2020
+Klient 11821832	
+7:00:04 PM Wednesday, April 8, 2020
+Klient 11768520	
+7:00:04 PM Wednesday, April 8, 2020
+Klient 11768520	
+7:00:05 PM Wednesday, April 8, 2020
+Klient 11768520	
+7:00:05 PM Wednesday, April 8, 2020
+Klient 11874179	
+7:00:05 PM Wednesday, April 8, 2020
+Klient 11874179	
+7:00:06 PM Wednesday, April 8, 2020
+Klient 11711126	
+7:00:06 PM Wednesday, April 8, 2020
+Klient 11711126	
+7:00:07 PM Wednesday, April 8, 2020
+Klient 11691359	
+7:00:08 PM Wednesday, April 8, 2020
+Klient 11691359	
+7:00:08 PM Wednesday, April 8, 2020
+Klient 11691359	
+7:00:08 PM Wednesday, April 8, 2020
+Klient 379003234	
+7:00:09 PM Wednesday, April 8, 2020
+Klient 379003234	
+7:00:09 PM Wednesday, April 8, 2020
+Klient 379909908	
+7:00:10 PM Wednesday, April 8, 2020
+Klient 729903399	
+7:00:11 PM Wednesday, April 8, 2020
+Klient 729903399	
+7:00:11 PM Wednesday, April 8, 2020
+Klient 729903399	
+7:00:11 PM Wednesday, April 8, 2020
+Klient 739903056	
+7:00:12 PM Wednesday, April 8, 2020
+Klient 739903056	
+7:00:12 PM Wednesday, April 8, 2020
+Klient 739903056	
+7:00:12 PM Wednesday, April 8, 2020
+Klient 719955160	
+7:00:13 PM Wednesday, April 8, 2020
+Klient 719955160	
+7:00:13 PM Wednesday, April 8, 2020
+Klient 780030356	
+7:00:14 PM Wednesday, April 8, 2020
+Klient 780030356	
+7:00:14 PM Wednesday, April 8, 2020
+Klient 780030356	
+7:00:14 PM Wednesday, April 8, 2020
+Klient 780030356	
+7:00:14 PM Wednesday, April 8, 2020
+Klient 779907508	
+7:00:15 PM Wednesday, April 8, 2020
+Klient 779907508	
+7:00:15 PM Wednesday, April 8, 2020
+Klient 779907508	
+7:00:15 PM Wednesday, April 8, 2020
+Klient 779907508	
+7:00:15 PM Wednesday, April 8, 2020
+Klient 779907508	
+7:00:15 PM Wednesday, April 8, 2020
+Klient 779907508	
+7:00:15 PM Wednesday, April 8, 2020
+Klient 779907508	
+7:00:15 PM Wednesday, April 8, 2020
+Klient 739909091	
+7:00:16 PM Wednesday, April 8, 2020
+Klient 739903860	
+7:00:17 PM Wednesday, April 8, 2020
+Klient 779999057	
+7:00:18 PM Wednesday, April 8, 2020
+Klient 779999057	
+7:00:18 PM Wednesday, April 8, 2020
+Klient 779907291	
+7:00:19 PM Wednesday, April 8, 2020
+Klient 779900030	
+7:00:20 PM Wednesday, April 8, 2020
+Klient 749904627	
+7:00:21 PM Wednesday, April 8, 2020
+Klient 719999091	
+7:00:22 PM Wednesday, April 8, 2020
+Klient 719999091	
+7:00:22 PM Wednesday, April 8, 2020
+Klient 719909077	
+7:00:23 PM Wednesday, April 8, 2020
+Klient 719909077	
+7:00:23 PM Wednesday, April 8, 2020
+Klient 719901041	
+7:00:24 PM Wednesday, April 8, 2020
+Klient 719901041	
+7:00:24 PM Wednesday, April 8, 2020
+Klient 739903045	
+7:00:25 PM Wednesday, April 8, 2020
+Klient 739903045	
+7:00:26 PM Wednesday, April 8, 2020
+Klient 739903693	
+7:00:26 PM Wednesday, April 8, 2020
+Klient 739903693	
+7:00:27 PM Wednesday, April 8, 2020
+Klient 759905577	
+7:00:28 PM Wednesday, April 8, 2020
+Klient 759905577	
+7:00:28 PM Wednesday, April 8, 2020
+Klient 769999264	
+7:00:29 PM Wednesday, April 8, 2020
+Klient 769999264	
+7:00:29 PM Wednesday, April 8, 2020
+Klient 769999264	
+7:00:29 PM Wednesday, April 8, 2020
+Klient 769999287	
+7:00:30 PM Wednesday, April 8, 2020
+Klient 769999287	
+7:00:30 PM Wednesday, April 8, 2020
+Klient 769906363	
+7:00:31 PM Wednesday, April 8, 2020
+Klient 769906363	
+7:00:31 PM Wednesday, April 8, 2020
+Klient 769999207	
+7:00:32 PM Wednesday, April 8, 2020
+Klient 769999207	
+7:00:32 PM Wednesday, April 8, 2020
+Klient 779907324	
+7:00:33 PM Wednesday, April 8, 2020
+Klient 779907324	
+7:00:33 PM Wednesday, April 8, 2020
+Klient 779907324	
+7:00:33 PM Wednesday, April 8, 2020
+Klient 779015133	
+7:00:34 PM Wednesday, April 8, 2020
+Klient 779015133	
+7:00:34 PM Wednesday, April 8, 2020
+Klient 759905072	
+7:00:35 PM Wednesday, April 8, 2020
+Klient 759905072	
+7:00:35 PM Wednesday, April 8, 2020
+Klient 719901608	
+7:00:36 PM Wednesday, April 8, 2020
+Klient 719900058	
+7:00:37 PM Wednesday, April 8, 2020
+Klient 719900139	
+7:00:38 PM Wednesday, April 8, 2020
+Klient 739999069	
+7:00:39 PM Wednesday, April 8, 2020
+Klient 739900391	
+7:00:40 PM Wednesday, April 8, 2020
+Klient 749999013	
+7:00:41 PM Wednesday, April 8, 2020
+Klient 769906579	
+7:00:42 PM Wednesday, April 8, 2020
+Klient 779907352	
+7:00:43 PM Wednesday, April 8, 2020
+Klient 789980857	
+7:00:44 PM Wednesday, April 8, 2020
+Klient 970237747	
+7:00:45 PM Wednesday, April 8, 2020
+Klient 970214785	
+7:00:46 PM Wednesday, April 8, 2020
+Klient 979900988	
+7:00:47 PM Wednesday, April 8, 2020
+Klient 970326065	
+7:00:48 PM Wednesday, April 8, 2020
+Klient 979900812	
+7:00:49 PM Wednesday, April 8, 2020
+Klient 899011923	
+7:00:50 PM Wednesday, April 8, 2020
+Klient 899011504	
+7:00:51 PM Wednesday, April 8, 2020
+Klient 899030410	
+7:00:52 PM Wednesday, April 8, 2020
+Klient 899111492	
+7:00:53 PM Wednesday, April 8, 2020
+Klient 899049950	
+7:00:54 PM Wednesday, April 8, 2020
+Klient 899049983	
+7:00:55 PM Wednesday, April 8, 2020
+Klient 899047307	
+7:00:56 PM Wednesday, April 8, 2020
+Klient 899049806	
+7:00:57 PM Wednesday, April 8, 2020
+Klient 	
+7:00:57 PM Wednesday, April 8, 2020
+Except błąd podczas przetwarzania struktury wejściowej Ciąg nie został rozpoznany jako prawidłowy element DateTime. 	
+7:16:35 PM Wednesday, April 8, 2020
+ProceedFile strct 	
+7:16:36 PM Wednesday, April 8, 2020
+Lst Loaded 	
+7:16:36 PM Wednesday, April 8, 2020
+Klient 11711368	
+7:16:38 PM Wednesday, April 8, 2020
+Klient 11711368	
+7:16:38 PM Wednesday, April 8, 2020
+Klient 11711368	
+7:16:38 PM Wednesday, April 8, 2020
+Klient 11711368	
+7:16:38 PM Wednesday, April 8, 2020
+Klient 11711368	
+7:16:38 PM Wednesday, April 8, 2020
+Klient 11711368	
+7:16:38 PM Wednesday, April 8, 2020
+Klient 719999069	
+7:16:39 PM Wednesday, April 8, 2020
+Klient 719999069	
+7:16:39 PM Wednesday, April 8, 2020
+Klient 11536278	
+7:16:40 PM Wednesday, April 8, 2020
+Klient 11536278	
+7:16:40 PM Wednesday, April 8, 2020
+Klient 11536278	
+7:16:40 PM Wednesday, April 8, 2020
+Klient 11536278	
+7:16:40 PM Wednesday, April 8, 2020
+Klient 11536825	
+7:16:41 PM Wednesday, April 8, 2020
+Klient 11536825	
+7:16:41 PM Wednesday, April 8, 2020
+Klient 11536825	
+7:16:41 PM Wednesday, April 8, 2020
+Klient 899050075	
+7:16:42 PM Wednesday, April 8, 2020
+Klient 739999110	
+7:16:44 PM Wednesday, April 8, 2020
+Klient 739999110	
+7:16:44 PM Wednesday, April 8, 2020
+Klient 759999035	
+7:16:45 PM Wednesday, April 8, 2020
+Klient 759999035	
+7:16:45 PM Wednesday, April 8, 2020
+Klient 11931240	
+7:16:46 PM Wednesday, April 8, 2020
+Klient 11921617	
+7:16:47 PM Wednesday, April 8, 2020
+Klient 11921617	
+7:16:47 PM Wednesday, April 8, 2020
+Klient 11840748	
+7:16:48 PM Wednesday, April 8, 2020
+Klient 11840748	
+7:16:48 PM Wednesday, April 8, 2020
+Klient 369.992.481	
+7:16:49 PM Wednesday, April 8, 2020
+Klient 369.992.481	
+7:16:49 PM Wednesday, April 8, 2020
+Klient 349.902.556	
+7:16:50 PM Wednesday, April 8, 2020
+Klient 379.903.584	
+7:16:51 PM Wednesday, April 8, 2020
+Klient 379.903.584	
+7:16:51 PM Wednesday, April 8, 2020
+Klient 379.903.584	
+7:16:52 PM Wednesday, April 8, 2020
+Klient 379.903.584	
+7:16:52 PM Wednesday, April 8, 2020
+Klient 970386295	
+7:16:53 PM Wednesday, April 8, 2020
+Klient 970386295	
+7:16:53 PM Wednesday, April 8, 2020
+Klient 970386295	
+7:16:53 PM Wednesday, April 8, 2020
+Klient 979900867	
+7:16:54 PM Wednesday, April 8, 2020
+Klient 979900867	
+7:16:54 PM Wednesday, April 8, 2020
+Klient 979900867	
+7:16:54 PM Wednesday, April 8, 2020
+Klient 979900208	
+7:16:55 PM Wednesday, April 8, 2020
+Klient 979900208	
+7:16:55 PM Wednesday, April 8, 2020
+Klient 979900208	
+7:16:55 PM Wednesday, April 8, 2020
+Klient 979900664	
+7:16:56 PM Wednesday, April 8, 2020
+Klient 979900664	
+7:16:56 PM Wednesday, April 8, 2020
+Klient 979900068	
+7:16:57 PM Wednesday, April 8, 2020
+Klient 979900068	
+7:16:57 PM Wednesday, April 8, 2020
+Klient 970373234	
+7:16:58 PM Wednesday, April 8, 2020
+Klient 970411356	
+7:16:59 PM Wednesday, April 8, 2020
+Klient 970408075	
+7:17:00 PM Wednesday, April 8, 2020
+Klient 970431331	
+7:17:01 PM Wednesday, April 8, 2020
+Klient 379.003.216	
+7:17:02 PM Wednesday, April 8, 2020
+Klient 359.902.235	
+7:17:03 PM Wednesday, April 8, 2020
+Klient 359.902.235	
+7:17:04 PM Wednesday, April 8, 2020
+Klient 10635865	
+7:17:05 PM Wednesday, April 8, 2020
+Klient 11496753	
+7:17:06 PM Wednesday, April 8, 2020
+Klient 11496820	
+7:17:07 PM Wednesday, April 8, 2020
+Klient 11496971	
+7:17:07 PM Wednesday, April 8, 2020
+Klient 11929037	
+7:17:08 PM Wednesday, April 8, 2020
+Klient 11497333	
+7:17:09 PM Wednesday, April 8, 2020
+Klient 11497024	
+7:17:10 PM Wednesday, April 8, 2020
+Klient 11497897	
+7:17:11 PM Wednesday, April 8, 2020
+Klient 11693855	
+7:17:12 PM Wednesday, April 8, 2020
+Klient 719999069	
+7:17:13 PM Wednesday, April 8, 2020
+Klient 719999069	
+7:17:13 PM Wednesday, April 8, 2020
+Klient 719999069	
+7:17:14 PM Wednesday, April 8, 2020
+Klient 719999069	
+7:17:14 PM Wednesday, April 8, 2020
+Klient 739999110	
+7:17:14 PM Wednesday, April 8, 2020
+Klient 739999110	
+7:17:15 PM Wednesday, April 8, 2020
+Klient 759999035	
+7:17:15 PM Wednesday, April 8, 2020
+Klient 759999035	
+7:17:16 PM Wednesday, April 8, 2020
+Klient 769906094	
+7:17:16 PM Wednesday, April 8, 2020
+Klient 769906094	
+7:17:16 PM Wednesday, April 8, 2020
+Klient 769906094	
+7:17:17 PM Wednesday, April 8, 2020
+Klient 769906094	
+7:17:17 PM Wednesday, April 8, 2020
+Klient 759999043	
+7:17:18 PM Wednesday, April 8, 2020
+Klient 759999043	
+7:17:18 PM Wednesday, April 8, 2020
+Klient 759999043	
+7:17:18 PM Wednesday, April 8, 2020
+Klient 759999043	
+7:17:18 PM Wednesday, April 8, 2020
+Klient 749904038	
+7:17:19 PM Wednesday, April 8, 2020
+Klient 749904038	
+7:17:19 PM Wednesday, April 8, 2020
+Klient 749904038	
+7:17:19 PM Wednesday, April 8, 2020
+Klient 769906684	
+7:17:20 PM Wednesday, April 8, 2020
+Klient 769906684	
+7:17:20 PM Wednesday, April 8, 2020
+Klient 769906684	
+7:17:20 PM Wednesday, April 8, 2020
+Klient 769909296	
+7:17:21 PM Wednesday, April 8, 2020
+Klient 769909296	
+7:17:21 PM Wednesday, April 8, 2020
+Klient 769909296	
+7:17:21 PM Wednesday, April 8, 2020
+Klient 769909296	
+7:17:21 PM Wednesday, April 8, 2020
+Klient 11966618	
+7:17:22 PM Wednesday, April 8, 2020
+Klient 11966618	
+7:17:23 PM Wednesday, April 8, 2020
+Klient 11966618	
+7:17:23 PM Wednesday, April 8, 2020
+Klient 11966618	
+7:17:23 PM Wednesday, April 8, 2020
+Klient 11846610	
+7:17:24 PM Wednesday, April 8, 2020
+Klient 11846610	
+7:17:25 PM Wednesday, April 8, 2020
+Klient 11846610	
+7:17:26 PM Wednesday, April 8, 2020
+Klient 11846610	
+7:17:26 PM Wednesday, April 8, 2020
+Klient 11821832	
+7:17:27 PM Wednesday, April 8, 2020
+Klient 11821832	
+7:17:28 PM Wednesday, April 8, 2020
+Klient 11821832	
+7:17:28 PM Wednesday, April 8, 2020
+Klient 11821832	
+7:17:28 PM Wednesday, April 8, 2020
+Klient 11821832	
+7:17:28 PM Wednesday, April 8, 2020
+Klient 11821832	
+7:17:28 PM Wednesday, April 8, 2020
+Klient 11821832	
+7:17:28 PM Wednesday, April 8, 2020
+Klient 11821832	
+7:17:28 PM Wednesday, April 8, 2020
+Klient 11821832	
+7:17:28 PM Wednesday, April 8, 2020
+Klient 11821832	
+7:17:28 PM Wednesday, April 8, 2020
+Klient 11821832	
+7:17:28 PM Wednesday, April 8, 2020
+Klient 11768520	
+7:17:29 PM Wednesday, April 8, 2020
+Klient 11768520	
+7:17:30 PM Wednesday, April 8, 2020
+Klient 11768520	
+7:17:30 PM Wednesday, April 8, 2020
+Klient 11874179	
+7:17:31 PM Wednesday, April 8, 2020
+Klient 11874179	
+7:17:32 PM Wednesday, April 8, 2020
+Klient 11711126	
+7:17:34 PM Wednesday, April 8, 2020
+Klient 11711126	
+7:17:35 PM Wednesday, April 8, 2020
+Klient 11691359	
+7:17:36 PM Wednesday, April 8, 2020
+Klient 11691359	
+7:17:37 PM Wednesday, April 8, 2020
+Klient 11691359	
+7:17:37 PM Wednesday, April 8, 2020
+Klient 379003234	
+7:17:38 PM Wednesday, April 8, 2020
+Klient 379003234	
+7:17:39 PM Wednesday, April 8, 2020
+Klient 379909908	
+7:17:40 PM Wednesday, April 8, 2020
+Klient 729903399	
+7:17:41 PM Wednesday, April 8, 2020
+Klient 729903399	
+7:17:42 PM Wednesday, April 8, 2020
+Klient 729903399	
+7:17:42 PM Wednesday, April 8, 2020
+Klient 739903056	
+7:17:43 PM Wednesday, April 8, 2020
+Klient 739903056	
+7:17:44 PM Wednesday, April 8, 2020
+Klient 739903056	
+7:17:44 PM Wednesday, April 8, 2020
+Klient 719955160	
+7:17:45 PM Wednesday, April 8, 2020
+Klient 719955160	
+7:17:46 PM Wednesday, April 8, 2020
+Klient 780030356	
+7:17:47 PM Wednesday, April 8, 2020
+Klient 780030356	
+7:17:48 PM Wednesday, April 8, 2020
+Klient 780030356	
+7:17:48 PM Wednesday, April 8, 2020
+Klient 780030356	
+7:17:48 PM Wednesday, April 8, 2020
+Klient 779907508	
+7:17:49 PM Wednesday, April 8, 2020
+Klient 779907508	
+7:17:50 PM Wednesday, April 8, 2020
+Klient 779907508	
+7:17:50 PM Wednesday, April 8, 2020
+Klient 779907508	
+7:17:50 PM Wednesday, April 8, 2020
+Klient 779907508	
+7:17:50 PM Wednesday, April 8, 2020
+Klient 779907508	
+7:17:50 PM Wednesday, April 8, 2020
+Klient 779907508	
+7:17:50 PM Wednesday, April 8, 2020
+Klient 739909091	
+7:17:51 PM Wednesday, April 8, 2020
+Klient 739903860	
+7:17:52 PM Wednesday, April 8, 2020
+Klient 779999057	
+7:17:54 PM Wednesday, April 8, 2020
+Klient 779999057	
+7:17:55 PM Wednesday, April 8, 2020
+Klient 779907291	
+7:17:56 PM Wednesday, April 8, 2020
+Klient 779900030	
+7:17:57 PM Wednesday, April 8, 2020
+Klient 749904627	
+7:17:59 PM Wednesday, April 8, 2020
+Klient 719999091	
+7:18:00 PM Wednesday, April 8, 2020
+Klient 719999091	
+7:18:01 PM Wednesday, April 8, 2020
+Klient 719909077	
+7:18:02 PM Wednesday, April 8, 2020
+Klient 719909077	
+7:18:03 PM Wednesday, April 8, 2020
+Klient 719901041	
+7:18:04 PM Wednesday, April 8, 2020
+Klient 719901041	
+7:18:05 PM Wednesday, April 8, 2020
+Klient 739903045	
+7:18:06 PM Wednesday, April 8, 2020
+Klient 739903045	
+7:18:07 PM Wednesday, April 8, 2020
+Klient 739903693	
+7:18:08 PM Wednesday, April 8, 2020
+Klient 739903693	
+7:18:09 PM Wednesday, April 8, 2020
+Klient 759905577	
+7:18:10 PM Wednesday, April 8, 2020
+Klient 759905577	
+7:18:11 PM Wednesday, April 8, 2020
+Klient 769999264	
+7:18:12 PM Wednesday, April 8, 2020
+Klient 769999264	
+7:18:13 PM Wednesday, April 8, 2020
+Klient 769999264	
+7:18:13 PM Wednesday, April 8, 2020
+Klient 769999287	
+7:18:14 PM Wednesday, April 8, 2020
+Klient 769999287	
+7:18:15 PM Wednesday, April 8, 2020
+Klient 769906363	
+7:18:17 PM Wednesday, April 8, 2020
+Klient 769906363	
+7:18:18 PM Wednesday, April 8, 2020
+Klient 769999207	
+7:18:19 PM Wednesday, April 8, 2020
+Klient 769999207	
+7:18:20 PM Wednesday, April 8, 2020
+Klient 779907324	
+7:18:21 PM Wednesday, April 8, 2020
+Klient 779907324	
+7:18:23 PM Wednesday, April 8, 2020
+Klient 779907324	
+7:18:23 PM Wednesday, April 8, 2020
+Klient 779015133	
+7:18:24 PM Wednesday, April 8, 2020
+Klient 779015133	
+7:18:25 PM Wednesday, April 8, 2020
+Klient 759905072	
+7:18:26 PM Wednesday, April 8, 2020
+Klient 759905072	
+7:18:27 PM Wednesday, April 8, 2020
+Klient 719901608	
+7:18:28 PM Wednesday, April 8, 2020
+Klient 719900058	
+7:18:29 PM Wednesday, April 8, 2020
+Klient 719900139	
+7:18:30 PM Wednesday, April 8, 2020
+Klient 739999069	
+7:18:31 PM Wednesday, April 8, 2020
+Klient 739900391	
+7:18:33 PM Wednesday, April 8, 2020
+Klient 749999013	
+7:18:34 PM Wednesday, April 8, 2020
+Klient 769906579	
+7:18:35 PM Wednesday, April 8, 2020
+Klient 779907352	
+7:18:36 PM Wednesday, April 8, 2020
+Klient 789980857	
+7:18:37 PM Wednesday, April 8, 2020
+Klient 970237747	
+7:18:38 PM Wednesday, April 8, 2020
+Klient 970214785	
+7:18:39 PM Wednesday, April 8, 2020
+Klient 979900988	
+7:18:40 PM Wednesday, April 8, 2020
+Klient 970326065	
+7:18:41 PM Wednesday, April 8, 2020
+Klient 979900812	
+7:18:42 PM Wednesday, April 8, 2020
+Klient 899011923	
+7:18:43 PM Wednesday, April 8, 2020
+Klient 899011504	
+7:18:44 PM Wednesday, April 8, 2020
+Klient 899030410	
+7:18:45 PM Wednesday, April 8, 2020
+Klient 899111492	
+7:18:46 PM Wednesday, April 8, 2020
+Klient 899049950	
+7:18:48 PM Wednesday, April 8, 2020
+Klient 899049983	
+7:18:49 PM Wednesday, April 8, 2020
+Klient 899047307	
+7:18:50 PM Wednesday, April 8, 2020
+Klient 899049806	
+7:18:51 PM Wednesday, April 8, 2020
+EndForeach 899049806/8392781136/899049806/69/W/2019/20200121	
+7:18:51 PM Wednesday, April 8, 2020
+Step 1 	
+7:18:51 PM Wednesday, April 8, 2020
+Step 4 	
+7:18:51 PM Wednesday, April 8, 2020
+Step 5 OK 	
+7:11:32 PM Thursday, April 9, 2020
+ProceedFile strct 	
+7:11:34 PM Thursday, April 9, 2020
+Lst Loaded 	
+7:11:34 PM Thursday, April 9, 2020
+Klient 11711368	
+7:11:34 PM Thursday, April 9, 2020
+Klient 11711368	
+7:11:34 PM Thursday, April 9, 2020
+Klient 11711368	
+7:11:34 PM Thursday, April 9, 2020
+Klient 11711368	
+7:11:34 PM Thursday, April 9, 2020
+Klient 11711368	
+7:11:34 PM Thursday, April 9, 2020
+Klient 11711368	
+7:11:34 PM Thursday, April 9, 2020
+Klient 719999069	
+7:11:35 PM Thursday, April 9, 2020
+Klient 719999069	
+7:11:35 PM Thursday, April 9, 2020
+Klient 11536278	
+7:11:36 PM Thursday, April 9, 2020
+Klient 11536278	
+7:11:36 PM Thursday, April 9, 2020
+Klient 11536278	
+7:11:36 PM Thursday, April 9, 2020
+Klient 11536278	
+7:11:36 PM Thursday, April 9, 2020
+Klient 11536825	
+7:11:36 PM Thursday, April 9, 2020
+Klient 11536825	
+7:11:36 PM Thursday, April 9, 2020
+Klient 11536825	
+7:11:36 PM Thursday, April 9, 2020
+Klient 899050075	
+7:11:37 PM Thursday, April 9, 2020
+Klient 739999110	
+7:11:38 PM Thursday, April 9, 2020
+Klient 739999110	
+7:11:38 PM Thursday, April 9, 2020
+Klient 759999035	
+7:11:39 PM Thursday, April 9, 2020
+Klient 759999035	
+7:11:39 PM Thursday, April 9, 2020
+Klient 11931240	
+7:11:40 PM Thursday, April 9, 2020
+Klient 11921617	
+7:11:41 PM Thursday, April 9, 2020
+Klient 11921617	
+7:11:41 PM Thursday, April 9, 2020
+Klient 11840748	
+7:11:42 PM Thursday, April 9, 2020
+Klient 11840748	
+7:11:42 PM Thursday, April 9, 2020
+Klient 369.992.481	
+7:11:43 PM Thursday, April 9, 2020
+Klient 369.992.481	
+7:11:43 PM Thursday, April 9, 2020
+Klient 349.902.556	
+7:11:44 PM Thursday, April 9, 2020
+Klient 379.903.584	
+7:11:45 PM Thursday, April 9, 2020
+Klient 379.903.584	
+7:11:45 PM Thursday, April 9, 2020
+Klient 379.903.584	
+7:11:45 PM Thursday, April 9, 2020
+Klient 379.903.584	
+7:11:45 PM Thursday, April 9, 2020
+Klient 970386295	
+7:11:46 PM Thursday, April 9, 2020
+Klient 970386295	
+7:11:46 PM Thursday, April 9, 2020
+Klient 970386295	
+7:11:46 PM Thursday, April 9, 2020
+Klient 979900867	
+7:11:47 PM Thursday, April 9, 2020
+Klient 979900867	
+7:11:47 PM Thursday, April 9, 2020
+Klient 979900867	
+7:11:47 PM Thursday, April 9, 2020
+Klient 979900208	
+7:11:48 PM Thursday, April 9, 2020
+Klient 979900208	
+7:11:48 PM Thursday, April 9, 2020
+Klient 979900208	
+7:11:48 PM Thursday, April 9, 2020
+Klient 979900664	
+7:11:49 PM Thursday, April 9, 2020
+Klient 979900664	
+7:11:49 PM Thursday, April 9, 2020
+Klient 979900068	
+7:11:50 PM Thursday, April 9, 2020
+Klient 979900068	
+7:11:50 PM Thursday, April 9, 2020
+Klient 970373234	
+7:11:51 PM Thursday, April 9, 2020
+Klient 970411356	
+7:11:51 PM Thursday, April 9, 2020
+Klient 970408075	
+7:11:52 PM Thursday, April 9, 2020
+Klient 970431331	
+7:11:53 PM Thursday, April 9, 2020
+Klient 379.003.216	
+7:11:54 PM Thursday, April 9, 2020
+Klient 359.902.235	
+7:11:55 PM Thursday, April 9, 2020
+Klient 359.902.235	
+7:11:55 PM Thursday, April 9, 2020
+Klient 10635865	
+7:11:56 PM Thursday, April 9, 2020
+Klient 11496753	
+7:11:57 PM Thursday, April 9, 2020
+Klient 11496820	
+7:11:58 PM Thursday, April 9, 2020
+Klient 11496971	
+7:11:58 PM Thursday, April 9, 2020
+Klient 11929037	
+7:11:59 PM Thursday, April 9, 2020
+Klient 11497333	
+7:12:00 PM Thursday, April 9, 2020
+Klient 11497024	
+7:12:01 PM Thursday, April 9, 2020
+Klient 11497897	
+7:12:02 PM Thursday, April 9, 2020
+Klient 11693855	
+7:12:03 PM Thursday, April 9, 2020
+Klient 719999069	
+7:12:04 PM Thursday, April 9, 2020
+Klient 719999069	
+7:12:04 PM Thursday, April 9, 2020
+Klient 719999069	
+7:12:04 PM Thursday, April 9, 2020
+Klient 719999069	
+7:12:04 PM Thursday, April 9, 2020
+Klient 739999110	
+7:12:05 PM Thursday, April 9, 2020
+Klient 739999110	
+7:12:05 PM Thursday, April 9, 2020
+Klient 759999035	
+7:12:05 PM Thursday, April 9, 2020
+Klient 759999035	
+7:12:06 PM Thursday, April 9, 2020
+Klient 769906094	
+7:12:06 PM Thursday, April 9, 2020
+Klient 769906094	
+7:12:06 PM Thursday, April 9, 2020
+Klient 769906094	
+7:12:06 PM Thursday, April 9, 2020
+Klient 769906094	
+7:12:07 PM Thursday, April 9, 2020
+Klient 759999043	
+7:12:07 PM Thursday, April 9, 2020
+Klient 759999043	
+7:12:07 PM Thursday, April 9, 2020
+Klient 759999043	
+7:12:07 PM Thursday, April 9, 2020
+Klient 759999043	
+7:12:07 PM Thursday, April 9, 2020
+Klient 749904038	
+7:12:08 PM Thursday, April 9, 2020
+Klient 749904038	
+7:12:08 PM Thursday, April 9, 2020
+Klient 749904038	
+7:12:08 PM Thursday, April 9, 2020
+Klient 769906684	
+7:12:09 PM Thursday, April 9, 2020
+Klient 769906684	
+7:12:09 PM Thursday, April 9, 2020
+Klient 769906684	
+7:12:09 PM Thursday, April 9, 2020
+Klient 769909296	
+7:12:10 PM Thursday, April 9, 2020
+Klient 769909296	
+7:12:10 PM Thursday, April 9, 2020
+Klient 769909296	
+7:12:10 PM Thursday, April 9, 2020
+Klient 769909296	
+7:12:10 PM Thursday, April 9, 2020
+Klient 11966618	
+7:12:11 PM Thursday, April 9, 2020
+Klient 11966618	
+7:12:11 PM Thursday, April 9, 2020
+Klient 11966618	
+7:12:11 PM Thursday, April 9, 2020
+Klient 11966618	
+7:12:11 PM Thursday, April 9, 2020
+Klient 11846610	
+7:12:12 PM Thursday, April 9, 2020
+Klient 11846610	
+7:12:12 PM Thursday, April 9, 2020
+Klient 11846610	
+7:12:12 PM Thursday, April 9, 2020
+Klient 11846610	
+7:12:12 PM Thursday, April 9, 2020
+Klient 11821832	
+7:12:13 PM Thursday, April 9, 2020
+Klient 11821832	
+7:12:13 PM Thursday, April 9, 2020
+Klient 11821832	
+7:12:13 PM Thursday, April 9, 2020
+Klient 11821832	
+7:12:13 PM Thursday, April 9, 2020
+Klient 11821832	
+7:12:13 PM Thursday, April 9, 2020
+Klient 11821832	
+7:12:13 PM Thursday, April 9, 2020
+Klient 11821832	
+7:12:13 PM Thursday, April 9, 2020
+Klient 11821832	
+7:12:13 PM Thursday, April 9, 2020
+Klient 11821832	
+7:12:13 PM Thursday, April 9, 2020
+Klient 11821832	
+7:12:13 PM Thursday, April 9, 2020
+Klient 11821832	
+7:12:13 PM Thursday, April 9, 2020
+Klient 11768520	
+7:12:14 PM Thursday, April 9, 2020
+Klient 11768520	
+7:12:14 PM Thursday, April 9, 2020
+Klient 11768520	
+7:12:14 PM Thursday, April 9, 2020
+Klient 11874179	
+7:12:15 PM Thursday, April 9, 2020
+Klient 11874179	
+7:12:15 PM Thursday, April 9, 2020
+Klient 11711126	
+7:12:16 PM Thursday, April 9, 2020
+Klient 11711126	
+7:12:16 PM Thursday, April 9, 2020
+Klient 11691359	
+7:12:17 PM Thursday, April 9, 2020
+Klient 11691359	
+7:12:17 PM Thursday, April 9, 2020
+Klient 11691359	
+7:12:17 PM Thursday, April 9, 2020
+Klient 379003234	
+7:12:18 PM Thursday, April 9, 2020
+Klient 379003234	
+7:12:18 PM Thursday, April 9, 2020
+Klient 379909908	
+7:12:19 PM Thursday, April 9, 2020
+Klient 729903399	
+7:12:19 PM Thursday, April 9, 2020
+Klient 729903399	
+7:12:19 PM Thursday, April 9, 2020
+Klient 729903399	
+7:12:19 PM Thursday, April 9, 2020
+Klient 739903056	
+7:12:20 PM Thursday, April 9, 2020
+Klient 739903056	
+7:12:20 PM Thursday, April 9, 2020
+Klient 739903056	
+7:12:20 PM Thursday, April 9, 2020
+Klient 719955160	
+7:12:21 PM Thursday, April 9, 2020
+Klient 719955160	
+7:12:21 PM Thursday, April 9, 2020
+Klient 780030356	
+7:12:22 PM Thursday, April 9, 2020
+Klient 780030356	
+7:12:22 PM Thursday, April 9, 2020
+Klient 780030356	
+7:12:22 PM Thursday, April 9, 2020
+Klient 780030356	
+7:12:22 PM Thursday, April 9, 2020
+Klient 779907508	
+7:12:23 PM Thursday, April 9, 2020
+Klient 779907508	
+7:12:23 PM Thursday, April 9, 2020
+Klient 779907508	
+7:12:23 PM Thursday, April 9, 2020
+Klient 779907508	
+7:12:23 PM Thursday, April 9, 2020
+Klient 779907508	
+7:12:23 PM Thursday, April 9, 2020
+Klient 779907508	
+7:12:23 PM Thursday, April 9, 2020
+Klient 779907508	
+7:12:23 PM Thursday, April 9, 2020
+Klient 739909091	
+7:12:24 PM Thursday, April 9, 2020
+Klient 739903860	
+7:12:25 PM Thursday, April 9, 2020
+Klient 779999057	
+7:12:26 PM Thursday, April 9, 2020
+Klient 779999057	
+7:12:26 PM Thursday, April 9, 2020
+Klient 779907291	
+7:12:27 PM Thursday, April 9, 2020
+Klient 779900030	
+7:12:28 PM Thursday, April 9, 2020
+Klient 749904627	
+7:12:28 PM Thursday, April 9, 2020
+Klient 719999091	
+7:12:29 PM Thursday, April 9, 2020
+Klient 719999091	
+7:12:29 PM Thursday, April 9, 2020
+Klient 719909077	
+7:12:30 PM Thursday, April 9, 2020
+Klient 719909077	
+7:12:30 PM Thursday, April 9, 2020
+Klient 719901041	
+7:12:31 PM Thursday, April 9, 2020
+Klient 719901041	
+7:12:31 PM Thursday, April 9, 2020
+Klient 739903045	
+7:12:32 PM Thursday, April 9, 2020
+Klient 739903045	
+7:12:32 PM Thursday, April 9, 2020
+Klient 739903693	
+7:12:33 PM Thursday, April 9, 2020
+Klient 739903693	
+7:12:33 PM Thursday, April 9, 2020
+Klient 759905577	
+7:12:34 PM Thursday, April 9, 2020
+Klient 759905577	
+7:12:34 PM Thursday, April 9, 2020
+Klient 769999264	
+7:12:35 PM Thursday, April 9, 2020
+Klient 769999264	
+7:12:35 PM Thursday, April 9, 2020
+Klient 769999264	
+7:12:35 PM Thursday, April 9, 2020
+Klient 769999287	
+7:12:35 PM Thursday, April 9, 2020
+Klient 769999287	
+7:12:36 PM Thursday, April 9, 2020
+Klient 769906363	
+7:12:36 PM Thursday, April 9, 2020
+Klient 769906363	
+7:12:36 PM Thursday, April 9, 2020
+Klient 769999207	
+7:12:37 PM Thursday, April 9, 2020
+Klient 769999207	
+7:12:37 PM Thursday, April 9, 2020
+Klient 779907324	
+7:12:38 PM Thursday, April 9, 2020
+Klient 779907324	
+7:12:38 PM Thursday, April 9, 2020
+Klient 779907324	
+7:12:38 PM Thursday, April 9, 2020
+Klient 779015133	
+7:12:39 PM Thursday, April 9, 2020
+Klient 779015133	
+7:12:39 PM Thursday, April 9, 2020
+Klient 759905072	
+7:12:40 PM Thursday, April 9, 2020
+Klient 759905072	
+7:12:40 PM Thursday, April 9, 2020
+Klient 719901608	
+7:12:41 PM Thursday, April 9, 2020
+Klient 719900058	
+7:12:42 PM Thursday, April 9, 2020
+Klient 719900139	
+7:12:43 PM Thursday, April 9, 2020
+Klient 739999069	
+7:12:44 PM Thursday, April 9, 2020
+Klient 739900391	
+7:12:44 PM Thursday, April 9, 2020
+Klient 749999013	
+7:12:45 PM Thursday, April 9, 2020
+Klient 769906579	
+7:12:46 PM Thursday, April 9, 2020
+Klient 779907352	
+7:12:47 PM Thursday, April 9, 2020
+Klient 789980857	
+7:12:48 PM Thursday, April 9, 2020
+Klient 970237747	
+7:12:49 PM Thursday, April 9, 2020
+Klient 970214785	
+7:12:50 PM Thursday, April 9, 2020
+Klient 979900988	
+7:12:51 PM Thursday, April 9, 2020
+Klient 970326065	
+7:12:52 PM Thursday, April 9, 2020
+Klient 979900812	
+7:12:52 PM Thursday, April 9, 2020
+Klient 899011923	
+7:12:53 PM Thursday, April 9, 2020
+Klient 899011504	
+7:12:54 PM Thursday, April 9, 2020
+Klient 899030410	
+7:12:55 PM Thursday, April 9, 2020
+Klient 899111492	
+7:12:56 PM Thursday, April 9, 2020
+Klient 899049950	
+7:12:57 PM Thursday, April 9, 2020
+Klient 899049983	
+7:12:58 PM Thursday, April 9, 2020
+Klient 899047307	
+7:12:59 PM Thursday, April 9, 2020
+Klient 899049806	
+7:12:59 PM Thursday, April 9, 2020
+EndForeach 899049806/8392781136/899049806/69/W/2019/20200121	
+7:13:00 PM Thursday, April 9, 2020
+Step 1 	
+7:13:00 PM Thursday, April 9, 2020
+Step 4 	
+7:13:00 PM Thursday, April 9, 2020
+Step 5 OK 	
+12:40:51 AM Friday, April 24, 2020
+ProceedFile strct 	
+12:40:52 AM Friday, April 24, 2020
+Lst Loaded 	
+12:40:52 AM Friday, April 24, 2020
+Klient 11711368	
+12:41:16 AM Friday, April 24, 2020
+Except błąd podczas przetwarzania struktury wejściowej Ciąg nie został rozpoznany jako prawidłowy element DateTime. 11711368	
+11:01:37 PM Wednesday, May 13, 2020
+ProceedFile strct 	
+11:01:38 PM Wednesday, May 13, 2020
+Lst Loaded 	
+11:01:38 PM Wednesday, May 13, 2020
+Klient 11711368	
+11:01:39 PM Wednesday, May 13, 2020
+Klient 11711368	
+11:01:39 PM Wednesday, May 13, 2020
+Klient 11711368	
+11:01:39 PM Wednesday, May 13, 2020
+Klient 11711368	
+11:01:39 PM Wednesday, May 13, 2020
+Klient 11711368	
+11:01:39 PM Wednesday, May 13, 2020
+Klient 11711368	
+11:01:39 PM Wednesday, May 13, 2020
+Klient 11536278	
+11:01:40 PM Wednesday, May 13, 2020
+Klient 11536278	
+11:01:40 PM Wednesday, May 13, 2020
+Klient 11536278	
+11:01:40 PM Wednesday, May 13, 2020
+Klient 11536278	
+11:01:40 PM Wednesday, May 13, 2020
+Klient 11536825	
+11:01:40 PM Wednesday, May 13, 2020
+Klient 11536825	
+11:01:41 PM Wednesday, May 13, 2020
+Klient 899050075	
+11:01:41 PM Wednesday, May 13, 2020
+Klient 739999110	
+11:01:42 PM Wednesday, May 13, 2020
+Klient 739999110	
+11:01:42 PM Wednesday, May 13, 2020
+Klient 759999035	
+11:01:43 PM Wednesday, May 13, 2020
+Klient 759999035	
+11:01:43 PM Wednesday, May 13, 2020
+Klient 11931240	
+11:01:44 PM Wednesday, May 13, 2020
+Klient 11921617	
+11:01:44 PM Wednesday, May 13, 2020
+Klient 11840748	
+11:01:45 PM Wednesday, May 13, 2020
+Klient 11840748	
+11:01:45 PM Wednesday, May 13, 2020
+Klient 349.902.556	
+11:01:45 PM Wednesday, May 13, 2020
+Klient 379.903.584	
+11:01:46 PM Wednesday, May 13, 2020
+Klient 379.903.584	
+11:01:46 PM Wednesday, May 13, 2020
+Klient 379.903.584	
+11:01:46 PM Wednesday, May 13, 2020
+Klient 379.903.584	
+11:01:46 PM Wednesday, May 13, 2020
+Klient 970386295	
+11:01:47 PM Wednesday, May 13, 2020
+Klient 970386295	
+11:01:47 PM Wednesday, May 13, 2020
+Klient 970386295	
+11:01:47 PM Wednesday, May 13, 2020
+Klient 979900867	
+11:01:47 PM Wednesday, May 13, 2020
+Klient 979900208	
+11:01:48 PM Wednesday, May 13, 2020
+Klient 979900068	
+11:01:48 PM Wednesday, May 13, 2020
+Klient 979900068	
+11:01:49 PM Wednesday, May 13, 2020
+Klient 970373234	
+11:01:49 PM Wednesday, May 13, 2020
+Klient 970411356	
+11:01:50 PM Wednesday, May 13, 2020
+Klient 379003216	
+11:01:50 PM Wednesday, May 13, 2020
+Klient 359.902.235	
+11:01:51 PM Wednesday, May 13, 2020
+Klient 10635865	
+11:01:51 PM Wednesday, May 13, 2020
+Klient 11496820	
+11:01:52 PM Wednesday, May 13, 2020
+Klient 11497333	
+11:01:52 PM Wednesday, May 13, 2020
+Klient 739999110	
+11:01:52 PM Wednesday, May 13, 2020
+Klient 739999110	
+11:01:52 PM Wednesday, May 13, 2020
+Klient 759999035	
+11:01:53 PM Wednesday, May 13, 2020
+Klient 759999035	
+11:01:53 PM Wednesday, May 13, 2020
+Klient 769906094	
+11:01:53 PM Wednesday, May 13, 2020
+Klient 769906094	
+11:01:54 PM Wednesday, May 13, 2020
+Klient 769906094	
+11:01:54 PM Wednesday, May 13, 2020
+Klient 769906094	
+11:01:54 PM Wednesday, May 13, 2020
+Klient 759999043	
+11:01:54 PM Wednesday, May 13, 2020
+Klient 759999043	
+11:01:55 PM Wednesday, May 13, 2020
+Klient 759999043	
+11:01:55 PM Wednesday, May 13, 2020
+Klient 759999043	
+11:01:55 PM Wednesday, May 13, 2020
+Klient 749904038	
+11:01:55 PM Wednesday, May 13, 2020
+Klient 749904038	
+11:01:56 PM Wednesday, May 13, 2020
+Klient 749904038	
+11:01:56 PM Wednesday, May 13, 2020
+Klient 769906684	
+11:01:56 PM Wednesday, May 13, 2020
+Klient 769906684	
+11:01:56 PM Wednesday, May 13, 2020
+Klient 769906684	
+11:01:56 PM Wednesday, May 13, 2020
+Klient 769909296	
+11:01:57 PM Wednesday, May 13, 2020
+Klient 769909296	
+11:01:57 PM Wednesday, May 13, 2020
+Klient 769909296	
+11:01:57 PM Wednesday, May 13, 2020
+Klient 769909296	
+11:01:57 PM Wednesday, May 13, 2020
+Klient 11966618	
+11:01:58 PM Wednesday, May 13, 2020
+Klient 11966618	
+11:01:58 PM Wednesday, May 13, 2020
+Klient 11966618	
+11:01:58 PM Wednesday, May 13, 2020
+Klient 11966618	
+11:01:58 PM Wednesday, May 13, 2020
+Klient 11846610	
+11:01:59 PM Wednesday, May 13, 2020
+Klient 11846610	
+11:01:59 PM Wednesday, May 13, 2020
+Klient 11846610	
+11:01:59 PM Wednesday, May 13, 2020
+Klient 11846610	
+11:01:59 PM Wednesday, May 13, 2020
+Klient 11821832	
+11:02:00 PM Wednesday, May 13, 2020
+Klient 11821832	
+11:02:00 PM Wednesday, May 13, 2020
+Klient 11821832	
+11:02:00 PM Wednesday, May 13, 2020
+Klient 11821832	
+11:02:00 PM Wednesday, May 13, 2020
+Klient 11821832	
+11:02:00 PM Wednesday, May 13, 2020
+Klient 11821832	
+11:02:00 PM Wednesday, May 13, 2020
+Klient 11821832	
+11:02:00 PM Wednesday, May 13, 2020
+Klient 11821832	
+11:02:00 PM Wednesday, May 13, 2020
+Klient 11821832	
+11:02:00 PM Wednesday, May 13, 2020
+Klient 11821832	
+11:02:00 PM Wednesday, May 13, 2020
+Klient 11821832	
+11:02:00 PM Wednesday, May 13, 2020
+Klient 11768520	
+11:02:01 PM Wednesday, May 13, 2020
+Klient 11768520	
+11:02:01 PM Wednesday, May 13, 2020
+Klient 11768520	
+11:02:01 PM Wednesday, May 13, 2020
+Klient 11874179	
+11:02:02 PM Wednesday, May 13, 2020
+Klient 11874179	
+11:02:02 PM Wednesday, May 13, 2020
+Klient 11711126	
+11:02:03 PM Wednesday, May 13, 2020
+Klient 11711126	
+11:02:03 PM Wednesday, May 13, 2020
+Klient 11691359	
+11:02:04 PM Wednesday, May 13, 2020
+Klient 11691359	
+11:02:04 PM Wednesday, May 13, 2020
+Klient 11691359	
+11:02:04 PM Wednesday, May 13, 2020
+Klient 379003234	
+11:02:05 PM Wednesday, May 13, 2020
+Klient 379003234	
+11:02:05 PM Wednesday, May 13, 2020
+Klient 379909908	
+11:02:06 PM Wednesday, May 13, 2020
+Klient 729903399	
+11:02:06 PM Wednesday, May 13, 2020
+Klient 729903399	
+11:02:06 PM Wednesday, May 13, 2020
+Klient 729903399	
+11:02:06 PM Wednesday, May 13, 2020
+Klient 739903056	
+11:02:07 PM Wednesday, May 13, 2020
+Klient 739903056	
+11:02:07 PM Wednesday, May 13, 2020
+Klient 719955160	
+11:02:08 PM Wednesday, May 13, 2020
+Klient 719955160	
+11:02:08 PM Wednesday, May 13, 2020
+Klient 780030356	
+11:02:09 PM Wednesday, May 13, 2020
+Klient 780030356	
+11:02:09 PM Wednesday, May 13, 2020
+Klient 780030356	
+11:02:09 PM Wednesday, May 13, 2020
+Klient 779907508	
+11:02:10 PM Wednesday, May 13, 2020
+Klient 779907508	
+11:02:10 PM Wednesday, May 13, 2020
+Klient 779907508	
+11:02:10 PM Wednesday, May 13, 2020
+Klient 779907508	
+11:02:10 PM Wednesday, May 13, 2020
+Klient 779907508	
+11:02:10 PM Wednesday, May 13, 2020
+Klient 779907508	
+11:02:10 PM Wednesday, May 13, 2020
+Klient 739909091	
+11:02:11 PM Wednesday, May 13, 2020
+Klient 779999057	
+11:02:11 PM Wednesday, May 13, 2020
+Klient 779999057	
+11:02:12 PM Wednesday, May 13, 2020
+Klient 749904627	
+11:02:12 PM Wednesday, May 13, 2020
+Klient 719999091	
+11:02:13 PM Wednesday, May 13, 2020
+Klient 719999091	
+11:02:13 PM Wednesday, May 13, 2020
+Klient 719909077	
+11:02:14 PM Wednesday, May 13, 2020
+Klient 719909077	
+11:02:14 PM Wednesday, May 13, 2020
+Klient 739903693	
+11:02:15 PM Wednesday, May 13, 2020
+Klient 739903693	
+11:02:15 PM Wednesday, May 13, 2020
+Klient 759905577	
+11:02:16 PM Wednesday, May 13, 2020
+Klient 759905577	
+11:02:16 PM Wednesday, May 13, 2020
+Klient 769999264	
+11:02:17 PM Wednesday, May 13, 2020
+Klient 769999264	
+11:02:17 PM Wednesday, May 13, 2020
+Klient 769999264	
+11:02:17 PM Wednesday, May 13, 2020
+Klient 769999287	
+11:02:18 PM Wednesday, May 13, 2020
+Klient 769999287	
+11:02:18 PM Wednesday, May 13, 2020
+Klient 779907324	
+11:02:19 PM Wednesday, May 13, 2020
+Klient 779907324	
+11:02:19 PM Wednesday, May 13, 2020
+Klient 779015133	
+11:02:20 PM Wednesday, May 13, 2020
+Klient 779015133	
+11:02:20 PM Wednesday, May 13, 2020
+Klient 759905072	
+11:02:21 PM Wednesday, May 13, 2020
+Klient 759905072	
+11:02:21 PM Wednesday, May 13, 2020
+Klient 719900058	
+11:02:22 PM Wednesday, May 13, 2020
+Klient 719900139	
+11:02:22 PM Wednesday, May 13, 2020
+Klient 739999069	
+11:02:23 PM Wednesday, May 13, 2020
+Klient 739900391	
+11:02:23 PM Wednesday, May 13, 2020
+Klient 749999013	
+11:02:24 PM Wednesday, May 13, 2020
+Klient 769906579	
+11:02:24 PM Wednesday, May 13, 2020
+Klient 789980857	
+11:02:25 PM Wednesday, May 13, 2020
+Klient 970214785	
+11:02:25 PM Wednesday, May 13, 2020
+Klient 979900988	
+11:02:26 PM Wednesday, May 13, 2020
+Klient 970326065	
+11:02:26 PM Wednesday, May 13, 2020
+Klient 979900812	
+11:02:27 PM Wednesday, May 13, 2020
+Klient 899011923	
+11:02:27 PM Wednesday, May 13, 2020
+Klient 899011504	
+11:02:28 PM Wednesday, May 13, 2020
+Klient 899111492	
+11:02:28 PM Wednesday, May 13, 2020
+Klient 899049950	
+11:02:29 PM Wednesday, May 13, 2020
+Klient 11955766	
+11:02:29 PM Wednesday, May 13, 2020
+Klient 11515626	
+11:02:30 PM Wednesday, May 13, 2020
+Klient 11829124	
+11:02:30 PM Wednesday, May 13, 2020
+Klient 11829124	
+11:02:31 PM Wednesday, May 13, 2020
+Klient 11516356	
+11:02:31 PM Wednesday, May 13, 2020
+Klient 11516356	
+11:02:32 PM Wednesday, May 13, 2020
+Klient 11699862	
+11:02:32 PM Wednesday, May 13, 2020
+Klient 11699862	
+11:02:33 PM Wednesday, May 13, 2020
+Klient 11699862	
+11:02:33 PM Wednesday, May 13, 2020
+Klient 11699862	
+11:02:33 PM Wednesday, May 13, 2020
+Klient 11923916	
+11:02:33 PM Wednesday, May 13, 2020
+Klient 11923916	
+11:02:34 PM Wednesday, May 13, 2020
+Klient 11923916	
+11:02:34 PM Wednesday, May 13, 2020
+Klient 11923916	
+11:02:34 PM Wednesday, May 13, 2020
+Klient 11923916	
+11:02:34 PM Wednesday, May 13, 2020
+Klient 11923916	
+11:02:34 PM Wednesday, May 13, 2020
+Klient 11923916	
+11:02:34 PM Wednesday, May 13, 2020
+Klient 11923916	
+11:02:34 PM Wednesday, May 13, 2020
+Klient 11923916	
+11:02:34 PM Wednesday, May 13, 2020
+Klient 11970396	
+11:02:34 PM Wednesday, May 13, 2020
+Klient 11970396	
+11:02:35 PM Wednesday, May 13, 2020
+Klient 11970396	
+11:02:35 PM Wednesday, May 13, 2020
+Klient 11970396	
+11:02:35 PM Wednesday, May 13, 2020
+Klient 11970396	
+11:02:35 PM Wednesday, May 13, 2020
+Klient 11970396	
+11:02:35 PM Wednesday, May 13, 2020
+Klient 970237747	
+11:02:35 PM Wednesday, May 13, 2020
+Klient 970214785	
+11:02:36 PM Wednesday, May 13, 2020
+Klient 970326065	
+11:02:36 PM Wednesday, May 13, 2020
+Klient 979900812	
+11:02:37 PM Wednesday, May 13, 2020
+Klient 899011923	
+11:02:37 PM Wednesday, May 13, 2020
+Klient 899011504	
+11:02:38 PM Wednesday, May 13, 2020
+Klient 899049950	
+11:02:38 PM Wednesday, May 13, 2020
+Klient 899049806	
+11:02:39 PM Wednesday, May 13, 2020
+Klient 979900988	
+11:02:39 PM Wednesday, May 13, 2020
+Klient 11914650	
+11:02:40 PM Wednesday, May 13, 2020
+Klient 11914650	
+11:02:40 PM Wednesday, May 13, 2020
+Klient 11914650	
+11:02:40 PM Wednesday, May 13, 2020
+Klient 11914650	
+11:02:40 PM Wednesday, May 13, 2020
+Klient 11914650	
+11:02:40 PM Wednesday, May 13, 2020
+Klient 11914587	
+11:02:41 PM Wednesday, May 13, 2020
+Klient 11914587	
+11:02:41 PM Wednesday, May 13, 2020
+Klient 11914587	
+11:02:41 PM Wednesday, May 13, 2020
+Klient 11914587	
+11:02:41 PM Wednesday, May 13, 2020
+Klient 11914587	
+11:02:41 PM Wednesday, May 13, 2020
+Klient 11914587	
+11:02:41 PM Wednesday, May 13, 2020
+Klient 11914587	
+11:02:41 PM Wednesday, May 13, 2020
+Klient 369992481	
+11:02:42 PM Wednesday, May 13, 2020
+Klient 379003234	
+11:02:43 PM Wednesday, May 13, 2020
+Klient 379909908	
+11:02:43 PM Wednesday, May 13, 2020
+Klient 379909908	
+11:02:43 PM Wednesday, May 13, 2020
+Klient 379910318	
+11:02:44 PM Wednesday, May 13, 2020
+Klient 379910318	
+11:02:44 PM Wednesday, May 13, 2020
+Klient 379909552	
+11:02:45 PM Wednesday, May 13, 2020
+Klient 379909552	
+11:02:45 PM Wednesday, May 13, 2020
+Klient 379909552	
+11:02:45 PM Wednesday, May 13, 2020
+Klient 379909417	
+11:02:45 PM Wednesday, May 13, 2020
+Klient 379909417	
+11:02:46 PM Wednesday, May 13, 2020
+Klient 379909686	
+11:02:46 PM Wednesday, May 13, 2020
+Klient 379909686	
+11:02:47 PM Wednesday, May 13, 2020
+Klient 379909751	
+11:02:47 PM Wednesday, May 13, 2020
+Klient 379909751	
+11:02:48 PM Wednesday, May 13, 2020
+Klient 369990890	
+11:02:48 PM Wednesday, May 13, 2020
+Klient 369990890	
+11:02:49 PM Wednesday, May 13, 2020
+Klient 379002609	
+11:02:49 PM Wednesday, May 13, 2020
+Klient 379002609	
+11:02:50 PM Wednesday, May 13, 2020
+Klient 379903726	
+11:02:50 PM Wednesday, May 13, 2020
+Klient 379903726	
+11:02:51 PM Wednesday, May 13, 2020
+Klient 379003116	
+11:02:51 PM Wednesday, May 13, 2020
+Klient 379003116	
+11:02:52 PM Wednesday, May 13, 2020
+Klient 359900064	
+11:02:52 PM Wednesday, May 13, 2020
+Klient 359900064	
+11:02:53 PM Wednesday, May 13, 2020
+Klient 379002807	
+11:02:53 PM Wednesday, May 13, 2020
+Klient 379002807	
+11:02:54 PM Wednesday, May 13, 2020
+Klient 379910193	
+11:02:54 PM Wednesday, May 13, 2020
+Klient 379910193	
+11:02:55 PM Wednesday, May 13, 2020
+Klient 339902391	
+11:02:55 PM Wednesday, May 13, 2020
+Klient 339902391	
+11:02:56 PM Wednesday, May 13, 2020
+Klient 379910327	
+11:02:56 PM Wednesday, May 13, 2020
+Klient 379910327	
+11:02:57 PM Wednesday, May 13, 2020
+Klient 379904462	
+11:02:57 PM Wednesday, May 13, 2020
+Klient 379904462	
+11:02:58 PM Wednesday, May 13, 2020
+Klient 379909655	
+11:02:58 PM Wednesday, May 13, 2020
+Klient 379909655	
+11:02:59 PM Wednesday, May 13, 2020
+Klient 379003321	
+11:02:59 PM Wednesday, May 13, 2020
+Klient 379003321	
+11:03:00 PM Wednesday, May 13, 2020
+Klient 379900030	
+11:03:00 PM Wednesday, May 13, 2020
+Klient 379900030	
+11:03:01 PM Wednesday, May 13, 2020
+Klient 379910404	
+11:03:01 PM Wednesday, May 13, 2020
+Klient 379910404	
+11:03:01 PM Wednesday, May 13, 2020
+Klient 11958111	
+11:03:02 PM Wednesday, May 13, 2020
+Klient 11958111	
+11:03:02 PM Wednesday, May 13, 2020
+Klient 11958111	
+11:03:02 PM Wednesday, May 13, 2020
+Klient 11958111	
+11:03:02 PM Wednesday, May 13, 2020
+Klient 11743444	
+11:03:03 PM Wednesday, May 13, 2020
+Klient 11743444	
+11:03:03 PM Wednesday, May 13, 2020
+Klient 11743444	
+11:03:03 PM Wednesday, May 13, 2020
+Klient 11967015	
+11:03:04 PM Wednesday, May 13, 2020
+Klient 11967015	
+11:03:04 PM Wednesday, May 13, 2020
+Klient 11830399	
+11:03:05 PM Wednesday, May 13, 2020
+Klient 11830399	
+11:03:05 PM Wednesday, May 13, 2020
+Klient 11830399	
+11:03:05 PM Wednesday, May 13, 2020
+Klient 11931220	
+11:03:06 PM Wednesday, May 13, 2020
+Klient 11931220	
+11:03:06 PM Wednesday, May 13, 2020
+Klient 11931220	
+11:03:06 PM Wednesday, May 13, 2020
+Klient 11909248	
+11:03:07 PM Wednesday, May 13, 2020
+Klient 11909248	
+11:03:07 PM Wednesday, May 13, 2020
+Klient 11909248	
+11:03:07 PM Wednesday, May 13, 2020
+Klient 11966535	
+11:03:08 PM Wednesday, May 13, 2020
+Klient 11966535	
+11:03:08 PM Wednesday, May 13, 2020
+Klient 11496820	
+11:03:09 PM Wednesday, May 13, 2020
+Klient 11496928	
+11:03:09 PM Wednesday, May 13, 2020
+Klient 10635865	
+11:03:10 PM Wednesday, May 13, 2020
+Klient 11693855	
+11:03:10 PM Wednesday, May 13, 2020
+Klient 11496971	
+11:03:11 PM Wednesday, May 13, 2020
+Klient 11497171	
+11:03:11 PM Wednesday, May 13, 2020
+Klient 11497237	
+11:03:12 PM Wednesday, May 13, 2020
+Klient 11497559	
+11:03:12 PM Wednesday, May 13, 2020
+Klient 11497593	
+11:03:13 PM Wednesday, May 13, 2020
+Klient 11497709	
+11:03:13 PM Wednesday, May 13, 2020
+Klient 11497775	
+11:03:14 PM Wednesday, May 13, 2020
+Klient 11497983	
+11:03:14 PM Wednesday, May 13, 2020
+Klient 11498095	
+11:03:15 PM Wednesday, May 13, 2020
+Klient 11498095	
+11:03:15 PM Wednesday, May 13, 2020
+Klient 11498449	
+11:03:15 PM Wednesday, May 13, 2020
+Klient 11498777	
+11:03:16 PM Wednesday, May 13, 2020
+Klient 11498777	
+11:03:16 PM Wednesday, May 13, 2020
+Klient 11572115	
+11:03:17 PM Wednesday, May 13, 2020
+Klient 11618179	
+11:03:17 PM Wednesday, May 13, 2020
+Klient 11697790	
+11:03:18 PM Wednesday, May 13, 2020
+Klient 379910011	
+11:03:18 PM Wednesday, May 13, 2020
+Klient 379910011	
+11:03:19 PM Wednesday, May 13, 2020
+Klient 379003216	
+11:03:19 PM Wednesday, May 13, 2020
+Klient 379910215	
+11:03:20 PM Wednesday, May 13, 2020
+Klient 379910215	
+11:03:20 PM Wednesday, May 13, 2020
+Klient 379909245	
+11:03:21 PM Wednesday, May 13, 2020
+Klient 379909245	
+11:03:21 PM Wednesday, May 13, 2020
+Klient 379909441	
+11:03:22 PM Wednesday, May 13, 2020
+Klient 379909441	
+11:03:22 PM Wednesday, May 13, 2020
+Klient 379909573	
+11:03:23 PM Wednesday, May 13, 2020
+Klient 379909573	
+11:03:23 PM Wednesday, May 13, 2020
+Klient 379909298	
+11:03:24 PM Wednesday, May 13, 2020
+Klient 379909298	
+11:03:24 PM Wednesday, May 13, 2020
+Klient 379909106	
+11:03:25 PM Wednesday, May 13, 2020
+Klient 379909106	
+11:03:25 PM Wednesday, May 13, 2020
+Klient 319902542	
+11:03:26 PM Wednesday, May 13, 2020
+Klient 319902542	
+11:03:26 PM Wednesday, May 13, 2020
+Klient 11966618	
+11:03:27 PM Wednesday, May 13, 2020
+Klient 11966618	
+11:03:27 PM Wednesday, May 13, 2020
+Klient 11536825	
+11:03:27 PM Wednesday, May 13, 2020
+Klient 11536825	
+11:03:27 PM Wednesday, May 13, 2020
+EndForeach 11536825/6710005458/L9P11536825/2001/00146/20200218	
+11:03:27 PM Wednesday, May 13, 2020
+Step 1 	
+11:03:29 PM Wednesday, May 13, 2020
+Step 2	
+11:03:29 PM Wednesday, May 13, 2020
+Step 4 	
+11:04:17 PM Wednesday, May 13, 2020
+Step 5 OK 	
+3:03:37 PM Monday, July 20, 2020
+ProceedFile strct 	
+3:03:38 PM Monday, July 20, 2020
+Lst Loaded 	
+3:03:38 PM Monday, July 20, 2020
+Klient 5924090000	
+3:03:38 PM Monday, July 20, 2020
+Except błąd podczas przetwarzania struktury wejściowej Ciąg nie został rozpoznany jako prawidłowy element DateTime. 5924090000	
+10:05:41 PM Wednesday, July 22, 2020
+ProceedFile strct 	
+10:05:42 PM Wednesday, July 22, 2020
+Lst Loaded 	
+10:05:42 PM Wednesday, July 22, 2020
+Klient 5924090000	
+10:05:42 PM Wednesday, July 22, 2020
+Except błąd podczas przetwarzania struktury wejściowej Ciąg nie został rozpoznany jako prawidłowy element DateTime. 5924090000	
+10:10:56 PM Wednesday, July 22, 2020
+ProceedFile strct 	
+10:10:57 PM Wednesday, July 22, 2020
+Lst Loaded 	
+10:10:57 PM Wednesday, July 22, 2020
+Klient 5924090000	
+10:10:57 PM Wednesday, July 22, 2020
+Except błąd podczas przetwarzania struktury wejściowej Ciąg nie został rozpoznany jako prawidłowy element DateTime. 5924090000	

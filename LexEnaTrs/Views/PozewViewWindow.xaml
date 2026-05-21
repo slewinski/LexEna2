@@ -1,0 +1,21 @@
+﻿<controls:ChildWindow x:Class="LexEnaTrs.Views.PozewViewWindow"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+           xmlns:views="clr-namespace:LexEnaTrs.Views"
+           xmlns:local="clr-namespace:LexEnaTrs"           
+           xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+           Width="Auto" Height="Auto" 
+           Title="Edycja pozwu" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" d:DesignHeight="608" d:DesignWidth="818" Loaded="ChildWindow_Loaded" FontFamily="Portable User Interface">
+    <Grid x:Name="LayoutRoot" Margin="2">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <views:PozewView x:Name="ViewPozew" Margin="0,0,8,0"  />
+       <views:DokumentEPUView x:Name="ViewDokEPU"  Margin="0,0,8,0" Visibility="Collapsed"  />    
+        <Button x:Name="CancelButton" Content="Anuluj" Click="CancelButton_Click" Width="75" Height="23" HorizontalAlignment="Right" Margin="0,12,0,0" Grid.Row="1" />
+        <Button x:Name="OKButton" Content="OK" Click="OKButton_Click" Width="75" Height="23" HorizontalAlignment="Right" Margin="0,12,79,0" Grid.Row="1" />
+        <Button x:Name ="WysylkaButton" Content="Do wysyłki" Grid.Row="1" Height="24" HorizontalAlignment="Right" Margin="0,13,159,0"  VerticalAlignment="Top" Width="75" Click="WysylkaButton_Click" />
+    </Grid>
+</controls:ChildWindow>

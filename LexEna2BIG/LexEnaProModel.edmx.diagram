@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="30223cd90f314ca3a7041b26f9b2f926" Name="Diagram1">
+        <EntityTypeShape EntityType="LexEnaProModel.BIG_Case" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LexEnaProModel.BIG_Debtor" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LexEnaProModel.BIG_Import" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LexEnaProModel.BIG_Konfig" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LexEnaProModel.BIG_Log" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LexEnaProModel.BIG_Obligation" Width="1.5" PointX="3" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LexEnaProModel.BIG_Operacja" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
+        <AssociationConnector Association="LexEnaProModel.FK_BIG_Debtor_BIG_Case" ManuallyRouted="false" />
+        <AssociationConnector Association="LexEnaProModel.FK_BIG_Obligation_BIG_Case" ManuallyRouted="false" />
+        <AssociationConnector Association="LexEnaProModel.FK_BIG_Operacja_BIG_Import" ManuallyRouted="false" />
+        <AssociationConnector Association="LexEnaProModel.FK_BIG_Operacja_BIG_Obligation" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="LexEnaProModel.UZD_Faktura" Width="1.5" PointX="9.625" PointY="7.125" />
+        <EntityTypeShape EntityType="LexEnaProModel.UZD_Pakiet" Width="1.5" PointX="7.375" PointY="8.125" />
+        <AssociationConnector Association="LexEnaProModel.FK_BIG_Case_BIG_Import" />
+        <AssociationConnector Association="LexEnaProModel.FK_BIG_Operacja_BIG_Case" />
+        <AssociationConnector Association="LexEnaProModel.FK_BIG_Operacja_BIG_Debtor" />
+        <AssociationConnector Association="LexEnaProModel.FK_UZD_Faktura_UZD_Pakiet" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

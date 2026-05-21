@@ -1,0 +1,226 @@
+﻿<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:riaControls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.DomainServices" xmlns:my="clr-namespace:LexEnaTrs.Web" xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk" xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="LexEnaTrs.Views.UzDNoweOperacje"
+    mc:Ignorable="d"
+    xmlns:local="clr-namespace:LexEnaTrs" 
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    d:DesignHeight="592" d:DesignWidth="800" Loaded="UserControl_Loaded">
+
+    <Grid x:Name="LayoutRoot" Background="White">
+
+        <telerik:RadDomainDataSource AutoLoad="False" Height="0" PageSize="40"   x:Name="GetUZDvw_Pakietdds" QueryName="GetUZDvw_PakietQuery" Width="0"  LoadingData="GetUZDvw_Pakiet_LoadingData">
+            <telerik:RadDomainDataSource.DomainContext>
+                <my:LexEnaMeritumDomainContext />
+            </telerik:RadDomainDataSource.DomainContext>
+
+        </telerik:RadDomainDataSource>
+        <telerik:RadDomainDataSource AutoLoad="False" Height="0"  PageSize="400" x:Name="UZD_PakietDetailsdds" QueryName="GetUZD_FakturaByPakietIdQuery" Width="0" LoadingData="UZD_PakietDetailsdds_LoadingData">
+            <telerik:RadDomainDataSource.DomainContext>
+                <my:LexEnaMeritumDomainContext />
+            </telerik:RadDomainDataSource.DomainContext>
+            <telerik:RadDomainDataSource.QueryParameters>
+
+                <telerik:QueryParameter ParameterName="IdPakiet" />
+
+
+            </telerik:RadDomainDataSource.QueryParameters>
+        </telerik:RadDomainDataSource>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="26"/>
+                <RowDefinition Height="249*" />
+                <RowDefinition Height="28*" />
+                <RowDefinition Height="260*" />
+                <RowDefinition Height="29"/>
+            </Grid.RowDefinitions>
+            <Grid.Resources>
+                <Style x:Key="SentRow" TargetType="telerik:GridViewRow" BasedOn="{StaticResource GridViewRowStyle}">
+                    <Setter Property="Background" Value="#00ffff" />
+                    <Setter Property="FontWeight" Value="Normal"/>
+                </Style>
+                <Style x:Key="QuedRow" TargetType="telerik:GridViewRow" BasedOn="{StaticResource GridViewRowStyle}">
+                    <Setter Property="Background" Value="#33ccff" />
+
+                </Style>
+                <Style x:Key="PrecessingRow" TargetType="telerik:GridViewRow" BasedOn="{StaticResource GridViewRowStyle}">
+                    <Setter Property="Background" Value="#0066ff" />
+                </Style>
+                <Style x:Key="SuccessRow" TargetType="telerik:GridViewRow" BasedOn="{StaticResource GridViewRowStyle}">
+                    <Setter Property="Background" Value="#00cc00" />
+                </Style>
+                <Style x:Key="FailureRow" TargetType="telerik:GridViewRow" BasedOn="{StaticResource GridViewRowStyle}">
+                    <Setter Property="Background" Value="#ff0000" />
+                </Style>
+                <Style x:Key="ErrorRow" TargetType="telerik:GridViewRow" BasedOn="{StaticResource GridViewRowStyle}">
+                    <Setter Property="Background" Value="#ff5c33" />
+                </Style>
+                <Style x:Key="NormalRow" TargetType="telerik:GridViewRow" BasedOn="{StaticResource GridViewRowStyle}"/>
+
+                <local:UZDPackageRowStatus x:Key="converter" />
+                <local:ConditionalStyleSelector x:Key="selector"  ConditionConverter="{StaticResource converter}">
+                    <local:ConditionalStyleSelector.Rules>
+                        <local:ConditionalStyleRule Style="{StaticResource NormalRow}">
+                            <local:ConditionalStyleRule.Value>
+                                <sys:Int32>0</sys:Int32>
+                            </local:ConditionalStyleRule.Value>
+                        </local:ConditionalStyleRule>
+                        <local:ConditionalStyleRule Style="{StaticResource SentRow}">
+                            <local:ConditionalStyleRule.Value>
+                                <sys:Int32>1</sys:Int32>
+                            </local:ConditionalStyleRule.Value>
+                        </local:ConditionalStyleRule>
+                        <local:ConditionalStyleRule Style="{StaticResource QuedRow}">
+                            <local:ConditionalStyleRule.Value>
+                                <sys:Int32>3</sys:Int32>
+                            </local:ConditionalStyleRule.Value>
+                        </local:ConditionalStyleRule>
+                        <local:ConditionalStyleRule Style="{StaticResource PrecessingRow}">
+                            <local:ConditionalStyleRule.Value>
+                                <sys:Int32>4</sys:Int32>
+                            </local:ConditionalStyleRule.Value>
+                        </local:ConditionalStyleRule>
+                        <local:ConditionalStyleRule Style="{StaticResource SuccessRow}">
+                            <local:ConditionalStyleRule.Value>
+                                <sys:Int32>200</sys:Int32>
+                            </local:ConditionalStyleRule.Value>
+                        </local:ConditionalStyleRule>
+                        <local:ConditionalStyleRule Style="{StaticResource ErrorRow}">
+                            <local:ConditionalStyleRule.Value>
+                                <sys:Int32>199</sys:Int32>
+                            </local:ConditionalStyleRule.Value>
+                        </local:ConditionalStyleRule>
+                        <local:ConditionalStyleRule Style="{StaticResource FailureRow}">
+                            <local:ConditionalStyleRule.Value>
+                                <sys:Int32>-1</sys:Int32>
+                            </local:ConditionalStyleRule.Value>
+                        </local:ConditionalStyleRule>
+                    </local:ConditionalStyleSelector.Rules>
+                </local:ConditionalStyleSelector>
+
+
+                <local:UZD_FakturaDetailRowStatus x:Key="converterDetail" />
+                <local:ConditionalStyleSelector x:Key="selectorDetail"  ConditionConverter="{StaticResource converterDetail}">
+                    <local:ConditionalStyleSelector.Rules>
+                        <local:ConditionalStyleRule Style="{StaticResource NormalRow}">
+                            <local:ConditionalStyleRule.Value>
+                                <sys:Int32>0</sys:Int32>
+                            </local:ConditionalStyleRule.Value>
+                        </local:ConditionalStyleRule>
+                        <local:ConditionalStyleRule Style="{StaticResource SuccessRow}">
+                            <local:ConditionalStyleRule.Value>
+                                <sys:Int32>1</sys:Int32>
+                            </local:ConditionalStyleRule.Value>
+                        </local:ConditionalStyleRule>
+                        <local:ConditionalStyleRule Style="{StaticResource FailureRow}">
+                            <local:ConditionalStyleRule.Value>
+                                <sys:Int32>-1</sys:Int32>
+                            </local:ConditionalStyleRule.Value>
+                        </local:ConditionalStyleRule>
+                    </local:ConditionalStyleSelector.Rules>
+                </local:ConditionalStyleSelector>
+
+            </Grid.Resources>
+
+
+
+            <telerik:RadBusyIndicator x:Name="BusyIndicator" IsBusy="{Binding IsBusy, ElementName=GetUZDvw_Pakietdds}" Grid.Row="1" BusyContent="Przetwarzanie w toku...">
+                <telerik:RadGridView ValidatesOnDataErrors="None" RowStyleSelector="{StaticResource selector}" IsSynchronizedWithCurrentItem="false"  Grid.Row="1" x:Name="SprawyGridView" AutoGenerateColumns="false" SelectionMode="Single" IsReadOnly="True" ItemsSource="{Binding DataView, ElementName=GetUZDvw_Pakietdds}" AutoExpandGroups="True" CanUserFreezeColumns="False" RowIndicatorVisibility="Visible" SelectionChanged="SprawyGridView_SelectionChanged"  FilteringMode="FilterRow" EnableColumnVirtualization="False" CanUserReorderColumns="False">
+                    <telerik:RadContextMenu.ContextMenu>
+                        <telerik:RadContextMenu x:Name="GridContextMenu">
+                            <telerik:RadMenuItem Header="Pokaż szczegóły"  />
+                            <telerik:RadMenuItem Header="Szukaj"   />
+                        </telerik:RadContextMenu>
+                    </telerik:RadContextMenu.ContextMenu>
+
+                    <telerik:RadGridView.Columns>
+
+                        <telerik:GridViewDataColumn x:Name="Lp1" Header="Lp"  IsReadOnly="True" DataMemberBinding="{Binding Row}"  IsFilterable="false" HeaderTextAlignment="Center"  TextAlignment="Center" />
+                        <telerik:GridViewDataColumn x:Name="DataTypowania" Header="Data typowania" DataMemberBinding="{Binding DataTypowania, StringFormat=\{0:yyyy-MM-dd\}}" IsReadOnly="True" HeaderTextAlignment="Center" MinWidth="10" TextAlignment="Center" />
+                        <telerik:GridViewDataColumn x:Name="StatusOper" Header="Status" DataMemberBinding="{Binding Status}" HeaderTextAlignment="Center" MinWidth="15" TextAlignment="Center" />
+                        <telerik:GridViewDataColumn x:Name="StatusOpis" Header="Status" DataMemberBinding="{Binding StatusOpis}" HeaderTextAlignment="Center" MinWidth="15" TextAlignment="Center" />
+                        <telerik:GridViewDataColumn x:Name="Informacja" Header="Informacja" DataMemberBinding="{Binding Opis}" HeaderTextAlignment="Center" MinWidth="15" TextAlignment="Center" />
+                        <telerik:GridViewDataColumn x:Name="DataImportu" Header="Data importu" DataMemberBinding="{Binding DataImportu, StringFormat=\{0:yyyy-MM-dd\}}" IsReadOnly="True" HeaderTextAlignment="Center" MinWidth="10" TextAlignment="Center" />
+                        <telerik:GridViewDataColumn x:Name="DataPotwierdzenia" Header="Data potwierdzenia" DataMemberBinding="{Binding DataImportu, StringFormat=\{0:yyyy-MM-dd\}}" IsReadOnly="True" HeaderTextAlignment="Center" MinWidth="10" TextAlignment="Center" />
+                        <telerik:GridViewDataColumn x:Name="importer" Header="Importował" DataMemberBinding="{Binding importer}" HeaderTextAlignment="Center" MinWidth="15" TextAlignment="Left" />
+
+<!--
+                        <telerik:GridViewDataColumn x:Name="DataI" Header="Data importu" DataMemberBinding="{Binding DataImportu, StringFormat=\{0:yyyy-MM-dd HH:mm\}}" IsReadOnly="True" HeaderTextAlignment="Center" MinWidth="10" TextAlignment="Center" />
+                        <telerik:GridViewDataColumn Header="Nazwa zbioru" DataMemberBinding="{Binding Filename}" Width="200" HeaderTextAlignment="Center" MinWidth="150" TextAlignment="Left" />
+
+                        <telerik:GridViewDataColumn x:Name="StatusOper" Header="Status" DataMemberBinding="{Binding Status}"  IsReadOnly="True"  HeaderTextAlignment="Center" MinWidth="20" TextAlignment="Center" />
+
+                        <telerik:GridViewDataColumn x:Name="OpisOper" Header="Opis operacji" DataMemberBinding="{Binding StatOpis}" HeaderTextAlignment="Center" MinWidth="15" TextAlignment="Center" />
+                        <telerik:GridViewDataColumn x:Name="DataW" Header="Data wys do BIG" DataMemberBinding="{Binding DataWysylki, StringFormat=\{0:yyyy-MM-dd HH:mm\}}" IsReadOnly="True" HeaderTextAlignment="Center" MinWidth="10" TextAlignment="Center" />
+
+                        <telerik:GridViewDataColumn Header="Liczba pozycji" DataMemberBinding="{Binding lPoz}" HeaderTextAlignment="Center" MinWidth="10" TextAlignment="Center" />
+                        <telerik:GridViewDataColumn Header="Operator" DataMemberBinding="{Binding Username}" IsReadOnly="True" IsFilterable="True" HeaderTextAlignment="Center" MinWidth="5" TextAlignment="Center" />
+-->
+                    </telerik:RadGridView.Columns>
+                </telerik:RadGridView>
+            </telerik:RadBusyIndicator>
+
+            <telerik:RadDataPager x:Name="RadDataPagerSprawy" Source="{Binding DataView, ElementName=GetUZDvw_Pakietdds}" Grid.Row="2" DisplayMode="All" IsTotalItemCountFixed="True" Margin="0,2,0,0" VerticalAlignment="Top" d:LayoutOverrides="Height"  HorizontalAlignment="Right" Width="307"/>
+
+            <telerik:RadBusyIndicator x:Name="BusyIndicator2" IsBusy="{Binding IsBusy, ElementName=UZD_PakietDetailsdds}" Grid.Row="3" BusyContent="Odczyt danych proszę czekać...">
+                <telerik:RadGridView ValidatesOnDataErrors="None" RowStyleSelector="{StaticResource selectorDetail}" FilteringMode="FilterRow" IsSynchronizedWithCurrentItem="false"  Grid.Row="3" x:Name="ImportDetailsGridView" AutoGenerateColumns="false" SelectionMode="Multiple" IsReadOnly="True" ItemsSource="{Binding DataView, ElementName=UZD_PakietDetailsdds}" AutoExpandGroups="True" CanUserFreezeColumns="False" RowIndicatorVisibility="Visible" >
+
+                    <telerik:RadGridView.Columns>
+
+                        <telerik:GridViewDataColumn x:Name="NrKlienta" Header="Nr Klienta" DataMemberBinding="{Binding NrKlienta}" HeaderTextAlignment="Center" MinWidth="15" TextAlignment="Left" />
+                        <telerik:GridViewDataColumn x:Name="Name" Header="Kontrahent" DataMemberBinding="{Binding Nazwa}" HeaderTextAlignment="Center" MinWidth="15" TextAlignment="Left" />
+                        <telerik:GridViewDataColumn x:Name="Nip" Header="NIP" DataMemberBinding="{Binding Nip}" HeaderTextAlignment="Center" MinWidth="15" TextAlignment="Left" />
+                        <telerik:GridViewDataColumn x:Name="DataFaktury" Header="Data Faktury" DataMemberBinding="{Binding DataFaktury, StringFormat=\{0:yyyy-MM-dd\}}" IsReadOnly="True" HeaderTextAlignment="Center" MinWidth="10" TextAlignment="Center" />
+                        <telerik:GridViewDataColumn x:Name="Nrfaktury" Header="Nr Faktury" DataMemberBinding="{Binding NrFaktury}" HeaderTextAlignment="Center" MinWidth="15" TextAlignment="Left" />
+                        <telerik:GridViewDataColumn x:Name="DataPlatnosci" Header="Data płatności" DataMemberBinding="{Binding DataWymagalnosci, StringFormat=\{0:yyyy-MM-dd\}}" IsReadOnly="True" HeaderTextAlignment="Center" MinWidth="10" TextAlignment="Center" />
+                        <telerik:GridViewDataColumn x:Name="Saldo" Header="Saldo" DataMemberBinding="{Binding Zaleglosc ,StringFormat=\{0:c2\},ConverterCulture=pl-PL }" HeaderTextAlignment="Center" MinWidth="10" TextAlignment="Center" />
+                        <telerik:GridViewDataColumn x:Name="Vat" Header="w tym VAT" DataMemberBinding="{Binding Vat ,StringFormat=\{0:c2\},ConverterCulture=pl-PL }" HeaderTextAlignment="Center" MinWidth="10" TextAlignment="Center" />
+                        <telerik:GridViewDataColumn x:Name="DataWeryfNIP" Header="Data weryf NIP" DataMemberBinding="{Binding DataWeryfNIP, StringFormat=\{0:yyyy-MM-dd\}}" IsReadOnly="True" HeaderTextAlignment="Center" MinWidth="10" TextAlignment="Center" />
+                        <telerik:GridViewDataColumn x:Name="StatusNIP" Header="Status weryf NIP" DataMemberBinding="{Binding StatusWalidNip}" HeaderTextAlignment="Center" MinWidth="15" TextAlignment="Left" />
+                        <telerik:GridViewDataColumn x:Name="StatusOpisNIP" Header="Status NIP" DataMemberBinding="{Binding StatusNip}" HeaderTextAlignment="Center" MinWidth="15" TextAlignment="Left" />
+                        <telerik:GridViewDataColumn x:Name="Status" Header="Status " DataMemberBinding="{Binding Status}" HeaderTextAlignment="Center" MinWidth="15" TextAlignment="Left" />
+                    </telerik:RadGridView.Columns>
+                </telerik:RadGridView>
+            </telerik:RadBusyIndicator>
+
+            <telerik:RadDataPager x:Name="RadDataPagerImportDetails" Source="{Binding DataView, ElementName=UZD_PakietDetailsdds}" Grid.Row="4" DisplayMode="All" IsTotalItemCountFixed="True" Margin="493,1,0,0" VerticalAlignment="Top" d:LayoutOverrides="Height"  HorizontalAlignment="Right" Width="307"/>
+            <Button x:Name="btExport" Content="Eksport do XLS" HorizontalAlignment="Left" Margin="10,4,0,0" Grid.Row="2" VerticalAlignment="Top" Width="120" Click="btExport_Click"/>
+
+            <Button x:Name="btDelImport" Content="Usuń" HorizontalAlignment="Left" Margin="126,1,0,0" VerticalAlignment="Top" Width="120" Click="btDelImport_Click" />
+            <telerik:RadDropDownButton AutoOpenDelay="0:0:0.5" x:Name="rdbImport" CloseOnPopupMouseLeftButtonUp="True" Content="Operacje "  IsOpen="False" HorizontalAlignment="Left" Margin="4,1,0,0"  Width="120" VerticalAlignment="Top">
+                <telerik:RadDropDownButton.DropDownContent>
+                    <ListBox Name="ListaAkcji" SelectionChanged="ListaAkcji_SelectionChanged"  >
+                        <ListBoxItem Name="Typowanie" Content="Typowanie do ulgi" MouseLeftButtonUp="Typowanie_MouseLeftButtonUp"  />
+                        <ListBoxItem Name="WeryfikacjaNIP" Content="Weryfikacja NIP" MouseLeftButtonUp="WeryfikacjaNIP_MouseLeftButtonUp" />
+                        <ListBoxItem Name ="Eksportdoweryfikacji" Content="Eksport zestawienia do weryfikacji" MouseLeftButtonUp="Eksport_MouseLeftButtonUp" />
+                        <ListBoxItem Name ="ImportPoWeryfikacji" Content="Import potwierdzenia" MouseLeftButtonUp="Import_MouseLeftButtonUp"  />
+                        <ListBoxItem Name ="EksprtDoDeklaracji" Content="Eksport pozycji do VAT-ZD" MouseLeftButtonUp="VATZD_MouseLeftButtonUp"  />
+                        <ListBoxItem Name ="ImportDoDeklaracji" Content="Powierdzenie złożenia deklaracji" MouseLeftButtonUp="VATZDConfirm_MouseLeftButtonUp"  />
+                    </ListBox>
+                </telerik:RadDropDownButton.DropDownContent>
+            </telerik:RadDropDownButton>
+
+            <telerik:RadDropDownButton AutoOpenDelay="0:0:0.5" x:Name="rdbSAP" CloseOnPopupMouseLeftButtonUp="True" Content="Zasilanie SAP"  IsOpen="False" HorizontalAlignment="Left" Margin="260,1,0,0"  Width="120" VerticalAlignment="Top">
+                <telerik:RadDropDownButton.DropDownContent>
+                    <ListBox Name="ListaAkcjiSAP" SelectionChanged="ListaAkcjiSAP_SelectionChanged"   >
+                        <ListBoxItem Name="EksportPartner" Content="Zestawienie kontrahentów" MouseLeftButtonUp="EksportPartner_MouseLeftButtonUp"  />
+                        <ListBoxItem Name="ImportPartner" Content="Import nr odbiorców z SAP" MouseLeftButtonUp="ImportPartner_MouseLeftButtonUp"  />
+                        <ListBoxItem Name="ZestawKorekSAP" Content="Zestawienie korekt do SAP" MouseLeftButtonUp="ZestawKorekSAP_MouseLeftButtonUp"   />
+                        
+                    </ListBox>
+                </telerik:RadDropDownButton.DropDownContent>
+            </telerik:RadDropDownButton>
+            <telerik:RadDropDownButton AutoOpenDelay="0:0:0.5" x:Name="rdbInne" CloseOnPopupMouseLeftButtonUp="True" Content="Inne operacje"  IsOpen="False" HorizontalAlignment="Left" Margin="390,1,0,0"  Width="120" VerticalAlignment="Top">
+                <telerik:RadDropDownButton.DropDownContent>
+                    <ListBox Name="ListaAkcjiInne" SelectionChanged="ListaAkcjiInne_SelectionChanged"   >
+                        <ListBoxItem Name="Recalculate" Content="Przelicz zaległość" MouseLeftButtonUp="Recalculate_MouseLeftButtonUp"   />
+                      
+                    </ListBox>
+                </telerik:RadDropDownButton.DropDownContent>
+            </telerik:RadDropDownButton>
+        </Grid >
+    </Grid>
+</UserControl>

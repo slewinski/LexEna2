@@ -1,0 +1,42 @@
+﻿<controls:ChildWindow
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+           xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+           xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk" mc:Ignorable="d" x:Class="LexEnaTrs.Views.GetReturnReasonsWindow"
+           Width="377.69" Height="401.993" 
+           Title="Podaj przyczynę zwrotu" Loaded="ChildWindow_Loaded">
+    <Grid x:Name="LayoutRoot" Margin="-3,-3,-8,-1" Height="371" VerticalAlignment="Top" Width="371" HorizontalAlignment="Left">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <!--
+        <telerik:RadComboBox  x:Name="rdbOdpowiedz"  Margin="131,24,10,0" VerticalAlignment="Top" Height="23" SelectionChanged="rdbOdpowiedz_SelectionChanged">
+            <telerik:RadComboBoxItem Content="Brak dokumentu " x:Name="BrakDok" MouseLeftButtonUp="BrakDok_MouseLeftButtonUp" />
+            <telerik:RadComboBoxItem Content="Inna przyczyna" x:Name="InnaPrzycz" MouseLeftButtonUp="InnaPrzycz_MouseLeftButtonUp" />
+        </telerik:RadComboBox>
+        -->
+        <TextBox x:Name="tbPrzyczyna" HorizontalAlignment="Left" Visibility="Collapsed" Height="49" Margin="12,286,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="351" AcceptsReturn="True" HorizontalContentAlignment="Left" VerticalContentAlignment="Top"/>
+        <Button x:Name="CancelButton" Content="Rezygnacja" Click="CancelButton_Click" Width="75" Height="23" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="288,342,0,0" RenderTransformOrigin="0.493,1.043" />
+        <Button x:Name="OKButton" Content="OK" Click="OKButton_Click" Width="75" Height="23" HorizontalAlignment="Left" Margin="208,342,0,0" VerticalAlignment="Top" />
+
+
+        <sdk:Label x:Name="label" HorizontalAlignment="Left"  Content="Wybierz przyczynę" Height="23" Margin="10,3,0,0" VerticalAlignment="Top" Width="116" FontWeight="Bold"/>
+        <sdk:Label x:Name="lbPrzyczynaTxt" HorizontalAlignment="Left" Visibility="Collapsed" Content="Opis przyczyny" Height="16" Margin="10,57,0,0" VerticalAlignment="Top" Width="116" FontWeight="Bold"/>
+        <CheckBox x:Name="cbFaktura" Content="Brak Faktury/noty" HorizontalAlignment="Left" Margin="36,26,0,0" VerticalAlignment="Top" Width="247"/>
+        <CheckBox x:Name="cbKalkulacjaKoszt" Content="Brak Kalkulacji kosztów" HorizontalAlignment="Left" Margin="36,46,0,0" VerticalAlignment="Top" Width="247"/>
+        <CheckBox x:Name="cbOswiadczenie" Content="Brak Oświadczenia o gotowości instalacji przyłączanej" HorizontalAlignment="Left" Margin="36,65,0,0" VerticalAlignment="Top" Width="247"/>
+        <CheckBox x:Name="cbPotwierdzenieWezwanie" Content="Brak Potwierdzenia doręczenia wezwania" HorizontalAlignment="Left" Margin="36,84,0,0" VerticalAlignment="Top" Width="247"/>
+        <CheckBox x:Name="cbProtokol" Content="Brak Protokołu" HorizontalAlignment="Left" Margin="36,103,0,0" VerticalAlignment="Top" Width="247"/>
+        <CheckBox x:Name="cbUmowa" Content="Brak Umowy" HorizontalAlignment="Left" Margin="36,122,0,0" VerticalAlignment="Top" Width="247"/>
+        <CheckBox x:Name="cbUpowaznienie" Content="Brak Upoważnienia do kontroli" HorizontalAlignment="Left" Margin="36,141,0,0" VerticalAlignment="Top" Width="247"/>
+        <CheckBox x:Name="cbWarunki" Content="Brak Warunków przyłączenia" HorizontalAlignment="Left" Margin="36,159,0,0" VerticalAlignment="Top" Width="247"/>
+        <CheckBox x:Name="cbWezwanie" Content="Brak Wezwania przedsądowego" HorizontalAlignment="Left" Margin="36,177,0,0" VerticalAlignment="Top" Width="247"/>
+        <CheckBox x:Name="cbWniosekPrzylaczenia" Content="Brak Wniosku o określenie warunków przyłączenia" HorizontalAlignment="Left" Margin="36,194,0,0" VerticalAlignment="Top" Width="307"/>
+        <CheckBox x:Name="cbWyciag" Content="Brak Wyciągu z KRS/CEIDG" HorizontalAlignment="Left" Margin="36,212,0,0" VerticalAlignment="Top" Width="247"/>
+        <CheckBox x:Name="cbWypowiedzenie" Content="Brak Wypowiedzenia umowy" HorizontalAlignment="Left" Margin="36,229,0,0" VerticalAlignment="Top" Width="247"/>
+        <CheckBox x:Name="cbZlecenie" Content="Brak Zlecenia OT" HorizontalAlignment="Left" Margin="36,247,0,0" VerticalAlignment="Top" Width="247"/>
+        <CheckBox x:Name="cbInna" Content="Inna przyczyzna" HorizontalAlignment="Left" Margin="36,263,0,0" Checked="cbInna_Checked" VerticalAlignment="Top" Width="247"/>
+
+    </Grid>
+</controls:ChildWindow>

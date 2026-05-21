@@ -1,0 +1,2224 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/EpuWS.DataTypes" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/EpuWS.DataTypes" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="RodzajDokumentu">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Rodzaje dokumentów
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="sprzeciw">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;Sprzeciw
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="zazalenie">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;Zażalenie
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="skarga">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;Skarga
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="pismo">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;Pismo
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="wniosek">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;Wniosek
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="uzupelnienie_adresu">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;Wniosek o uzupełnienie adresu
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="inne">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;Inne
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="reklamacja">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;reklamacja
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="notatka_urzedowa">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;notatka urzędowa
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ograniczenie_powodztwa">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;ograniczenie powództwa
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="zwrot_oplaty">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;zwrot opłaty
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="wniosek_o_przeslanie_dokumentow">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;wniosek o przesłanie dokumentów
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="prawomocne_zakonczenie_sprawy_w_sadzie_wl_ogolnej">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;prawomocne zakończenie sprawy w sądzie właściwości ogólnej
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="zazalenie_na_koszty">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">101</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;zażalenie na koszty
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="skarga_na_koszty">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">102</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;skarga na koszty
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="RodzajDokumentu" nillable="true" type="tns:RodzajDokumentu" />
+  <xs:simpleType name="StatusDokumentu">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Rodzaje statusu dokumentu
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="wplyw">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;Wpływ
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="zadekretowano">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;Zadekretowano
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="przyjeto">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;Przyjęto
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="odrzucono">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;Odrzucono
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="odrzucono_prawomocnie">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;Odrzucono prawomocnie
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="przekazano_do_2_instnacji">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;Przekazano do drugiej instancji
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="zadekretowano_w_2_instancji">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;Zadekretowano w drugiej instancji
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="oddalono_w_2_instancji">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;Oddalono w drugiej instancji
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="uwzgledniono_w_2_instancji">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;Uwzględniono w drugiej instancji
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="zalatwiono">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;Załatwiono
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="umorzono">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;Umorzono
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="oddalono_w_I_instancji">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;oddalono w I instancji
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="braki">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;braki
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="anulowano_blad">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">20</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;Anulowano błąd
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="StatusDokumentu" nillable="true" type="tns:StatusDokumentu" />
+  <xs:simpleType name="KategoriaZdarzenia">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Rodzaje zdarzeń historii sprawy
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="zmiana_stanu">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;Zmiana stanu
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="orzeczenie">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;Orzeczenie
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="srodek_odwolawczy">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;Środek odwoławczy
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="pismo">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;Pismo
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="doreczenie">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;Doręczenie
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="KategoriaZdarzenia" nillable="true" type="tns:KategoriaZdarzenia" />
+  <xs:complexType name="ZlozPozwyOutputData">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Klasa reprezentuje obiekty zwracane przez metodę ZlozPozwy
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:OutputData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="lacznaWartoscPrzedmiotowSporu" type="xs:decimal">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Łączna wartość przedmiotów sporu.
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="liczbaPozow" type="xs:int">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Liczba pozwów w paczce
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="oznaczeniePaczki" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Oznaczenie składanej paczki.
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="sumaOplatySadawej" type="xs:decimal">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Łączna suma opłaty sądowej
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="wynikiWalidacji" nillable="true" type="tns:ArrayOfZlozPozwyOutputElement">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Wyniki walidacji pozwów.
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ZlozPozwyOutputData" nillable="true" type="tns:ZlozPozwyOutputData" />
+  <xs:complexType name="OutputData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="opis" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Opis kodu statusu operacji
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/epuLib" minOccurs="0" name="kod" type="q1:KodOdpowiedzi">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Kod statusu operacji.
+            Numery kodów na podstawie kodów statusu protokołu HTTP.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="informacja" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Informacja o statusie operacji
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OutputData" nillable="true" type="tns:OutputData" />
+  <xs:complexType name="ArrayOfZlozPozwyOutputElement">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ZlozPozwyOutputElement" nillable="true" type="tns:ZlozPozwyOutputElement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfZlozPozwyOutputElement" nillable="true" type="tns:ArrayOfZlozPozwyOutputElement" />
+  <xs:complexType name="ZlozPozwyOutputElement">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Wynik walidacji pozwu.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:WynikWalidacjiOutputElement">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="kodWalidacjiPozwu" type="xs:int">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Kod walidacji pozwu.
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="oplataSadowa" nillable="true" type="xs:decimal">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Opłata sądowa.
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="sygnaturaWgPowoda" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Sygnatura powoda.
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="wartoscPrzedniotuSporu" nillable="true" type="xs:decimal">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Wartość przedmiotu sporu.
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ZlozPozwyOutputElement" nillable="true" type="tns:ZlozPozwyOutputElement" />
+  <xs:complexType name="WynikWalidacjiOutputElement">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="informacjaWalidacji" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Informacja o walidacji.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/epuLib" minOccurs="0" name="kodWalidacji" type="q2:KodWalidacji">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Kod walidacji.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="liczbaPorzadkowa" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Liczba porzadkowa składanego dokumentu.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="opisWalidacji" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Opis kodu walidacji.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="status" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Status walidacji.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WynikWalidacjiOutputElement" nillable="true" type="tns:WynikWalidacjiOutputElement" />
+  <xs:complexType name="ZlozZazaleniaOutputData">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Klasa reprezentuje obiekty zwracane przez metodę ZlozZazalenia
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:OutputData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="oznaczeniePaczki" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Oznaczenie składanej paczki.
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="wynikiWalidacji" nillable="true" type="tns:ArrayOfZlozZazaleniaOutputElement">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Wyniki walidacji zażaleń.
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ZlozZazaleniaOutputData" nillable="true" type="tns:ZlozZazaleniaOutputData" />
+  <xs:complexType name="ArrayOfZlozZazaleniaOutputElement">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ZlozZazaleniaOutputElement" nillable="true" type="tns:ZlozZazaleniaOutputElement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfZlozZazaleniaOutputElement" nillable="true" type="tns:ArrayOfZlozZazaleniaOutputElement" />
+  <xs:complexType name="ZlozZazaleniaOutputElement">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Wynik walidacji zażalenia.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:WynikWalidacjiOutputElement">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ZlozZazaleniaOutputElement" nillable="true" type="tns:ZlozZazaleniaOutputElement" />
+  <xs:complexType name="ZlozSkargiOutputData">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Klasa reprezentuje obiekty zwracane przez metodę ZlozSkargi
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:OutputData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="oznaczeniePaczki" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Oznaczenie składanej paczki.
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="wynikiWalidacji" nillable="true" type="tns:ArrayOfZlozSkargiOutputElement">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Wyniki walidacji skarg.
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ZlozSkargiOutputData" nillable="true" type="tns:ZlozSkargiOutputData" />
+  <xs:complexType name="ArrayOfZlozSkargiOutputElement">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ZlozSkargiOutputElement" nillable="true" type="tns:ZlozSkargiOutputElement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfZlozSkargiOutputElement" nillable="true" type="tns:ArrayOfZlozSkargiOutputElement" />
+  <xs:complexType name="ZlozSkargiOutputElement">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Wynik walidacji skargi.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:WynikWalidacjiOutputElement">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ZlozSkargiOutputElement" nillable="true" type="tns:ZlozSkargiOutputElement" />
+  <xs:complexType name="ZlozSprzeciwyOutputData">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Klasa reprezentuje obiekty zwracane przez metodę ZlozSprzeciwy
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:OutputData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="oznaczeniePaczki" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Oznaczenie składanej paczki.
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="wynikiWalidacji" nillable="true" type="tns:ArrayOfZlozSprzeciwyOutputElement">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Wyniki walidacji skarg.
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ZlozSprzeciwyOutputData" nillable="true" type="tns:ZlozSprzeciwyOutputData" />
+  <xs:complexType name="ArrayOfZlozSprzeciwyOutputElement">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ZlozSprzeciwyOutputElement" nillable="true" type="tns:ZlozSprzeciwyOutputElement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfZlozSprzeciwyOutputElement" nillable="true" type="tns:ArrayOfZlozSprzeciwyOutputElement" />
+  <xs:complexType name="ZlozSprzeciwyOutputElement">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Wynik walidacji sprzeciwu.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:WynikWalidacjiOutputElement">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ZlozSprzeciwyOutputElement" nillable="true" type="tns:ZlozSprzeciwyOutputElement" />
+  <xs:complexType name="ZlozWnioskiEgzekucyjneOutputData">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Klasa reprezentuje obiekty zwracane przez metodę ZlozWnioskiEgzekucyjne
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:OutputData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="oznaczeniePaczki" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Oznaczenie składanej paczki.
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="wynikiWalidacji" nillable="true" type="tns:ArrayOfZlozWnioskiEgzekucyjneOutputElement">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Wyniki walidacji wniosków egzekucyjnych.
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ZlozWnioskiEgzekucyjneOutputData" nillable="true" type="tns:ZlozWnioskiEgzekucyjneOutputData" />
+  <xs:complexType name="ArrayOfZlozWnioskiEgzekucyjneOutputElement">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ZlozWnioskiEgzekucyjneOutputElement" nillable="true" type="tns:ZlozWnioskiEgzekucyjneOutputElement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfZlozWnioskiEgzekucyjneOutputElement" nillable="true" type="tns:ArrayOfZlozWnioskiEgzekucyjneOutputElement" />
+  <xs:complexType name="ZlozWnioskiEgzekucyjneOutputElement">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Wynik walidacji wniosków egzekucyjnych.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:WynikWalidacjiOutputElement">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ZlozWnioskiEgzekucyjneOutputElement" nillable="true" type="tns:ZlozWnioskiEgzekucyjneOutputElement" />
+  <xs:complexType name="ZlozDokumentyOutputData">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Klasa reprezentuje obiekty zwracane przez metodę ZlozDokumenty
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:OutputData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="oznaczeniePaczki" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Oznaczenie składanej paczki.
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="wynikiWalidacji" nillable="true" type="tns:ArrayOfZlozDokumentyOutputElement">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Wyniki walidacji dokumentów.
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ZlozDokumentyOutputData" nillable="true" type="tns:ZlozDokumentyOutputData" />
+  <xs:complexType name="ArrayOfZlozDokumentyOutputElement">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ZlozDokumentyOutputElement" nillable="true" type="tns:ZlozDokumentyOutputElement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfZlozDokumentyOutputElement" nillable="true" type="tns:ArrayOfZlozDokumentyOutputElement" />
+  <xs:complexType name="ZlozDokumentyOutputElement">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Wynik walidacji składanych dokumentów
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:WynikWalidacjiOutputElement">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ZlozDokumentyOutputElement" nillable="true" type="tns:ZlozDokumentyOutputElement" />
+  <xs:complexType name="ZlozCzynnosciEgzekucyjneOutputData">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Klasa reprezentuje obiekty zwracane przez metodę ZlozCzynnosciEgzekucyjne
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:OutputData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="oznaczeniePaczki" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Oznaczenie składanej paczki.
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="wynikiWalidacji" nillable="true" type="tns:ArrayOfZlozCzynnosciEgzekucyjneOutputElement">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Wyniki walidacji czynności egzekucyjnych.
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ZlozCzynnosciEgzekucyjneOutputData" nillable="true" type="tns:ZlozCzynnosciEgzekucyjneOutputData" />
+  <xs:complexType name="ArrayOfZlozCzynnosciEgzekucyjneOutputElement">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ZlozCzynnosciEgzekucyjneOutputElement" nillable="true" type="tns:ZlozCzynnosciEgzekucyjneOutputElement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfZlozCzynnosciEgzekucyjneOutputElement" nillable="true" type="tns:ArrayOfZlozCzynnosciEgzekucyjneOutputElement" />
+  <xs:complexType name="ZlozCzynnosciEgzekucyjneOutputElement">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Wynik walidacji czynności egzekucyjnych.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:WynikWalidacjiOutputElement">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" type="xs:int">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Id zapisanej czynności
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ZlozCzynnosciEgzekucyjneOutputElement" nillable="true" type="tns:ZlozCzynnosciEgzekucyjneOutputElement" />
+  <xs:complexType name="ZlozZawiadomieniaEgzekucyjneOutputData">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Klasa reprezentuje obiekty zwracane przez metodę ZlozPowiadomieniaEgzekucyjne
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:OutputData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="oznaczeniePaczki" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Oznaczenie składanej paczki.
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="wynikiWalidacji" nillable="true" type="tns:ArrayOfZlozZawiadomieniaEgzekucyjneOutputElement">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Wyniki walidacji czynności egzekucyjnych.
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ZlozZawiadomieniaEgzekucyjneOutputData" nillable="true" type="tns:ZlozZawiadomieniaEgzekucyjneOutputData" />
+  <xs:complexType name="ArrayOfZlozZawiadomieniaEgzekucyjneOutputElement">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ZlozZawiadomieniaEgzekucyjneOutputElement" nillable="true" type="tns:ZlozZawiadomieniaEgzekucyjneOutputElement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfZlozZawiadomieniaEgzekucyjneOutputElement" nillable="true" type="tns:ArrayOfZlozZawiadomieniaEgzekucyjneOutputElement" />
+  <xs:complexType name="ZlozZawiadomieniaEgzekucyjneOutputElement">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Wynik walidacji powiadomień egzekucyjnych.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:WynikWalidacjiOutputElement">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" type="xs:int">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Id zapisanej czynności
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ZlozZawiadomieniaEgzekucyjneOutputElement" nillable="true" type="tns:ZlozZawiadomieniaEgzekucyjneOutputElement" />
+  <xs:complexType name="MojeSprawyOutputData">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Klasa reprezentuje obiekty zwracane przez metodę MojeSprawy
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PageOutputData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="listaSpraw" nillable="true" type="tns:ArrayOfSprawaOutputElement">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Lista informacji o sprawach.
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="MojeSprawyOutputData" nillable="true" type="tns:MojeSprawyOutputData" />
+  <xs:complexType name="PageOutputData">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:OutputData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="iloscStron" type="xs:int">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Liczba stron dla żądanej wielkości strony
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="liczbaWszystkichElementow" type="xs:int">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Liczba wszystkich elementów.
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="numerStrony" type="xs:int">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Numer żądanej strony
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="wielkoscStrony" type="xs:int">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Żądana ilość elementów na stronie
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PageOutputData" nillable="true" type="tns:PageOutputData" />
+  <xs:complexType name="ArrayOfSprawaOutputElement">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SprawaOutputElement" nillable="true" type="tns:SprawaOutputElement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSprawaOutputElement" nillable="true" type="tns:ArrayOfSprawaOutputElement" />
+  <xs:complexType name="SprawaOutputElement">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Dane dotyczące sprawy
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dataPrawomocnosci" nillable="true" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Data prawomocności
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="dataWplywu" nillable="true" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Data wpływu
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="dataZakreslenia" nillable="true" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Data zakreślenia
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="id" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Identyfikator Sprawy
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="kwotaSporu" nillable="true" type="xs:decimal">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Kwota sporu
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="rolaWSprawie" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Rola użytkownika w sprawie
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="stanSprawy" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Stan sprawy
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="stronyWSprawie" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Strony w sprawie
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="sygnaturaSprawy" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Sygnatura sprawy
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="sygnaturaWgPowoda" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Sygnatura wg powoda
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SprawaOutputElement" nillable="true" type="tns:SprawaOutputElement" />
+  <xs:complexType name="SprawyDoPodjeciaOutputData">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Klasa reprezentuje obiekty zwracane przez metodę MojeSprawy
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PageOutputData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="listaSpraw" nillable="true" type="tns:ArrayOfSprawaDoPodjeciaOutputElement">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Lista informacji o sprawach.
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SprawyDoPodjeciaOutputData" nillable="true" type="tns:SprawyDoPodjeciaOutputData" />
+  <xs:complexType name="ArrayOfSprawaDoPodjeciaOutputElement">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SprawaDoPodjeciaOutputElement" nillable="true" type="tns:SprawaDoPodjeciaOutputElement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSprawaDoPodjeciaOutputElement" nillable="true" type="tns:ArrayOfSprawaDoPodjeciaOutputElement" />
+  <xs:complexType name="SprawaDoPodjeciaOutputElement">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Dane dotyczące sprawy
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Identyfikator Sprawy
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="stronyWSprawie" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Strony w sprawie
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="sygnaturaSprawy" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Sygnatura sprawy
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SprawaDoPodjeciaOutputElement" nillable="true" type="tns:SprawaDoPodjeciaOutputElement" />
+  <xs:complexType name="MojeNakazyOutputData">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Klasa reprezentuje obiekty zwracane przez metodę MojeNakazy
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PageOutputData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="mojeNakazy" nillable="true" type="tns:ArrayOfNakazOutputElement">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Lista nakazów.
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="MojeNakazyOutputData" nillable="true" type="tns:MojeNakazyOutputData" />
+  <xs:complexType name="ArrayOfNakazOutputElement">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="NakazOutputElement" nillable="true" type="tns:NakazOutputElement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfNakazOutputElement" nillable="true" type="tns:ArrayOfNakazOutputElement" />
+  <xs:complexType name="NakazOutputElement">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Nakaz
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dataOrzeczenia" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Data orzeczenia
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="dataPrawomocnosci" nillable="true" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Data prawomocnosci
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="dokumentXml" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Tresc dokumentu XML
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="id" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Identyfikator dokumentu
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="kodDecyzji" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Kod decyzji
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="statusDokumentu" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Status dokumentu
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="sygnaturaSprawy" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Sygnatura sprawy
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="sygnaturaWgPowoda" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Sygnatura wedlug powoda
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NakazOutputElement" nillable="true" type="tns:NakazOutputElement" />
+  <xs:complexType name="MojeDoreczeniaOutputData">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Klasa reprezentuje obiekty zwracane przez metodę MojeDoreczenia
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PageOutputData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="mojeDoreczenia" nillable="true" type="tns:ArrayOfDoreczenieOutputElement">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Lista doręczeń.
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="MojeDoreczeniaOutputData" nillable="true" type="tns:MojeDoreczeniaOutputData" />
+  <xs:complexType name="ArrayOfDoreczenieOutputElement">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DoreczenieOutputElement" nillable="true" type="tns:DoreczenieOutputElement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDoreczenieOutputElement" nillable="true" type="tns:ArrayOfDoreczenieOutputElement" />
+  <xs:complexType name="DoreczenieOutputElement">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Doręczenie
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dataDoreczenia" nillable="true" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Data doreczenia
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="dataWyslania" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Data wyslania doreczenia
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="id" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Identyfikator doręczenia
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="opis" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Opis
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="sygnaturaSprawy" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Sygnatura sprawy
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="sygnaturaWgPowoda" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Sygnatura wedlug powoda
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DoreczenieOutputElement" nillable="true" type="tns:DoreczenieOutputElement" />
+  <xs:complexType name="MojeDoreczeniaVer2OutputData">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Klasa reprezentuje obiekty zwracane przez metodę MojeDoreczenia
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PageOutputData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="mojeDoreczenia" nillable="true" type="tns:ArrayOfDoreczenieVer2OutputElement">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Lista doręczeń.
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="MojeDoreczeniaVer2OutputData" nillable="true" type="tns:MojeDoreczeniaVer2OutputData" />
+  <xs:complexType name="ArrayOfDoreczenieVer2OutputElement">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DoreczenieVer2OutputElement" nillable="true" type="tns:DoreczenieVer2OutputElement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDoreczenieVer2OutputElement" nillable="true" type="tns:ArrayOfDoreczenieVer2OutputElement" />
+  <xs:complexType name="DoreczenieVer2OutputElement">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Doręczenie
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DoreczenieOutputElement">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="idNakazu" nillable="true" type="xs:int">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Identyfikator nakazu
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="idOrzeczenia" nillable="true" type="xs:int">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Identyfikator orzeczenia
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DoreczenieVer2OutputElement" nillable="true" type="tns:DoreczenieVer2OutputElement" />
+  <xs:complexType name="MojeOrzeczeniaOutputData">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Klasa reprezentuje obiekty zwracane przez metodę MojeOrzeczenia
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PageOutputData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="listaOrzeczen" nillable="true" type="tns:ArrayOfOrzeczenieOutputElement">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Lista orzeczeń
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="MojeOrzeczeniaOutputData" nillable="true" type="tns:MojeOrzeczeniaOutputData" />
+  <xs:complexType name="ArrayOfOrzeczenieOutputElement">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrzeczenieOutputElement" nillable="true" type="tns:OrzeczenieOutputElement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOrzeczenieOutputElement" nillable="true" type="tns:ArrayOfOrzeczenieOutputElement" />
+  <xs:complexType name="OrzeczenieOutputElement">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Orzeczenie
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Status orzeczenia
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="dataKlauzuli" nillable="true" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Data klauzuli
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="dataOrzeczenia" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Data orzeczenia
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="dataPrawomocnosci" nillable="true" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Data prawomocnosci
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="dokumentXml" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Tresc dokumentu XML
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="id" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Identyfikator dokumentu
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="id_klauzula" nillable="true" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Identyfikator klauzuli
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="kodKlauzuli" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Kod klauzuli
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="nazwaDecyzji" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Nazwa decyzji
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="sygnaturaSprawy" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Sygnatura sprawy
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="sygnaturaWgPowoda" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Sygnatora wedlug powoda
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OrzeczenieOutputElement" nillable="true" type="tns:OrzeczenieOutputElement" />
+  <xs:complexType name="MojeOrzeczeniaVer2OutputData">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Klasa reprezentuje obiekty zwracane przez metodę MojeOrzeczenia
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PageOutputData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="listaOrzeczen" nillable="true" type="tns:ArrayOfOrzeczenieVer2OutputElement">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Lista orzeczeń
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="MojeOrzeczeniaVer2OutputData" nillable="true" type="tns:MojeOrzeczeniaVer2OutputData" />
+  <xs:complexType name="ArrayOfOrzeczenieVer2OutputElement">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrzeczenieVer2OutputElement" nillable="true" type="tns:OrzeczenieVer2OutputElement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOrzeczenieVer2OutputElement" nillable="true" type="tns:ArrayOfOrzeczenieVer2OutputElement" />
+  <xs:complexType name="OrzeczenieVer2OutputElement">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Orzeczenie
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:OrzeczenieOutputElement">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="instancja" type="xs:int">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;instancja sprawy
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="OrzeczenieVer2OutputElement" nillable="true" type="tns:OrzeczenieVer2OutputElement" />
+  <xs:complexType name="MojePismaOutputData">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Klasa reprezentuje obiekty zwracane przez metodę MojePisma
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PageOutputData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="listaPism" nillable="true" type="tns:ArrayOfDokumentOutputElement">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Lista pism
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="MojePismaOutputData" nillable="true" type="tns:MojePismaOutputData" />
+  <xs:complexType name="ArrayOfDokumentOutputElement">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DokumentOutputElement" nillable="true" type="tns:DokumentOutputElement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDokumentOutputElement" nillable="true" type="tns:ArrayOfDokumentOutputElement" />
+  <xs:complexType name="DokumentOutputElement">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Informacje dotyczace dokumentu.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dataDokumentu" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Data dokumentu
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="dataZakreslenia" nillable="true" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Data zakreslenia
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="id" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Identyfikator dokumentu
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="rodzajDokumentu" type="tns:RodzajDokumentu">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Rodzaj dokumentu
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="statusDokumentu" type="tns:StatusDokumentu">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Status dokumentu
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="sygnaturaSprawy" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Sygnatura sprawy
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="sygnaturaWgPowoda" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Sygnatura wedlug powoda
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DokumentOutputElement" nillable="true" type="tns:DokumentOutputElement" />
+  <xs:complexType name="HistoriaSprawyOutputData">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Klasa reprezentuje obiekty zwracane przez metodę HistoriaSprawy
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PageOutputData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="historiaSprawy" nillable="true" type="tns:ArrayOfHistoriaSprawyOutputElement">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Lista zdarzeń w sprawie
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="statusSprawy" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Status sprawy
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="HistoriaSprawyOutputData" nillable="true" type="tns:HistoriaSprawyOutputData" />
+  <xs:complexType name="ArrayOfHistoriaSprawyOutputElement">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="HistoriaSprawyOutputElement" nillable="true" type="tns:HistoriaSprawyOutputElement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfHistoriaSprawyOutputElement" nillable="true" type="tns:ArrayOfHistoriaSprawyOutputElement" />
+  <xs:complexType name="HistoriaSprawyOutputElement">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Historia sprawy
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dataZdarzenia" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Data zdarzenia
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="kategoria" type="tns:KategoriaZdarzenia">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Kategoria zdarzenia
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="opis" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Opis zdarzenia
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="HistoriaSprawyOutputElement" nillable="true" type="tns:HistoriaSprawyOutputElement" />
+  <xs:complexType name="ListaKancelariiKomoniczychOutputData">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Klasa reprezentuje obiekty zwracane przez metodę ListaKancelariiKomorniczych
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PageOutputData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="listaKancelariiKomorniczych" nillable="true" type="tns:ArrayOfListaKancelariiKomoniczychOutputElement">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Lista kancelarii komorniczych
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ListaKancelariiKomoniczychOutputData" nillable="true" type="tns:ListaKancelariiKomoniczychOutputData" />
+  <xs:complexType name="ArrayOfListaKancelariiKomoniczychOutputElement">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ListaKancelariiKomoniczychOutputElement" nillable="true" type="tns:ListaKancelariiKomoniczychOutputElement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfListaKancelariiKomoniczychOutputElement" nillable="true" type="tns:ArrayOfListaKancelariiKomoniczychOutputElement" />
+  <xs:complexType name="ListaKancelariiKomoniczychOutputElement">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Dane kancelarii komorniczej
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Identyfikator kancelarii
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="nazwaKancelarii" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Nazwa kancelarii
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListaKancelariiKomoniczychOutputElement" nillable="true" type="tns:ListaKancelariiKomoniczychOutputElement" />
+  <xs:complexType name="SprawdzStatusCzynnosciOutputData">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Status czynnosci (adnotacji) komorniczej
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:OutputData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="czyaktual" type="xs:boolean">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Czy adnotacja jest aktualna
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="idKancelarii" type="xs:int">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;ID kancelarii 
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="status" type="xs:int">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;0 - nie podpisana
+            1 - podpisana
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SprawdzStatusCzynnosciOutputData" nillable="true" type="tns:SprawdzStatusCzynnosciOutputData" />
+  <xs:complexType name="PobierzIdKancelariiOutputData">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Status czynnosci (adnotacji) komorniczej
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:OutputData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="idKancelarii" type="xs:int">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;ID kancelarii
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PobierzIdKancelariiOutputData" nillable="true" type="tns:PobierzIdKancelariiOutputData" />
+  <xs:complexType name="GetDataOdnotowaniaOutputData">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Status czynnosci (adnotacji) komorniczej
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:OutputData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dataCzynnosci" type="xs:dateTime">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;ID kancelarii
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="dataCzynnosciString" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetDataOdnotowaniaOutputData" nillable="true" type="tns:GetDataOdnotowaniaOutputData" />
+  <xs:complexType name="ListaAdnotacjiKomorniczychOutputData">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Klasa reprezentuje dane zwracane przez metodę: ListaAdnotacjiKomorniczych
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PageOutputData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="listaAdnotacjiKomorniczych" nillable="true" type="tns:ArrayOfListaAdnotacjiKomoniczychOutputElement">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Lista adnotacji komorniczych
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ListaAdnotacjiKomorniczychOutputData" nillable="true" type="tns:ListaAdnotacjiKomorniczychOutputData" />
+  <xs:complexType name="ArrayOfListaAdnotacjiKomoniczychOutputElement">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ListaAdnotacjiKomoniczychOutputElement" nillable="true" type="tns:ListaAdnotacjiKomoniczychOutputElement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfListaAdnotacjiKomoniczychOutputElement" nillable="true" type="tns:ArrayOfListaAdnotacjiKomoniczychOutputElement" />
+  <xs:complexType name="ListaAdnotacjiKomoniczychOutputElement">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Czynnosc egzekucyjna.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="czyaktual" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Czy adnotacja jest aktualna
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="dokumentXml" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Tresc dokumentu XML
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="id" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Identyfikator czynności
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="idKancelarii" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Identyfikator kancelarii
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListaAdnotacjiKomoniczychOutputElement" nillable="true" type="tns:ListaAdnotacjiKomoniczychOutputElement" />
+  <xs:complexType name="ListaSprawKomornikaOutputData">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Lista wniosków egzekucyjnych skierowanych do komornika
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PageOutputData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="listaSprawKomornika" nillable="true" type="tns:ArrayOfListaSprawKomornikaOutputElement">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Lista spraw komornika
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ListaSprawKomornikaOutputData" nillable="true" type="tns:ListaSprawKomornikaOutputData" />
+  <xs:complexType name="ArrayOfListaSprawKomornikaOutputElement">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ListaSprawKomornikaOutputElement" nillable="true" type="tns:ListaSprawKomornikaOutputElement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfListaSprawKomornikaOutputElement" nillable="true" type="tns:ArrayOfListaSprawKomornikaOutputElement" />
+  <xs:complexType name="ListaSprawKomornikaOutputElement">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Nowy wniosek egzekucyjny złożnony do komornika
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="czypobrano" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Czy wniosek jest oznaczony jako pobrany
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="dokumentXml" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Tresc dokumentu XML
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="id" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Identyfikator wniosku egzekucyjnego
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListaSprawKomornikaOutputElement" nillable="true" type="tns:ListaSprawKomornikaOutputElement" />
+  <xs:complexType name="ListaSprawZNakazemOutputData">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Lista spraw z prawomocną klauzulą bez złożonego wniosku egzekucyjnego
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:OutputData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="listaSprawZNakazem" nillable="true" type="tns:ArrayOfSprawaZNakazemOutputElement">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Lista spraw z nakazem bez złożonego wniosku egzekucyjnego
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ListaSprawZNakazemOutputData" nillable="true" type="tns:ListaSprawZNakazemOutputData" />
+  <xs:complexType name="ArrayOfSprawaZNakazemOutputElement">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SprawaZNakazemOutputElement" nillable="true" type="tns:SprawaZNakazemOutputElement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSprawaZNakazemOutputElement" nillable="true" type="tns:ArrayOfSprawaZNakazemOutputElement" />
+  <xs:complexType name="SprawaZNakazemOutputElement">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Sprawa z prawomocną klauzulą bez złożonego wniosku egzekucyjnego
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dokumentXml" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Tresc dokumentu XML
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="kodTytulu" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Kod tytułu wykonawczego
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SprawaZNakazemOutputElement" nillable="true" type="tns:SprawaZNakazemOutputElement" />
+  <xs:complexType name="OznaczSprawyJakoPobraneOutputData">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Wynik ustawienia wniosków egzekucyjnych jako pobrane
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:OutputData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="iloscZaktualizowanych" type="xs:int">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Ilosc zaktualizowanych wniosków egzekucyjnych
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="OznaczSprawyJakoPobraneOutputData" nillable="true" type="tns:OznaczSprawyJakoPobraneOutputData" />
+  <xs:complexType name="ListaTresciNakazowPDFOutputData">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Lista treści nakazów
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:OutputData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="listaTresciNakazowPDFOutputElement" nillable="true" type="tns:ArrayOfTrescNakazuPDFOutputElement">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Lista z treściami nakazów
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ListaTresciNakazowPDFOutputData" nillable="true" type="tns:ListaTresciNakazowPDFOutputData" />
+  <xs:complexType name="ArrayOfTrescNakazuPDFOutputElement">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TrescNakazuPDFOutputElement" nillable="true" type="tns:TrescNakazuPDFOutputElement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTrescNakazuPDFOutputElement" nillable="true" type="tns:ArrayOfTrescNakazuPDFOutputElement" />
+  <xs:complexType name="TrescNakazuPDFOutputElement">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Treść nakazu
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="czyBlad" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Czy zaistniał błąd podczas generowania treści nakazu
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="idKlauzuli" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Identyfikator klauzuli
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="idWniosku" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Identyfikator wniosku egzekucyjnego
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="nazwaPliku" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Nazwa pliku PDF np. (sygnatura_komornika.pdf)
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="opisBledu" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Słowny opis ewentualnego błędu
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="tresc" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Tresc nakazu w base64
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="wielkoscNiespakowanegoPliku" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;rozmiar PDF-a przed spakowaniem
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TrescNakazuPDFOutputElement" nillable="true" type="tns:TrescNakazuPDFOutputElement" />
+  <xs:complexType name="ListaTresciNakazowPDFOutputDataVer2">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Lista treści nakazów
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:OutputData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="listaTresciNakazowPDFOutputElement" nillable="true" type="tns:ArrayOfTrescNakazuPDFOutputElementVer2">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Lista z treściami nakazów
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ListaTresciNakazowPDFOutputDataVer2" nillable="true" type="tns:ListaTresciNakazowPDFOutputDataVer2" />
+  <xs:complexType name="ArrayOfTrescNakazuPDFOutputElementVer2">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TrescNakazuPDFOutputElementVer2" nillable="true" type="tns:TrescNakazuPDFOutputElementVer2" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTrescNakazuPDFOutputElementVer2" nillable="true" type="tns:ArrayOfTrescNakazuPDFOutputElementVer2" />
+  <xs:complexType name="TrescNakazuPDFOutputElementVer2">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Treść nakazu
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="czyBlad" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Czy zaistniał błąd podczas generowania treści nakazu
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="dokumentPdfBase64" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Tresc nakazu w base64
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="idKlauzuli" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Identyfikator klauzuli
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="idWniosku" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Identyfikator wniosku egzekucyjnego
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="nazwaPliku" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Nazwa pliku PDF np. (sygnatura_komornika.pdf)
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="opisBledu" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Słowny opis ewentualnego błędu
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="wielkoscNiespakowanegoPliku" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;rozmiar PDF-a przed spakowaniem
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TrescNakazuPDFOutputElementVer2" nillable="true" type="tns:TrescNakazuPDFOutputElementVer2" />
+  <xs:complexType name="ListaTresciNakazowPDFOutputDataVer3">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Lista treści nakazów
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:OutputData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="listaTresciNakazowPDFOutputElement" nillable="true" type="tns:ArrayOfTrescNakazuPDFOutputElementVer3">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Lista z treściami nakazów
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ListaTresciNakazowPDFOutputDataVer3" nillable="true" type="tns:ListaTresciNakazowPDFOutputDataVer3" />
+  <xs:complexType name="ArrayOfTrescNakazuPDFOutputElementVer3">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TrescNakazuPDFOutputElementVer3" nillable="true" type="tns:TrescNakazuPDFOutputElementVer3" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTrescNakazuPDFOutputElementVer3" nillable="true" type="tns:ArrayOfTrescNakazuPDFOutputElementVer3" />
+  <xs:complexType name="TrescNakazuPDFOutputElementVer3">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Treść nakazu
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="czyBlad" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Czy zaistniał błąd podczas generowania treści nakazu
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="dokumentPdfBase64" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Tresc nakazu w base64
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="idKlauzuli" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Identyfikator klauzuli
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="kodZTytulu" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Kod z tytułu wykonawczego
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="nazwaPliku" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Nazwa pliku PDF np. (sygnatura_komornika.pdf)
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="opisBledu" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Słowny opis ewentualnego błędu
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="wielkoscNiespakowanegoPliku" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;rozmiar PDF-a przed spakowaniem
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TrescNakazuPDFOutputElementVer3" nillable="true" type="tns:TrescNakazuPDFOutputElementVer3" />
+  <xs:complexType name="ListaWnioskowEgzekucyjnychPDFOutputData">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Lista wniosków egzekucyjnych PDF
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:OutputData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="listaWnioskowEgzekucyjnychPDFOutputElement" nillable="true" type="tns:ArrayOfListaWnioskowEgzekucyjnychPDFOutputElement">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Lista wniosków egzekucyjnych PDF
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ListaWnioskowEgzekucyjnychPDFOutputData" nillable="true" type="tns:ListaWnioskowEgzekucyjnychPDFOutputData" />
+  <xs:complexType name="ArrayOfListaWnioskowEgzekucyjnychPDFOutputElement">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ListaWnioskowEgzekucyjnychPDFOutputElement" nillable="true" type="tns:ListaWnioskowEgzekucyjnychPDFOutputElement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfListaWnioskowEgzekucyjnychPDFOutputElement" nillable="true" type="tns:ArrayOfListaWnioskowEgzekucyjnychPDFOutputElement" />
+  <xs:complexType name="ListaWnioskowEgzekucyjnychPDFOutputElement">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Wniosek egzekucyjny PDF
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dokumentPdfBase64" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Tresc wniosku PDF w base64
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="id" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Identyfikator wniosku egzekucyjnego
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="nazwaPliku" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Nazwa pliku PDF
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="wielkoscNiespakowanegoPliku" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Rozmiar PDF-a przed spakowaniem
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListaWnioskowEgzekucyjnychPDFOutputElement" nillable="true" type="tns:ListaWnioskowEgzekucyjnychPDFOutputElement" />
+  <xs:complexType name="ListaWnioskowEgzekucyjnychPDFOutputDataVer2">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Lista wniosków egzekucyjnych PDF
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:OutputData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="listaWnioskowEgzekucyjnychPDFOutputElement" nillable="true" type="tns:ArrayOfListaWnioskowEgzekucyjnychPDFOutputElementVer2">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;Lista wniosków egzekucyjnych PDF
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ListaWnioskowEgzekucyjnychPDFOutputDataVer2" nillable="true" type="tns:ListaWnioskowEgzekucyjnychPDFOutputDataVer2" />
+  <xs:complexType name="ArrayOfListaWnioskowEgzekucyjnychPDFOutputElementVer2">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ListaWnioskowEgzekucyjnychPDFOutputElementVer2" nillable="true" type="tns:ListaWnioskowEgzekucyjnychPDFOutputElementVer2" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfListaWnioskowEgzekucyjnychPDFOutputElementVer2" nillable="true" type="tns:ArrayOfListaWnioskowEgzekucyjnychPDFOutputElementVer2" />
+  <xs:complexType name="ListaWnioskowEgzekucyjnychPDFOutputElementVer2">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;Wniosek egzekucyjny PDF
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="czyBlad" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Czy zaistniał błąd podczas generowania treści nakazu
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="dokumentPdfBase64" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Tresc wniosku PDF w base64
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="idWniosku" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Identyfikator wniosku egzekucyjnego
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="nazwaPliku" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Nazwa pliku PDF
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="opisBledu" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Słowny opis ewentualnego błędu
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="wielkoscNiespakowanegoPliku" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;Rozmiar PDF-a przed spakowaniem
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListaWnioskowEgzekucyjnychPDFOutputElementVer2" nillable="true" type="tns:ListaWnioskowEgzekucyjnychPDFOutputElementVer2" />
+</xs:schema>

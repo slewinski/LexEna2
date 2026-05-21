@@ -1,0 +1,212 @@
+﻿<UserControl xmlns:Silverlight="clr-namespace:Telerik.ReportViewer.Silverlight;assembly=Telerik.ReportViewer.Silverlight" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:riaControls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.DomainServices" xmlns:my="clr-namespace:LexEnaTrs.Web" xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk" xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="LexEnaTrs.Views.WienaReports"
+    mc:Ignorable="d"
+    xmlns:local="clr-namespace:LexEnaTrs" 
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    d:DesignHeight="592" d:DesignWidth="1008.757" Loaded="UserControl_Loaded">
+
+    <Grid x:Name="LayoutRoot" Background="White">
+
+        <Grid Margin="0,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="10"/>
+
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="29"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="400"/>
+                    <ColumnDefinition Width="*"/>
+
+                </Grid.ColumnDefinitions>
+                <!--
+                <sdk:DataGrid Grid.Column="0" Name="OddzialyGrid" Grid.Row="0" AutoGenerateColumns="False" ItemsSource="{Binding typOddzialyWiena,  Source={StaticResource KonfiguracjaWiena}}"  >
+                    <sdk:DataGrid.Columns>
+                        <sdk:DataGridTextColumn Header="Oddział" Width="*" IsReadOnly="True"  Binding="{Binding Nazwa}"  >
+                                                    </sdk:DataGridTextColumn> 
+                        <sdk:DataGridTemplateColumn Width="50">
+                            <sdk:DataGridTemplateColumn.HeaderStyle>
+                                <Style TargetType="sdk:DataGridColumnHeader">
+                                    <Setter Property="ContentTemplate">
+                                        <Setter.Value>
+                                            <DataTemplate>
+                                                <Button Content="X" Width="30" VerticalAlignment="Center"/>
+                                            </DataTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </sdk:DataGridTemplateColumn.HeaderStyle>
+                            <sdk:DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox IsChecked="{Binding Path=IsChecked,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                </DataTemplate>
+                            </sdk:DataGridTemplateColumn.CellTemplate>
+                        </sdk:DataGridTemplateColumn>
+                        
+                    </sdk:DataGrid.Columns>
+
+                </sdk:DataGrid>
+                -->
+                <telerik:RadGridView Grid.Column="0" Grid.Row="0" ValidatesOnDataErrors="None" ItemsSource="{Binding typOddzialyWiena,  Source={StaticResource KonfiguracjaWiena}}"  IsSynchronizedWithCurrentItem="false"   x:Name="OddzialyGrid" AutoGenerateColumns="false" SelectionMode="Single"   CanUserFreezeColumns="False" RowIndicatorVisibility="Collapsed"  EnableColumnVirtualization="False" CanUserReorderColumns="False"  ShowGroupPanel="False" EnableRowVirtualization="False" CanUserSortGroups="False"  EnableColumnGroupsVirtualization="False" IsFilteringAllowed="False" >
+
+                    <telerik:RadGridView.Columns>
+                        <telerik:GridViewDataColumn x:Name="Oddzial" Header="Oddział"  Width="*" IsReadOnly="True"  DataMemberBinding="{Binding Nazwa}" HeaderTextAlignment="Center" MinWidth="10" TextAlignment="Left" IsFilterable="False" ShowDistinctFilters="False" ShowFieldFilters="False" ShowFilterButton="False" />
+                        <telerik:GridViewCheckBoxColumn   IsThreeState="False"
+                                                    ShowDistinctFilters="False"
+                                                    AutoSelectOnEdit="True"
+                                                    EditTriggers="CellClick"
+                       DataMemberBinding="{Binding Filter3, Converter={StaticResource IntToBoolConverter}, Mode=TwoWay }" 
+                      HeaderTextAlignment="Center" TextAlignment="Left" Width="50" IsFilterable="False" ShowFieldFilters="False" ShowFilterButton="False" >
+                            <telerik:GridViewCheckBoxColumn.Header>
+                                <CheckBox Click="HeaderCheckBox_Click" IsChecked="True"  IsThreeState="False" />
+                            </telerik:GridViewCheckBoxColumn.Header>
+
+                        </telerik:GridViewCheckBoxColumn>
+
+
+                    </telerik:RadGridView.Columns>
+
+
+                </telerik:RadGridView>
+
+                <telerik:RadGridView Grid.Column="1"   Grid.Row="0" ValidatesOnDataErrors="None" ItemsSource="{Binding typStatusyWiena,  Source={StaticResource KonfiguracjaWiena}}"  IsSynchronizedWithCurrentItem="false"   x:Name="StatusyGrid" AutoGenerateColumns="false" SelectionMode="Single"   CanUserFreezeColumns="False" RowIndicatorVisibility="Collapsed"  EnableColumnVirtualization="False" CanUserReorderColumns="False" EnableRowVirtualization="False" CanUserSortGroups="False"  EnableColumnGroupsVirtualization="False" IsFilteringAllowed="False" >
+                    <telerik:RadGridView.GroupDescriptors>
+                        <telerik:GroupDescriptor Member="Filter" 
+                             SortDirection="Ascending" />
+                    </telerik:RadGridView.GroupDescriptors>
+                    <telerik:RadGridView.Columns>
+                        <telerik:GridViewDataColumn x:Name="Etap" Header="Etap"  Width="80" IsReadOnly="True"  DataMemberBinding="{Binding Filter}" HeaderTextAlignment="Center" MinWidth="10" TextAlignment="Left" IsFilterable="False" ShowDistinctFilters="False"  ShowFieldFilters="False" ShowFilterButton="False" />
+                        <telerik:GridViewDataColumn x:Name="Status" Header="Status" IsGroupable="False" Width="*" IsReadOnly="True"  DataMemberBinding="{Binding Nazwa}" HeaderTextAlignment="Center" MinWidth="10" TextAlignment="Left" IsFilterable="False" ShowDistinctFilters="False" ShowFieldFilters="False" ShowFilterButton="False" />
+                        <telerik:GridViewCheckBoxColumn   IsThreeState="False"
+                                                    ShowDistinctFilters="False"
+                                                    AutoSelectOnEdit="True"
+                                                    EditTriggers="CellClick"
+                       DataMemberBinding="{Binding Filter3, Converter={StaticResource IntToBoolConverter}, Mode=TwoWay }" 
+                      HeaderTextAlignment="Center" TextAlignment="Left" Width="50" IsGroupable="False" IsFilterable="False" ShowFieldFilters="False" ShowFilterButton="False" >
+                            <telerik:GridViewCheckBoxColumn.Header>
+                                <CheckBox Click="HeaderStatusCheckBox_Click" IsChecked="True"   IsThreeState="False" />
+                            </telerik:GridViewCheckBoxColumn.Header>
+
+                        </telerik:GridViewCheckBoxColumn>
+
+
+                    </telerik:RadGridView.Columns>
+
+
+                </telerik:RadGridView>
+                <TextBox Text="0"  x:Name="tbCounter" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" Canvas.ZIndex="1" ></TextBox>
+                <telerik:RadGridView Grid.Column="1" Grid.Row="0"   ValidatesOnDataErrors="None" ItemsSource="{Binding typKontaWiena,  Source={StaticResource KonfiguracjaWiena}}"  IsSynchronizedWithCurrentItem="false"   x:Name="KontaGrid" Visibility="Collapsed" AutoGenerateColumns="false" SelectionMode="Single"   CanUserFreezeColumns="False" RowIndicatorVisibility="Collapsed"  EnableColumnVirtualization="False" CanUserReorderColumns="False"  ShowGroupPanel="False" EnableRowVirtualization="False" CanUserSortGroups="False"  EnableColumnGroupsVirtualization="False" IsFilteringAllowed="False" 
+                                     SelectedCellsChanged="KontaGrid_SelectedCellsChanged" Margin="0,20,0,0" >
+
+                    <telerik:RadGridView.Columns>
+                        <telerik:GridViewDataColumn x:Name="Konto" Header="Konto"  Width="*" IsReadOnly="True"  DataMemberBinding="{Binding Nazwa}" HeaderTextAlignment="Center" MinWidth="10" TextAlignment="Left" IsFilterable="False" ShowDistinctFilters="False" ShowFieldFilters="False" ShowFilterButton="False" />
+                        <telerik:GridViewCheckBoxColumn   IsThreeState="False"
+                                                    ShowDistinctFilters="False"
+                                                    AutoSelectOnEdit="True"
+                                                    EditTriggers="CellClick"
+                       DataMemberBinding="{Binding Filter3, Converter={StaticResource IntToBoolConverter}, Mode=TwoWay }" 
+                      HeaderTextAlignment="Center" TextAlignment="Left"  Width="50" IsFilterable="False" ShowFieldFilters="False" ShowFilterButton="False" >
+                            <telerik:GridViewCheckBoxColumn.Header>
+                                <StackPanel>
+                                <CheckBox Click="KontaHeaderCheckBox_Click"  IsChecked="False"  IsThreeState="False" />
+                               
+                                </StackPanel>
+                            </telerik:GridViewCheckBoxColumn.Header>
+
+                        </telerik:GridViewCheckBoxColumn>
+
+
+                    </telerik:RadGridView.Columns>
+
+
+                </telerik:RadGridView>
+
+                <!--
+                <telerik:RadGridView Grid.Column="1" Grid.Row="0" ValidatesOnDataErrors="None"   IsSynchronizedWithCurrentItem="false"   x:Name="StatusyGrid" AutoGenerateColumns="false" SelectionMode="Single"   CanUserFreezeColumns="False" RowIndicatorVisibility="Collapsed"  EnableColumnVirtualization="False" CanUserReorderColumns="False"  ShowGroupPanel="False" EnableRowVirtualization="False" CanUserSortGroups="False" EnableColumnGroupsVirtualization="False" >
+                    <telerik:RadGridView.ChildTableDefinitions>
+
+                        <telerik:GridViewTableDefinition>
+                            <telerik:GridViewTableDefinition.Relation>
+                                <telerik:PropertyRelation ParentPropertyName="Odbiorca.Obciazenia" />
+                            </telerik:GridViewTableDefinition.Relation>
+                        </telerik:GridViewTableDefinition>
+
+                    </telerik:RadGridView.ChildTableDefinitions>
+                    <telerik:RadGridView.Columns>
+                        <telerik:GridViewDataColumn x:Name="Id" Header="Lp." DataMemberBinding="{Binding numer}" HeaderTextAlignment="Center" MinWidth="10" TextAlignment="Left" />
+                        <telerik:GridViewDataColumn x:Name="Status" Header="Info" DataMemberBinding="{Binding nazwa}" HeaderTextAlignment="Center" MinWidth="30" TextAlignment="Left" Width="120"  />
+                        
+
+                    </telerik:RadGridView.Columns>
+
+                </telerik:RadGridView>
+ -->
+                <Grid Grid.Column="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="110"/>
+                        <ColumnDefinition Width="250"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="*"/>
+
+                    </Grid.RowDefinitions>
+                    <sdk:Label x:Name="label2" HorizontalAlignment="Right" Height="28" Content="Od dnia-do dnia" VerticalAlignment="Center"  Grid.Row="0" Margin="0,0,2,0"/>
+
+
+                    <telerik:RadComboBox  x:Name="cbRadca" FontSize="9"  SelectedValue="{Binding Oddzial, Mode=TwoWay}"  ItemsSource="{Binding typKancelarieWiena,  Source={StaticResource KonfiguracjaWiena}}"   SelectedValuePath="Numer" DisplayMemberPath="Nazwa" Margin="2,0,0,0" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Width="211" VerticalAlignment="Center" Height="31" />
+                    
+                    <CheckBox Name="cbxDetails" IsThreeState="False"  Visibility="Collapsed" Margin="2,0,0,0"  Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Width="211" VerticalAlignment="Center" Height="31" Content="Raport szczegółowy" Checked="cbxDetails_Checked" />
+
+                    <Button Name="btProgress" Visibility="Collapsed"   Margin="2,0,0,0"  Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Width="211" VerticalAlignment="Center" Height="31" Content="Sprawdź postęp obliczeń" Click="btProgress_Click" />
+                    
+                    <Button x:Name="btRun" Content="Wykonaj" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="75" Margin="2,0,0,0" Click="btRun_Click"/>
+                    <sdk:Label x:Name="labelKancelaria" HorizontalAlignment="Right" Height="28" Content="Kancelaria" VerticalAlignment="Bottom" Width="87" Grid.Row="1" Margin="0,0,2,11"/>
+                    
+                    <sdk:Label x:Name="labelStatusOdDo" Visibility="Collapsed" HorizontalAlignment="Right" Height="28" Content="Status od - do" VerticalAlignment="Bottom" Width="87" Grid.Row="1" Margin="0,0,2,11"/>
+                    <telerik:RadDatePicker Name="rdpOdStatus" Visibility="Collapsed" Grid.Column="1" HorizontalAlignment="Left" Height="30" Grid.Row="1"  VerticalAlignment="Center" Width="100"  Margin="2,0,0,0"/>
+                    <sdk:Label x:Name="labelkreskaOdDo" Visibility="Collapsed" HorizontalAlignment="Left" Grid.Column="1" Height="28" Content="-" VerticalAlignment="Center"  Grid.Row="1" Margin="124,0,2,0"/>
+                    <telerik:RadDatePicker Name="rdpDoStatus" Visibility="Collapsed" Grid.Column="1" HorizontalAlignment="Left" Height="30" Grid.Row="1"  VerticalAlignment="Center" Width="100"  Margin="120,0,0,0"/>
+
+
+                    <sdk:Label x:Name="labelPomin" HorizontalAlignment="Right" Height="28" Content="Pomiń dokumenty" VerticalAlignment="Center"  Grid.Row="2" Margin="0,0,2,0"/>
+                    <telerik:RadDatePicker Name="rdpOd" Grid.Column="1" HorizontalAlignment="Left" Height="30" Grid.Row="0"  VerticalAlignment="Center" Width="100"  Margin="2,0,0,0"/>
+                    <sdk:Label x:Name="labelkreska" HorizontalAlignment="Left" Grid.Column="1" Height="28" Content="-" VerticalAlignment="Center"  Grid.Row="0" Margin="124,0,2,0"/>
+
+                    <sdk:Label x:Name="labelRodzajDok" HorizontalAlignment="Right" Height="28" Content="Dokument księgowy" VerticalAlignment="Center"  Grid.Row="2" Margin="0,0,2,0" Visibility="Collapsed"/>
+
+                    <telerik:RadComboBox  x:Name="cbTypDok"  SelectedValue="{Binding TypDok, Mode=TwoWay}"  ItemsSource="{Binding typOznaczeniaDowodowWiena, Source={StaticResource SlownikDowodowWiena}}" Grid.Row="2" Grid.Column="1" IsEditable="True" SelectedValuePath="Nazwa" DisplayMemberPath="Nazwa" HorizontalAlignment="Left" Margin="10,0,0,17" Width="120" VerticalAlignment="Bottom" Height="19" Visibility="Collapsed"/>
+
+
+
+                    <telerik:RadDatePicker Name="rdpDo" Grid.Column="1" HorizontalAlignment="Left" Height="30" Grid.Row="0"  VerticalAlignment="Center" Width="100"  Margin="120,0,0,0"/>
+                    <TextBox x:Name="tbDocs" Grid.Column="1" Height="23" Margin="2,2,0,0" Grid.Row="2" TextWrapping="Wrap" Text="um;uz" Width="231" HorizontalAlignment="Left"/>
+
+
+                </Grid>
+
+            </Grid>
+
+
+
+
+            <Silverlight:ReportViewer Grid.Row="2" ReportServiceUri="../ReportService1.svc" Report="LexEnaReporting.EOP.KosztyRadcow.KosztyRadcow, LexEnaReporting" Name="WienaReportViewer" ParametersAreaVisible="True" RenderBegin="WienaReportViewer_RenderBegin" />
+
+
+
+        </Grid >
+
+    </Grid>
+</UserControl>

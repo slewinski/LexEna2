@@ -1,0 +1,842 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="LexEnaProModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityType Name="BIG_Case">
+          <Key>
+            <PropertyRef Name="BIG_CaseId" />
+          </Key>
+          <Property Name="BIG_CaseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CaseId" Type="varchar" MaxLength="128" />
+          <Property Name="CaseBIGId" Type="nchar" MaxLength="10" />
+          <Property Name="SrcSystem" Type="int" />
+          <Property Name="IdWienaSpr" Type="int" />
+          <Property Name="BIG_ImportId" Type="int" />
+          <Property Name="SuspendDate" Type="datetime" />
+          <Property Name="NotifyDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="BIG_Debtor">
+          <Key>
+            <PropertyRef Name="BIG_DebtorId" />
+          </Key>
+          <Property Name="BIG_DebtorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DebtorType" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="511" />
+          <Property Name="Firstname" Type="varchar" MaxLength="255" />
+          <Property Name="Secondname" Type="varchar" MaxLength="255" />
+          <Property Name="IdentityNumberType" Type="int" />
+          <Property Name="IDNumber" Type="varchar" MaxLength="20" />
+          <Property Name="Address1L1" Type="varchar" MaxLength="255" />
+          <Property Name="Address1L2" Type="varchar" MaxLength="255" />
+          <Property Name="Address2L1" Type="varchar" MaxLength="255" />
+          <Property Name="Address2L2" Type="varchar" MaxLength="255" />
+          <Property Name="Regon" Type="varchar" MaxLength="20" />
+          <Property Name="Krs" Type="varchar" MaxLength="30" />
+          <Property Name="BIG_CaseId" Type="int" />
+          <Property Name="Pesel" Type="varchar" MaxLength="11" />
+          <Property Name="NrKlienta" Type="varchar" MaxLength="50" />
+          <Property Name="NrKlientaFull" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="BIG_Import">
+          <Key>
+            <PropertyRef Name="BIG_ImportId" />
+          </Key>
+          <Property Name="BIG_ImportId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DataImportu" Type="datetime" />
+          <Property Name="Username" Type="varchar" MaxLength="100" />
+          <Property Name="Status" Type="int" />
+          <Property Name="StatOpis" Type="varchar" MaxLength="8000" />
+          <Property Name="DataWysylki" Type="datetime" />
+          <Property Name="ImportFile" Type="varbinary(max)" />
+          <Property Name="lPoz" Type="int" />
+          <Property Name="Filename" Type="varchar" MaxLength="255" />
+          <Property Name="JobId" Type="uniqueidentifier" />
+          <Property Name="ChunkId" Type="uniqueidentifier" />
+          <Property Name="DataStatusu" Type="datetime" />
+          <Property Name="lBlad" Type="int" />
+          <Property Name="lSuccess" Type="int" />
+          <Property Name="TypImp" Type="int" />
+        </EntityType>
+        <EntityType Name="BIG_Konfig">
+          <Key>
+            <PropertyRef Name="BIG_KonfigId" />
+          </Key>
+          <Property Name="BIG_KonfigId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Endpoint" Type="varchar" MaxLength="512" />
+          <Property Name="login" Type="varchar" MaxLength="50" />
+          <Property Name="password" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="BIG_Log">
+          <Key>
+            <PropertyRef Name="IdBIG_Log" />
+          </Key>
+          <Property Name="IdBIG_Log" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PackageFullId" Type="varchar" MaxLength="32" />
+          <Property Name="DataOper" Type="datetime" />
+          <Property Name="MsgText" Type="varchar(max)" />
+          <Property Name="TypKom" Type="int" />
+          <Property Name="ReqResp" Type="bit" />
+        </EntityType>
+        <EntityType Name="BIG_Obligation">
+          <Key>
+            <PropertyRef Name="BIG_ObligationId" />
+          </Key>
+          <Property Name="BIG_ObligationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ObligationId" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DataWysWezw" Type="datetime" />
+          <Property Name="DataWymag" Type="datetime" />
+          <Property Name="DataFaktury" Type="datetime" />
+          <Property Name="Kwota" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Saldo" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Opis" Type="varchar" MaxLength="255" />
+          <Property Name="Zarzuty" Type="varchar" MaxLength="255" />
+          <Property Name="DataTytWyk" Type="datetime" />
+          <Property Name="Sygnatura" Type="varchar" MaxLength="50" />
+          <Property Name="Sad" Type="varchar" MaxLength="255" />
+          <Property Name="BIG_CaseId" Type="int" />
+          <Property Name="SystemId" Type="varchar" MaxLength="100" />
+          <Property Name="IdWienaNal" Type="int" />
+          <Property Name="TypNal" Type="int" />
+          <Property Name="SuspendDate" Type="datetime" />
+          <Property Name="AutoSuspend" Type="bit" />
+          <Property Name="NotifyDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="BIG_Operacja">
+          <Key>
+            <PropertyRef Name="BIG_OperacjaId" />
+          </Key>
+          <Property Name="BIG_OperacjaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DataOperacji" Type="datetime" />
+          <Property Name="StatusOperacji" Type="int" />
+          <Property Name="StatOpis" Type="varchar" MaxLength="512" />
+          <Property Name="TypOperacji" Type="int" />
+          <Property Name="BIG_ImportId" Type="int" />
+          <Property Name="BIG_ObligationId" Type="int" />
+          <Property Name="OrderOp" Type="int" />
+          <Property Name="DataProcedowaniaKrd" Type="datetime" />
+          <Property Name="SuspendDate" Type="datetime" />
+          <Property Name="NotifyDate" Type="datetime" />
+          <Property Name="BIG_CaseId" Type="int" />
+          <Property Name="BIG_DebtorId" Type="int" />
+        </EntityType>
+        <EntityType Name="UZD_Faktura">
+          <Key>
+            <PropertyRef Name="UZD_FakturaId" />
+          </Key>
+          <Property Name="UZD_FakturaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdWiena" Type="int" />
+          <Property Name="Sygnatura" Type="varchar" MaxLength="30" />
+          <Property Name="NrKlienta" Type="varchar" MaxLength="30" />
+          <Property Name="IdNalWiena" Type="int" />
+          <Property Name="NrFaktury" Type="varchar" MaxLength="100" />
+          <Property Name="DataFaktury" Type="datetime" />
+          <Property Name="DataWymagalnosci" Type="datetime" />
+          <Property Name="Kwota" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Vat" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Zaleglosc" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="DataZaleglosci" Type="datetime" />
+          <Property Name="IdDluzWiena" Type="int" />
+          <Property Name="Nazwa" Type="varchar" MaxLength="255" />
+          <Property Name="Miejscowosc" Type="varchar" MaxLength="255" />
+          <Property Name="Ulica" Type="varchar" MaxLength="255" />
+          <Property Name="Kod" Type="varchar" MaxLength="7" />
+          <Property Name="Nip" Type="varchar" MaxLength="20" />
+          <Property Name="DataWeryfNIP" Type="datetime" />
+          <Property Name="StatusWalidNip" Type="int" />
+          <Property Name="StatusNip" Type="varchar" MaxLength="512" />
+          <Property Name="UZD_PakietId" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" />
+          <Property Name="StatOpis" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="UZD_Pakiet">
+          <Key>
+            <PropertyRef Name="UZD_PakietId" />
+          </Key>
+          <Property Name="UZD_PakietId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DataTypowania" Type="datetime" />
+          <Property Name="DataPotwierdzenia" Type="datetime" />
+          <Property Name="DataImportu" Type="datetime" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="LDlu" Type="int" />
+          <Property Name="LFaktur" Type="int" />
+          <Property Name="LPotwierdzDlu" Type="int" />
+          <Property Name="LPotwierdzFaktur" Type="int" />
+          <Property Name="Opis" Type="varchar" MaxLength="1024" />
+          <Property Name="XLSXPotwierdz" Type="varbinary(max)" />
+          <Property Name="importer" Type="varchar" MaxLength="100" />
+          <Property Name="potwierdzil" Type="varchar" MaxLength="100" />
+          <Property Name="Oznaczenie" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <Association Name="FK_BIG_Case_BIG_Import">
+          <End Role="BIG_Import" Type="Self.BIG_Import" Multiplicity="0..1" />
+          <End Role="BIG_Case" Type="Self.BIG_Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BIG_Import">
+              <PropertyRef Name="BIG_ImportId" />
+            </Principal>
+            <Dependent Role="BIG_Case">
+              <PropertyRef Name="BIG_ImportId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BIG_Debtor_BIG_Case">
+          <End Role="BIG_Case" Type="Self.BIG_Case" Multiplicity="0..1" />
+          <End Role="BIG_Debtor" Type="Self.BIG_Debtor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BIG_Case">
+              <PropertyRef Name="BIG_CaseId" />
+            </Principal>
+            <Dependent Role="BIG_Debtor">
+              <PropertyRef Name="BIG_CaseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BIG_Obligation_BIG_Case">
+          <End Role="BIG_Case" Type="Self.BIG_Case" Multiplicity="0..1" />
+          <End Role="BIG_Obligation" Type="Self.BIG_Obligation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BIG_Case">
+              <PropertyRef Name="BIG_CaseId" />
+            </Principal>
+            <Dependent Role="BIG_Obligation">
+              <PropertyRef Name="BIG_CaseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BIG_Operacja_BIG_Case">
+          <End Role="BIG_Case" Type="Self.BIG_Case" Multiplicity="0..1" />
+          <End Role="BIG_Operacja" Type="Self.BIG_Operacja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BIG_Case">
+              <PropertyRef Name="BIG_CaseId" />
+            </Principal>
+            <Dependent Role="BIG_Operacja">
+              <PropertyRef Name="BIG_CaseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BIG_Operacja_BIG_Debtor">
+          <End Role="BIG_Debtor" Type="Self.BIG_Debtor" Multiplicity="0..1" />
+          <End Role="BIG_Operacja" Type="Self.BIG_Operacja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BIG_Debtor">
+              <PropertyRef Name="BIG_DebtorId" />
+            </Principal>
+            <Dependent Role="BIG_Operacja">
+              <PropertyRef Name="BIG_DebtorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BIG_Operacja_BIG_Import">
+          <End Role="BIG_Import" Type="Self.BIG_Import" Multiplicity="0..1" />
+          <End Role="BIG_Operacja" Type="Self.BIG_Operacja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BIG_Import">
+              <PropertyRef Name="BIG_ImportId" />
+            </Principal>
+            <Dependent Role="BIG_Operacja">
+              <PropertyRef Name="BIG_ImportId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BIG_Operacja_BIG_Obligation">
+          <End Role="BIG_Obligation" Type="Self.BIG_Obligation" Multiplicity="0..1" />
+          <End Role="BIG_Operacja" Type="Self.BIG_Operacja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BIG_Obligation">
+              <PropertyRef Name="BIG_ObligationId" />
+            </Principal>
+            <Dependent Role="BIG_Operacja">
+              <PropertyRef Name="BIG_ObligationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UZD_Faktura_UZD_Pakiet">
+          <End Role="UZD_Pakiet" Type="Self.UZD_Pakiet" Multiplicity="1" />
+          <End Role="UZD_Faktura" Type="Self.UZD_Faktura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UZD_Pakiet">
+              <PropertyRef Name="UZD_PakietId" />
+            </Principal>
+            <Dependent Role="UZD_Faktura">
+              <PropertyRef Name="UZD_PakietId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LexEnaProModelStoreContainer">
+          <EntitySet Name="BIG_Case" EntityType="Self.BIG_Case" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BIG_Debtor" EntityType="Self.BIG_Debtor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BIG_Import" EntityType="Self.BIG_Import" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BIG_Konfig" EntityType="Self.BIG_Konfig" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BIG_Log" EntityType="Self.BIG_Log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BIG_Obligation" EntityType="Self.BIG_Obligation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BIG_Operacja" EntityType="Self.BIG_Operacja" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UZD_Faktura" EntityType="Self.UZD_Faktura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UZD_Pakiet" EntityType="Self.UZD_Pakiet" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BIG_Case_BIG_Import" Association="Self.FK_BIG_Case_BIG_Import">
+            <End Role="BIG_Import" EntitySet="BIG_Import" />
+            <End Role="BIG_Case" EntitySet="BIG_Case" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BIG_Debtor_BIG_Case" Association="Self.FK_BIG_Debtor_BIG_Case">
+            <End Role="BIG_Case" EntitySet="BIG_Case" />
+            <End Role="BIG_Debtor" EntitySet="BIG_Debtor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BIG_Obligation_BIG_Case" Association="Self.FK_BIG_Obligation_BIG_Case">
+            <End Role="BIG_Case" EntitySet="BIG_Case" />
+            <End Role="BIG_Obligation" EntitySet="BIG_Obligation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BIG_Operacja_BIG_Case" Association="Self.FK_BIG_Operacja_BIG_Case">
+            <End Role="BIG_Case" EntitySet="BIG_Case" />
+            <End Role="BIG_Operacja" EntitySet="BIG_Operacja" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BIG_Operacja_BIG_Debtor" Association="Self.FK_BIG_Operacja_BIG_Debtor">
+            <End Role="BIG_Debtor" EntitySet="BIG_Debtor" />
+            <End Role="BIG_Operacja" EntitySet="BIG_Operacja" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BIG_Operacja_BIG_Import" Association="Self.FK_BIG_Operacja_BIG_Import">
+            <End Role="BIG_Import" EntitySet="BIG_Import" />
+            <End Role="BIG_Operacja" EntitySet="BIG_Operacja" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BIG_Operacja_BIG_Obligation" Association="Self.FK_BIG_Operacja_BIG_Obligation">
+            <End Role="BIG_Obligation" EntitySet="BIG_Obligation" />
+            <End Role="BIG_Operacja" EntitySet="BIG_Operacja" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UZD_Faktura_UZD_Pakiet" Association="Self.FK_UZD_Faktura_UZD_Pakiet">
+            <End Role="UZD_Pakiet" EntitySet="UZD_Pakiet" />
+            <End Role="UZD_Faktura" EntitySet="UZD_Faktura" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LexEnaProModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityType Name="BIG_Case">
+          <Key>
+            <PropertyRef Name="BIG_CaseId" />
+          </Key>
+          <Property Name="BIG_CaseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CaseId" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="CaseBIGId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="SrcSystem" Type="Int32" />
+          <Property Name="IdWienaSpr" Type="Int32" />
+          <NavigationProperty Name="BIG_Debtor" Relationship="Self.FK_BIG_Debtor_BIG_Case" FromRole="BIG_Case" ToRole="BIG_Debtor" />
+          <NavigationProperty Name="BIG_Obligation" Relationship="Self.FK_BIG_Obligation_BIG_Case" FromRole="BIG_Case" ToRole="BIG_Obligation" />
+          <Property Name="BIG_ImportId" Type="Int32" />
+          <Property Name="SuspendDate" Type="DateTime" Precision="3" />
+          <Property Name="NotifyDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="BIG_Import" Relationship="LexEnaProModel.FK_BIG_Case_BIG_Import" FromRole="BIG_Case" ToRole="BIG_Import" />
+          <NavigationProperty Name="BIG_Operacja" Relationship="LexEnaProModel.FK_BIG_Operacja_BIG_Case" FromRole="BIG_Case" ToRole="BIG_Operacja" />
+        </EntityType>
+        <EntityType Name="BIG_Debtor">
+          <Key>
+            <PropertyRef Name="BIG_DebtorId" />
+          </Key>
+          <Property Name="BIG_DebtorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DebtorType" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="511" FixedLength="false" Unicode="false" />
+          <Property Name="Firstname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Secondname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IdentityNumberType" Type="Int32" />
+          <Property Name="IDNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Address1L1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Address1L2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Address2L1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Address2L2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Regon" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Krs" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="BIG_CaseId" Type="Int32" />
+          <Property Name="Pesel" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="NrKlienta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NrKlientaFull" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="BIG_Case" Relationship="Self.FK_BIG_Debtor_BIG_Case" FromRole="BIG_Debtor" ToRole="BIG_Case" />
+          <NavigationProperty Name="BIG_Operacja" Relationship="LexEnaProModel.FK_BIG_Operacja_BIG_Debtor" FromRole="BIG_Debtor" ToRole="BIG_Operacja" />
+        </EntityType>
+        <EntityType Name="BIG_Import">
+          <Key>
+            <PropertyRef Name="BIG_ImportId" />
+          </Key>
+          <Property Name="BIG_ImportId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DataImportu" Type="DateTime" Precision="3" />
+          <Property Name="Username" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="StatOpis" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="DataWysylki" Type="DateTime" Precision="3" />
+          <Property Name="ImportFile" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="lPoz" Type="Int32" />
+          <Property Name="Filename" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="JobId" Type="Guid" />
+          <Property Name="ChunkId" Type="Guid" />
+          <Property Name="DataStatusu" Type="DateTime" Precision="3" />
+          <Property Name="lBlad" Type="Int32" />
+          <Property Name="lSuccess" Type="Int32" />
+          <NavigationProperty Name="BIG_Operacja" Relationship="Self.FK_BIG_Operacja_BIG_Import" FromRole="BIG_Import" ToRole="BIG_Operacja" />
+          <Property Name="TypImp" Type="Int32" />
+          <NavigationProperty Name="BIG_Case" Relationship="LexEnaProModel.FK_BIG_Case_BIG_Import" FromRole="BIG_Import" ToRole="BIG_Case" />
+        </EntityType>
+        <EntityType Name="BIG_Konfig">
+          <Key>
+            <PropertyRef Name="BIG_KonfigId" />
+          </Key>
+          <Property Name="BIG_KonfigId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Endpoint" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="BIG_Log">
+          <Key>
+            <PropertyRef Name="IdBIG_Log" />
+          </Key>
+          <Property Name="IdBIG_Log" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PackageFullId" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="DataOper" Type="DateTime" Precision="3" />
+          <Property Name="MsgText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TypKom" Type="Int32" />
+          <Property Name="ReqResp" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="BIG_Obligation">
+          <Key>
+            <PropertyRef Name="BIG_ObligationId" />
+          </Key>
+          <Property Name="BIG_ObligationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ObligationId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DataWysWezw" Type="DateTime" Precision="3" />
+          <Property Name="DataWymag" Type="DateTime" Precision="3" />
+          <Property Name="DataFaktury" Type="DateTime" Precision="3" />
+          <Property Name="Kwota" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Saldo" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Opis" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Zarzuty" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DataTytWyk" Type="DateTime" Precision="3" />
+          <Property Name="Sygnatura" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sad" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BIG_CaseId" Type="Int32" />
+          <Property Name="SystemId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IdWienaNal" Type="Int32" />
+          <NavigationProperty Name="BIG_Case" Relationship="Self.FK_BIG_Obligation_BIG_Case" FromRole="BIG_Obligation" ToRole="BIG_Case" />
+          <NavigationProperty Name="BIG_Operacja" Relationship="Self.FK_BIG_Operacja_BIG_Obligation" FromRole="BIG_Obligation" ToRole="BIG_Operacja" />
+          <Property Name="TypNal" Type="Int32" />
+          <Property Name="SuspendDate" Type="DateTime" Precision="3" />
+          <Property Name="AutoSuspend" Type="Boolean" />
+          <Property Name="NotifyDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="BIG_Operacja">
+          <Key>
+            <PropertyRef Name="BIG_OperacjaId" />
+          </Key>
+          <Property Name="BIG_OperacjaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DataOperacji" Type="DateTime" Precision="3" />
+          <Property Name="StatusOperacji" Type="Int32" />
+          <Property Name="StatOpis" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="TypOperacji" Type="Int32" />
+          <Property Name="BIG_ImportId" Type="Int32" />
+          <Property Name="BIG_ObligationId" Type="Int32" />
+          <Property Name="OrderOp" Type="Int32" />
+          <Property Name="DataProcedowaniaKrd" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="BIG_Import" Relationship="Self.FK_BIG_Operacja_BIG_Import" FromRole="BIG_Operacja" ToRole="BIG_Import" />
+          <NavigationProperty Name="BIG_Obligation" Relationship="Self.FK_BIG_Operacja_BIG_Obligation" FromRole="BIG_Operacja" ToRole="BIG_Obligation" />
+          <Property Name="SuspendDate" Type="DateTime" Precision="3" />
+          <Property Name="NotifyDate" Type="DateTime" Precision="3" />
+          <Property Name="BIG_CaseId" Type="Int32" />
+          <Property Name="BIG_DebtorId" Type="Int32" />
+          <NavigationProperty Name="BIG_Case" Relationship="LexEnaProModel.FK_BIG_Operacja_BIG_Case" FromRole="BIG_Operacja" ToRole="BIG_Case" />
+          <NavigationProperty Name="BIG_Debtor" Relationship="LexEnaProModel.FK_BIG_Operacja_BIG_Debtor" FromRole="BIG_Operacja" ToRole="BIG_Debtor" />
+        </EntityType>
+        <Association Name="FK_BIG_Debtor_BIG_Case">
+          <End Role="BIG_Case" Type="Self.BIG_Case" Multiplicity="0..1" />
+          <End Role="BIG_Debtor" Type="Self.BIG_Debtor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BIG_Case">
+              <PropertyRef Name="BIG_CaseId" />
+            </Principal>
+            <Dependent Role="BIG_Debtor">
+              <PropertyRef Name="BIG_CaseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BIG_Obligation_BIG_Case">
+          <End Role="BIG_Case" Type="Self.BIG_Case" Multiplicity="0..1" />
+          <End Role="BIG_Obligation" Type="Self.BIG_Obligation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BIG_Case">
+              <PropertyRef Name="BIG_CaseId" />
+            </Principal>
+            <Dependent Role="BIG_Obligation">
+              <PropertyRef Name="BIG_CaseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BIG_Operacja_BIG_Import">
+          <End Role="BIG_Import" Type="Self.BIG_Import" Multiplicity="0..1" />
+          <End Role="BIG_Operacja" Type="Self.BIG_Operacja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BIG_Import">
+              <PropertyRef Name="BIG_ImportId" />
+            </Principal>
+            <Dependent Role="BIG_Operacja">
+              <PropertyRef Name="BIG_ImportId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BIG_Operacja_BIG_Obligation">
+          <End Role="BIG_Obligation" Type="Self.BIG_Obligation" Multiplicity="0..1" />
+          <End Role="BIG_Operacja" Type="Self.BIG_Operacja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BIG_Obligation">
+              <PropertyRef Name="BIG_ObligationId" />
+            </Principal>
+            <Dependent Role="BIG_Operacja">
+              <PropertyRef Name="BIG_ObligationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LexEnaProEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BIG_Case" EntityType="Self.BIG_Case" />
+          <EntitySet Name="BIG_Debtor" EntityType="Self.BIG_Debtor" />
+          <EntitySet Name="BIG_Import" EntityType="Self.BIG_Import" />
+          <EntitySet Name="BIG_Konfig" EntityType="Self.BIG_Konfig" />
+          <EntitySet Name="BIG_Log" EntityType="Self.BIG_Log" />
+          <EntitySet Name="BIG_Obligation" EntityType="Self.BIG_Obligation" />
+          <EntitySet Name="BIG_Operacja" EntityType="Self.BIG_Operacja" />
+          <AssociationSet Name="FK_BIG_Debtor_BIG_Case" Association="Self.FK_BIG_Debtor_BIG_Case">
+            <End Role="BIG_Case" EntitySet="BIG_Case" />
+            <End Role="BIG_Debtor" EntitySet="BIG_Debtor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BIG_Obligation_BIG_Case" Association="Self.FK_BIG_Obligation_BIG_Case">
+            <End Role="BIG_Case" EntitySet="BIG_Case" />
+            <End Role="BIG_Obligation" EntitySet="BIG_Obligation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BIG_Operacja_BIG_Import" Association="Self.FK_BIG_Operacja_BIG_Import">
+            <End Role="BIG_Import" EntitySet="BIG_Import" />
+            <End Role="BIG_Operacja" EntitySet="BIG_Operacja" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BIG_Operacja_BIG_Obligation" Association="Self.FK_BIG_Operacja_BIG_Obligation">
+            <End Role="BIG_Obligation" EntitySet="BIG_Obligation" />
+            <End Role="BIG_Operacja" EntitySet="BIG_Operacja" />
+          </AssociationSet>
+          <EntitySet Name="UZD_Faktura" EntityType="LexEnaProModel.UZD_Faktura" />
+          <EntitySet Name="UZD_Pakiet" EntityType="LexEnaProModel.UZD_Pakiet" />
+          <AssociationSet Name="FK_BIG_Case_BIG_Import" Association="LexEnaProModel.FK_BIG_Case_BIG_Import">
+            <End Role="BIG_Import" EntitySet="BIG_Import" />
+            <End Role="BIG_Case" EntitySet="BIG_Case" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BIG_Operacja_BIG_Case" Association="LexEnaProModel.FK_BIG_Operacja_BIG_Case">
+            <End Role="BIG_Case" EntitySet="BIG_Case" />
+            <End Role="BIG_Operacja" EntitySet="BIG_Operacja" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BIG_Operacja_BIG_Debtor" Association="LexEnaProModel.FK_BIG_Operacja_BIG_Debtor">
+            <End Role="BIG_Debtor" EntitySet="BIG_Debtor" />
+            <End Role="BIG_Operacja" EntitySet="BIG_Operacja" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UZD_Faktura_UZD_Pakiet" Association="LexEnaProModel.FK_UZD_Faktura_UZD_Pakiet">
+            <End Role="UZD_Pakiet" EntitySet="UZD_Pakiet" />
+            <End Role="UZD_Faktura" EntitySet="UZD_Faktura" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="UZD_Faktura">
+          <Key>
+            <PropertyRef Name="UZD_FakturaId" />
+          </Key>
+          <Property Name="UZD_FakturaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdWiena" Type="Int32" />
+          <Property Name="Sygnatura" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="NrKlienta" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="IdNalWiena" Type="Int32" />
+          <Property Name="NrFaktury" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DataFaktury" Type="DateTime" Precision="3" />
+          <Property Name="DataWymagalnosci" Type="DateTime" Precision="3" />
+          <Property Name="Kwota" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Vat" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Zaleglosc" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="DataZaleglosci" Type="DateTime" Precision="3" />
+          <Property Name="IdDluzWiena" Type="Int32" />
+          <Property Name="Nazwa" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Miejscowosc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Ulica" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Kod" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="Nip" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DataWeryfNIP" Type="DateTime" Precision="3" />
+          <Property Name="StatusWalidNip" Type="Int32" />
+          <Property Name="StatusNip" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="UZD_PakietId" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="StatOpis" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UZD_Pakiet" Relationship="LexEnaProModel.FK_UZD_Faktura_UZD_Pakiet" FromRole="UZD_Faktura" ToRole="UZD_Pakiet" />
+        </EntityType>
+        <EntityType Name="UZD_Pakiet">
+          <Key>
+            <PropertyRef Name="UZD_PakietId" />
+          </Key>
+          <Property Name="UZD_PakietId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DataTypowania" Type="DateTime" Precision="3" />
+          <Property Name="DataPotwierdzenia" Type="DateTime" Precision="3" />
+          <Property Name="DataImportu" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="LDlu" Type="Int32" />
+          <Property Name="LFaktur" Type="Int32" />
+          <Property Name="LPotwierdzDlu" Type="Int32" />
+          <Property Name="LPotwierdzFaktur" Type="Int32" />
+          <Property Name="Opis" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <Property Name="XLSXPotwierdz" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="importer" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="potwierdzil" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Oznaczenie" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UZD_Faktura" Relationship="LexEnaProModel.FK_UZD_Faktura_UZD_Pakiet" FromRole="UZD_Pakiet" ToRole="UZD_Faktura" />
+        </EntityType>
+        <Association Name="FK_BIG_Case_BIG_Import">
+          <End Type="LexEnaProModel.BIG_Import" Role="BIG_Import" Multiplicity="0..1" />
+          <End Type="LexEnaProModel.BIG_Case" Role="BIG_Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BIG_Import">
+              <PropertyRef Name="BIG_ImportId" />
+            </Principal>
+            <Dependent Role="BIG_Case">
+              <PropertyRef Name="BIG_ImportId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BIG_Operacja_BIG_Case">
+          <End Type="LexEnaProModel.BIG_Case" Role="BIG_Case" Multiplicity="0..1" />
+          <End Type="LexEnaProModel.BIG_Operacja" Role="BIG_Operacja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BIG_Case">
+              <PropertyRef Name="BIG_CaseId" />
+            </Principal>
+            <Dependent Role="BIG_Operacja">
+              <PropertyRef Name="BIG_CaseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BIG_Operacja_BIG_Debtor">
+          <End Type="LexEnaProModel.BIG_Debtor" Role="BIG_Debtor" Multiplicity="0..1" />
+          <End Type="LexEnaProModel.BIG_Operacja" Role="BIG_Operacja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BIG_Debtor">
+              <PropertyRef Name="BIG_DebtorId" />
+            </Principal>
+            <Dependent Role="BIG_Operacja">
+              <PropertyRef Name="BIG_DebtorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UZD_Faktura_UZD_Pakiet">
+          <End Type="LexEnaProModel.UZD_Pakiet" Role="UZD_Pakiet" Multiplicity="1" />
+          <End Type="LexEnaProModel.UZD_Faktura" Role="UZD_Faktura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UZD_Pakiet">
+              <PropertyRef Name="UZD_PakietId" />
+            </Principal>
+            <Dependent Role="UZD_Faktura">
+              <PropertyRef Name="UZD_PakietId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LexEnaProModelStoreContainer" CdmEntityContainer="LexEnaProEntities">
+          <EntitySetMapping Name="BIG_Case">
+            <EntityTypeMapping TypeName="LexEnaProModel.BIG_Case">
+              <MappingFragment StoreEntitySet="BIG_Case">
+                <ScalarProperty Name="NotifyDate" ColumnName="NotifyDate" />
+                <ScalarProperty Name="SuspendDate" ColumnName="SuspendDate" />
+                <ScalarProperty Name="BIG_ImportId" ColumnName="BIG_ImportId" />
+                <ScalarProperty Name="BIG_CaseId" ColumnName="BIG_CaseId" />
+                <ScalarProperty Name="CaseId" ColumnName="CaseId" />
+                <ScalarProperty Name="CaseBIGId" ColumnName="CaseBIGId" />
+                <ScalarProperty Name="SrcSystem" ColumnName="SrcSystem" />
+                <ScalarProperty Name="IdWienaSpr" ColumnName="IdWienaSpr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BIG_Debtor">
+            <EntityTypeMapping TypeName="LexEnaProModel.BIG_Debtor">
+              <MappingFragment StoreEntitySet="BIG_Debtor">
+                <ScalarProperty Name="BIG_DebtorId" ColumnName="BIG_DebtorId" />
+                <ScalarProperty Name="DebtorType" ColumnName="DebtorType" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="Secondname" ColumnName="Secondname" />
+                <ScalarProperty Name="IdentityNumberType" ColumnName="IdentityNumberType" />
+                <ScalarProperty Name="IDNumber" ColumnName="IDNumber" />
+                <ScalarProperty Name="Address1L1" ColumnName="Address1L1" />
+                <ScalarProperty Name="Address1L2" ColumnName="Address1L2" />
+                <ScalarProperty Name="Address2L1" ColumnName="Address2L1" />
+                <ScalarProperty Name="Address2L2" ColumnName="Address2L2" />
+                <ScalarProperty Name="Regon" ColumnName="Regon" />
+                <ScalarProperty Name="Krs" ColumnName="Krs" />
+                <ScalarProperty Name="BIG_CaseId" ColumnName="BIG_CaseId" />
+                <ScalarProperty Name="Pesel" ColumnName="Pesel" />
+                <ScalarProperty Name="NrKlienta" ColumnName="NrKlienta" />
+                <ScalarProperty Name="NrKlientaFull" ColumnName="NrKlientaFull" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BIG_Import">
+            <EntityTypeMapping TypeName="LexEnaProModel.BIG_Import">
+              <MappingFragment StoreEntitySet="BIG_Import">
+                <ScalarProperty Name="TypImp" ColumnName="TypImp" />
+                <ScalarProperty Name="BIG_ImportId" ColumnName="BIG_ImportId" />
+                <ScalarProperty Name="DataImportu" ColumnName="DataImportu" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="StatOpis" ColumnName="StatOpis" />
+                <ScalarProperty Name="DataWysylki" ColumnName="DataWysylki" />
+                <ScalarProperty Name="ImportFile" ColumnName="ImportFile" />
+                <ScalarProperty Name="lPoz" ColumnName="lPoz" />
+                <ScalarProperty Name="Filename" ColumnName="Filename" />
+                <ScalarProperty Name="JobId" ColumnName="JobId" />
+                <ScalarProperty Name="ChunkId" ColumnName="ChunkId" />
+                <ScalarProperty Name="DataStatusu" ColumnName="DataStatusu" />
+                <ScalarProperty Name="lBlad" ColumnName="lBlad" />
+                <ScalarProperty Name="lSuccess" ColumnName="lSuccess" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BIG_Konfig">
+            <EntityTypeMapping TypeName="LexEnaProModel.BIG_Konfig">
+              <MappingFragment StoreEntitySet="BIG_Konfig">
+                <ScalarProperty Name="BIG_KonfigId" ColumnName="BIG_KonfigId" />
+                <ScalarProperty Name="Endpoint" ColumnName="Endpoint" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BIG_Log">
+            <EntityTypeMapping TypeName="LexEnaProModel.BIG_Log">
+              <MappingFragment StoreEntitySet="BIG_Log">
+                <ScalarProperty Name="IdBIG_Log" ColumnName="IdBIG_Log" />
+                <ScalarProperty Name="PackageFullId" ColumnName="PackageFullId" />
+                <ScalarProperty Name="DataOper" ColumnName="DataOper" />
+                <ScalarProperty Name="MsgText" ColumnName="MsgText" />
+                <ScalarProperty Name="TypKom" ColumnName="TypKom" />
+                <ScalarProperty Name="ReqResp" ColumnName="ReqResp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BIG_Obligation">
+            <EntityTypeMapping TypeName="LexEnaProModel.BIG_Obligation">
+              <MappingFragment StoreEntitySet="BIG_Obligation">
+                <ScalarProperty Name="NotifyDate" ColumnName="NotifyDate" />
+                <ScalarProperty Name="AutoSuspend" ColumnName="AutoSuspend" />
+                <ScalarProperty Name="SuspendDate" ColumnName="SuspendDate" />
+                <ScalarProperty Name="TypNal" ColumnName="TypNal" />
+                <ScalarProperty Name="BIG_ObligationId" ColumnName="BIG_ObligationId" />
+                <ScalarProperty Name="ObligationId" ColumnName="ObligationId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="DataWysWezw" ColumnName="DataWysWezw" />
+                <ScalarProperty Name="DataWymag" ColumnName="DataWymag" />
+                <ScalarProperty Name="DataFaktury" ColumnName="DataFaktury" />
+                <ScalarProperty Name="Kwota" ColumnName="Kwota" />
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+                <ScalarProperty Name="Zarzuty" ColumnName="Zarzuty" />
+                <ScalarProperty Name="DataTytWyk" ColumnName="DataTytWyk" />
+                <ScalarProperty Name="Sygnatura" ColumnName="Sygnatura" />
+                <ScalarProperty Name="Sad" ColumnName="Sad" />
+                <ScalarProperty Name="BIG_CaseId" ColumnName="BIG_CaseId" />
+                <ScalarProperty Name="SystemId" ColumnName="SystemId" />
+                <ScalarProperty Name="IdWienaNal" ColumnName="IdWienaNal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BIG_Operacja">
+            <EntityTypeMapping TypeName="LexEnaProModel.BIG_Operacja">
+              <MappingFragment StoreEntitySet="BIG_Operacja">
+                <ScalarProperty Name="BIG_DebtorId" ColumnName="BIG_DebtorId" />
+                <ScalarProperty Name="BIG_CaseId" ColumnName="BIG_CaseId" />
+                <ScalarProperty Name="NotifyDate" ColumnName="NotifyDate" />
+                <ScalarProperty Name="SuspendDate" ColumnName="SuspendDate" />
+                <ScalarProperty Name="BIG_OperacjaId" ColumnName="BIG_OperacjaId" />
+                <ScalarProperty Name="DataOperacji" ColumnName="DataOperacji" />
+                <ScalarProperty Name="StatusOperacji" ColumnName="StatusOperacji" />
+                <ScalarProperty Name="StatOpis" ColumnName="StatOpis" />
+                <ScalarProperty Name="TypOperacji" ColumnName="TypOperacji" />
+                <ScalarProperty Name="BIG_ImportId" ColumnName="BIG_ImportId" />
+                <ScalarProperty Name="BIG_ObligationId" ColumnName="BIG_ObligationId" />
+                <ScalarProperty Name="OrderOp" ColumnName="OrderOp" />
+                <ScalarProperty Name="DataProcedowaniaKrd" ColumnName="DataProcedowaniaKrd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UZD_Faktura">
+            <EntityTypeMapping TypeName="LexEnaProModel.UZD_Faktura">
+              <MappingFragment StoreEntitySet="UZD_Faktura">
+                <ScalarProperty Name="StatOpis" ColumnName="StatOpis" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="UZD_PakietId" ColumnName="UZD_PakietId" />
+                <ScalarProperty Name="StatusNip" ColumnName="StatusNip" />
+                <ScalarProperty Name="StatusWalidNip" ColumnName="StatusWalidNip" />
+                <ScalarProperty Name="DataWeryfNIP" ColumnName="DataWeryfNIP" />
+                <ScalarProperty Name="Nip" ColumnName="Nip" />
+                <ScalarProperty Name="Kod" ColumnName="Kod" />
+                <ScalarProperty Name="Ulica" ColumnName="Ulica" />
+                <ScalarProperty Name="Miejscowosc" ColumnName="Miejscowosc" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="IdDluzWiena" ColumnName="IdDluzWiena" />
+                <ScalarProperty Name="DataZaleglosci" ColumnName="DataZaleglosci" />
+                <ScalarProperty Name="Zaleglosc" ColumnName="Zaleglosc" />
+                <ScalarProperty Name="Vat" ColumnName="Vat" />
+                <ScalarProperty Name="Kwota" ColumnName="Kwota" />
+                <ScalarProperty Name="DataWymagalnosci" ColumnName="DataWymagalnosci" />
+                <ScalarProperty Name="DataFaktury" ColumnName="DataFaktury" />
+                <ScalarProperty Name="NrFaktury" ColumnName="NrFaktury" />
+                <ScalarProperty Name="IdNalWiena" ColumnName="IdNalWiena" />
+                <ScalarProperty Name="NrKlienta" ColumnName="NrKlienta" />
+                <ScalarProperty Name="Sygnatura" ColumnName="Sygnatura" />
+                <ScalarProperty Name="IdWiena" ColumnName="IdWiena" />
+                <ScalarProperty Name="UZD_FakturaId" ColumnName="UZD_FakturaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UZD_Pakiet">
+            <EntityTypeMapping TypeName="LexEnaProModel.UZD_Pakiet">
+              <MappingFragment StoreEntitySet="UZD_Pakiet">
+                <ScalarProperty Name="Oznaczenie" ColumnName="Oznaczenie" />
+                <ScalarProperty Name="potwierdzil" ColumnName="potwierdzil" />
+                <ScalarProperty Name="importer" ColumnName="importer" />
+                <ScalarProperty Name="XLSXPotwierdz" ColumnName="XLSXPotwierdz" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+                <ScalarProperty Name="LPotwierdzFaktur" ColumnName="LPotwierdzFaktur" />
+                <ScalarProperty Name="LPotwierdzDlu" ColumnName="LPotwierdzDlu" />
+                <ScalarProperty Name="LFaktur" ColumnName="LFaktur" />
+                <ScalarProperty Name="LDlu" ColumnName="LDlu" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="DataImportu" ColumnName="DataImportu" />
+                <ScalarProperty Name="DataPotwierdzenia" ColumnName="DataPotwierdzenia" />
+                <ScalarProperty Name="DataTypowania" ColumnName="DataTypowania" />
+                <ScalarProperty Name="UZD_PakietId" ColumnName="UZD_PakietId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

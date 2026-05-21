@@ -1,0 +1,75 @@
+﻿<UserControl x:Class="LexEnaTrs.Views.UsersKonfigView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" xmlns:my="clr-namespace:LexEnaTrs.Web"
+			   xmlns:local="clr-namespace:LexEnaTrs" Loaded="UserControl_Loaded">
+	<UserControl.Resources>
+        <DataTemplate x:Key="UserFormTemplate" >
+            <Grid Margin="0" Height="131" Width="545">
+               <telerik:DataFormDataField Margin="192,18,-22,0" DataMemberBinding="{Binding Nazwisko, Mode=TwoWay}"  VerticalAlignment="Top"/>
+            	<telerik:DataFormDataField Margin="-87,18,257,0" DataMemberBinding="{Binding Imie, Mode=TwoWay}"  VerticalAlignment="Top"/>
+            	<TextBlock TextAlignment="Right" Margin="8,27,0,0" TextWrapping="Wrap" Text="Imię" VerticalAlignment="Top" HorizontalAlignment="Left" />
+            	<TextBlock TextAlignment="Right" Margin="262,27,231,0" TextWrapping="Wrap" Text="Nazwisko" VerticalAlignment="Top" d:LayoutOverrides="Width" />
+                			   
+                <telerik:DataFormComboBoxField  DataMemberBinding = "{Binding Rola, Mode=TwoWay}" 
+				ItemsSource="{Binding rodzajeRolUzytkownikow, Source={StaticResource SlownikRodzajeRol}}" DisplayMemberPath="Nazwa" SelectedValuePath="Numer" x:Name = "TypJednostki" ToolTipService.ToolTip="Wybierz rolę" Margin="-88,47,257,0" d:LayoutOverrides="GridBox" VerticalAlignment="Top"/>
+                <telerik:DataFormComboBoxField  DataMemberBinding = "{Binding JednostkaWindykacji_Id, Mode=TwoWay}" 
+                	ItemsSource="{Binding dictionaryJednostkiWindykacji, Source={StaticResource JednostkaWindykacjiList}}" DisplayMemberPath="Nazwa" SelectedValuePath="Id"   Margin="191,47,-22,0" d:LayoutOverrides="GridBox" VerticalAlignment="Top"/>
+                <TextBlock HorizontalAlignment="Right" TextAlignment="Right" Margin="0,54,512,61" TextWrapping="Wrap" Text="Rola" d:LayoutOverrides="Height" />
+                <TextBlock HorizontalAlignment="Right" TextAlignment="Right" Margin="0,54,231,61" TextWrapping="Wrap" Text="Jednostka" d:LayoutOverrides="Height" />
+			    
+				<telerik:DataFormComboBoxField  DataMemberBinding = "{Binding KontoEPU_Id, Mode=TwoWay}" 
+				ItemsSource="{Binding dictionaryKontaEPU, Source={StaticResource ListaKontEPU}}" DisplayMemberPath="NazwaKonta" SelectedValuePath="Id"   Margin="0,74,169,0" d:LayoutOverrides="GridBox" VerticalAlignment="Top" ToolTipService.ToolTip="Konto, dla którego domyślnie będa generowane pozwy przez tego użytkownika"/>
+                <TextBlock HorizontalAlignment="Right" TextAlignment="Right" Margin="0,0,424,34" TextWrapping="Wrap" Text="Domyślne konto EPU" VerticalAlignment="Bottom" Width="121" />
+                
+				<telerik:DataFormDataField Margin="0,0,-22,25" DataMemberBinding="{Binding Inicjal, Mode=TwoWay}"  VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="160"/>
+                <TextBlock TextAlignment="Right" Margin="0,0,92,33" TextWrapping="Wrap" Text="Inicjał" VerticalAlignment="Bottom" HorizontalAlignment="Right" />
+                
+				<telerik:DataFormCheckBoxField  Label="Konto aktywne"  DataMemberBinding="{Binding Status,Mode=TwoWay, Converter ={StaticResource IntToBoolConverter }}" HorizontalAlignment="Left" Margin="128,0,0,8" VerticalAlignment="Bottom" Width="325"/>         		
+						
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+    
+    <Grid x:Name="LayoutRoot" Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="700" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <telerik:RadDomainDataSource AutoLoad="False" Height="0"   x:Name="Usersdds" QueryName="GetUzytkownikByIdJednostkiQuery" Width="0" Grid.Column="1" Margin="121,210,453,210">
+            <telerik:RadDomainDataSource.DomainContext>
+                <my:LexEnaMeritumDomainContext />
+            </telerik:RadDomainDataSource.DomainContext>
+            <telerik:RadDomainDataSource.QueryParameters>
+                    <telerik:QueryParameter ParameterName="IdJednostki" />
+                    <telerik:QueryParameter ParameterName="rola" />
+                    
+                </telerik:RadDomainDataSource.QueryParameters>
+            
+            
+        </telerik:RadDomainDataSource>
+        <telerik:RadGridView HorizontalAlignment="Left" Name="UserGridView" ItemsSource="{Binding DataView,ElementName=Usersdds}" IsReadOnly="True" VerticalAlignment="Top"  IsFilteringAllowed="True" IsEnabled="True" AutoGenerateColumns="False" CanUserSortColumns="True" FilteringMode="Popup" ShowGroupPanel="False" Margin="0,31,0,0">
+            <telerik:RadGridView.Columns>
+
+                <telerik:GridViewCheckBoxColumn  Header="A?"   DataMemberBinding="{Binding Status,Converter={StaticResource IntToBoolConverter}}" IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5" TextAlignment="Center"  />
+                <telerik:GridViewDataColumn  Header="Nazwa użytkownika"  DataMemberBinding="{Binding UserName}" IsFilterable="True"  HeaderTextAlignment="Center" MinWidth="10" TextAlignment="Center"  />
+                 <telerik:GridViewDataColumn  Header="Imię"  DataMemberBinding="{Binding Imie}" IsFilterable="True"  HeaderTextAlignment="Center" MinWidth="5" TextAlignment="Center"  />
+                
+                <telerik:GridViewDataColumn  Header="Nazwisko"  DataMemberBinding="{Binding Nazwisko}" IsFilterable="True"  HeaderTextAlignment="Center" MinWidth="5" TextAlignment="Center"  />
+                <telerik:GridViewComboBoxColumn  Header="Rola"   DataMemberBinding="{Binding Rola}"  ItemsSource="{Binding rodzajeRolUzytkownikow, Source={StaticResource SlownikRodzajeRol}}" DisplayMemberPath="Nazwa" SelectedValueMemberPath="Numer" IsFilterable="False"  HeaderTextAlignment="Center" MinWidth="5" TextAlignment="Center"  />
+                <telerik:GridViewComboBoxColumn  Header="Jednostka" Width="*" DataMemberBinding="{Binding JednostkaWindykacji_Id}"  ItemsSource="{Binding dictionaryJednostkiWindykacji, Source={StaticResource JednostkaWindykacjiList}}" DisplayMemberPath="Nazwa" SelectedValueMemberPath="Id" IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5" TextAlignment="Center"  />
+                
+            </telerik:RadGridView.Columns>
+        </telerik:RadGridView>
+        <telerik:RadDataForm Name="UserDataForm" VerticalAlignment="Top" ItemsSource="{Binding DataView,ElementName=JednostkiWindykacjidds}" CurrentItem="{Binding SelectedItem, ElementName=UserGridView}" AutoGenerateFields="False" CancelButtonContent="Anuluj" Grid.Column="1" 
+                             ReadOnlyTemplate="{StaticResource UserFormTemplate}" HorizontalAlignment="Left"
+                             NewItemTemplate="{StaticResource UserFormTemplate}"
+                             EditTemplate="{StaticResource UserFormTemplate}" Width="590" EditEnded="UserDataForm_EditEnded" BeginningEdit="UserDataForm_BeginningEdit" />
+        <Button Content="Dodaj nowego użytkownika" Height="23" HorizontalAlignment="Left" Margin="3,4,0,0" Name="AddNewUser" VerticalAlignment="Top" Width="247" Click="AddNewUser_Click" />
+        <Button x:Name="ChdPwd" Content="Zmień hasło" Margin="254,4,208,0" VerticalAlignment="Top" Click="ChdPwd_Click"/>
+        <Button x:Name="ResetPwd" Content="Resetuj hasło" HorizontalAlignment="Right" Margin="0,4,114,0" VerticalAlignment="Top" Width="90" Click="ResetPwd_Click"/>
+        <Button x:Name="UnlockUsr" Content="Odblokuj konto" HorizontalAlignment="Right" Margin="0,5,20,0" VerticalAlignment="Top" Width="90" Click="UnlockUsr_Click" />
+    </Grid>
+</UserControl>

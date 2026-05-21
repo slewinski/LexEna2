@@ -1,0 +1,64 @@
+declare @maxId int,
+		@maxJob int 
+
+insert into BIG_Import 
+([DataImportu]
+           ,[Username]
+           ,[Status]
+           ,[StatOpis]
+           ,[DataWysylki]
+           ,[ImportFile]
+           ,[lPoz]
+           ,[Filename]
+           ,[JobId]
+           ,[ChunkId]
+           ,[DataStatusu]
+           ,[lBlad]
+           ,[lSuccess]
+           ,[TypImp])
+select 
+            [DataImportu]
+           ,[Username]
+           ,[Status]
+           ,[StatOpis]
+           ,[DataWysylki]
+           ,[ImportFile]
+           ,[lPoz]
+           ,[Filename] + '(cz.2)'
+           ,[JobId]
+           ,[ChunkId]
+           ,[DataStatusu]
+           ,[lBlad]
+           ,[lSuccess]
+           ,[TypImp] from BIG_Import where BIG_ImportId = ( select MAX(Big_ImportId) from BIG_Import)
+
+
+select @maxId = max(BIg_ImportId) from big_import 
+select @maxJob = max(BIG_JobId) from big_job where CurrRow = 0   
+
+INSERT INTO [LexEnaPro].[dbo].[BIG_Operacja]
+           ([DataOperacji]
+           ,[StatusOperacji]
+           ,[StatOpis]
+           ,[TypOperacji]
+           ,[BIG_ImportId]
+           ,[BIG_ObligationId]
+           ,[BIG_CaseId]
+           ,[BIG_DebtorId])
+           
+ select    GETDATE()
+           ,0
+           ,''
+           ,3
+           ,@maxId
+           ,  bv.BIG_ObligationId
+           ,  bv.BIG_CaseId
+           ,  bv.BIG_DebtorId
+           
+ from BIGvw_ObligationLastStatus   bv
+ where bv.srcsystem = 3 and bv.nrklienta not in 
+ (select nrklienta from BIG_JobRow bjr where bjr.BIG_JobId = @maxJob )          
+ 	
+
+
+ 	

@@ -1,0 +1,716 @@
+﻿<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+	xmlns:local="clr-namespace:LexEnaTrs" 
+    xmlns:riaControls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.DomainServices" 
+    xmlns:my="clr-namespace:LexEnaTrs.Web" xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk" xmlns:Telerik_Windows_Controls_Data_DataForm="clr-namespace:Telerik.Windows.Controls.Data.DataForm;assembly=Telerik.Windows.Controls.Data" x:Class="LexEnaTrs.SprawaView"
+    mc:Ignorable="d" Width="710" Height="471" FontFamily="Portable User Interface" 
+    >
+
+
+    <UserControl.Resources>
+
+        <local:SprawaExtraData   x:Key="InneDaneSprawy" />
+
+        <DataTemplate x:Key="SprawaFormTemplate">
+            <Grid Height="390" Width="687" >
+                <Border BorderBrush="Black" BorderThickness="1" Margin="8,184,6,122"/>
+                <Border BorderBrush="Black" BorderThickness="1" Margin="8,0,6,30" Height="81" VerticalAlignment="Bottom"/>
+                <telerik:DataFormComboBoxField x:Name="Radca" DataMemberBinding="{Binding Radca_Id, Mode=TwoWay, NotifyOnValidationError=true, TargetNullValue='', ValidatesOnExceptions=true}"  ItemsSource= "{Binding dictionaryRadca, Source={StaticResource RadcowieList}}" SelectedValuePath="Numer" DisplayMemberPath="Nazwa" Margin="-32,0,321,136" VerticalAlignment="Bottom"/>
+                <telerik:DataFormDateField  DataMemberBinding="{Binding DataR, Mode=TwoWay, NotifyOnValidationError=true, TargetNullValue='', ValidatesOnExceptions=true}"  HorizontalAlignment="Right" Margin="0,45,219,0"  VerticalAlignment="Top" Width="191"/>
+                <TextBlock x:Name="DataRejLabel" Margin="243,55,0,0"  TextWrapping="Wrap" Text="Data rejestracji" VerticalAlignment="Top" FontWeight="Bold" FontSize="10.667" HorizontalAlignment="Left" Width="97"/>
+                <TextBlock x:Name="SygnaturaLabel" Margin="8,45,0,0" TextAlignment="Right" TextWrapping="Wrap" Text="Sygnatura sprawy" VerticalAlignment="Top" HorizontalAlignment="Left" Width="89" FontWeight="Bold" FontSize="10.667"/>
+                <telerik:DataFormDataField DataMemberBinding="{Binding sygnatura, Mode=TwoWay, NotifyOnValidationError=true, TargetNullValue='', ValidatesOnExceptions=true}" Margin="16,43,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="253"/>
+                <TextBlock x:Name="StatusLabel" Margin="8,15,0,0" TextAlignment="Right"  TextWrapping="Wrap" Text="Status sprawy" VerticalAlignment="Top" HorizontalAlignment="Left" Width="89" FontWeight="Bold" FontSize="10.667" RenderTransformOrigin="0.504,-2"/>
+                <Button x:Name="StatButton"  HorizontalAlignment="Right" Margin="0,9,7,0" Width="30" ToolTipService.ToolTip="Dodaj lub zmień status sprawy" VerticalAlignment="Top" Height="26" Click="StatButton_Click">
+                    <Image x:Name="imgSls" Source="/Images/Lista.png" />
+
+                </Button>
+                <telerik:DataFormCheckBoxField  DataMemberBinding="{Binding CzyKoniec, Converter={StaticResource IntToBoolConverter}, Mode=TwoWay, NotifyOnValidationError=true, TargetNullValue='', ValidatesOnExceptions=true}" x:Name="CzyzakonczonaCheckBox"  HorizontalAlignment="Left" Margin="378,0,0,4" VerticalAlignment="Bottom"/>
+                <TextBlock x:Name="CzyKoniecLabel" Margin="233,0,296,8"  TextWrapping="Wrap" Text="Postępowanie zakończone" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="10.667" RenderTransformOrigin="0.439,4.438" d:LayoutOverrides="LeftPosition, RightPosition"/>
+                <TextBlock x:Name="DataKonLabel" Margin="450,0,0,8"  TextWrapping="Wrap" Text="Data zakończenia" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="10.667" HorizontalAlignment="Left" Width="111" Height="16"/>
+                <telerik:DataFormDateField DataMemberBinding="{Binding DataKon, Mode=TwoWay, NotifyOnValidationError=true, TargetNullValue='', ValidatesOnExceptions=true}" x:Name="DataKon" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="182" Margin="504,0,0,0" FontFamily="Portable User Interface"/>
+                <TextBlock x:Name="WierzycielLabel" Margin="5,77,0,0" TextAlignment="Right" TextWrapping="Wrap" Text="Wierzyciel Oddział" VerticalAlignment="Top" HorizontalAlignment="Left" Width="92" FontWeight="Bold" FontSize="10.667" Height="32"/>
+                <TextBlock x:Name="WierzycielLabel_Copy" Margin="320,86,275,0" TextAlignment="Right" TextWrapping="Wrap" Text="Rejon" FontWeight="Bold" FontSize="10.667" Height="20" VerticalAlignment="Top"/>
+                <TextBlock x:Name="WierzycielLabel_Copy1" Margin="5,0,0,122" TextAlignment="Right" TextWrapping="Wrap" Text="Radca prowadzący" HorizontalAlignment="Left" Width="92" FontWeight="Bold" FontSize="10.667" Height="48" VerticalAlignment="Bottom"/>
+                <TextBlock x:Name="WierzycielLabel_Copy2" Margin="0,0,248,180" TextAlignment="Right" TextWrapping="Wrap" Text="Referent" FontWeight="Bold" FontSize="10.667" RenderTransformOrigin="0.264,1.615" HorizontalAlignment="Right" Width="53" Height="13" VerticalAlignment="Bottom"/>
+                <TextBlock x:Name="WierzycielLabel_Copy3" Margin="8,187,0,173" TextAlignment="Right" TextWrapping="Wrap" Text="Jednostka windykacji" HorizontalAlignment="Left" Width="92" FontWeight="Bold" FontSize="10.667" d:LayoutOverrides="TopPosition, BottomPosition"/>
+                <Button x:Name="JednostkaButton" Margin="322,188,335,176"  ToolTipService.ToolTip="Dodaj lub zmień jednostkę" Visibility="{Binding VisibleForSuperAdmin, Source={StaticResource IsSuperAdminRole}}" Click="JednostkaButton_Click" d:LayoutOverrides="TopPosition, BottomPosition" RenderTransformOrigin="0.533,0.962">
+                    <Image  Source="/Images/Lista.png" />
+                </Button>
+                <Button x:Name="ZwrocButton"  Margin="352,188,305,176" ToolTipService.ToolTip="Zwróć do uzupełnienia" Click="ZwrocButton_Click" >
+                <Image  Source="/Images/undo.png" />
+                </Button>
+                <Button x:Name="StatButtonReferent"  HorizontalAlignment="Right" Margin="0,0,8,172" Width="30"  Visibility="{Binding VisibleForAnyAdmin, Source={StaticResource IsAnyAdminRole}}" ToolTipService.ToolTip="Dodaj lub zmień referenta" Click="StatButtonReferent_Click" VerticalAlignment="Bottom">
+                    <Image  Source="/Images/Lista.png" />
+                </Button>
+                <telerik:DataFormCheckBoxField  DataMemberBinding="{Binding LiczPrzedplat, Mode=TwoWay, NotifyOnValidationError=true, TargetNullValue='', ValidatesOnExceptions=true}"  HorizontalAlignment="Left" Margin="118,0,0,5" VerticalAlignment="Bottom" RenderTransformOrigin="0.583,0.542" Width="75"/>
+                <TextBlock x:Name="CzyKoniecLabel_Copy" Margin="3,0,0,9"  TextWrapping="Wrap" Text="Licznik przedpłatowy" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="10.667" RenderTransformOrigin="0.439,4.438" HorizontalAlignment="Left" Width="140" Height="15"/>
+                <telerik:DataFormDataField DataMemberBinding="{Binding LicznikUlica, Mode=TwoWay, NotifyOnValidationError=true, TargetNullValue='', ValidatesOnExceptions=true}" Margin="-186,0,6,64" RenderTransformOrigin="0.169,0.094" VerticalAlignment="Bottom"/>
+                <telerik:DataFormDataField DataMemberBinding="{Binding LicznikMiejsce, Mode=TwoWay, NotifyOnValidationError=true, TargetNullValue='', ValidatesOnExceptions=true}" Margin="-186,0,6,32" RenderTransformOrigin="0.169,0.094" VerticalAlignment="Bottom"/>
+                <TextBlock x:Name="WierzycielLabel_Copy4" Margin="-41,0,0,92" TextAlignment="Right" TextWrapping="Wrap" Text="Lokalizacja licznika ( jeśli inna niż adres dłużnika) " HorizontalAlignment="Left" Width="358" FontWeight="Bold" FontSize="10.667" Height="20" VerticalAlignment="Bottom"/>
+                <TextBlock x:Name="WierzycielLabel_Copy5" Margin="8,0,0,66" TextAlignment="Right" TextWrapping="Wrap" Text="ulica, nr domu, lokalu" HorizontalAlignment="Left" Width="92" FontWeight="Bold" FontSize="9.333" Height="30" VerticalAlignment="Bottom"/>
+                <TextBlock x:Name="WierzycielLabel_Copy6" Margin="8,0,0,31" TextAlignment="Right" TextWrapping="Wrap" Text="miejsce, kod, poczta" HorizontalAlignment="Left" Width="92" FontWeight="Bold" FontSize="9.333" Height="30" VerticalAlignment="Bottom"/>
+                <TextBlock x:Name="DataRejLabel_Copy" Margin="0,55,149,0"  TextWrapping="Wrap" Text="Nr ewidencyjny" VerticalAlignment="Top" FontWeight="Bold" FontSize="10.667" HorizontalAlignment="Right" Width="97"/>
+                <telerik:DataFormDataField HorizontalAlignment="Right" Margin="0,45,-26,0" DataMemberBinding="{Binding NrEwid, Mode=TwoWay, NotifyOnValidationError=true, TargetNullValue='', ValidatesOnExceptions=true}" VerticalAlignment="Top" Width="254"/>
+                <TextBlock x:Name="WierzycielLabel_Copy7" Margin="5,106,0,0" TextAlignment="Right" TextWrapping="Wrap" Text="Data wn. pozwu" FontWeight="Bold" FontSize="10.667" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="92"/>
+                <telerik:DataFormDateField x:Name="DataKon_Copy" Margin="45,106,0,0"  DataMemberBinding="{Binding DataZloPozwu, Mode=TwoWay}" VerticalAlignment="Top" HorizontalAlignment="Left" Width="190"/>
+                <TextBlock x:Name="WierzycielLabel_Copy8" Margin="256,110,275,0" TextAlignment="Right" TextWrapping="Wrap" Text="Sygnatura sądowa" FontWeight="Bold" FontSize="10.667" Height="20" VerticalAlignment="Top"/>
+                <telerik:DataFormDataField Margin="317,104,34,0" VerticalAlignment="Top"  DataMemberBinding="{Binding SygnNCe, Mode=TwoWay}" />
+                <TextBlock Margin="101,13,41,0" x:Name="StatLabel" TextWrapping="NoWrap"  TextAlignment="Left" Text="{Binding ExtraSprData.Status, Mode=OneWay, Source={StaticResource InneDaneSprawy}}" VerticalAlignment="Top" Height="22" Foreground="Blue" FontWeight="Bold" FontSize="12"/>
+
+                <TextBlock Margin="101,84,316,0" x:Name="OddzialLabel" TextWrapping="NoWrap"  TextAlignment="Left" Text="{Binding ExtraSprData.Oddzial, Source={StaticResource InneDaneSprawy}}" VerticalAlignment="Top" Height="22" Foreground="Blue"/>
+                <TextBlock Margin="0,83,8,0" x:Name="RejonLabel" TextWrapping="NoWrap"  TextAlignment="Left" Text="{Binding ExtraSprData.Rejon, Source={StaticResource InneDaneSprawy}}" VerticalAlignment="Top" Height="22" Foreground="Blue" HorizontalAlignment="Right" Width="257"/>
+                <TextBlock Margin="104,192,0,176" x:Name="JednLabel" TextWrapping="NoWrap"  TextAlignment="Left" Text="{Binding ExtraSprData.JednWindykacji, Source={StaticResource InneDaneSprawy}}" Foreground="Blue" HorizontalAlignment="Left" Width="233" d:LayoutOverrides="TopPosition, BottomPosition"/>
+                <TextBlock Margin="0,0,39,174" x:Name="ReferentLabel" TextWrapping="NoWrap"  TextAlignment="Left" Text="{Binding ExtraSprData.Referent, Source={StaticResource InneDaneSprawy}}" Foreground="Blue" HorizontalAlignment="Right" Width="200" Height="21" VerticalAlignment="Bottom"/>
+                <TextBlock Margin="104,146,69,0" x:Name="SadOrzek" TextWrapping="NoWrap"  TextAlignment="Left" Text="{Binding ExtraSprData.Sad, Mode=OneWay, Source={StaticResource InneDaneSprawy}}" VerticalAlignment="Top" Height="22"  FontSize="10"/>
+                <TextBlock x:Name="StatusLabel_Copy" Margin="3,147,0,0" TextAlignment="Right"  TextWrapping="Wrap" Text="Sąd" VerticalAlignment="Top" HorizontalAlignment="Left" Width="89" FontWeight="Bold" FontSize="10.667" RenderTransformOrigin="0.504,-2"/>
+                <Button x:Name="SelSadButton"  HorizontalAlignment="Right" Margin="0,143,7,0" Width="30" ToolTipService.ToolTip="Dodaj lub zmień sąd" VerticalAlignment="Top" Height="26" Click="SadSelButton_Click">
+                    <Image x:Name="imgSls1" Source="/Images/Lista.png" />
+
+                </Button>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="DluznikDataTemplate"  >
+            <Grid Margin="0,0,0,0" x:Name="GridStrona" Width="650" Height="272" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="76"/>
+                    <ColumnDefinition Width="0.526*"/>
+                    <ColumnDefinition Width="0.474*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" MinHeight="199"/>
+                    <RowDefinition Height="Auto" MinHeight="119"/>
+                </Grid.RowDefinitions>
+
+                <telerik:DataFormComboBoxField   DataMemberBinding="{Binding FizPraw, Mode=TwoWay}"  ItemsSource= "{Binding rodzajOsoby, Source={StaticResource SlownikRodzajeOsob} }"  DisplayMemberPath="Nazwa" SelectedValuePath="Numer" Margin="8,2,120,0"   VerticalAlignment="Top" Grid.ColumnSpan="3"/>
+                <telerik:DataFormDataField x:Name="REGON" Visibility="{Binding FizPraw, Converter={StaticResource TypOsobyVisibilityConverter},  ConverterParameter=prawna}" HorizontalAlignment="Left" Margin="-87,59,0,0" Width="282" DataMemberBinding="{Binding regon, Mode=TwoWay}" VerticalAlignment="Top" Grid.Column="2"/>
+
+                <telerik:DataFormDataField x:Name="Nazwa" Visibility="{Binding FizPraw, Converter={StaticResource TypOsobyVisibilityConverter},  ConverterParameter=dzialalnosc}" Margin="-203,29,7,0" DataMemberBinding="{Binding Nazwa, Mode=TwoWay}" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
+                <TextBlock Margin="-62,10,0,0" TextWrapping="Wrap" Text="Wybierz status strony" VerticalAlignment="Top" FontWeight="Bold" Height="19" HorizontalAlignment="Left" Grid.Column="1"/>
+                <telerik:DataFormDataField x:Name="Imie" Visibility="{Binding FizPraw, Converter={StaticResource TypOsobyVisibilityConverter},  ConverterParameter=fizyczna}" HorizontalAlignment="Left" Margin="-26,59,0,0" Width="314" DataMemberBinding="{Binding Imie, Mode=TwoWay}" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                <telerik:DataFormDataField x:Name="Imie2" Visibility="{Binding FizPraw, Converter={StaticResource TypOsobyVisibilityConverter},  ConverterParameter=fizyczna}"  HorizontalAlignment="Left" Margin="-87,59,0,0" Width="282" DataMemberBinding="{Binding Imie2, Mode=TwoWay}" Grid.Column="2" VerticalAlignment="Top"/>
+
+                <TextBlock Margin="8,43,3,0" Visibility="{Binding FizPraw, Converter={StaticResource TypOsobyVisibilityConverter},  ConverterParameter=dzialalnosc}" TextWrapping="Wrap" TextAlignment="Right" Text="Nazwa" FontWeight="Bold"  VerticalAlignment="Top" FontFamily="Portable User Interface"/>
+                <TextBlock Margin="0,74,3,0" TextWrapping="Wrap" TextAlignment="Right" Visibility="{Binding FizPraw, Converter={StaticResource TypOsobyVisibilityConverter},  ConverterParameter=fizyczna}"  Text="Imię" FontWeight="Bold" RenderTransformOrigin="-1.138,-4.438" VerticalAlignment="Top" HorizontalAlignment="Right" Width="47"/>
+
+                <TextBlock Margin="0,74,1,0" TextWrapping="Wrap" Visibility="{Binding FizPraw, Converter={StaticResource TypOsobyVisibilityConverter},  ConverterParameter=fizyczna}" Text="Drugie Imię" FontWeight="Bold" VerticalAlignment="Top" Grid.Column="1" HorizontalAlignment="Right"/>
+                <telerik:DataFormDataField x:Name="Nazwisko" Visibility="{Binding FizPraw, Converter={StaticResource TypOsobyVisibilityConverter},  ConverterParameter=fizyczna}" HorizontalAlignment="Left" Margin="-179,87,0,0" Width="773" DataMemberBinding="{Binding Nazwisko, Mode=TwoWay}" Grid.ColumnSpan="3" VerticalAlignment="Top"/>
+                <TextBlock Margin="0,101,3,0" TextWrapping="Wrap" TextAlignment="Right" Visibility="{Binding FizPraw, Converter={StaticResource TypOsobyVisibilityConverter},  ConverterParameter=fizyczna}" Text="Nazwisko" FontWeight="Bold" RenderTransformOrigin="-1.138,-4.438" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+
+                <telerik:DataFormDataField x:Name="Pesel" Visibility="{Binding FizPraw,Converter={StaticResource TypOsobyVisibilityConverter},  ConverterParameter=fizyczna}" HorizontalAlignment="Left" Margin="-26,0,0,55" Width="314" DataMemberBinding="{Binding Pesel, Mode=TwoWay}" VerticalAlignment="Bottom" Grid.ColumnSpan="2"/>
+                <TextBlock Margin="20,0,3,59" Visibility="{Binding FizPraw, Converter={StaticResource TypOsobyVisibilityConverter},  ConverterParameter=fizyczna}" TextWrapping="Wrap" TextAlignment="Right" Text="PESEL" FontWeight="Bold" ToolTipService.ToolTip="Nazwa firmy lub działlności gospodarczej osoby fizycznej" RenderTransformOrigin="0.488,-1.062" VerticalAlignment="Bottom"/>
+                <TextBlock Margin="0,0,1,61" TextWrapping="Wrap" Text="NIP" FontWeight="Bold" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+                <telerik:DataFormDataField x:Name="NIP" HorizontalAlignment="Left" Margin="-98,0,0,55" Width="314" DataMemberBinding="{Binding nip, Mode=TwoWay}" Grid.Column="2" VerticalAlignment="Bottom"/>
+                <TextBlock Margin="0,74,3,0" Visibility="{Binding FizPraw, Converter={StaticResource TypOsobyVisibilityConverter},  ConverterParameter=prawna}" x:Name="zsiedziba" TextWrapping="Wrap" TextAlignment="Right" Text="z Siedzibą" FontWeight="Bold" RenderTransformOrigin="-1.138,-4.438" VerticalAlignment="Top" HorizontalAlignment="Right" Width="67"/>
+                <telerik:DataFormDataField Visibility="{Binding FizPraw, Converter={StaticResource TypOsobyVisibilityConverter},  ConverterParameter=prawna}" x:Name="Siedziba" HorizontalAlignment="Left" Margin="-26,59,0,0" Width="314" DataMemberBinding="{Binding siedziba, Mode=TwoWay}" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                <TextBlock x:Name="napisREGON" Visibility="{Binding FizPraw, Converter={StaticResource TypOsobyVisibilityConverter},  ConverterParameter=prawna}" Margin="0,74,1,0" TextWrapping="Wrap" Text="REGON" FontWeight="Bold" VerticalAlignment="Top" Grid.Column="1" HorizontalAlignment="Right"/>
+
+                <telerik:DataFormComboBoxField   DataMemberBinding="{Binding czyrejestr, Mode=TwoWay}" Visibility="{Binding FizPraw, Converter={StaticResource TypOsobyVisibilityConverter},  ConverterParameter=prawna}" ItemsSource= "{Binding rodzajRejestru, Source={StaticResource SlownikRodzajeRejestrow}}"  DisplayMemberPath="Nazwa" SelectedValuePath="Numer" Margin="-75,89,-9,0" Grid.ColumnSpan="2" VerticalAlignment="Top"/>
+                <TextBlock Margin="0,101,3,0" TextWrapping="Wrap" TextAlignment="Right" Visibility="{Binding FizPraw, Converter={StaticResource TypOsobyVisibilityConverter},  ConverterParameter=prawna}" Text="Rejestr" FontWeight="Bold" RenderTransformOrigin="-1.138,-4.438" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                <TextBlock Margin="20,0,3,59" Visibility="{Binding czyrejestr, Converter={StaticResource RejestrVisibilityConverter},ConverterParameter=krs}" TextWrapping="Wrap" TextAlignment="Right" Text="Nr KRS" FontWeight="Bold" ToolTipService.ToolTip="Nazwa firmy lub działlności gospodarczej osoby fizycznej" RenderTransformOrigin="0.488,-1.062" VerticalAlignment="Bottom"/>
+                <telerik:DataFormDataField x:Name="nrKRS" Visibility="{Binding czyrejestr, Converter={StaticResource RejestrVisibilityConverter},ConverterParameter=krs}" HorizontalAlignment="Left" Margin="-26,0,0,55" Width="314" DataMemberBinding="{Binding krs, Mode=TwoWay}" Grid.ColumnSpan="2" VerticalAlignment="Bottom"/>
+                <TextBlock Margin="8,0,3,57" Visibility="{Binding czyrejestr, Converter={StaticResource RejestrVisibilityConverter},ConverterParameter=inny}" TextWrapping="Wrap" TextAlignment="Right" Text="Nazwa Rejestru" FontWeight="Bold" ToolTipService.ToolTip="Nazwa firmy lub działlności gospodarczej osoby fizycznej" RenderTransformOrigin="0.488,-1.062" VerticalAlignment="Bottom" />
+                <telerik:DataFormDataField x:Name="NazwaRej" Visibility="{Binding czyrejestr, Converter={StaticResource RejestrVisibilityConverter},ConverterParameter=inny}" HorizontalAlignment="Left" Margin="-67,0,0,55" Width="436" DataMemberBinding="{Binding typ_rejestru, Mode=TwoWay}" Grid.ColumnSpan="2" VerticalAlignment="Bottom"/>
+                <TextBlock Margin="8,0,3,29" Visibility="{Binding czyrejestr, Converter={StaticResource RejestrVisibilityConverter},ConverterParameter=inny}" TextWrapping="Wrap" TextAlignment="Right" Text="Organ prowadz." FontWeight="Bold" ToolTipService.ToolTip="Nazwa firmy lub działlności gospodarczej osoby fizycznej" RenderTransformOrigin="0.488,-1.062" VerticalAlignment="Bottom"/>
+                <telerik:DataFormDataField 	 x:Name="OrganProw" Visibility="{Binding czyrejestr, Converter={StaticResource RejestrVisibilityConverter},ConverterParameter=inny}" HorizontalAlignment="Left" Margin="-86,0,0,29" Width="495" DataMemberBinding="{Binding organ_rejestru, Mode=TwoWay}" VerticalAlignment="Bottom" Grid.ColumnSpan="2" d:LayoutOverrides="GridBox" FontFamily="Portable User Interface"/>
+                <TextBlock Margin="8,0,3,5" Visibility="{Binding czyrejestr, Converter={StaticResource RejestrVisibilityConverter},ConverterParameter=inny}" TextWrapping="Wrap" TextAlignment="Right" Text="Numer" FontWeight="Bold" ToolTipService.ToolTip="Numer rejestracji w rejestrze" RenderTransformOrigin="0.488,-1.062" VerticalAlignment="Bottom"/>
+                <telerik:DataFormDataField x:Name="NumeWRrej" Visibility="{Binding czyrejestr, Converter={StaticResource RejestrVisibilityConverter},ConverterParameter=inny}" HorizontalAlignment="Left" Margin="-40,0,0,2" Width="357" DataMemberBinding="{Binding numer_rejestru, Mode=TwoWay}" VerticalAlignment="Bottom" Grid.ColumnSpan="2"/>
+
+                <Grid Margin="1,-5,0,46" Grid.Row="1" Grid.ColumnSpan="3" HorizontalAlignment="Left" Width="662">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" MinHeight="75"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" MinWidth="47"/>
+                        <ColumnDefinition Width="Auto" MinWidth="339"/>
+                        <ColumnDefinition Width="Auto" MinWidth="230"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Margin="0,14,1,0" TextWrapping="Wrap" Text="ulica"  HorizontalAlignment="Right" FontWeight="Bold" RenderTransformOrigin="0.4,3.25" FontSize="9.333" VerticalAlignment="Top"/>
+                    <telerik:DataFormDataField DataMemberBinding = "{Binding ulica, Mode=TwoWay}" Margin="-77,-2,21,0" x:Name="Ulica" FontSize="10.667" RenderTransformOrigin="0.418,2.696" VerticalAlignment="Top"  Grid.ColumnSpan="2"/>
+                    <TextBlock Margin="8,12,0,0" TextWrapping="Wrap" Text="nr domu" TextAlignment="Right" Grid.Column="2" HorizontalAlignment="Left" FontWeight="Bold" RenderTransformOrigin="0.4,3.25" FontSize="9.333" VerticalAlignment="Top"/>
+                    <telerik:DataFormDataField Grid.Column="2" Margin="10,-3,115,0" x:Name="NrDomu"  DataMemberBinding = "{Binding numer_domu, Mode=TwoWay}"  FontSize="10.667" RenderTransformOrigin="0.418,2.696" Canvas.ZIndex="1" VerticalAlignment="Top"/>
+                    <TextBlock Margin="129,12,92,0" TextWrapping="Wrap" Text="nr lokalu" TextAlignment="Right" Grid.Column="2" FontWeight="Bold" RenderTransformOrigin="0.4,3.25" FontSize="9.333" VerticalAlignment="Top" />
+                    <telerik:DataFormDataField Grid.Column="2" Margin="0,-3,7,0"  DataMemberBinding = "{Binding numer_mieszkania, Mode=TwoWay}" x:Name="NrLokalu"  FontSize="10.667" RenderTransformOrigin="0.418,2.696" HorizontalAlignment="Right" Width="118" Canvas.ZIndex="2" VerticalAlignment="Top"/>
+                    <TextBlock Margin="0,35,1,26" TextWrapping="Wrap" TextAlignment="Right" Text="miejscowość" HorizontalAlignment="Right" FontWeight="Bold" RenderTransformOrigin="0.4,3.25" FontSize="9.333" />
+                    <telerik:DataFormDataField Margin="-77,22,0,0"  DataMemberBinding = "{Binding miejscowosc, Mode=TwoWay}" x:Name="miejscowosc"  FontSize="10.667" RenderTransformOrigin="0.418,2.696" Canvas.ZIndex="3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="464" Grid.ColumnSpan="2"/>
+                    <TextBlock Margin="8,36,0,25" TextWrapping="Wrap" Text="kod pocztowy" TextAlignment="Right" Grid.Column="2" HorizontalAlignment="Left" FontWeight="Bold" RenderTransformOrigin="0.4,3.25" FontSize="9.333" />
+                    <telerik:DataFormDataField x:Name = "Kod"  DataMemberBinding="{Binding kod_pocztowy, Mode=TwoWay}" Grid.Column="2" Margin="-20,0,39,17" VerticalAlignment="Bottom"  >
+                        <telerik:RadMaskedTextInput Grid.Column="2" Mask="##-###" IsClearButtonVisible="False"  HorizontalAlignment="Left" Value="{Binding kod_pocztowy,Mode=TwoWay}"  x:Name = "KodP" EmptyContent="Wpisz kod (5 cyfr)"   Margin="93,1,0,1" Grid.Row="2" FontSize="10.667" Canvas.ZIndex="6" />
+
+                    </telerik:DataFormDataField>
+
+                    <TextBlock Margin="0,0,1,1" TextWrapping="Wrap" TextAlignment="Right" Text="poczta" HorizontalAlignment="Right" FontWeight="Bold" RenderTransformOrigin="0.4,3.25" FontSize="9.333" VerticalAlignment="Bottom"/>
+                    <telerik:DataFormDataField Margin="-77,0,20,-3" x:Name="Poczta"  DataMemberBinding = "{Binding poczta, Mode=TwoWay}" FontSize="10.667" RenderTransformOrigin="0.418,2.696" Canvas.ZIndex="5" VerticalAlignment="Bottom" Grid.ColumnSpan="2"/>
+                    <TextBlock Margin="14,0,0,6" TextWrapping="Wrap"  Text="woj." TextAlignment="Right" Grid.Column="2" HorizontalAlignment="Left" FontWeight="Bold" RenderTransformOrigin="0.4,3.25" FontSize="9.333"  VerticalAlignment="Bottom"/>
+                    <telerik:DataFormComboBoxField Grid.Column="2" DataMemberBinding = "{Binding wojewodztwo, Mode=TwoWay}" ItemsSource="{Binding wojewodztwa, Source={StaticResource SlownikWojewodztw}}" DisplayMemberPath="Nazwa" SelectedValuePath="Nazwa" x:Name = "Wojewodztwo" HorizontalAlignment="Left" Width="330" ToolTipService.ToolTip="Wybierz województwo"  VerticalAlignment="Bottom" Margin="-63,0,0,-3"/>
+
+                </Grid>
+
+
+
+
+
+            </Grid>
+
+
+        </DataTemplate>
+        <DataTemplate x:Key="DluznikDataTemplateRO"  >
+            <Grid Margin="0,0,0,0" x:Name="GridStrona" Width="650" Height="272" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="76"/>
+                    <ColumnDefinition Width="0.526*"/>
+                    <ColumnDefinition Width="0.474*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" MinHeight="199"/>
+                    <RowDefinition Height="Auto" MinHeight="119"/>
+                </Grid.RowDefinitions>
+
+                <telerik:DataFormComboBoxField   DataMemberBinding="{Binding FizPraw, Mode=TwoWay}"  ItemsSource= "{Binding rodzajOsoby, Source={StaticResource SlownikRodzajeOsob} }"  DisplayMemberPath="Nazwa" SelectedValuePath="Numer" Margin="8,2,120,0"   VerticalAlignment="Top" Grid.ColumnSpan="3"/>
+                <telerik:DataFormDataField x:Name="REGON" Visibility="{Binding FizPraw, Converter={StaticResource TypOsobyVisibilityConverter},  ConverterParameter=prawna}" HorizontalAlignment="Left" Margin="-87,59,0,0" Width="282" DataMemberBinding="{Binding regon, Mode=TwoWay}" VerticalAlignment="Top" Grid.Column="2"/>
+
+                <telerik:DataFormDataField x:Name="Nazwa" Visibility="{Binding FizPraw, Converter={StaticResource TypOsobyVisibilityConverter},  ConverterParameter=dzialalnosc}" Margin="-203,29,7,0" DataMemberBinding="{Binding Nazwa, Mode=TwoWay}" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
+                <TextBlock Margin="-62,10,0,0" TextWrapping="Wrap" Text="Wybierz status strony" VerticalAlignment="Top" FontWeight="Bold" Height="19" HorizontalAlignment="Left" Grid.Column="1"/>
+                <telerik:DataFormDataField x:Name="Imie" Visibility="{Binding FizPraw, Converter={StaticResource TypOsobyVisibilityConverter},  ConverterParameter=fizyczna}" HorizontalAlignment="Left" Margin="-26,59,0,0" Width="314" DataMemberBinding="{Binding Imie, Mode=TwoWay}" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                <telerik:DataFormDataField x:Name="Imie2" Visibility="{Binding FizPraw, Converter={StaticResource TypOsobyVisibilityConverter},  ConverterParameter=fizyczna}"  HorizontalAlignment="Left" Margin="-87,59,0,0" Width="282" DataMemberBinding="{Binding Imie2, Mode=TwoWay}" Grid.Column="2" VerticalAlignment="Top"/>
+
+                <TextBlock Margin="8,43,3,0" Visibility="{Binding FizPraw, Converter={StaticResource TypOsobyVisibilityConverter},  ConverterParameter=dzialalnosc}" TextWrapping="Wrap" TextAlignment="Right" Text="Nazwa" FontWeight="Bold"  VerticalAlignment="Top"/>
+                <TextBlock Margin="0,74,3,0" TextWrapping="Wrap" TextAlignment="Right" Visibility="{Binding FizPraw, Converter={StaticResource TypOsobyVisibilityConverter},  ConverterParameter=fizyczna}"  Text="Imię" FontWeight="Bold" RenderTransformOrigin="-1.138,-4.438" VerticalAlignment="Top" HorizontalAlignment="Right" Width="47"/>
+
+                <TextBlock Margin="0,74,1,0" TextWrapping="Wrap" Visibility="{Binding FizPraw, Converter={StaticResource TypOsobyVisibilityConverter},  ConverterParameter=fizyczna}" Text="Drugie Imię" FontWeight="Bold" VerticalAlignment="Top" Grid.Column="1" HorizontalAlignment="Right"/>
+                <telerik:DataFormDataField x:Name="Nazwisko" Visibility="{Binding FizPraw, Converter={StaticResource TypOsobyVisibilityConverter},  ConverterParameter=fizyczna}" HorizontalAlignment="Left" Margin="-179,87,0,0" Width="773" DataMemberBinding="{Binding Nazwisko, Mode=TwoWay}" Grid.ColumnSpan="3" VerticalAlignment="Top"/>
+                <TextBlock Margin="0,101,3,0" TextWrapping="Wrap" TextAlignment="Right" Visibility="{Binding FizPraw, Converter={StaticResource TypOsobyVisibilityConverter},  ConverterParameter=fizyczna}" Text="Nazwisko" FontWeight="Bold" RenderTransformOrigin="-1.138,-4.438" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+
+                <telerik:DataFormDataField x:Name="Pesel" Visibility="{Binding FizPraw,Converter={StaticResource TypOsobyVisibilityConverter},  ConverterParameter=fizyczna}" HorizontalAlignment="Left" Margin="-26,0,0,55" Width="314" DataMemberBinding="{Binding Pesel, Mode=TwoWay}" VerticalAlignment="Bottom" Grid.ColumnSpan="2"/>
+                <TextBlock Margin="20,0,3,59" Visibility="{Binding FizPraw, Converter={StaticResource TypOsobyVisibilityConverter},  ConverterParameter=fizyczna}" TextWrapping="Wrap" TextAlignment="Right" Text="PESEL" FontWeight="Bold" ToolTipService.ToolTip="Nazwa firmy lub działlności gospodarczej osoby fizycznej" RenderTransformOrigin="0.488,-1.062" VerticalAlignment="Bottom"/>
+                <TextBlock Margin="0,0,1,61" TextWrapping="Wrap" Text="NIP" FontWeight="Bold" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+                <telerik:DataFormDataField x:Name="NIP" HorizontalAlignment="Left" Margin="-98,0,0,55" Width="314" DataMemberBinding="{Binding nip, Mode=TwoWay}" Grid.Column="2" VerticalAlignment="Bottom"/>
+                <TextBlock Margin="0,74,3,0" Visibility="{Binding FizPraw, Converter={StaticResource TypOsobyVisibilityConverter},  ConverterParameter=prawna}" x:Name="zsiedziba" TextWrapping="Wrap" TextAlignment="Right" Text="z Siedzibą" FontWeight="Bold" RenderTransformOrigin="-1.138,-4.438" VerticalAlignment="Top" HorizontalAlignment="Right" Width="67"/>
+                <telerik:DataFormDataField Visibility="{Binding FizPraw, Converter={StaticResource TypOsobyVisibilityConverter},  ConverterParameter=prawna}" x:Name="Siedziba" HorizontalAlignment="Left" Margin="-26,59,0,0" Width="314" DataMemberBinding="{Binding siedziba, Mode=TwoWay}" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                <TextBlock x:Name="napisREGON" Visibility="{Binding FizPraw, Converter={StaticResource TypOsobyVisibilityConverter},  ConverterParameter=prawna}" Margin="0,74,1,0" TextWrapping="Wrap" Text="REGON" FontWeight="Bold" VerticalAlignment="Top" Grid.Column="1" HorizontalAlignment="Right"/>
+
+                <telerik:DataFormComboBoxField   DataMemberBinding="{Binding czyrejestr, Mode=TwoWay}" Visibility="{Binding FizPraw, Converter={StaticResource TypOsobyVisibilityConverter},  ConverterParameter=prawna}" ItemsSource= "{Binding rodzajRejestru, Source={StaticResource SlownikRodzajeRejestrow}}"  DisplayMemberPath="Nazwa" SelectedValuePath="Numer" Margin="-75,89,-9,0" Grid.ColumnSpan="2" VerticalAlignment="Top"/>
+                <TextBlock Margin="0,101,3,0" TextWrapping="Wrap" TextAlignment="Right" Visibility="{Binding FizPraw, Converter={StaticResource TypOsobyVisibilityConverter},  ConverterParameter=prawna}" Text="Rejestr" FontWeight="Bold" RenderTransformOrigin="-1.138,-4.438" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                <TextBlock Margin="20,0,3,59" Visibility="{Binding czyrejestr, Converter={StaticResource RejestrVisibilityConverter},ConverterParameter=krs}" TextWrapping="Wrap" TextAlignment="Right" Text="Nr KRS" FontWeight="Bold" ToolTipService.ToolTip="Nazwa firmy lub działlności gospodarczej osoby fizycznej" RenderTransformOrigin="0.488,-1.062" VerticalAlignment="Bottom"/>
+                <telerik:DataFormDataField x:Name="nrKRS" Visibility="{Binding czyrejestr, Converter={StaticResource RejestrVisibilityConverter},ConverterParameter=krs}" HorizontalAlignment="Left" Margin="-26,0,0,55" Width="314" DataMemberBinding="{Binding krs, Mode=TwoWay}" Grid.ColumnSpan="2" VerticalAlignment="Bottom"/>
+                <TextBlock Margin="8,0,3,57" Visibility="{Binding czyrejestr, Converter={StaticResource RejestrVisibilityConverter},ConverterParameter=inny}" TextWrapping="Wrap" TextAlignment="Right" Text="Nazwa Rejestru" FontWeight="Bold" ToolTipService.ToolTip="Nazwa firmy lub działlności gospodarczej osoby fizycznej" RenderTransformOrigin="0.488,-1.062" VerticalAlignment="Bottom" />
+                <telerik:DataFormDataField x:Name="NazwaRej" Visibility="{Binding czyrejestr, Converter={StaticResource RejestrVisibilityConverter},ConverterParameter=inny}" HorizontalAlignment="Left" Margin="-67,0,0,55" Width="436" DataMemberBinding="{Binding typ_rejestru, Mode=TwoWay}" Grid.ColumnSpan="2" VerticalAlignment="Bottom"/>
+                <TextBlock Margin="8,0,3,29" Visibility="{Binding czyrejestr, Converter={StaticResource RejestrVisibilityConverter},ConverterParameter=inny}" TextWrapping="Wrap" TextAlignment="Right" Text="Organ prowadz." FontWeight="Bold" ToolTipService.ToolTip="Nazwa firmy lub działlności gospodarczej osoby fizycznej" RenderTransformOrigin="0.488,-1.062" VerticalAlignment="Bottom"/>
+                <telerik:DataFormDataField 	 x:Name="OrganProw" Visibility="{Binding czyrejestr, Converter={StaticResource RejestrVisibilityConverter},ConverterParameter=inny}" HorizontalAlignment="Left" Margin="-86,0,0,29" Width="495" DataMemberBinding="{Binding organ_rejestru, Mode=TwoWay}" VerticalAlignment="Bottom" Grid.ColumnSpan="2" d:LayoutOverrides="GridBox"/>
+                <TextBlock Margin="8,0,3,5" Visibility="{Binding czyrejestr, Converter={StaticResource RejestrVisibilityConverter},ConverterParameter=inny}" TextWrapping="Wrap" TextAlignment="Right" Text="Numer" FontWeight="Bold" ToolTipService.ToolTip="Numer rejestracji w rejestrze" RenderTransformOrigin="0.488,-1.062" VerticalAlignment="Bottom"/>
+                <telerik:DataFormDataField x:Name="NumeWRrej" Visibility="{Binding czyrejestr, Converter={StaticResource RejestrVisibilityConverter},ConverterParameter=inny}" HorizontalAlignment="Left" Margin="-40,0,0,2" Width="357" DataMemberBinding="{Binding numer_rejestru, Mode=TwoWay}" VerticalAlignment="Bottom" Grid.ColumnSpan="2"/>
+
+                <Grid Margin="1,-5,0,46" Grid.Row="1" Grid.ColumnSpan="3" HorizontalAlignment="Left" Width="662">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" MinHeight="75"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" MinWidth="47"/>
+                        <ColumnDefinition Width="Auto" MinWidth="339"/>
+                        <ColumnDefinition Width="Auto" MinWidth="230"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Margin="0,14,1,0" TextWrapping="Wrap" Text="ulica"  HorizontalAlignment="Right" FontWeight="Bold" RenderTransformOrigin="0.4,3.25" FontSize="9.333" VerticalAlignment="Top"/>
+                    <telerik:DataFormDataField DataMemberBinding = "{Binding ulica, Mode=TwoWay}" Margin="-77,-2,21,0" x:Name="Ulica" FontSize="10.667" RenderTransformOrigin="0.418,2.696" VerticalAlignment="Top"  Grid.ColumnSpan="2"/>
+                    <TextBlock Margin="8,12,0,0" TextWrapping="Wrap" Text="nr domu" TextAlignment="Right" Grid.Column="2" HorizontalAlignment="Left" FontWeight="Bold" RenderTransformOrigin="0.4,3.25" FontSize="9.333" VerticalAlignment="Top"/>
+                    <telerik:DataFormDataField Grid.Column="2" Margin="10,-3,115,0" x:Name="NrDomu"  DataMemberBinding = "{Binding numer_domu, Mode=TwoWay}"  FontSize="10.667" RenderTransformOrigin="0.418,2.696" Canvas.ZIndex="1" VerticalAlignment="Top"/>
+                    <TextBlock Margin="129,12,92,0" TextWrapping="Wrap" Text="nr lokalu" TextAlignment="Right" Grid.Column="2" FontWeight="Bold" RenderTransformOrigin="0.4,3.25" FontSize="9.333" VerticalAlignment="Top" />
+                    <telerik:DataFormDataField Grid.Column="2" Margin="0,-3,9,0"  DataMemberBinding = "{Binding numer_mieszkania, Mode=TwoWay}" x:Name="NrLokalu"  FontSize="10.667" RenderTransformOrigin="0.418,2.696" HorizontalAlignment="Right" Width="118" Canvas.ZIndex="2" VerticalAlignment="Top"/>
+                    <TextBlock Margin="0,35,1,26" TextWrapping="Wrap" TextAlignment="Right" Text="miejscowość" HorizontalAlignment="Right" FontWeight="Bold" RenderTransformOrigin="0.4,3.25" FontSize="9.333" />
+                    <telerik:DataFormDataField Margin="-77,22,0,0"  DataMemberBinding = "{Binding miejscowosc, Mode=TwoWay}" x:Name="miejscowosc"  FontSize="10.667" RenderTransformOrigin="0.418,2.696" Canvas.ZIndex="3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="464" Grid.ColumnSpan="2"/>
+                    <TextBlock Margin="8,36,0,25" TextWrapping="Wrap" Text="kod pocztowy" TextAlignment="Right" Grid.Column="2" HorizontalAlignment="Left" FontWeight="Bold" RenderTransformOrigin="0.4,3.25" FontSize="9.333" />
+                    <telerik:DataFormDataField x:Name = "Kod"  DataMemberBinding="{Binding kod_pocztowy,StringFormat = \{0:##-###\}}" Grid.Column="2" Margin="41,0,78,21" VerticalAlignment="Bottom"  >
+
+
+                    </telerik:DataFormDataField>
+
+                    <TextBlock Margin="0,0,1,1" TextWrapping="Wrap" TextAlignment="Right" Text="poczta" HorizontalAlignment="Right" FontWeight="Bold" RenderTransformOrigin="0.4,3.25" FontSize="9.333" VerticalAlignment="Bottom"/>
+                    <telerik:DataFormDataField Margin="-77,0,20,-3" x:Name="Poczta"  DataMemberBinding = "{Binding poczta, Mode=TwoWay}" FontSize="10.667" RenderTransformOrigin="0.418,2.696" Canvas.ZIndex="5" VerticalAlignment="Bottom" Grid.ColumnSpan="2"/>
+                    <TextBlock Margin="14,0,0,6" TextWrapping="Wrap"  Text="woj." TextAlignment="Right" Grid.Column="2" HorizontalAlignment="Left" FontWeight="Bold" RenderTransformOrigin="0.4,3.25" FontSize="9.333"  VerticalAlignment="Bottom"/>
+                    <telerik:DataFormComboBoxField Grid.Column="2" DataMemberBinding = "{Binding wojewodztwo, Mode=TwoWay}" ItemsSource="{Binding wojewodztwa, Source={StaticResource SlownikWojewodztw}}" DisplayMemberPath="Nazwa" SelectedValuePath="Nazwa" x:Name = "Wojewodztwo" HorizontalAlignment="Left" Width="330" ToolTipService.ToolTip="Wybierz województwo"  VerticalAlignment="Bottom" Margin="-63,0,0,-3"/>
+
+                </Grid>
+
+
+
+
+
+            </Grid>
+        </DataTemplate>
+
+    </UserControl.Resources>
+
+
+    <Grid  x:Name="LayoutRoot" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" MinHeight="195"/>
+            <RowDefinition Height="Auto" MinHeight="269"/>
+        </Grid.RowDefinitions>
+
+
+        <telerik:RadDomainDataSource AutoLoad="False" Height="0" LoadedData="sprawaDomainDataSource_LoadedData" x:Name="sprawaDomainDataSource" QueryName="GetSprawaByIdQuery" Width="0">
+            <telerik:RadDomainDataSource.DomainContext>
+                <my:LexEnaMeritumDomainContext />
+            </telerik:RadDomainDataSource.DomainContext>
+            <telerik:RadDomainDataSource.QueryParameters>
+                <telerik:QueryParameter ParameterName="IdSprawy" />
+            </telerik:RadDomainDataSource.QueryParameters>
+        </telerik:RadDomainDataSource>
+        <telerik:RadDomainDataSource  x:Name="NaleznosciDomainDataSource" QueryName="GetNaleznoscByIdSprawyQuery" AutoLoad="False" LoadedData="NaleznosciDomainDataSource_LoadedData" LoadingData="NaleznosciDomainDataSource_LoadingData" >
+            <telerik:RadDomainDataSource.DomainContext>
+                <my:LexEnaMeritumDomainContext />
+            </telerik:RadDomainDataSource.DomainContext>
+            <telerik:RadDomainDataSource.QueryParameters>
+                <telerik:QueryParameter ParameterName="IdSprawy" />
+            </telerik:RadDomainDataSource.QueryParameters>
+        </telerik:RadDomainDataSource>
+        <telerik:RadDomainDataSource  x:Name="OdsetkiDomainDataSource" QueryName="GetOdsetkiByNaleznoscIdQuery" AutoLoad="False" LoadingData="OdsetkiDomainDataSource_LoadingData"  >
+            <telerik:RadDomainDataSource.DomainContext>
+                <my:LexEnaMeritumDomainContext />
+            </telerik:RadDomainDataSource.DomainContext>
+            <telerik:RadDomainDataSource.QueryParameters>
+                <telerik:QueryParameter ParameterName="IdNal"  />
+            </telerik:RadDomainDataSource.QueryParameters>
+        </telerik:RadDomainDataSource>
+        <telerik:RadDomainDataSource  x:Name="DluznikDomainDataSource" QueryName="GetDaneDluznikaByIdSprawyQuery" AutoLoad="False" LoadedData="DluznikDomainDataSource_LoadedData">
+            <telerik:RadDomainDataSource.DomainContext>
+                <my:LexEnaMeritumDomainContext />
+            </telerik:RadDomainDataSource.DomainContext>
+            <telerik:RadDomainDataSource.QueryParameters>
+                <telerik:QueryParameter ParameterName="IdSprawy" />
+            </telerik:RadDomainDataSource.QueryParameters>
+        </telerik:RadDomainDataSource>
+        <telerik:RadDomainDataSource  x:Name="KomunikacjaDomainDataSource" QueryName="GetVw_SprawaKomunikacjaEPUByIdSprawyQuery" AutoLoad="False" LoadedData="DluznikDomainDataSource_LoadedData">
+            <telerik:RadDomainDataSource.DomainContext>
+                <my:LexEnaMeritumDomainContext />
+            </telerik:RadDomainDataSource.DomainContext>
+            <telerik:RadDomainDataSource.QueryParameters>
+                <telerik:QueryParameter ParameterName="IdSprawy" />
+            </telerik:RadDomainDataSource.QueryParameters>
+        </telerik:RadDomainDataSource>
+        <telerik:RadTabControl x:Name="SprawaTab" Grid.RowSpan="2" >
+
+            <telerik:RadTabItem  x:Name="Sprawa1" Header="Sprawa" Loaded="Sprawa1_Loaded">
+                <Grid  Margin="0" Height="444">
+                    <telerik:RadDataForm AutoEdit="True"  AutoCommit="True"  CancelButtonContent="Anuluj" CurrentItem="{Binding DataView, ElementName=sprawaDomainDataSource}" AutoGenerateFields="False" x:Name="SprawaDataForm" d:LayoutOverrides="Width"
+    					 EditTemplate="{StaticResource SprawaFormTemplate}"
+						 ReadOnlyTemplate="{StaticResource SprawaFormTemplate}"
+						 NewItemTemplate="{StaticResource SprawaFormTemplate}"
+						 
+						  Margin="0" EditEnded="SprawaDataForm_EditEnded" />
+
+                </Grid>
+            </telerik:RadTabItem>
+            <telerik:RadTabItem x:Name="Dluznik" DataContext="{Binding DataView, ElementName=DluznikDomainDataSource}" Header="Dłużnicy">
+                <Grid Background="Transparent">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.771*"/>
+                        <RowDefinition Height="0.229*"/>
+                    </Grid.RowDefinitions>
+                    <telerik:RadDataForm x:Name="DluznicyDataForm" AutoGenerateFields="False" ItemsSource="{Binding DataView, ElementName=DluznikDomainDataSource}" CancelButtonContent="Anuluj" d:LayoutOverrides="Width" 
+					ReadOnlyTemplate="{StaticResource DluznikDataTemplateRO}"
+					 NewItemTemplate="{StaticResource DluznikDataTemplate}"
+					EditTemplate="{StaticResource DluznikDataTemplate}" Margin="0,0,0,2" AddingNewItem="DluznicyDataForm_AddingNewItem" AddedNewItem="DluznicyDataForm_AddedNewItem" EditEnding="DluznicyDataForm_EditEnding" DeletingItem="DluznicyDataForm_DeletingItem" EditEnded="DluznicyDataForm_EditEnded" CurrentItemChanged="DluznicyDataForm_CurrentItemChanged" />
+                    <telerik:RadGridView x:Name="RadGridListaDluznikow" ItemsSource="{Binding DataView, ElementName=DluznikDomainDataSource}" AutoGenerateColumns="False" Margin="0,2,0,0" Grid.Row="1" ShowColumnHeaders="False" ShowGroupPanel="False" EditTriggers="None" IsFilteringAllowed="False"  CanUserDeleteRows="False" CanUserInsertRows="False" RowIndicatorVisibility="Collapsed">
+                        <telerik:RadGridView.Columns>
+                            <telerik:GridViewDataColumn  Header="Imie"  DataMemberBinding="{Binding Imie}" IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5" TextAlignment="Center"  />
+                            <telerik:GridViewDataColumn  Header="Nazwisko"  DataMemberBinding="{Binding Nazwisko}" IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5" TextAlignment="Center"  />
+                            <telerik:GridViewDataColumn  Header="Nazwa" 	 DataMemberBinding="{Binding Nazwa}" IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5" TextAlignment="Center"  />
+                        </telerik:RadGridView.Columns>
+                    </telerik:RadGridView>
+                </Grid>
+            </telerik:RadTabItem>
+            <!--  -->
+            <telerik:RadTabItem x:Name="Roszczenia" DataContext ="{Binding DataView, ElementName= sprawaDomainDataSource }"  Header="Należności">
+                <Grid Background="Transparent" Margin="0,0,0,2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.439*"/>
+                        <RowDefinition Height="0.561*"/>
+                    </Grid.RowDefinitions>
+                    <Border BorderBrush="Black" BorderThickness="1" Margin="0,0,7,6" Grid.Row="1" Height="52" VerticalAlignment="Bottom" />
+                    <Border BorderBrush="Black" BorderThickness="1" Margin="0,0,7,58" Grid.Row="1" Height="52" VerticalAlignment="Bottom" />
+                    <Border BorderBrush="Black" BorderThickness="1" Margin="0,82,7,110" Grid.Row="1"/>
+                    <telerik:RadButton Command="telerik:RadGridViewCommands.BeginInsert" CommandTarget="{Binding ElementName=radGridViewRoszczenia}" Content="Dodaj" Height="21" HorizontalAlignment="Left" Margin="6,4,0,0" Width="68" VerticalAlignment="Top" />
+                    <telerik:RadButton Command="telerik:RadGridViewCommands.Delete" CommandTarget="{Binding ElementName=radGridViewRoszczenia}" Content="Usuń" Height="21" HorizontalAlignment="Left" Margin="80,4,0,0" Width="68" VerticalAlignment="Top" />
+
+                    <telerik:RadGridView x:Name="radGridViewRoszczenia" ItemsSource="{Binding DataView, ElementName=NaleznosciDomainDataSource}" RowIndicatorVisibility="Collapsed"  Margin="4,31,0,0" AutoGenerateColumns="False" ShowColumnFooters="True" ShowGroupPanel="False"   ShowColumnHeaders="true" SelectionChanged="radGridViewRoszczenia_SelectionChanged" Height="150" AddingNewDataItem="radGridViewRoszczenia_AddingNewDataItem" Deleting="radGridViewRoszczenia_Deleting" SelectionChanging="radGridViewRoszczenia_SelectionChanging" HorizontalAlignment="Left" VerticalAlignment="Top" Width="700">
+                        <telerik:RadGridView.Columns>
+
+                            <telerik:GridViewDataColumn  Header="Lp"  DataMemberBinding="{Binding numer}" IsFilterable="false"  SortMemberPath="Value" SortingState="Ascending" HeaderTextAlignment="Center" MinWidth="5" TextAlignment="Center"  >
+
+                                <telerik:GridViewDataColumn.AggregateFunctions >
+                                    <telerik:CountFunction ResultFormatString="({0,2})"   />
+                                </telerik:GridViewDataColumn.AggregateFunctions>
+                            </telerik:GridViewDataColumn>
+
+                            <telerik:GridViewMaskedInputColumn  Header="Kwota" TextAlignment="Right"  DataMemberBinding="{Binding kwota,StringFormat=\{0:c2\},ConverterCulture=pl-PL }"  MaskType="Currency"    IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5"   >
+                                <telerik:GridViewMaskedInputColumn.AggregateFunctions>
+                                    <telerik:SumFunction   ResultFormatString =" {0:N2}"   />
+                                </telerik:GridViewMaskedInputColumn.AggregateFunctions>
+                            </telerik:GridViewMaskedInputColumn>
+                            <telerik:GridViewDataColumn  Header="Zaległość" TextAlignment="Right"  DataMemberBinding="{Binding zaleglosc, StringFormat=\{0:c2\},ConverterCulture=pl-PL }" IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5"   >
+                                <telerik:GridViewDataColumn.AggregateFunctions>
+                                    <telerik:SumFunction   ResultFormatString =" {0:N2}"   />
+                                </telerik:GridViewDataColumn.AggregateFunctions>
+
+                            </telerik:GridViewDataColumn>
+                            <local:DateTimePickerColumn MinWidth="10" Header="Data dokumentu"   DataMemberBinding="{Binding data_dok, Mode=TwoWay}" DataFormatString="{}{0:yyyy-MM-dd}" IsFilterable="false"   HeaderTextAlignment="Center"  TextAlignment="Center"  />
+                            <local:DateTimePickerColumn MinWidth="10" Header="Data wymagalności"   DataMemberBinding="{Binding data_n, Mode=TwoWay}" DataFormatString="{}{0:yyyy-MM-dd}" IsFilterable="false"  HeaderTextAlignment="Center"  TextAlignment="Center"  />
+                            <telerik:GridViewDataColumn Header="Oznaczenie dok." TextAlignment="Left"  DataMemberBinding="{Binding opis, Mode=TwoWay}" IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5"   />
+                            <telerik:GridViewComboBoxColumn Header="Rodzaj" DataMemberBinding="{Binding TypNaleznosci_id, Mode=TwoWay}" ItemsSource= "{Binding dictionaryTypyNal, Source={StaticResource SlownikTypNal}}" DisplayMemberPath="Nazwa" SelectedValueMemberPath="id" IsFilterable="False"/>
+                            <telerik:GridViewComboBoxColumn Header="Typ EPU"  DataMemberBinding="{Binding TypRoszczenia, Mode=TwoWay}" ItemsSource= "{Binding rodzajRoszczenia, Source={StaticResource RodzajeRoszczen}}" DisplayMemberPath="Nazwa" SelectedValueMemberPath="Numer" IsFilterable="False"/>
+                            <telerik:GridViewComboBoxColumn  Header="Solidarność ?" TextAlignment="Right"  DataMemberBinding="{Binding CzySolidarnie, Mode=TwoWay}" ItemsSource= "{Binding rodzajSolidarnosci, Source={StaticResource RodzajeSolidarnosci}}" DisplayMemberPath="Nazwa" SelectedValueMemberPath="Numer" IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5"   />
+                            <telerik:GridViewDataColumn Header="Opis faktu" TextAlignment="Left"  DataMemberBinding="{Binding opis2, Mode=TwoWay}" IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5"   />
+                            <telerik:GridViewDataColumn Header="Nr KSEF" TextAlignment="Left"  DataMemberBinding="{Binding Nr_KSEF, Mode=TwoWay}" IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5"   />
+                            <local:DateTimePickerColumn MinWidth="10" Header="Data prz. KSEF"   DataMemberBinding="{Binding Data_prz_KSEF, Mode=TwoWay}" DataFormatString="{}{0:yyyy-MM-dd}" IsFilterable="false"   HeaderTextAlignment="Center"  TextAlignment="Center"  />
+
+                        </telerik:RadGridView.Columns>
+
+                    </telerik:RadGridView>
+                    <telerik:RadGridView x:Name ="gridViewOdsetkiNalSpr" ItemsSource="{Binding DataView, ElementName=OdsetkiDomainDataSource}" RowIndicatorVisibility="Collapsed" AutoGenerateColumns="False" Margin="4,187,0,0" ShowGroupPanel="False"  Height="86" VerticalAlignment="Top" d:LayoutOverrides="GridBox" Width="602" AddingNewDataItem="gridViewOdsetkiNalSpr_AddingNewDataItem" HorizontalAlignment="Left" Deleted="gridViewOdsetkiNalSpr_Deleted"  Grid.RowSpan="2" CellEditEnded="gridViewOdsetkiNalSpr_CellEditEnded" >
+                        <telerik:RadGridView.Columns>
+                            <local:DateTimePickerColumn  Header="Od dnia"  DataMemberBinding="{Binding DataPocz, Mode=TwoWay}" DataFormatString="{}{0:yyyy-MM-dd}" IsFilterable="false"  SortMemberPath="Value" SortingState="Ascending" HeaderTextAlignment="Center" MinWidth="5"  TextAlignment="Center"  />
+                            <telerik:GridViewCheckBoxColumn   UniqueName="OdWnPozwu" Header="Od wn. pozwu"  CellStyle="{StaticResource CheckBoxCentered}"  DataMemberBinding="{Binding OdWniesienia, Converter={StaticResource IntToBoolConverter}, Mode=TwoWay}" IsFilterable="false" EditTriggers="CellClick"   SortMemberPath="Value" HeaderTextAlignment="Center" MinWidth="5" TextAlignment="Center" AutoSelectOnEdit="True" FooterTextAlignment="Center" IsThreeState="False" IsSortable="False" IsReorderable="False" IsGroupable="False" ShowFieldFilters="False" ShowDistinctFilters="False"  />
+                            <local:DateTimePickerColumn  Header="Do dnia"  DataMemberBinding="{Binding DataK, Mode=TwoWay}" DataFormatString="{}{0:yyyy-MM-dd}" IsFilterable="false" TextAlignment="Center"  HeaderTextAlignment="Center" MinWidth="5" />
+                            <telerik:GridViewCheckBoxColumn UniqueName="DoDniaZaplaty" Header="Do zapłaty" CellStyle="{StaticResource CheckBoxCentered}" DataMemberBinding="{Binding DoZaplaty, Converter={StaticResource IntToBoolConverter}, Mode=TwoWay}" EditTriggers="CellClick"  TextAlignment="Center" IsFilterable="false"  AutoSelectOnEdit="True" IsThreeState="False"  HeaderTextAlignment="Center" MinWidth="5"  />
+                            <telerik:GridViewComboBoxColumn  EditTriggers="CellClick"  Header="Rodzaj" MaxWidth="200" DataMemberBinding="{Binding NazwyOdsetek_Id, Mode=TwoWay}"  IsFilterable="false"  HeaderTextAlignment="Center" TextAlignment="Center"  
+    							ItemsSource="{Binding dictionaryNazOdsWiena, Source={StaticResource TypyOdsetekWiena}}"
+                                SelectedValueMemberPath="IdWiena" 
+    							DisplayMemberPath="Nazwa"
+                                                                              
+                             />
+
+                            <telerik:GridViewMaskedInputColumn  Header="Stopa" DataFormatString="{}{0:P2}"   DataMemberBinding="{Binding Proc0, Mode=TwoWay}" IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5" MaskType="Numeric" Mask="p" TextAlignment="Center"  />
+                            <telerik:GridViewComboBoxColumn EditTriggers="CellClick"  Header="Okres"   DataMemberBinding="{Binding TypStopy, Mode=TwoWay}" IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5" TextAlignment="Center"  
+    							ItemsSource="{Binding okresyOds, Source={StaticResource SlownikOkresyOdsetkowe}}"
+    							SelectedValueMemberPath="Numer" 
+    							DisplayMemberPath="Nazwa"
+							
+							/>
+                        </telerik:RadGridView.Columns>
+
+                    </telerik:RadGridView>
+                    <TextBox Margin="111,107,0,113" Grid.Row="1" TextWrapping="Wrap" Language="pl-PL" Text="{Binding KosztyZadane,Mode=TwoWay,StringFormat=\{0:c2\},ConverterCulture=pl-PL }"  TextAlignment="Right" HorizontalAlignment="Left" Width="130" d:LayoutOverrides="Height"/>
+                    <TextBlock TextWrapping="Wrap" Text="Koszty sądowe" FontWeight="Bold" Margin="6,86,0,0" HorizontalAlignment="Left" Width="129" Grid.Row="1" RenderTransformOrigin="0.525,0.111" FontSize="12" Height="18" VerticalAlignment="Top"/>
+                    <TextBlock TextWrapping="Wrap" Text="żądane" TextAlignment="Right" FontWeight="Bold" Margin="58,111,0,115" HorizontalAlignment="Left" Width="49" Grid.Row="1" RenderTransformOrigin="0.525,0.111"/>
+                    <TextBox Margin="323,107,255,113" Grid.Row="1" TextWrapping="Wrap" Language="pl-PL" TextAlignment="Right" Text="{Binding KosztyZasadzone,Mode=TwoWay,StringFormat=\{0:c2\},ConverterCulture=pl-PL }"  d:LayoutOverrides="Height"/>
+                    <TextBlock TextWrapping="Wrap" Text="zasądzone" TextAlignment="Right" FontWeight="Bold" Margin="246,111,0,115" HorizontalAlignment="Left" Width="70" Grid.Row="1" RenderTransformOrigin="0.525,0.111"/>
+                    <TextBox Margin="0,107,28,113" Grid.Row="1" TextWrapping="Wrap" Language="pl-PL" TextAlignment="Right" Text="{Binding KosztyPrawomocne,Mode=TwoWay,StringFormat=\{0:c2\},ConverterCulture=pl-PL }"  HorizontalAlignment="Right" Width="130" d:LayoutOverrides="Height"/>
+                    <TextBlock TextWrapping="Wrap" Text="prawomocne" TextAlignment="Right" FontWeight="Bold" Margin="0,111,162,115" Grid.Row="1" RenderTransformOrigin="0.525,0.111" HorizontalAlignment="Right" Width="83"/>
+                    <TextBox Margin="111,0,0,65" Grid.Row="1" Language="pl-PL" TextAlignment="Right" Text="{Binding KzpZadane,Mode=TwoWay,StringFormat=\{0:c2\},ConverterCulture=pl-PL }" HorizontalAlignment="Left" Width="130" VerticalAlignment="Bottom"/>
+                    <TextBlock  FontWeight="Bold" Margin="6,0,0,92" HorizontalAlignment="Left" Width="235" Grid.Row="1" RenderTransformOrigin="0.525,0.111" FontSize="12" Height="18" VerticalAlignment="Bottom"><Run Text="Koszty "/><Run Text="zastępstwa procesowego"/></TextBlock>
+                    <TextBlock  Text="żądane" TextAlignment="Right" FontWeight="Bold" Margin="58,0,0,67" HorizontalAlignment="Left" Width="49" Grid.Row="1" RenderTransformOrigin="0.525,0.111" Height="18" VerticalAlignment="Bottom"/>
+                    <TextBox Margin="323,0,255,65" Grid.Row="1" TextWrapping="Wrap" Text="{Binding KzpZasadzone,Mode=TwoWay,StringFormat=\{0:c2\},ConverterCulture=pl-PL }"  VerticalAlignment="Bottom"/>
+                    <TextBlock  Text="zasądzone" TextAlignment="Right" FontWeight="Bold" Margin="246,0,0,67" HorizontalAlignment="Left" Width="70" Grid.Row="1" RenderTransformOrigin="0.525,0.111" Height="18" VerticalAlignment="Bottom"/>
+                    <TextBox Margin="0,0,28,65" Grid.Row="1" TextWrapping="Wrap" Text="{Binding KzpPrawomocne,Mode=TwoWay,StringFormat=\{0:c2\},ConverterCulture=pl-PL }" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="130"/>
+                    <TextBlock  Text="prawomocne" Language="pl-PL" TextAlignment="Right" FontWeight="Bold" Margin="0,0,162,67" Grid.Row="1" RenderTransformOrigin="0.525,0.111" Height="18" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="83"/>
+                    <TextBox Margin="111,0,0,7" Grid.Row="1" Language="pl-PL" TextAlignment="Right" Text="{Binding InneZadane,Mode=TwoWay,StringFormat=\{0:c2\},ConverterCulture=pl-PL }" HorizontalAlignment="Left" Width="130" VerticalAlignment="Bottom"/>
+                    <TextBlock TextWrapping="Wrap" FontWeight="Bold" Margin="6,0,0,34" HorizontalAlignment="Left" Width="235" Grid.Row="1" RenderTransformOrigin="0.525,0.111" FontSize="12" Height="18" VerticalAlignment="Bottom" Text="Inne koszty"/>
+                    <TextBlock TextWrapping="Wrap" Text="żądane"  TextAlignment="Right" FontWeight="Bold" Margin="58,0,0,9" HorizontalAlignment="Left" Width="49" Grid.Row="1" RenderTransformOrigin="0.525,0.111" Height="18" VerticalAlignment="Bottom"/>
+                    <TextBox Margin="323,0,255,7" Grid.Row="1" TextWrapping="Wrap" Text="{Binding InneZasadzone,Mode=TwoWay,StringFormat=\{0:c2\},ConverterCulture=pl-PL }" VerticalAlignment="Bottom"/>
+                    <TextBlock TextWrapping="Wrap" Text="zasądzone" Language="pl-PL" TextAlignment="Right" FontWeight="Bold" Margin="246,0,0,9" HorizontalAlignment="Left" Width="70" Grid.Row="1" RenderTransformOrigin="0.525,0.111" Height="18" VerticalAlignment="Bottom"/>
+                    <TextBox Margin="0,0,28,7" Grid.Row="1" TextWrapping="Wrap" Language="pl-PL" Text="{Binding InnePrawomocne,Mode=TwoWay,StringFormat=\{0:c2\},ConverterCulture=pl-PL }" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="130"/>
+                    <TextBlock TextWrapping="Wrap" Text="prawomocne" TextAlignment="Right" FontWeight="Bold" Margin="0,0,162,9" Grid.Row="1" RenderTransformOrigin="0.525,0.111" Height="18" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="83"/>
+                    <telerik:RadButton Width="68" Content="Usuń" Margin="612,54,0,168" 
+							   Command="telerik:RadGridViewCommands.Delete" CommandTarget="{Binding ElementName=gridViewOdsetkiNalSpr}" Height="22" Grid.Row="1" HorizontalAlignment="Left" />
+                    <telerik:RadButton Width="68" Content="Dodaj" Margin="612,28,0,191" 
+							   Command="telerik:RadGridViewCommands.BeginInsert" CommandTarget="{Binding ElementName=gridViewOdsetkiNalSpr}" Height="25" Grid.Row="1" HorizontalAlignment="Left" />
+
+                </Grid>
+            </telerik:RadTabItem>
+            <telerik:RadTabItem x:Name="Wplaty" Header="Wpłaty" HorizontalAlignment="Right" d:LayoutOverrides="VerticalAlignment">
+                <Grid Background="Transparent">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" MinHeight="190"/>
+                        <RowDefinition Height="Auto" MinHeight="247"/>
+                    </Grid.RowDefinitions>
+                    <telerik:RadDomainDataSource AutoLoad="True" Height="0" PageSize="30"  x:Name="ListaWplatSprawydds" QueryName="GetWplataBySprIdQuery" Width="0" FontFamily="Portable User Interface"  >
+                        <telerik:RadDomainDataSource.DomainContext>
+                            <my:LexEnaMeritumDomainContext />
+                        </telerik:RadDomainDataSource.DomainContext>
+                        <telerik:RadDomainDataSource.QueryParameters>
+
+                            <telerik:QueryParameter ParameterName="IdSprawy" />
+
+                        </telerik:RadDomainDataSource.QueryParameters>
+                    </telerik:RadDomainDataSource>
+
+                    <telerik:RadGridView ShowGroupPanel="False" x:Name="WplatyGridView" RowIndicatorVisibility="Collapsed" IsReadOnly="True" ItemsSource="{Binding DataView, ElementName=ListaWplatSprawydds}" AutoGenerateColumns="False" d:LayoutOverrides="Width" Margin="-1,0,0,4" HorizontalAlignment="Left" Width="700" Height="186" SelectionChanged="WplatyGridView_SelectionChanged">
+                        <telerik:RadGridView.Columns>
+                            <local:DateTimePickerColumn  Header="Data wpłaty"  DataMemberBinding="{Binding DataWplaty}" DataFormatString="{}{0:yyyy-MM-dd}" IsFilterable="false"  SortMemberPath="Value" SortingState="Ascending" HeaderTextAlignment="Center" MinWidth="5"  TextAlignment="Center"  />
+                            <telerik:GridViewMaskedInputColumn  Header="Kwota"  DataMemberBinding="{Binding Kwota}"  MinWidth="100" MaskType="Numeric" Mask="c2" DataFormatString="{}{0:c}" IsFilterable="false"  HeaderTextAlignment="Center" TextAlignment="Center"  />
+                            <telerik:GridViewDataColumn Header="Oznaczenie dok." TextAlignment="Right"  DataMemberBinding="{Binding NrDowodu}" IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5"   />
+                            <telerik:GridViewDataColumn Header="Typ wpłaty" TextAlignment="Right"  DataMemberBinding="{Binding IdKtoWplata,Converter={StaticResource IntToTypWplConverter}}" IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5"   />
+                            <telerik:GridViewDataColumn Header="Po złożeniu pozwu !" TextAlignment="Right"  DataMemberBinding="{Binding CzyNowa,Converter={StaticResource IntToTakNIEConverter}}" IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5"   />
+                        </telerik:RadGridView.Columns>
+                    </telerik:RadGridView>
+
+                    <telerik:RadDomainDataSource AutoLoad="False" Height="0" PageSize="30"  x:Name="PodzialWplatydds" QueryName="GetWplataPodzByIdWplatyQuery" Width="0" >
+                        <telerik:RadDomainDataSource.DomainContext>
+                            <my:LexEnaMeritumDomainContext />
+                        </telerik:RadDomainDataSource.DomainContext>
+                        <telerik:RadDomainDataSource.QueryParameters>
+
+                            <telerik:QueryParameter ParameterName="IdWplaty" />
+
+                        </telerik:RadDomainDataSource.QueryParameters>
+                    </telerik:RadDomainDataSource>
+
+                    <telerik:RadGridView x:Name="radGridViewWplatyPodz" Grid.Row="1" RowIndicatorVisibility="Collapsed" IsReadOnly="True" ItemsSource= "{Binding DataView, ElementName=PodzialWplatydds}" Margin="3,22,0,0" AutoGenerateColumns="False" ShowColumnFooters="True" ShowGroupPanel="False"   ShowColumnHeaders="true" HorizontalAlignment="Left" Width="699" >
+                        <telerik:RadGridView.Columns>
+                            <telerik:GridViewDataColumn  Header="Roszczenie" TextAlignment="Right"  DataMemberBinding="{Binding Naleznosc.kwota, StringFormat=\{0:c2\},ConverterCulture=pl-PL }" IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5"   >
+
+                            </telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn  Header="Data dokumentu" TextAlignment="Right"  DataMemberBinding="{Binding Naleznosc.data_dok, StringFormat=\{0:d\}}"  DataFormatString=" {0:yyyy-MM-dd} "  IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5"   />
+                            <telerik:GridViewDataColumn Header="Data wymagalności" TextAlignment="Right"  DataMemberBinding="{Binding Naleznosc.data_n, StringFormat=\{0:d\}}"  DataFormatString=" {0:yyyy-MM-dd} "  IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5"   />
+                            <telerik:GridViewDataColumn Header="Oznaczenie dok." TextAlignment="Right"  DataMemberBinding="{Binding Naleznosc.opis}" IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5"   />
+                            <telerik:GridViewDataColumn  Header="Na nal. główną" TextAlignment="Right"  DataMemberBinding="{Binding SplataKapital, StringFormat=\{0:c2\}}" IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5"   >
+                                <telerik:GridViewDataColumn.AggregateFunctions>
+                                    <telerik:SumFunction  ResultFormatString ="Razem:{0:c2}"   />
+                                </telerik:GridViewDataColumn.AggregateFunctions>
+
+                            </telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn  Header="Na odsetki" TextAlignment="Right"  DataMemberBinding="{Binding SplataOdsetki, StringFormat=\{0:c2\},ConverterCulture=pl-PL }" IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5"   >
+                                <telerik:GridViewDataColumn.AggregateFunctions>
+                                    <telerik:SumFunction  ResultFormatString ="Razem:{0:c2}"   />
+                                </telerik:GridViewDataColumn.AggregateFunctions>
+
+                            </telerik:GridViewDataColumn>
+                        </telerik:RadGridView.Columns>
+
+                    </telerik:RadGridView>
+                    <TextBlock Margin="8,2,353,0" Grid.Row="1" TextWrapping="Wrap" Text="Sposób zaliczenia wpłaty" VerticalAlignment="Top" RenderTransformOrigin="0.037,-0.125" FontWeight="Bold"/>
+                </Grid>
+            </telerik:RadTabItem>
+            <telerik:RadTabItem x:Name="Zaleglosci" Header="Zaległości" HorizontalAlignment="Right" VerticalAlignment="Top">
+                <telerik:RadBusyIndicator x:Name="BusyIndicator"  Grid.Row="1" BusyContent="Odczyt danych proszę czekać...">
+                    <Grid Background="Transparent">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" MinHeight="218"/>
+                            <RowDefinition Height="Auto" MinHeight="219"/>
+                        </Grid.RowDefinitions>
+                        <telerik:RadDomainDataSource AutoLoad="False" Height="0" PageSize="30"  x:Name="ZalSprawydds" QueryName="GetStanSprawyByIdSprawyQuery" Width="0" >
+                            <telerik:RadDomainDataSource.DomainContext>
+                                <my:LexEnaMeritumDomainContext />
+                            </telerik:RadDomainDataSource.DomainContext>
+                            <telerik:RadDomainDataSource.QueryParameters>
+
+                                <telerik:QueryParameter ParameterName="IdSprawy" />
+
+                            </telerik:RadDomainDataSource.QueryParameters>
+                        </telerik:RadDomainDataSource>
+                        <telerik:RadDomainDataSource AutoLoad="False" Height="0" PageSize="30"  x:Name="ZalKwotyDetailsdds" QueryName="GetStanNaleznosciByIdSprawyNDataStanuQuery" Width="0" >
+                            <telerik:RadDomainDataSource.DomainContext>
+                                <my:LexEnaMeritumDomainContext />
+                            </telerik:RadDomainDataSource.DomainContext>
+                            <telerik:RadDomainDataSource.QueryParameters>
+
+                                <telerik:QueryParameter ParameterName="IdSprawy" />
+                                <telerik:QueryParameter ParameterName="DataStanu" />
+                            </telerik:RadDomainDataSource.QueryParameters>
+                        </telerik:RadDomainDataSource>
+                        <telerik:RadGridView Name="ZalegGridView" ShowGroupPanel="False" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding DataView, ElementName=ZalSprawydds}" RowIndicatorVisibility="Collapsed" d:LayoutOverrides="Width" SelectionChanged="ZalegGridView_SelectionChanged" Height="210" VerticalAlignment="Top">
+                            <telerik:RadGridView.Columns>
+                                <local:DateTimePickerColumn  Header="Data stanu"  DataMemberBinding="{Binding data_s}" DataFormatString="{}{0:yyyy-MM-dd}" IsFilterable="false"  SortMemberPath="Value" SortingState="Ascending" HeaderTextAlignment="Center" MinWidth="5"  TextAlignment="Center"  />
+                                <!--
+								<telerik:GridViewMaskedTextBoxColumn  Header="Kwota zaległości"   MinWidth="100" IsFilterable="false"  HeaderTextAlignment="Center" TextAlignment="Center"  />
+								<telerik:GridViewMaskedTextBoxColumn  Header="Zaległość nal. głównych"  MinWidth="100"  IsFilterable="false"  HeaderTextAlignment="Center" TextAlignment="Center"  />
+								<telerik:GridViewMaskedTextBoxColumn  Header="Zaległość odsetek"  MinWidth="100"	 IsFilterable="false"  HeaderTextAlignment="Center" TextAlignment="Center"  />
+								-->
+
+                                <telerik:GridViewExpressionColumn  Header="Kwota zaległości"   MinWidth="100" IsFilterable="false" Expression="kwota_n + kwota_o + kwota_k" DataFormatString="{}{0:C}"   HeaderTextAlignment="Center" TextAlignment="Center"  />
+
+                                <telerik:GridViewDataColumn  Header="Zaległość nal. głównych"  MinWidth="100" DataMemberBinding="{Binding kwota_n, StringFormat=\{0:c2\},ConverterCulture=pl-PL }" IsFilterable="false"  HeaderTextAlignment="Center" TextAlignment="Center"  />
+                                <telerik:GridViewDataColumn  Header="Zaległość odsetek"  MinWidth="100"	 DataMemberBinding="{Binding kwota_o, StringFormat=\{0:c2\},ConverterCulture=pl-PL }"  IsFilterable="false"  HeaderTextAlignment="Center" TextAlignment="Center"  />
+                                <telerik:GridViewDataColumn  Header="Zaległość kosztów"  MinWidth="100"	 DataMemberBinding="{Binding kwota_k, StringFormat=\{0:c2\},ConverterCulture=pl-PL }"  IsFilterable="false"  HeaderTextAlignment="Center" TextAlignment="Center"  />
+                                <telerik:GridViewDataColumn  Header="Odsetki dzienne"  MinWidth="100"	 DataMemberBinding="{Binding ods_dzien}"  IsFilterable="false"  HeaderTextAlignment="Center" TextAlignment="Center"  />
+
+
+                            </telerik:RadGridView.Columns>
+                        </telerik:RadGridView>
+                        <telerik:RadGridView x:Name="radGridViewStanyDetails" Grid.Row="1" RowIndicatorVisibility="Collapsed"  Margin="4,19,7,0" ItemsSource="{Binding DataView, ElementName=ZalKwotyDetailsdds}" AutoGenerateColumns="False" ShowColumnFooters="True" ShowGroupPanel="False"    ShowColumnHeaders="true" Height="194" VerticalAlignment="Top" >
+                            <telerik:RadGridView.Columns>
+
+                                <telerik:GridViewDataColumn  Header="Kwota" TextAlignment="Right"  DataMemberBinding="{Binding Naleznosc.kwota, StringFormat=\{0:c2\},ConverterCulture=pl-PL }" IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5"   />
+
+                                <telerik:GridViewDataColumn Header="Data wymagal." TextAlignment="Right"  DataMemberBinding="{Binding Naleznosc.data_n, StringFormat=\{0:d\}}"  DataFormatString=" {0:yyyy-MM-dd} "  IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5"   />
+                                <telerik:GridViewDataColumn Header="Dokument" TextAlignment="Right"  DataMemberBinding="{Binding Naleznosc.opis, StringFormat=\{0:d\}}"   DataFormatString=" {0:yyyy-MM-dd} " IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5"   />
+                                <telerik:GridViewDataColumn  Header="Zaległosć nal. główna" TextAlignment="Right"  DataMemberBinding="{Binding kwota_n, StringFormat=\{0:c2\},ConverterCulture=pl-PL }" IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5"   >
+                                    <telerik:GridViewDataColumn.AggregateFunctions>
+                                        <telerik:SumFunction  ResultFormatString ="Razem:{0:c2}"   />
+                                    </telerik:GridViewDataColumn.AggregateFunctions>
+                                </telerik:GridViewDataColumn>
+                                <telerik:GridViewDataColumn  Header="Zaległość odsetki" TextAlignment="Right"  DataMemberBinding="{Binding kwota_o, StringFormat=\{0:c2\},ConverterCulture=pl-PL }" IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5"   >
+                                    <telerik:GridViewDataColumn.AggregateFunctions>
+                                        <telerik:SumFunction  ResultFormatString ="Razem:{0:c2}"   />
+                                    </telerik:GridViewDataColumn.AggregateFunctions>
+                                </telerik:GridViewDataColumn>
+                                <telerik:GridViewDataColumn  Header="Zaległość koszty" TextAlignment="Right"  DataMemberBinding="{Binding kwota_k, StringFormat=\{0:c2\},ConverterCulture=pl-PL }" IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5"   >
+                                    <telerik:GridViewDataColumn.AggregateFunctions>
+                                        <telerik:SumFunction  ResultFormatString ="Razem:{0:c2}"   />
+                                    </telerik:GridViewDataColumn.AggregateFunctions>
+                                </telerik:GridViewDataColumn>
+
+
+                                <!--
+							<telerik:GridViewDataColumn  Header="Data dokumentu" TextAlignment="Right"  DataMemberBinding="{Binding Wartosc, StringFormat=\{0:d\}}" IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5"   />
+    						<telerik:GridViewDataColumn Header="Data wymagalności" TextAlignment="Right"  DataMemberBinding="{Binding Wartosc, StringFormat=\{0:d\}}" IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5"   /> 
+							<telerik:GridViewDataColumn Header="Oznaczenie dok." TextAlignment="Right"  DataMemberBinding="{Binding Wartosc, StringFormat=\{0:d\}}" IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5"   /> 
+							<telerik:GridViewDataColumn  Header="Zaległość nal główna" TextAlignment="Right"  DataMemberBinding="{Binding Wartosc, StringFormat=\{0:c2\}}" IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5"   >
+    							<telerik:GridViewDataColumn.AggregateFunctions>
+    								<telerik:SumFunction  ResultFormatString ="Razem:{0:c2}"   />
+    							</telerik:GridViewDataColumn.AggregateFunctions>
+								
+    						</telerik:GridViewDataColumn>		
+							<telerik:GridViewDataColumn  Header="Zaległość odsetki" TextAlignment="Right"  DataMemberBinding="{Binding Wartosc, StringFormat=\{0:c2\}}" IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5"   >
+    							<telerik:GridViewDataColumn.AggregateFunctions>
+    								<telerik:SumFunction  ResultFormatString ="Razem:{0:c2}"   />
+    							</telerik:GridViewDataColumn.AggregateFunctions>
+								
+    						</telerik:GridViewDataColumn>		 -->
+                            </telerik:RadGridView.Columns>
+
+                        </telerik:RadGridView>
+                        <TextBlock HorizontalAlignment="Left" Margin="8,-1,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Zaległość szczegółowo" VerticalAlignment="Top" FontWeight="Bold" Width="155"/>
+                        <Button Content="Oblicz zaległość..." HorizontalAlignment="Right" Margin="0,-8,8,0" Grid.Row="1" VerticalAlignment="Top" Name="LiczZalButton" Width="225" Click="LiczZalButton_Click"/>
+
+                    </Grid>
+                </telerik:RadBusyIndicator>
+            </telerik:RadTabItem>
+            <telerik:RadTabItem x:Name="Dokumenty" Header="Dokumenty">
+                <Grid Background="Transparent">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" MinHeight="223"/>
+                        <RowDefinition Height="Auto" MinHeight="214"/>
+                    </Grid.RowDefinitions>
+                    <telerik:RadDomainDataSource  x:Name="DokOdebrSprawadds" QueryName="GetDokOdebrByIdSprawyQuery"  AutoLoad="False" LoadingData="DokOdebrSprawadds_LoadingData" FontFamily="Portable User Interface" >
+                        <telerik:RadDomainDataSource.DomainContext>
+                            <my:LexEnaMeritumDomainContext />
+                        </telerik:RadDomainDataSource.DomainContext>
+                        <telerik:RadDomainDataSource.QueryParameters>
+                            <telerik:QueryParameter ParameterName="IdSprawy" />
+                        </telerik:RadDomainDataSource.QueryParameters>
+                    </telerik:RadDomainDataSource>
+                    <telerik:RadGridView x:Name="radGridViewDocIn" ValidatesOnDataErrors="None"  RowIndicatorVisibility="Collapsed" IsReadOnly="True" ItemsSource="{Binding DataView, ElementName=DokOdebrSprawadds}" Margin="4,35,7,6" AutoGenerateColumns="False" ShowColumnFooters="True" ShowGroupPanel="False"    ShowColumnHeaders="true" Width="700" Height="182">
+                        <telerik:RadGridView.Columns>
+                            <telerik:GridViewDataColumn  Header="Data dokumentu" TextAlignment="Right"  DataMemberBinding="{Binding DataDokumentu, StringFormat=\{0:d\}}"  DataFormatString=" {0:yyyy-MM-dd} "  IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5"   />
+                            <telerik:GridViewDataColumn  Header="Data odbioru" TextAlignment="Right"  DataMemberBinding="{Binding DataRejestracji, StringFormat=\{0:d\}}"  DataFormatString=" {0:yyyy-MM-dd} "  IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5"   />
+                            <telerik:GridViewDataColumn Header="Oznaczenie dokumentu" TextAlignment="Center"  Width="*"   DataMemberBinding="{Binding Nazwa}" IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5"   />
+                            <telerik:GridViewDataColumn Header="Status dokumentu" TextAlignment="Center" DataMemberBinding="{Binding StatusDok}" IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5"   />
+                        </telerik:RadGridView.Columns>
+
+                    </telerik:RadGridView>
+                    <TextBlock HorizontalAlignment="Left" Margin="544,13,0,0" TextWrapping="Wrap" Text="Dokumenty przychodzące" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="551,18,0,0" TextWrapping="Wrap" Text="Dokumenty wychodzące" VerticalAlignment="Top" FontWeight="Bold" Grid.Row="1"/>
+                    <telerik:RadDomainDataSource  x:Name="DokWysSprawadds" QueryName="GetDokWysByIdSprawyQuery"  AutoLoad="False" LoadingData="DokWysSprawadds_LoadingData" >
+                        <telerik:RadDomainDataSource.DomainContext>
+                            <my:LexEnaMeritumDomainContext />
+                        </telerik:RadDomainDataSource.DomainContext>
+                        <telerik:RadDomainDataSource.QueryParameters>
+                            <telerik:QueryParameter ParameterName="IdSprawy" />
+                        </telerik:RadDomainDataSource.QueryParameters>
+                    </telerik:RadDomainDataSource>
+                    <telerik:RadGridView x:Name="DokWysGridView" ValidatesOnDataErrors="None" RowIndicatorVisibility="Collapsed" IsReadOnly="True" ItemsSource="{Binding DataView,ElementName=DokWysSprawadds}" Margin="3,36,8,-2" AutoGenerateColumns="False" ShowColumnFooters="True" ShowGroupPanel="False"   ShowColumnHeaders="true" Grid.Row="1" Width="700" Height="180">
+                        <telerik:RadGridView.Columns>
+                            <telerik:GridViewDataColumn Header="Data dokumentu" TextAlignment="Center"  DataMemberBinding="{Binding DataDok , StringFormat=\{0:d\}}"  DataFormatString=" {0:yyyy-MM-dd} " IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5"   />
+                            <telerik:GridViewDataColumn Header="Oznaczenie dokumentu" TextAlignment="Center"  DataMemberBinding="{Binding NazwaDok}" IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5"  />
+                            <telerik:GridViewDataColumn Header="Status dokumentu" TextAlignment="Center"   DataMemberBinding="{Binding StatusDok, Converter={StaticResource StatusDocConverter}}" IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5"   />
+                            <telerik:GridViewDataColumn Header="Oznaczenie paczki" TextAlignment="Center"  Width="*" DataMemberBinding="{Binding Paczka}" IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5"   />
+                        </telerik:RadGridView.Columns>
+
+                    </telerik:RadGridView>
+                    <Button Content="Podgląd" Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="6,11,0,0" Name="ShowDoc" VerticalAlignment="Top" Width="75" Click="ShowDoc_Click" />
+                    <Button Content="Edycja" Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="87,11,0,0" Name="EditDoc" VerticalAlignment="Top" Width="75" Click="EditDoc_Click" />
+                    <Button Content="Dodaj" Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="168,11,0,0" Name="AddDoc" VerticalAlignment="Top" Width="75" Click="AddDoc_Click" />
+                    <Button Content="Zmień status" Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="249,11,0,0" Name="ChangeStatus" VerticalAlignment="Top" Width="75" FontSize="9" Click="ChangeStatus_Click" />
+                    <Button Content="Pobierz wszystkie" Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="330,11,0,0" Name="DownloadAll" VerticalAlignment="Top" Width="75" FontSize="9" Click="DownloadAll_Click"  />
+                    <Button Content="Odśwież" Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="410,11,0,0" Name="RefreshDownloadAll" VerticalAlignment="Top" Width="75" FontSize="9" Click="RefreshDownloadAll_Click" />
+                    
+                    
+                    <Button Content="Podgląd" Height="23" HorizontalAlignment="Left" Margin="6,6,0,0" Name="ViewButton" VerticalAlignment="Top" Width="75" Click="ViewButton_Click" />
+                    <Button Content="Dodaj" Height="23" HorizontalAlignment="Left" Margin="165,6,0,0" Name="AddOdebrButton" VerticalAlignment="Top" Width="75" Click="AddOdebrButton_Click"  />
+                    <Button Content="Edycja" Height="23" HorizontalAlignment="Left" Margin="85,6,0,0" Name="EditOdebrButton" VerticalAlignment="Top" Width="75" Click="EditOdebrButton_Click"  />
+                    
+                </Grid>
+            </telerik:RadTabItem>
+            <telerik:RadTabItem x:Name="Terminy" Header="Terminy">
+                <Grid Background="Transparent">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <telerik:RadGridView ShowGroupPanel="False" RowIndicatorVisibility="Collapsed" d:LayoutOverrides="Width" Margin="0,28,6,8" Width="700">
+                        <telerik:RadGridView.Columns>
+                            <local:DateTimePickerColumn  Header="Data odnotowania"  DataMemberBinding="{Binding DataOd, Mode=TwoWay}" DataFormatString="{}{0:yyyy-MM-dd}" IsFilterable="false"  SortMemberPath="Value" SortingState="Ascending" HeaderTextAlignment="Center" MinWidth="5"  TextAlignment="Center"  />
+                            <local:DateTimePickerColumn  Header="Data upływu"  DataMemberBinding="{Binding DataOd, Mode=TwoWay}" DataFormatString="{}{0:yyyy-MM-dd}" IsFilterable="false"  SortMemberPath="Value" SortingState="Ascending" HeaderTextAlignment="Center" MinWidth="5"  TextAlignment="Center"  />
+                            <telerik:GridViewDataColumn Header="Termin" Width="*" TextAlignment="Right"  DataMemberBinding="{Binding Wartosc, StringFormat=\{0:d\}}"  DataFormatString=" {0:yyyy-MM-dd} "  IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5"   />
+                            <telerik:GridViewDataColumn Header="Wykonany" TextAlignment="Right"  DataMemberBinding="{Binding Wartosc, StringFormat=\{0:d\}}" DataFormatString=" {0:yyyy-MM-dd} "   IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5"   />
+                            <telerik:GridViewDataColumn Header="Data wykonania" TextAlignment="Right"  DataMemberBinding="{Binding Wartosc, StringFormat=\{0:d\}}"  DataFormatString=" {0:yyyy-MM-dd} "  IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5"   />
+                        </telerik:RadGridView.Columns>
+                    </telerik:RadGridView>
+                </Grid>
+            </telerik:RadTabItem>
+            <telerik:RadTabItem x:Name="Doręczenia" Header="Doręczenia">
+                <Grid Background="Transparent">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.49*"/>
+                        <RowDefinition Height="0.51*"/>
+                    </Grid.RowDefinitions>
+                    <telerik:RadGridView ShowGroupPanel="False" RowIndicatorVisibility="Collapsed" d:LayoutOverrides="Width" Margin="0,21,0,8" Width="700">
+                        <telerik:RadGridView.Columns>
+                            <local:DateTimePickerColumn  Header="Data dokumentu"  DataMemberBinding="{Binding DataOd, Mode=TwoWay}" DataFormatString="{}{0:yyyy-MM-dd}" IsFilterable="false"  SortMemberPath="Value" SortingState="Ascending" HeaderTextAlignment="Center" MinWidth="5"  TextAlignment="Center"  />
+                            <telerik:GridViewDataColumn Header="Oznaczenie dokumentu" Width="*" TextAlignment="Right"  DataMemberBinding="{Binding Wartosc, StringFormat=\{0:d\}}" DataFormatString=" {0:yyyy-MM-dd} "  IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5"   />
+                            <local:DateTimePickerColumn  Header="Data doręczenia"  DataMemberBinding="{Binding DataOd, Mode=TwoWay}" DataFormatString="{}{0:yyyy-MM-dd}" IsFilterable="false"  SortMemberPath="Value" SortingState="Ascending" HeaderTextAlignment="Center" MinWidth="5"  TextAlignment="Center"  />
+                            <telerik:GridViewDataColumn Header="Status doręczenia" Width="*" TextAlignment="Right"  DataMemberBinding="{Binding Wartosc, StringFormat=\{0:d\}}"  DataFormatString=" {0:yyyy-MM-dd} " IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5"   />
+
+                        </telerik:RadGridView.Columns>
+                    </telerik:RadGridView>
+                    <telerik:RadGridView ShowGroupPanel="False" Grid.Row="1" RowIndicatorVisibility="Collapsed" d:LayoutOverrides="Width" Margin="0,21,0,8" Width="700">
+                        <telerik:RadGridView.Columns>
+                            <local:DateTimePickerColumn  Header="Data odbioru"  DataMemberBinding="{Binding DataOd, Mode=TwoWay}" DataFormatString="{}{0:yyyy-MM-dd}" IsFilterable="false"  SortMemberPath="Value" SortingState="Ascending" HeaderTextAlignment="Center" MinWidth="5"  TextAlignment="Center"  />
+                            <local:DateTimePickerColumn  Header="Data zdarzenia"  DataMemberBinding="{Binding DataOd, Mode=TwoWay}" DataFormatString="{}{0:yyyy-MM-dd}" IsFilterable="false"  SortMemberPath="Value" SortingState="Ascending" HeaderTextAlignment="Center" MinWidth="5"  TextAlignment="Center"  />
+                            <telerik:GridViewDataColumn Header="Kategoria" Width="*" TextAlignment="Right"  DataMemberBinding="{Binding Wartosc, StringFormat=\{0:d\}}"  DataFormatString=" {0:yyyy-MM-dd} " IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5"   />
+                            <telerik:GridViewDataColumn Header="Opis" Width="*" TextAlignment="Right"  DataMemberBinding="{Binding Wartosc, StringFormat=\{0:d\}}" DataFormatString=" {0:yyyy-MM-dd} "  IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5"   />
+
+                        </telerik:RadGridView.Columns>
+                    </telerik:RadGridView>
+                    <TextBlock HorizontalAlignment="Left" Margin="8,1,0,0" TextWrapping="Wrap" Text="Doręczenia:" VerticalAlignment="Top" FontWeight="Bold" Width="76"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="8,1,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Zdarzenia:" VerticalAlignment="Top" FontWeight="Bold"/>
+                </Grid>
+            </telerik:RadTabItem>
+            <telerik:RadTabItem Header="Komunikacja" x:Name="KomunikacjaEPU">
+                <Grid Background="Transparent" >
+                    <telerik:RadGridView ShowGroupPanel="False" RowIndicatorVisibility="Collapsed" IsReadOnly="True" ItemsSource ="{Binding DataView, ElementName=KomunikacjaDomainDataSource}"  Margin="0,0,0,8" Width="700">
+                        <telerik:RadGridView.Columns>
+                            <local:DateTimePickerColumn  Header="Data sesji"  DataMemberBinding="{Binding d_kreacji}" DataFormatString="{}{0:yyyy-MM-dd}" IsFilterable="false"  SortMemberPath="Value" SortingState="Descending" HeaderTextAlignment="Center" MinWidth="5"  TextAlignment="Center"  />
+                            <telerik:GridViewDataColumn  Header="Id Sprawy w EPU"  DataMemberBinding="{Binding IdSprawyEPU}"  IsFilterable="false"   HeaderTextAlignment="Center" MinWidth="5"  TextAlignment="Center"  />
+                            <telerik:GridViewDataColumn Header="Sygnatura EPU" Width="*" TextAlignment="Right"  DataMemberBinding="{Binding SygnaturaSprawy}" IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5"   />
+                            <telerik:GridViewDataColumn Header="Stan sprawy EPU" Width="*" TextAlignment="Right"  DataMemberBinding="{Binding StanSprawy}" IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5"   />
+                            <local:DateTimePickerColumn  Header="Data prawomocn."  DataMemberBinding="{Binding DataPrawomocnosci}" DataFormatString="{}{0:yyyy-MM-dd}" IsFilterable="false"  SortMemberPath="Value"  HeaderTextAlignment="Center" MinWidth="5"  TextAlignment="Center"  />
+                            <local:DateTimePickerColumn  Header="Data wpływu"  DataMemberBinding="{Binding DataWplywu}" DataFormatString="{}{0:yyyy-MM-dd}" IsFilterable="false"  SortMemberPath="Value"  HeaderTextAlignment="Center" MinWidth="5"  TextAlignment="Center"  />
+
+
+                        </telerik:RadGridView.Columns>
+                    </telerik:RadGridView>
+                </Grid>
+            </telerik:RadTabItem>
+            <telerik:RadTabItem x:Name="Uwagi" Header="Uwagi" DataContext ="{Binding DataView, ElementName= sprawaDomainDataSource }" HorizontalAlignment="Right" d:LayoutOverrides="VerticalAlignment">
+                <Grid Background="Transparent">
+                    <TextBlock HorizontalAlignment="Left"  Margin="16,8,0,0" TextWrapping="Wrap" Text="Komornik" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <TextBlock Margin="83,8,32,0" TextWrapping="Wrap" Text="Komornik Sądowy " VerticalAlignment="Top" Height="29"/>
+                    <TextBox Margin="0,45,0,0" TextWrapping="Wrap"  Text="{Binding Uwagi,Mode=TwoWay}" d:LayoutOverrides="Width, Height"/>
+                </Grid>
+            </telerik:RadTabItem>
+        </telerik:RadTabControl>
+        <TextBlock HorizontalAlignment="Right" Height="3" Margin="0,17,270,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="0"/>
+
+    </Grid>
+</UserControl>

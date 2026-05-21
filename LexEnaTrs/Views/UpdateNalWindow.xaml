@@ -1,0 +1,75 @@
+﻿<controls:ChildWindow
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+           xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk" x:Class="LexEnaTrs.Views.UpdateNalWindow"
+           Width="1147.69" Height="611.884" 
+           Title="Uzupełnij  brakujace dane pozwu" Loaded="ChildWindow_Loaded">
+    <Grid x:Name="LayoutRoot" Margin="2">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="170"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="*"/>
+
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+        <CheckBox x:Name="Add40Euro" Content="Dodaj równowartość 40 EURO tytułem rekompensaty kosztów dochodzenia należności" Margin="95,7,0,6" HorizontalAlignment="Left" VerticalAlignment="Center" Width="586"/>
+        <Button x:Name="CancelButton" Content="Anuluj" Click="CancelButton_Click" Width="75" Height="23" HorizontalAlignment="Right" Margin="0,0,0,0" Grid.Row="4" />
+        <Button x:Name="OKButton" Content="OK" Click="OKButton_Click" Width="75" Height="23" HorizontalAlignment="Right" Margin="0,0,79,0" Grid.Row="4" />
+
+        <telerik:RadGridView  ValidatesOnDataErrors="None" IsSynchronizedWithCurrentItem="false" Grid.Row="1"  AutoGenerateColumns="false"  IsReadOnly="False"  CanUserFreezeColumns="False" RowIndicatorVisibility="Visible" x:Name="RGVNalLst"  Margin="2">
+
+            <telerik:RadGridView.Columns>
+                <telerik:GridViewDataColumn Header="Data dokumentu" DataMemberBinding="{Binding data_dok, Mode=TwoWay, StringFormat=\{0:d\}}"  DataFormatString=" {0:yyyy-MM-dd} " IsReadOnly="False" IsFilterable="false" HeaderTextAlignment="Center" MinWidth="5" TextAlignment="Center" />
+                <telerik:GridViewDataColumn x:Name="TerminPlatnosci" Header="Termin płatności" DataMemberBinding="{Binding data_n, StringFormat=\{0:d\}}" DataFormatString=" {0:yyyy-MM-dd} " IsReadOnly="True" HeaderTextAlignment="Center" MinWidth="10" TextAlignment="Center" />
+                <telerik:GridViewDataColumn x:Name="NrFaktury" Header="Numer faktury" DataMemberBinding="{Binding opis}"  IsReadOnly="True"  HeaderTextAlignment="Center" MinWidth="20" TextAlignment="Left" />
+                <telerik:GridViewMaskedInputColumn  Header="Kwota" TextAlignment="Right"  DataMemberBinding="{Binding kwota, ConverterCulture=pl-PL, Mode=TwoWay, StringFormat=\{0:c2\}}"  MaskType="Currency"    IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5"   >
+                    <telerik:GridViewMaskedInputColumn.AggregateFunctions>
+                        <telerik:SumFunction   ResultFormatString =" {0:N2}"   />
+                    </telerik:GridViewMaskedInputColumn.AggregateFunctions>
+                </telerik:GridViewMaskedInputColumn>
+
+
+            </telerik:RadGridView.Columns>
+        </telerik:RadGridView>
+
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60*"/>
+                <ColumnDefinition Width="40*"/>
+            </Grid.ColumnDefinitions>
+
+
+            <telerik:RadGridView  ValidatesOnDataErrors="None"   Grid.Column="0" ShowGroupPanel="False"  AutoExpandGroups="False" IsSynchronizedWithCurrentItem="false"  AutoGenerateColumns="false" SelectionMode="Multiple"  CanUserFreezeColumns="False" RowIndicatorVisibility="Collapsed"  EnableColumnVirtualization="False" CanUserReorderColumns="False" EnableRowVirtualization="False" CanUserSortGroups="False"  EnableColumnGroupsVirtualization="False" IsFilteringAllowed="False" x:Name="RGVDowLst"   Margin="2" GroupRenderMode="Flat" Grouped="RGVDowLst_Grouped">
+                <telerik:RadGridView.GroupDescriptors>
+                    <telerik:GroupDescriptor Member="Grupa"   SortDirection="Ascending"  />
+                </telerik:RadGridView.GroupDescriptors>
+
+                <telerik:RadGridView.Columns>
+                    <telerik:GridViewCheckBoxColumn    IsThreeState="False"
+                                                    ShowDistinctFilters="False"
+                                                    AutoSelectOnEdit="True"
+                                                    EditTriggers="CellClick" Header=" " DataMemberBinding="{Binding Choosen, Mode=TwoWay}"   IsFilterable="false" HeaderTextAlignment="Center"  TextAlignment="Center" IsGroupable="False"  ShowFieldFilters="False" ShowFilterButton="False"  />
+                    <telerik:GridViewDataColumn Header="Data dowodu" DataMemberBinding="{Binding DataDowodu, Mode=TwoWay, StringFormat=\{0:d\}}"  DataFormatString=" {0:yyyy-MM-dd} " IsReadOnly="False" IsGroupable="False" IsFilterable="False" ShowFieldFilters="False" ShowFilterButton="False"  HeaderTextAlignment="Center" MinWidth="5"  TextAlignment="Center" />
+                    <telerik:GridViewDataColumn Header="Oznaczenie" DataMemberBinding="{Binding Tekst, Mode=TwoWay}" IsReadOnly="False" IsGroupable="False" IsFilterable="False" ShowFieldFilters="False" ShowFilterButton="False"  HeaderTextAlignment="Center" MinWidth="5"  TextAlignment="Center" />
+                    <telerik:GridViewDataColumn  Header="Rodzaj" DataMemberBinding="{Binding Nazwa}"  IsReadOnly="True" HeaderTextAlignment="Left" MinWidth="10" Width ="*"  TextAlignment="Left" />
+
+                </telerik:RadGridView.Columns>
+            </telerik:RadGridView>
+            <telerik:RadGridView   SelectionMode="Single"   Grid.Column="1" x:Name="RGVUzasadLst"   ValidatesOnDataErrors="None"  ShowGroupPanel="False"  AutoExpandGroups="False" IsSynchronizedWithCurrentItem="false"  AutoGenerateColumns="false"   CanUserFreezeColumns="False" RowIndicatorVisibility="Collapsed"  EnableColumnVirtualization="False" CanUserReorderColumns="False" EnableRowVirtualization="False" CanUserSortGroups="False"  EnableColumnGroupsVirtualization="False" IsFilteringAllowed="False"    Margin="2" GroupRenderMode="Flat" Grouped="RGVUzasadLst_Grouped">
+                <telerik:RadGridView.GroupDescriptors>
+                    <telerik:GroupDescriptor Member="Grupa"  SortDirection="Ascending"  />
+                </telerik:RadGridView.GroupDescriptors>
+                <telerik:RadGridView.Columns>
+
+                    <telerik:GridViewDataColumn  Header="Rodzaj" DataMemberBinding="{Binding Nazwa}"  IsReadOnly="True" HeaderTextAlignment="Left" MinWidth="10" TextAlignment="Left" />
+
+                </telerik:RadGridView.Columns>
+            </telerik:RadGridView>
+        </Grid>
+        <sdk:Label x:Name="label" HorizontalAlignment="Left" Visibility="Collapsed" Height="17" Margin="32,5,0,0" Grid.Row="2" VerticalAlignment="Top" Width="238" Content="Rodzaj odsetek dla wszystkich należności:"/>
+        <ComboBox x:Name="cbxRodzajeOds" HorizontalAlignment="Left" Margin="275,3,0,0" Grid.Row="2" Visibility="Collapsed" VerticalAlignment="Top" SelectedValuePath="Numer" DisplayMemberPath="Nazwa" Width="602"/>
+ 
+    </Grid>
+</controls:ChildWindow>

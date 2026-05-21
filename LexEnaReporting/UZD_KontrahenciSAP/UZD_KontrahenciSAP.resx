@@ -1,0 +1,418 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="UZD_KontrahenciSapDS.ParameterValues" xml:space="preserve">
+    <value>{"@IdPakiet":"6"}</value>
+  </metadata>
+  <data name="UZD_KontrahenciSapDS.SelectCommand" xml:space="preserve">
+    <value>with nipy as
+(
+select max( u.DataWymagalnosci) as data, u.nip as nip from UZD_Faktura u 
+where u.UZD_PakietId = @IdPakiet
+and u.Status&gt;=0 and u.StatusWalidNip = 1 and u.Nazwa is not null and len(ltrim(rtrim(nip)))&gt;0 
+group by u.nip
+),
+pesele as
+(
+select max( u.DataWymagalnosci) as data, u.pesel as pesel from UZD_Faktura u 
+where u.UZD_PakietId = @IdPakiet
+and u.Status&gt;=0 and u.StatusWalidNip = 1 and u.Nazwa is not null and len(ltrim(rtrim(isnull(nip,''))))=0 and len(ltrim(rtrim(isnull(pesel,''))))=11
+group by u.pesel
+)
+select distinct  
+replace(replace(replace(replace(substring (u.Nazwa,1,35),'"',''),'''',''),',,',''),'´','') as Nazwa1,  replace(replace(replace(replace(substring (u.Nazwa,36,35),'"',''),'''',''),',,',''),'´','') as Nazwa2, replace(replace(replace(replace(substring (u.Nazwa,71,35),'''',''),'"',''),',,',''),'´','') as Nazwa3, replace(replace(replace(replace(substring (u.Nazwa,106,35),'"',''),'''',''),',,',''),'´','') as Nazwa4,
+--case when   SUBSTRING(u.nazwa,CHARINDEX('"',u.nazwa)+1,CHARINDEX('"',u.nazwa)-CHARINDEX('"',u.nazwa)-1),
+ replace(replace(replace(case when patindex('%"%"%',u.nazwa) &gt; 0 then 
+    substring(substring(u.nazwa,charindex( '"',u.nazwa,1) + 1 , charindex('"',u.nazwa,charindex('"', u.nazwa,1) + 1) - charindex('"', u.nazwa,1) - 1),1,20) 
+ else substring(replace(u.nazwa,'"',''),1,20)end ,'"',''),'''',''),',,','')   as Skrot,
+ 
+ u.Nazwa,  u.NIP, isnull(u.Pesel,'') as pesel, case when len(u.Pesel) = 11 then 'X' else '' end as czyFIZ , substring(u.Kod,1,2) +'-' + substring(u.Kod,3,3) as Kod , u.Miejscowosc, u.Ulica , u.NrKlienta  from UZD_faktura u 
+inner join  nipy n on u.DataWymagalnosci = n.data and n.nip = u.Nip
+
+where UZD_PakietId = @IdPakiet
+and not exists(select null from UZD_SapMap usm where usm.NIp = u.nip and len(ltrim(rtrim(usm.SAPId))) &gt; 0  ) 
+and u.Status&gt;=0 and u.StatusWalidNip = 1 and Nazwa is not null
+and u.nip not in 
+('5030017338'
+,'5140306718'
+,'5213639898'
+,'5241272872'
+,'5252119849'
+,'5252550300'
+,'5252561539'
+,'5252610924'
+,'5262456784'
+,'5272687203'
+,'5321910895'
+,'5342500501'
+,'5660008358'
+,'5661789926'
+,'5670000269'
+,'5671333837'
+,'5671732135'
+,'5671884218'
+,'5681167501'
+,'5691248224'
+,'5691307317'
+,'5711642008'
+,'5782425301'
+,'5790013091'
+,'5792030225'
+,'5820004896'
+,'5831315683'
+,'5831382395'
+,'5832468868'
+,'5832739988'
+,'5832746528'
+,'5832891041'
+,'5832904654'
+,'5832969116'
+,'5840952627'
+,'5842559839'
+,'5851466505'
+,'5860154515'
+,'5862286729'
+,'5871558268'
+,'5882171372'
+,'5932116264'
+,'6060089627'
+,'6191963415'
+,'6271686923'
+,'6651551649'
+,'6652719648'
+,'6681347586'
+,'6681588025'
+,'6692167296'
+,'6692395933'
+,'6692467265'
+,'6711406811'
+,'6711801571'
+,'6711813195'
+,'7010435252'
+,'7231526088'
+,'7252058155'
+,'7261380838'
+,'7392130906'
+,'7392373000'
+,'7392776330'
+,'7393138399'
+,'7393288791'
+,'7412128055'
+,'7422110789'
+,'7422192327'
+,'7430002229'
+,'7441673424'
+,'7441810424'
+,'7741237118'
+,'7741968431'
+,'7751010540'
+,'7752065164'
+,'7752372133'
+,'7761108186'
+,'7772312045'
+,'7811876184'
+,'7962143893'
+,'8141630871'
+,'8390200098'
+,'8391219562'
+,'8392640878'
+,'8392843311'
+,'8393158959'
+,'8421335133'
+,'8421668981'
+,'8751232749'
+,'8761000319'
+,'8762020399'
+,'8762457742'
+,'8771443018'
+,'8771457598'
+,'8791574143'
+,'8792670682'
+,'8880013050'
+,'8881450048'
+,'8881613013'
+,'8881960967'
+,'8882184778'
+,'8882689254'
+,'8882710770'
+,'8882737504'
+,'8961499594'
+,'8971804610'
+,'9111789834'
+,'9211277039'
+,'9471913704'
+,'9512395437'
+,'9552240824'
+,'9561311854'
+,'9561403556'
+,'9561963315'
+,'9562187267'
+,'9562307056'
+,'9570824961'
+,'9570896937'
+,'9571026405'
+,'9571075697'
+,'9571077153'
+,'9581135136'
+,'9581669145'
+,'9721238707' )
+union all
+select distinct 
+replace(replace(replace(replace(substring (u.Nazwa,1,35),'"',''),'''',''),',,',''),'´','') as Nazwa1,  replace(replace(replace(replace(substring (u.Nazwa,36,35),'"',''),'''',''),',,',''),'´','') as Nazwa2, replace(replace(replace(replace(substring (u.Nazwa,71,35),'''',''),'"',''),',,',''),'´','') as Nazwa3, replace(replace(replace(replace(substring (u.Nazwa,106,35),'"',''),'''',''),',,',''),'´','') as Nazwa4,
+--case when   SUBSTRING(u.nazwa,CHARINDEX('"',u.nazwa)+1,CHARINDEX('"',u.nazwa)-CHARINDEX('"',u.nazwa)-1),
+ replace(replace(replace(case when patindex('%"%"%',u.nazwa) &gt; 0 then 
+    substring(substring(u.nazwa,charindex( '"',u.nazwa,1) + 1 , charindex('"',u.nazwa,charindex('"', u.nazwa,1) + 1) - charindex('"', u.nazwa,1) - 1),1,20) 
+ else substring(replace(u.nazwa,'"',''),1,20)end ,'"',''),'''',''),',,','')   as Skrot,
+ 
+ u.Nazwa,  u.NIP, isnull(u.Pesel,'') as pesel, case when len(u.Pesel) = 11 then 'X' else '' end as czyFIZ , substring(u.Kod,1,2) +'-' + substring(u.Kod,3,3) as Kod , u.Miejscowosc, u.Ulica , u.NrKlienta  from UZD_faktura u 
+inner join  pesele n on u.DataWymagalnosci = n.data and n.pesel = u.Pesel
+
+where UZD_PakietId = @IdPakiet
+and not exists(select null from UZD_SapMap usm where usm.pesel = u.pesel and len(ltrim(rtrim(usm.SAPId))) &gt; 0  ) 
+and u.Status&gt;=0 and u.StatusWalidNip = 1 and Nazwa is not null
+and u.nip not in 
+('5030017338'
+,'5140306718'
+,'5213639898'
+,'5241272872'
+,'5252119849'
+,'5252550300'
+,'5252561539'
+,'5252610924'
+,'5262456784'
+,'5272687203'
+,'5321910895'
+,'5342500501'
+,'5660008358'
+,'5661789926'
+,'5670000269'
+,'5671333837'
+,'5671732135'
+,'5671884218'
+,'5681167501'
+,'5691248224'
+,'5691307317'
+,'5711642008'
+,'5782425301'
+,'5790013091'
+,'5792030225'
+,'5820004896'
+,'5831315683'
+,'5831382395'
+,'5832468868'
+,'5832739988'
+,'5832746528'
+,'5832891041'
+,'5832904654'
+,'5832969116'
+,'5840952627'
+,'5842559839'
+,'5851466505'
+,'5860154515'
+,'5862286729'
+,'5871558268'
+,'5882171372'
+,'5932116264'
+,'6060089627'
+,'6191963415'
+,'6271686923'
+,'6651551649'
+,'6652719648'
+,'6681347586'
+,'6681588025'
+,'6692167296'
+,'6692395933'
+,'6692467265'
+,'6711406811'
+,'6711801571'
+,'6711813195'
+,'7010435252'
+,'7231526088'
+,'7252058155'
+,'7261380838'
+,'7392130906'
+,'7392373000'
+,'7392776330'
+,'7393138399'
+,'7393288791'
+,'7412128055'
+,'7422110789'
+,'7422192327'
+,'7430002229'
+,'7441673424'
+,'7441810424'
+,'7741237118'
+,'7741968431'
+,'7751010540'
+,'7752065164'
+,'7752372133'
+,'7761108186'
+,'7772312045'
+,'7811876184'
+,'7962143893'
+,'8141630871'
+,'8390200098'
+,'8391219562'
+,'8392640878'
+,'8392843311'
+,'8393158959'
+,'8421335133'
+,'8421668981'
+,'8751232749'
+,'8761000319'
+,'8762020399'
+,'8762457742'
+,'8771443018'
+,'8771457598'
+,'8791574143'
+,'8792670682'
+,'8880013050'
+,'8881450048'
+,'8881613013'
+,'8881960967'
+,'8882184778'
+,'8882689254'
+,'8882710770'
+,'8882737504'
+,'8961499594'
+,'8971804610'
+,'9111789834'
+,'9211277039'
+,'9471913704'
+,'9512395437'
+,'9552240824'
+,'9561311854'
+,'9561403556'
+,'9561963315'
+,'9562187267'
+,'9562307056'
+,'9570824961'
+,'9570896937'
+,'9571026405'
+,'9571075697'
+,'9571077153'
+,'9581135136'
+,'9581669145'
+,'9721238707' )
+</value>
+  </data>
+  <metadata name="$this.SnapGridSize" type="Telerik.Reporting.Drawing.Unit, Telerik.Reporting, Version=10.2.16.1025, Culture=neutral, PublicKeyToken=a9d7983dfcc261be">
+    <value>0.1cm</value>
+  </metadata>
+</root>

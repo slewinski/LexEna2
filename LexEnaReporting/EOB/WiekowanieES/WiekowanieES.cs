@@ -1,0 +1,27 @@
+namespace LexEnaReporting.EOB.WiekowanieES
+{
+    using System;
+    using System.ComponentModel;
+    using System.Drawing;
+    using System.Windows.Forms;
+    using Telerik.Reporting;
+    using Telerik.Reporting.Drawing;
+
+    /// <summary>
+    /// Summary description for WiekowanieOS.
+    /// </summary>
+    public partial class WiekowanieES : Telerik.Reporting.Report
+    {
+        public WiekowanieES()
+        {
+            //
+            // Required for telerik Reporting designer support
+            //
+            InitializeComponent();
+            this.WiekowanieOSDS.CommandTimeout = 240;
+            //
+            // TODO: Add any constructor code after InitializeComponent call
+            //
+        }
+    }
+}

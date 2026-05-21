@@ -1,0 +1,894 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://e-sad.gov.pl/2010/03/26/epu/" elementFormDefault="qualified" targetNamespace="http://e-sad.gov.pl/2010/03/26/epu/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="WersjaAPI">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="WersjaAPIResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="WersjaAPIResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="WersjaAPINoAuth">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="WersjaAPINoAuthResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="WersjaAPINoAuthResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PobierzLiczbeDoreczen">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="rodzajDaty" nillable="true" type="xs:short" />
+        <xs:element minOccurs="0" name="dataOD" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dataDO" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="kryteriumFiltr" nillable="true" type="xs:short" />
+        <xs:element minOccurs="0" name="wartoscFiltru" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="statusDoreczenia" nillable="true" type="xs:short" />
+        <xs:element minOccurs="0" name="czyPobrano" type="xs:short" />
+        <xs:element minOccurs="0" name="czyOdp" type="xs:short" />
+        <xs:element minOccurs="0" name="pageSize" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="pageNumber" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PobierzLiczbeDoreczenResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PobierzLiczbeDoreczenResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PobierzListeDoreczen">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="rodzajDaty" nillable="true" type="xs:short" />
+        <xs:element minOccurs="0" name="dataOD" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dataDO" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="kryteriumFiltr" nillable="true" type="xs:short" />
+        <xs:element minOccurs="0" name="wartoscFiltru" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="statusDoreczenia" nillable="true" type="xs:short" />
+        <xs:element minOccurs="0" name="czyPobrano" type="xs:short" />
+        <xs:element minOccurs="0" name="czyOdp" type="xs:short" />
+        <xs:element minOccurs="0" name="pageSize" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="pageNumber" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PobierzListeDoreczenResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/epuLib.ZawiadomienieDluznikaOWszczeciuEgzekucji" minOccurs="0" name="PobierzListeDoreczenResult" nillable="true" type="q1:DoreczeniaOutputData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="WyslijPisma">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="listaPismXML" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="WyslijPismaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/epuLib.ZawiadomienieDluznikaOWszczeciuEgzekucji" minOccurs="0" name="WyslijPismaResult" nillable="true" type="q2:PismaValidationInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="WyslijPismaPodpisane">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="listaPodpisanychPismXML" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="WyslijPismaPodpisaneResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/epuLib.ZawiadomienieDluznikaOWszczeciuEgzekucji" minOccurs="0" name="WyslijPismaPodpisaneResult" nillable="true" type="q3:PismaValidationInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PobierzPisma">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dataOD" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dataDO" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="kryteriumFiltr" type="xs:short" />
+        <xs:element minOccurs="0" name="wartoscFiltru" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pageSize" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="pageNumber" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PobierzPismaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/epuLib.ZawiadomienieDluznikaOWszczeciuEgzekucji" minOccurs="0" name="PobierzPismaResult" nillable="true" type="q4:PismaOutputData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PobierzTransformate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="wersjaTransformaty" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PobierzTransformateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PobierzTransformateResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SprawdzStatusDoreczenia">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="idDoreczenia" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SprawdzStatusDoreczeniaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/epuLib.ZawiadomienieDluznikaOWszczeciuEgzekucji" minOccurs="0" name="SprawdzStatusDoreczeniaResult" nillable="true" type="q5:StatusDoreczeniaOutputInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PobierzOdpowiedziDoZarzadzenia">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="idZarzadzenia" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PobierzOdpowiedziDoZarzadzeniaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/epuLib.ZawiadomienieDluznikaOWszczeciuEgzekucji" minOccurs="0" name="PobierzOdpowiedziDoZarzadzeniaResult" nillable="true" type="q6:OdpowiedziDoZarzadzeniaOutputData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PobierzDoreczeniaPDF">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+        <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="idDoreczen" nillable="true" type="q7:ArrayOfint" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PobierzDoreczeniaPDFResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/epuLib.ZawiadomienieDluznikaOWszczeciuEgzekucji" minOccurs="0" name="PobierzDoreczeniaPDFResult" nillable="true" type="q8:DoreczeniaPDF" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OznaczDoreczeniaJakoPobrane">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+        <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="idDoreczenList" nillable="true" type="q9:ArrayOfint" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OznaczDoreczeniaJakoPobraneResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/epuLib.ZawiadomienieDluznikaOWszczeciuEgzekucji" minOccurs="0" name="OznaczDoreczeniaJakoPobraneResult" nillable="true" type="q10:OznaczenieDoreczenJakoPobraneOutputData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ZlozPozwy">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="listaPozwowXML" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ZlozPozwyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/EpuWS.DataTypes" minOccurs="0" name="ZlozPozwyResult" nillable="true" type="q11:ZlozPozwyOutputData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ZlozZazalenia">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="listaZazalenXML" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ZlozZazaleniaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/EpuWS.DataTypes" minOccurs="0" name="ZlozZazaleniaResult" nillable="true" type="q12:ZlozZazaleniaOutputData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ZlozSkargi">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="listaSkargXML" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ZlozSkargiResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/EpuWS.DataTypes" minOccurs="0" name="ZlozSkargiResult" nillable="true" type="q13:ZlozSkargiOutputData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ZlozSprzeciwy">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="listaSprzeciwowXML" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ZlozSprzeciwyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/EpuWS.DataTypes" minOccurs="0" name="ZlozSprzeciwyResult" nillable="true" type="q14:ZlozSprzeciwyOutputData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ZlozWnioskiEgzekucyjne">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="listaWnioskowEgzekucyjnychXML" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ZlozWnioskiEgzekucyjneResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/EpuWS.DataTypes" minOccurs="0" name="ZlozWnioskiEgzekucyjneResult" nillable="true" type="q15:ZlozWnioskiEgzekucyjneOutputData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ZlozDokumenty">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="listaDokumentowXML" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ZlozDokumentyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/EpuWS.DataTypes" minOccurs="0" name="ZlozDokumentyResult" nillable="true" type="q16:ZlozDokumentyOutputData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ZlozCzynnosciEgzekucyjne">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="listaCzynnosciXml" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ZlozCzynnosciEgzekucyjneResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/EpuWS.DataTypes" minOccurs="0" name="ZlozCzynnosciEgzekucyjneResult" nillable="true" type="q17:ZlozCzynnosciEgzekucyjneOutputData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ZlozCzynnosciEgzekucyjnePodpisane">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="listaCzynnosciXml" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ZlozCzynnosciEgzekucyjnePodpisaneResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/EpuWS.DataTypes" minOccurs="0" name="ZlozCzynnosciEgzekucyjnePodpisaneResult" nillable="true" type="q18:ZlozCzynnosciEgzekucyjneOutputData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ZlozZawiadomieniaDostarczeniaDoEgzekucyjiPodjecia">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="listaZawiadomienXml" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ZlozZawiadomieniaDostarczeniaDoEgzekucyjiPodjeciaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/EpuWS.DataTypes" minOccurs="0" name="ZlozZawiadomieniaDostarczeniaDoEgzekucyjiPodjeciaResult" nillable="true" type="q19:ZlozZawiadomieniaEgzekucyjneOutputData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ZlozZawiadomieniaDostarczeniaDoEgzekucyjiPodjeciaPodpisane">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="listaZawiadomienXml" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ZlozZawiadomieniaDostarczeniaDoEgzekucyjiPodjeciaPodpisaneResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/EpuWS.DataTypes" minOccurs="0" name="ZlozZawiadomieniaDostarczeniaDoEgzekucyjiPodjeciaPodpisaneResult" nillable="true" type="q20:ZlozZawiadomieniaEgzekucyjneOutputData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MojeSprawy">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="numerStrony" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="wielkoscStrony" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="dataOd" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="dataDo" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="kryteriumFiltrowania" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="filtrSlowny" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MojeSprawyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/EpuWS.DataTypes" minOccurs="0" name="MojeSprawyResult" nillable="true" type="q21:MojeSprawyOutputData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PobierzSprawyDoPodjecia">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="numerStrony" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="wielkoscStrony" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PobierzSprawyDoPodjeciaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/EpuWS.DataTypes" minOccurs="0" name="PobierzSprawyDoPodjeciaResult" nillable="true" type="q22:SprawyDoPodjeciaOutputData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MojeSprawyPrzezZakresSygnatur">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="numerStrony" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="wielkoscStrony" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="numerOd" type="xs:int" />
+        <xs:element minOccurs="0" name="numerDo" type="xs:int" />
+        <xs:element minOccurs="0" name="rok" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MojeSprawyPrzezZakresSygnaturResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/EpuWS.DataTypes" minOccurs="0" name="MojeSprawyPrzezZakresSygnaturResult" nillable="true" type="q23:MojeSprawyOutputData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MojeNakazy">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="numerStrony" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="wielkoscStrony" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="dataOd" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="dataDo" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="kryteriumFiltrowania" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="filtrSlowny" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MojeNakazyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/EpuWS.DataTypes" minOccurs="0" name="MojeNakazyResult" nillable="true" type="q24:MojeNakazyOutputData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MojeDoreczenia">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="numerStrony" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="wielkoscStrony" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="rodzajDaty" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="dataOd" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="dataDo" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="kryteriumFiltrowania" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="filtrSlowny" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="statusDoreczenia" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MojeDoreczeniaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/EpuWS.DataTypes" minOccurs="0" name="MojeDoreczeniaResult" nillable="true" type="q25:MojeDoreczeniaOutputData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MojeDoreczeniaVer2">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="numerStrony" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="wielkoscStrony" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="rodzajDaty" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="dataOd" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="dataDo" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="kryteriumFiltrowania" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="filtrSlowny" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="statusDoreczenia" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MojeDoreczeniaVer2Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/EpuWS.DataTypes" minOccurs="0" name="MojeDoreczeniaVer2Result" nillable="true" type="q26:MojeDoreczeniaVer2OutputData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MojeOrzeczenia">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="numerStrony" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="wielkoscStrony" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="dataOd" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="dataDo" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="kryteriumFiltrowania" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="filtrSlowny" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MojeOrzeczeniaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/EpuWS.DataTypes" minOccurs="0" name="MojeOrzeczeniaResult" nillable="true" type="q27:MojeOrzeczeniaOutputData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MojeOrzeczeniaVer2">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="numerStrony" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="wielkoscStrony" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="dataOd" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="dataDo" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="kryteriumFiltrowania" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="filtrSlowny" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MojeOrzeczeniaVer2Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/EpuWS.DataTypes" minOccurs="0" name="MojeOrzeczeniaVer2Result" nillable="true" type="q28:MojeOrzeczeniaVer2OutputData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MojePisma">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="numerStrony" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="wielkoscStrony" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="dataOd" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="dataDo" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="kryteriumFiltrowania" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="filtrSlowny" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MojePismaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/EpuWS.DataTypes" minOccurs="0" name="MojePismaResult" nillable="true" type="q29:MojePismaOutputData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HistoriaSprawyPrzezSygnaturaSprawy">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="numerStrony" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="wielkoscStrony" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="repertorium" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="numer" type="xs:int" />
+        <xs:element minOccurs="0" name="rok" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HistoriaSprawyPrzezSygnaturaSprawyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/EpuWS.DataTypes" minOccurs="0" name="HistoriaSprawyPrzezSygnaturaSprawyResult" nillable="true" type="q30:HistoriaSprawyOutputData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HistoriaSprawyPrzezSygnaturaWgPowoda">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="numerStrony" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="wielkoscStrony" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="sygnaturaWgPowoda" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HistoriaSprawyPrzezSygnaturaWgPowodaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/EpuWS.DataTypes" minOccurs="0" name="HistoriaSprawyPrzezSygnaturaWgPowodaResult" nillable="true" type="q31:HistoriaSprawyOutputData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListaKancelariiKomoniczych">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="numerStrony" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="wielkoscStrony" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListaKancelariiKomoniczychResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/EpuWS.DataTypes" minOccurs="0" name="ListaKancelariiKomoniczychResult" nillable="true" type="q32:ListaKancelariiKomoniczychOutputData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SprawdzStatusCzynnosci">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="id" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SprawdzStatusCzynnosciResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/EpuWS.DataTypes" minOccurs="0" name="SprawdzStatusCzynnosciResult" nillable="true" type="q33:SprawdzStatusCzynnosciOutputData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetIdKancelarii">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetIdKancelariiResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/EpuWS.DataTypes" minOccurs="0" name="GetIdKancelariiResult" nillable="true" type="q34:PobierzIdKancelariiOutputData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataOdnotowania">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataOdnotowaniaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/EpuWS.DataTypes" minOccurs="0" name="GetDataOdnotowaniaResult" nillable="true" type="q35:GetDataOdnotowaniaOutputData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListaAdnotacjiKomorniczych">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="idKlauzuli" type="xs:long" />
+        <xs:element minOccurs="0" name="numerStrony" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="wielkoscStrony" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListaAdnotacjiKomorniczychResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/EpuWS.DataTypes" minOccurs="0" name="ListaAdnotacjiKomorniczychResult" nillable="true" type="q36:ListaAdnotacjiKomorniczychOutputData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListaAdnotacjiKomorniczychVer2">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="idKlauzuli" type="xs:long" />
+        <xs:element minOccurs="0" name="numerStrony" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="wielkoscStrony" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="typ" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListaAdnotacjiKomorniczychVer2Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/EpuWS.DataTypes" minOccurs="0" name="ListaAdnotacjiKomorniczychVer2Result" nillable="true" type="q37:ListaAdnotacjiKomorniczychOutputData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListaSprawKomornika">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="numerStrony" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="wielkoscStrony" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="oznaczJakoPobrane" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListaSprawKomornikaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/EpuWS.DataTypes" minOccurs="0" name="ListaSprawKomornikaResult" nillable="true" type="q38:ListaSprawKomornikaOutputData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetListaWnioskowEgzekucyjnych">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="numerStrony" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="wielkoscStrony" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="typ" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetListaWnioskowEgzekucyjnychResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/EpuWS.DataTypes" minOccurs="0" name="GetListaWnioskowEgzekucyjnychResult" nillable="true" type="q39:ListaSprawKomornikaOutputData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetListaSprawZNakazem">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="kodyTytulowXml" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetListaSprawZNakazemResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/EpuWS.DataTypes" minOccurs="0" name="GetListaSprawZNakazemResult" nillable="true" type="q40:ListaSprawZNakazemOutputData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OznaczSprawyJakoPobrane">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="idWnioskowEgzekucyjnych" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OznaczSprawyJakoPobraneResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/EpuWS.DataTypes" minOccurs="0" name="OznaczSprawyJakoPobraneResult" nillable="true" type="q41:OznaczSprawyJakoPobraneOutputData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListaTresciNakazowPDF">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="idWnioskowEgzekucyjnych" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListaTresciNakazowPDFResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/EpuWS.DataTypes" minOccurs="0" name="ListaTresciNakazowPDFResult" nillable="true" type="q42:ListaTresciNakazowPDFOutputData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListaTresciNakazowPDFVer2">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="idWnioskowEgzekucyjnych" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListaTresciNakazowPDFVer2Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/EpuWS.DataTypes" minOccurs="0" name="ListaTresciNakazowPDFVer2Result" nillable="true" type="q43:ListaTresciNakazowPDFOutputDataVer2" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListaTresciNakazowPDFVer3">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="daneTytulowWykonawczych" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListaTresciNakazowPDFVer3Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/EpuWS.DataTypes" minOccurs="0" name="ListaTresciNakazowPDFVer3Result" nillable="true" type="q44:ListaTresciNakazowPDFOutputDataVer3" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListaWnioskowEgzekucyjnychPDF">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="listaIdWnioskowEgzekucyjnychXml" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListaWnioskowEgzekucyjnychPDFResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/EpuWS.DataTypes" minOccurs="0" name="ListaWnioskowEgzekucyjnychPDFResult" nillable="true" type="q45:ListaWnioskowEgzekucyjnychPDFOutputData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListaWnioskowEgzekucyjnychPDFVer2">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="listaIdWnioskowEgzekucyjnychXml" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListaWnioskowEgzekucyjnychPDFVer2Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/EpuWS.DataTypes" minOccurs="0" name="ListaWnioskowEgzekucyjnychPDFVer2Result" nillable="true" type="q46:ListaWnioskowEgzekucyjnychPDFOutputDataVer2" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

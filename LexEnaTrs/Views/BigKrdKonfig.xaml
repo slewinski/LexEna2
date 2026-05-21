@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="LexEnaTrs.Views.BigKrdKonfig"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d" xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" xmlns:my="clr-namespace:LexEnaTrs.Web"
+			   xmlns:local="clr-namespace:LexEnaTrs" Loaded="UserControl_Loaded" d:DesignWidth="650">
+    <UserControl.Resources>
+        <DataTemplate x:Key="MultiLineTemplate">
+            <TextBox TextWrapping="Wrap" Text="{Binding Tresc,Mode=TwoWay}" />
+        </DataTemplate>
+        <DataTemplate x:Key="SlownikiFormTemplate" >
+            <Grid Margin="0" Height="300" Width="650">
+
+                <telerik:DataFormDataField Margin="0,8,0,0" Label="Adres usługi(endpoint)" DataMemberBinding="{Binding Endpoint, Mode=TwoWay}"    VerticalAlignment="Top"/>
+                <telerik:DataFormDataField Margin="0,48,0,0" Label="Login (użytkownik)" DataMemberBinding="{Binding login, Mode=TwoWay}"    VerticalAlignment="Top"/>
+                <telerik:DataFormDataField Margin="0,88,0,0" Label="Hasło"  VerticalAlignment="Top">
+                    <PasswordBox  Password="{Binding password,Mode=TwoWay}" PasswordChar="*"/>
+                </telerik:DataFormDataField>
+
+
+
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="SlownikiROFormTemplate" >
+            <Grid Margin="0" Height="300" Width="650">
+
+                <telerik:DataFormDataField Margin="0,8,0,0" Label="Adres usługi(endpoint)" DataMemberBinding="{Binding Endpoint, Mode=TwoWay}"    VerticalAlignment="Top"/>
+                <telerik:DataFormDataField Margin="0,48,0,0" Label="Login (użytkownik)" DataMemberBinding="{Binding login, Mode=TwoWay}"    VerticalAlignment="Top"/>
+                <telerik:DataFormDataField Margin="0,88,0,0" Label="Hasło"  VerticalAlignment="Top">
+                    <PasswordBox Password="{Binding password,Mode=TwoWay}" PasswordChar="*"/>
+                </telerik:DataFormDataField>
+
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot" Background="White" Margin="0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="650" />
+        </Grid.ColumnDefinitions>
+
+
+        <telerik:RadDomainDataSource AutoLoad="False" Height="0"   x:Name="Slownikidds" QueryName="GetBIG_KonfigQuery" Width="0" Grid.Column="0" Margin="731,189,331,188" >
+            <telerik:RadDomainDataSource.DomainContext>
+                <my:LexEnaMeritumDomainContext />
+            </telerik:RadDomainDataSource.DomainContext>
+
+        </telerik:RadDomainDataSource>
+
+
+
+        <telerik:RadDataForm Name="SlownikiDataForm" ItemsSource="{Binding DataView,ElementName=Slownikidds}" AutoGenerateFields="False" CancelButtonContent="Anuluj" 
+                             ReadOnlyTemplate="{StaticResource SlownikiROFormTemplate}"
+                             EditTemplate="{StaticResource SlownikiFormTemplate}"  EditEnded="SlownikiDataForm_EditEnded" AutoEdit="True" />
+
+    </Grid>
+</UserControl>

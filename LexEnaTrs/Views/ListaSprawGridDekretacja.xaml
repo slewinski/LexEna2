@@ -1,0 +1,92 @@
+﻿<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:riaControls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.DomainServices" xmlns:my="clr-namespace:LexEnaTrs.Web" xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk" xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="LexEnaTrs.Views.ListaSprawGridDekretacja"
+    mc:Ignorable="d"
+    d:DesignHeight="592" d:DesignWidth="800" Loaded="UserControl_Loaded" FontFamily="Portable User Interface">
+    
+    <Grid x:Name="LayoutRoot" Background="White">
+        
+            <telerik:RadDomainDataSource AutoLoad="False" Height="0" PageSize="30"  x:Name="vw_ListaSprawdds" QueryName="GetVw_ListaSprawParamsQuery" Width="0" LoadedData="vw_ListaSprawdds_LoadedData" LoadingData="vw_ListaSprawdds_LoadingData">
+                <telerik:RadDomainDataSource.DomainContext>
+                    <my:LexEnaMeritumDomainContext />
+                </telerik:RadDomainDataSource.DomainContext>
+                <telerik:RadDomainDataSource.QueryParameters>
+                    <telerik:QueryParameter ParameterName="IdUser" />
+                    <telerik:QueryParameter ParameterName="IdJednostki" />
+                    <telerik:QueryParameter ParameterName="IdStatusu" />
+                    <telerik:QueryParameter ParameterName="Krok" />
+
+                </telerik:RadDomainDataSource.QueryParameters>
+            </telerik:RadDomainDataSource>
+        <Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="26"/>
+				<RowDefinition/>
+				<RowDefinition Height="29"/>
+			</Grid.RowDefinitions>
+
+
+           
+		  <Button x:Name="OpenSpr" Content="Otwórz sprawę" HorizontalAlignment="Left" Margin="0" Width="116" VerticalAlignment="Top" Click="OpenSpr_Click"/>
+           <telerik:RadDropDownButton Content="Operacje" HorizontalAlignment="Left" Margin="122,0,0,0" Name="Dekret" VerticalAlignment="Top" Width="124" >
+                <telerik:RadDropDownButton.DropDownContent>
+                    <ListBox Name="ListaZmian" SelectionChanged="ListaZmian_SelectionChanged">
+                        <ListBoxItem Content="Dekretuj zaznaczone..." />
+                        <ListBoxItem Content="Zmień status zaznaczonych spraw..." />
+                        <ListBoxItem Content="Dekretuj wszystkie..." />
+                    </ListBox>
+                </telerik:RadDropDownButton.DropDownContent>
+            </telerik:RadDropDownButton>
+          
+<telerik:RadBusyIndicator x:Name="BusyIndicator" IsBusy="{Binding IsBusy, ElementName=vw_ListaSprawdds}" Grid.Row="1" BusyContent="Przetwarzanie w toku...">
+                <telerik:RadGridView  ValidatesOnDataErrors="None" IsSynchronizedWithCurrentItem="false"  Grid.Row="1" x:Name="SprawyGridView" AutoGenerateColumns="false" SelectionMode="Multiple"  IsReadOnly="True" ItemsSource="{Binding DataView, ElementName=vw_ListaSprawdds}" AutoExpandGroups="True" CanUserFreezeColumns="False" RowIndicatorVisibility="Visible" SelectionChanged="SprawyGridView_SelectionChanged" RowLoaded="SprawyGridView_RowLoaded" Filtered="SprawyGridView_Filtered">
+               
+                <telerik:RadGridView.Columns>
+                    <telerik:GridViewSelectColumn UniqueName="CurrentSprawa" />
+                        <telerik:GridViewDataColumn Header="Lp" IsReadOnly="True"  HeaderTextAlignment="Center" MinWidth="5" TextAlignment="Center" />
+                        <telerik:GridViewDataColumn Header="Referent" DataMemberBinding="{Binding Uzytkownik_Nazwa}" IsReadOnly="True"  HeaderTextAlignment="Center" MinWidth="5" TextAlignment="Center" />
+                        <telerik:GridViewDataColumn x:Name="SygnaturaColumn" Header="Sygnatura" DataMemberBinding="{Binding sygnatura}" HeaderTextAlignment="Center" MinWidth="15" TextAlignment="Center" />
+                        <telerik:GridViewDataColumn Header="Dłużnik" DataMemberBinding="{Binding Dluznik}" Width="*" HeaderTextAlignment="Center" MinWidth="150" TextAlignment="Left" />
+                    <telerik:GridViewDataColumn Header="Status Sprawy" DataMemberBinding="{Binding Nazwa}" HeaderTextAlignment="Center" MinWidth="10" TextAlignment="Center" />
+                    <telerik:GridViewDataColumn Header="Oddział" DataMemberBinding="{Binding Oddzial}" HeaderTextAlignment="Center" MinWidth="10" TextAlignment="Center" />
+               
+                    <telerik:GridViewDataColumn Header="Nr ewid." DataMemberBinding="{Binding NrEwid}" HeaderTextAlignment="Center" MinWidth="15" TextAlignment="Center" />
+                     
+                    <telerik:GridViewDataColumn Header="Jednostka" DataMemberBinding="{Binding Nazwa_Jednostki}" IsReadOnly="True" IsFilterable="true" HeaderTextAlignment="Center" MinWidth="5" TextAlignment="Center" />
+                        <telerik:GridViewDataColumn Header="Data statusu" DataMemberBinding="{Binding DataStatusu, StringFormat=\{0:d\}}"  DataFormatString=" {0:yyyy-MM-dd} " IsReadOnly="True" IsFilterable="false" HeaderTextAlignment="Center" MinWidth="5" TextAlignment="Center" />
+                        <telerik:GridViewDataColumn x:Name="PrzyczynaZwrot" Header="Zwrot ?" DataMemberBinding="{Binding PrzyczynaZwrot}" IsReadOnly="True" IsFilterable="false" HeaderTextAlignment="Center" MinWidth="20" TextAlignment="Center" />
+                        <telerik:GridViewDataColumn x:Name="DataDekret" Header="Data dekret." DataMemberBinding="{Binding DataDekretJednostka, StringFormat=\{0:d\}}"  DataFormatString=" {0:yyyy-MM-dd} "  IsReadOnly="True" HeaderTextAlignment="Center" MinWidth="10" TextAlignment="Center" />
+                        <telerik:GridViewDataColumn Header="Data skierowania" DataMemberBinding="{Binding DataR, StringFormat=\{0:d\}}"   DataFormatString=" {0:yyyy-MM-dd} "  IsReadOnly="True" HeaderTextAlignment="Center" MinWidth="5" TextAlignment="Center" />
+                        
+                    </telerik:RadGridView.Columns>               
+                </telerik:RadGridView>
+            </telerik:RadBusyIndicator>
+
+            <telerik:RadDataPager x:Name="RadDataPagerSprawy" Source="{Binding DataView, ElementName=vw_ListaSprawdds}" Grid.Row="2" DisplayMode="All" IsTotalItemCountFixed="True" Margin="0,2,0,0" VerticalAlignment="Top" d:LayoutOverrides="Height"  HorizontalAlignment="Left" Width="307"/>
+            <telerik:RadDropDownButton Content="Dokument" Height="23" HorizontalAlignment="Left" Margin="494,0,0,3" Name="MakeDok" Width="100">
+                <telerik:RadDropDownButton.DropDownContent>
+                    <ListBox Name="ListaAkcji" SelectionChanged="ListaAkcji_SelectionChanged">
+                        <ListBoxItem Content="Pismo" />
+                        <ListBoxItem Content="Wniosek" />
+                        <ListBoxItem Content="Uzupełnienie adresu" />
+                        <ListBoxItem Content="Uzupełnienie braków" />
+                        <ListBoxItem Content="Rezygnacja z pełnomocnictwa" />
+                        <ListBoxItem Content="Zgłoszenie pełnomocnika do sprawy" />
+                    </ListBox>
+                </telerik:RadDropDownButton.DropDownContent>
+            </telerik:RadDropDownButton>
+            <Button Content="Szkice pozwów" Height="23" Margin="376,0,0,0" x:Name="DoPozwyDraft" VerticalAlignment="Top" Click="DoPozwyDraft_Click" HorizontalAlignment="Left" Width="114" />
+            <telerik:RadDropDownButton Content="Sporządź Pozwy" HorizontalAlignment="Left" Margin="250,0,0,0" x:Name="PozwyDeal" VerticalAlignment="Top" Width="124" >
+            	<telerik:RadDropDownButton.DropDownContent>
+            		<ListBox x:Name="PozewOpcje" SelectionChanged="PozewOpcje_SelectionChanged">
+            			<ListBoxItem Content="Bez kapitalizacji" />
+                        <ListBoxItem Name="Zkapit"  Content="Z kapitalizacją"  Visibility="{Binding Path=EOPVisible, Converter={StaticResource VisibilityConverter} }"/>
+            		</ListBox>
+            	</telerik:RadDropDownButton.DropDownContent>
+            </telerik:RadDropDownButton>
+        </Grid >
+    </Grid>
+</UserControl>

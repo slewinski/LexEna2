@@ -1,0 +1,46 @@
+﻿<controls:ChildWindow x:Class="LexEnaTrs.Views.WyborPaczkiWindow"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+           xmlns:local="clr-namespace:LexEnaTrs"
+           xmlns:my="clr-namespace:LexEnaTrs.Web"
+           Width="639" Height="300" 
+           Title="Wybierz paczkę" xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation">
+    <Grid x:Name="LayoutRoot" Margin="2" Width="618">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="112*" />
+            <ColumnDefinition Width="506*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="23*" />
+            <RowDefinition Height="203*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <telerik:RadDomainDataSource AutoLoad="False" Height="0" PageSize="30"   x:Name="vw_ListaPaczekdds" QueryName="GetVw_PaczkiToAddQuery" Width="0" Margin="197,90,309,113" Grid.Row="1" Grid.Column="1">
+            <telerik:RadDomainDataSource.DomainContext>
+                <my:LexEnaMeritumDomainContext />
+            </telerik:RadDomainDataSource.DomainContext>
+            <telerik:RadDomainDataSource.QueryParameters>
+                <telerik:QueryParameter ParameterName="IdJednostki" />
+            </telerik:RadDomainDataSource.QueryParameters>
+        </telerik:RadDomainDataSource>
+        <telerik:RadGridView x:Name ="GridViewWyborPaczki"  RowIndicatorVisibility="Collapsed"   ItemsSource="{Binding DataView, ElementName=vw_ListaPaczekdds}" AutoGenerateColumns="False" Margin="0,6,0,0" ShowGroupPanel="False" Grid.Row="1" AddingNewDataItem="GridViewWyborPaczki_AddingNewDataItem" SelectionChanged="GridViewWyborPaczki_SelectionChanged" Grid.ColumnSpan="2" Loaded="GridViewWyborPaczki_Loaded">
+            <telerik:RadGridView.Columns>
+                <local:DateTimePickerColumn MinWidth="20" Header="Data założenia"   DataMemberBinding="{Binding DataZalozenia, Mode=TwoWay}" DataFormatString="{}{0:yyyy-MM-dd}" IsFilterable="false" HeaderTextAlignment="Center"  TextAlignment="Center"  />
+                <telerik:GridViewDataColumn Header="Ozanczenie" IsReadOnly="True"   Width="*" DataMemberBinding="{Binding Oznaczenie, Mode=TwoWay}"  IsFilterable="false"  HeaderTextAlignment="Center"  TextAlignment="Center"/>
+                <telerik:GridViewComboBoxColumn EditTriggers="CellClick"  Header="Typ dokumenów"   DataMemberBinding="{Binding TypDok, Mode=TwoWay}" IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5" TextAlignment="Center"  
+							     ItemsSource="{Binding typDokumentu, Source={StaticResource SlownikRodzajeDokumentow}}"
+								SelectedValueMemberPath="Numer" 
+                                DisplayMemberPath="Nazwa"
+							
+							/>
+             <telerik:GridViewDataColumn Header="Liczba dok."  DataMemberBinding="{Binding LDoks, Mode=TwoWay}" IsReadOnly="True" IsFilterable="false"   HeaderTextAlignment="Center"  TextAlignment="Center"/>
+
+            </telerik:RadGridView.Columns>
+
+        </telerik:RadGridView>
+        <Button x:Name="CancelButton" Content="Anuluj" Click="CancelButton_Click" Width="75" Height="23" HorizontalAlignment="Right" Margin="0,12,5,0" Grid.Row="2" Grid.Column="1" />
+        <Button x:Name="OKButton" Content="OK" Click="OKButton_Click" Width="75" Height="23" HorizontalAlignment="Right" Margin="0,12,83,0" Grid.Row="2" Grid.Column="1" />
+        <telerik:RadButton Content="Nowa paczka" Command="telerik:RadGridViewCommands.BeginInsert" CommandTarget="{Binding ElementName=GridViewWyborPaczki}" Height="23" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="86" Name = "AddPaczka" Click="AddPaczka_Click" />
+    </Grid>
+</controls:ChildWindow>

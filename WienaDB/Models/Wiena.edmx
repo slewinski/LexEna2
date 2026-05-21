@@ -1,0 +1,3262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="WienaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityType Name="dluz_adresy">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="miejsce" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="ulica" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="kod" Type="varchar" MaxLength="6" />
+          <Property Name="id_dluz" Type="int" Nullable="false" />
+          <Property Name="data_r" Type="datetime" />
+          <Property Name="miejscowosc" Type="varchar" MaxLength="50" />
+          <Property Name="d_kreacji" Type="datetime" />
+          <Property Name="d_modyfikacji" Type="datetime" />
+          <Property Name="kreator" Type="int" />
+          <Property Name="modyfikator" Type="int" />
+          <Property Name="glowny" Type="int" />
+          <Property Name="koresp" Type="int" />
+          <Property Name="numer_d" Type="int" />
+          <Property Name="numer_l" Type="int" />
+        </EntityType>
+        <EntityType Name="dok_odebr">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="data_r" Type="datetime" Nullable="false" />
+          <Property Name="id_sprawy" Type="int" />
+          <Property Name="id_user" Type="int" />
+          <Property Name="rok" Type="smallint" />
+          <Property Name="klasa" Type="smallint" />
+          <Property Name="uwagi" Type="varchar" MaxLength="255" />
+          <Property Name="id_dok_typ" Type="int" />
+          <Property Name="czyzalatw" Type="smallint" />
+          <Property Name="d_zalatw" Type="datetime" />
+          <Property Name="spos_zalatw" Type="varchar" MaxLength="255" />
+          <Property Name="id_dok" Type="int" />
+          <Property Name="d_kreacji" Type="datetime" />
+          <Property Name="d_modyfikacji" Type="datetime" />
+          <Property Name="kreator" Type="int" />
+          <Property Name="modyfikator" Type="int" />
+          <Property Name="czyus" Type="smallint" />
+          <Property Name="d_dok" Type="datetime" />
+        </EntityType>
+        <EntityType Name="dok_odebr_nazwy">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nazwa" Type="varchar" MaxLength="80" />
+        </EntityType>
+        <EntityType Name="dowod_slownik">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dowod" Type="varchar" MaxLength="30" />
+          <Property Name="typ" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="firma">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="int" Nullable="false" />
+          <Property Name="nazwa" Type="varchar" MaxLength="200" />
+          <Property Name="nazwa1" Type="varchar" MaxLength="200" />
+          <Property Name="nazwa2" Type="varchar" MaxLength="200" />
+          <Property Name="ulica" Type="varchar" MaxLength="50" />
+          <Property Name="miasto" Type="varchar" MaxLength="50" />
+          <Property Name="kod" Type="varchar" MaxLength="6" />
+          <Property Name="konto" Type="varchar" MaxLength="150" />
+          <Property Name="kasa" Type="varchar" MaxLength="150" />
+          <Property Name="typ" Type="smallint" Nullable="false" />
+          <Property Name="aktywna" Type="smallint" Nullable="false" />
+          <Property Name="numer" Type="varchar" MaxLength="20" />
+          <Property Name="numer2" Type="varchar" MaxLength="20" />
+          <Property Name="id_oddzial" Type="int" />
+          <Property Name="nr_kod" Type="int" />
+          <Property Name="typ_firmy" Type="smallint" />
+          <Property Name="myrgb" Type="int" />
+        </EntityType>
+        <EntityType Name="komoall">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="przy_apel" Type="varchar" MaxLength="3" />
+          <Property Name="apelacja" Type="varchar" MaxLength="40" />
+          <Property Name="nazwa" Type="varchar" MaxLength="150" />
+          <Property Name="rewir" Type="varchar" MaxLength="10" />
+          <Property Name="przy_sr" Type="varchar" MaxLength="50" />
+          <Property Name="ulica" Type="varchar" MaxLength="50" />
+          <Property Name="miasto" Type="varchar" MaxLength="30" />
+          <Property Name="kod" Type="varchar" MaxLength="6" />
+          <Property Name="tel" Type="varchar" MaxLength="60" />
+          <Property Name="zakrewir" Type="text" />
+          <Property Name="komornik" Type="varchar" MaxLength="60" />
+          <Property Name="bank" Type="varchar" MaxLength="120" />
+          <Property Name="konto" Type="varchar" MaxLength="120" />
+          <Property Name="sad_r" Type="varchar" MaxLength="70" />
+          <Property Name="email" Type="varchar" MaxLength="80" />
+        </EntityType>
+        <EntityType Name="konto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="konto" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="ostnr" Type="int" Nullable="false" />
+          <Property Name="aktywne" Type="smallint" Nullable="false" />
+          <Property Name="data_od" Type="datetime" />
+          <Property Name="data_do" Type="datetime" />
+          <Property Name="nast_konto" Type="varchar" MaxLength="10" />
+          <Property Name="pop_konto" Type="varchar" MaxLength="10" />
+          <Property Name="nazwa" Type="varchar" MaxLength="60" />
+          <Property Name="typ" Type="smallint" />
+          <Property Name="id_firmy" Type="int" Nullable="false" />
+          <Property Name="rodzaj" Type="smallint" Nullable="false" />
+          <Property Name="schemat_id" Type="int" />
+          <Property Name="zest" Type="int" />
+          <Property Name="saldo" Type="int" />
+        </EntityType>
+        <EntityType Name="konto_anal">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_konta" Type="int" Nullable="false" />
+          <Property Name="numer" Type="int" Nullable="false" />
+          <Property Name="id_sprawy" Type="int" Nullable="false" />
+          <Property Name="d_kreacji" Type="datetime" />
+          <Property Name="d_modyfikacji" Type="datetime" />
+          <Property Name="kreator" Type="int" />
+          <Property Name="modyfikator" Type="int" />
+          <Property Name="czyus" Type="int" Nullable="false" />
+          <Property Name="czyvat" Type="smallint" />
+          <Property Name="winien_vat0" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ma_vat0" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="id_firmy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="koszt">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_sprawy" Type="int" Nullable="false" />
+          <Property Name="id_typ_nal" Type="int" Nullable="false" />
+          <Property Name="kwota" Type="numeric" Precision="19" Scale="4" />
+          <Property Name="zwrot" Type="numeric" Precision="18" Scale="4" />
+          <Property Name="data_n" Type="datetime" />
+          <Property Name="uwagi" Type="varchar" MaxLength="99" />
+          <Property Name="tytul" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="nal_stan">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_nal" Type="int" Nullable="false" />
+          <Property Name="data_s" Type="datetime" Nullable="false" />
+          <Property Name="kwota_n" Type="money" />
+          <Property Name="kwota_k" Type="money" />
+          <Property Name="kwota_o" Type="money" />
+          <Property Name="ods_dzien" Type="money" />
+          <Property Name="typ_stan" Type="smallint" Nullable="false" />
+          <Property Name="oblicz" Type="smallint" />
+        </EntityType>
+        <EntityType Name="naleznosc">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_sprawy" Type="int" Nullable="false" />
+          <Property Name="id_typ_nal" Type="int" Nullable="false" />
+          <Property Name="kwota" Type="numeric" Precision="19" Scale="4" />
+          <Property Name="data_n" Type="datetime" />
+          <Property Name="data_fv" Type="datetime" />
+          <Property Name="czy_proc" Type="bit" Nullable="false" />
+          <Property Name="uwagi" Type="varchar" MaxLength="99" />
+          <Property Name="tytul" Type="varchar" MaxLength="50" />
+          <Property Name="d_kreacji" Type="datetime" />
+          <Property Name="d_modyfikacji" Type="datetime" />
+          <Property Name="kreator" Type="int" />
+          <Property Name="modyfikator" Type="int" />
+          <Property Name="vat" Type="numeric" Precision="18" Scale="4" />
+          <Property Name="id_naleznosci" Type="int" />
+          <Property Name="OZE" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Przejsciowa" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Kogeneracyjna" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Mocowa" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Nr_KSEF" Type="varchar" MaxLength="255" />
+          <Property Name="Data_wys_KSEF" Type="datetime" />
+          <Property Name="Data_prz_KSEF" Type="datetime" />
+        </EntityType>
+        <EntityType Name="notki">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_sprawy" Type="int" Nullable="false" />
+          <Property Name="tresc" Type="text" />
+          <Property Name="czyus" Type="int" Nullable="false" />
+          <Property Name="d_kreacji" Type="datetime" />
+          <Property Name="d_modyfikacji" Type="datetime" />
+          <Property Name="kreator" Type="int" />
+          <Property Name="modyfikator" Type="int" />
+        </EntityType>
+        <EntityType Name="obroty">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_sprawy" Type="int" Nullable="false" />
+          <Property Name="id_konta" Type="int" Nullable="false" />
+          <Property Name="d_operacji" Type="datetime" />
+          <Property Name="nr_dowodu" Type="varchar" MaxLength="50" />
+          <Property Name="nr_teczki" Type="varchar" MaxLength="20" />
+          <Property Name="rodzaj" Type="int" />
+          <Property Name="winien" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="ma" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="energia" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="koszty" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="odsetki" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="inne" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="vat" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="uwagi" Type="varchar" MaxLength="60" />
+          <Property Name="d_kreacji" Type="datetime" />
+          <Property Name="d_modyfikacji" Type="datetime" />
+          <Property Name="kreator" Type="int" />
+          <Property Name="modyfikator" Type="int" />
+          <Property Name="czyus" Type="int" />
+          <Property Name="dluznik" Type="varchar" MaxLength="100" />
+          <Property Name="kzp" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="wpis" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="klauzula" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="kza" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="kl_adw" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="komo" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="inne_sad" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="ods_kapital" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="ods_naliczone" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="id_schemat" Type="int" />
+          <Property Name="id_poz_schemat" Type="int" />
+          <Property Name="wdz" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="ods_sprawy">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_nal" Type="int" Nullable="false" />
+          <Property Name="id_typ_ods" Type="int" />
+          <Property Name="data_p" Type="datetime" />
+          <Property Name="data_k" Type="datetime" />
+          <Property Name="proc0" Type="numeric" Precision="10" Scale="5" />
+          <Property Name="uwagi" Type="varchar" MaxLength="99" />
+          <Property Name="kod" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ods_tab">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_tab_ods" Type="int" Nullable="false" />
+          <Property Name="data_p" Type="datetime" />
+          <Property Name="data_k" Type="datetime" />
+          <Property Name="proc0" Type="numeric" Precision="10" Scale="5" />
+        </EntityType>
+        <EntityType Name="ods_tab_nazwy">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nazwa" Type="varchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pisma_wys">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_nadawcy" Type="int" />
+          <Property Name="id_sprawy" Type="int" />
+          <Property Name="nazwa1" Type="varchar" MaxLength="40" />
+          <Property Name="nazwa2" Type="varchar" MaxLength="40" />
+          <Property Name="nazwa3" Type="varchar" MaxLength="150" />
+          <Property Name="kod_poczt" Type="char" MaxLength="6" />
+          <Property Name="poczta" Type="varchar" MaxLength="30" />
+          <Property Name="ulica" Type="varchar" MaxLength="40" />
+          <Property Name="data_r" Type="datetime" />
+          <Property Name="nazwa_pisma" Type="varchar" MaxLength="80" />
+          <Property Name="termin" Type="smallint" />
+          <Property Name="rodzaj" Type="varchar" MaxLength="25" />
+          <Property Name="sygnatura" Type="varchar" MaxLength="25" />
+          <Property Name="id_dluz" Type="int" />
+          <Property Name="stan" Type="smallint" />
+          <Property Name="data_zwr" Type="datetime" />
+          <Property Name="uwagi_zwr" Type="varchar" MaxLength="255" />
+          <Property Name="czy_zwr" Type="smallint" />
+          <Property Name="erka" Type="int" />
+          <Property Name="tresc" Type="text" />
+          <Property Name="sygn_psm" Type="varchar" MaxLength="10" />
+          <Property Name="odpis" Type="smallint" />
+          <Property Name="adresat" Type="smallint" />
+          <Property Name="id_user" Type="int" />
+          <Property Name="id_dok" Type="int" />
+          <Property Name="typ_dok_tresc" Type="smallint" Nullable="false" />
+          <Property Name="tresc_bin" Type="image" />
+          <Property Name="doclen" Type="int" Nullable="false" />
+          <Property Name="d_kreacji" Type="datetime" />
+          <Property Name="d_modyfikacji" Type="datetime" />
+          <Property Name="kreator" Type="int" />
+          <Property Name="modyfikator" Type="int" />
+          <Property Name="czyus" Type="smallint" />
+        </EntityType>
+        <EntityType Name="radca">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="stanowisko" Type="varchar" MaxLength="50" />
+          <Property Name="nazwisko" Type="varchar" MaxLength="30" />
+          <Property Name="imie" Type="varchar" MaxLength="30" />
+          <Property Name="dodatek" Type="varchar" MaxLength="100" />
+          <Property Name="id_pracownik" Type="int" Nullable="false" />
+          <Property Name="aktywny" Type="smallint" Nullable="false" />
+          <Property Name="stanowisko_dopelniacz" Type="varchar" MaxLength="50" />
+          <Property Name="nazwisko_dopelniacz" Type="varchar" MaxLength="30" />
+          <Property Name="imie_dopelniacz" Type="varchar" MaxLength="30" />
+          <Property Name="status" Type="smallint" Nullable="false" />
+          <Property Name="id_firmy" Type="int" />
+          <Property Name="PESEL" Type="varchar" MaxLength="11" />
+        </EntityType>
+        <EntityType Name="sad">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nazwa" Type="varchar" MaxLength="200" />
+          <Property Name="wydzial" Type="varchar" MaxLength="100" />
+          <Property Name="rejokr" Type="int" Nullable="false" />
+          <Property Name="miasto" Type="varchar" MaxLength="70" />
+          <Property Name="ulica" Type="varchar" MaxLength="70" />
+          <Property Name="kod" Type="varchar" MaxLength="5" />
+          <Property Name="czyus" Type="int" />
+          <Property Name="d_kreacji" Type="datetime" />
+          <Property Name="d_modyfikacji" Type="datetime" />
+          <Property Name="kreator" Type="int" />
+          <Property Name="modyfikator" Type="int" />
+          <Property Name="typ" Type="smallint" Nullable="false" />
+          <Property Name="sort" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="skan">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="skan" Type="image" />
+          <Property Name="id_dok_odebr" Type="int" Nullable="false" />
+          <Property Name="kolejnosc" Type="int" Nullable="false" />
+          <Property Name="typ" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="d_kreacji" Type="datetime" />
+          <Property Name="d_modyfikacji" Type="datetime" />
+          <Property Name="kreator" Type="int" />
+          <Property Name="modyfikator" Type="int" />
+        </EntityType>
+        <EntityType Name="skazani">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="osoba_lub_firma" Type="smallint" Nullable="false" />
+          <Property Name="nazwisko" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="imie" Type="varchar" MaxLength="20" />
+          <Property Name="miasto_ur" Type="varchar" MaxLength="30" />
+          <Property Name="data_ur" Type="datetime" />
+          <Property Name="imie_ojca" Type="varchar" MaxLength="20" />
+          <Property Name="imie_matki" Type="varchar" MaxLength="20" />
+          <Property Name="id_adresu" Type="int" />
+          <Property Name="id_adresu_zamel" Type="int" />
+          <Property Name="nazw_pan_matki" Type="varchar" MaxLength="20" />
+          <Property Name="key1" Type="int" />
+          <Property Name="pesel" Type="char" MaxLength="13" />
+          <Property Name="dowod" Type="char" MaxLength="10" />
+          <Property Name="nazw_pan" Type="varchar" MaxLength="30" />
+          <Property Name="nip" Type="char" MaxLength="15" />
+          <Property Name="regon" Type="char" MaxLength="15" />
+          <Property Name="krs" Type="char" MaxLength="15" />
+          <Property Name="rdzen" Type="varchar" MaxLength="50" />
+          <Property Name="uwagi" Type="text" />
+          <Property Name="id_grupy" Type="int" />
+          <Property Name="czyus" Type="int" />
+          <Property Name="d_kreacji" Type="datetime" />
+          <Property Name="d_modyfikacji" Type="datetime" />
+          <Property Name="kreator" Type="int" />
+          <Property Name="modyfikator" Type="int" />
+          <Property Name="dane_kom" Type="varchar" MaxLength="80" />
+          <Property Name="done" Type="smallint" />
+          <Property Name="rejestr" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="slow_rodzaj">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nazwa" Type="varchar" MaxLength="50" />
+          <Property Name="numer" Type="smallint" Nullable="false" />
+          <Property Name="co" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="spr_dluz">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_sprawy" Type="int" />
+          <Property Name="id_dluz" Type="int" />
+        </EntityType>
+        <EntityType Name="spr_egz">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_sprawy" Type="int" Nullable="false" />
+          <Property Name="id_komornik" Type="int" Nullable="false" />
+          <Property Name="data_wniosku" Type="datetime" />
+          <Property Name="data_uzupeł" Type="datetime" />
+          <Property Name="km" Type="varchar" MaxLength="20" />
+          <Property Name="data_umo" Type="datetime" />
+          <Property Name="przyczyna_umo" Type="int" />
+          <Property Name="przyczyna_umo_opis" Type="varchar" MaxLength="100" />
+          <Property Name="data_zawiesz" Type="datetime" />
+          <Property Name="przyczyna_zawiesz" Type="int" />
+          <Property Name="przyczyna_zaw_opis" Type="varchar" MaxLength="100" />
+          <Property Name="data_post_koszt" Type="datetime" />
+          <Property Name="data_zwrotu" Type="datetime" />
+          <Property Name="przyczyna_zwrot" Type="int" />
+          <Property Name="przyczyna_zwrot_opis" Type="varchar" MaxLength="100" />
+          <Property Name="uwagi" Type="text" />
+          <Property Name="aktualna" Type="int" Nullable="false" />
+          <Property Name="czyus" Type="int" />
+          <Property Name="kreator" Type="int" />
+          <Property Name="modyfikator" Type="int" />
+          <Property Name="d_kreacji" Type="datetime" />
+          <Property Name="d_modyfikacji" Type="datetime" />
+          <Property Name="kwota" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="koszty" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="odsetki" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="data_dor_umo" Type="datetime" />
+        </EntityType>
+        <EntityType Name="spr_sadowa">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_sprawa" Type="int" Nullable="false" />
+          <Property Name="id_sad" Type="int" Nullable="false" />
+          <Property Name="data_pozwu" Type="datetime" />
+          <Property Name="data_wezw_braki" Type="datetime" />
+          <Property Name="data_nakazu" Type="datetime" />
+          <Property Name="data_sprzeciwu" Type="datetime" />
+          <Property Name="data_zawieszenia" Type="datetime" />
+          <Property Name="przyczyna_zaw" Type="int" />
+          <Property Name="przyczyna_zaw_opis" Type="varchar" MaxLength="80" />
+          <Property Name="data_umo" Type="datetime" />
+          <Property Name="przyczyna_umo" Type="int" />
+          <Property Name="przyczyna_umo_opis" Type="varchar" MaxLength="50" />
+          <Property Name="data_uchyl_nakazu" Type="datetime" />
+          <Property Name="data_klauzuli" Type="datetime" />
+          <Property Name="data_otrz_nakaz" Type="datetime" />
+          <Property Name="sygn_nakazowe" Type="varchar" MaxLength="30" />
+          <Property Name="sygn_proces" Type="varchar" MaxLength="30" />
+          <Property Name="data_zwroty_pozw" Type="datetime" />
+          <Property Name="data_ponow_wnies" Type="datetime" />
+          <Property Name="pracownicy" Type="varchar" MaxLength="100" />
+          <Property Name="uwagi" Type="text" />
+          <Property Name="czyus" Type="smallint" />
+          <Property Name="d_kreacji" Type="datetime" />
+          <Property Name="d_modyfikacji" Type="datetime" />
+          <Property Name="kreator" Type="int" />
+          <Property Name="modyfikator" Type="int" />
+          <Property Name="aktywne" Type="smallint" Nullable="false" />
+          <Property Name="data_wyroku" Type="datetime" />
+          <Property Name="data_otrz_wyr" Type="datetime" />
+          <Property Name="data_wn_klauz" Type="datetime" />
+        </EntityType>
+        <EntityType Name="spr_stan">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_sprawy" Type="int" Nullable="false" />
+          <Property Name="data_s" Type="datetime" />
+          <Property Name="kwota_n" Type="money" />
+          <Property Name="kwota_o" Type="money" />
+          <Property Name="kwota_k" Type="money" />
+          <Property Name="ods_dzien" Type="money" />
+          <Property Name="oblicz" Type="smallint" />
+          <Property Name="typ_stan" Type="smallint" />
+        </EntityType>
+        <EntityType Name="sprawa">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sygnatura" Type="varchar" MaxLength="16" />
+          <Property Name="data_r" Type="datetime" />
+          <Property Name="data_ostatnia" Type="datetime" />
+          <Property Name="data_kon" Type="datetime" />
+          <Property Name="rok" Type="smallint" Nullable="false" />
+          <Property Name="poz" Type="int" Nullable="false" />
+          <Property Name="zakoncz" Type="smallint" />
+          <Property Name="uwagi" Type="text" />
+          <Property Name="nr_ewid" Type="char" MaxLength="15" />
+          <Property Name="id_rejon" Type="int" />
+          <Property Name="id_sad" Type="int" />
+          <Property Name="id_radca" Type="int" />
+          <Property Name="id_symbol" Type="int" />
+          <Property Name="d_kreacji" Type="datetime" Nullable="false" />
+          <Property Name="d_modyfikacji" Type="datetime" Nullable="false" />
+          <Property Name="kreator" Type="int" Nullable="false" />
+          <Property Name="modyfikator" Type="int" Nullable="false" />
+          <Property Name="czyus" Type="int" Nullable="false" />
+          <Property Name="licz_przedplat" Type="int" />
+          <Property Name="licznik_miejsce" Type="varchar" MaxLength="80" />
+          <Property Name="licznik_ulica" Type="varchar" MaxLength="80" />
+          <Property Name="ksiega" Type="int" Nullable="false" />
+          <Property Name="skrot" Type="varchar" MaxLength="10" />
+          <Property Name="done" Type="smallint" />
+          <Property Name="gdzie_akta" Type="smallint" Nullable="false" />
+          <Property Name="d_protokolu" Type="datetime" />
+          <Property Name="faktura" Type="varchar" MaxLength="50" />
+          <Property Name="kwota" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="protokol" Type="varchar" MaxLength="50" />
+          <Property Name="rodzaj" Type="varchar" MaxLength="50" />
+          <Property Name="d_faktury" Type="datetime" />
+          <Property Name="korekta" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="prowizja" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="raport" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="prot_kwt" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="id_firmy" Type="int" Nullable="false" />
+          <Property Name="id_radca_egz" Type="int" />
+          <Property Name="licz_czynny" Type="smallint" />
+          <Property Name="arch_teczka" Type="varchar" MaxLength="30" />
+          <Property Name="arch_paczka" Type="varchar" MaxLength="30" />
+          <Property Name="data_lexena" Type="datetime" />
+          <Property Name="id_kancelarii" Type="int" />
+        </EntityType>
+        <EntityType Name="status">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="numer" Type="int" Nullable="false" />
+          <Property Name="nazwa" Type="varchar" MaxLength="100" />
+          <Property Name="etap" Type="smallint" Nullable="false" />
+          <Property Name="czyus" Type="int" />
+          <Property Name="d_kreacji" Type="datetime" />
+          <Property Name="d_modyfikacji" Type="datetime" />
+          <Property Name="modyfikator" Type="int" />
+          <Property Name="kreator" Type="int" />
+          <Property Name="bitmap" Type="smallint" />
+          <Property Name="def_skip" Type="smallint" />
+          <Property Name="konto" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="status_spr">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_sprawy" Type="int" Nullable="false" />
+          <Property Name="id_statusu" Type="int" Nullable="false" />
+          <Property Name="od_dnia" Type="datetime" Nullable="false" />
+          <Property Name="czyus" Type="smallint" />
+          <Property Name="d_modyfikacji" Type="datetime" />
+          <Property Name="d_kreacji" Type="datetime" />
+          <Property Name="kreator" Type="int" />
+          <Property Name="modyfikator" Type="int" />
+        </EntityType>
+        <EntityType Name="symbol">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="oznaczenie" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="nazwa" Type="int" />
+          <Property Name="numer" Type="int" />
+          <Property Name="typ" Type="int" Nullable="false" />
+          <Property Name="etap" Type="int" Nullable="false" />
+          <Property Name="typ_firmy" Type="smallint" />
+          <Property Name="id_firmy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="typ_nal">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nazwa" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="typ_nal" Type="smallint" Nullable="false" />
+          <Property Name="typ_sum" Type="smallint" Nullable="false" />
+          <Property Name="czy_proc" Type="bit" Nullable="false" />
+          <Property Name="nr_tab_ods" Type="int" />
+          <Property Name="czy_mem" Type="bit" />
+          <Property Name="czy_vat" Type="smallint" Nullable="false" />
+          <Property Name="czy_ods_kapital" Type="smallint" Nullable="false" />
+          <Property Name="typ_firmy" Type="smallint" />
+          <Property Name="priorytet" Type="int" />
+        </EntityType>
+        <EntityType Name="wplata">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_sprawy" Type="int" Nullable="false" />
+          <Property Name="id_kto" Type="int" Nullable="false" />
+          <Property Name="kwota" Type="money" Nullable="false" />
+          <Property Name="data_w" Type="datetime" />
+          <Property Name="algo" Type="smallint" />
+          <Property Name="uwagi" Type="varchar" MaxLength="99" />
+          <Property Name="id_dluz" Type="int" />
+          <Property Name="nr_dowodu" Type="varchar" MaxLength="50" />
+          <Property Name="d_kreacji" Type="datetime" />
+          <Property Name="d_modyfikacji" Type="datetime" />
+          <Property Name="kreator" Type="int" />
+          <Property Name="modyfikator" Type="int" />
+          <Property Name="vat" Type="money" />
+        </EntityType>
+        <EntityType Name="wplata_podz">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_wplaty" Type="int" Nullable="false" />
+          <Property Name="id_nal" Type="int" Nullable="false" />
+          <Property Name="spl_kap" Type="money" />
+          <Property Name="spl_ods" Type="money" />
+          <Property Name="zal_kap" Type="money" />
+          <Property Name="zal_ods" Type="money" />
+          <Property Name="spl_vat" Type="money" />
+          <Property Name="zal_vat" Type="money" />
+        </EntityType>
+        <EntityType Name="wzor_tree">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="parent" Type="int" Nullable="false" />
+          <Property Name="itemhandle" Type="int" Nullable="false" />
+          <Property Name="label" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="children" Type="smallint" Nullable="false" />
+          <Property Name="data" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="pictureindex" Type="smallint" Nullable="false" />
+          <Property Name="number" Type="smallint" Nullable="false" />
+          <Property Name="obsluga" Type="int" />
+          <Property Name="id_status" Type="int" />
+          <Property Name="def_adr" Type="int" />
+          <Property Name="typ_adr" Type="int" />
+          <Property Name="czyods" Type="smallint" />
+        </EntityType>
+        <EntityType Name="xls_import">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nazwa_pliku" Type="varchar" MaxLength="200" />
+          <Property Name="data" Type="datetime" />
+          <Property Name="operator_guid" Type="int" />
+        </EntityType>
+        <EntityType Name="xls_zalkom_det">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="lp" Type="int" />
+          <Property Name="oddzial" Type="varchar" MaxLength="30" />
+          <Property Name="sygnatura" Type="varchar" MaxLength="30" />
+          <Property Name="dluznik" Type="varchar" MaxLength="300" />
+          <Property Name="data" Type="datetime" />
+          <Property Name="kwota" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="komentarz" Type="varchar" MaxLength="50" />
+          <Property Name="sprawa_ident" Type="int" />
+          <Property Name="status" Type="smallint" />
+          <Property Name="id_import" Type="int" />
+          <Property Name="uwagi" Type="varchar" MaxLength="100" />
+          <Property Name="czyus" Type="smallint" />
+        </EntityType>
+        <EntityType Name="zlecenia_ksiegowe">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kod" Type="int" Nullable="false" />
+          <Property Name="konto" Type="int" Nullable="false" />
+          <Property Name="konto_anal" Type="int" Nullable="false" />
+          <Property Name="winien" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ma" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="energia" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="koszty" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="odsetki" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="inne" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="vat" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="nr_dowodu" Type="varchar" MaxLength="50" />
+          <Property Name="rodzaj" Type="int" Nullable="false" />
+          <Property Name="d_zlecenia" Type="datetime" Nullable="false" />
+          <Property Name="d_ksiegowania" Type="datetime" />
+          <Property Name="id_sprawy" Type="int" Nullable="false" />
+          <Property Name="id_obroty" Type="int" Nullable="false" />
+          <Property Name="kreator" Type="int" />
+          <Property Name="modyfikator" Type="int" />
+          <Property Name="d_kreacji" Type="datetime" />
+          <Property Name="d_modyfikacji" Type="datetime" />
+          <Property Name="czyus" Type="smallint" Nullable="false" />
+          <Property Name="opis" Type="text" />
+          <Property Name="kzp" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="wpis" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="klauzula" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="kza" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="kl_adw" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="komo" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="inne_sad" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="ods_kapital" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="ods_naliczone" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="id_schemat" Type="int" />
+          <Property Name="id_wplaty" Type="int" />
+          <Property Name="nr" Type="int" />
+          <Property Name="energia_ten" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="koszty_ten" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="odsetki_ten" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ods_kaptal_ten" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ods_naliczone_ten" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ma_ten" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="vat_ten" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="wdz" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="wdz_ten" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'wiena_eop_prod.dbo.vw_import_Symbole' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_import_Symbole">
+          <Key>
+            <PropertyRef Name="ident" />
+            <PropertyRef Name="oznaczenie" />
+            <PropertyRef Name="id_firmy" />
+            <PropertyRef Name="rok" />
+            <PropertyRef Name="poz" />
+          </Key>
+          <Property Name="ident" Type="int" Nullable="false" />
+          <Property Name="oznaczenie" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="id_firmy" Type="int" Nullable="false" />
+          <Property Name="typ_firmy" Type="smallint" />
+          <Property Name="rok" Type="int" Nullable="false" />
+          <Property Name="poz" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'wiena_eop_prod.dbo.vw_KosztyEgz' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_KosztyEgz">
+          <Key>
+            <PropertyRef Name="kod" />
+            <PropertyRef Name="konto" />
+            <PropertyRef Name="konto_anal" />
+            <PropertyRef Name="winien" />
+            <PropertyRef Name="ma" />
+            <PropertyRef Name="komo" />
+            <PropertyRef Name="nr_dowodu" />
+            <PropertyRef Name="rodzaj" />
+            <PropertyRef Name="id_sprawy" />
+            <PropertyRef Name="id_obroty" />
+            <PropertyRef Name="czyus" />
+            <PropertyRef Name="id_schemat" />
+            <PropertyRef Name="koszty" />
+          </Key>
+          <Property Name="kod" Type="int" Nullable="false" />
+          <Property Name="konto" Type="int" Nullable="false" />
+          <Property Name="konto_anal" Type="int" Nullable="false" />
+          <Property Name="winien" Type="int" Nullable="false" />
+          <Property Name="ma" Type="int" Nullable="false" />
+          <Property Name="energia" Type="numeric" Precision="38" Scale="2" />
+          <Property Name="wdz" Type="decimal" Precision="38" Scale="2" />
+          <Property Name="odsetki" Type="numeric" Precision="38" Scale="2" />
+          <Property Name="komo" Type="int" Nullable="false" />
+          <Property Name="inne" Type="numeric" Precision="38" Scale="2" />
+          <Property Name="vat" Type="numeric" Precision="38" Scale="2" />
+          <Property Name="ods_kapital" Type="numeric" Precision="38" Scale="2" />
+          <Property Name="kza" Type="numeric" Precision="38" Scale="2" />
+          <Property Name="kl_adw" Type="numeric" Precision="38" Scale="2" />
+          <Property Name="nr_dowodu" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="rodzaj" Type="int" Nullable="false" />
+          <Property Name="DataOper" Type="datetime" />
+          <Property Name="OdsetkiWniosek" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="id_sprawy" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_obroty" Type="int" Nullable="false" />
+          <Property Name="czyus" Type="int" Nullable="false" />
+          <Property Name="id_schemat" Type="int" Nullable="false" />
+          <Property Name="wpis" Type="numeric" Precision="38" Scale="4" />
+          <Property Name="kzp" Type="numeric" Precision="38" Scale="4" />
+          <Property Name="klauzula" Type="numeric" Precision="38" Scale="4" />
+          <Property Name="inne_sad" Type="numeric" Precision="38" Scale="4" />
+          <Property Name="kzaa" Type="numeric" Precision="38" Scale="4" />
+          <Property Name="koszty" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dok_odebr_dok_odebr_nazwy">
+          <End Role="dok_odebr_nazwy" Type="Self.dok_odebr_nazwy" Multiplicity="0..1" />
+          <End Role="dok_odebr" Type="Self.dok_odebr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dok_odebr_nazwy">
+              <PropertyRef Name="ident" />
+            </Principal>
+            <Dependent Role="dok_odebr">
+              <PropertyRef Name="id_dok_typ" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dok_odebr_sprawa">
+          <End Role="sprawa" Type="Self.sprawa" Multiplicity="0..1" />
+          <End Role="dok_odebr" Type="Self.dok_odebr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sprawa">
+              <PropertyRef Name="ident" />
+            </Principal>
+            <Dependent Role="dok_odebr">
+              <PropertyRef Name="id_sprawy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_id_firmy">
+          <End Role="firma" Type="Self.firma" Multiplicity="0..1" />
+          <End Role="radca" Type="Self.radca" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="firma">
+              <PropertyRef Name="ident" />
+            </Principal>
+            <Dependent Role="radca">
+              <PropertyRef Name="id_firmy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_koszt_sprawa">
+          <End Role="sprawa" Type="Self.sprawa" Multiplicity="1" />
+          <End Role="koszt" Type="Self.koszt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sprawa">
+              <PropertyRef Name="ident" />
+            </Principal>
+            <Dependent Role="koszt">
+              <PropertyRef Name="id_sprawy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_koszt_typ_nal">
+          <End Role="typ_nal" Type="Self.typ_nal" Multiplicity="1" />
+          <End Role="koszt" Type="Self.koszt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="typ_nal">
+              <PropertyRef Name="ident" />
+            </Principal>
+            <Dependent Role="koszt">
+              <PropertyRef Name="id_typ_nal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_nal_stan">
+          <End Role="naleznosc" Type="Self.naleznosc" Multiplicity="1" />
+          <End Role="nal_stan" Type="Self.nal_stan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="naleznosc">
+              <PropertyRef Name="ident" />
+            </Principal>
+            <Dependent Role="nal_stan">
+              <PropertyRef Name="id_nal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_naleznosc_sprawa">
+          <End Role="sprawa" Type="Self.sprawa" Multiplicity="1" />
+          <End Role="naleznosc" Type="Self.naleznosc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sprawa">
+              <PropertyRef Name="ident" />
+            </Principal>
+            <Dependent Role="naleznosc">
+              <PropertyRef Name="id_sprawy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_naleznosc_typ_nal">
+          <End Role="typ_nal" Type="Self.typ_nal" Multiplicity="1" />
+          <End Role="naleznosc" Type="Self.naleznosc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="typ_nal">
+              <PropertyRef Name="ident" />
+            </Principal>
+            <Dependent Role="naleznosc">
+              <PropertyRef Name="id_typ_nal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_obroty_konto_anal">
+          <End Role="konto_anal" Type="Self.konto_anal" Multiplicity="1" />
+          <End Role="obroty" Type="Self.obroty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="konto_anal">
+              <PropertyRef Name="ident" />
+            </Principal>
+            <Dependent Role="obroty">
+              <PropertyRef Name="id_konta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ods_sprawy_naleznosc">
+          <End Role="naleznosc" Type="Self.naleznosc" Multiplicity="1" />
+          <End Role="ods_sprawy" Type="Self.ods_sprawy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="naleznosc">
+              <PropertyRef Name="ident" />
+            </Principal>
+            <Dependent Role="ods_sprawy">
+              <PropertyRef Name="id_nal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ods_typ_ods">
+          <End Role="ods_tab_nazwy" Type="Self.ods_tab_nazwy" Multiplicity="0..1" />
+          <End Role="ods_sprawy" Type="Self.ods_sprawy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ods_tab_nazwy">
+              <PropertyRef Name="ident" />
+            </Principal>
+            <Dependent Role="ods_sprawy">
+              <PropertyRef Name="id_typ_ods" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pisma_wys_sprawa">
+          <End Role="sprawa" Type="Self.sprawa" Multiplicity="0..1" />
+          <End Role="pisma_wys" Type="Self.pisma_wys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sprawa">
+              <PropertyRef Name="ident" />
+            </Principal>
+            <Dependent Role="pisma_wys">
+              <PropertyRef Name="id_sprawy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_spr_dluz_skazani">
+          <End Role="skazani" Type="Self.skazani" Multiplicity="0..1" />
+          <End Role="spr_dluz" Type="Self.spr_dluz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="skazani">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="spr_dluz">
+              <PropertyRef Name="id_dluz" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_spr_dluz_sprawa">
+          <End Role="sprawa" Type="Self.sprawa" Multiplicity="0..1" />
+          <End Role="spr_dluz" Type="Self.spr_dluz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sprawa">
+              <PropertyRef Name="ident" />
+            </Principal>
+            <Dependent Role="spr_dluz">
+              <PropertyRef Name="id_sprawy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_spr_stan_sprawa">
+          <End Role="sprawa" Type="Self.sprawa" Multiplicity="1" />
+          <End Role="spr_stan" Type="Self.spr_stan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sprawa">
+              <PropertyRef Name="ident" />
+            </Principal>
+            <Dependent Role="spr_stan">
+              <PropertyRef Name="id_sprawy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sprawa_firma">
+          <End Role="firma" Type="Self.firma" Multiplicity="0..1" />
+          <End Role="sprawa" Type="Self.sprawa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="firma">
+              <PropertyRef Name="ident" />
+            </Principal>
+            <Dependent Role="sprawa">
+              <PropertyRef Name="id_rejon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tab_ods">
+          <End Role="ods_tab_nazwy" Type="Self.ods_tab_nazwy" Multiplicity="1" />
+          <End Role="ods_tab" Type="Self.ods_tab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ods_tab_nazwy">
+              <PropertyRef Name="ident" />
+            </Principal>
+            <Dependent Role="ods_tab">
+              <PropertyRef Name="id_tab_ods" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_wplata_podz_naleznosc">
+          <End Role="naleznosc" Type="Self.naleznosc" Multiplicity="1" />
+          <End Role="wplata_podz" Type="Self.wplata_podz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="naleznosc">
+              <PropertyRef Name="ident" />
+            </Principal>
+            <Dependent Role="wplata_podz">
+              <PropertyRef Name="id_nal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_wplata_podz_wplata">
+          <End Role="wplata" Type="Self.wplata" Multiplicity="1" />
+          <End Role="wplata_podz" Type="Self.wplata_podz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="wplata">
+              <PropertyRef Name="ident" />
+            </Principal>
+            <Dependent Role="wplata_podz">
+              <PropertyRef Name="id_wplaty" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_wplata_sprawa">
+          <End Role="sprawa" Type="Self.sprawa" Multiplicity="1" />
+          <End Role="wplata" Type="Self.wplata" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sprawa">
+              <PropertyRef Name="ident" />
+            </Principal>
+            <Dependent Role="wplata">
+              <PropertyRef Name="id_sprawy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="sp_MergeCases" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdSrc" Type="int" Mode="In" />
+          <Parameter Name="IdDest" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_RemoveCosts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdSprawy" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="WienaModelStoreContainer">
+          <EntitySet Name="dluz_adresy" EntityType="Self.dluz_adresy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dok_odebr" EntityType="Self.dok_odebr" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dok_odebr_nazwy" EntityType="Self.dok_odebr_nazwy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dowod_slownik" EntityType="Self.dowod_slownik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="firma" EntityType="Self.firma" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="komoall" EntityType="Self.komoall" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="konto" EntityType="Self.konto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="konto_anal" EntityType="Self.konto_anal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="koszt" EntityType="Self.koszt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="nal_stan" EntityType="Self.nal_stan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="naleznosc" EntityType="Self.naleznosc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="notki" EntityType="Self.notki" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="obroty" EntityType="Self.obroty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ods_sprawy" EntityType="Self.ods_sprawy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ods_tab" EntityType="Self.ods_tab" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ods_tab_nazwy" EntityType="Self.ods_tab_nazwy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pisma_wys" EntityType="Self.pisma_wys" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="radca" EntityType="Self.radca" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sad" EntityType="Self.sad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="skan" EntityType="Self.skan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="skazani" EntityType="Self.skazani" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="slow_rodzaj" EntityType="Self.slow_rodzaj" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="spr_dluz" EntityType="Self.spr_dluz" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="spr_egz" EntityType="Self.spr_egz" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="spr_sadowa" EntityType="Self.spr_sadowa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="spr_stan" EntityType="Self.spr_stan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sprawa" EntityType="Self.sprawa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="status" EntityType="Self.status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="status_spr" EntityType="Self.status_spr" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="symbol" EntityType="Self.symbol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="typ_nal" EntityType="Self.typ_nal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="wplata" EntityType="Self.wplata" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="wplata_podz" EntityType="Self.wplata_podz" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="wzor_tree" EntityType="Self.wzor_tree" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="xls_import" EntityType="Self.xls_import" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="xls_zalkom_det" EntityType="Self.xls_zalkom_det" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="zlecenia_ksiegowe" EntityType="Self.zlecenia_ksiegowe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vw_import_Symbole" EntityType="Self.vw_import_Symbole" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vw_import_Symbole].[ident] AS [ident], 
+[vw_import_Symbole].[oznaczenie] AS [oznaczenie], 
+[vw_import_Symbole].[id_firmy] AS [id_firmy], 
+[vw_import_Symbole].[typ_firmy] AS [typ_firmy], 
+[vw_import_Symbole].[rok] AS [rok], 
+[vw_import_Symbole].[poz] AS [poz]
+FROM [dbo].[vw_import_Symbole] AS [vw_import_Symbole]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_KosztyEgz" EntityType="Self.vw_KosztyEgz" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vw_KosztyEgz].[kod] AS [kod], 
+[vw_KosztyEgz].[konto] AS [konto], 
+[vw_KosztyEgz].[konto_anal] AS [konto_anal], 
+[vw_KosztyEgz].[winien] AS [winien], 
+[vw_KosztyEgz].[ma] AS [ma], 
+[vw_KosztyEgz].[energia] AS [energia], 
+[vw_KosztyEgz].[wdz] AS [wdz], 
+[vw_KosztyEgz].[odsetki] AS [odsetki], 
+[vw_KosztyEgz].[komo] AS [komo], 
+[vw_KosztyEgz].[inne] AS [inne], 
+[vw_KosztyEgz].[vat] AS [vat], 
+[vw_KosztyEgz].[ods_kapital] AS [ods_kapital], 
+[vw_KosztyEgz].[kza] AS [kza], 
+[vw_KosztyEgz].[kl_adw] AS [kl_adw], 
+[vw_KosztyEgz].[nr_dowodu] AS [nr_dowodu], 
+[vw_KosztyEgz].[rodzaj] AS [rodzaj], 
+[vw_KosztyEgz].[DataOper] AS [DataOper], 
+[vw_KosztyEgz].[OdsetkiWniosek] AS [OdsetkiWniosek], 
+[vw_KosztyEgz].[id_sprawy] AS [id_sprawy], 
+[vw_KosztyEgz].[id_obroty] AS [id_obroty], 
+[vw_KosztyEgz].[czyus] AS [czyus], 
+[vw_KosztyEgz].[id_schemat] AS [id_schemat], 
+[vw_KosztyEgz].[wpis] AS [wpis], 
+[vw_KosztyEgz].[kzp] AS [kzp], 
+[vw_KosztyEgz].[klauzula] AS [klauzula], 
+[vw_KosztyEgz].[inne_sad] AS [inne_sad], 
+[vw_KosztyEgz].[kzaa] AS [kzaa], 
+[vw_KosztyEgz].[koszty] AS [koszty]
+FROM [dbo].[vw_KosztyEgz] AS [vw_KosztyEgz]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_dok_odebr_dok_odebr_nazwy" Association="Self.FK_dok_odebr_dok_odebr_nazwy">
+            <End Role="dok_odebr_nazwy" EntitySet="dok_odebr_nazwy" />
+            <End Role="dok_odebr" EntitySet="dok_odebr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dok_odebr_sprawa" Association="Self.FK_dok_odebr_sprawa">
+            <End Role="sprawa" EntitySet="sprawa" />
+            <End Role="dok_odebr" EntitySet="dok_odebr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_id_firmy" Association="Self.FK_id_firmy">
+            <End Role="firma" EntitySet="firma" />
+            <End Role="radca" EntitySet="radca" />
+          </AssociationSet>
+          <AssociationSet Name="FK_koszt_sprawa" Association="Self.FK_koszt_sprawa">
+            <End Role="sprawa" EntitySet="sprawa" />
+            <End Role="koszt" EntitySet="koszt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_koszt_typ_nal" Association="Self.FK_koszt_typ_nal">
+            <End Role="typ_nal" EntitySet="typ_nal" />
+            <End Role="koszt" EntitySet="koszt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_nal_stan" Association="Self.FK_nal_stan">
+            <End Role="naleznosc" EntitySet="naleznosc" />
+            <End Role="nal_stan" EntitySet="nal_stan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_naleznosc_sprawa" Association="Self.FK_naleznosc_sprawa">
+            <End Role="sprawa" EntitySet="sprawa" />
+            <End Role="naleznosc" EntitySet="naleznosc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_naleznosc_typ_nal" Association="Self.FK_naleznosc_typ_nal">
+            <End Role="typ_nal" EntitySet="typ_nal" />
+            <End Role="naleznosc" EntitySet="naleznosc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_obroty_konto_anal" Association="Self.FK_obroty_konto_anal">
+            <End Role="konto_anal" EntitySet="konto_anal" />
+            <End Role="obroty" EntitySet="obroty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ods_sprawy_naleznosc" Association="Self.FK_ods_sprawy_naleznosc">
+            <End Role="naleznosc" EntitySet="naleznosc" />
+            <End Role="ods_sprawy" EntitySet="ods_sprawy" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ods_typ_ods" Association="Self.fk_ods_typ_ods">
+            <End Role="ods_tab_nazwy" EntitySet="ods_tab_nazwy" />
+            <End Role="ods_sprawy" EntitySet="ods_sprawy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pisma_wys_sprawa" Association="Self.FK_pisma_wys_sprawa">
+            <End Role="sprawa" EntitySet="sprawa" />
+            <End Role="pisma_wys" EntitySet="pisma_wys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_spr_dluz_skazani" Association="Self.FK_spr_dluz_skazani">
+            <End Role="skazani" EntitySet="skazani" />
+            <End Role="spr_dluz" EntitySet="spr_dluz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_spr_dluz_sprawa" Association="Self.FK_spr_dluz_sprawa">
+            <End Role="sprawa" EntitySet="sprawa" />
+            <End Role="spr_dluz" EntitySet="spr_dluz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_spr_stan_sprawa" Association="Self.FK_spr_stan_sprawa">
+            <End Role="sprawa" EntitySet="sprawa" />
+            <End Role="spr_stan" EntitySet="spr_stan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sprawa_firma" Association="Self.FK_sprawa_firma">
+            <End Role="firma" EntitySet="firma" />
+            <End Role="sprawa" EntitySet="sprawa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tab_ods" Association="Self.FK_tab_ods">
+            <End Role="ods_tab_nazwy" EntitySet="ods_tab_nazwy" />
+            <End Role="ods_tab" EntitySet="ods_tab" />
+          </AssociationSet>
+          <AssociationSet Name="FK_wplata_podz_naleznosc" Association="Self.FK_wplata_podz_naleznosc">
+            <End Role="naleznosc" EntitySet="naleznosc" />
+            <End Role="wplata_podz" EntitySet="wplata_podz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_wplata_podz_wplata" Association="Self.FK_wplata_podz_wplata">
+            <End Role="wplata" EntitySet="wplata" />
+            <End Role="wplata_podz" EntitySet="wplata_podz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_wplata_sprawa" Association="Self.FK_wplata_sprawa">
+            <End Role="sprawa" EntitySet="sprawa" />
+            <End Role="wplata" EntitySet="wplata" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WienaModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityType Name="dok_odebr">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="data_r" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="id_sprawy" Type="Int32" />
+          <Property Name="id_user" Type="Int32" />
+          <Property Name="rok" Type="Int16" />
+          <Property Name="klasa" Type="Int16" />
+          <Property Name="uwagi" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="id_dok_typ" Type="Int32" />
+          <Property Name="czyzalatw" Type="Int16" />
+          <Property Name="d_zalatw" Type="DateTime" Precision="3" />
+          <Property Name="spos_zalatw" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="id_dok" Type="Int32" />
+          <Property Name="d_kreacji" Type="DateTime" Precision="3" />
+          <Property Name="d_modyfikacji" Type="DateTime" Precision="3" />
+          <Property Name="kreator" Type="Int32" />
+          <Property Name="modyfikator" Type="Int32" />
+          <Property Name="czyus" Type="Int16" />
+          <Property Name="d_dok" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="dok_odebr_nazwy" Relationship="Self.FK_dok_odebr_dok_odebr_nazwy" FromRole="dok_odebr" ToRole="dok_odebr_nazwy" />
+          <NavigationProperty Name="sprawa" Relationship="WienaModel.FK_dok_odebr_sprawa" FromRole="dok_odebr" ToRole="sprawa" />
+        </EntityType>
+        <EntityType Name="dok_odebr_nazwy">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nazwa" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="dok_odebr" Relationship="Self.FK_dok_odebr_dok_odebr_nazwy" FromRole="dok_odebr_nazwy" ToRole="dok_odebr" />
+        </EntityType>
+        <EntityType Name="konto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="konto1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ostnr" Type="Int32" Nullable="false" />
+          <Property Name="aktywne" Type="Int16" Nullable="false" />
+          <Property Name="data_od" Type="DateTime" Precision="3" />
+          <Property Name="data_do" Type="DateTime" Precision="3" />
+          <Property Name="nast_konto" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="pop_konto" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="nazwa" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="typ" Type="Int16" />
+          <Property Name="id_firmy" Type="Int32" Nullable="false" />
+          <Property Name="rodzaj" Type="Int16" Nullable="false" />
+          <Property Name="schemat_id" Type="Int32" />
+          <Property Name="zest" Type="Int32" />
+          <Property Name="saldo" Type="Int32" />
+        </EntityType>
+        <EntityType Name="konto_anal">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_konta" Type="Int32" Nullable="false" />
+          <Property Name="numer" Type="Int32" Nullable="false" />
+          <Property Name="id_sprawy" Type="Int32" Nullable="false" />
+          <Property Name="d_kreacji" Type="DateTime" Precision="3" />
+          <Property Name="d_modyfikacji" Type="DateTime" Precision="3" />
+          <Property Name="kreator" Type="Int32" />
+          <Property Name="modyfikator" Type="Int32" />
+          <Property Name="czyus" Type="Int32" Nullable="false" />
+          <Property Name="czyvat" Type="Int16" />
+          <Property Name="winien_vat0" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ma_vat0" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="id_firmy" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="obroty" Relationship="Self.FK_obroty_konto_anal" FromRole="konto_anal" ToRole="obroty" />
+        </EntityType>
+        <EntityType Name="koszt">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_sprawy" Type="Int32" Nullable="false" />
+          <Property Name="id_typ_nal" Type="Int32" Nullable="false" />
+          <Property Name="kwota" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="zwrot" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="data_n" Type="DateTime" Precision="3" />
+          <Property Name="uwagi" Type="String" MaxLength="99" FixedLength="false" Unicode="false" />
+          <Property Name="tytul" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="sprawa" Relationship="WienaModel.FK_koszt_sprawa" FromRole="koszt" ToRole="sprawa" />
+          <NavigationProperty Name="typ_nal" Relationship="WienaModel.FK_koszt_typ_nal" FromRole="koszt" ToRole="typ_nal" />
+        </EntityType>
+        <EntityType Name="nal_stan">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_nal" Type="Int32" Nullable="false" />
+          <Property Name="data_s" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="kwota_n" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="kwota_k" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="kwota_o" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ods_dzien" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="typ_stan" Type="Int16" Nullable="false" />
+          <Property Name="oblicz" Type="Int16" />
+          <NavigationProperty Name="naleznosc" Relationship="WienaModel.FK_nal_stan" FromRole="nal_stan" ToRole="naleznosc" />
+        </EntityType>
+        <EntityType Name="obroty">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_sprawy" Type="Int32" Nullable="false" />
+          <Property Name="id_konta" Type="Int32" Nullable="false" />
+          <Property Name="d_operacji" Type="DateTime" Precision="3" />
+          <Property Name="nr_dowodu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nr_teczki" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="rodzaj" Type="Int32" />
+          <Property Name="winien" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ma" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="energia" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="koszty" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="odsetki" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="inne" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="vat" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="uwagi" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="d_kreacji" Type="DateTime" Precision="3" />
+          <Property Name="d_modyfikacji" Type="DateTime" Precision="3" />
+          <Property Name="kreator" Type="Int32" />
+          <Property Name="modyfikator" Type="Int32" />
+          <Property Name="czyus" Type="Int32" />
+          <Property Name="dluznik" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="kzp" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="wpis" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="klauzula" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="kza" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="kl_adw" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="komo" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="inne_sad" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ods_kapital" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ods_naliczone" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="id_schemat" Type="Int32" />
+          <Property Name="id_poz_schemat" Type="Int32" />
+          <Property Name="wdz" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="konto_anal" Relationship="Self.FK_obroty_konto_anal" FromRole="obroty" ToRole="konto_anal" />
+        </EntityType>
+        <EntityType Name="ods_sprawy">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_nal" Type="Int32" Nullable="false" />
+          <Property Name="id_typ_ods" Type="Int32" />
+          <Property Name="data_p" Type="DateTime" Precision="3" />
+          <Property Name="data_k" Type="DateTime" Precision="3" />
+          <Property Name="proc0" Type="Decimal" Precision="10" Scale="5" />
+          <Property Name="uwagi" Type="String" MaxLength="99" FixedLength="false" Unicode="false" />
+          <Property Name="kod" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ods_tab_nazwy" Relationship="WienaModel.fk_ods_typ_ods" FromRole="ods_sprawy" ToRole="ods_tab_nazwy" />
+          <NavigationProperty Name="naleznosc" Relationship="WienaModel.FK_ods_sprawy_naleznosc" FromRole="ods_sprawy" ToRole="naleznosc" />
+        </EntityType>
+        <EntityType Name="pisma_wys">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_nadawcy" Type="Int32" />
+          <Property Name="id_sprawy" Type="Int32" />
+          <Property Name="nazwa1" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="nazwa2" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="nazwa3" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="kod_poczt" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="poczta" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ulica" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="data_r" Type="DateTime" Precision="3" />
+          <Property Name="nazwa_pisma" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="termin" Type="Int16" />
+          <Property Name="rodzaj" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="sygnatura" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="id_dluz" Type="Int32" />
+          <Property Name="stan" Type="Int16" />
+          <Property Name="data_zwr" Type="DateTime" Precision="3" />
+          <Property Name="uwagi_zwr" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="czy_zwr" Type="Int16" />
+          <Property Name="erka" Type="Int32" />
+          <Property Name="tresc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="sygn_psm" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="odpis" Type="Int16" />
+          <Property Name="adresat" Type="Int16" />
+          <Property Name="id_user" Type="Int32" />
+          <Property Name="id_dok" Type="Int32" />
+          <Property Name="typ_dok_tresc" Type="Int16" Nullable="false" />
+          <Property Name="tresc_bin" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="doclen" Type="Int32" Nullable="false" />
+          <Property Name="d_kreacji" Type="DateTime" Precision="3" />
+          <Property Name="d_modyfikacji" Type="DateTime" Precision="3" />
+          <Property Name="kreator" Type="Int32" />
+          <Property Name="modyfikator" Type="Int32" />
+          <Property Name="czyus" Type="Int16" />
+          <NavigationProperty Name="sprawa" Relationship="WienaModel.FK_pisma_wys_sprawa" FromRole="pisma_wys" ToRole="sprawa" />
+        </EntityType>
+        <EntityType Name="zlecenia_ksiegowe">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kod" Type="Int32" Nullable="false" />
+          <Property Name="konto" Type="Int32" Nullable="false" />
+          <Property Name="konto_anal" Type="Int32" Nullable="false" />
+          <Property Name="winien" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ma" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="energia" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="koszty" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="odsetki" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="inne" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="vat" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="nr_dowodu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="rodzaj" Type="Int32" Nullable="false" />
+          <Property Name="d_zlecenia" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="d_ksiegowania" Type="DateTime" Precision="3" />
+          <Property Name="id_sprawy" Type="Int32" Nullable="false" />
+          <Property Name="id_obroty" Type="Int32" Nullable="false" />
+          <Property Name="kreator" Type="Int32" />
+          <Property Name="modyfikator" Type="Int32" />
+          <Property Name="d_kreacji" Type="DateTime" Precision="3" />
+          <Property Name="d_modyfikacji" Type="DateTime" Precision="3" />
+          <Property Name="czyus" Type="Int16" Nullable="false" />
+          <Property Name="opis" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="kzp" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="wpis" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="klauzula" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="kza" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="kl_adw" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="komo" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="inne_sad" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ods_kapital" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ods_naliczone" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="id_schemat" Type="Int32" />
+          <Property Name="id_wplaty" Type="Int32" />
+          <Property Name="nr" Type="Int32" />
+          <Property Name="energia_ten" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="koszty_ten" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="odsetki_ten" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ods_kaptal_ten" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ods_naliczone_ten" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ma_ten" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="vat_ten" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="wdz" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="wdz_ten" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <Association Name="FK_dok_odebr_dok_odebr_nazwy">
+          <End Role="dok_odebr_nazwy" Type="Self.dok_odebr_nazwy" Multiplicity="0..1" />
+          <End Role="dok_odebr" Type="Self.dok_odebr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dok_odebr_nazwy">
+              <PropertyRef Name="ident" />
+            </Principal>
+            <Dependent Role="dok_odebr">
+              <PropertyRef Name="id_dok_typ" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_obroty_konto_anal">
+          <End Role="konto_anal" Type="Self.konto_anal" Multiplicity="1" />
+          <End Role="obroty" Type="Self.obroty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="konto_anal">
+              <PropertyRef Name="ident" />
+            </Principal>
+            <Dependent Role="obroty">
+              <PropertyRef Name="id_konta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="wiena_centralEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="dok_odebr" EntityType="Self.dok_odebr" />
+          <EntitySet Name="dok_odebr_nazwy" EntityType="Self.dok_odebr_nazwy" />
+          <EntitySet Name="konto" EntityType="Self.konto" />
+          <EntitySet Name="konto_anal" EntityType="Self.konto_anal" />
+          <EntitySet Name="koszt" EntityType="Self.koszt" />
+          <EntitySet Name="nal_stan" EntityType="Self.nal_stan" />
+          <EntitySet Name="obroty" EntityType="Self.obroty" />
+          <EntitySet Name="ods_sprawy" EntityType="Self.ods_sprawy" />
+          <EntitySet Name="pisma_wys" EntityType="Self.pisma_wys" />
+          <EntitySet Name="zlecenia_ksiegowe" EntityType="Self.zlecenia_ksiegowe" />
+          <AssociationSet Name="FK_dok_odebr_dok_odebr_nazwy" Association="Self.FK_dok_odebr_dok_odebr_nazwy">
+            <End Role="dok_odebr_nazwy" EntitySet="dok_odebr_nazwy" />
+            <End Role="dok_odebr" EntitySet="dok_odebr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_obroty_konto_anal" Association="Self.FK_obroty_konto_anal">
+            <End Role="konto_anal" EntitySet="konto_anal" />
+            <End Role="obroty" EntitySet="obroty" />
+          </AssociationSet>
+          <EntitySet Name="firma" EntityType="WienaModel.firma" />
+          <EntitySet Name="vw_KosztyEgz" EntityType="WienaModel.vw_KosztyEgz" />
+          <EntitySet Name="spr_egz" EntityType="WienaModel.spr_egz" />
+          <EntitySet Name="spr_sadowa" EntityType="WienaModel.spr_sadowa" />
+          <EntitySet Name="slow_rodzaj" EntityType="WienaModel.slow_rodzaj" />
+          <EntitySet Name="status" EntityType="WienaModel.status" />
+          <EntitySet Name="status_spr" EntityType="WienaModel.status_spr" />
+          <EntitySet Name="wzor_tree" EntityType="WienaModel.wzor_tree" />
+          <EntitySet Name="skan" EntityType="WienaModel.skan" />
+          <EntitySet Name="radca" EntityType="WienaModel.radca" />
+          <AssociationSet Name="FK_id_firmy" Association="WienaModel.FK_id_firmy">
+            <End Role="firma" EntitySet="firma" />
+            <End Role="radca" EntitySet="radca" />
+          </AssociationSet>
+          <EntitySet Name="sprawa" EntityType="WienaModel.sprawa" />
+          <AssociationSet Name="FK_dok_odebr_sprawa" Association="WienaModel.FK_dok_odebr_sprawa">
+            <End Role="sprawa" EntitySet="sprawa" />
+            <End Role="dok_odebr" EntitySet="dok_odebr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sprawa_firma" Association="WienaModel.FK_sprawa_firma">
+            <End Role="firma" EntitySet="firma" />
+            <End Role="sprawa" EntitySet="sprawa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_koszt_sprawa" Association="WienaModel.FK_koszt_sprawa">
+            <End Role="sprawa" EntitySet="sprawa" />
+            <End Role="koszt" EntitySet="koszt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pisma_wys_sprawa" Association="WienaModel.FK_pisma_wys_sprawa">
+            <End Role="sprawa" EntitySet="sprawa" />
+            <End Role="pisma_wys" EntitySet="pisma_wys" />
+          </AssociationSet>
+          <EntitySet Name="sad" EntityType="WienaModel.sad" />
+          <EntitySet Name="wplata_podz" EntityType="WienaModel.wplata_podz" />
+          <EntitySet Name="komoall" EntityType="WienaModel.komoall" />
+          <EntitySet Name="wplata" EntityType="WienaModel.wplata" />
+          <AssociationSet Name="FK_wplata_sprawa" Association="WienaModel.FK_wplata_sprawa">
+            <End Role="sprawa" EntitySet="sprawa" />
+            <End Role="wplata" EntitySet="wplata" />
+          </AssociationSet>
+          <AssociationSet Name="FK_wplata_podz_wplata" Association="WienaModel.FK_wplata_podz_wplata">
+            <End Role="wplata" EntitySet="wplata" />
+            <End Role="wplata_podz" EntitySet="wplata_podz" />
+          </AssociationSet>
+          <EntitySet Name="spr_stan" EntityType="WienaModel.spr_stan" />
+          <AssociationSet Name="FK_spr_stan_sprawa" Association="WienaModel.FK_spr_stan_sprawa">
+            <End Role="sprawa" EntitySet="sprawa" />
+            <End Role="spr_stan" EntitySet="spr_stan" />
+          </AssociationSet>
+          <EntitySet Name="ods_tab" EntityType="WienaModel.ods_tab" />
+          <EntitySet Name="ods_tab_nazwy" EntityType="WienaModel.ods_tab_nazwy" />
+          <AssociationSet Name="fk_ods_typ_ods" Association="WienaModel.fk_ods_typ_ods">
+            <End Role="ods_tab_nazwy" EntitySet="ods_tab_nazwy" />
+            <End Role="ods_sprawy" EntitySet="ods_sprawy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tab_ods" Association="WienaModel.FK_tab_ods">
+            <End Role="ods_tab_nazwy" EntitySet="ods_tab_nazwy" />
+            <End Role="ods_tab" EntitySet="ods_tab" />
+          </AssociationSet>
+          <EntitySet Name="symbol" EntityType="WienaModel.symbol" />
+          <EntitySet Name="dowod_slownik" EntityType="WienaModel.dowod_slownik" />
+          <EntitySet Name="vw_import_Symbole" EntityType="WienaModel.vw_import_Symbole" />
+          <EntitySet Name="dluz_adresy" EntityType="WienaModel.dluz_adresy" />
+          <EntitySet Name="skazani" EntityType="WienaModel.skazani" />
+          <EntitySet Name="spr_dluz" EntityType="WienaModel.spr_dluz" />
+          <AssociationSet Name="FK_spr_dluz_skazani" Association="WienaModel.FK_spr_dluz_skazani">
+            <End Role="skazani" EntitySet="skazani" />
+            <End Role="spr_dluz" EntitySet="spr_dluz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_spr_dluz_sprawa" Association="WienaModel.FK_spr_dluz_sprawa">
+            <End Role="sprawa" EntitySet="sprawa" />
+            <End Role="spr_dluz" EntitySet="spr_dluz" />
+          </AssociationSet>
+          <EntitySet Name="notki" EntityType="WienaModel.notki" />
+          <FunctionImport Name="sp_MergeCases">
+            <Parameter Name="IdSrc" Mode="In" Type="Int32" />
+            <Parameter Name="IdDest" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="xls_import" EntityType="WienaModel.xls_import" />
+          <EntitySet Name="xls_zalkom_det" EntityType="WienaModel.xls_zalkom_det" />
+          <EntitySet Name="typ_nal" EntityType="WienaModel.typ_nal" />
+          <AssociationSet Name="FK_koszt_typ_nal" Association="WienaModel.FK_koszt_typ_nal">
+            <End Role="typ_nal" EntitySet="typ_nal" />
+            <End Role="koszt" EntitySet="koszt" />
+          </AssociationSet>
+          <FunctionImport Name="sp_RemoveCosts">
+          <Parameter Name="IdSprawy" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="naleznosc" EntityType="WienaModel.naleznosc" />
+          <AssociationSet Name="FK_nal_stan" Association="WienaModel.FK_nal_stan">
+            <End Role="naleznosc" EntitySet="naleznosc" />
+            <End Role="nal_stan" EntitySet="nal_stan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_naleznosc_sprawa" Association="WienaModel.FK_naleznosc_sprawa">
+            <End Role="sprawa" EntitySet="sprawa" />
+            <End Role="naleznosc" EntitySet="naleznosc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_naleznosc_typ_nal" Association="WienaModel.FK_naleznosc_typ_nal">
+            <End Role="typ_nal" EntitySet="typ_nal" />
+            <End Role="naleznosc" EntitySet="naleznosc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ods_sprawy_naleznosc" Association="WienaModel.FK_ods_sprawy_naleznosc">
+            <End Role="naleznosc" EntitySet="naleznosc" />
+            <End Role="ods_sprawy" EntitySet="ods_sprawy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_wplata_podz_naleznosc" Association="WienaModel.FK_wplata_podz_naleznosc">
+            <End Role="naleznosc" EntitySet="naleznosc" />
+            <End Role="wplata_podz" EntitySet="wplata_podz" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="firma">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="Int32" Nullable="false" />
+          <Property Name="nazwa" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="nazwa1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="nazwa2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ulica" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="miasto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="kod" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="konto" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="kasa" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="typ" Type="Int16" Nullable="false" />
+          <Property Name="aktywna" Type="Int16" Nullable="false" />
+          <Property Name="numer" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="numer2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="id_oddzial" Type="Int32" />
+          <Property Name="nr_kod" Type="Int32" />
+          <Property Name="typ_firmy" Type="Int16" />
+          <Property Name="myrgb" Type="Int32" />
+          <NavigationProperty Name="radca" Relationship="WienaModel.FK_id_firmy" FromRole="firma" ToRole="radca" />
+          <NavigationProperty Name="sprawa" Relationship="WienaModel.FK_sprawa_firma" FromRole="firma" ToRole="sprawa" />
+        </EntityType>
+        <EntityType Name="vw_KosztyEgz">
+          <Key>
+            <PropertyRef Name="kod" />
+            <PropertyRef Name="konto" />
+            <PropertyRef Name="konto_anal" />
+            <PropertyRef Name="winien" />
+            <PropertyRef Name="ma" />
+            <PropertyRef Name="komo" />
+            <PropertyRef Name="nr_dowodu" />
+            <PropertyRef Name="rodzaj" />
+            <PropertyRef Name="id_sprawy" />
+            <PropertyRef Name="id_obroty" />
+            <PropertyRef Name="czyus" />
+            <PropertyRef Name="id_schemat" />
+            <PropertyRef Name="koszty" />
+          </Key>
+          <Property Name="kod" Type="Int32" Nullable="false" />
+          <Property Name="konto" Type="Int32" Nullable="false" />
+          <Property Name="konto_anal" Type="Int32" Nullable="false" />
+          <Property Name="winien" Type="Int32" Nullable="false" />
+          <Property Name="ma" Type="Int32" Nullable="false" />
+          <Property Name="energia" Type="Decimal" Precision="38" Scale="2" />
+          <Property Name="wdz" Type="Decimal" Precision="38" Scale="2" />
+          <Property Name="odsetki" Type="Decimal" Precision="38" Scale="2" />
+          <Property Name="komo" Type="Int32" Nullable="false" />
+          <Property Name="inne" Type="Decimal" Precision="38" Scale="2" />
+          <Property Name="vat" Type="Decimal" Precision="38" Scale="2" />
+          <Property Name="ods_kapital" Type="Decimal" Precision="38" Scale="2" />
+          <Property Name="kza" Type="Decimal" Precision="38" Scale="2" />
+          <Property Name="kl_adw" Type="Decimal" Precision="38" Scale="2" />
+          <Property Name="nr_dowodu" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="rodzaj" Type="Int32" Nullable="false" />
+          <Property Name="DataOper" Type="DateTime" Precision="3" />
+          <Property Name="OdsetkiWniosek" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="id_sprawy" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_obroty" Type="Int32" Nullable="false" />
+          <Property Name="czyus" Type="Int32" Nullable="false" />
+          <Property Name="id_schemat" Type="Int32" Nullable="false" />
+          <Property Name="wpis" Type="Decimal" Precision="38" Scale="4" />
+          <Property Name="kzp" Type="Decimal" Precision="38" Scale="4" />
+          <Property Name="klauzula" Type="Decimal" Precision="38" Scale="4" />
+          <Property Name="inne_sad" Type="Decimal" Precision="38" Scale="4" />
+          <Property Name="kzaa" Type="Decimal" Precision="38" Scale="4" />
+          <Property Name="koszty" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="spr_egz">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_sprawy" Type="Int32" Nullable="false" />
+          <Property Name="id_komornik" Type="Int32" Nullable="false" />
+          <Property Name="data_wniosku" Type="DateTime" Precision="3" />
+          <Property Name="data_uzupeł" Type="DateTime" Precision="3" />
+          <Property Name="km" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="data_umo" Type="DateTime" Precision="3" />
+          <Property Name="przyczyna_umo" Type="Int32" />
+          <Property Name="przyczyna_umo_opis" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="data_zawiesz" Type="DateTime" Precision="3" />
+          <Property Name="przyczyna_zawiesz" Type="Int32" />
+          <Property Name="przyczyna_zaw_opis" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="data_post_koszt" Type="DateTime" Precision="3" />
+          <Property Name="data_zwrotu" Type="DateTime" Precision="3" />
+          <Property Name="przyczyna_zwrot" Type="Int32" />
+          <Property Name="przyczyna_zwrot_opis" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="uwagi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="aktualna" Type="Int32" Nullable="false" />
+          <Property Name="czyus" Type="Int32" />
+          <Property Name="kreator" Type="Int32" />
+          <Property Name="modyfikator" Type="Int32" />
+          <Property Name="d_kreacji" Type="DateTime" Precision="3" />
+          <Property Name="d_modyfikacji" Type="DateTime" Precision="3" />
+          <Property Name="kwota" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="koszty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="odsetki" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="data_dor_umo" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="spr_sadowa">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_sprawa" Type="Int32" Nullable="false" />
+          <Property Name="id_sad" Type="Int32" Nullable="false" />
+          <Property Name="data_pozwu" Type="DateTime" Precision="3" />
+          <Property Name="data_wezw_braki" Type="DateTime" Precision="3" />
+          <Property Name="data_nakazu" Type="DateTime" Precision="3" />
+          <Property Name="data_sprzeciwu" Type="DateTime" Precision="3" />
+          <Property Name="data_zawieszenia" Type="DateTime" Precision="3" />
+          <Property Name="przyczyna_zaw" Type="Int32" />
+          <Property Name="przyczyna_zaw_opis" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="data_umo" Type="DateTime" Precision="3" />
+          <Property Name="przyczyna_umo" Type="Int32" />
+          <Property Name="przyczyna_umo_opis" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="data_uchyl_nakazu" Type="DateTime" Precision="3" />
+          <Property Name="data_klauzuli" Type="DateTime" Precision="3" />
+          <Property Name="data_otrz_nakaz" Type="DateTime" Precision="3" />
+          <Property Name="sygn_nakazowe" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="sygn_proces" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="data_zwroty_pozw" Type="DateTime" Precision="3" />
+          <Property Name="data_ponow_wnies" Type="DateTime" Precision="3" />
+          <Property Name="pracownicy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="uwagi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="czyus" Type="Int16" />
+          <Property Name="d_kreacji" Type="DateTime" Precision="3" />
+          <Property Name="d_modyfikacji" Type="DateTime" Precision="3" />
+          <Property Name="kreator" Type="Int32" />
+          <Property Name="modyfikator" Type="Int32" />
+          <Property Name="aktywne" Type="Int16" Nullable="false" />
+          <Property Name="data_wyroku" Type="DateTime" Precision="3" />
+          <Property Name="data_otrz_wyr" Type="DateTime" Precision="3" />
+          <Property Name="data_wn_klauz" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="slow_rodzaj">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="numer" Type="Int16" Nullable="false" />
+          <Property Name="co" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="status">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="numer" Type="Int32" Nullable="false" />
+          <Property Name="nazwa" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="etap" Type="Int16" Nullable="false" />
+          <Property Name="czyus" Type="Int32" />
+          <Property Name="d_kreacji" Type="DateTime" Precision="3" />
+          <Property Name="d_modyfikacji" Type="DateTime" Precision="3" />
+          <Property Name="modyfikator" Type="Int32" />
+          <Property Name="kreator" Type="Int32" />
+          <Property Name="bitmap" Type="Int16" />
+          <Property Name="def_skip" Type="Int16" />
+          <Property Name="konto" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="status_spr">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_sprawy" Type="Int32" Nullable="false" />
+          <Property Name="id_statusu" Type="Int32" Nullable="false" />
+          <Property Name="od_dnia" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="czyus" Type="Int16" />
+          <Property Name="d_modyfikacji" Type="DateTime" Precision="3" />
+          <Property Name="d_kreacji" Type="DateTime" Precision="3" />
+          <Property Name="kreator" Type="Int32" />
+          <Property Name="modyfikator" Type="Int32" />
+        </EntityType>
+        <EntityType Name="wzor_tree">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="parent" Type="Int32" Nullable="false" />
+          <Property Name="itemhandle" Type="Int32" Nullable="false" />
+          <Property Name="label" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="children" Type="Int16" Nullable="false" />
+          <Property Name="data" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="pictureindex" Type="Int16" Nullable="false" />
+          <Property Name="number" Type="Int16" Nullable="false" />
+          <Property Name="obsluga" Type="Int32" />
+          <Property Name="id_status" Type="Int32" />
+          <Property Name="def_adr" Type="Int32" />
+          <Property Name="typ_adr" Type="Int32" />
+          <Property Name="czyods" Type="Int16" />
+        </EntityType>
+        <EntityType Name="skan">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="skan1" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="id_dok_odebr" Type="Int32" Nullable="false" />
+          <Property Name="kolejnosc" Type="Int32" Nullable="false" />
+          <Property Name="typ" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="d_kreacji" Type="DateTime" Precision="3" />
+          <Property Name="d_modyfikacji" Type="DateTime" Precision="3" />
+          <Property Name="kreator" Type="Int32" />
+          <Property Name="modyfikator" Type="Int32" />
+        </EntityType>
+        <EntityType Name="radca">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="stanowisko" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nazwisko" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="imie" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="dodatek" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="id_pracownik" Type="Int32" Nullable="false" />
+          <Property Name="aktywny" Type="Int16" Nullable="false" />
+          <Property Name="stanowisko_dopelniacz" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nazwisko_dopelniacz" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="imie_dopelniacz" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Int16" Nullable="false" />
+          <Property Name="id_firmy" Type="Int32" />
+          <Property Name="PESEL" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="firma" Relationship="WienaModel.FK_id_firmy" FromRole="radca" ToRole="firma" />
+        </EntityType>
+        <Association Name="FK_id_firmy">
+          <End Type="WienaModel.firma" Role="firma" Multiplicity="0..1" />
+          <End Type="WienaModel.radca" Role="radca" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="firma">
+              <PropertyRef Name="ident" />
+            </Principal>
+            <Dependent Role="radca">
+              <PropertyRef Name="id_firmy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="sprawa">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sygnatura" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="data_r" Type="DateTime" Precision="3" />
+          <Property Name="data_ostatnia" Type="DateTime" Precision="3" />
+          <Property Name="data_kon" Type="DateTime" Precision="3" />
+          <Property Name="rok" Type="Int16" Nullable="false" />
+          <Property Name="poz" Type="Int32" Nullable="false" />
+          <Property Name="zakoncz" Type="Int16" />
+          <Property Name="uwagi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="nr_ewid" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="id_rejon" Type="Int32" />
+          <Property Name="id_sad" Type="Int32" />
+          <Property Name="id_radca" Type="Int32" />
+          <Property Name="id_symbol" Type="Int32" />
+          <Property Name="d_kreacji" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="d_modyfikacji" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="kreator" Type="Int32" Nullable="false" />
+          <Property Name="modyfikator" Type="Int32" Nullable="false" />
+          <Property Name="czyus" Type="Int32" Nullable="false" />
+          <Property Name="licz_przedplat" Type="Int32" />
+          <Property Name="licznik_miejsce" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="licznik_ulica" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="ksiega" Type="Int32" Nullable="false" />
+          <Property Name="skrot" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="done" Type="Int16" />
+          <Property Name="gdzie_akta" Type="Int16" Nullable="false" />
+          <Property Name="d_protokolu" Type="DateTime" Precision="3" />
+          <Property Name="faktura" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="kwota" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="protokol" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="rodzaj" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="d_faktury" Type="DateTime" Precision="3" />
+          <Property Name="korekta" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="prowizja" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="raport" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="prot_kwt" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="id_firmy" Type="Int32" Nullable="false" />
+          <Property Name="id_radca_egz" Type="Int32" />
+          <Property Name="licz_czynny" Type="Int16" />
+          <Property Name="arch_teczka" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="arch_paczka" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="data_lexena" Type="DateTime" Precision="3" />
+          <Property Name="id_kancelarii" Type="Int32" />
+          <NavigationProperty Name="dok_odebr" Relationship="WienaModel.FK_dok_odebr_sprawa" FromRole="sprawa" ToRole="dok_odebr" />
+          <NavigationProperty Name="firma" Relationship="WienaModel.FK_sprawa_firma" FromRole="sprawa" ToRole="firma" />
+          <NavigationProperty Name="koszt" Relationship="WienaModel.FK_koszt_sprawa" FromRole="sprawa" ToRole="koszt" />
+          <NavigationProperty Name="pisma_wys" Relationship="WienaModel.FK_pisma_wys_sprawa" FromRole="sprawa" ToRole="pisma_wys" />
+          <NavigationProperty Name="wplata" Relationship="WienaModel.FK_wplata_sprawa" FromRole="sprawa" ToRole="wplata" />
+          <NavigationProperty Name="spr_stan" Relationship="WienaModel.FK_spr_stan_sprawa" FromRole="sprawa" ToRole="spr_stan" />
+          <NavigationProperty Name="spr_dluz" Relationship="WienaModel.FK_spr_dluz_sprawa" FromRole="sprawa" ToRole="spr_dluz" />
+          <NavigationProperty Name="naleznosc" Relationship="WienaModel.FK_naleznosc_sprawa" FromRole="sprawa" ToRole="naleznosc" />
+        </EntityType>
+        <Association Name="FK_dok_odebr_sprawa">
+          <End Type="WienaModel.sprawa" Role="sprawa" Multiplicity="0..1" />
+          <End Type="WienaModel.dok_odebr" Role="dok_odebr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sprawa">
+              <PropertyRef Name="ident" />
+            </Principal>
+            <Dependent Role="dok_odebr">
+              <PropertyRef Name="id_sprawy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sprawa_firma">
+          <End Type="WienaModel.firma" Role="firma" Multiplicity="0..1" />
+          <End Type="WienaModel.sprawa" Role="sprawa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="firma">
+              <PropertyRef Name="ident" />
+            </Principal>
+            <Dependent Role="sprawa">
+              <PropertyRef Name="id_rejon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_koszt_sprawa">
+          <End Type="WienaModel.sprawa" Role="sprawa" Multiplicity="1" />
+          <End Type="WienaModel.koszt" Role="koszt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sprawa">
+              <PropertyRef Name="ident" />
+            </Principal>
+            <Dependent Role="koszt">
+              <PropertyRef Name="id_sprawy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pisma_wys_sprawa">
+          <End Type="WienaModel.sprawa" Role="sprawa" Multiplicity="0..1" />
+          <End Type="WienaModel.pisma_wys" Role="pisma_wys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sprawa">
+              <PropertyRef Name="ident" />
+            </Principal>
+            <Dependent Role="pisma_wys">
+              <PropertyRef Name="id_sprawy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="sad">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nazwa" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="wydzial" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="rejokr" Type="Int32" Nullable="false" />
+          <Property Name="miasto" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="ulica" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="kod" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="czyus" Type="Int32" />
+          <Property Name="d_kreacji" Type="DateTime" Precision="3" />
+          <Property Name="d_modyfikacji" Type="DateTime" Precision="3" />
+          <Property Name="kreator" Type="Int32" />
+          <Property Name="modyfikator" Type="Int32" />
+          <Property Name="typ" Type="Int16" Nullable="false" />
+          <Property Name="sort" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wplata_podz">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_wplaty" Type="Int32" Nullable="false" />
+          <Property Name="id_nal" Type="Int32" Nullable="false" />
+          <Property Name="spl_kap" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="spl_ods" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="zal_kap" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="zal_ods" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="spl_vat" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="zal_vat" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="wplata" Relationship="WienaModel.FK_wplata_podz_wplata" FromRole="wplata_podz" ToRole="wplata" />
+          <NavigationProperty Name="naleznosc" Relationship="WienaModel.FK_wplata_podz_naleznosc" FromRole="wplata_podz" ToRole="naleznosc" />
+        </EntityType>
+        <EntityType Name="komoall">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="przy_apel" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="apelacja" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="nazwa" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="rewir" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="przy_sr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ulica" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="miasto" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="kod" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="tel" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="zakrewir" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="komornik" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="bank" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="konto" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="sad_r" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="wplata">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_sprawy" Type="Int32" Nullable="false" />
+          <Property Name="id_kto" Type="Int32" Nullable="false" />
+          <Property Name="kwota" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="data_w" Type="DateTime" Precision="3" />
+          <Property Name="algo" Type="Int16" />
+          <Property Name="uwagi" Type="String" MaxLength="99" FixedLength="false" Unicode="false" />
+          <Property Name="id_dluz" Type="Int32" />
+          <Property Name="nr_dowodu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="d_kreacji" Type="DateTime" Precision="3" />
+          <Property Name="d_modyfikacji" Type="DateTime" Precision="3" />
+          <Property Name="kreator" Type="Int32" />
+          <Property Name="modyfikator" Type="Int32" />
+          <Property Name="vat" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="sprawa" Relationship="WienaModel.FK_wplata_sprawa" FromRole="wplata" ToRole="sprawa" />
+          <NavigationProperty Name="wplata_podz" Relationship="WienaModel.FK_wplata_podz_wplata" FromRole="wplata" ToRole="wplata_podz" />
+        </EntityType>
+        <Association Name="FK_wplata_sprawa">
+          <End Type="WienaModel.sprawa" Role="sprawa" Multiplicity="1" />
+          <End Type="WienaModel.wplata" Role="wplata" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sprawa">
+              <PropertyRef Name="ident" />
+            </Principal>
+            <Dependent Role="wplata">
+              <PropertyRef Name="id_sprawy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_wplata_podz_wplata">
+          <End Type="WienaModel.wplata" Role="wplata" Multiplicity="1" />
+          <End Type="WienaModel.wplata_podz" Role="wplata_podz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="wplata">
+              <PropertyRef Name="ident" />
+            </Principal>
+            <Dependent Role="wplata_podz">
+              <PropertyRef Name="id_wplaty" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="spr_stan">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_sprawy" Type="Int32" Nullable="false" />
+          <Property Name="data_s" Type="DateTime" Precision="3" />
+          <Property Name="kwota_n" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="kwota_o" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="kwota_k" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ods_dzien" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="oblicz" Type="Int16" />
+          <Property Name="typ_stan" Type="Int16" />
+          <NavigationProperty Name="sprawa" Relationship="WienaModel.FK_spr_stan_sprawa" FromRole="spr_stan" ToRole="sprawa" />
+        </EntityType>
+        <Association Name="FK_spr_stan_sprawa">
+          <End Type="WienaModel.sprawa" Role="sprawa" Multiplicity="1" />
+          <End Type="WienaModel.spr_stan" Role="spr_stan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sprawa">
+              <PropertyRef Name="ident" />
+            </Principal>
+            <Dependent Role="spr_stan">
+              <PropertyRef Name="id_sprawy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ods_tab">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_tab_ods" Type="Int32" Nullable="false" />
+          <Property Name="data_p" Type="DateTime" Precision="3" />
+          <Property Name="data_k" Type="DateTime" Precision="3" />
+          <Property Name="proc0" Type="Decimal" Precision="10" Scale="5" />
+          <NavigationProperty Name="ods_tab_nazwy" Relationship="WienaModel.FK_tab_ods" FromRole="ods_tab" ToRole="ods_tab_nazwy" />
+        </EntityType>
+        <EntityType Name="ods_tab_nazwy">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nazwa" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ods_sprawy" Relationship="WienaModel.fk_ods_typ_ods" FromRole="ods_tab_nazwy" ToRole="ods_sprawy" />
+          <NavigationProperty Name="ods_tab" Relationship="WienaModel.FK_tab_ods" FromRole="ods_tab_nazwy" ToRole="ods_tab" />
+        </EntityType>
+        <Association Name="fk_ods_typ_ods">
+          <End Type="WienaModel.ods_tab_nazwy" Role="ods_tab_nazwy" Multiplicity="0..1" />
+          <End Type="WienaModel.ods_sprawy" Role="ods_sprawy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ods_tab_nazwy">
+              <PropertyRef Name="ident" />
+            </Principal>
+            <Dependent Role="ods_sprawy">
+              <PropertyRef Name="id_typ_ods" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tab_ods">
+          <End Type="WienaModel.ods_tab_nazwy" Role="ods_tab_nazwy" Multiplicity="1" />
+          <End Type="WienaModel.ods_tab" Role="ods_tab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ods_tab_nazwy">
+              <PropertyRef Name="ident" />
+            </Principal>
+            <Dependent Role="ods_tab">
+              <PropertyRef Name="id_tab_ods" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="symbol">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="oznaczenie" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="nazwa" Type="Int32" />
+          <Property Name="numer" Type="Int32" />
+          <Property Name="typ" Type="Int32" Nullable="false" />
+          <Property Name="etap" Type="Int32" Nullable="false" />
+          <Property Name="typ_firmy" Type="Int16" />
+          <Property Name="id_firmy" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dowod_slownik">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dowod" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="typ" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vw_import_Symbole">
+          <Key>
+            <PropertyRef Name="ident" />
+            <PropertyRef Name="oznaczenie" />
+            <PropertyRef Name="id_firmy" />
+            <PropertyRef Name="rok" />
+            <PropertyRef Name="poz" />
+          </Key>
+          <Property Name="ident" Type="Int32" Nullable="false" />
+          <Property Name="oznaczenie" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="id_firmy" Type="Int32" Nullable="false" />
+          <Property Name="typ_firmy" Type="Int16" />
+          <Property Name="rok" Type="Int32" Nullable="false" />
+          <Property Name="poz" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dluz_adresy">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="miejsce" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ulica" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="kod" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="id_dluz" Type="Int32" Nullable="false" />
+          <Property Name="data_r" Type="DateTime" Precision="3" />
+          <Property Name="miejscowosc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="d_kreacji" Type="DateTime" Precision="3" />
+          <Property Name="d_modyfikacji" Type="DateTime" Precision="3" />
+          <Property Name="kreator" Type="Int32" />
+          <Property Name="modyfikator" Type="Int32" />
+          <Property Name="glowny" Type="Int32" />
+          <Property Name="koresp" Type="Int32" />
+          <Property Name="numer_d" Type="Int32" />
+          <Property Name="numer_l" Type="Int32" />
+        </EntityType>
+        <EntityType Name="skazani">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="osoba_lub_firma" Type="Int16" Nullable="false" />
+          <Property Name="nazwisko" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="imie" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="miasto_ur" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="data_ur" Type="DateTime" Precision="3" />
+          <Property Name="imie_ojca" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="imie_matki" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="id_adresu" Type="Int32" />
+          <Property Name="id_adresu_zamel" Type="Int32" />
+          <Property Name="nazw_pan_matki" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="key1" Type="Int32" />
+          <Property Name="pesel" Type="String" MaxLength="13" FixedLength="true" Unicode="false" />
+          <Property Name="dowod" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="nazw_pan" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="nip" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="regon" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="krs" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="rdzen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="uwagi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="id_grupy" Type="Int32" />
+          <Property Name="czyus" Type="Int32" />
+          <Property Name="d_kreacji" Type="DateTime" Precision="3" />
+          <Property Name="d_modyfikacji" Type="DateTime" Precision="3" />
+          <Property Name="kreator" Type="Int32" />
+          <Property Name="modyfikator" Type="Int32" />
+          <Property Name="dane_kom" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="done" Type="Int16" />
+          <Property Name="rejestr" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="spr_dluz" Relationship="WienaModel.FK_spr_dluz_skazani" FromRole="skazani" ToRole="spr_dluz" />
+        </EntityType>
+        <EntityType Name="spr_dluz">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_sprawy" Type="Int32" />
+          <Property Name="id_dluz" Type="Int32" />
+          <NavigationProperty Name="skazani" Relationship="WienaModel.FK_spr_dluz_skazani" FromRole="spr_dluz" ToRole="skazani" />
+          <NavigationProperty Name="sprawa" Relationship="WienaModel.FK_spr_dluz_sprawa" FromRole="spr_dluz" ToRole="sprawa" />
+        </EntityType>
+        <Association Name="FK_spr_dluz_skazani">
+          <End Type="WienaModel.skazani" Role="skazani" Multiplicity="0..1" />
+          <End Type="WienaModel.spr_dluz" Role="spr_dluz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="skazani">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="spr_dluz">
+              <PropertyRef Name="id_dluz" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_spr_dluz_sprawa">
+          <End Type="WienaModel.sprawa" Role="sprawa" Multiplicity="0..1" />
+          <End Type="WienaModel.spr_dluz" Role="spr_dluz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sprawa">
+              <PropertyRef Name="ident" />
+            </Principal>
+            <Dependent Role="spr_dluz">
+              <PropertyRef Name="id_sprawy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="notki">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_sprawy" Type="Int32" Nullable="false" />
+          <Property Name="tresc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="czyus" Type="Int32" Nullable="false" />
+          <Property Name="d_kreacji" Type="DateTime" Precision="3" />
+          <Property Name="d_modyfikacji" Type="DateTime" Precision="3" />
+          <Property Name="kreator" Type="Int32" />
+          <Property Name="modyfikator" Type="Int32" />
+        </EntityType>
+        <EntityType Name="xls_import">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nazwa_pliku" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="data" Type="DateTime" Precision="3" />
+          <Property Name="operator_guid" Type="Int32" />
+        </EntityType>
+        <EntityType Name="xls_zalkom_det">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="lp" Type="Int32" />
+          <Property Name="oddzial" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="sygnatura" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="dluznik" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="data" Type="DateTime" Precision="3" />
+          <Property Name="kwota" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="komentarz" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sprawa_ident" Type="Int32" />
+          <Property Name="status" Type="Int16" />
+          <Property Name="id_import" Type="Int32" />
+          <Property Name="uwagi" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="czyus" Type="Int16" />
+        </EntityType>
+        <EntityType Name="typ_nal">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nazwa" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="typ_nal1" Type="Int16" Nullable="false" />
+          <Property Name="typ_sum" Type="Int16" Nullable="false" />
+          <Property Name="czy_proc" Type="Boolean" Nullable="false" />
+          <Property Name="nr_tab_ods" Type="Int32" />
+          <Property Name="czy_mem" Type="Boolean" />
+          <Property Name="czy_vat" Type="Int16" Nullable="false" />
+          <Property Name="czy_ods_kapital" Type="Int16" Nullable="false" />
+          <Property Name="typ_firmy" Type="Int16" />
+          <Property Name="priorytet" Type="Int32" />
+          <NavigationProperty Name="koszt" Relationship="WienaModel.FK_koszt_typ_nal" FromRole="typ_nal" ToRole="koszt" />
+          <NavigationProperty Name="naleznosc" Relationship="WienaModel.FK_naleznosc_typ_nal" FromRole="typ_nal" ToRole="naleznosc" />
+        </EntityType>
+        <Association Name="FK_koszt_typ_nal">
+          <End Type="WienaModel.typ_nal" Role="typ_nal" Multiplicity="1" />
+          <End Type="WienaModel.koszt" Role="koszt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="typ_nal">
+              <PropertyRef Name="ident" />
+            </Principal>
+            <Dependent Role="koszt">
+              <PropertyRef Name="id_typ_nal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="naleznosc">
+          <Key>
+            <PropertyRef Name="ident" />
+          </Key>
+          <Property Name="ident" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_sprawy" Type="Int32" Nullable="false" />
+          <Property Name="id_typ_nal" Type="Int32" Nullable="false" />
+          <Property Name="kwota" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="data_n" Type="DateTime" Precision="3" />
+          <Property Name="data_fv" Type="DateTime" Precision="3" />
+          <Property Name="czy_proc" Type="Boolean" Nullable="false" />
+          <Property Name="uwagi" Type="String" MaxLength="99" FixedLength="false" Unicode="false" />
+          <Property Name="tytul" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="d_kreacji" Type="DateTime" Precision="3" />
+          <Property Name="d_modyfikacji" Type="DateTime" Precision="3" />
+          <Property Name="kreator" Type="Int32" />
+          <Property Name="modyfikator" Type="Int32" />
+          <Property Name="vat" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="id_naleznosci" Type="Int32" />
+          <Property Name="OZE" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Przejsciowa" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Kogeneracyjna" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Mocowa" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Nr_KSEF" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Data_wys_KSEF" Type="DateTime" Precision="3" />
+          <Property Name="Data_prz_KSEF" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="nal_stan" Relationship="WienaModel.FK_nal_stan" FromRole="naleznosc" ToRole="nal_stan" />
+          <NavigationProperty Name="sprawa" Relationship="WienaModel.FK_naleznosc_sprawa" FromRole="naleznosc" ToRole="sprawa" />
+          <NavigationProperty Name="typ_nal" Relationship="WienaModel.FK_naleznosc_typ_nal" FromRole="naleznosc" ToRole="typ_nal" />
+          <NavigationProperty Name="ods_sprawy" Relationship="WienaModel.FK_ods_sprawy_naleznosc" FromRole="naleznosc" ToRole="ods_sprawy" />
+          <NavigationProperty Name="wplata_podz" Relationship="WienaModel.FK_wplata_podz_naleznosc" FromRole="naleznosc" ToRole="wplata_podz" />
+        </EntityType>
+        <Association Name="FK_nal_stan">
+          <End Type="WienaModel.naleznosc" Role="naleznosc" Multiplicity="1" />
+          <End Type="WienaModel.nal_stan" Role="nal_stan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="naleznosc">
+              <PropertyRef Name="ident" />
+            </Principal>
+            <Dependent Role="nal_stan">
+              <PropertyRef Name="id_nal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_naleznosc_sprawa">
+          <End Type="WienaModel.sprawa" Role="sprawa" Multiplicity="1" />
+          <End Type="WienaModel.naleznosc" Role="naleznosc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sprawa">
+              <PropertyRef Name="ident" />
+            </Principal>
+            <Dependent Role="naleznosc">
+              <PropertyRef Name="id_sprawy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_naleznosc_typ_nal">
+          <End Type="WienaModel.typ_nal" Role="typ_nal" Multiplicity="1" />
+          <End Type="WienaModel.naleznosc" Role="naleznosc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="typ_nal">
+              <PropertyRef Name="ident" />
+            </Principal>
+            <Dependent Role="naleznosc">
+              <PropertyRef Name="id_typ_nal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ods_sprawy_naleznosc">
+          <End Type="WienaModel.naleznosc" Role="naleznosc" Multiplicity="1" />
+          <End Type="WienaModel.ods_sprawy" Role="ods_sprawy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="naleznosc">
+              <PropertyRef Name="ident" />
+            </Principal>
+            <Dependent Role="ods_sprawy">
+              <PropertyRef Name="id_nal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_wplata_podz_naleznosc">
+          <End Type="WienaModel.naleznosc" Role="naleznosc" Multiplicity="1" />
+          <End Type="WienaModel.wplata_podz" Role="wplata_podz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="naleznosc">
+              <PropertyRef Name="ident" />
+            </Principal>
+            <Dependent Role="wplata_podz">
+              <PropertyRef Name="id_nal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WienaModelStoreContainer" CdmEntityContainer="wiena_centralEntities">
+          <EntitySetMapping Name="dok_odebr">
+            <EntityTypeMapping TypeName="WienaModel.dok_odebr">
+              <MappingFragment StoreEntitySet="dok_odebr">
+                <ScalarProperty Name="ident" ColumnName="ident" />
+                <ScalarProperty Name="data_r" ColumnName="data_r" />
+                <ScalarProperty Name="id_sprawy" ColumnName="id_sprawy" />
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+                <ScalarProperty Name="rok" ColumnName="rok" />
+                <ScalarProperty Name="klasa" ColumnName="klasa" />
+                <ScalarProperty Name="uwagi" ColumnName="uwagi" />
+                <ScalarProperty Name="id_dok_typ" ColumnName="id_dok_typ" />
+                <ScalarProperty Name="czyzalatw" ColumnName="czyzalatw" />
+                <ScalarProperty Name="d_zalatw" ColumnName="d_zalatw" />
+                <ScalarProperty Name="spos_zalatw" ColumnName="spos_zalatw" />
+                <ScalarProperty Name="id_dok" ColumnName="id_dok" />
+                <ScalarProperty Name="d_kreacji" ColumnName="d_kreacji" />
+                <ScalarProperty Name="d_modyfikacji" ColumnName="d_modyfikacji" />
+                <ScalarProperty Name="kreator" ColumnName="kreator" />
+                <ScalarProperty Name="modyfikator" ColumnName="modyfikator" />
+                <ScalarProperty Name="czyus" ColumnName="czyus" />
+                <ScalarProperty Name="d_dok" ColumnName="d_dok" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dok_odebr_nazwy">
+            <EntityTypeMapping TypeName="WienaModel.dok_odebr_nazwy">
+              <MappingFragment StoreEntitySet="dok_odebr_nazwy">
+                <ScalarProperty Name="ident" ColumnName="ident" />
+                <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="konto">
+            <EntityTypeMapping TypeName="WienaModel.konto">
+              <MappingFragment StoreEntitySet="konto">
+                <ScalarProperty Name="saldo" ColumnName="saldo" />
+                <ScalarProperty Name="zest" ColumnName="zest" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="konto1" ColumnName="konto" />
+                <ScalarProperty Name="ostnr" ColumnName="ostnr" />
+                <ScalarProperty Name="aktywne" ColumnName="aktywne" />
+                <ScalarProperty Name="data_od" ColumnName="data_od" />
+                <ScalarProperty Name="data_do" ColumnName="data_do" />
+                <ScalarProperty Name="nast_konto" ColumnName="nast_konto" />
+                <ScalarProperty Name="pop_konto" ColumnName="pop_konto" />
+                <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+                <ScalarProperty Name="typ" ColumnName="typ" />
+                <ScalarProperty Name="id_firmy" ColumnName="id_firmy" />
+                <ScalarProperty Name="rodzaj" ColumnName="rodzaj" />
+                <ScalarProperty Name="schemat_id" ColumnName="schemat_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="konto_anal">
+            <EntityTypeMapping TypeName="WienaModel.konto_anal">
+              <MappingFragment StoreEntitySet="konto_anal">
+                <ScalarProperty Name="ident" ColumnName="ident" />
+                <ScalarProperty Name="id_konta" ColumnName="id_konta" />
+                <ScalarProperty Name="numer" ColumnName="numer" />
+                <ScalarProperty Name="id_sprawy" ColumnName="id_sprawy" />
+                <ScalarProperty Name="d_kreacji" ColumnName="d_kreacji" />
+                <ScalarProperty Name="d_modyfikacji" ColumnName="d_modyfikacji" />
+                <ScalarProperty Name="kreator" ColumnName="kreator" />
+                <ScalarProperty Name="modyfikator" ColumnName="modyfikator" />
+                <ScalarProperty Name="czyus" ColumnName="czyus" />
+                <ScalarProperty Name="czyvat" ColumnName="czyvat" />
+                <ScalarProperty Name="winien_vat0" ColumnName="winien_vat0" />
+                <ScalarProperty Name="ma_vat0" ColumnName="ma_vat0" />
+                <ScalarProperty Name="id_firmy" ColumnName="id_firmy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="koszt">
+            <EntityTypeMapping TypeName="WienaModel.koszt">
+              <MappingFragment StoreEntitySet="koszt">
+                <ScalarProperty Name="ident" ColumnName="ident" />
+                <ScalarProperty Name="id_sprawy" ColumnName="id_sprawy" />
+                <ScalarProperty Name="id_typ_nal" ColumnName="id_typ_nal" />
+                <ScalarProperty Name="kwota" ColumnName="kwota" />
+                <ScalarProperty Name="zwrot" ColumnName="zwrot" />
+                <ScalarProperty Name="data_n" ColumnName="data_n" />
+                <ScalarProperty Name="uwagi" ColumnName="uwagi" />
+                <ScalarProperty Name="tytul" ColumnName="tytul" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="nal_stan">
+            <EntityTypeMapping TypeName="WienaModel.nal_stan">
+              <MappingFragment StoreEntitySet="nal_stan">
+                <ScalarProperty Name="ident" ColumnName="ident" />
+                <ScalarProperty Name="id_nal" ColumnName="id_nal" />
+                <ScalarProperty Name="data_s" ColumnName="data_s" />
+                <ScalarProperty Name="kwota_n" ColumnName="kwota_n" />
+                <ScalarProperty Name="kwota_k" ColumnName="kwota_k" />
+                <ScalarProperty Name="kwota_o" ColumnName="kwota_o" />
+                <ScalarProperty Name="ods_dzien" ColumnName="ods_dzien" />
+                <ScalarProperty Name="typ_stan" ColumnName="typ_stan" />
+                <ScalarProperty Name="oblicz" ColumnName="oblicz" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="obroty">
+            <EntityTypeMapping TypeName="WienaModel.obroty">
+              <MappingFragment StoreEntitySet="obroty">
+                <ScalarProperty Name="ident" ColumnName="ident" />
+                <ScalarProperty Name="id_sprawy" ColumnName="id_sprawy" />
+                <ScalarProperty Name="id_konta" ColumnName="id_konta" />
+                <ScalarProperty Name="d_operacji" ColumnName="d_operacji" />
+                <ScalarProperty Name="nr_dowodu" ColumnName="nr_dowodu" />
+                <ScalarProperty Name="nr_teczki" ColumnName="nr_teczki" />
+                <ScalarProperty Name="rodzaj" ColumnName="rodzaj" />
+                <ScalarProperty Name="winien" ColumnName="winien" />
+                <ScalarProperty Name="ma" ColumnName="ma" />
+                <ScalarProperty Name="energia" ColumnName="energia" />
+                <ScalarProperty Name="koszty" ColumnName="koszty" />
+                <ScalarProperty Name="odsetki" ColumnName="odsetki" />
+                <ScalarProperty Name="inne" ColumnName="inne" />
+                <ScalarProperty Name="vat" ColumnName="vat" />
+                <ScalarProperty Name="uwagi" ColumnName="uwagi" />
+                <ScalarProperty Name="d_kreacji" ColumnName="d_kreacji" />
+                <ScalarProperty Name="d_modyfikacji" ColumnName="d_modyfikacji" />
+                <ScalarProperty Name="kreator" ColumnName="kreator" />
+                <ScalarProperty Name="modyfikator" ColumnName="modyfikator" />
+                <ScalarProperty Name="czyus" ColumnName="czyus" />
+                <ScalarProperty Name="dluznik" ColumnName="dluznik" />
+                <ScalarProperty Name="kzp" ColumnName="kzp" />
+                <ScalarProperty Name="wpis" ColumnName="wpis" />
+                <ScalarProperty Name="klauzula" ColumnName="klauzula" />
+                <ScalarProperty Name="kza" ColumnName="kza" />
+                <ScalarProperty Name="kl_adw" ColumnName="kl_adw" />
+                <ScalarProperty Name="komo" ColumnName="komo" />
+                <ScalarProperty Name="inne_sad" ColumnName="inne_sad" />
+                <ScalarProperty Name="ods_kapital" ColumnName="ods_kapital" />
+                <ScalarProperty Name="ods_naliczone" ColumnName="ods_naliczone" />
+                <ScalarProperty Name="id_schemat" ColumnName="id_schemat" />
+                <ScalarProperty Name="id_poz_schemat" ColumnName="id_poz_schemat" />
+                <ScalarProperty Name="wdz" ColumnName="wdz" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ods_sprawy">
+            <EntityTypeMapping TypeName="WienaModel.ods_sprawy">
+              <MappingFragment StoreEntitySet="ods_sprawy">
+                <ScalarProperty Name="ident" ColumnName="ident" />
+                <ScalarProperty Name="id_nal" ColumnName="id_nal" />
+                <ScalarProperty Name="id_typ_ods" ColumnName="id_typ_ods" />
+                <ScalarProperty Name="data_p" ColumnName="data_p" />
+                <ScalarProperty Name="data_k" ColumnName="data_k" />
+                <ScalarProperty Name="proc0" ColumnName="proc0" />
+                <ScalarProperty Name="uwagi" ColumnName="uwagi" />
+                <ScalarProperty Name="kod" ColumnName="kod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pisma_wys">
+            <EntityTypeMapping TypeName="WienaModel.pisma_wys">
+              <MappingFragment StoreEntitySet="pisma_wys">
+                <ScalarProperty Name="ident" ColumnName="ident" />
+                <ScalarProperty Name="id_nadawcy" ColumnName="id_nadawcy" />
+                <ScalarProperty Name="id_sprawy" ColumnName="id_sprawy" />
+                <ScalarProperty Name="nazwa1" ColumnName="nazwa1" />
+                <ScalarProperty Name="nazwa2" ColumnName="nazwa2" />
+                <ScalarProperty Name="nazwa3" ColumnName="nazwa3" />
+                <ScalarProperty Name="kod_poczt" ColumnName="kod_poczt" />
+                <ScalarProperty Name="poczta" ColumnName="poczta" />
+                <ScalarProperty Name="ulica" ColumnName="ulica" />
+                <ScalarProperty Name="data_r" ColumnName="data_r" />
+                <ScalarProperty Name="nazwa_pisma" ColumnName="nazwa_pisma" />
+                <ScalarProperty Name="termin" ColumnName="termin" />
+                <ScalarProperty Name="rodzaj" ColumnName="rodzaj" />
+                <ScalarProperty Name="sygnatura" ColumnName="sygnatura" />
+                <ScalarProperty Name="id_dluz" ColumnName="id_dluz" />
+                <ScalarProperty Name="stan" ColumnName="stan" />
+                <ScalarProperty Name="data_zwr" ColumnName="data_zwr" />
+                <ScalarProperty Name="uwagi_zwr" ColumnName="uwagi_zwr" />
+                <ScalarProperty Name="czy_zwr" ColumnName="czy_zwr" />
+                <ScalarProperty Name="erka" ColumnName="erka" />
+                <ScalarProperty Name="tresc" ColumnName="tresc" />
+                <ScalarProperty Name="sygn_psm" ColumnName="sygn_psm" />
+                <ScalarProperty Name="odpis" ColumnName="odpis" />
+                <ScalarProperty Name="adresat" ColumnName="adresat" />
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+                <ScalarProperty Name="id_dok" ColumnName="id_dok" />
+                <ScalarProperty Name="typ_dok_tresc" ColumnName="typ_dok_tresc" />
+                <ScalarProperty Name="tresc_bin" ColumnName="tresc_bin" />
+                <ScalarProperty Name="doclen" ColumnName="doclen" />
+                <ScalarProperty Name="d_kreacji" ColumnName="d_kreacji" />
+                <ScalarProperty Name="d_modyfikacji" ColumnName="d_modyfikacji" />
+                <ScalarProperty Name="kreator" ColumnName="kreator" />
+                <ScalarProperty Name="modyfikator" ColumnName="modyfikator" />
+                <ScalarProperty Name="czyus" ColumnName="czyus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="zlecenia_ksiegowe">
+            <EntityTypeMapping TypeName="WienaModel.zlecenia_ksiegowe">
+              <MappingFragment StoreEntitySet="zlecenia_ksiegowe">
+                <ScalarProperty Name="ident" ColumnName="ident" />
+                <ScalarProperty Name="kod" ColumnName="kod" />
+                <ScalarProperty Name="konto" ColumnName="konto" />
+                <ScalarProperty Name="konto_anal" ColumnName="konto_anal" />
+                <ScalarProperty Name="winien" ColumnName="winien" />
+                <ScalarProperty Name="ma" ColumnName="ma" />
+                <ScalarProperty Name="energia" ColumnName="energia" />
+                <ScalarProperty Name="koszty" ColumnName="koszty" />
+                <ScalarProperty Name="odsetki" ColumnName="odsetki" />
+                <ScalarProperty Name="inne" ColumnName="inne" />
+                <ScalarProperty Name="vat" ColumnName="vat" />
+                <ScalarProperty Name="nr_dowodu" ColumnName="nr_dowodu" />
+                <ScalarProperty Name="rodzaj" ColumnName="rodzaj" />
+                <ScalarProperty Name="d_zlecenia" ColumnName="d_zlecenia" />
+                <ScalarProperty Name="d_ksiegowania" ColumnName="d_ksiegowania" />
+                <ScalarProperty Name="id_sprawy" ColumnName="id_sprawy" />
+                <ScalarProperty Name="id_obroty" ColumnName="id_obroty" />
+                <ScalarProperty Name="kreator" ColumnName="kreator" />
+                <ScalarProperty Name="modyfikator" ColumnName="modyfikator" />
+                <ScalarProperty Name="d_kreacji" ColumnName="d_kreacji" />
+                <ScalarProperty Name="d_modyfikacji" ColumnName="d_modyfikacji" />
+                <ScalarProperty Name="czyus" ColumnName="czyus" />
+                <ScalarProperty Name="opis" ColumnName="opis" />
+                <ScalarProperty Name="kzp" ColumnName="kzp" />
+                <ScalarProperty Name="wpis" ColumnName="wpis" />
+                <ScalarProperty Name="klauzula" ColumnName="klauzula" />
+                <ScalarProperty Name="kza" ColumnName="kza" />
+                <ScalarProperty Name="kl_adw" ColumnName="kl_adw" />
+                <ScalarProperty Name="komo" ColumnName="komo" />
+                <ScalarProperty Name="inne_sad" ColumnName="inne_sad" />
+                <ScalarProperty Name="ods_kapital" ColumnName="ods_kapital" />
+                <ScalarProperty Name="ods_naliczone" ColumnName="ods_naliczone" />
+                <ScalarProperty Name="id_schemat" ColumnName="id_schemat" />
+                <ScalarProperty Name="id_wplaty" ColumnName="id_wplaty" />
+                <ScalarProperty Name="nr" ColumnName="nr" />
+                <ScalarProperty Name="energia_ten" ColumnName="energia_ten" />
+                <ScalarProperty Name="koszty_ten" ColumnName="koszty_ten" />
+                <ScalarProperty Name="odsetki_ten" ColumnName="odsetki_ten" />
+                <ScalarProperty Name="ods_kaptal_ten" ColumnName="ods_kaptal_ten" />
+                <ScalarProperty Name="ods_naliczone_ten" ColumnName="ods_naliczone_ten" />
+                <ScalarProperty Name="ma_ten" ColumnName="ma_ten" />
+                <ScalarProperty Name="vat_ten" ColumnName="vat_ten" />
+                <ScalarProperty Name="wdz" ColumnName="wdz" />
+                <ScalarProperty Name="wdz_ten" ColumnName="wdz_ten" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="firma">
+            <EntityTypeMapping TypeName="WienaModel.firma">
+              <MappingFragment StoreEntitySet="firma">
+                <ScalarProperty Name="myrgb" ColumnName="myrgb" />
+                <ScalarProperty Name="typ_firmy" ColumnName="typ_firmy" />
+                <ScalarProperty Name="nr_kod" ColumnName="nr_kod" />
+                <ScalarProperty Name="id_oddzial" ColumnName="id_oddzial" />
+                <ScalarProperty Name="numer2" ColumnName="numer2" />
+                <ScalarProperty Name="numer" ColumnName="numer" />
+                <ScalarProperty Name="aktywna" ColumnName="aktywna" />
+                <ScalarProperty Name="typ" ColumnName="typ" />
+                <ScalarProperty Name="kasa" ColumnName="kasa" />
+                <ScalarProperty Name="konto" ColumnName="konto" />
+                <ScalarProperty Name="kod" ColumnName="kod" />
+                <ScalarProperty Name="miasto" ColumnName="miasto" />
+                <ScalarProperty Name="ulica" ColumnName="ulica" />
+                <ScalarProperty Name="nazwa2" ColumnName="nazwa2" />
+                <ScalarProperty Name="nazwa1" ColumnName="nazwa1" />
+                <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+                <ScalarProperty Name="ident" ColumnName="ident" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_KosztyEgz">
+            <EntityTypeMapping TypeName="WienaModel.vw_KosztyEgz">
+              <MappingFragment StoreEntitySet="vw_KosztyEgz">
+                <ScalarProperty Name="koszty" ColumnName="koszty" />
+                <ScalarProperty Name="kzaa" ColumnName="kzaa" />
+                <ScalarProperty Name="inne_sad" ColumnName="inne_sad" />
+                <ScalarProperty Name="klauzula" ColumnName="klauzula" />
+                <ScalarProperty Name="kzp" ColumnName="kzp" />
+                <ScalarProperty Name="wpis" ColumnName="wpis" />
+                <ScalarProperty Name="id_schemat" ColumnName="id_schemat" />
+                <ScalarProperty Name="czyus" ColumnName="czyus" />
+                <ScalarProperty Name="id_obroty" ColumnName="id_obroty" />
+                <ScalarProperty Name="id_sprawy" ColumnName="id_sprawy" />
+                <ScalarProperty Name="OdsetkiWniosek" ColumnName="OdsetkiWniosek" />
+                <ScalarProperty Name="DataOper" ColumnName="DataOper" />
+                <ScalarProperty Name="rodzaj" ColumnName="rodzaj" />
+                <ScalarProperty Name="nr_dowodu" ColumnName="nr_dowodu" />
+                <ScalarProperty Name="kl_adw" ColumnName="kl_adw" />
+                <ScalarProperty Name="kza" ColumnName="kza" />
+                <ScalarProperty Name="ods_kapital" ColumnName="ods_kapital" />
+                <ScalarProperty Name="vat" ColumnName="vat" />
+                <ScalarProperty Name="inne" ColumnName="inne" />
+                <ScalarProperty Name="komo" ColumnName="komo" />
+                <ScalarProperty Name="odsetki" ColumnName="odsetki" />
+                <ScalarProperty Name="wdz" ColumnName="wdz" />
+                <ScalarProperty Name="energia" ColumnName="energia" />
+                <ScalarProperty Name="ma" ColumnName="ma" />
+                <ScalarProperty Name="winien" ColumnName="winien" />
+                <ScalarProperty Name="konto_anal" ColumnName="konto_anal" />
+                <ScalarProperty Name="konto" ColumnName="konto" />
+                <ScalarProperty Name="kod" ColumnName="kod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="spr_egz">
+            <EntityTypeMapping TypeName="WienaModel.spr_egz">
+              <MappingFragment StoreEntitySet="spr_egz">
+                <ScalarProperty Name="data_dor_umo" ColumnName="data_dor_umo" />
+                <ScalarProperty Name="odsetki" ColumnName="odsetki" />
+                <ScalarProperty Name="koszty" ColumnName="koszty" />
+                <ScalarProperty Name="kwota" ColumnName="kwota" />
+                <ScalarProperty Name="d_modyfikacji" ColumnName="d_modyfikacji" />
+                <ScalarProperty Name="d_kreacji" ColumnName="d_kreacji" />
+                <ScalarProperty Name="modyfikator" ColumnName="modyfikator" />
+                <ScalarProperty Name="kreator" ColumnName="kreator" />
+                <ScalarProperty Name="czyus" ColumnName="czyus" />
+                <ScalarProperty Name="aktualna" ColumnName="aktualna" />
+                <ScalarProperty Name="uwagi" ColumnName="uwagi" />
+                <ScalarProperty Name="przyczyna_zwrot_opis" ColumnName="przyczyna_zwrot_opis" />
+                <ScalarProperty Name="przyczyna_zwrot" ColumnName="przyczyna_zwrot" />
+                <ScalarProperty Name="data_zwrotu" ColumnName="data_zwrotu" />
+                <ScalarProperty Name="data_post_koszt" ColumnName="data_post_koszt" />
+                <ScalarProperty Name="przyczyna_zaw_opis" ColumnName="przyczyna_zaw_opis" />
+                <ScalarProperty Name="przyczyna_zawiesz" ColumnName="przyczyna_zawiesz" />
+                <ScalarProperty Name="data_zawiesz" ColumnName="data_zawiesz" />
+                <ScalarProperty Name="przyczyna_umo_opis" ColumnName="przyczyna_umo_opis" />
+                <ScalarProperty Name="przyczyna_umo" ColumnName="przyczyna_umo" />
+                <ScalarProperty Name="data_umo" ColumnName="data_umo" />
+                <ScalarProperty Name="km" ColumnName="km" />
+                <ScalarProperty Name="data_uzupeł" ColumnName="data_uzupeł" />
+                <ScalarProperty Name="data_wniosku" ColumnName="data_wniosku" />
+                <ScalarProperty Name="id_komornik" ColumnName="id_komornik" />
+                <ScalarProperty Name="id_sprawy" ColumnName="id_sprawy" />
+                <ScalarProperty Name="ident" ColumnName="ident" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="spr_sadowa">
+            <EntityTypeMapping TypeName="WienaModel.spr_sadowa">
+              <MappingFragment StoreEntitySet="spr_sadowa">
+                <ScalarProperty Name="data_wn_klauz" ColumnName="data_wn_klauz" />
+                <ScalarProperty Name="data_otrz_wyr" ColumnName="data_otrz_wyr" />
+                <ScalarProperty Name="data_wyroku" ColumnName="data_wyroku" />
+                <ScalarProperty Name="aktywne" ColumnName="aktywne" />
+                <ScalarProperty Name="modyfikator" ColumnName="modyfikator" />
+                <ScalarProperty Name="kreator" ColumnName="kreator" />
+                <ScalarProperty Name="d_modyfikacji" ColumnName="d_modyfikacji" />
+                <ScalarProperty Name="d_kreacji" ColumnName="d_kreacji" />
+                <ScalarProperty Name="czyus" ColumnName="czyus" />
+                <ScalarProperty Name="uwagi" ColumnName="uwagi" />
+                <ScalarProperty Name="pracownicy" ColumnName="pracownicy" />
+                <ScalarProperty Name="data_ponow_wnies" ColumnName="data_ponow_wnies" />
+                <ScalarProperty Name="data_zwroty_pozw" ColumnName="data_zwroty_pozw" />
+                <ScalarProperty Name="sygn_proces" ColumnName="sygn_proces" />
+                <ScalarProperty Name="sygn_nakazowe" ColumnName="sygn_nakazowe" />
+                <ScalarProperty Name="data_otrz_nakaz" ColumnName="data_otrz_nakaz" />
+                <ScalarProperty Name="data_klauzuli" ColumnName="data_klauzuli" />
+                <ScalarProperty Name="data_uchyl_nakazu" ColumnName="data_uchyl_nakazu" />
+                <ScalarProperty Name="przyczyna_umo_opis" ColumnName="przyczyna_umo_opis" />
+                <ScalarProperty Name="przyczyna_umo" ColumnName="przyczyna_umo" />
+                <ScalarProperty Name="data_umo" ColumnName="data_umo" />
+                <ScalarProperty Name="przyczyna_zaw_opis" ColumnName="przyczyna_zaw_opis" />
+                <ScalarProperty Name="przyczyna_zaw" ColumnName="przyczyna_zaw" />
+                <ScalarProperty Name="data_zawieszenia" ColumnName="data_zawieszenia" />
+                <ScalarProperty Name="data_sprzeciwu" ColumnName="data_sprzeciwu" />
+                <ScalarProperty Name="data_nakazu" ColumnName="data_nakazu" />
+                <ScalarProperty Name="data_wezw_braki" ColumnName="data_wezw_braki" />
+                <ScalarProperty Name="data_pozwu" ColumnName="data_pozwu" />
+                <ScalarProperty Name="id_sad" ColumnName="id_sad" />
+                <ScalarProperty Name="id_sprawa" ColumnName="id_sprawa" />
+                <ScalarProperty Name="ident" ColumnName="ident" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="slow_rodzaj">
+            <EntityTypeMapping TypeName="WienaModel.slow_rodzaj">
+              <MappingFragment StoreEntitySet="slow_rodzaj">
+                <ScalarProperty Name="co" ColumnName="co" />
+                <ScalarProperty Name="numer" ColumnName="numer" />
+                <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+                <ScalarProperty Name="ident" ColumnName="ident" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="status">
+            <EntityTypeMapping TypeName="WienaModel.status">
+              <MappingFragment StoreEntitySet="status">
+                <ScalarProperty Name="konto" ColumnName="konto" />
+                <ScalarProperty Name="def_skip" ColumnName="def_skip" />
+                <ScalarProperty Name="bitmap" ColumnName="bitmap" />
+                <ScalarProperty Name="kreator" ColumnName="kreator" />
+                <ScalarProperty Name="modyfikator" ColumnName="modyfikator" />
+                <ScalarProperty Name="d_modyfikacji" ColumnName="d_modyfikacji" />
+                <ScalarProperty Name="d_kreacji" ColumnName="d_kreacji" />
+                <ScalarProperty Name="czyus" ColumnName="czyus" />
+                <ScalarProperty Name="etap" ColumnName="etap" />
+                <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+                <ScalarProperty Name="numer" ColumnName="numer" />
+                <ScalarProperty Name="ident" ColumnName="ident" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="status_spr">
+            <EntityTypeMapping TypeName="WienaModel.status_spr">
+              <MappingFragment StoreEntitySet="status_spr">
+                <ScalarProperty Name="modyfikator" ColumnName="modyfikator" />
+                <ScalarProperty Name="kreator" ColumnName="kreator" />
+                <ScalarProperty Name="d_kreacji" ColumnName="d_kreacji" />
+                <ScalarProperty Name="d_modyfikacji" ColumnName="d_modyfikacji" />
+                <ScalarProperty Name="czyus" ColumnName="czyus" />
+                <ScalarProperty Name="od_dnia" ColumnName="od_dnia" />
+                <ScalarProperty Name="id_statusu" ColumnName="id_statusu" />
+                <ScalarProperty Name="id_sprawy" ColumnName="id_sprawy" />
+                <ScalarProperty Name="ident" ColumnName="ident" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wzor_tree">
+            <EntityTypeMapping TypeName="WienaModel.wzor_tree">
+              <MappingFragment StoreEntitySet="wzor_tree">
+                <ScalarProperty Name="czyods" ColumnName="czyods" />
+                <ScalarProperty Name="typ_adr" ColumnName="typ_adr" />
+                <ScalarProperty Name="def_adr" ColumnName="def_adr" />
+                <ScalarProperty Name="id_status" ColumnName="id_status" />
+                <ScalarProperty Name="obsluga" ColumnName="obsluga" />
+                <ScalarProperty Name="number" ColumnName="number" />
+                <ScalarProperty Name="pictureindex" ColumnName="pictureindex" />
+                <ScalarProperty Name="data" ColumnName="data" />
+                <ScalarProperty Name="children" ColumnName="children" />
+                <ScalarProperty Name="label" ColumnName="label" />
+                <ScalarProperty Name="itemhandle" ColumnName="itemhandle" />
+                <ScalarProperty Name="parent" ColumnName="parent" />
+                <ScalarProperty Name="ident" ColumnName="ident" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="skan">
+            <EntityTypeMapping TypeName="WienaModel.skan">
+              <MappingFragment StoreEntitySet="skan">
+                <ScalarProperty Name="modyfikator" ColumnName="modyfikator" />
+                <ScalarProperty Name="kreator" ColumnName="kreator" />
+                <ScalarProperty Name="d_modyfikacji" ColumnName="d_modyfikacji" />
+                <ScalarProperty Name="d_kreacji" ColumnName="d_kreacji" />
+                <ScalarProperty Name="typ" ColumnName="typ" />
+                <ScalarProperty Name="kolejnosc" ColumnName="kolejnosc" />
+                <ScalarProperty Name="id_dok_odebr" ColumnName="id_dok_odebr" />
+                <ScalarProperty Name="skan1" ColumnName="skan" />
+                <ScalarProperty Name="ident" ColumnName="ident" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="radca">
+            <EntityTypeMapping TypeName="WienaModel.radca">
+              <MappingFragment StoreEntitySet="radca">
+                <ScalarProperty Name="PESEL" ColumnName="PESEL" />
+                <ScalarProperty Name="id_firmy" ColumnName="id_firmy" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="imie_dopelniacz" ColumnName="imie_dopelniacz" />
+                <ScalarProperty Name="nazwisko_dopelniacz" ColumnName="nazwisko_dopelniacz" />
+                <ScalarProperty Name="stanowisko_dopelniacz" ColumnName="stanowisko_dopelniacz" />
+                <ScalarProperty Name="aktywny" ColumnName="aktywny" />
+                <ScalarProperty Name="id_pracownik" ColumnName="id_pracownik" />
+                <ScalarProperty Name="dodatek" ColumnName="dodatek" />
+                <ScalarProperty Name="imie" ColumnName="imie" />
+                <ScalarProperty Name="nazwisko" ColumnName="nazwisko" />
+                <ScalarProperty Name="stanowisko" ColumnName="stanowisko" />
+                <ScalarProperty Name="ident" ColumnName="ident" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sprawa">
+            <EntityTypeMapping TypeName="WienaModel.sprawa">
+              <MappingFragment StoreEntitySet="sprawa">
+                <ScalarProperty Name="id_kancelarii" ColumnName="id_kancelarii" />
+                <ScalarProperty Name="data_lexena" ColumnName="data_lexena" />
+                <ScalarProperty Name="arch_paczka" ColumnName="arch_paczka" />
+                <ScalarProperty Name="arch_teczka" ColumnName="arch_teczka" />
+                <ScalarProperty Name="licz_czynny" ColumnName="licz_czynny" />
+                <ScalarProperty Name="id_radca_egz" ColumnName="id_radca_egz" />
+                <ScalarProperty Name="id_firmy" ColumnName="id_firmy" />
+                <ScalarProperty Name="prot_kwt" ColumnName="prot_kwt" />
+                <ScalarProperty Name="raport" ColumnName="raport" />
+                <ScalarProperty Name="prowizja" ColumnName="prowizja" />
+                <ScalarProperty Name="korekta" ColumnName="korekta" />
+                <ScalarProperty Name="d_faktury" ColumnName="d_faktury" />
+                <ScalarProperty Name="rodzaj" ColumnName="rodzaj" />
+                <ScalarProperty Name="protokol" ColumnName="protokol" />
+                <ScalarProperty Name="kwota" ColumnName="kwota" />
+                <ScalarProperty Name="faktura" ColumnName="faktura" />
+                <ScalarProperty Name="d_protokolu" ColumnName="d_protokolu" />
+                <ScalarProperty Name="gdzie_akta" ColumnName="gdzie_akta" />
+                <ScalarProperty Name="done" ColumnName="done" />
+                <ScalarProperty Name="skrot" ColumnName="skrot" />
+                <ScalarProperty Name="ksiega" ColumnName="ksiega" />
+                <ScalarProperty Name="licznik_ulica" ColumnName="licznik_ulica" />
+                <ScalarProperty Name="licznik_miejsce" ColumnName="licznik_miejsce" />
+                <ScalarProperty Name="licz_przedplat" ColumnName="licz_przedplat" />
+                <ScalarProperty Name="czyus" ColumnName="czyus" />
+                <ScalarProperty Name="modyfikator" ColumnName="modyfikator" />
+                <ScalarProperty Name="kreator" ColumnName="kreator" />
+                <ScalarProperty Name="d_modyfikacji" ColumnName="d_modyfikacji" />
+                <ScalarProperty Name="d_kreacji" ColumnName="d_kreacji" />
+                <ScalarProperty Name="id_symbol" ColumnName="id_symbol" />
+                <ScalarProperty Name="id_radca" ColumnName="id_radca" />
+                <ScalarProperty Name="id_sad" ColumnName="id_sad" />
+                <ScalarProperty Name="id_rejon" ColumnName="id_rejon" />
+                <ScalarProperty Name="nr_ewid" ColumnName="nr_ewid" />
+                <ScalarProperty Name="uwagi" ColumnName="uwagi" />
+                <ScalarProperty Name="zakoncz" ColumnName="zakoncz" />
+                <ScalarProperty Name="poz" ColumnName="poz" />
+                <ScalarProperty Name="rok" ColumnName="rok" />
+                <ScalarProperty Name="data_kon" ColumnName="data_kon" />
+                <ScalarProperty Name="data_ostatnia" ColumnName="data_ostatnia" />
+                <ScalarProperty Name="data_r" ColumnName="data_r" />
+                <ScalarProperty Name="sygnatura" ColumnName="sygnatura" />
+                <ScalarProperty Name="ident" ColumnName="ident" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sad">
+            <EntityTypeMapping TypeName="WienaModel.sad">
+              <MappingFragment StoreEntitySet="sad">
+                <ScalarProperty Name="sort" ColumnName="sort" />
+                <ScalarProperty Name="typ" ColumnName="typ" />
+                <ScalarProperty Name="modyfikator" ColumnName="modyfikator" />
+                <ScalarProperty Name="kreator" ColumnName="kreator" />
+                <ScalarProperty Name="d_modyfikacji" ColumnName="d_modyfikacji" />
+                <ScalarProperty Name="d_kreacji" ColumnName="d_kreacji" />
+                <ScalarProperty Name="czyus" ColumnName="czyus" />
+                <ScalarProperty Name="kod" ColumnName="kod" />
+                <ScalarProperty Name="ulica" ColumnName="ulica" />
+                <ScalarProperty Name="miasto" ColumnName="miasto" />
+                <ScalarProperty Name="rejokr" ColumnName="rejokr" />
+                <ScalarProperty Name="wydzial" ColumnName="wydzial" />
+                <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+                <ScalarProperty Name="ident" ColumnName="ident" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wplata_podz">
+            <EntityTypeMapping TypeName="WienaModel.wplata_podz">
+              <MappingFragment StoreEntitySet="wplata_podz">
+                <ScalarProperty Name="zal_vat" ColumnName="zal_vat" />
+                <ScalarProperty Name="spl_vat" ColumnName="spl_vat" />
+                <ScalarProperty Name="zal_ods" ColumnName="zal_ods" />
+                <ScalarProperty Name="zal_kap" ColumnName="zal_kap" />
+                <ScalarProperty Name="spl_ods" ColumnName="spl_ods" />
+                <ScalarProperty Name="spl_kap" ColumnName="spl_kap" />
+                <ScalarProperty Name="id_nal" ColumnName="id_nal" />
+                <ScalarProperty Name="id_wplaty" ColumnName="id_wplaty" />
+                <ScalarProperty Name="ident" ColumnName="ident" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="komoall">
+            <EntityTypeMapping TypeName="WienaModel.komoall">
+              <MappingFragment StoreEntitySet="komoall">
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="sad_r" ColumnName="sad_r" />
+                <ScalarProperty Name="konto" ColumnName="konto" />
+                <ScalarProperty Name="bank" ColumnName="bank" />
+                <ScalarProperty Name="komornik" ColumnName="komornik" />
+                <ScalarProperty Name="zakrewir" ColumnName="zakrewir" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="kod" ColumnName="kod" />
+                <ScalarProperty Name="miasto" ColumnName="miasto" />
+                <ScalarProperty Name="ulica" ColumnName="ulica" />
+                <ScalarProperty Name="przy_sr" ColumnName="przy_sr" />
+                <ScalarProperty Name="rewir" ColumnName="rewir" />
+                <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+                <ScalarProperty Name="apelacja" ColumnName="apelacja" />
+                <ScalarProperty Name="przy_apel" ColumnName="przy_apel" />
+                <ScalarProperty Name="ident" ColumnName="ident" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wplata">
+            <EntityTypeMapping TypeName="WienaModel.wplata">
+              <MappingFragment StoreEntitySet="wplata">
+                <ScalarProperty Name="vat" ColumnName="vat" />
+                <ScalarProperty Name="modyfikator" ColumnName="modyfikator" />
+                <ScalarProperty Name="kreator" ColumnName="kreator" />
+                <ScalarProperty Name="d_modyfikacji" ColumnName="d_modyfikacji" />
+                <ScalarProperty Name="d_kreacji" ColumnName="d_kreacji" />
+                <ScalarProperty Name="nr_dowodu" ColumnName="nr_dowodu" />
+                <ScalarProperty Name="id_dluz" ColumnName="id_dluz" />
+                <ScalarProperty Name="uwagi" ColumnName="uwagi" />
+                <ScalarProperty Name="algo" ColumnName="algo" />
+                <ScalarProperty Name="data_w" ColumnName="data_w" />
+                <ScalarProperty Name="kwota" ColumnName="kwota" />
+                <ScalarProperty Name="id_kto" ColumnName="id_kto" />
+                <ScalarProperty Name="id_sprawy" ColumnName="id_sprawy" />
+                <ScalarProperty Name="ident" ColumnName="ident" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="spr_stan">
+            <EntityTypeMapping TypeName="WienaModel.spr_stan">
+              <MappingFragment StoreEntitySet="spr_stan">
+                <ScalarProperty Name="typ_stan" ColumnName="typ_stan" />
+                <ScalarProperty Name="oblicz" ColumnName="oblicz" />
+                <ScalarProperty Name="ods_dzien" ColumnName="ods_dzien" />
+                <ScalarProperty Name="kwota_k" ColumnName="kwota_k" />
+                <ScalarProperty Name="kwota_o" ColumnName="kwota_o" />
+                <ScalarProperty Name="kwota_n" ColumnName="kwota_n" />
+                <ScalarProperty Name="data_s" ColumnName="data_s" />
+                <ScalarProperty Name="id_sprawy" ColumnName="id_sprawy" />
+                <ScalarProperty Name="ident" ColumnName="ident" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ods_tab">
+            <EntityTypeMapping TypeName="WienaModel.ods_tab">
+              <MappingFragment StoreEntitySet="ods_tab">
+                <ScalarProperty Name="proc0" ColumnName="proc0" />
+                <ScalarProperty Name="data_k" ColumnName="data_k" />
+                <ScalarProperty Name="data_p" ColumnName="data_p" />
+                <ScalarProperty Name="id_tab_ods" ColumnName="id_tab_ods" />
+                <ScalarProperty Name="ident" ColumnName="ident" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ods_tab_nazwy">
+            <EntityTypeMapping TypeName="WienaModel.ods_tab_nazwy">
+              <MappingFragment StoreEntitySet="ods_tab_nazwy">
+                <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+                <ScalarProperty Name="ident" ColumnName="ident" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="symbol">
+            <EntityTypeMapping TypeName="WienaModel.symbol">
+              <MappingFragment StoreEntitySet="symbol">
+                <ScalarProperty Name="id_firmy" ColumnName="id_firmy" />
+                <ScalarProperty Name="typ_firmy" ColumnName="typ_firmy" />
+                <ScalarProperty Name="etap" ColumnName="etap" />
+                <ScalarProperty Name="typ" ColumnName="typ" />
+                <ScalarProperty Name="numer" ColumnName="numer" />
+                <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+                <ScalarProperty Name="oznaczenie" ColumnName="oznaczenie" />
+                <ScalarProperty Name="ident" ColumnName="ident" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dowod_slownik">
+            <EntityTypeMapping TypeName="WienaModel.dowod_slownik">
+              <MappingFragment StoreEntitySet="dowod_slownik">
+                <ScalarProperty Name="typ" ColumnName="typ" />
+                <ScalarProperty Name="dowod" ColumnName="dowod" />
+                <ScalarProperty Name="ident" ColumnName="ident" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_import_Symbole">
+            <EntityTypeMapping TypeName="WienaModel.vw_import_Symbole">
+              <MappingFragment StoreEntitySet="vw_import_Symbole">
+                <ScalarProperty Name="poz" ColumnName="poz" />
+                <ScalarProperty Name="rok" ColumnName="rok" />
+                <ScalarProperty Name="typ_firmy" ColumnName="typ_firmy" />
+                <ScalarProperty Name="id_firmy" ColumnName="id_firmy" />
+                <ScalarProperty Name="oznaczenie" ColumnName="oznaczenie" />
+                <ScalarProperty Name="ident" ColumnName="ident" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dluz_adresy">
+            <EntityTypeMapping TypeName="WienaModel.dluz_adresy">
+              <MappingFragment StoreEntitySet="dluz_adresy">
+                <ScalarProperty Name="numer_l" ColumnName="numer_l" />
+                <ScalarProperty Name="numer_d" ColumnName="numer_d" />
+                <ScalarProperty Name="koresp" ColumnName="koresp" />
+                <ScalarProperty Name="glowny" ColumnName="glowny" />
+                <ScalarProperty Name="modyfikator" ColumnName="modyfikator" />
+                <ScalarProperty Name="kreator" ColumnName="kreator" />
+                <ScalarProperty Name="d_modyfikacji" ColumnName="d_modyfikacji" />
+                <ScalarProperty Name="d_kreacji" ColumnName="d_kreacji" />
+                <ScalarProperty Name="miejscowosc" ColumnName="miejscowosc" />
+                <ScalarProperty Name="data_r" ColumnName="data_r" />
+                <ScalarProperty Name="id_dluz" ColumnName="id_dluz" />
+                <ScalarProperty Name="kod" ColumnName="kod" />
+                <ScalarProperty Name="ulica" ColumnName="ulica" />
+                <ScalarProperty Name="miejsce" ColumnName="miejsce" />
+                <ScalarProperty Name="ident" ColumnName="ident" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="skazani">
+            <EntityTypeMapping TypeName="WienaModel.skazani">
+              <MappingFragment StoreEntitySet="skazani">
+                <ScalarProperty Name="rejestr" ColumnName="rejestr" />
+                <ScalarProperty Name="done" ColumnName="done" />
+                <ScalarProperty Name="dane_kom" ColumnName="dane_kom" />
+                <ScalarProperty Name="modyfikator" ColumnName="modyfikator" />
+                <ScalarProperty Name="kreator" ColumnName="kreator" />
+                <ScalarProperty Name="d_modyfikacji" ColumnName="d_modyfikacji" />
+                <ScalarProperty Name="d_kreacji" ColumnName="d_kreacji" />
+                <ScalarProperty Name="czyus" ColumnName="czyus" />
+                <ScalarProperty Name="id_grupy" ColumnName="id_grupy" />
+                <ScalarProperty Name="uwagi" ColumnName="uwagi" />
+                <ScalarProperty Name="rdzen" ColumnName="rdzen" />
+                <ScalarProperty Name="krs" ColumnName="krs" />
+                <ScalarProperty Name="regon" ColumnName="regon" />
+                <ScalarProperty Name="nip" ColumnName="nip" />
+                <ScalarProperty Name="nazw_pan" ColumnName="nazw_pan" />
+                <ScalarProperty Name="dowod" ColumnName="dowod" />
+                <ScalarProperty Name="pesel" ColumnName="pesel" />
+                <ScalarProperty Name="key1" ColumnName="key1" />
+                <ScalarProperty Name="nazw_pan_matki" ColumnName="nazw_pan_matki" />
+                <ScalarProperty Name="id_adresu_zamel" ColumnName="id_adresu_zamel" />
+                <ScalarProperty Name="id_adresu" ColumnName="id_adresu" />
+                <ScalarProperty Name="imie_matki" ColumnName="imie_matki" />
+                <ScalarProperty Name="imie_ojca" ColumnName="imie_ojca" />
+                <ScalarProperty Name="data_ur" ColumnName="data_ur" />
+                <ScalarProperty Name="miasto_ur" ColumnName="miasto_ur" />
+                <ScalarProperty Name="imie" ColumnName="imie" />
+                <ScalarProperty Name="nazwisko" ColumnName="nazwisko" />
+                <ScalarProperty Name="osoba_lub_firma" ColumnName="osoba_lub_firma" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="spr_dluz">
+            <EntityTypeMapping TypeName="WienaModel.spr_dluz">
+              <MappingFragment StoreEntitySet="spr_dluz">
+                <ScalarProperty Name="id_dluz" ColumnName="id_dluz" />
+                <ScalarProperty Name="id_sprawy" ColumnName="id_sprawy" />
+                <ScalarProperty Name="ident" ColumnName="ident" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="notki">
+            <EntityTypeMapping TypeName="WienaModel.notki">
+              <MappingFragment StoreEntitySet="notki">
+                <ScalarProperty Name="modyfikator" ColumnName="modyfikator" />
+                <ScalarProperty Name="kreator" ColumnName="kreator" />
+                <ScalarProperty Name="d_modyfikacji" ColumnName="d_modyfikacji" />
+                <ScalarProperty Name="d_kreacji" ColumnName="d_kreacji" />
+                <ScalarProperty Name="czyus" ColumnName="czyus" />
+                <ScalarProperty Name="tresc" ColumnName="tresc" />
+                <ScalarProperty Name="id_sprawy" ColumnName="id_sprawy" />
+                <ScalarProperty Name="ident" ColumnName="ident" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_MergeCases" FunctionName="WienaModel.Store.sp_MergeCases" />
+          <EntitySetMapping Name="xls_import">
+            <EntityTypeMapping TypeName="WienaModel.xls_import">
+              <MappingFragment StoreEntitySet="xls_import">
+                <ScalarProperty Name="operator_guid" ColumnName="operator_guid" />
+                <ScalarProperty Name="data" ColumnName="data" />
+                <ScalarProperty Name="nazwa_pliku" ColumnName="nazwa_pliku" />
+                <ScalarProperty Name="ident" ColumnName="ident" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="xls_zalkom_det">
+            <EntityTypeMapping TypeName="WienaModel.xls_zalkom_det">
+              <MappingFragment StoreEntitySet="xls_zalkom_det">
+                <ScalarProperty Name="czyus" ColumnName="czyus" />
+                <ScalarProperty Name="uwagi" ColumnName="uwagi" />
+                <ScalarProperty Name="id_import" ColumnName="id_import" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="sprawa_ident" ColumnName="sprawa_ident" />
+                <ScalarProperty Name="komentarz" ColumnName="komentarz" />
+                <ScalarProperty Name="kwota" ColumnName="kwota" />
+                <ScalarProperty Name="data" ColumnName="data" />
+                <ScalarProperty Name="dluznik" ColumnName="dluznik" />
+                <ScalarProperty Name="sygnatura" ColumnName="sygnatura" />
+                <ScalarProperty Name="oddzial" ColumnName="oddzial" />
+                <ScalarProperty Name="lp" ColumnName="lp" />
+                <ScalarProperty Name="ident" ColumnName="ident" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="typ_nal">
+            <EntityTypeMapping TypeName="WienaModel.typ_nal">
+              <MappingFragment StoreEntitySet="typ_nal">
+                <ScalarProperty Name="priorytet" ColumnName="priorytet" />
+                <ScalarProperty Name="typ_firmy" ColumnName="typ_firmy" />
+                <ScalarProperty Name="czy_ods_kapital" ColumnName="czy_ods_kapital" />
+                <ScalarProperty Name="czy_vat" ColumnName="czy_vat" />
+                <ScalarProperty Name="czy_mem" ColumnName="czy_mem" />
+                <ScalarProperty Name="nr_tab_ods" ColumnName="nr_tab_ods" />
+                <ScalarProperty Name="czy_proc" ColumnName="czy_proc" />
+                <ScalarProperty Name="typ_sum" ColumnName="typ_sum" />
+                <ScalarProperty Name="typ_nal1" ColumnName="typ_nal" />
+                <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+                <ScalarProperty Name="ident" ColumnName="ident" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_RemoveCosts" FunctionName="WienaModel.Store.sp_RemoveCosts" />
+          <EntitySetMapping Name="naleznosc">
+            <EntityTypeMapping TypeName="WienaModel.naleznosc">
+              <MappingFragment StoreEntitySet="naleznosc">
+                <ScalarProperty Name="Data_prz_KSEF" ColumnName="Data_prz_KSEF" />
+                <ScalarProperty Name="Data_wys_KSEF" ColumnName="Data_wys_KSEF" />
+                <ScalarProperty Name="Nr_KSEF" ColumnName="Nr_KSEF" />
+                <ScalarProperty Name="Mocowa" ColumnName="Mocowa" />
+                <ScalarProperty Name="Kogeneracyjna" ColumnName="Kogeneracyjna" />
+                <ScalarProperty Name="Przejsciowa" ColumnName="Przejsciowa" />
+                <ScalarProperty Name="OZE" ColumnName="OZE" />
+                <ScalarProperty Name="id_naleznosci" ColumnName="id_naleznosci" />
+                <ScalarProperty Name="vat" ColumnName="vat" />
+                <ScalarProperty Name="modyfikator" ColumnName="modyfikator" />
+                <ScalarProperty Name="kreator" ColumnName="kreator" />
+                <ScalarProperty Name="d_modyfikacji" ColumnName="d_modyfikacji" />
+                <ScalarProperty Name="d_kreacji" ColumnName="d_kreacji" />
+                <ScalarProperty Name="tytul" ColumnName="tytul" />
+                <ScalarProperty Name="uwagi" ColumnName="uwagi" />
+                <ScalarProperty Name="czy_proc" ColumnName="czy_proc" />
+                <ScalarProperty Name="data_fv" ColumnName="data_fv" />
+                <ScalarProperty Name="data_n" ColumnName="data_n" />
+                <ScalarProperty Name="kwota" ColumnName="kwota" />
+                <ScalarProperty Name="id_typ_nal" ColumnName="id_typ_nal" />
+                <ScalarProperty Name="id_sprawy" ColumnName="id_sprawy" />
+                <ScalarProperty Name="ident" ColumnName="ident" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+       </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

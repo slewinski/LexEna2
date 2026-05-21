@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="textBox1.Value" xml:space="preserve">
+    <value>LP</value>
+  </data>
+  <data name="textBox2.Value" xml:space="preserve">
+    <value>Rodzaj dokumentu</value>
+  </data>
+  <data name="textBox5.Value" xml:space="preserve">
+    <value>Data dokumentu (data wystawienia dokumentu)</value>
+  </data>
+  <data name="textBox7.Value" xml:space="preserve">
+    <value>Data księgowania</value>
+  </data>
+  <data name="textBox8.Value" xml:space="preserve">
+    <value>Data sprzedaży</value>
+  </data>
+  <data name="textBox11.Value" xml:space="preserve">
+    <value>Referencja (max 16 znaków)</value>
+  </data>
+  <data name="textBox13.Value" xml:space="preserve">
+    <value>Data zapłaty (data VAT)</value>
+  </data>
+  <data name="textBox14.Value" xml:space="preserve">
+    <value>Kod księgowania Odbiorcy</value>
+  </data>
+  <data name="textBox15.Value" xml:space="preserve">
+    <value>Nr Odbiorcy</value>
+  </data>
+  <data name="textBox16.Value" xml:space="preserve">
+    <value>Dział Gospodarczy</value>
+  </data>
+  <data name="textBox18.Value" xml:space="preserve">
+    <value>Warunek płatności</value>
+  </data>
+  <data name="textBox17.Value" xml:space="preserve">
+    <value>Konto </value>
+  </data>
+  <data name="textBox19.Value" xml:space="preserve">
+    <value>Wartość  brutto</value>
+  </data>
+  <data name="textBox20.Value" xml:space="preserve">
+    <value>Wartość netto</value>
+  </data>
+  <data name="textBox21.Value" xml:space="preserve">
+    <value>Wartość VAT</value>
+  </data>
+  <data name="textBox22.Value" xml:space="preserve">
+    <value>Opis</value>
+  </data>
+  <data name="textBox23.Value" xml:space="preserve">
+    <value>Przypisanie</value>
+  </data>
+  <data name="textBox40.Value" xml:space="preserve">
+    <value>Data wprowadzenia</value>
+  </data>
+  <data name="textBox41.Value" xml:space="preserve">
+    <value>Kwota wpłaty</value>
+  </data>
+  <data name="textBox42.Value" xml:space="preserve">
+    <value>Data podstawy (dla warunku płatności EN00 = Termin płatnosci)</value>
+  </data>
+  <data name="textBox44.Value" xml:space="preserve">
+    <value>Dokument finansowy potwierdzający wpłatę</value>
+  </data>
+  <data name="textBox45.Value" xml:space="preserve">
+    <value>Sygnatura sprawy w Wienie</value>
+  </data>
+  <data name="textBox46.Value" xml:space="preserve">
+    <value>Nazwa Dłużnika</value>
+  </data>
+  <data name="textBox48.Value" xml:space="preserve">
+    <value>Numer faktury 2</value>
+  </data>
+  <data name="textBox3.Value" xml:space="preserve">
+    <value>=RowNumber()</value>
+  </data>
+  <data name="textBox4.Value" xml:space="preserve">
+    <value>EZ</value>
+  </data>
+  <data name="textBox6.Value" xml:space="preserve">
+    <value>= Fields.DataFaktury</value>
+  </data>
+  <data name="textBox9.Value" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBox10.Value" xml:space="preserve">
+    <value>= Fields.DataSprzedazy</value>
+  </data>
+  <data name="textBox12.Value" xml:space="preserve">
+    <value>= Fields.NrFaktury</value>
+  </data>
+  <data name="textBox24.Value" xml:space="preserve">
+    <value>= Fields.DataNaglVAT</value>
+  </data>
+  <data name="textBox25.Value" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="textBox26.Value" xml:space="preserve">
+    <value>= Fields.NrOdbiorcy</value>
+  </data>
+  <data name="textBox27.Value" xml:space="preserve">
+    <value>3099999</value>
+  </data>
+  <data name="textBox28.Value" xml:space="preserve">
+    <value>= Fields.Netto</value>
+  </data>
+  <data name="textBox29.Value" xml:space="preserve">
+    <value>= Fields.Brutto</value>
+  </data>
+  <data name="textBox30.Value" xml:space="preserve">
+    <value>1100</value>
+  </data>
+  <data name="textBox31.Value" xml:space="preserve">
+    <value>EN00</value>
+  </data>
+  <data name="textBox32.Value" xml:space="preserve">
+    <value>= Fields.VAT</value>
+  </data>
+  <data name="textBox33.Value" xml:space="preserve">
+    <value>= Fields.opis</value>
+  </data>
+  <data name="textBox34.Value" xml:space="preserve">
+    <value>R17M12</value>
+  </data>
+  <data name="textBox35.Value" xml:space="preserve">
+    <value>= Fields.DataZapisu</value>
+  </data>
+  <data name="textBox36.Value" xml:space="preserve">
+    <value>= Fields.KwotaWplaty</value>
+  </data>
+  <data name="textBox37.Value" xml:space="preserve">
+    <value>= Fields.sygnatura</value>
+  </data>
+  <data name="textBox38.Value" xml:space="preserve">
+    <value>= Fields.Nazwa</value>
+  </data>
+  <data name="textBox39.Value" xml:space="preserve">
+    <value>= Fields.Tytul</value>
+  </data>
+  <data name="textBox43.Value" xml:space="preserve">
+    <value>= Fields.DataWymagalnosci</value>
+  </data>
+  <data name="textBox47.Value" xml:space="preserve">
+    <value>= Fields.nrFaktury2</value>
+  </data>
+  <metadata name="UZD_WplatyDS.ParameterValues" xml:space="preserve">
+    <value>{"@IdPakiet":"3"}</value>
+  </metadata>
+  <data name="UZD_WplatyDS.SelectCommand" xml:space="preserve">
+    <value> select 'EZ' as rodznumerajDok ,  convert (varchar(10), uf.DataFaktury  ,104) as DataFaktury,convert(varchar(10),uf.DataWymagalnosci,104) as DataWymagalnosci ,'' as DataKsiegowania, convert (varchar(10),case when udw.DataSprzedazy is null then uf.DataSprzedazy else udw.DataSprzedazy end  ,104)  as DataSprzedazy,
+ convert (varchar(10), uw.DataWpl  ,104) as DataNaglVAT, 
+case when len(uf.NrFaktury)&gt;16 then substring(uf.NrFaktury, len(uf.NrFaktury)-15  ,16) else uf.Nrfaktury end as NrFaktury
+,  usm.SAPId as NrOdbiorcy  
+, uw.Kwota as Brutto, uw.Kwota - uw.KwotaVAT  as Netto , uw.KwotaVAT as VAT, convert (varchar(10),uw.DataZapisu,104) as DataZapisu , uw.KwotaW as KwotaWplaty , 
+'wpłata do f:' + uf.nrfaktury as opis, uf.sygnatura, uf.Nazwa, uw.Tytul, uf.nrfaktury as nrFaktury2 
+from UZD_Wplata uw  inner join UZD_Faktura uf  on uw.UZD_FakturaId = uf.UZD_FakturaId  left outer join  UZD_SapMap usm 
+on (usm.NIP = uf.nip or usm.Pesel = uf.pesel ) 
+left outer join UZD_DataFakturyDW  udw on uf.NrFaktury = udw.NrFaktury
+
+where  uw.UZD_PakietWplatId =	@IdPakiet   and uw.status &gt;= 0  order by uw.dataWpl 
+</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.Zoom" type="System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>0.6666667</value>
+  </metadata>
+  <metadata name="$this.SnapGridSize" type="Telerik.Reporting.Drawing.Unit, Telerik.Reporting, Version=10.2.16.1025, Culture=neutral, PublicKeyToken=a9d7983dfcc261be">
+    <value>0.1cm</value>
+  </metadata>
+  <data name="reportParameter1.Text" xml:space="preserve">
+    <value>IdPakiet</value>
+  </data>
+</root>

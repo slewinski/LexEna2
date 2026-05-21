@@ -1,0 +1,153 @@
+﻿<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" xmlns:my="clr-namespace:LexEnaTrs.Web"
+	xmlns:local="clr-namespace:LexEnaTrs" xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk" x:Class="LexEnaTrs.Views.ZadaniaView"
+	mc:Ignorable="d" Width="1146" HorizontalAlignment="Left" VerticalAlignment="Top" Height="548" >
+	<UserControl.Resources>
+		<DataTemplate x:Key="MultiLineTemplate">
+            <TextBox TextWrapping="Wrap" Text="{Binding Tresc, Mode=TwoWay}" /> 
+        </DataTemplate>
+        
+		
+		 <DataTemplate x:Key="ZadaniaFormTemplate" >
+            <Grid Margin="0" Height="427" Width="533" Background="#FFB14B4B">
+            	<Grid.RowDefinitions>
+            		<RowDefinition/>
+            	</Grid.RowDefinitions>
+                
+            	<telerik:DataFormDataField Margin="0,8,0,0" Label="Nazwa zadania" DataMemberBinding="{Binding NazwaZadania, Mode=TwoWay}" VerticalAlignment="Top"/>
+               	<telerik:DataFormComboBoxField Margin="0,40,0,0" Label="Rodzaj zadania" DataMemberBinding="{Binding TypZadaniaId, Mode=TwoWay}" ItemsSource="{Binding rodzajeZadan, Source={StaticResource SlownikTypyZadan}}" DisplayMemberPath="Nazwa" SelectedValuePath="Numer" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment"/>
+				<telerik:DataFormDateField Margin="115,0,231,328" DataMemberBinding="{Binding DataRozpoczęcia, Mode=TwoWay}" VerticalAlignment="Bottom"/>
+				<telerik:DataFormDateField Margin="0,0,0,328"  DataMemberBinding="{Binding DataZakonczenia, Mode=TwoWay}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="187"/>
+				<telerik:DataFormComboBoxField Margin="0,100,0,0" Label="Konto EPU" DataMemberBinding="{Binding KontoEPU, Mode=TwoWay}" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment"/>
+				
+             	
+				<TextBlock HorizontalAlignment="Left" Margin="77,77,0,0" TextWrapping="Wrap" Text="Data rozpoczęcia" VerticalAlignment="Top"/>
+                <TextBlock HorizontalAlignment="Right" Margin="0,77,132,0" TextWrapping="Wrap" Text="Data zakończenia" VerticalAlignment="Top"/>
+                <telerik:DataFormComboBoxField Margin="0,133,0,0" Label="Kryterium filtrowania" DataMemberBinding="{Binding Kryterium, Mode=TwoWay}" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment"/>
+				<telerik:DataFormDateField Margin="115,0,231,166" DataMemberBinding="{Binding DataOd, Mode=TwoWay}" VerticalAlignment="Bottom" d:LayoutOverrides="VerticalAlignment"/>
+				<TextBlock HorizontalAlignment="Left" Margin="128,0,0,173" TextWrapping="Wrap" Text="Data od" VerticalAlignment="Bottom"/>				
+                <telerik:DataFormDateField Margin="0,0,0,166" DataMemberBinding="{Binding DataDo, Mode=TwoWay}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="187" d:LayoutOverrides="VerticalAlignment"/>
+				<TextBlock HorizontalAlignment="Right" Margin="0,0,131,173" TextWrapping="Wrap" Text="Data do" VerticalAlignment="Bottom"/>
+				<telerik:DataFormDataField Margin="0,167,0,0" Label="Filtr tekstowy" DataMemberBinding="{Binding FiltrSlowny, Mode=TwoWay}" d:LayoutOverrides="Width" VerticalAlignment="Top"/>
+				<telerik:DataFormComboBoxField Margin="0,201,0,0" Label="Filtr dla dat" DataMemberBinding="{Binding Filtrdaty, Mode=TwoWay}" VerticalAlignment="Top"/>
+				<telerik:DataFormComboBoxField Margin="0,265,0,0" Label="Filtr dla doręczeń" DataMemberBinding="{Binding FiltrDoreczenia, Mode=TwoWay}" VerticalAlignment="Top"/>
+				<telerik:DataFormComboBoxField Margin="0,299,0,0" Label="Status wykonania" DataMemberBinding="{Binding StatusWykonania, Mode=TwoWay}" VerticalAlignment="Top"/>
+				
+
+			    <telerik:DataFormDataField Label="" Visibility="Visible" LabelPosition="Above"
+                	VerticalContentAlignment="Stretch" Margin="0,0,0,7" Height="121" VerticalAlignment="Bottom"  >
+                	<telerik:DataFormDataField.ContentTemplate>
+                		<DataTemplate>
+                			<TextBox VerticalScrollBarVisibility="Auto" Text="{Binding Opis}" 
+                				IsReadOnly="True"
+                				AcceptsReturn="True"                  
+                				TextWrapping="Wrap"
+                				VerticalAlignment="Stretch"/>
+                		</DataTemplate>
+                	</telerik:DataFormDataField.ContentTemplate>
+                </telerik:DataFormDataField>
+			    <TextBlock HorizontalAlignment="Left" Margin="8,0,0,69" TextWrapping="Wrap" Text="Opis wykonania:" VerticalAlignment="Bottom"/>
+
+
+
+
+
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+    
+	<Grid x:Name="LayoutRoot"   Background="White" Margin="8,0,-8,0">
+		<Grid.RowDefinitions>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="611" />
+			<ColumnDefinition Width="0.271*" />
+			<ColumnDefinition Width="0.729*"/>
+		</Grid.ColumnDefinitions>
+
+
+		<telerik:RadDomainDataSource AutoLoad="True" Height="0" PageSize="30"  x:Name="Zadaniadds" QueryName="GetZadanieSetInOrderQuery" Width="0" Grid.Column="1" Margin="109,404,36,144" d:LayoutOverrides="HorizontalMargin" LoadingData="Zadaniadds_LoadingData">
+			<telerik:RadDomainDataSource.DomainContext>
+				<my:LexEnaMeritumDomainContext />
+			</telerik:RadDomainDataSource.DomainContext>
+            
+
+		</telerik:RadDomainDataSource>
+	
+		<telerik:RadGridView    HorizontalAlignment="Left" IsSynchronizedWithCurrentItem="false" SelectionMode="Multiple" x:Name="ZadaniaDataGrid" ItemsSource="{Binding DataView, ElementName=Zadaniadds}"   IsFilteringAllowed="False" IsEnabled="True" AutoGenerateColumns="False" CanUserSortColumns="False" ShowGroupPanel="False" IsScrolling="False" Margin="0,27,0,35" SelectionChanged="ZadaniaDataGrid_SelectionChanged" AddingNewDataItem="ZadaniaDataGrid_AddingNewDataItem">
+			<telerik:RadGridView.Columns>
+                <!-- <telerik:GridViewCheckBoxColumn  Header=" "  Width="*" DataMemberBinding="{Binding IsChecked, Mode=TwoWay}"   HeaderTextAlignment="Center"  TextAlignment="Center" AutoSelectOnEdit="True" /> !-->
+                <telerik:GridViewSelectColumn  Header=" "  Width="*"   HeaderTextAlignment="Center"  TextAlignment="Center"  />
+				<telerik:GridViewDataColumn  Header="Nazwa zadania" MinWidth="100" IsReadOnly="True" Width="*"  DataMemberBinding="{Binding NazwaZadania }" IsFilterable="false"  HeaderTextAlignment="Center"  TextAlignment="Center"  />
+				<telerik:GridViewComboBoxColumn Header="Rodzaj zadania" Width="100" IsReadOnly="True" DataMemberBinding="{Binding TypZadaniaId, Mode=TwoWay}" ItemsSource="{Binding rodzajeZadan, Source={StaticResource SlownikTypyZadan}}" DisplayMemberPath="Nazwa" SelectedValueMemberPath="Numer"  IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5" TextAlignment="Center"  />
+				<telerik:GridViewComboBoxColumn Header="Status" Width="100" IsReadOnly="True" DataMemberBinding="{Binding Status, Mode=TwoWay}" ItemsSource="{Binding statusyWykonaniaZadan, Source={StaticResource SlownikStatusowZadan}}" DisplayMemberPath="Nazwa" SelectedValueMemberPath="Numer"  IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5" TextAlignment="Center"  />
+				<telerik:GridViewDataColumn  Header="D. rozpoczęcia" Width="100" IsReadOnly="True" DataMemberBinding="{Binding DataRozpoczęcia}" IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5" TextAlignment="Center"  />
+				<telerik:GridViewDataColumn  Header="D. zakończenia" Width="100" IsReadOnly="True" DataMemberBinding="{Binding DataZakonczenia}" IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5" TextAlignment="Center"  />
+                <telerik:GridViewDataColumn  Header="Opis" Width="*"  IsReadOnly="True" DataMemberBinding="{Binding Opis}" IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5" TextAlignment="Center"  />
+			</telerik:RadGridView.Columns>
+		</telerik:RadGridView>
+		<telerik:RadDataPager x:Name="RadDataPagerZadania" Source="{Binding DataView, ElementName=Zadaniadds}" DisplayMode="All" IsTotalItemCountFixed="True" Margin="0,517,0,0" VerticalAlignment="Top" d:LayoutOverrides="Height"  HorizontalAlignment="Left" Width="307"/>
+		<TextBox Grid.Column="2" Margin="8,38,31,0" TextWrapping="Wrap" Text="{Binding NazwaZadania,Mode=TwoWay}" VerticalAlignment="Top"/>
+		<!--
+		<telerik:RadDataForm Name="ZadaniaDataForm" VerticalAlignment="Top" ItemsSource="{Binding DataView,ElementName=Zadaniadds}" AutoGenerateFields="False" CancelButtonContent="Anuluj" Grid.Column="1" 
+                             ReadOnlyTemplate="{StaticResource ZadaniaFormTemplate}" HorizontalAlignment="Left"
+                             NewItemTemplate="{StaticResource ZadaniaFormTemplate}"
+                             EditTemplate="{StaticResource ZadaniaFormTemplate}" DeletingItem="ZadaniaDataForm_DeletingItem"  AddedNewItem="ZadaniaDataForm_AddedNewItem" EditEnded="ZadaniaDataForm_EditEnded" />
+		
+    	-->
+		<TextBlock Grid.Column="1" Margin="38,46,8,0" TextWrapping="Wrap" Text="Nazwa Zadania" VerticalAlignment="Top" TextAlignment="Right" FontWeight="Bold"/>
+		<telerik:RadComboBox Grid.Column="2" Margin="8,66,132,0" SelectedValue="{Binding TypZadaniaId, Mode=TwoWay}" SelectedValuePath="Numer" DisplayMemberPath="Nazwa" ItemsSource="{Binding rodzajeZadan, Source={StaticResource SlownikTypyZadan}}" VerticalAlignment="Top" d:LayoutOverrides="HorizontalMargin">
+			
+		</telerik:RadComboBox>
+		<TextBlock Grid.Column="1" Margin="38,72,8,0" TextWrapping="Wrap" Text="Typ Zadania" VerticalAlignment="Top" TextAlignment="Right" FontWeight="Bold"/>
+		<telerik:RadComboBox Grid.Column="2" Margin="8,97,132,0"  SelectedValue="{Binding Status, Mode=TwoWay}" ItemsSource="{Binding statusyWykonaniaZadan, Source={StaticResource SlownikStatusowZadan}}" DisplayMemberPath="Nazwa" SelectedValuePath="Numer"  VerticalAlignment="Top" d:LayoutOverrides="HorizontalMargin">
+			
+		</telerik:RadComboBox>
+		<TextBlock Grid.Column="1" Margin="38,103,8,0" TextWrapping="Wrap" Text="Status Zadania" VerticalAlignment="Top" TextAlignment="Right" FontWeight="Bold"/>
+		<telerik:RadDateTimePicker HorizontalAlignment="Left"  x:Name="DataZlozenia" Culture="pl-PL" Margin="8,123,0,0"  SelectedValue= "{Binding DataRozpoczęcia, Mode=TwoWay}"   VerticalAlignment="Top" DateTimeWatermarkContent="Wprowdź datę" Grid.Column="2" Width="250" />
+		<TextBlock Grid.Column="1" Margin="23,126,8,0" TextWrapping="Wrap" Text="Data rozpoczęcia" VerticalAlignment="Top" TextAlignment="Right" FontWeight="Bold"/>
+		<TextBlock Grid.Column="1" Margin="23,156,8,0" TextWrapping="Wrap" Text="Data zakończenia" VerticalAlignment="Top" TextAlignment="Right" FontWeight="Bold"/>
+		<telerik:RadDateTimePicker HorizontalAlignment="Right"  x:Name="DataZlozenia_Copy" Culture="pl-PL" Margin="0,150,132,0"  SelectedValue= "{Binding DataZakonczenia, Mode=TwoWay}"   VerticalAlignment="Top" DateTimeWatermarkContent="Wprowdź datę" Grid.Column="2" RenderTransformOrigin="2.854,1.045" Width="250" />
+		<CheckBox Content="Uruchom z harmonogramem" Grid.Column="2" IsChecked="{Binding Oczasie, Mode=TwoWay}" HorizontalAlignment="Left" Margin="179,177,0,0" VerticalAlignment="Top" Width="180"/>
+		<CheckBox Content="Próbuj do sukcesu" Grid.Column="2" IsChecked="{Binding Doskutku, Mode=TwoWay}" HorizontalAlignment="Left" Margin="8,177,0,0" VerticalAlignment="Top" Width="180"/>
+		<TextBox Grid.Column="2" Margin="8,196,8,247" TextWrapping="Wrap" Text="{Binding Opis, Mode=TwoWay}"/>
+		<TextBlock Grid.Column="1" Margin="23,196,8,0" TextWrapping="Wrap" Text="Opis wykonania" VerticalAlignment="Top" TextAlignment="Right" FontWeight="Bold"/>
+		<Border BorderBrush="Black" BorderThickness="1" Grid.Column="1" Height="235" Margin="23,0,8,8" VerticalAlignment="Bottom" Grid.ColumnSpan="2"/>
+		<TextBlock Grid.Column="1" Margin="23,0,8,243" TextWrapping="Wrap" Text="Parametry wykonania" VerticalAlignment="Bottom" TextAlignment="Right" FontWeight="Bold" RenderTransformOrigin="0.491,6"/>
+		<telerik:RadComboBox Grid.Column="2" Margin="8,0,132,213"   SelectedValue="{Binding KontoEPUId, Mode=TwoWay}" 
+		ItemsSource="{Binding dictionaryKontaEPU, Source={StaticResource ListaKontEPU}}" DisplayMemberPath="NazwaKonta" SelectedValuePath="Id" 
+		  VerticalAlignment="Bottom">
+				</telerik:RadComboBox>
+		<TextBlock Grid.Column="1" Margin="23,0,8,215" TextWrapping="Wrap" Text="Konto EPU" VerticalAlignment="Bottom" TextAlignment="Right" FontWeight="Bold"/>
+		<telerik:RadDateTimePicker HorizontalAlignment="Left"  x:Name="DataZlozenia_Copy1" Culture="pl-PL" Margin="8,0,0,187"  SelectedValue= "{Binding DataOd, Mode=TwoWay}"   VerticalAlignment="Bottom" DateTimeWatermarkContent="Wprowdź datę i czas" Grid.Column="2" Width="160" ErrorTooltipContent="Bład" />
+		<TextBlock Grid.Column="1" Margin="23,0,8,188" TextWrapping="Wrap" Text="Data Od" VerticalAlignment="Bottom" TextAlignment="Right" FontWeight="Bold"/>
+        <TextBlock Grid.Column="1" Margin="23,0,8,164" TextWrapping="Wrap" Text="Flitr Dat" VerticalAlignment="Bottom" TextAlignment="Right" FontWeight="Bold"/>
+        <TextBlock Grid.Column="2" Margin="173,0,167,190" TextWrapping="Wrap" Text="Data Do" VerticalAlignment="Bottom" TextAlignment="Right" FontWeight="Bold" RenderTransformOrigin="0,0.5"/>
+		<telerik:RadDateTimePicker HorizontalAlignment="Right"  x:Name="DataZlozenia_Copy2" Culture="pl-PL" Margin="0,0,12,187"  SelectedValue= "{Binding DataDo, Mode=TwoWay}"   VerticalAlignment="Bottom" DateTimeWatermarkContent="Wprowdź datę i czas" Grid.Column="2" RenderTransformOrigin="2.854,1.045" Width="151" ErrorTooltipContent="Błąd"  />
+		<TextBlock Grid.Column="1" Margin="23,0,8,140" TextWrapping="Wrap" Text="Paczka pozwów" VerticalAlignment="Bottom" TextAlignment="Right" FontWeight="Bold"/>
+		<telerik:RadComboBox Grid.Column="2" Margin="8,0,132,136" SelectedValue="{Binding IdPozwuWLexEna	, Mode=TwoWay}" ItemsSource="{Binding  PaczkiLst, Source={StaticResource ListaPaczekDoEPU}}" DisplayMemberPath="Oznaczenie" SelectedValuePath="Id"     VerticalAlignment="Bottom">
+			
+		</telerik:RadComboBox>
+		<TextBlock Grid.Column="1" Margin="23,0,8,111" TextWrapping="Wrap" Text="kryterium filtrowania" VerticalAlignment="Bottom" TextAlignment="Right" FontWeight="Bold" FontSize="9.333"/>
+		<telerik:RadComboBox Grid.Column="2" Margin="8,0,132,110" SelectedValue="{Binding KryteriumFiltrowania, Mode=TwoWay}" ItemsSource="{Binding  RodzajeFiltra, Source={StaticResource SlownikRodzajeFiltra}}" DisplayMemberPath="Nazwa" SelectedValuePath="Numer"   VerticalAlignment="Bottom">
+			
+		</telerik:RadComboBox>
+        <telerik:RadComboBox Grid.Column="2" Margin="8,0,132,161" SelectedValue="{Binding KryteriumFiltrowaniaDaty, Mode=TwoWay}" ItemsSource="{Binding  RodzajeFiltraDaty, Source={StaticResource SlownikRodzajeFiltraDaty}}" DisplayMemberPath="Nazwa" SelectedValuePath="Numer"   VerticalAlignment="Bottom">
+
+        </telerik:RadComboBox>
+        <Border BorderBrush="Black" BorderThickness="1" Grid.Column="1" HorizontalAlignment="Right" Margin="0,269,47,263" Width="0"/>
+		<TextBlock Grid.Column="1" Margin="23,0,8,86" TextWrapping="Wrap" Text="Filtr" VerticalAlignment="Bottom" TextAlignment="Right" FontWeight="Bold"/>
+		<TextBox Margin="8,0,54,82" TextWrapping="Wrap" Text="{Binding FiltrSlowny, Mode = TwoWay}" VerticalAlignment="Bottom" Grid.Column="2"/>
+        <Button Content="Dodaj" Height="23" HorizontalAlignment="Left" Name="AddRow" VerticalAlignment="Top" Width="75" Click="AddRow_Click" Grid.Column="1" Margin="8,0,0,0" />
+        <Button Content="Usuń" Height="23" HorizontalAlignment="Left" Margin="89,0,0,0" Name="DelRow" VerticalAlignment="Top" Width="75" Grid.Column="1" Grid.ColumnSpan="2" Click="DelRow_Click" />
+        <Button Content="Zapisz" Height="23" HorizontalAlignment="Left" Margin="25,0,0,0" Name="SaveRow" VerticalAlignment="Top" Width="75" Grid.Column="2" Click="SaveRow_Click" />
+        <Button Content="UruchomTeraz&gt;&gt;" Grid.Column="2" Height="23" HorizontalAlignment="Right" Margin="0,0,12,0" Name="LunchApp" VerticalAlignment="Top" Width="110" Click="LunchApp_Click" />
+        <Button Content="Odśwież" Grid.Column="2" Height="23" HorizontalAlignment="Right" Margin="0,0,128,0" Name="RefreshButton" VerticalAlignment="Top" Width="75" Click="RefreshButton_Click" />
+        <Button Content="Powiel zadania" HorizontalAlignment="Left" Margin="0,1,0,0" VerticalAlignment="Top" Name="JobsCopy" Width="88" Click="JobsCopy_Click" />
+    </Grid>
+</UserControl>

@@ -1,0 +1,71 @@
+﻿<controls:ChildWindow
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+           xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" mc:Ignorable="d" x:Class="LexEnaTrs.Views.AddOutDocumentWindow"
+           Width="600" Height="365" 
+           Title="Dokument w postępowaniu w sprawie" Loaded="ChildWindow_Loaded">
+    <telerik:RadBusyIndicator x:Name="BusyIndicator"  Grid.Row="1" BusyContent="Przetwarzanie w toku...">
+        <Grid x:Name="LayoutRoot" Margin="2">
+
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="Auto" MinHeight="34" />
+            </Grid.RowDefinitions>
+
+            <Button x:Name="CancelButton" Content="Anuluj" Click="CancelButton_Click" Width="75" HorizontalAlignment="Right" Margin="0,12,0,0" Grid.Row="1" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" />
+            <Button x:Name="OKButton" Content="OK" Click="OKButton_Click" Width="75" HorizontalAlignment="Right" Margin="0,12,79,0" Grid.Row="1" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="59*"/>
+                    <ColumnDefinition Width="454*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="31*"/>
+                    <RowDefinition Height="41*"/>
+                    <RowDefinition Height="27*"/>
+                    <RowDefinition Height="34*"/>
+                    <RowDefinition Height="159*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Column="1" Grid.Row="4" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin, LeftPosition, RightPosition">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="39*"/>
+                        <RowDefinition Height="40*"/>
+                        <RowDefinition Height="40*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="59*"/>
+                        <ColumnDefinition Width="454*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock x:Name="textBlock1" Grid.Row="0"  Grid.Column= "0"  TextWrapping="Wrap" Text="Koszty sądowe" d:LayoutOverrides="Width, Height, LeftMargin, RightMargin, TopMargin, BottomMargin" FontSize="9" FontWeight="Bold" TextAlignment="Right" Margin="20,7,0,6"/>
+                    <telerik:RadMaskedCurrencyInput Name ="rbSadowe" IsClearButtonVisible="false" Value="{Binding Sprawa.KosztyZadane,Mode=TwoWay}"  EmptyContent="Wprowadź kwotę"  Culture="pl-PL" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,10" Width="114" Grid.Row ="0" HorizontalContentAlignment="Right" Height="20" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="textBlock2" Grid.Row="1"  Grid.Column= "0"  TextWrapping="Wrap" Text="KZP" d:LayoutOverrides="Width, Height, LeftMargin, RightMargin, TopMargin, BottomMargin" FontSize="9" FontWeight="Bold" TextAlignment="Right" Margin="20,7,0,6" VerticalAlignment="Center"/>
+                    <telerik:RadMaskedCurrencyInput Name ="rbKZP" IsClearButtonVisible="false" Value="{Binding Sprawa.KzpZadane,Mode=TwoWay}" EmptyContent="Wprowadź kwotę" Grid.Row="1" Culture="pl-PL" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,10" Width="114" HorizontalContentAlignment="Right" VerticalAlignment="Center" Height="20"/>
+                    <TextBlock x:Name="textBlock3" Grid.Row="2"  Grid.Column= "0"  TextWrapping="Wrap" Text="Inne Koszty" d:LayoutOverrides="Width, Height, LeftMargin, RightMargin, TopMargin, BottomMargin" FontSize="9" FontWeight="Bold" TextAlignment="Right" Margin="20,7,0,6" VerticalAlignment="Center"/>
+                    <telerik:RadMaskedCurrencyInput Name ="rbInne" IsClearButtonVisible="false" Value="{Binding Sprawa.InneZadane,Mode=TwoWay}"  EmptyContent="Wprowadź kwotę" Grid.Row="2" Culture="pl-PL" Grid.Column="1" HorizontalAlignment="Left" Width="114" HorizontalContentAlignment="Right" Margin="10,14,0,13" d:LayoutOverrides="TopPosition, BottomPosition" Height="20" VerticalAlignment="Center"/>
+                </Grid>
+                <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="Rodzaj dokumentu" TextAlignment="Right" FontSize="9" FontWeight="Bold" Margin="9,0,0,0" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin"/>
+                <TextBlock x:Name="textBlock_Copy" TextWrapping="Wrap" Text="Data wniesienia/wydania" TextAlignment="Right" FontSize="8" FontWeight="Bold" Margin="12,3,0,0" Grid.Row="1" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin"/>
+                <TextBlock x:Name="textBlock_Copy1" TextWrapping="Wrap" Text="Nazwa" TextAlignment="Right" FontSize="9" FontWeight="Bold" Grid.Row="2" RenderTransformOrigin="0.367,3" Margin="32,7,0,7" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin"/>
+                <TextBlock x:Name="tbDataDostar" TextWrapping="Wrap" Text="Data dostarczenia" TextAlignment="Right" FontSize="8" FontWeight="Bold" Grid.Row="3" RenderTransformOrigin="0.367,3" Margin="0,10,-1,1" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin, LeftPosition, RightPosition"/>
+                <TextBlock x:Name="textBlock_Copy2" TextWrapping="Wrap" Text="Pozostałe" TextAlignment="Right" FontSize="9" FontWeight="Bold" Grid.Row="4" VerticalAlignment="Top" RenderTransformOrigin="0.367,3" Margin="10,10,-1,0" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin, LeftPosition, RightPosition" Height="13"/>
+                <telerik:RadComboBox  x:Name="cbTypDok"  SelectedValue="{Binding TypDok, Mode=TwoWay}"  ItemsSource="{Binding typDokumentu, Source={StaticResource SlownikRodzajeDokumentow}}"  SelectedValuePath="Numer" DisplayMemberPath="Nazwa"   Grid.Column="1" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin, LeftPosition, RightPosition" Margin="10,8,144,7"/>
+                <telerik:RadComboBox  x:Name="cbTypDokOdebr"  SelectedValue="{Binding TypDok, Mode=TwoWay}"  ItemsSource="{Binding typDokumentu, Source={StaticResource SlownikRodzajeDokumentowOdebr}}"  SelectedValuePath="Numer" DisplayMemberPath="Nazwa"   Grid.Column="1" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin, LeftPosition, RightPosition" Margin="10,8,144,7"/>
+                <Button x:Name="PdfInButton"   HorizontalAlignment="Right" Width="30" ToolTipService.ToolTip="Dołącz dokument pdf"  Grid.Column="1" d:LayoutOverrides="HorizontalAlignment, LeftMargin, RightMargin, TopMargin, BottomMargin" Click="PdfInButton_Click" Margin="0,3,0,2">
+                    <Image x:Name="imgSls" Source="/Images/uploadPdf.png" />
+
+                </Button>
+                <Button x:Name="ShowPdfButton"   HorizontalAlignment="Right" Width="30" ToolTipService.ToolTip="Pokaż dokument pdf"  Grid.Column="1"   Margin="0,3,35,2" Click="ShowPdfButton_Click" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin">
+                    <Image x:Name="imgSls2" Source="/Images/pdf.png" />
+
+                </Button>
+                <controls:DatePicker Grid.Column="1" Name="dtpDataWys" SelectedDate="{Binding DataDok, Mode=TwoWay}"  HorizontalAlignment="Left" Grid.Row="1" Width="120" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Margin="100,9,0,9"/>
+                <controls:DatePicker Grid.Column="1" Name="dtpDataOdebr" SelectedDate="{Binding DataDokumentu, Mode=TwoWay}"  HorizontalAlignment="Left" Grid.Row="1" Width="120" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Margin="10,9,0,9"/>
+                <TextBox x:Name="tbNazwaWys" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" Text="{Binding Nazwa, Mode=TwoWay}" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin, LeftPosition, RightPosition" Margin="10,3"/>
+                <TextBox x:Name="tbNazwaOdebr" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" Text="{Binding Nazwa, Mode=TwoWay}" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin, LeftPosition, RightPosition" Margin="10,3"/>
+                <controls:DatePicker Grid.Column="1" Name="dtpDataDostOdebr" SelectedDate="{Binding DataRejestracji, Mode=TwoWay}"  HorizontalAlignment="Left" Grid.Row="3" Width="120" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Margin="10,6,0,5"/>
+            </Grid>
+        </Grid>
+    </telerik:RadBusyIndicator>
+</controls:ChildWindow>

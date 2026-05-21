@@ -1,0 +1,28 @@
+File DLG.CPP:
+181         m_pDoc->UpdateWpl(NULL,m_wNo,m_dwGroszy,m_wTyp,m_strDate,m_wSQLTyp); 
+195      m_pDoc->GetWpl(m_pDoc->m_wplActive, m_dwGroszy, m_wTyp, m_strDate,m_wSQLTyp); // skucha
+File DOCWPL.CPP:
+27        pWplItem->m_SQLTyp = 0;
+45      void CKmDoc::GetWpl(UINT WplNo, DWORD& dwGroszy, int& nTypW, CString& strDate, int& nSQLTyp)
+54            nSQLTyp = (int)pWpl->m_SQLTyp;      
+64                    UINT WplNo,DWORD& dwGroszy,int& nTypW,CString& strDate,int& nTypSQL)
+74                pWpl->m_SQLTyp = (BYTE)nTypSQL;
+File KMDOC.CPP:
+109       int number, typ_wpl, typ_SQL;
+200                                     //dwGroszy=(DWORD)(atof(str)*100000.0+10E-5); v1.5 import z Komornika SQL
+207                             // wczytanie naleznosci, wplat z Komornika SQL
+213                                     typ_SQL=(int)ch[0];
+233                                     UpdateWpl(NULL,NumWpl,dwGroszy,typ_wpl,strDateP,typ_SQL);
+File KMOBJ.CPP:
+45          ar<<(WORD)m_wplNum; ar<<m_wplDate; ar<<m_wplGroszy; ar<<m_wplTyp;ar<<m_SQLTyp;
+53                      ar >> m_wplGroszy; ar >> m_wplTyp; ar >> m_SQLTyp;
+File WPLVW.CPP:
+175       int nTypW, nSQLTyp;
+177       char strSQL[10];
+182       pDoc->GetWpl(nWplNo, dwGroszy, nTypW, strDate, nSQLTyp);
+204        if(nSQLTyp) {
+205                     if(nSQLTyp=='w') strcpy(strSQL,"wp³ata");
+206                     if(nSQLTyp=='W') strcpy(strSQL,"wp³ata bezp.");
+207                     if(nSQLTyp=='d') strcpy(strSQL,"depozyt");   
+208                     if(nSQLTyp=='s') strcpy(strSQL,"saldo zal.");   
+209                     pDC->TextOut((TYP_COL-indW+10)*tm.tmAveCharWidth, y, strSQL); //hejho

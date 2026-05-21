@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="LexEnaTrs.Views.UzDKonfig"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d" xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" xmlns:my="clr-namespace:LexEnaTrs.Web"
+			   xmlns:local="clr-namespace:LexEnaTrs" Loaded="UserControl_Loaded" d:DesignWidth="650">
+    <UserControl.Resources>
+        <DataTemplate x:Key="MultiLineTemplate">
+            <TextBox TextWrapping="Wrap" Text="{Binding Tresc,Mode=TwoWay}" />
+        </DataTemplate>
+        <DataTemplate x:Key="UzDFormTemplate" >
+            <Grid Margin="0" Height="300" Width="650">
+
+                <telerik:DataFormDataField   VerticalAlignment="Top" LabelPosition="Beside" VerticalContentAlignment="Stretch" x:Name="Wartosc" Label="Minimalna kwota faktury"  DataMemberBinding="{Binding Wartosc, Mode=TwoWay}" HorizontalAlignment="Left" Width="550" Margin="5,0,0,0"  >
+                    <telerik:RadMaskedCurrencyInput HorizontalContentAlignment="Right" Value="{Binding ProgFaktura, Mode=TwoWay}"  EmptyContent="kwota"  Culture="pl-PL"  Margin="2,0,-16,0" Grid.Row="2" VerticalAlignment="Top" FontSize="10" IsClearButtonVisible="False" IsCurrencySymbolVisible="False"/>
+                </telerik:DataFormDataField>
+
+                
+
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="UzDROFormTemplate" >
+            <Grid Margin="0" Height="300" Width="650">
+
+                <telerik:DataFormDataField Margin="0,8,0,0" Label="Minimalna kwota faktury" DataMemberBinding="{Binding  ProgFaktura, Mode=TwoWay}"    VerticalAlignment="Top"/>
+               
+
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot" Background="White" Margin="0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="650" />
+        </Grid.ColumnDefinitions>
+
+
+        <telerik:RadDomainDataSource AutoLoad="False" Height="0"   x:Name="UzDKonfigdds" QueryName="GetUZD_KonfigQuery" Width="0" Grid.Column="0" Margin="731,189,331,188" >
+            <telerik:RadDomainDataSource.DomainContext>
+                <my:LexEnaMeritumDomainContext />
+            </telerik:RadDomainDataSource.DomainContext>
+
+        </telerik:RadDomainDataSource>
+
+
+
+        <telerik:RadDataForm Name="UzDDataForm" ItemsSource="{Binding DataView,ElementName=UzDKonfigdds}" AutoGenerateFields="False" CancelButtonContent="Anuluj" 
+                             ReadOnlyTemplate="{StaticResource UzDROFormTemplate}"
+                             EditTemplate="{StaticResource UzDFormTemplate}"  EditEnded="SlownikiDataForm_EditEnded" AutoEdit="True" />
+
+    </Grid>
+</UserControl>
