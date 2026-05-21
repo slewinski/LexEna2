@@ -1,0 +1,14 @@
+00:24:17 9 listopada 2017
+Proceed JOB	
+00:24:19 9 listopada 2017
+ProceedFile strct 	
+00:24:20 9 listopada 2017
+Lst Loaded 	
+15:38:12 10 listopada 2017
+Proceed JOB	
+15:38:15 10 listopada 2017
+ProceedFile strct 	
+16:04:00 10 listopada 2017
+Proceed JOB	
+16:04:01 10 listopada 2017
+ProceedFile strct 	

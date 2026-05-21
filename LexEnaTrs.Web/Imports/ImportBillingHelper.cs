@@ -1,0 +1,2437 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using LexEnaTrs.Web.Models;
+using WienaDB.Models;
+using System.Text.RegularExpressions;
+using System.Data;
+using System.Data.SqlClient;
+
+namespace LexEnaTrs.Web
+{
+    struct struct_ksiegowanie
+    {
+        public int id;
+        public int id_konta;
+        public int numer;
+        public int id_sprawy;
+        public int mode;
+        public int id_zlecenia;
+        public decimal winien;
+        public decimal ma;
+        public decimal energia;
+        public decimal koszty;
+        public decimal odsetki;
+        public decimal inne;
+        public decimal vat;
+        public decimal wdz;
+        public decimal ods_naliczone;
+        public string dowod;
+        public int rodzaj;
+        public DateTime data;
+        public int ksiega;
+        public decimal kzp;
+        public decimal wpis;
+        public decimal klauzula;
+        public decimal kza;
+        public decimal kl_adw;
+        public decimal komo;
+        public decimal inne_sad;
+        public decimal ods_kapital;
+        public int id_wplaty;
+        public int id_schematu;
+        public int id_symbol;
+        public decimal energia_ten;
+        public decimal koszty_ten;
+        public decimal odsetki_ten;
+        public decimal ods_kapital_ten;
+        public decimal ma_ten;
+        public decimal vat_ten;
+        public decimal kzp_ten;
+        public decimal wpis_ten;
+        public decimal klauzula_ten;
+        public decimal kza_ten;
+        public decimal kl_adw_ten;
+        public decimal komo_ten;
+        public decimal inne_sad_ten;
+        public decimal energia_pop;
+        public decimal koszty_pop;
+        public decimal odsetki_pop;
+        public decimal ods_kapital_pop;
+        public decimal vat_pop;
+        public decimal wpis_pop;
+        public decimal kaluzula_pop;
+        public decimal kzp_pop;
+        public decimal kl_adw_pop;
+        public decimal komo_pop;
+        public decimal inne_sad_pop;
+        public decimal klauzula_pop;
+        public decimal kza_pop;
+        public int id_firmy;
+    };
+
+
+
+    public class ImportBillingHelper
+    {
+        public ImportSprawBilling imp;
+
+        public string ErrMsg = string.Empty;
+
+        private int f_zaksieguj(string konto_dest, struct_ksiegowanie ksiegowanie, string dow_dest, int id_sprawy, int Firma, wiena_centralEntities context)
+        {
+            int ll_id_konto, li_ile;
+            int li_firma;
+
+
+            var res = (from o in context.obroty
+                       join
+       ka in context.konto_anal on o.id_konta equals ka.ident
+                       join
+k in context.konto on ka.id_konta equals k.id
+                       where o.czyus == 0 && ka.czyus == 0 && ka.id_sprawy == id_sprawy && k.konto1 == konto_dest
+                       select o).FirstOrDefault();
+
+            if (res != null)
+                return -1;
+
+            ll_id_konto = context.konto.Where(a => a.konto1 == konto_dest && a.id_firmy == Firma).Select(a => a.id).FirstOrDefault();
+            if (ll_id_konto <= 0)
+                return -2;
+
+            zlecenia_ksiegowe zlc = new WienaDB.Models.zlecenia_ksiegowe();
+            zlc.kod = 1;
+            zlc.konto = ll_id_konto;
+            zlc.konto_anal = 0;
+            zlc.winien = ksiegowanie.winien - ksiegowanie.ma;
+            zlc.ma = 0;
+            zlc.wdz = ksiegowanie.wdz;
+            zlc.ods_naliczone = ksiegowanie.ods_naliczone;
+            zlc.energia = ksiegowanie.energia;
+            zlc.koszty = ksiegowanie.koszty;
+            zlc.odsetki = ksiegowanie.odsetki;
+            zlc.inne = ksiegowanie.inne;
+            zlc.vat = ksiegowanie.vat;
+            zlc.nr_dowodu = dow_dest;
+            zlc.d_zlecenia = ksiegowanie.data;
+            zlc.id_sprawy = id_sprawy;
+            zlc.czyus = 0;
+            zlc.opis = "";
+            zlc.kzp = ksiegowanie.kzp;
+            zlc.wpis = ksiegowanie.wpis;
+            zlc.klauzula = ksiegowanie.klauzula;
+            zlc.kza = ksiegowanie.kza;
+            zlc.kl_adw = ksiegowanie.kl_adw;
+            zlc.komo = ksiegowanie.komo;
+            zlc.inne_sad = ksiegowanie.inne_sad;
+            zlc.ods_kapital = ksiegowanie.ods_kapital;
+            zlc.id_schemat = ksiegowanie.id_schematu;
+            zlc.id_obroty = 0;
+            try
+            {
+                context.zlecenia_ksiegowe.Add(zlc);
+                context.SaveChanges();
+                return 1;
+
+            }
+            catch (Exception ex)
+            {
+                Utils.LogWriter(ex.Message);
+                return -1;
+
+            }
+        }
+
+
+
+
+        // 
+
+
+
+        private int f_let_num(string as_let)
+        {
+            switch (as_let)
+            {
+                case "A":
+                case "Ą":
+
+                    return 1;
+
+                case "B":
+
+                    return 2;
+
+                case "C":
+
+                    return 3;
+
+                case "Ć":
+
+                    return 4;
+
+                case "D":
+
+                    return 5;
+
+                case "E":
+                case "Ę":
+
+                    return 6;
+
+                case "F":
+
+                    return 7;
+
+                case "G":
+
+                    return 8;
+
+                case "H":
+
+                    return 9;
+
+                case "I":
+
+                    return 10;
+
+                case "J":
+
+                    return 11;
+
+                case "K":
+
+                    return 12;
+
+                case "L":
+
+                    return 13;
+
+                case "Ł":
+
+                    return 14;
+
+                case "M":
+
+                    return 15;
+
+                case "N":
+                case "Ń":
+
+                    return 16;
+
+                case "O":
+
+                    return 17;
+
+                case "Ó":
+
+                    return 18;
+
+                case "P":
+
+                    return 19;
+
+                case "R":
+
+                    return 20;
+
+                case "S":
+
+                    return 21;
+
+                case "Ś":
+
+                    return 22;
+
+                case "T":
+
+                    return 23;
+
+                case "U":
+
+                    return 24;
+
+                case "W":
+
+                    return 25;
+
+                case "Y":
+
+                    return 26;
+
+                case "Z":
+
+                    return 27;
+
+                case "Ź":
+
+                    return 28;
+
+                case "Ż":
+
+                    return 29;
+
+                default:
+
+                    return 0;
+            }
+        }
+
+
+
+
+
+        private string filterKrs(string inkrs)
+        {
+
+            inkrs = inkrs.Trim();
+            if (String.IsNullOrWhiteSpace(inkrs))
+                return string.Empty;
+            decimal n;
+            if (decimal.TryParse(inkrs, out n))
+                return inkrs.PadLeft(10, '0');
+            if (inkrs.ToUpper().Contains("KRS"))
+            {
+                string krs = new string(inkrs.Where(c => char.IsDigit(c)).ToArray());
+                return krs.PadLeft(10, '0');
+
+            }
+            else return inkrs;
+        }
+
+        public bool DoRegisterSpr(SprImportDescriptor si, string oddzial, DateTime ad_dzien, string as_dowod, int IdFirma, int Firma, string system, int IdKancelaria)
+        {
+            int li_Rok, li_Pos, ll_symbol, ll_id_spr, ll_id_dluz, ll_id_adres, ll_id_adres_kor, ll_id_nal, ll_adr, ll_adr_z, ll_id_status;
+            string ls_Sign, ls_ewid, ls_regon, ls_blad, ls_konto_wpl;
+            string ls_kod_pocztowy, ls_ulica, ls_miejscowosc, ls_poczta, ls_kod_pocztowy_k, ls_ulica_k, ls_miejscowosc_k, ls_poczta_k;
+            string ls_nazwa, ls_pesel, ls_nip, ls_krs, ls_kod, ls_numer_domu, ls_numer_posesji;
+            DateTime ldt_Date, ld_dimp, ld_data_wpl, ld_plat_koszt;
+            DateTime ld_last_nota;
+            decimal ld_obciaz_NS, ld_obciaz_ES, ld_obciaz_OS, ld_obciaz_OU, ld_obciaz_EK, ld_obciaz_SU, ld_obciaz_EA, ld_wpl, ld_rozn_vat, ld_rozn, ld_rozn_vat_i, ld_rozn_i, ld_pozostalosc, ld_pozostalosc_vat;
+            decimal ld_obciaz_NS_vat, ld_obciaz_ES_vat, ld_obciaz_OS_vat, ld_obciaz_OU_vat, ld_obciaz_EK_vat, ld_obciaz_SU_vat, ld_obciaz_EA_vat;
+            decimal ld_ods_NS, ld_ods_ES, ld_ods_OS, ld_WDZ, ld_ods_naliczone, ld_ods_OU, ld_ods_EK, ld_pozo_ods, ld_pozo_wdz, ld_doksie, ld_ods_SU, ld_ods_EA;
+            decimal ld_doksie_ods, ld_doksie_kzp, ld_doksie_klauzula, ld_doksie_wpis, ld_doksie_kzp2, ld_doksie_klauzula2, ld_doksie_wpis2, ld_doksie_koszty, ld_doksie_komo, ld_doksie_inne, ld_doksie_kza;
+            int li_ksiega, li_rejestr_krs;
+            string ls_oddzial, ls_obciaz_zapis, ls_typ_oryg;
+            string ls_typob, ls_naleznosc, ls_uwagi;
+            bool bylo_kzp, czy_ten_oddzial;
+            int li_os_frm, li_key, li_end_row, li, li_row, ile_obciaz, li_end_obciaz;
+            int typ_konta = 0, li_typ_ksiegi;
+            int li_plock_pos = 4;
+            int czywplata = 0;
+            int? li_rejon = null;
+            Dictionary<int, DateTime> datyWymag = new Dictionary<int, DateTime>();
+
+            Odbiorca o = si.Odbiorca;
+
+            struct_ksiegowanie ksiegowanie;
+            ld_obciaz_NS = 0;
+            ld_obciaz_ES = 0;
+            ld_obciaz_OS = 0;
+            ld_obciaz_OU = 0;
+            ld_obciaz_EK = 0;
+            ld_obciaz_SU = 0;
+            ld_obciaz_EA = 0;
+            ld_obciaz_NS_vat = 0;
+            ld_obciaz_ES_vat = 0;
+            ld_obciaz_OS_vat = 0;
+            ld_obciaz_OU_vat = 0;
+            ld_obciaz_EK_vat = 0;
+            ld_obciaz_SU_vat = 0;
+            ld_obciaz_EA_vat = 0;
+            ld_ods_NS = 0;
+            ld_ods_ES = 0;
+            ld_ods_OS = 0;
+            ld_WDZ = 0;
+            ld_ods_naliczone = 0;
+            ld_ods_OU = 0;
+            ld_ods_EK = 0;
+            ld_ods_SU = 0;
+            ld_ods_EA = 0;
+            ile_obciaz = 0;
+            //li_end_row = dw_1.RowCount()
+
+            ls_typob = string.Empty;
+            Regex rx = new Regex(@"^[0-9][0-9][0-9][0-9]-[0-9]-[0-9]");
+
+            ld_last_nota = new DateTime(1900, 1, 1);
+            int nr_spr = 0;
+            foreach (Obciazenie ob in o.Obciazenia)
+            {
+                if (system == "CC&B" || system == "CC7B")  // jeśli CCnb dla operatora lub obrotu
+                {
+                    system = "CC&B";
+                    if (ob.Id_sprawy > 0 && nr_spr != ob.Id_sprawy)
+                    {
+                        ld_last_nota = new DateTime(1900, 1, 1);
+
+                        datyWymag.Add(ob.Id_sprawy.Value, ld_last_nota);
+                        nr_spr = ob.Id_sprawy.Value;
+
+                    }
+                    if (ob.Nr_dokumentu.ToUpper().Contains("/NOT/") && ob.Data_wystawienia_dokumentu > ld_last_nota)
+                    {
+                        ld_last_nota = ob.Data_wystawienia_dokumentu;
+                        if (ob.Id_sprawy > 0)
+                        {
+                            datyWymag[ob.Id_sprawy.Value] = ld_last_nota;
+                        }
+                    }
+                }
+                else if (system.ToUpper() != "SELEN" && Firma != -1)
+                {
+                    if (ls_typob == "")
+                    {
+                        if (ob.Typ_obciazenia.Length > 0)
+                        {
+                            ls_typob = ob.Typ_obciazenia.Trim();
+                            Match match = rx.Match(ls_typob);
+                            if (match.Success)
+
+                                // konto OS //if  left(ls_typob,6) = '2002-0' then 
+                                ls_typob = ob.Typ_obciazenia.Substring(10, 2);  // mid(trim(dw_1.GetItemString(li, 'typ_obciazenia')), 11, 2)
+                            else
+                                ls_typob = ob.Typ_obciazenia.Substring(8, 2); //mid(trim(dw_1.GetItemString(li, 'typ_obciazenia')), 9, 2)
+
+                        }
+                    }
+                }
+            }
+
+            if (system == "CC&B" && Firma == -1) //operator CC&B
+            {
+
+                ls_typob = "SD";
+            }
+            if (system == "CC&B" && Firma == 1) //obrót CC&B
+            {
+
+                ls_typob = "FES";
+            }
+
+
+            try
+            {
+                ldt_Date = DateTime.Today;
+                ls_regon = string.Empty;
+                li_Rok = si.rok;
+                li_Pos = si.nr;
+                ls_Sign = si.sygn_obciaz;
+                ll_symbol = si.id_symbol;
+                ls_ewid = o.Nr_ewidencyjny.Trim();
+                li_rejon = Convert.ToInt32(ls_ewid.Substring(0, 1));
+                if (system == "CC&B"  ) // CC&B
+                {
+                    if (Firma == -1)
+                        li_rejon = null;
+                    else
+                        li_rejon = 2012;
+                }
+                using (wiena_centralEntities context = new wiena_centralEntities())
+                {
+                    li_typ_ksiegi = (context.symbol.Where(a => a.ident == ll_symbol).FirstOrDefault()).typ;
+                    ls_oddzial = oddzial.ToUpper();
+                    if (ls_typob == "90" && (String.IsNullOrWhiteSpace(ls_oddzial)))
+                    {
+                        ls_oddzial = "IX";
+                    }
+
+                    if ((ls_oddzial.ToUpper() == "ENGD" || ls_oddzial.ToUpper() == "ENPL" || ls_oddzial.ToUpper() == "ENSL" || ((ls_oddzial.ToUpper() == "ENKO" || ls_oddzial.ToUpper() == "ENOL" || ls_oddzial.ToUpper() == "ENKL" || ls_oddzial.ToUpper() == "ENEL") && Firma != 1)) && ls_ewid.Length == 9)
+                    {
+                        li_rejon = Convert.ToInt32(ls_ewid.Substring(1, 1));   // nowe oznaczenia oddziałów
+                        li_plock_pos = 5;
+                    }
+                    if (Firma == 1)  // obrot
+                    {
+                        switch (ls_oddzial.ToUpper())
+                        {
+                            case "IX":
+                                li_rejon = 1002;
+                                break;
+                            case "ENOL":
+                                switch (ls_typob)
+                                {
+                                    case "11":  //kętrzyn
+                                        li_rejon = 613;
+                                        break;
+                                    case "21":   // Lidzbark  warminski
+                                        li_rejon = 616;
+                                        break;
+                                    case "31": // olsztyn
+                                        li_rejon = 617;
+                                        break;
+                                    case "41": // ostróda
+                                        li_rejon = 619;
+                                        break;
+                                    case "51": // szczytno
+                                        li_rejon = 621;
+                                        break;
+                                    case "61": // Iława
+                                        li_rejon = 618;
+                                        break;
+                                    case "91": // Wielki Odbiór
+                                        li_rejon = 615;
+                                        break;
+
+                                }
+                                break;
+                            case "ENEL":
+
+                                switch (ls_typob)
+                                {
+                                    case "11": // elbląg
+                                        li_rejon = 205;
+                                        break;
+                                    case "21":
+                                        li_rejon = 206;
+                                        break;
+                                    case "31":
+                                        li_rejon = 210;
+                                        break;
+                                    case "41":
+                                        li_rejon = 207;
+                                        break;
+                                    case "91":
+                                        li_rejon = 204;
+                                        break;
+                                }
+                                break;
+                            case "ENKL":
+                            case "KALISZ":
+                                switch (ls_typob)
+                                {
+                                    case "11":  // kalisz
+                                        li_rejon = 402;
+                                        break;
+                                    case "21":
+                                        li_rejon = 405;  // ostrów wielkopolski
+                                        break;
+                                    case "31":
+                                        li_rejon = 406;  // Kępno
+                                        break;
+                                    case "41":
+
+                                        li_rejon = 407; // jarocin
+                                        break;
+                                    case "51":
+
+                                        li_rejon = 408; //  Konin
+                                        break;
+                                    case "61":
+
+                                        li_rejon = 409;   // Turek
+                                        break;
+                                    case "71":
+
+                                        li_rejon = 410;    // Koło
+                                        break;
+                                    case "81":
+
+                                        li_rejon = 411; // słupca
+                                        break;
+                                    case "91":
+
+                                        li_rejon = 404; // wielki odbiór
+                                        break;
+                                }
+                                break;
+                            case "ENKO":        // koszalin
+                                switch (ls_typob)
+                                {
+                                    case "01":
+                                    case "11":          // Białogard
+
+                                        li_rejon = 505;
+                                        break;
+
+                                    case "02":
+                                    case "21":          // Drawsko Pomorskie
+
+                                        li_rejon = 506;
+                                        break;
+                                    case "03":
+                                    case "31":          // Koszalin
+
+                                        li_rejon = 502;
+                                        break;
+                                    case "04":
+                                    case "41":          //  Szczecinek
+
+                                        li_rejon = 507;
+                                        break;
+                                    case "05":
+                                    case "51":          // Kołobrzeg
+
+                                        li_rejon = 508;
+                                        break;
+                                    case "09":
+                                    case "91":          // Wielki odbiór
+
+                                        li_rejon = 504;
+                                        break;
+
+                                }
+                                break;
+                            case "ENGD":
+                                switch (li_rejon)
+                                {
+                                    case 1:
+
+                                        li_rejon = 305;
+                                        break;
+                                    case 2:
+
+                                        li_rejon = 306;
+                                        break;
+                                    case 3:
+
+                                        li_rejon = 310;
+                                        break;
+                                    case 4:
+
+                                        li_rejon = 307;
+                                        break;
+                                    case 5:
+
+                                        li_rejon = 308;
+                                        break;
+                                    case 6:
+
+                                        li_rejon = 302;
+                                        break;
+
+                                }
+                                break;
+                            case "ENPL":
+                                switch (li_rejon)
+                                {
+                                    case 1:   // płock
+
+                                        li_rejon = 702;
+                                        break;
+                                    case 2:
+
+                                        li_rejon = 705;  // ciechanów
+                                        break;
+                                    case 3:
+
+                                        li_rejon = 706;  // Kutno
+                                        break;
+                                    case 4:
+
+                                        li_rejon = 707; // Gostynin
+                                        break;
+                                    case 5:
+
+                                        li_rejon = 708; //  Sierpc
+                                        break;
+                                    case 6:
+
+                                        li_rejon = 709;   // Mława
+                                        break;
+                                    case 7:
+
+                                        li_rejon = 710;    // Płońsk
+                                        break;
+                                    case 8:
+                                        switch (Convert.ToInt32(ls_ewid.Substring(li_plock_pos - 1, 1)))
+                                        {
+                                            case 1:   // płock
+
+                                                li_rejon = 702;
+                                                break;
+                                            case 2:
+
+                                                li_rejon = 705;  // ciechanów
+                                                break;
+                                            case 3:
+
+                                                li_rejon = 706;  // Kutno
+                                                break;
+                                            case 4:
+
+                                                li_rejon = 707; // Gostynin
+                                                break;
+                                            case 5:
+
+                                                li_rejon = 708; //  Sierpc
+                                                break;
+                                            case 6:
+
+                                                li_rejon = 709;   // Mława
+                                                break;
+                                            case 7:
+
+                                                li_rejon = 710;    // Płońsk
+                                                break;
+                                            case 8:     // klient sieciowy ????? co to jest 
+                                                li_rejon = 711;
+                                                break;
+                                        }
+                                        break;
+                                }
+                                break;
+
+
+                            default: // na razie tylko słupsk
+
+                                switch (li_rejon)
+                                {
+                                    case 1:
+
+                                        li_rejon = 802;  // słupsk
+                                        break;
+                                    case 2:
+
+                                        li_rejon = 803; // człuchów
+                                        break;
+                                    case 3:
+
+                                        li_rejon = 804; // Lębork
+                                        break;
+                                    case 4:
+
+                                        li_rejon = 805; // Bytów
+                                        break;
+                                    case 9:
+
+                                        li_rejon = 806; //WO
+                                        break;
+                                }
+                                break;
+                        }
+                    }
+                    else // operator
+                    {
+                        switch (ls_oddzial.ToUpper())
+                        {
+
+                            case "IX":
+
+                                li_rejon = 1014;
+                                break;
+
+                            case "ENOL":
+
+                                switch (li_rejon)
+                                {
+                                    case 1:  //kętrzyn
+
+                                        li_rejon = 602;
+                                        break;
+                                    case 2:  // Lidzbark  warminski
+
+                                        li_rejon = 605;
+                                        break;
+                                    case 3: // olsztyn
+
+                                        li_rejon = 606;
+                                        break;
+                                    case 4: // ostróda
+
+                                        li_rejon = 608;
+                                        break;
+                                    case 5: // szczytno
+
+                                        li_rejon = 610;
+                                        break;
+                                    case 6: // Iława
+
+                                        li_rejon = 607;
+                                        break;
+                                    case 7: // Wielki Odbiór
+
+                                        li_rejon = 604;
+                                        break;
+
+                                }
+                                break;
+                            case "ENEL":
+                                switch (li_rejon)
+                                {
+                                    case 1: // elbląg
+
+                                        li_rejon = 214;
+                                        break;
+                                    case 2:
+
+                                        li_rejon = 215;   // branieweo
+                                        break;
+                                    case 3:
+
+                                        li_rejon = 217;
+                                        break;
+                                    case 4:
+
+                                        li_rejon = 216;
+                                        break;
+                                    case 5:
+
+                                        li_rejon = 213;
+                                        break;
+                                }
+                                break;
+                            case "ENKL":
+                            case "KALISZ":
+                                switch (li_rejon)
+                                {
+                                    case 1:  // kalisz
+
+                                        li_rejon = 414;
+                                        break;
+                                    case 2:
+
+                                        li_rejon = 416;  // ostrów wielkopolski
+                                        break;
+                                    case 3:
+
+                                        li_rejon = 417;  // Kępno
+                                        break;
+                                    case 4:
+
+                                        li_rejon = 418; // jarocin
+                                        break;
+                                    case 5:
+
+                                        li_rejon = 419; //  Konin
+                                        break;
+                                    case 6:
+
+                                        li_rejon = 420;   // Turek
+                                        break;
+                                    case 7:
+
+                                        li_rejon = 421;    // Koło
+                                        break;
+                                    case 8:
+
+                                        li_rejon = 422; // słupca
+                                        break;
+                                    case 9:
+
+                                        li_rejon = 415;  // wielki odbiór
+                                        break;
+                                }
+                                break;
+
+                            case "ENKO":
+                                switch (li_rejon)
+                                {
+                                    case 1:         // Białogard
+
+                                        li_rejon = 516;
+                                        break;
+
+                                    case 2:         // Drawsko Pomorskie
+
+                                        li_rejon = 517;
+                                        break;
+                                    case 3:         // Koszalin
+
+                                        li_rejon = 514;
+                                        break;
+                                    case 4:         //  Szczecinek
+
+                                        li_rejon = 518;
+                                        break;
+                                    case 5:         // Kołobrzeg
+
+                                        li_rejon = 519;
+                                        break;
+                                    case 6:         // Wielki odbiór
+
+                                        li_rejon = 515;
+                                        break;
+
+                                }
+                                break;
+
+                            case "ENGD":
+                                switch (li_rejon)
+                                {
+                                    case 1:
+
+                                        li_rejon = 316;
+                                        break;
+                                    case 2:
+
+                                        li_rejon = 317;
+                                        break;
+                                    case 3:
+
+                                        li_rejon = 321;
+                                        break;
+                                    case 4:
+
+                                        li_rejon = 318;
+                                        break;
+                                    case 5:
+
+                                        li_rejon = 319;
+                                        break;
+                                    case 6:
+
+                                        li_rejon = 314;
+                                        break;
+                                    default:
+                                        li_rejon = 377;
+                                        break;
+                                }
+                                break;
+                            case "ENPL":
+                                switch (li_rejon)
+                                {
+                                    case 1:   // płock
+
+                                        li_rejon = 714;
+                                        break;
+                                    case 2:
+
+                                        li_rejon = 716;  // ciechanów
+                                        break;
+                                    case 3:
+
+                                        li_rejon = 717;  // Kutno
+                                        break;
+                                    case 4:
+
+                                        li_rejon = 718; // Gostynin
+                                        break;
+                                    case 5:
+
+                                        li_rejon = 719; //  Sierpc
+                                        break;
+                                    case 6:
+
+                                        li_rejon = 720;   // Mława
+                                        break;
+                                    case 7:
+
+                                        li_rejon = 721;    // Płońsk
+                                        break;
+                                    case 8:
+                                        switch (Convert.ToInt32(ls_ewid.Substring(3, 1)))
+                                        {
+                                            case 1:   // płock
+
+                                                li_rejon = 714;
+                                                break;
+                                            case 2:
+
+                                                li_rejon = 716;  // ciechanów
+                                                break;
+                                            case 3:
+
+                                                li_rejon = 717;  // Kutno
+                                                break;
+                                            case 4:
+
+                                                li_rejon = 718; // Gostynin
+                                                break;
+                                            case 5:
+
+                                                li_rejon = 719; //  Sierpc
+                                                break;
+                                            case 6:
+
+                                                li_rejon = 720;   // Mława
+                                                break;
+                                            case 7:
+
+                                                li_rejon = 721;    // Płońsk
+                                                break;
+                                            case 8:
+                                                ;// klient sieciowy ????? co to jest 
+                                                break;
+                                        }
+                                        break;
+                                }
+                                break;
+                            default: // na razie tylko słupsk  - operator
+                                switch (li_rejon)
+                                {
+                                    case 1:
+
+                                        li_rejon = 813;  // słupsk
+                                        break;
+                                    case 2:
+
+                                        li_rejon = 814; // człuchów
+                                        break;
+                                    case 3:
+
+                                        li_rejon = 815; // Lębork
+                                        break;
+                                    case 4:
+
+                                        li_rejon = 816; // Bytów
+                                        break;
+                                    case 9:
+
+                                        li_rejon = 817; // Wo
+                                        break;
+                                }
+                                break;
+                        }
+                    }
+
+                    //
+                    li_ksiega = (context.symbol.Where(a => a.ident == ll_symbol).FirstOrDefault()).typ;
+                    // sprawdzenie czy taka spraważ istnieje  
+                    if (context.sprawa.Where(a => a.poz == li_Pos && a.rok == li_Rok && a.id_symbol == ll_symbol && a.id_firmy == IdFirma).FirstOrDefault() != null)
+                    {
+
+                        this.ErrMsg = "Próba ponownego zapisu sprawy o istniejącym oznaczeniu " + si.sygn_obciaz;
+                        return false;
+                    }
+                    // dodanie nowej sprawy
+                    sprawa spr = new sprawa();
+
+                    spr.rok = (short)li_Rok;
+                    spr.poz = li_Pos;
+                    spr.data_r = ldt_Date;
+                    spr.data_ostatnia = ldt_Date;
+                    spr.sygnatura = si.sygn_obciaz;
+                    spr.ksiega = li_ksiega;
+                    spr.id_symbol = si.id_symbol;
+                    spr.id_firmy = IdFirma;
+                    spr.nr_ewid = o.Nr_ewidencyjny;
+                    if (IdKancelaria > 0 )
+                        spr.id_kancelarii = IdKancelaria;
+                    if (system == "CC&B" && Firma == 1)
+                        li_rejon = 2012;
+                    if (Firma == 1 && IdFirma == 1312)
+                        li_rejon = 1313;
+                    if (li_rejon > 200)
+                        spr.id_rejon = li_rejon;
+                    if (system == "CC&B" && Firma == -1)
+                        spr.id_rejon = 0;
+
+                    spr.d_kreacji = DateTime.Now;
+                    spr.d_modyfikacji = DateTime.Now;
+                    try
+                    {
+                        context.sprawa.Add(spr);
+                        context.SaveChanges();
+
+                    }
+                    catch (Exception e1)
+                    {
+                        this.ErrMsg = " Błąd podczas dodawania sprawy " + e1.Message;
+                        return false;
+                    }
+                    // dodanie pozostałych nr ewidencyjncych  
+                    
+                    ll_id_spr = spr.ident;
+                    if (o.Nr_ewidencyjnyArray != null && o.Nr_ewidencyjnyArray.GetUpperBound(0) >= 0)
+                    {
+
+                        notki nt = new notki();
+                        string nry = string.Empty;
+                        foreach (string nre in o.Nr_ewidencyjnyArray)
+                        {
+                            if (!String.IsNullOrWhiteSpace(nry)) nry += ";";
+                            nry += nre;
+
+                        }
+                        nt.czyus = 0;
+                        nt.d_kreacji = DateTime.Now;
+                        nt.id_sprawy = ll_id_spr;
+                        nt.tresc = nry;
+                        context.notki.Add(nt);
+                        context.SaveChanges();
+                    }
+                    // adresy
+                    ll_id_adres_kor = 0;
+                    ll_id_adres = 0;
+
+                    ls_kod_pocztowy = o.Adres.Kod_pocztowy.Trim() ?? "";
+                    ls_miejscowosc = o.Adres.Miejscowosc.Trim().Truncate(30) ?? "";
+
+                    string ls_posesja = string.Empty;
+                    if (system == "CC&B" && Firma == -1)
+                        ls_posesja = o.Adres.Numer_domu + (String.IsNullOrWhiteSpace(o.Adres.Numer_domu) ? o.Adres.Numer_posesji : "/" + o.Adres.Numer_posesji) ?? "";
+                    else
+                         ls_posesja = o.Adres.Numer_posesji + (String.IsNullOrWhiteSpace(o.Adres.Numer_posesji) ? o.Adres.Numer_domu : "/" + o.Adres.Numer_domu) ?? "";
+
+                    ls_posesja = ls_posesja.Trim();
+                    if (o.Adres.Ulica != null)
+                        o.Adres.Ulica = o.Adres.Ulica.Trim();
+                    else
+                        o.Adres.Ulica = "";
+
+
+                    if ((o.Adres.Ulica + " " + ls_posesja).Length > 40)
+                    {
+                        ls_ulica = (o.Adres.Ulica.Truncate(40 - ls_posesja.Length - 1) ?? "" + " " + ls_posesja).Trim();
+
+                    }
+                    else
+                        ls_ulica = o.Adres.Ulica + " " + ls_posesja;
+
+
+                    ls_ulica = ls_ulica.Trim().Truncate(40) ?? "";
+                    ls_poczta = o.Adres.Poczta.Truncate(30) ?? "";
+                    ls_kod_pocztowy = ls_kod_pocztowy.Replace("-", "").Replace(" ", "").Truncate(5) ?? "";
+                    dluz_adresy dlAdr = new dluz_adresy();
+                    dlAdr.miejsce = ls_poczta;
+                    dlAdr.ulica = ls_ulica;
+                    dlAdr.kod = ls_kod_pocztowy;
+                    dlAdr.id_dluz = 0;
+                    dlAdr.data_r = DateTime.Now;
+                    dlAdr.miejscowosc = ls_miejscowosc;
+                    try
+                    {
+                        context.dluz_adresy.Add(dlAdr);
+                        context.SaveChanges();
+                    }
+                    catch (Exception e2)
+                    {
+                        this.ErrMsg = "Błąd zapisu adresu";
+                        context.sprawa.Remove(spr);
+                        context.SaveChanges();
+                        return false;
+                    }
+                    ll_id_adres = dlAdr.ident;
+
+
+                    ls_kod_pocztowy = o.Adres_korespondencyjny.Kod_pocztowy.Trim() ?? "";
+                    ls_miejscowosc = o.Adres_korespondencyjny.Miejscowosc.Trim().Truncate(30) ?? "";
+                    ls_ulica = o.Adres_korespondencyjny.Ulica + " ";
+                    if (system == "CC&B" && Firma == -1)
+                        ls_ulica += o.Adres_korespondencyjny.Numer_domu + (String.IsNullOrWhiteSpace(o.Adres_korespondencyjny.Numer_domu) ? o.Adres_korespondencyjny.Numer_posesji : "/" + o.Adres_korespondencyjny.Numer_posesji) ?? "";
+                    else
+                        ls_ulica  += o.Adres_korespondencyjny.Numer_posesji + (String.IsNullOrWhiteSpace(o.Adres_korespondencyjny.Numer_posesji) ? o.Adres_korespondencyjny.Numer_domu : "/" + o.Adres_korespondencyjny.Numer_domu) ?? "";
+                    ls_ulica = ls_ulica.Trim().Truncate(40) ?? "";
+                    ls_poczta = o.Adres_korespondencyjny.Poczta.Truncate(30) ?? "";
+                    ls_kod_pocztowy = ls_kod_pocztowy.Replace("-", "").Replace(" ", "").Truncate(5) ?? "";
+                    dluz_adresy dlAdr1 = new dluz_adresy();
+                    dlAdr1.miejsce = ls_poczta;
+                    dlAdr1.ulica = ls_ulica;
+                    dlAdr1.kod = ls_kod_pocztowy;
+                    dlAdr1.id_dluz = 0;
+                    dlAdr1.data_r = DateTime.Now;
+                    dlAdr1.miejscowosc = ls_miejscowosc;
+                    try
+                    {
+                        context.dluz_adresy.Add(dlAdr1);
+                        context.SaveChanges();
+                    }
+                    catch (Exception e2)
+                    {
+                        this.ErrMsg = "Błąd zapisu adresu korespondencyjnego " + e2.Message;
+                        context.dluz_adresy.Remove(dlAdr);
+                        context.sprawa.Remove(spr);
+                        context.SaveChanges();
+                        return false;
+                    }
+                    ll_id_adres_kor = dlAdr1.ident;
+                    ll_adr = ll_id_adres;
+                    ll_adr_z = ll_id_adres_kor;
+
+                    // zapis dłużnika
+
+                    ls_nazwa = o.Nazwa;
+                    ls_pesel = o.PESEL.Trim();
+                    ls_nip = o.NIP.Trim().Truncate(15);
+                    ls_krs = o.KRS.Trim();
+                 
+                    ls_krs = this.filterKrs(ls_krs).Truncate(15);
+                    li_rejestr_krs = 0;
+                    if (!String.IsNullOrWhiteSpace(ls_krs))
+                        li_rejestr_krs = 0;
+                    li_key = this.f_let_num(ls_nazwa.Substring(0, 1));
+
+                    if (ls_pesel.Length > 3)
+                        li_os_frm = 0;
+                    else
+                        li_os_frm = 1;
+                    // zapis dłużnika
+                    skazani sk = null;
+                    spr_dluz spdl = null;
+                    if (ls_nazwa.Length > 0)
+                    {
+                        sk = new skazani();
+                        string ls_imie = "";
+                        if (ls_nazwa.Contains(","))
+                        {
+                            ls_nazwa = ls_nazwa.Replace(",", " ");
+                        }
+
+
+                        sk.osoba_lub_firma = (short)li_os_frm;
+                        sk.nazwisko = ls_nazwa;
+                        sk.imie = ls_imie;
+                        sk.miasto_ur = "";
+                        sk.data_ur = null;
+                        sk.imie_ojca = "";
+                        sk.imie_matki = "";
+                        sk.id_adresu = ll_adr;
+                        sk.id_adresu_zamel = ll_adr_z;
+                        sk.nazw_pan_matki = "";
+                        sk.key1 = li_key;
+                        sk.pesel = ls_pesel;
+                        sk.dowod = "";
+                        sk.nazw_pan = "";
+                        sk.nip = (ls_nip != null ? ls_nip: string.Empty);
+                        sk.regon = ls_regon;
+                        sk.krs = ls_krs;
+                        sk.rdzen = "";
+                        sk.uwagi = "";
+                        if (ls_nip.Trim().Length > 10)
+                            sk.uwagi = "NIP:" + ls_nip;
+                        sk.id_grupy = 0;
+                        sk.czyus = 0;
+
+                        sk.rejestr = (short)li_rejestr_krs;
+                        try
+                        {
+                            context.skazani.Add(sk);
+                            context.SaveChanges();
+                        }
+                        catch (Exception e3)
+                        {
+                            this.ErrMsg = "Błąd zapisu dłużnika " + e3.Message;
+                            context.dluz_adresy.Remove(dlAdr1);
+                            context.dluz_adresy.Remove(dlAdr);
+                            context.sprawa.Remove(spr);
+                            context.SaveChanges();
+                            return false;
+
+                        }
+                        ll_id_dluz = sk.id;
+                        try
+                        {
+               
+                            if (ll_adr > 0)
+                                dlAdr.id_dluz = ll_id_dluz;
+                            if (ll_adr_z > 0)
+                                dlAdr1.id_dluz = ll_id_dluz;
+                            context.SaveChanges();
+
+                        }
+                             
+                        catch (Exception e4)
+                        {
+
+                            this.ErrMsg = "Błąd aktualizacji adresów " + e4.Message;
+                            context.skazani.Remove(sk);
+                            context.dluz_adresy.Remove(dlAdr1);
+                            context.dluz_adresy.Remove(dlAdr);
+                            context.sprawa.Remove(spr);
+                            context.SaveChanges();
+                            return false;
+                        }
+
+
+                        spdl = new WienaDB.Models.spr_dluz();
+                        spdl.id_sprawy = ll_id_spr;
+                        spdl.id_dluz = ll_id_dluz;
+                        try
+                        {
+                            context.spr_dluz.Add(spdl);
+                            context.SaveChanges();
+                        }
+                        catch (Exception e5)
+                        {
+                            this.ErrMsg = "Błąd powiazania dłużnika ze sprawą " + e5.Message;
+                            Utils.LogWriter(this.ErrMsg);
+                            context.skazani.Remove(sk);
+                            context.dluz_adresy.Remove(dlAdr1);
+                            context.dluz_adresy.Remove(dlAdr);
+                            context.sprawa.Remove(spr);
+                            context.SaveChanges();
+                            return false;
+
+                        }
+
+                    }
+                    else
+                    {
+                        this.ErrMsg = "Brak danych dłużnika lub dane niekompletne ";
+                        Utils.LogWriter(this.ErrMsg);
+                        context.dluz_adresy.Remove(dlAdr1);
+                        context.dluz_adresy.Remove(dlAdr);
+                        context.sprawa.Remove(spr);
+                        context.SaveChanges();
+                        return false;
+                    }
+                    // należności
+                    Utils.LogWriter("należności");
+                    decimal ld_kwt, ld_vat, ld_pozo, ld_pozo_vat;
+                    string ls_dokum, ls_typ;
+                    DateTime ld_dzien;
+                    int li_typ_kwt;
+                    ls_obciaz_zapis = string.Empty;
+                    foreach (Obciazenie obc in o.Obciazenia)
+                    {
+                        // znajdź typ obciżenia dla rejestracji kwot
+                        ls_obciaz_zapis = obc.Typ_obciazenia.Trim().ToUpper();
+                        ls_obciaz_zapis = "OS";
+                        if (ls_obciaz_zapis == "OS" || ls_obciaz_zapis == "DE" || ls_obciaz_zapis == "OU" || ls_obciaz_zapis == "OD" || ls_obciaz_zapis == "SD" || ls_obciaz_zapis == "SW" || ls_obciaz_zapis == "SR" || ls_obciaz_zapis == "SN" ||
+                              (ls_oddzial == "ENPL" && (ls_obciaz_zapis == "PS" || ls_obciaz_zapis == "WS" || ls_obciaz_zapis == "PS" || ls_obciaz_zapis == "WP" || ls_obciaz_zapis == "DP" || ls_obciaz_zapis == "NS" || ls_obciaz_zapis == "SN")) ||
+                          (ls_oddzial == "ENSL" && (ls_obciaz_zapis == "DE" || ls_obciaz_zapis == "OU" || ls_obciaz_zapis == "SD" || ls_obciaz_zapis == "SW" || ls_obciaz_zapis == "DE" || ls_obciaz_zapis == "DP" || ls_obciaz_zapis == "PU" || ls_obciaz_zapis == "NS" || ls_obciaz_zapis == "PS" || ls_obciaz_zapis == "PK" || ls_obciaz_zapis == "NK" || ls_obciaz_zapis == "SN")) ||
+                       ((ls_oddzial == "ENKL" || ls_oddzial == "ENKO" || ls_oddzial == "ENEL" || ls_oddzial == "ENOL" || ls_oddzial == "IX" || ls_oddzial.ToUpper() == "KALISZ") && ls_obciaz_zapis.Length > 0))
+                        {
+                            switch (ls_oddzial)
+                            {
+                                case "ENKL":
+                                case "KALISZ":
+                                case "ENKO":
+                                case "ENEL":
+                                case "IX":
+                                case "ENOL":
+                                case "ENTR":
+                                    if (Firma == 1)
+                                    {       // jeśli obrót
+                                        if  (ls_obciaz_zapis.Length>5)
+                                        switch (ls_obciaz_zapis.Substring(0, 6))
+                                        {
+                                            case "206400":
+                                                ls_obciaz_zapis = "ES";
+                                                break;
+                                            case "206024":
+                                                ls_obciaz_zapis = "NS";
+                                                break;
+                                            case "206026":
+                                                ls_obciaz_zapis = "EK";
+                                                break;
+                                            case "206200":
+                                            case "206022":  // '206022' dotyczy tylko koszalina
+                                                ls_obciaz_zapis = "SU";
+                                                break;
+                                            case "206900":
+                                            case "206029":
+
+                                                break;
+                                            default:
+
+                                                Regex rx1 = new Regex(@"^[0-9][0-9][0-9][0-9]-[0-9]-[0-9]");
+                                                Match match1 = rx1.Match(ls_obciaz_zapis);
+                                                if (match1.Success) ls_obciaz_zapis = "OS";
+                                                break;
+                                        }
+                                    }
+                                    else // operator
+                                    {
+                                        switch (ls_obciaz_zapis)
+                                        {
+                                            case "SN":
+                                            case "SR":
+                                            case "SD":
+                                            case "SW":
+                                                ls_obciaz_zapis = "OS";
+                                                break;
+                                            default:
+
+                                                Regex rx1 = new Regex(@"^[0-9][0-9][0-9][0-9]-[0-9]-[0-9]");
+                                                Match match1 = rx1.Match(ls_obciaz_zapis);
+                                                if (match1.Success) ls_obciaz_zapis = "OS";
+                                                break;
+                                        }
+                                    }
+                                    break;
+                                case "ENGD":
+                                    switch (ls_obciaz_zapis)
+                                    {
+                                        case "SD":
+                                        case "SW":
+                                        case "SN":
+                                        case "SR":
+
+                                            ls_obciaz_zapis = "OS";
+                                            break;
+                                        case "OD":
+                                        case "OW":
+
+                                            ls_obciaz_zapis = "OU";
+                                            break;
+                                    }
+                                    break;
+
+
+                                case "ENPL":
+                                    switch (ls_obciaz_zapis)
+                                    {
+                                        case "SD":
+                                        case "SW":
+                                        case "SN":
+                                        case "SR":
+
+                                            ls_obciaz_zapis = "OS";
+                                            break;
+                                        case "OD":
+                                        case "OW":
+
+                                            ls_obciaz_zapis = "OU";
+                                            break;
+
+                                        case "PS":
+                                        case "WS":
+                                        case "NS":
+
+                                            ls_obciaz_zapis = "ES";
+                                            break;
+                                        case "DP":
+                                        case "WP":
+
+                                            ls_obciaz_zapis = "SU";
+                                            break;
+                                        case "ES":
+                                        case "WK":
+                                        case "NK":
+
+                                            ls_obciaz_zapis = "EK";
+                                            break;
+                                    }
+                                    break;
+
+                                case "ENSL":
+
+                                    switch (ls_obciaz_zapis)
+                                    {
+                                        case "NS":
+                                        case "PS":
+
+                                            ls_obciaz_zapis = "ES";
+                                            break;
+                                        case "DP":
+                                        case "DE":
+                                        case "SD":
+                                        case "SW":
+                                        case "SN":
+                                        case "SR":
+
+                                            ls_obciaz_zapis = "OS";
+                                            break;
+                                        case "NK":
+                                        case "PK":
+
+                                            ls_obciaz_zapis = "EK";
+                                            break;
+                                        case "PU":
+
+                                            ls_obciaz_zapis = "SU";
+                                            break;
+                                        case "OD":
+                                        case "OW":
+
+                                            ls_obciaz_zapis = "OU";
+                                            break;
+
+                                    }
+                                    break;
+                            }
+                            break;
+                        }
+                    }
+
+
+
+                    ld_doksie = 0;
+                    ld_doksie_ods = 0;
+                    ld_doksie_kzp = 0;
+                    ld_doksie_klauzula = 0;
+                    ld_doksie_wpis = 0;
+                    ld_doksie_komo = 0;
+                    ld_doksie_koszty = 0;
+                    ld_doksie_inne = 0;
+                    ld_doksie_kza = 0;
+                    bylo_kzp = false;
+                    ll_id_nal = 0;
+                    li_typ_kwt = 0;
+                    ld_rozn_vat_i = 0;
+                    ld_rozn_vat = 0;
+                    ld_rozn_i = 0;
+                    ld_rozn = 0;
+                    ld_pozo_ods = 0;
+                    ld_pozo_wdz = 0;
+                    ld_pozostalosc_vat = 0;
+                    ld_pozostalosc = 0;
+                    //ld_plat_koszt = null;
+                    ld_doksie_wpis2 = 0;
+                    ld_doksie_kzp2 = 0;
+                    ld_plat_koszt = new DateTime(2000, 1, 1);
+                    foreach (Obciazenie obc in o.Obciazenia)
+                    {
+
+                        
+                        ls_typ = obc.Typ_obciazenia.Trim().ToUpper();
+                        ls_typ_oryg = ls_typ;
+                        ls_typ = "OS";
+                        if (ls_typ.Length > 0)
+                        {
+                            // mpaowanie typów
+                            switch (ls_oddzial)
+                            {
+                                case "ENKL":
+                                case "KALISZ":
+                                case "ENKO":
+                                case "IX":
+                                case "ENEL":
+                                case "ENOL":
+                                case "ENTR":
+                                    if (Firma == 1)
+                                    {
+                                        if ( ls_typ.Length > 5 )
+                                        switch (ls_typ.Substring(0, 6))
+                                        {
+                                            case "206400":
+
+                                                ls_typ = "ES";
+                                                break;
+                                            case "206024":
+
+                                                ls_typ = "NS";
+                                                break;
+                                            case "206026":
+
+                                                ls_typ = "EK";
+                                                break;
+
+                                            case "206200":
+                                            case "206022": //  '206022' dotyczy tylko Koszalina
+
+                                                ls_typ = "SU";
+                                                break;
+                                            case "206900":
+                                            case "206029":
+
+                                                ls_typ = ls_obciaz_zapis;
+                                                break;
+                                            default:
+                                                Regex rx1 = new Regex(@"^[0-9][0-9][0-9][0-9]-[0-9]-[0-9]");
+                                                Match match1 = rx1.Match(ls_obciaz_zapis);
+                                                if (match1.Success) ls_typ = "OS";
+                                                break;
+                                        }
+                                    }
+                                    else
+                                        ls_typ = ls_obciaz_zapis;
+                                    switch (ls_typ)
+                                    {
+                                        case "SN":
+                                        case "SR":
+                                        case "SD":
+                                        case "SW":
+                                        case "WF":
+                                        case "W7":
+                                            ls_typ = "OS";
+                                            break;
+                                        default:
+                                            Regex rx1 = new Regex(@"^[0-9][0-9][0-9][0-9]-[0-9]-[0-9]");
+                                            Match match1 = rx1.Match(ls_obciaz_zapis);
+                                            if (match1.Success) ls_typ = "OS";
+                                            break;
+                                    }
+                                    break;
+
+                                case "ENGD":
+
+                                    switch (ls_typ)
+                                    {
+                                        case "SD":
+                                        case "SW":
+                                        case "SN":
+                                        case "SR":
+                                        case "WF":
+                                        case "W7":            
+                                            ls_typ = "OS";
+                                            break;
+                                        case "OD":
+                                        case "OW":
+
+                                            ls_typ = "OU";
+                                            break;
+                                    }
+                                    break;
+                                case "ENPL":
+
+                                    switch (ls_typ)
+                                    {
+                                        case "PS":
+                                        case "WS":
+                                        case "NS":
+
+                                            ls_typ = "ES";
+                                            break;
+                                        case "DP":
+                                        case "WP":
+
+                                            ls_typ = "SU";
+                                            break;
+                                        case "ES":
+                                        case "WK":
+                                        case "NK":
+
+                                            ls_typ = "EK";
+                                            break;
+                                        case "SD":
+                                        case "SW":
+                                        case "SN":
+                                        case "SR":
+                                        case "WF":
+                                        case "W7":
+                                            ls_typ = "OS";
+                                            break;
+                                        case "OD":
+                                        case "OW":
+
+                                            ls_typ = "OU";
+                                            break;
+                                    }
+                                    break;
+                                case "ENSL":
+                                    switch (ls_typ)
+                                    {
+                                        case "NS":
+                                        case "PS":
+
+                                            ls_typ = "ES";
+                                            break;
+                                        case "DP":
+                                        case "DE":
+                                        case "SD":
+                                        case "SW":
+                                        case "SN":
+                                        case "SR":
+                                        case "WF":
+                                        case "W7":
+                                            ls_typ = "OS";
+                                            break;
+                                        case "NK":
+                                        case "PK":
+
+                                            ls_typ = "EK";
+                                            break;
+                                        case "PU":
+
+                                            ls_typ = "SU";
+                                            break;
+                                        case "OD":
+                                        case "OW":
+
+                                            ls_typ = "OU";
+                                            break;
+                                    }
+                                    break;
+                            }
+
+
+                            ld_kwt = obc.Kwota_obciazenia;
+                            ld_vat = obc.Kwota_obciazenia_VAT;
+                            ld_pozo = obc.Kwota_do_zaplaty;
+                            ld_pozo_vat = obc.Kwota_do_zaplaty_VAT;
+                            ls_oddzial = ls_oddzial.ToUpper();
+
+                            if ((ls_typ == "OS" && (ls_oddzial == "ENKO" || ls_oddzial == "ENEL" || ls_oddzial == "ENOL" || ls_oddzial == "ENKL" || ls_oddzial == "IX" || ls_oddzial == "ENKS")) || ((system == "CC&B" || system.ToUpper()=="AUMS" ) && Firma == 1) || ((system == "CC&B" || system.ToUpper() == "SELEN") && Firma == -1))
+
+                            {
+                                ld_kwt = ld_pozo;
+                                ld_vat = ld_pozo_vat;
+
+                            }
+
+                            ls_dokum = obc.Nr_dokumentu;
+                            ls_uwagi = (obc.Nr_faktury ?? "").Truncate(99);
+                            if (ls_dokum == null) ls_dokum = "";
+                            ld_dzien = obc.Data_platnosci;
+                            ld_rozn_vat = ld_vat - ld_pozo_vat;
+                            ld_rozn = ld_kwt - ld_pozo;
+                            ld_rozn_vat_i = ld_vat - ld_pozo_vat;
+                            ld_rozn_i = ld_kwt - ld_pozo;
+                            ld_pozostalosc = ld_kwt;
+                            ld_pozostalosc_vat = ld_vat;
+
+                            if ((ls_oddzial == "ENKL" || ls_oddzial == "ENEL" || ls_oddzial == "ENOL" || ls_oddzial == "ENKO" || ls_oddzial == "IX" || ls_oddzial == "KALISZ" || system.ToUpper()=="AUMS") && Firma == 1)
+                            {
+                                if (!String.IsNullOrWhiteSpace(obc.Rodzaj_obciazenia))
+                                {
+                                    if (obc.Rodzaj_obciazenia.ToUpper().StartsWith("FV"))
+                                    {
+                                        li_typ_kwt = 2;
+                                        ld_pozo_ods = 0;
+                                        ld_pozo_wdz = 0;
+                                    }
+                                    else if (obc.Rodzaj_obciazenia.ToUpper().StartsWith( "NB-")) // wdz
+                                    {
+                                        li_typ_kwt = 43;
+                                        ld_pozo_ods = 0;
+                                        ld_pozo_wdz = ld_pozo;
+                                    }
+                                    else if (obc.Kwota_obciazenia_VAT > 0)  // odsetki skapltalizowane
+                                    {
+                                        li_typ_kwt = 2;
+                                        ld_pozo_ods = 0;
+                                        ld_pozo_wdz = 0;
+                                    }
+                                    else
+                                    {
+                                        li_typ_kwt = 22;
+                                        ld_pozo_ods = ld_pozo;
+                                        ld_pozo_wdz = 0;
+                                    }
+                                }
+                                else
+                                {
+                                    Regex rx1 = new Regex(@"^^[0-9][0-9][0-9][0-9]-[0-9]-[0-9]");
+                                    Match match1 = rx1.Match(ls_obciaz_zapis);
+                                    if (match1.Success)
+                                        ls_naleznosc = ls_typ_oryg.Substring(15, 3);
+                                    else
+                                        ls_naleznosc = ls_typ_oryg.Substring(11, 3);
+                                    switch (ls_naleznosc)
+                                    {
+                                        case "100":
+                                        case "101":
+                                        case "102":  // energia
+                                            li_typ_kwt = 2;
+                                            ld_pozo_ods = 0;
+                                            break;
+                                        case "110":
+                                        case "111":
+                                        case "321":
+                                        case "331":  // odsetki skapitalizowane.
+                                            li_typ_kwt = 22;
+                                            ld_pozo_ods = ld_pozo;
+                                            break;
+                                        case "320":   // nielegalny pobór
+                                            li_typ_kwt = 3;
+                                            ld_pozo_ods = 0;
+                                            break;
+                                        case "201":
+                                        case "202": // koszty 
+                                            li_typ_kwt = 8;   // wpis   li_typ_kwt =  12 - kzp
+                                            goto koszty;
+                                            break;
+                                        case "330":
+                                            // opłaty pozaprądowe
+                                            li_typ_kwt = 3;
+                                            ld_pozo_ods = 0;
+                                            break;
+                                        case "200":  // koszty dla koszalina
+                                            if (ls_oddzial == "ENKO")
+                                            {
+                                                switch (ls_typ_oryg.Substring(0, 6))
+                                                {
+                                                    case "206900":  // kzp i kza 
+                                                        if (bylo_kzp == false)
+                                                        {
+                                                            li_typ_kwt = 12;
+                                                            bylo_kzp = true;
+                                                        }
+                                                        else
+                                                        {
+                                                            li_typ_kwt = 14;
+                                                            ld_doksie_kza += ld_kwt;
+                                                        }
+                                                        ld_plat_koszt = obc.Data_platnosci;
+                                                        goto koszty;
+                                                        break;
+                                                    case "206029":  // wpis
+                                                        li_typ_kwt = 8;
+                                                        ld_pozo_ods = 0;
+                                                        ld_plat_koszt = obc.Data_platnosci;
+                                                        goto koszty;
+                                                        break;
+                                                }
+                                            }  // koszalin
+                                            break;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                if (Firma == 1)   // jeśli obrót 
+                                {
+                                    if (ld_vat != 0 || ls_typ_oryg == "KES")
+                                    {
+                                        li_typ_kwt = 2; // energia
+                                        ld_pozo_ods = 0;
+                                        ld_pozo_wdz = 0;
+                                    }
+                                    else if (ls_typ_oryg == "W7" || ls_typ_oryg == "WF" || ls_typ_oryg == "NWZ")
+                                    {
+                                        li_typ_kwt = 43;   // wdz
+                                        ld_pozo_ods = 0;
+                                        ld_pozo_wdz = ld_pozo;
+
+                                    }
+                                    else if (ls_typ_oryg == "NOT" || ls_typ_oryg == "KNO")
+                                    {
+                                        li_typ_kwt = 22;   // odsetki skapitalizowane
+                                        ld_pozo_ods = ld_pozo;
+                                        ld_pozo_wdz = 0;
+                                    }
+                                    else if (system.ToUpper() == "SELEN")
+                                    {
+                                        if ((ls_dokum.Contains("/WO/")) && ld_vat == 0)
+                                        {
+
+                                            li_typ_kwt = 22;   // odsetki skapitalizowane
+                                            ld_pozo_ods = ld_pozo;
+                                            ld_pozo_wdz = 0;
+                                        }
+                                    }
+                                    else if (ld_vat == 0)
+                                    {
+
+                                        if (ls_dokum.Contains("/FES/"))
+                                        {
+                                            li_typ_kwt = 2;
+                                            ld_pozo_ods = 0;
+                                            ld_pozo_wdz = 0;
+                                        }
+                                        else
+                                        {
+                                            ld_pozo_ods = ld_pozo;
+                                            li_typ_kwt = 22;   // odsetki skapitalizowane
+                                            ld_pozo_wdz = 0;
+                                        }
+
+                                        
+                                    }
+                                }
+                                else  // operator
+                                {        // sprawdzenie po dokumencie
+                                    if (li_ksiega == 2 || ls_typ_oryg == "NS" || ls_typ_oryg == "NK" || ls_typ_oryg == "SR" || ls_typ_oryg == "SW" || ls_typ_oryg == "SN")     // nielegalny pobór
+                                    {
+                                        if (system.ToUpper() == "SELEN")
+                                        {
+                                            if ((ls_dokum.Contains("/NP/0/") || ls_dokum.Contains("/FT/0/")) && ld_vat == 0)
+                                            {
+
+                                                li_typ_kwt = 22;   // odsetki skapitalizowane
+                                                ld_pozo_ods = ld_pozo;
+                                            }
+                                            else if (ls_dokum.Contains("/FT/") || ls_dokum.Contains("/FC/") || ls_dokum.Contains("/FR/") || ls_dokum.Contains("/FK/") || ls_dokum.Contains("/FN/"))
+                                            { // opłata pozaprądowa
+
+                                                li_typ_kwt = 35;
+                                                ld_pozo_ods = 0;
+                                            }
+                                            else if (ls_dokum.Contains("/FP/"))
+                                            {
+                                                li_typ_kwt = 34;
+                                                ld_pozo_ods = 0;
+
+                                            }
+                                            else if (ls_dokum.Contains("/NPE/") || ls_dokum.Contains("/0/NPE/"))
+                                            {
+                                                li_typ_kwt = 3;
+                                                ld_pozo_ods = 0;
+                                            }
+                                            else if (ld_vat > 0)
+                                            {
+                                                li_typ_kwt = 44;   // odsetki skapitalizowane
+                                                ld_pozo_ods = 0;
+                                            }
+                                            else
+                                            {
+                                                li_typ_kwt = 22;   // odsetki skapitalizowane
+                                                ld_pozo_ods = ld_pozo;
+                                            }
+
+                                        }
+
+                                        else if (ls_typ_oryg == "SR" && system != "CC&B")
+                                        {
+                                            li_typ_kwt = 34;
+                                            ld_pozo_ods = 0;
+                                        }
+                                        else if (system == "CC&B" && ld_vat > 0)
+                                        {
+                                            li_typ_kwt = 44;
+                                            ld_pozo_ods = 0;
+                                        }
+                                        else if (ls_dokum.Contains("NPE"))
+                                        {
+                                            li_typ_kwt = 3;
+                                            ld_pozo_ods = 0;
+                                        }
+                                        else if (ls_dokum.Contains("/EE/"))
+                                        {
+                                            li_typ_kwt = 22;   // odsetki skapitalizowane
+                                            ld_pozo_ods = ld_pozo;
+                                        }
+                                        else if (ls_oddzial == "ENPL")
+                                        {
+                                            li_typ_kwt = 3;
+                                            ld_pozo_ods = 0;
+                                        }
+                                        else if (system == "CC&B" && ld_vat == 0)
+                                        {
+
+                                               // odsetki skapitalizowane
+                                            if (ls_dokum.Contains("/FES/"))
+                                            {
+                                                li_typ_kwt = 2;
+                                                ld_pozo_ods = 0;
+                                            }
+                                            else
+                                            {
+                                                ld_pozo_ods = ld_pozo;
+                                                li_typ_kwt = 22;   // odsetki skapitalizowane
+                                            }
+                                            
+                                        }
+                                        else
+                                        {
+                                            li_typ_kwt = 2;
+                                            ld_pozo_ods = 0;
+                                        }
+
+                                    }
+                                    else if (li_ksiega == 1 && ls_typ_oryg == "SD" && !ls_dokum.Contains("/NOT/"))
+                                    {
+                                        li_typ_kwt = 44;
+                                        ld_pozo_ods = 0;
+
+                                    }
+                                    else
+
+                                       if (ld_vat != 0)
+                                    {
+                                        if (system == "AUMS" || system == "CC&B")
+                                            li_typ_kwt = 44;
+                                        else
+                                            li_typ_kwt = 2;
+                                        ld_pozo_ods = 0;
+                                    }
+                                    else
+                                    {
+                                        li_typ_kwt = 22;   // odsetki skapitalizowane
+                                        if (ls_dokum.Contains("/FES/"))
+                                        {
+                                            li_typ_kwt = 2;
+                                            ld_pozo_ods = 0;
+                                        }
+                                        else
+                                        {
+                                            ld_pozo_ods = ld_pozo;
+                                            li_typ_kwt = 22;   // odsetki skapitalizowane
+                                        }
+                                    }
+
+                                }
+
+                            }   // ls_oddzial = ENKL
+                            if (ls_obciaz_zapis == ls_typ)
+                            {
+                        
+                                naleznosc nal = new WienaDB.Models.naleznosc();
+                                nal.id_sprawy = ll_id_spr;
+                                if (Firma == 1 && li_typ_kwt == 0)
+                                    li_typ_kwt = 2; // energia jeśli nie ma nic innego
+
+                                if (Firma == 1 && li_typ_kwt == 2)
+                                {
+
+                                    if (!string.IsNullOrWhiteSpace(ls_dokum) && (  ls_dokum.Contains("/FWE/") || ls_dokum.Contains("/KWE/")))
+                                    {
+                                        li_typ_kwt = 53; // opłata za wznowienie
+
+                                    }
+
+                                }
+                                nal.id_typ_nal = li_typ_kwt;
+                                nal.kwota = ld_kwt;
+                                if (obc.Data_wystawienia_dokumentu != null && obc.Data_wystawienia_dokumentu > new DateTime(1900, 1, 1))
+                                    nal.data_fv = obc.Data_wystawienia_dokumentu;
+                                nal.data_n = ld_dzien;
+                                //if (Firma == 1 && (li_typ_kwt == 22 || li_typ_kwt == 43))
+                                //    nal.czy_proc = false;
+                                //else
+                                if (Firma == 1 && li_typ_kwt == 22)
+                                    nal.czy_proc = false;
+                                else
+                                    nal.czy_proc = true; ;
+                                nal.uwagi = "";
+                                nal.tytul = ls_dokum;
+                                nal.vat = ld_vat;
+                                if (!String.IsNullOrWhiteSpace(obc.Nr_KSEF))
+                                {
+                                    DateTime d_wys = obc.Data_wys_KSEF;
+                                    DateTime? d_prz = obc.Data_prz_KSEF;
+
+                                    nal.uwagi = "#" + obc.Nr_KSEF + "#" + "\r\n#" + (d_prz != null && d_prz > new DateTime(2020, 1, 1) ? d_prz.Value.ToString("yyyy-MM-dd") : "") + "#";
+                                    nal.Nr_KSEF = obc.Nr_KSEF;
+                                    nal.Data_prz_KSEF = obc.Data_prz_KSEF;
+                                    //nal.Data_wys_KSEF = obc.Data_wys_KSEF;
+
+                                }
+                                try
+                                {
+                                    context.naleznosc.Add(nal);
+                                    context.SaveChanges();
+                                }
+                                /*
+                                catch (OptimisticConcurrencyException) {
+                                context.Refresh(RefreshMode.ClientWins, db.Articles);
+                                 context.SaveChanges();
+                                }
+                                */
+                                catch (Exception e6)
+                                {
+                                    this.ErrMsg = "Błąd podczas dodawania należnosci " + e6.Message + (e6.InnerException != null ? e6.InnerException.Message:"");
+                                    Utils.LogWriter(this.ErrMsg);
+                                    return false;
+                                }
+                                if (Firma == -1 && (obc.Kogeneracyjna > 0 || obc.OZE > 0 || obc.Przejsciowa > 0 || obc.Mocowa > 0))
+                                {
+                                    try
+                                    {
+                                        SqlParameter parameter1 = new SqlParameter("@IdNal", nal.ident);
+                                        SqlParameter parameter2 = new SqlParameter("@OZE", obc.OZE);
+                                        SqlParameter parameter3 = new SqlParameter("@Przejsciowa", obc.Przejsciowa);
+                                        SqlParameter parameter4 = new SqlParameter("@Kogeneracyjna", obc.Kogeneracyjna);
+                                        SqlParameter parameter5 = new SqlParameter("@Mocowa", obc.Mocowa);
+                                        context.Database.ExecuteSqlCommand("exec USP_UpdateNalOZE @IdNal,@OZE,@Przejsciowa,@Kogeneracyjna,@Mocowa ", parameter1, parameter2, parameter3, parameter4, parameter5) ;
+                                    }
+                                    catch (Exception exx)
+                                    {
+                                        ;
+                                    }
+                                }
+                                ll_id_nal = nal.ident;
+                                if (li_typ_kwt != 8 && li_typ_kwt != 12 && li_typ_kwt != 14  ) //&& // !(Firma== 1 && (li_typ_kwt == 22 || li_typ_kwt == 43)))
+                                {
+                                    if (system == "CC&B"  && li_typ_kwt != 22 && li_typ_kwt != 43  && ld_dzien > new DateTime(2017, 9, 1))
+                                    {
+                                        if (obc.Id_sprawy > 0)
+                                        {
+                                            if (datyWymag[obc.Id_sprawy.Value] != null)
+                                            {
+                                                if (ld_dzien <= datyWymag[obc.Id_sprawy.Value])
+                                                {
+                                                    ld_dzien = datyWymag[obc.Id_sprawy.Value];
+                                                }
+                                            }
+
+                                        }
+                                        else
+                                        {
+                                            if (ld_dzien <= ld_last_nota)
+                                            {
+                                                ld_dzien = ld_last_nota;
+                                            }
+                                        }
+                                    }
+                                    ld_dzien = ld_dzien.Date.AddDays(1);
+                                    ods_sprawy ospr = new WienaDB.Models.ods_sprawy();
+                                    ospr.id_nal = ll_id_nal;
+                                    if (li_typ_kwt == 22 || li_typ_kwt == 43)
+                                        ospr.id_typ_ods = 8;
+                                    else
+                                        ospr.id_typ_ods = si.CzyUstawowe > 0 ? si.CzyUstawowe : 2; 
+
+                                    ospr.data_p = ld_dzien;
+                                    ospr.kod = "a";
+                                    if (Firma == 1 && li_typ_kwt == 22)
+                                    {
+                                        ;
+                                    }
+                                    else
+                                    {
+                                        context.ods_sprawy.Add(ospr);
+                                    }
+                                    context.SaveChanges();
+
+                                } // typ_nal <> 8 .....	
+                            } // dla należności
+
+                           
+                            koszty:
+                            if ((ls_oddzial == "ENKL" || ls_oddzial == "ENEL" || ls_oddzial == "ENOL" || (ls_oddzial == "ENKO" && li_typ_kwt == 8) || ls_oddzial == "KALISZ" || ls_oddzial == "IX") && (li_typ_kwt == 8 || li_typ_kwt == 12))
+                            {
+                                if (ls_typ == "EK")
+                                    ld_doksie_wpis2 += ld_kwt;
+                                else
+                                    ld_doksie_wpis += ld_kwt;
+
+                                if (ld_plat_koszt == null || ld_plat_koszt.Date < new DateTime(2000, 10, 1))
+                                {
+                                    ld_plat_koszt = obc.Data_platnosci;
+                                }
+                                ld_doksie_koszty += ld_kwt;
+                            }
+                            else if (ls_oddzial == "ENKO" && li_typ_kwt == 12)
+                            { // kzp 
+                                if (ls_typ == "EK")
+                                    ld_doksie_kzp2 += ld_kwt;
+                                else
+                                    ld_doksie_kzp += ld_kwt;
+
+                                if (ld_plat_koszt == null || ld_plat_koszt < new DateTime(2000, 10, 1)) ld_plat_koszt = obc.Data_platnosci;
+                            }
+                            else
+                                switch (ls_typ)
+                                {
+                                    case "NS":
+                                        ld_obciaz_NS += ld_pozo;
+                                        ld_obciaz_NS_vat += ld_pozo_vat;
+                                        ld_ods_NS += ld_pozo_ods;
+                                        ile_obciaz += 1;
+                                        if (typ_konta < 3) typ_konta = 3;
+                                        break;
+                                    case "ES":
+                                        ld_obciaz_ES += ld_pozo;
+                                        ld_obciaz_ES_vat += ld_pozo_vat;
+                                        ld_ods_ES += ld_pozo_ods;
+                                        ile_obciaz += 1;
+                                        if (typ_konta < 2) typ_konta = 2;
+                                        break;
+                                    case "EA":
+                                        ld_obciaz_EA += ld_pozo;
+                                        ld_obciaz_EA_vat += ld_pozo_vat;
+                                        ld_ods_EA += ld_pozo_ods;
+                                        ile_obciaz += 1;
+                                        if (typ_konta < 4) typ_konta = 4;
+                                        break;
+                                    case "OS":
+                                    case "DE":
+                                    case "SR":
+                                    case "DP":
+                                    case "SD":
+                                    case "SW":
+                                    case "SN":
+                                         ld_obciaz_OS += ld_pozo;
+                                        ld_obciaz_OS_vat += ld_pozo_vat;
+                                        ld_ods_OS += ld_pozo_ods;
+                                        ld_WDZ += ld_pozo_wdz;
+                                        ile_obciaz += 1;
+                                        if (typ_konta < 1) typ_konta = 1;
+                                        break;
+                                    case "OU":
+                                        ld_obciaz_OU += ld_pozo;
+                                        ld_obciaz_OU_vat += ld_pozo_vat;
+                                        ld_ods_OU += ld_pozo_ods;
+                                        ile_obciaz += 1;
+                                        if (typ_konta < 5) typ_konta = 6;
+                                        break;
+                                    case "EK":
+                                        ld_obciaz_EK += ld_pozo;
+                                        ld_obciaz_EK_vat += ld_pozo_vat;
+                                        ld_ods_EK += ld_pozo_ods;
+                                        ile_obciaz += 1;
+                                        if (typ_konta < 5) typ_konta = 5;
+                                        break;
+                                    case "SU":
+                                        ld_obciaz_SU += ld_pozo;
+                                        ld_obciaz_SU_vat += ld_pozo_vat;
+                                        ld_ods_SU += ld_pozo_ods;
+                                        ile_obciaz += 1;
+                                        if (typ_konta < 7) typ_konta = 7;
+                                        break;
+                                    case "U4":
+                                        ld_doksie_ods += ld_pozo;
+                                        break;
+                                    case "U1":
+                                        ld_doksie_kzp += ld_pozo;
+                                        ld_doksie_koszty += ld_pozo;
+                                        break;
+                                    case "U2":
+                                        ld_doksie_wpis += ld_pozo;
+                                        ld_doksie_koszty += ld_pozo;
+                                        break;
+                                    case "U3":
+                                        ld_doksie_klauzula += ld_pozo;
+                                        ld_doksie_koszty += ld_pozo;
+                                        break;
+                                    default:
+                                        this.ErrMsg = "Nieznany rodzaj obciążenia " + ls_typ;
+                                        return false;
+                                }
+
+
+                        } //len(ls_typ >  0 
+                        if ((ls_oddzial == "ENKL" || ls_oddzial == "ENEL" || ls_oddzial == "ENOL" || ls_oddzial == "IX" || ls_oddzial == "ENKO") && li_typ_kwt != 8 && li_typ_kwt != 12 && li_typ_kwt != 14 && !(system == "CC&B" && Firma == -1))   // wczytaj wpłaty dla nie  kosztów
+                        {
+                            if (obc.Wplaty != null)
+                            {
+                                foreach (LexEnaTrs.Web.Models.Wplata wpl in obc.Wplaty)
+                                {
+                                    ls_konto_wpl = wpl.Nr_konta;
+                                    ld_data_wpl = wpl.Data_wplaty;
+                                    ld_wpl = wpl.Kwota_wplaty;
+                                    if ((ls_konto_wpl.Length > 0 && ls_konto_wpl.Substring(0, 5) != "2002-") || Firma == -1)
+                                    {
+
+                                        int ll_id_wpl;
+                                        decimal ld_vatx;
+                                        if (ld_wpl == ld_rozn_i)
+                                        {
+                                            ld_vatx = ld_rozn_vat_i;
+                                        }
+                                        else
+                                        {
+                                            if (ld_rozn == 0)
+                                            {
+                                                this.ErrMsg = "Błąd podczas importu wpłat";
+                                                return false;
+                                            }
+
+                                            ld_vatx = Math.Round((ld_wpl / ld_rozn) * ld_rozn_vat, 2);
+                                            ld_rozn_vat_i = ld_rozn_vat_i - ld_vatx;
+                                            ld_rozn_i = ld_rozn_i - ld_wpl;
+                                        }
+                                        //if len(ls_typ) > 0 then  ld_vat 
+                                        wplata w = new WienaDB.Models.wplata();
+                                        w.id_sprawy = ll_id_spr;
+                                        w.id_kto = 1;
+                                        w.kwota = ld_wpl;
+                                        w.data_w = ld_data_wpl;
+                                        w.algo = 6;
+                                        w.uwagi = "import z billingu";
+                                        w.id_dluz = ll_id_dluz;
+                                        w.nr_dowodu = ls_konto_wpl;
+                                        try
+                                        {
+                                            context.wplata.Add(w);
+                                            context.SaveChanges();
+                                        }
+                                        catch (Exception e7)
+                                        {
+                                            this.ErrMsg = "Błąd zapisu wpłaty " + e7.Message;
+                                            return false;
+                                        }
+                                        ll_id_wpl = w.ident;
+                                        wplata_podz wp = new WienaDB.Models.wplata_podz();
+                                        wp.id_wplaty = ll_id_wpl;
+                                        wp.id_nal = ll_id_nal;
+                                        wp.spl_kap = ld_wpl;
+                                        wp.spl_ods = 0;
+                                        wp.zal_kap = ld_pozostalosc;
+                                        wp.zal_ods = 0;
+                                        wp.spl_vat = ld_vatx;
+                                        wp.zal_vat = ld_pozostalosc_vat;
+                                        try
+                                        {
+                                            context.wplata_podz.Add(wp);
+                                            context.SaveChanges();
+                                        }
+                                        catch (Exception e8)
+                                        {
+                                            this.ErrMsg = "Błąd zapisu  wpłata - podział " + e8.Message;
+                                            return false;
+                                        }
+                                        ld_pozostalosc = ld_pozostalosc - ld_wpl;
+                                        ld_pozostalosc_vat = ld_pozostalosc_vat - ld_vatx;
+                                        czywplata = 1;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    // dokończenie
+                    // dodanie zleceń księgowych
+                    if (ld_obciaz_NS > 0 || typ_konta == 3)
+                    {
+                        ksiegowanie = new struct_ksiegowanie();
+                        ksiegowanie.id_sprawy = ll_id_spr;
+                        ksiegowanie.data = ad_dzien;
+                        ksiegowanie.mode = 1;
+                        ksiegowanie.dowod = as_dowod;
+                        ksiegowanie.energia = ld_obciaz_NS;
+                        ksiegowanie.ods_kapital = ld_ods_NS;
+                        ksiegowanie.vat = ld_obciaz_NS_vat;
+                        ksiegowanie.koszty = ld_doksie_koszty;
+                        ksiegowanie.winien = ld_obciaz_NS + ld_doksie_koszty + ld_doksie_ods;
+                        ksiegowanie.kzp = ld_doksie_kzp;
+                        ksiegowanie.wpis = ld_doksie_wpis;
+                        ksiegowanie.klauzula = ld_doksie_klauzula;
+                        ksiegowanie.odsetki = ld_doksie_ods;
+                        ksiegowanie.id_schematu = (Firma == -1 ? 29 : 17);
+                        f_zaksieguj("2442110", ksiegowanie, as_dowod, ll_id_spr, Firma, context);
+                    }
+
+
+                    if (ld_obciaz_OS > 0 || typ_konta == 1)
+                    {
+                        ksiegowanie = new struct_ksiegowanie();
+                        ksiegowanie.id_sprawy = ll_id_spr;
+                        ksiegowanie.data = ad_dzien;
+                        ksiegowanie.mode = 1;
+                        ksiegowanie.dowod = as_dowod;
+                        ksiegowanie.energia = ld_obciaz_OS;
+                        ksiegowanie.ods_kapital = ld_ods_OS;
+                        ksiegowanie.wdz = ld_WDZ;
+                        ksiegowanie.ods_naliczone = 0;
+                        ksiegowanie.vat = ld_obciaz_OS_vat;
+                        ksiegowanie.winien = ld_obciaz_OS + ld_doksie_koszty + ld_doksie_ods;
+                        ksiegowanie.koszty = ld_doksie_koszty;
+                        ksiegowanie.kzp = ld_doksie_kzp;
+                        ksiegowanie.wpis = ld_doksie_wpis;
+                        ksiegowanie.klauzula = ld_doksie_klauzula;
+                        ksiegowanie.id_schematu = (Firma == -1 ? 67 : 12);
+                        f_zaksieguj("2440001", ksiegowanie, as_dowod, ll_id_spr, Firma, context);
+                        // ustawienie statusu sprawy
+                        ll_id_status = context.status.Where(a => a.nazwa.Contains("oczek") && a.nazwa.Contains("post") && a.nazwa.Contains("dowego") && a.etap == 1 && a.czyus == 0).Select(a => a.ident).FirstOrDefault();
+                        if (ll_id_status > 0)
+                        {
+                            status_spr ssp = new WienaDB.Models.status_spr();
+                            ssp.id_sprawy = ll_id_spr;
+                            ssp.id_statusu = ll_id_status;
+                            ssp.czyus = 0;
+                            ssp.od_dnia = ad_dzien;
+                            try
+                            {
+                                context.status_spr.Add(ssp);
+                                context.SaveChanges();
+                            }
+                            catch (Exception ex)
+                            {
+                                Utils.LogWriter("Błąd podczas zapisu statusu " + ex.Message);
+                                this.ErrMsg = "Błąd podczas zapisu statusu " + ex.Message;
+                            }
+
+                        }
+                    }
+
+
+                    if (ld_obciaz_ES > 0 || typ_konta == 2)
+                    {
+                        ksiegowanie = new struct_ksiegowanie();
+                        ksiegowanie.id_sprawy = ll_id_spr;
+                        ksiegowanie.data = ad_dzien;
+                        ksiegowanie.mode = 1;
+                        ksiegowanie.dowod = as_dowod;
+                        ksiegowanie.energia = ld_obciaz_ES;
+                        ksiegowanie.ods_kapital = ld_ods_ES;
+                        ksiegowanie.vat = ld_obciaz_ES_vat;
+                        ksiegowanie.winien = ld_obciaz_ES + ld_doksie_koszty + ld_doksie_ods;
+                        ksiegowanie.kzp = ld_doksie_kzp;
+                        ksiegowanie.wpis = ld_doksie_wpis;
+                        ksiegowanie.klauzula = ld_doksie_klauzula;
+                        ksiegowanie.koszty = ld_doksie_koszty;
+                        ksiegowanie.inne_sad = ld_doksie_inne;
+                        ksiegowanie.komo = ld_doksie_komo;
+                        ksiegowanie.id_schematu = (Firma == -1 ? 28 : 13);
+                        f_zaksieguj("2440010", ksiegowanie, as_dowod, ll_id_spr, Firma, context);
+                    }
+
+
+                    if (ld_obciaz_EK > 0 || typ_konta == 5)
+                    {
+                        ksiegowanie = new struct_ksiegowanie();
+                        ksiegowanie.id_sprawy = ll_id_spr;
+                        ksiegowanie.data = ad_dzien;
+                        ksiegowanie.mode = 1;
+                        ksiegowanie.dowod = as_dowod;
+                        ksiegowanie.energia = ld_obciaz_EK;
+                        ksiegowanie.ods_kapital = ld_ods_EK;
+                        ksiegowanie.vat = ld_obciaz_EK_vat;
+                        ksiegowanie.winien = ld_obciaz_EK + ld_doksie_koszty + ld_doksie_ods;
+                        ksiegowanie.kzp = ld_doksie_kzp2;
+                        ksiegowanie.wpis = ld_doksie_wpis2;
+                        ksiegowanie.klauzula = 0;//ld_doksie_klauzula2;
+                        ksiegowanie.odsetki = ld_doksie_ods;
+                        ksiegowanie.koszty = ld_doksie_koszty;
+                        ksiegowanie.inne_sad = ld_doksie_inne;
+                        ksiegowanie.komo = ld_doksie_komo;
+                        ksiegowanie.id_schematu = (Firma == -1 ? 30 : 19);
+                        f_zaksieguj("2442170", ksiegowanie, as_dowod, ll_id_spr, Firma, context);
+                    }
+
+                    if (ld_obciaz_OU > 0 || typ_konta == 6)
+                    {
+                        ksiegowanie = new struct_ksiegowanie();
+                        ksiegowanie.id_sprawy = ll_id_spr;
+                        ksiegowanie.data = ad_dzien;
+                        ksiegowanie.mode = 1;
+                        ksiegowanie.dowod = as_dowod;
+                        ksiegowanie.energia = ld_obciaz_OU;
+                        ksiegowanie.ods_kapital = ld_ods_OU;
+                        ksiegowanie.vat = ld_obciaz_OU_vat;
+                        ksiegowanie.odsetki = ld_doksie_ods;
+                        ksiegowanie.koszty = ld_doksie_koszty;
+                        ksiegowanie.winien = ld_obciaz_OU + ld_doksie_koszty + ld_doksie_ods;
+                        ksiegowanie.inne_sad = ld_doksie_inne;
+                        ksiegowanie.komo = ld_doksie_komo;
+                        ksiegowanie.id_schematu = (Firma == -1 ? 46 : 8);
+                        f_zaksieguj("2440002", ksiegowanie, as_dowod, ll_id_spr, Firma, context);
+                        ll_id_status = context.status.Where(a => a.nazwa.Contains("oczek") && a.nazwa.Contains("post") && a.nazwa.Contains("upad") && a.etap == 3 && a.czyus == 0).Select(a => a.ident).FirstOrDefault();
+                        if (ll_id_status > 0)
+                        {
+                            status_spr ssp = new WienaDB.Models.status_spr();
+                            ssp.id_sprawy = ll_id_spr;
+                            ssp.id_statusu = ll_id_status;
+                            ssp.czyus = 0;
+                            ssp.od_dnia = ad_dzien;
+                            try
+                            {
+                                context.status_spr.Add(ssp);
+                                context.SaveChanges();
+                            }
+                            catch (Exception ex)
+                            {
+                                Utils.LogWriter("Błąd podczas zapisu statusu " + ex.Message);
+                                this.ErrMsg = "Błąd podczas zapisu statusu " + ex.Message;
+                            }
+
+                        }
+                    }
+                    if (ld_obciaz_SU > 0 || typ_konta == 7)
+                    {
+                        ksiegowanie = new struct_ksiegowanie();
+                        ksiegowanie.id_sprawy = ll_id_spr;
+                        ksiegowanie.data = ad_dzien;
+                        ksiegowanie.mode = 1;
+                        ksiegowanie.dowod = as_dowod;
+                        ksiegowanie.energia = ld_obciaz_SU;
+                        ksiegowanie.ods_kapital = ld_ods_SU;
+                        ksiegowanie.vat = ld_obciaz_SU_vat;
+                        ksiegowanie.winien = ld_obciaz_SU + ld_doksie_koszty + ld_doksie_ods;
+                        ksiegowanie.kzp = ld_doksie_kzp;
+                        ksiegowanie.wpis = ld_doksie_wpis;
+                        ksiegowanie.klauzula = ld_doksie_klauzula;
+                        ksiegowanie.odsetki = ld_doksie_ods;
+                        ksiegowanie.koszty = ld_doksie_koszty;
+                        ksiegowanie.inne_sad = ld_doksie_inne;
+                        ksiegowanie.komo = ld_doksie_komo;
+                        ksiegowanie.id_schematu = (Firma == -1 ? 4 : 50);
+                        f_zaksieguj("2440030", ksiegowanie, as_dowod, ll_id_spr, Firma, context);
+                    }
+
+
+                    if (ld_obciaz_EA > 0 || typ_konta == 4)
+                    {
+                        ksiegowanie = new struct_ksiegowanie();
+                        ksiegowanie.id_sprawy = ll_id_spr;
+                        ksiegowanie.data = ad_dzien;
+                        ksiegowanie.mode = 1;
+                        ksiegowanie.dowod = as_dowod;
+                        ksiegowanie.energia = ld_obciaz_EA;
+                        ksiegowanie.ods_kapital = ld_ods_EA;
+                        ksiegowanie.vat = ld_obciaz_EA_vat;
+                        ksiegowanie.winien = ld_obciaz_EA + ld_doksie_koszty + ld_doksie_ods;
+                        ksiegowanie.kzp = ld_doksie_kzp2;
+                        ksiegowanie.wpis = ld_doksie_wpis2;
+                        ksiegowanie.klauzula = 0;
+                        ksiegowanie.odsetki = ld_doksie_ods;
+                        ksiegowanie.koszty = ld_doksie_koszty;
+                        ksiegowanie.inne_sad = ld_doksie_inne;
+                        ksiegowanie.komo = ld_doksie_komo;
+                        f_zaksieguj("2442160", ksiegowanie, as_dowod, ll_id_spr, Firma, context);
+
+                    }
+
+
+
+                }
+
+                return true;
+
+            }
+            catch (Exception exp)
+            {
+                this.ErrMsg = "Ogólny błąd importu " + exp.Message;
+                Utils.LogWriter(this.ErrMsg);
+
+                return false;
+            }
+        }
+    }
+}

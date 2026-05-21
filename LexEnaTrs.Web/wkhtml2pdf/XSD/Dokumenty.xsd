@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:curr="http://www.e-sad.gov.pl/epu" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.e-sad.gov.pl/epu" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xml:lang="pl">
+    <xsd:include schemaLocation="TypyDanych.xsd"/>
+    <xsd:element name="DokumentyEPU">
+        <xsd:annotation>
+            <xsd:documentation>Paczka pism procesowych w elektronicznym postępowaniu upominawczym</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:choice>
+                <xsd:sequence>
+                    <xsd:element name="SprzeciwEPU" type="curr:SprzeciwEPU" maxOccurs="unbounded"/>
+                </xsd:sequence>
+                <xsd:sequence>
+                    <xsd:element name="SkargaEPU" type="curr:SkargaEPU" maxOccurs="unbounded"/>
+                </xsd:sequence>
+                <xsd:sequence>
+                    <xsd:element name="ZazalenieEPU" type="curr:ZazalenieEPU" maxOccurs="unbounded"/>
+                </xsd:sequence>
+                <xsd:sequence>
+                    <xsd:element name="DokumentEPU" type="curr:DokumentEPU" maxOccurs="unbounded"/>
+                </xsd:sequence>
+            </xsd:choice>
+            <xsd:attribute name="OznaczeniePaczki" type="curr:typNazwa60" use="required">
+                <xsd:annotation>
+                    <xsd:documentation>Oznaczenie paczki nadawane przez powoda masowego używane jako kryterium wyszukiwania.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+        </xsd:complexType>
+    </xsd:element>
+    
+    <xsd:complexType name="SprzeciwEPU">
+        <xsd:annotation>
+            <xsd:documentation>Sprzeciw od nakazu w elektronicznym postępowaniu upominawczym </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="Nakaz" type="curr:typNakaz"/>
+            <xsd:element name="DataSprzeciwu" type="xsd:dateTime"/>
+            <xsd:element name="OsobaSkladajaca" type="curr:typSkladajacy" minOccurs="0"/>
+            <xsd:element name="ListaPozwanych" type="curr:typListaPozwanych"/>
+            <xsd:element name="Tresc" type="curr:typTekstowy" nillable="false" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="SkargaEPU">
+        <xsd:annotation>
+            <xsd:documentation>Skarga w elektronicznym postępowaniu upominawczym </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="Orzeczenie" type="curr:typOrzeczenie"/>
+            <xsd:element name="DataSkargi" type="xsd:dateTime"/>
+            <xsd:element name="OsobaSkladajaca" type="curr:typSkladajacy" minOccurs="0"/>
+            <xsd:element name="ListaPowodow" type="curr:typListaPowodow" minOccurs="0"/>
+            <xsd:element name="ListaPozwanych" type="curr:typListaPozwanych" minOccurs="0"/>
+            <xsd:element name="Tresc" type="curr:typTekstowy" nillable="false" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ZazalenieEPU">
+        <xsd:annotation>
+            <xsd:documentation>Zazalenie w elektronicznym postępowaniu upominawczym </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="Orzeczenie" type="curr:typOrzeczenie"/>
+            <xsd:element name="DataZazalenia" type="xsd:dateTime"/>
+            <xsd:element name="OsobaSkladajaca" type="curr:typSkladajacy" minOccurs="0"/>
+            <xsd:element name="ListaPowodow" type="curr:typListaPowodow" minOccurs="0"/>
+            <xsd:element name="ListaPozwanych" type="curr:typListaPozwanych" minOccurs="0"/>
+            <xsd:element name="Tresc" type="curr:typTekstowy" nillable="false" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="DokumentEPU">
+        <xsd:annotation>
+            <xsd:documentation>Dokument / Pismo / Wniosek / Odpowiedź na wezwanie w elektronicznym postępowaniu upominawczym </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="IDSprawy" type="xsd:unsignedLong"/>
+            <xsd:element name="Sygnatura" type="curr:typNazwa120"/>
+            <xsd:element name="IDDoreczenia" type="xsd:unsignedLong" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Identyfikator doręczenia odpisu decyzji. Składany dokument stanowi odpowiedź  na doręczenie o podanym IDDoreczenia. Wymagane dla rodzaju = 5 </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="DataZlozenia" type="xsd:dateTime"/>
+            <xsd:element name="Rodzaj" type="curr:typWybor3_6">
+                <xsd:annotation>
+                    <xsd:documentation> 3 - pismo 4 - wniosek 5 - uzupełnienie adresu 6- uzupełnienie braków</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="Przedmiot" type="curr:typTekstowy" minOccurs="0"/>
+            <xsd:element name="OsobaSkladajaca" type="curr:typSkladajacy" minOccurs="0"/>
+            <xsd:element name="ListaPowodow" type="curr:typListaPowodow" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Zawiera tylko powodów w imieniu których osoba składająca składa pismo / dokument.     </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="ListaPozwanych" type="curr:typListaPozwanych" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Zawiera tylko pozwanych, których dotyczy składane pismo</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="Tresc" type="curr:typTekstowy" nillable="false" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,563 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{14CA606D-F850-45AF-9127-59BD016C333C}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LexEnaTrs.Web</RootNamespace>
+    <AssemblyName>LexEnaTrs.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <SilverlightApplicationList>{1BD69374-9B41-436D-B0BD-4B2D30818C3A}|..\LexEnaTrs\LexEnaTrs.csproj|ClientBin|False</SilverlightApplicationList>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DeployIisAppPath>Default Web Site/LexEna</DeployIisAppPath>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DeployIisAppPath>Default Web Site/LexEna</DeployIisAppPath>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto">
+      <HintPath>..\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.7.2.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.7.2\lib\net40\DocumentFormat.OpenXml.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Excel, Version=2.1.2.3, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelDataReader.2.1.2.3\lib\net20\Excel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GenericParsing, Version=1.1.3.20921, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\GenericParsing.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\lib\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ionic.Zip.1.9.1.8\lib\Ionic.Zip.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NReco.PdfGenerator">
+      <HintPath>..\lib\NReco.PdfGenerator.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp">
+      <HintPath>..\lib\PdfSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpCompress, Version=0.19.2.0, Culture=neutral, PublicKeyToken=afb0a02973931d96, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpCompress.0.19.2\lib\net45\SharpCompress.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.DomainServices.EntityFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ServiceModel.DomainServices.Server" />
+    <Reference Include="System.ServiceModel.DomainServices.Hosting" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Telerik.Reporting.OpenXmlRendering, Version=10.2.16.1025, Culture=neutral, PublicKeyToken=a9d7983dfcc261be, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Reporting.Service, Version=10.2.16.1025, Culture=neutral, PublicKeyToken=a9d7983dfcc261be">
+      <SpecificVersion>True</SpecificVersion>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ClientBin\images\Dekretacja.png" />
+    <Content Include="ClientBin\images\Dokumenty.png" />
+    <Content Include="ClientBin\images\Doreczenia.png" />
+    <Content Include="ClientBin\images\eois.jpg" />
+    <Content Include="ClientBin\images\FindSmall.png" />
+    <Content Include="ClientBin\images\Kalendarz.png" />
+    <Content Include="ClientBin\images\Lista.png" />
+    <Content Include="ClientBin\images\Sprawy.png" />
+    <Content Include="ClientBin\images\Szukaj.png" />
+    <Content Include="ClientBin\images\undo.png" />
+    <Content Include="ClientBin\images\Users.png" />
+    <Content Include="ClientBin\images\Zadania.png" />
+    <Content Include="ClientBin\LexEnaTrs.xap" />
+    <Content Include="HtmlFiles\empty.html" />
+    <Content Include="LexEna.aspx" />
+    <Content Include="LexEna.html" />
+    <Content Include="ReportService1.svc" />
+    <Content Include="packages.config" />
+    <Content Include="ClientBin\System.ComponentModel.DataAnnotations.zip" />
+    <Content Include="ClientBin\System.ServiceModel.DomainServices.Client.zip" />
+    <Content Include="ClientBin\System.ServiceModel.DomainServices.Client.Web.zip" />
+    <Content Include="ClientBin\System.ServiceModel.Web.Extensions.zip" />
+    <Content Include="ClientBin\System.Windows.Controls.Data.zip" />
+    <Content Include="ClientBin\System.Windows.Controls.Data.Input.zip" />
+    <Content Include="ClientBin\System.Windows.Controls.zip" />
+    <Content Include="ClientBin\System.Windows.Controls.DomainServices.zip" />
+    <Content Include="ClientBin\System.Windows.Controls.Navigation.zip" />
+    <Content Include="ClientBin\System.Windows.Data.zip" />
+    <Content Include="ClientBin\System.Xml.Linq.zip" />
+    <Content Include="ClientBin\System.Xml.Serialization.zip" />
+    <Content Include="ClientBin\Telerik.Windows.Controls.Data.zip" />
+    <Content Include="ClientBin\Telerik.Windows.Controls.Diagrams.zip" />
+    <Content Include="ClientBin\Telerik.Windows.Controls.Diagrams.Extensions.zip" />
+    <Content Include="ClientBin\Telerik.Windows.Controls.zip" />
+    <Content Include="ClientBin\Telerik.Windows.Controls.Docking.zip" />
+    <Content Include="ClientBin\Telerik.Windows.Controls.DomainServices.zip" />
+    <Content Include="ClientBin\Telerik.Windows.Controls.Expressions.zip" />
+    <Content Include="ClientBin\Telerik.Windows.Controls.FixedDocumentViewers.zip" />
+    <Content Include="ClientBin\Telerik.Windows.Controls.FixedDocumentViewersUI.zip" />
+    <Content Include="ClientBin\Telerik.Windows.Controls.GridView.zip" />
+    <Content Include="ClientBin\Telerik.Windows.Controls.Input.zip" />
+    <Content Include="ClientBin\Telerik.Windows.Controls.Navigation.zip" />
+    <Content Include="ClientBin\Telerik.Windows.Controls.RibbonView.zip" />
+    <Content Include="ClientBin\Telerik.Windows.Data.zip" />
+    <Content Include="ClientBin\Telerik.Windows.Diagrams.Core.zip" />
+    <Content Include="ClientBin\Telerik.Windows.Documents.Core.zip" />
+    <Content Include="ClientBin\Telerik.Windows.Documents.zip" />
+    <Content Include="ClientBin\Telerik.Windows.Documents.Fixed.zip" />
+    <Content Include="ClientBin\Telerik.Windows.Themes.Windows7.zip" />
+    <Content Include="ClientBin\Telerik.Windows.Zip.zip" />
+    <Content Include="ClientBin\Microsoft.CSharp.zip" />
+    <Content Include="ClientBin\System.ComponentModel.Composition.zip" />
+    <None Include="Properties\PublishProfiles\Profile1.pubxml" />
+    <None Include="Service References\EpuSrv\configuration91.svcinfo" />
+    <None Include="Service References\EpuSrv\configuration.svcinfo" />
+    <Content Include="Service References\EpuSrv\LexEnaTrs.Web.EpuSrv.DoreczeniaOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EpuSrv\LexEnaTrs.Web.EpuSrv.DoreczeniaPDF.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EpuSrv\LexEnaTrs.Web.EpuSrv.GetDataOdnotowaniaOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EpuSrv\LexEnaTrs.Web.EpuSrv.HistoriaSprawyOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EpuSrv\LexEnaTrs.Web.EpuSrv.ListaAdnotacjiKomorniczychOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EpuSrv\LexEnaTrs.Web.EpuSrv.ListaKancelariiKomoniczychOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EpuSrv\LexEnaTrs.Web.EpuSrv.ListaSprawKomornikaOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EpuSrv\LexEnaTrs.Web.EpuSrv.ListaSprawZNakazemOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EpuSrv\LexEnaTrs.Web.EpuSrv.ListaTresciNakazowPDFOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EpuSrv\LexEnaTrs.Web.EpuSrv.ListaTresciNakazowPDFOutputDataVer2.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EpuSrv\LexEnaTrs.Web.EpuSrv.ListaTresciNakazowPDFOutputDataVer3.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EpuSrv\LexEnaTrs.Web.EpuSrv.ListaWnioskowEgzekucyjnychPDFOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EpuSrv\LexEnaTrs.Web.EpuSrv.ListaWnioskowEgzekucyjnychPDFOutputDataVer2.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EpuSrv\LexEnaTrs.Web.EpuSrv.MojeDoreczeniaOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EpuSrv\LexEnaTrs.Web.EpuSrv.MojeDoreczeniaVer2OutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EpuSrv\LexEnaTrs.Web.EpuSrv.MojeNakazyOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EpuSrv\LexEnaTrs.Web.EpuSrv.MojeOrzeczeniaOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EpuSrv\LexEnaTrs.Web.EpuSrv.MojeOrzeczeniaVer2OutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EpuSrv\LexEnaTrs.Web.EpuSrv.MojePismaOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EpuSrv\LexEnaTrs.Web.EpuSrv.MojeSprawyOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EpuSrv\LexEnaTrs.Web.EpuSrv.OdpowiedziDoZarzadzeniaOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EpuSrv\LexEnaTrs.Web.EpuSrv.OznaczenieDoreczenJakoPobraneOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EpuSrv\LexEnaTrs.Web.EpuSrv.OznaczSprawyJakoPobraneOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EpuSrv\LexEnaTrs.Web.EpuSrv.PismaOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EpuSrv\LexEnaTrs.Web.EpuSrv.PismaValidationInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EpuSrv\LexEnaTrs.Web.EpuSrv.PobierzIdKancelariiOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EpuSrv\LexEnaTrs.Web.EpuSrv.SprawdzStatusCzynnosciOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EpuSrv\LexEnaTrs.Web.EpuSrv.SprawyDoPodjeciaOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EpuSrv\LexEnaTrs.Web.EpuSrv.StatusDoreczeniaOutputInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EpuSrv\LexEnaTrs.Web.EpuSrv.ZlozCzynnosciEgzekucyjneOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EpuSrv\LexEnaTrs.Web.EpuSrv.ZlozDokumentyOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EpuSrv\LexEnaTrs.Web.EpuSrv.ZlozPozwyOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EpuSrv\LexEnaTrs.Web.EpuSrv.ZlozSkargiOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EpuSrv\LexEnaTrs.Web.EpuSrv.ZlozSprzeciwyOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EpuSrv\LexEnaTrs.Web.EpuSrv.ZlozWnioskiEgzekucyjneOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EpuSrv\LexEnaTrs.Web.EpuSrv.ZlozZawiadomieniaEgzekucyjneOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EpuSrv\LexEnaTrs.Web.EpuSrv.ZlozZazaleniaOutputData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\EpuSrv\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Silverlight.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="wkhtml2pdf\wkhtmltopdf.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="wkhtml2pdf\wkhtmltox.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="XSLT\DokumentEPU.xslt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="XSLT\NakazEPU.xslt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="XSLT\OrzeczenieEPU.xslt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="XSLT\Pozew.xslt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="XSLT\SkargaEPU.xslt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="XSLT\WniosekEgzekucyjny.xslt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="XSLT\ZazalenieEPU.xslt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\LexEnaTrs\Models\CountPozewData.cs">
+      <Link>Models\CountPozewData.cs</Link>
+    </Compile>
+    <Compile Include="..\LexEnaTrs\Models\DokumentEPU.cs">
+      <Link>Models\DokumentEPU.cs</Link>
+    </Compile>
+    <Compile Include="..\LexEnaTrs\Models\NakazEPU.cs">
+      <Link>Models\NakazEPU.cs</Link>
+    </Compile>
+    <Compile Include="..\LexEnaTrs\Models\OrzeczenieEPU.cs">
+      <Link>Models\OrzeczenieEPU.cs</Link>
+    </Compile>
+    <Compile Include="..\LexEnaTrs\Models\Pozwy.cs">
+      <Link>Models\Pozwy.cs</Link>
+    </Compile>
+    <Compile Include="..\LexEnaTrs\Models\TypyDanychEPU.cs">
+      <Link>Models\TypyDanychEPU.cs</Link>
+    </Compile>
+    <Compile Include="..\LexEnaTrs\Models\WniosekEPU.cs">
+      <Link>Models\WniosekEPU.cs</Link>
+    </Compile>
+    <Compile Include="BIG\BIGDataOperation.cs" />
+    <Compile Include="BIG\BIGFile.cs" />
+    <Compile Include="BIG\nicciInput.cs" />
+    <Compile Include="BIG\nicciOutput.cs" />
+    <Compile Include="Imports\DaysOffCalc.cs" />
+    <Compile Include="Imports\ImportBillingHelper.cs" />
+    <Compile Include="Imports\ImportValidators.cs" />
+    <Compile Include="Imports\Tools1\NalSprawHelper.cs" />
+    <Compile Include="Imports\Tools1\ZalKomHelper.cs" />
+    <Compile Include="LexEnaMeritumDomainService.cs" />
+    <Compile Include="LexEnaMeritumDomainService.metadata.cs" />
+    <Compile Include="LexEnaMeritumModel1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LexEnaMeritumModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BillingImportClasses.cs" />
+    <Compile Include="Models\CCNB.cs" />
+    <Compile Include="Models\CountDokOdebr.cs" />
+    <Compile Include="Models\DataAnnotationFix.cs" />
+    <Compile Include="Models\EPUServerClasses.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="IEPUCommonWCF.cs" />
+    <Compile Include="Models\EPUParamModel.cs" />
+    <Compile Include="Service References\EpuSrv\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Services\EpuService.cs" />
+    <Compile Include="Services\ObliczZaleglosc.cs" />
+    <Compile Include="Services\PozewDomainService.cs" />
+    <Compile Include="Resources\ValidationErrorResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ValidationErrorResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\RegistrationDataResources.Designer.cs">
+      <DependentUpon>RegistrationDataResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Services\AuthenticationService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\RegistrationData.cs" />
+    <Compile Include="Services\ServiceOperation.cs" />
+    <Compile Include="Services\SSISDomainService.cs" />
+    <Compile Include="Services\UserRegistrationService.cs" />
+    <Compile Include="Models\Shared\User.shared.cs" />
+    <Compile Include="Services\Utils.cs" />
+    <Compile Include="SilverlightFaultBehavior.cs" />
+    <Compile Include="Imports\Tools1\EkstraktPdf.cs" />
+    <Compile Include="Imports\Tools1\PotwierdzSadaHelper.cs" />
+    <Compile Include="Imports\Tools1\SkutKancHelper.cs" />
+    <Compile Include="Imports\Tools1\Toools1Opertations.cs" />
+    <Compile Include="UZD\UZDOperations.cs" />
+    <Compile Include="Zgony\ProceedZgony.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\ValidationErrorResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ValidationErrorResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\RegistrationDataResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RegistrationDataResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="wkhtml2pdf\XSD\DokumentEPU.xsd">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="wkhtml2pdf\XSD\Dokumenty.xsd">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="wkhtml2pdf\XSD\PozewEPU.xsd">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="wkhtml2pdf\XSD\Pozwy.xsd">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="wkhtml2pdf\XSD\SkargaEPU.xsd">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="wkhtml2pdf\XSD\SprzeciwEPU.xsd">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="wkhtml2pdf\XSD\TypyDanych.xsd">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="wkhtml2pdf\XSD\WniosekEgzekucyjny.xsd">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="wkhtml2pdf\XSD\WnioskiEgzekucyjneEPU.xsd">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="wkhtml2pdf\XSD\ZazalenieEPU.xsd">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ClientBin\System.Windows.Controls.Input.Toolkit.zip" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ClientBin\System.Windows.Controls.Toolkit.zip" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="LexEnaMeritumModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>LexEnaMeritumModel1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EPU-Proxy\EpuProxy\EpuProxy.csproj">
+      <Project>{eb290edd-9bc6-4b34-9f8a-af7287eff67a}</Project>
+      <Name>EpuProxy</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\kalkulator\Odsetki\Odsetki\Odsetki.csproj">
+      <Project>{cc4112ae-0fa6-4d1d-9dc2-58d68d65e176}</Project>
+      <Name>Odsetki</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LexEna2BIG\LexEna2BIG.csproj">
+      <Project>{e7758ba5-f030-4002-b83f-266602293677}</Project>
+      <Name>LexEna2BIG</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LexEnaReporting\LexEnaReporting.csproj">
+      <Project>{A1819512-D916-4CFE-8182-AF317258F11B}</Project>
+      <Name>LexEnaReporting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WienaDB\WienaDB.csproj">
+      <Project>{315c79d1-fee1-466c-8709-3c6b09e9f0ef}</Project>
+      <Name>WienaDB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZadanieTimer\ZadanieTimerMain\ZadanieTimerMain.csproj">
+      <Project>{6fdcdb23-e198-4e11-b29f-bc3f2453f393}</Project>
+      <Name>ZadanieTimerMain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\EpuSrv\EpuService.wsdl">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\EpuSrv\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>30187</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/LexEnaTrs.Web</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
