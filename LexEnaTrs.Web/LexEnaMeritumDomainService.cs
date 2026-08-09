@@ -3434,6 +3434,7 @@ namespace LexEnaTrs.Web
 
         public IQueryable<BIGvw_ObligationLastStatus> GetBIGvw_ObligationLastStatusByCaseId(int Import_Id)
         {
+            this.ObjectContext.CommandTimeout = 180;
             return this.ObjectContext.BIGvw_ObligationLastStatus.Where(a=>a.BIG_CaseId ==Import_Id).OrderBy(a=>a.BIG_ObligationId);
         }
 

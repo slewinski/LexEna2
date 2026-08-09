@@ -3861,7 +3861,7 @@ namespace LexEnaTrs.Web
 
                 using (LexEnaMeritumEntities dbcontext = new LexEnaMeritumEntities())
                 {
-                    dbcontext.CommandTimeout = 1200;
+                    dbcontext.CommandTimeout = 2400;
                     SqlParameter param1 = new SqlParameter("@ListaOddzialow", listaIdOddzialy);
                     SqlParameter param2 = new SqlParameter("@ListaKont", listaIdkont);
                     SqlParameter param3 = new SqlParameter("@Dzien", dStanu);
@@ -3927,7 +3927,8 @@ namespace LexEnaTrs.Web
             }
             catch (ArgumentException ex)
             {
-                return "Błąd " + ex.Message + " " + ex.InnerException;
+                Utils.LogWriter("Błąd  " + ex.Message);
+                return "Błąd " + ex.Message ;
             }
             return "";
 

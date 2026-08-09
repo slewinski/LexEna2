@@ -1458,7 +1458,7 @@ namespace LexEnaTrs.Web.BIG
                         
                         using (SqlBulkCopy sqlbc = new SqlBulkCopy(sqlConn))
                         {
-                            sqlbc.BulkCopyTimeout = 120;
+                            sqlbc.BulkCopyTimeout = 240;
                             sqlbc.DestinationTableName = "BIG_JobRow";
                             sqlbc.ColumnMappings.Add("IdNal", "BIG_JobId");
                             sqlbc.ColumnMappings.Add("Adr1", "Adr1");
