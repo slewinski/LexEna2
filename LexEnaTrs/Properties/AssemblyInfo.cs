@@ -34,8 +34,8 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("2.0.9.1")]
-[assembly: AssemblyFileVersion("2.0.9.1")]
+[assembly: AssemblyVersion("2.0.9.2")]
+[assembly: AssemblyFileVersion("2.0.9.2")]
 // 2.0.0.1 - wersja z importem 
 // 2.0.0.2 - poprawka - odblokowanie konta 
 // 2.0.0.3 Modyfikacja Z_BK_001191_12_2018 - raport potwierdzenia sald dla wniosków egzekucyjnych
@@ -62,3 +62,4 @@ using System.Runtime.InteropServices;
 // 2.0.7.1 - Import danych KSeF do należności w Wienie.
 // 2.0.8.1 - Dodanie KSEF, poprawka błędu - skrócenie 
 // 2.0.9.1 - Nr ewid jako nr umowy
+// 2.0.9.2 - Dodanie postanowienie o spłacie.

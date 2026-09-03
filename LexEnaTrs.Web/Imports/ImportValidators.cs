@@ -47,7 +47,7 @@ namespace LexEnaTrs.Web.Imports
         private int KontoEpu;
         private string inDOC;
         private int isXML = 1;
-        public enum docTypes { Pozew, Nakaz, Wyrok, Klauzula, WniosekEgz, Zawezwanie, Sprzeciw, Oddalenie, Bezskuteczne, Sprostowanie, Uchylenie, Umorzenie, Zgon, ZwrotPozwu, Doreczenie, KlauzulaDoreczenia, ZgloszenieWierzytelnosci, UmorzenieEPU, OdrzucenieZgon }
+        public enum docTypes { Pozew, Nakaz, Wyrok, Klauzula, WniosekEgz, Zawezwanie, Sprzeciw, Oddalenie, Bezskuteczne, Sprostowanie, Uchylenie, Umorzenie, Zgon, ZwrotPozwu, Doreczenie, KlauzulaDoreczenia, ZgloszenieWierzytelnosci, UmorzenieEPU, OdrzucenieZgon, UmorzenieSplata }
         public int FirmaTyp = 1; // Domyślnie EOB
 
 
@@ -139,7 +139,8 @@ namespace LexEnaTrs.Web.Imports
             new contentDescriptor(docTypes.Zgon,"Zgon|Zgony"),
             new contentDescriptor(docTypes.ZgloszenieWierzytelnosci,"Wierzyt|oszenie"),
             new contentDescriptor(docTypes.UmorzenieEPU,"EPU"),
-            new contentDescriptor(docTypes.OdrzucenieZgon,"Odrzuc")
+            new contentDescriptor(docTypes.OdrzucenieZgon,"Odrzuc"),
+            new contentDescriptor(docTypes.UmorzenieSplata ,"Spłat|Splat|Spłac")
 
 
 
@@ -302,7 +303,8 @@ namespace LexEnaTrs.Web.Imports
             DoreczenieKlauzula,
             ZgloszenieWierzytelnosci,
             UmorzenieEPU, 
-            OdrzucenieZgon
+            OdrzucenieZgon,
+            UmorzenieSplata
 
 
         };
@@ -366,6 +368,8 @@ namespace LexEnaTrs.Web.Imports
                     return 100022;
                 case DocType.OdrzucenieZgon:
                     return 100023;
+                case DocType.UmorzenieSplata:
+                    return 100024;
                 default:
                     return -100;
             }
@@ -1845,7 +1849,18 @@ namespace LexEnaTrs.Web.Imports
                                 dokKsie = "Uz4";
                                 dStatusu = dataOtrzymania;
                                 break;
-
+                            case docTypes.UmorzenieSplata:  // tylko  konta 2442170
+                                krok = 10;
+                                czyodebr = true;
+                                typdokLexEna = docType2Int(DocType.UmorzenieSplata);
+                                id_status_wiena = 11;
+                                id_dok_odebr_typ = 2635; /* Postanowienie o zakończeiu postępowania*/
+                                id_dok_odebr_wiena = 15677;
+                                dStatusu = dataDokumentu;
+                                idKonto = 0;
+                                dokKsie = "";
+                                idSchemat = 0;
+                                break;
                             default:
                                 break;
                         }
@@ -1921,6 +1936,12 @@ namespace LexEnaTrs.Web.Imports
                                         where z.Sprawa_id == idSprawy && z.TypDok == typdokLexEna && z.DataDokumentu == dataDokumentu
                                         select z).FirstOrDefault();
                                 break;
+                            case docTypes.UmorzenieSplata:
+                                dood = (from z in lexena.DokOdebr
+                                        where z.Sprawa_id == idSprawy && z.TypDok == typdokLexEna && z.DataDokumentu == dataDokumentu
+                                        select z).FirstOrDefault();
+                                break;
+
                             case docTypes.ZwrotPozwu:
                             case docTypes.ZgloszenieWierzytelnosci:
                                 dood = (from z in lexena.DokOdebr
@@ -2007,7 +2028,10 @@ namespace LexEnaTrs.Web.Imports
                                     break;
                                 case docTypes.Sprostowanie:
                                     dood.Nazwa = "Postanowienie o sprostowaniu orzeczenia";
-                                
+                                    break;
+                                case docTypes.UmorzenieSplata:
+                                    dood.Nazwa = "Postanowienie o zakończeniu egzekucji wobec spłaty";
+
                                     break;
 
                             }
@@ -3504,6 +3528,9 @@ doWieny:
                         break;
                     case docTypes.ZgloszenieWierzytelnosci:
                         typDok = DocType.ZgloszenieWierzytelnosci;
+                        break;
+                    case docTypes.UmorzenieSplata:
+                        typDok = DocType.UmorzenieSplata;
                         break;
                     default:
                         typDok = DocType.None;
