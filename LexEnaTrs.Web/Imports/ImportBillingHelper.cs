@@ -306,7 +306,7 @@ k in context.konto on ka.id_konta equals k.id
             int li_Rok, li_Pos, ll_symbol, ll_id_spr, ll_id_dluz, ll_id_adres, ll_id_adres_kor, ll_id_nal, ll_adr, ll_adr_z, ll_id_status;
             string ls_Sign, ls_ewid, ls_regon, ls_blad, ls_konto_wpl;
             string ls_kod_pocztowy, ls_ulica, ls_miejscowosc, ls_poczta, ls_kod_pocztowy_k, ls_ulica_k, ls_miejscowosc_k, ls_poczta_k;
-            string ls_nazwa, ls_pesel, ls_nip, ls_krs, ls_kod, ls_numer_domu, ls_numer_posesji;
+            string ls_nazwa, ls_pesel, ls_nip, ls_krs, ls_kod, ls_numer_domu, ls_numer_posesji, ls_okres_ods_od = string.Empty , ls_okres_ods_do = string.Empty;
             DateTime ldt_Date, ld_dimp, ld_data_wpl, ld_plat_koszt;
             DateTime ld_last_nota;
             decimal ld_obciaz_NS, ld_obciaz_ES, ld_obciaz_OS, ld_obciaz_OU, ld_obciaz_EK, ld_obciaz_SU, ld_obciaz_EA, ld_wpl, ld_rozn_vat, ld_rozn, ld_rozn_vat_i, ld_rozn_i, ld_pozostalosc, ld_pozostalosc_vat;
@@ -1636,6 +1636,10 @@ k in context.konto on ka.id_konta equals k.id
 
                             ls_dokum = obc.Nr_dokumentu;
                             ls_uwagi = (obc.Nr_faktury ?? "").Truncate(99);
+
+                            ls_okres_ods_od = obc.Okres_odsetkowy_od;
+                            ls_okres_ods_do = obc.Okres_odsetkowy_do;
+
                             if (ls_dokum == null) ls_dokum = "";
                             ld_dzien = obc.Data_platnosci;
                             ld_rozn_vat = ld_vat - ld_pozo_vat;
@@ -1960,6 +1964,11 @@ k in context.konto on ka.id_konta equals k.id
                                     nal.Nr_KSEF = obc.Nr_KSEF;
                                     nal.Data_prz_KSEF = obc.Data_prz_KSEF;
                                     //nal.Data_wys_KSEF = obc.Data_wys_KSEF;
+
+                                }
+                                else
+                                {
+
 
                                 }
                                 try

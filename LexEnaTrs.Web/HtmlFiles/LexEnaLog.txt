@@ -584151,3 +584151,113 @@ Zapisano do LexEna  AC-454_2024 skuteczna egzekucja.pdf
 Zapisano do wieny  AC-454_2024 skuteczna egzekucja.pdf	
 20:42:08 sobota, 29 sierpnia 2026
  Import OK:  AC-454_2024 skuteczna egzekucja.pdf AC-454/2024	
+18:48:13 niedziela, 6 września 2026
+ Start Importu dokumentu  GCU-3_2026.pdf	
+18:48:13 niedziela, 6 września 2026
+Ustalenie kroku  	
+18:48:13 niedziela, 6 września 2026
+Ustalenie kroku  - brak statusu LexEna	
+18:48:13 niedziela, 6 września 2026
+Wyszukanie w Wienie  	
+18:48:14 niedziela, 6 września 2026
+ Znaleziono w Wiena  Id = 0	
+18:48:14 niedziela, 6 września 2026
+Tworzę nowy dokument dla GCU-3/2026	
+18:48:14 niedziela, 6 września 2026
+ Dodawanie dokumentu do Wieny	
+18:48:15 niedziela, 6 września 2026
+Zapis do bazy Wiena	
+18:48:15 niedziela, 6 września 2026
+Zapisano do LexEna  GCU-3_2026.pdf	
+18:48:15 niedziela, 6 września 2026
+Zapisano do wieny  GCU-3_2026.pdf	
+18:48:15 niedziela, 6 września 2026
+ Import OK:  GCU-3_2026.pdf GCU-3/2026	
+18:48:15 niedziela, 6 września 2026
+ Start Importu dokumentu  GCU-2_2026.pdf	
+18:48:15 niedziela, 6 września 2026
+Ustalenie kroku  	
+18:48:16 niedziela, 6 września 2026
+Ustalenie kroku  - brak statusu LexEna	
+18:48:16 niedziela, 6 września 2026
+Wyszukanie w Wienie  	
+18:48:16 niedziela, 6 września 2026
+ Znaleziono w Wiena  Id = 0	
+18:48:16 niedziela, 6 września 2026
+Tworzę nowy dokument dla GCU-2/2026	
+18:48:16 niedziela, 6 września 2026
+ Dodawanie dokumentu do Wieny	
+18:48:16 niedziela, 6 września 2026
+Zapis do bazy Wiena	
+18:48:16 niedziela, 6 września 2026
+Zapisano do LexEna  GCU-2_2026.pdf	
+18:48:16 niedziela, 6 września 2026
+Zapisano do wieny  GCU-2_2026.pdf	
+18:48:16 niedziela, 6 września 2026
+ Import OK:  GCU-2_2026.pdf GCU-2/2026	
+18:48:16 niedziela, 6 września 2026
+ Start Importu dokumentu  GCU-1_2026.pdf	
+18:48:16 niedziela, 6 września 2026
+Ustalenie kroku  	
+18:48:16 niedziela, 6 września 2026
+Ustalenie kroku  - brak statusu LexEna	
+18:48:16 niedziela, 6 września 2026
+Wyszukanie w Wienie  	
+18:48:16 niedziela, 6 września 2026
+ Znaleziono w Wiena  Id = 0	
+18:48:17 niedziela, 6 września 2026
+Tworzę nowy dokument dla GCU-1/2026	
+18:48:17 niedziela, 6 września 2026
+ Dodawanie dokumentu do Wieny	
+18:48:17 niedziela, 6 września 2026
+Zapis do bazy Wiena	
+18:48:17 niedziela, 6 września 2026
+Zapisano do LexEna  GCU-1_2026.pdf	
+18:48:17 niedziela, 6 września 2026
+Zapisano do wieny  GCU-1_2026.pdf	
+18:48:17 niedziela, 6 września 2026
+ Import OK:  GCU-1_2026.pdf GCU-1/2026	
+18:48:17 niedziela, 6 września 2026
+ Start Importu dokumentu  GCU-4_2026.pdf	
+18:48:17 niedziela, 6 września 2026
+Ustalenie kroku  	
+18:48:17 niedziela, 6 września 2026
+Ustalenie kroku  - brak statusu LexEna	
+18:48:17 niedziela, 6 września 2026
+Wyszukanie w Wienie  	
+18:48:17 niedziela, 6 września 2026
+ Znaleziono w Wiena  Id = 0	
+18:48:17 niedziela, 6 września 2026
+Tworzę nowy dokument dla GCU-4/2026	
+18:48:17 niedziela, 6 września 2026
+ Dodawanie dokumentu do Wieny	
+18:48:18 niedziela, 6 września 2026
+Zapis do bazy Wiena	
+18:48:18 niedziela, 6 września 2026
+Zapisano do LexEna  GCU-4_2026.pdf	
+18:48:18 niedziela, 6 września 2026
+Zapisano do wieny  GCU-4_2026.pdf	
+18:48:18 niedziela, 6 września 2026
+ Import OK:  GCU-4_2026.pdf GCU-4/2026	
+18:48:18 niedziela, 6 września 2026
+ Start Importu dokumentu  GCU-5_2026.pdf	
+18:48:18 niedziela, 6 września 2026
+Ustalenie kroku  	
+18:48:18 niedziela, 6 września 2026
+Ustalenie kroku  - brak statusu LexEna	
+18:48:18 niedziela, 6 września 2026
+Wyszukanie w Wienie  	
+18:48:18 niedziela, 6 września 2026
+ Znaleziono w Wiena  Id = 0	
+18:48:18 niedziela, 6 września 2026
+Tworzę nowy dokument dla GCU-5/2026	
+18:48:18 niedziela, 6 września 2026
+ Dodawanie dokumentu do Wieny	
+18:48:18 niedziela, 6 września 2026
+Zapis do bazy Wiena	
+18:48:19 niedziela, 6 września 2026
+Zapisano do LexEna  GCU-5_2026.pdf	
+18:48:19 niedziela, 6 września 2026
+Zapisano do wieny  GCU-5_2026.pdf	
+18:48:19 niedziela, 6 września 2026
+ Import OK:  GCU-5_2026.pdf GCU-5/2026	

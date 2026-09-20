@@ -81,7 +81,7 @@ namespace LexEnaReporting.UZD_FakturyMain
             // 
             // UZD_FakturyPakietuMainDS
             // 
-            this.UZD_FakturyPakietuMainDS.CommandTimeout = 240;
+            this.UZD_FakturyPakietuMainDS.CommandTimeout = 600;
             this.UZD_FakturyPakietuMainDS.ConnectionString = "LexEnaReporting.Properties.Settings.LexEnaPro";
             this.UZD_FakturyPakietuMainDS.Name = "UZD_FakturyPakietuMainDS";
             this.UZD_FakturyPakietuMainDS.Parameters.AddRange(new Telerik.Reporting.SqlDataSourceParameter[] {
