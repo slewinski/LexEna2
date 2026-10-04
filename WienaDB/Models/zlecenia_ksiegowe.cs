@@ -58,5 +58,6 @@ namespace WienaDB.Models
         public Nullable<decimal> vat_ten { get; set; }
         public Nullable<decimal> wdz { get; set; }
         public Nullable<decimal> wdz_ten { get; set; }
+        public Nullable<int> nr_dziennika { get; set; }
     }
 }

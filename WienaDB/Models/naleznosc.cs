@@ -43,6 +43,7 @@ namespace WienaDB.Models
         public string Nr_KSEF { get; set; }
         public Nullable<System.DateTime> Data_wys_KSEF { get; set; }
         public Nullable<System.DateTime> Data_prz_KSEF { get; set; }
+        public string opis { get; set; }
     
         public virtual ICollection<nal_stan> nal_stan { get; set; }
         public virtual sprawa sprawa { get; set; }

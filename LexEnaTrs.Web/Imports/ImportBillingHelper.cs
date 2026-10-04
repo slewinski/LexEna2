@@ -1635,7 +1635,7 @@ k in context.konto on ka.id_konta equals k.id
                             }
 
                             ls_dokum = obc.Nr_dokumentu;
-                            ls_uwagi = (obc.Nr_faktury ?? "").Truncate(99);
+                            ls_uwagi = (obc.Nr_faktury ?? "");
 
                             ls_okres_ods_od = obc.Okres_odsetkowy_od;
                             ls_okres_ods_do = obc.Okres_odsetkowy_do;
@@ -1949,7 +1949,14 @@ k in context.konto on ka.id_konta equals k.id
                                 //    nal.czy_proc = false;
                                 //else
                                 if (Firma == 1 && li_typ_kwt == 22)
+                                {
+                                    
+                                    if (!String.IsNullOrWhiteSpace(ls_uwagi))
+                                    {
+                                        nal.opis = " naliczona od faktur " + ls_uwagi + " za okres od " + ls_okres_ods_od + " do " + ls_okres_ods_do;
+                                    }
                                     nal.czy_proc = false;
+                                }
                                 else
                                     nal.czy_proc = true; ;
                                 nal.uwagi = "";

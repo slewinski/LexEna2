@@ -197,6 +197,7 @@
           <Property Name="Nr_KSEF" Type="varchar" MaxLength="255" />
           <Property Name="Data_wys_KSEF" Type="datetime" />
           <Property Name="Data_prz_KSEF" Type="datetime" />
+          <Property Name="opis" Type="varchar" MaxLength="2048" />
         </EntityType>
         <EntityType Name="notki">
           <Key>
@@ -736,6 +737,7 @@
           <Property Name="vat_ten" Type="decimal" Precision="18" Scale="2" />
           <Property Name="wdz" Type="decimal" Precision="18" Scale="2" />
           <Property Name="wdz_ten" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="nr_dziennika" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'wiena_eop_prod.dbo.vw_import_Symbole' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -1457,6 +1459,7 @@ FROM [dbo].[vw_KosztyEgz] AS [vw_KosztyEgz]</DefiningQuery>
           <Property Name="vat_ten" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="wdz" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="wdz_ten" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="nr_dziennika" Type="Int32" />
         </EntityType>
         <Association Name="FK_dok_odebr_dok_odebr_nazwy">
           <End Role="dok_odebr_nazwy" Type="Self.dok_odebr_nazwy" Multiplicity="0..1" />
@@ -2347,6 +2350,7 @@ FROM [dbo].[vw_KosztyEgz] AS [vw_KosztyEgz]</DefiningQuery>
           <Property Name="Nr_KSEF" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Data_wys_KSEF" Type="DateTime" Precision="3" />
           <Property Name="Data_prz_KSEF" Type="DateTime" Precision="3" />
+          <Property Name="opis" Type="String" MaxLength="2048" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="nal_stan" Relationship="WienaModel.FK_nal_stan" FromRole="naleznosc" ToRole="nal_stan" />
           <NavigationProperty Name="sprawa" Relationship="WienaModel.FK_naleznosc_sprawa" FromRole="naleznosc" ToRole="sprawa" />
           <NavigationProperty Name="typ_nal" Relationship="WienaModel.FK_naleznosc_typ_nal" FromRole="naleznosc" ToRole="typ_nal" />
@@ -2616,6 +2620,7 @@ FROM [dbo].[vw_KosztyEgz] AS [vw_KosztyEgz]</DefiningQuery>
           <EntitySetMapping Name="zlecenia_ksiegowe">
             <EntityTypeMapping TypeName="WienaModel.zlecenia_ksiegowe">
               <MappingFragment StoreEntitySet="zlecenia_ksiegowe">
+                <ScalarProperty Name="nr_dziennika" ColumnName="nr_dziennika" />
                 <ScalarProperty Name="ident" ColumnName="ident" />
                 <ScalarProperty Name="kod" ColumnName="kod" />
                 <ScalarProperty Name="konto" ColumnName="konto" />
@@ -3211,6 +3216,7 @@ FROM [dbo].[vw_KosztyEgz] AS [vw_KosztyEgz]</DefiningQuery>
           <EntitySetMapping Name="naleznosc">
             <EntityTypeMapping TypeName="WienaModel.naleznosc">
               <MappingFragment StoreEntitySet="naleznosc">
+                <ScalarProperty Name="opis" ColumnName="opis" />
                 <ScalarProperty Name="Data_prz_KSEF" ColumnName="Data_prz_KSEF" />
                 <ScalarProperty Name="Data_wys_KSEF" ColumnName="Data_wys_KSEF" />
                 <ScalarProperty Name="Nr_KSEF" ColumnName="Nr_KSEF" />

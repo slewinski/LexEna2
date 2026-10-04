@@ -1308,7 +1308,8 @@ namespace LexEnaTrs
                             {// nota odsetkowa z dnia
                                 _dowod.TypDowodu = typRodzajDowodu.inny;
                                 _dowod.FaktStwierdzany = "Istnienie zobowiązania, jego wysokość i termin zapłaty";
-                                _dowod.Opis = "Nota odsetkowa na kwotę " +  rr.kwota.Value.ToString("C", new CultureInfo ( "pl-PL")) + " z terminem płatności przypadajacym na " + ((DateTime)(rr.data_n)).ToString("yyyy-MM-dd");
+                                _dowod.Opis = "Nota odsetkowa na kwotę " + rr.kwota.Value.ToString("C", new CultureInfo("pl-PL")) + " z terminem płatności przypadajacym na " + ((DateTime)(rr.data_n)).ToString("yyyy-MM-dd")
+                                      + (String.IsNullOrWhiteSpace(rr.opis2) ? "" : " " + rr.opis2);
                             }
                             else
                             {

@@ -58,7 +58,7 @@
         <EntityTypeShape EntityType="WienaModel.xls_zalkom_det" Width="1.5" PointX="19.375" PointY="4.75" />
         <EntityTypeShape EntityType="WienaModel.typ_nal" Width="1.5" PointX="0.75" PointY="10.25" />
         <AssociationConnector Association="WienaModel.FK_koszt_typ_nal" />
-        <EntityTypeShape EntityType="WienaModel.naleznosc" Width="1.5" PointX="5.25" PointY="26" />
+        <EntityTypeShape EntityType="WienaModel.naleznosc" Width="1.5" PointX="5.25" PointY="25.875" />
         <AssociationConnector Association="WienaModel.FK_nal_stan" />
         <AssociationConnector Association="WienaModel.FK_naleznosc_sprawa" />
         <AssociationConnector Association="WienaModel.FK_naleznosc_typ_nal" />
