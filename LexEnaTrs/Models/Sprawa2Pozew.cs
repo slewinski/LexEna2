@@ -1308,7 +1308,7 @@ namespace LexEnaTrs
                             {// nota odsetkowa z dnia
                                 _dowod.TypDowodu = typRodzajDowodu.inny;
                                 _dowod.FaktStwierdzany = "Istnienie zobowiązania, jego wysokość i termin zapłaty";
-                                _dowod.Opis = "Nota odsetkowa na kwotę " + rr.kwota.Value.ToString("C", new CultureInfo("pl-PL")) + " z terminem płatności przypadajacym na " + ((DateTime)(rr.data_n)).ToString("yyyy-MM-dd")
+                                _dowod.Opis = "Nota odsetkowa na kwotę " + rr.kwota.Value.ToString("C", new CultureInfo("pl-PL")) + " z terminem wymagalności przypadajacym na " + ((DateTime)(rr.data_n)).ToString("yyyy-MM-dd")
                                       + (String.IsNullOrWhiteSpace(rr.opis2) ? "" : " " + rr.opis2);
                             }
                             else
@@ -1316,13 +1316,13 @@ namespace LexEnaTrs
                                 if (rr.TypNaleznosci.TypNal == 4)
                                 {
                                     _dowod.TypDowodu = typRodzajDowodu.inny;
-                                    _dowod.Opis = "Wezwanie strony pozwanej do dobrowolnego spełnienia świadczenia z terminem płatności przypadającym na " + ((DateTime)(rr.data_n)).ToString("yyyy-MM-dd") + " - koszt wezwania:  " + rr.kwota.Value.ToString("C", new CultureInfo("pl-PL"));
+                                    _dowod.Opis = "Wezwanie strony pozwanej do dobrowolnego spełnienia świadczenia z terminem wymagalności przypadającym na " + ((DateTime)(rr.data_n)).ToString("yyyy-MM-dd") + " - koszt wezwania:  " + rr.kwota.Value.ToString("C", new CultureInfo("pl-PL"));
                                     _dowod.FaktStwierdzany = "Istnienie zobowiązania, jego wysokość i termin zapłaty";
                                 }
                                 else 
                                 {
                                     _dowod.TypDowodu = typRodzajDowodu.faktura;
-                                    _dowod.Opis = "Faktura VAT na kwotę " + rr.kwota.Value.ToString("C", new CultureInfo("pl-PL")) + " z terminem płatności przypadającym na " + ((DateTime)(rr.data_n)).ToString("yyyy-MM-dd");
+                                    _dowod.Opis = "Faktura VAT na kwotę " + rr.kwota.Value.ToString("C", new CultureInfo("pl-PL")) + " z terminem wymagalności przypadającym na " + ((DateTime)(rr.data_n)).ToString("yyyy-MM-dd");
                                     if (generatemode > 0 )
                                     {
                                     if (!String.IsNullOrWhiteSpace(rr.Nr_KSEF))
@@ -1632,8 +1632,8 @@ namespace LexEnaTrs
                         if (generatemode == 0)
                         {
                             //ErrorWindow.CreateNew("Data wymag " + (ry.data_n.Value).ToString("yyyy-MM-dd") + "  NBD " + DaysOffCalculator.GetNearestNextWorkDay(ry.data_n.Value).ToString("yyyy-MM-dd"));
-                            _roszczenie.dataWymagalnosci = (ry.data_n != null ?  DaysOffCalculator.GetNearestNextWorkDay(ry.data_n.Value).ToString("yyyy-MM-dd") : null);
-                             
+                            _roszczenie.dataWymagalnosci = Convert.ToDateTime(ry.data_n).ToString("yyyy-MM-dd"); //(ry.data_n != null ?  DaysOffCalculator.GetNearestNextWorkDay(ry.data_n.Value).ToString("yyyy-MM-dd") : null);
+
                         }
                         else
                             _roszczenie.dataWymagalnosci = Convert.ToDateTime(ry.data_n).ToString("yyyy-MM-dd");
