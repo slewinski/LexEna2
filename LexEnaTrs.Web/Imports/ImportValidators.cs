@@ -901,6 +901,11 @@ namespace LexEnaTrs.Web.Imports
 
         }
 
+        private static string NormalizeXlsxSygnatura(object value)
+        {
+            return Regex.Replace(Convert.ToString(value), @"\s+", string.Empty);
+        }
+
         private List<xlsxItem> parseXLSX()
         {
             byte[] data = Convert.FromBase64String(this.inXlsxDOC);
@@ -950,7 +955,7 @@ namespace LexEnaTrs.Web.Imports
 
                         for (int col = 0; col < 4; col++)
                         {
-                            string val = row[col] as string != null ? row[col] as string : "";
+                            string val = NormalizeXlsxSygnatura(row[col]);
                             Match m = r.Match(val);
                             if (m.Success)
                             {
@@ -984,11 +989,20 @@ namespace LexEnaTrs.Web.Imports
 
                         if (sygnCol > 0)
                         {
-                            Match m = r.Match(row[sygnCol] as string == null ? "" : row[sygnCol] as string);
+                            string sygnatura = NormalizeXlsxSygnatura(row[sygnCol]);
+                            Match m = r.Match(sygnatura);
                             if (!m.Success)
                             {
-
-                                break; // koniec wczytywania
+                                if (row.ItemArray.Any(value => !String.IsNullOrWhiteSpace(Convert.ToString(value))))
+                                {
+                                    string rowReference = "wiersz " + (rowNo + 1).ToString();
+                                    this.addError(ErrLevel.Error, -801,
+                                        "Niepoprawna sygnatura w wierszu " + (rowNo + 1).ToString() + " arkusza XLSX: " +
+                                        (String.IsNullOrWhiteSpace(sygnatura) ? "brak sygnatury" : sygnatura),
+                                        String.IsNullOrWhiteSpace(sygnatura) ? rowReference : sygnatura);
+                                }
+                                // Błędny lub pusty wiersz nie kończy odczytu pozostałych dokumentów.
+                                continue;
                             }
 
 
@@ -1058,7 +1072,7 @@ namespace LexEnaTrs.Web.Imports
                     {
                         if ((cellNo = getCellNoByName(colNames[0], koldict)) >= 0)
                         {
-                            item.sygnatura = (row[cellNo] as string).ToUpper();
+                            item.sygnatura = NormalizeXlsxSygnatura(row[cellNo]).ToUpper();
 
 
                         }
@@ -1573,8 +1587,8 @@ namespace LexEnaTrs.Web.Imports
             Sprawa spr = null;
             // norm,alizacja daty dokumentu 
             bool iserror = false;
-            NazwaStatusu nazstat;
-            NazwaStatusu oststat;
+            NazwaStatusu nazstat = null;
+            NazwaStatusu oststat = null;
             DokOdebr dood = null;
             DokWys dowys = null;
             bool docfound = false;
@@ -1632,12 +1646,9 @@ namespace LexEnaTrs.Web.Imports
                                where z.sygnatura == Sygnatura
                                select z).OrderByDescending(z => z.id).FirstOrDefault();
 
-                        if (spr == null && dt != docTypes.ZgloszenieWierzytelnosci)
+                        if (spr == null)
                         {
-                            Utils.LogWriter("Brak sprawy w systemie LexEna " + docName);
-                            this.addError(ErrLevel.Error, -702, "Brak sprawy w systemie LexEna " + Sygnatura, docName);
-                            return false;
-
+                            Utils.LogWriter("Brak sprawy w systemie LexEna - import tylko do Wieny " + docName);
                         }
                         /*
                                             roDokOdebr.Add(new rodzajDokumentu("Nakazy \"zwykłe\"", 100005));
@@ -1864,28 +1875,28 @@ namespace LexEnaTrs.Web.Imports
                             default:
                                 break;
                         }
-                        nazstat = (from x in lexena.NazwaStatusu
-                                   where x.Krok == krok
-                                   select x).FirstOrDefault();
-
-                        oststat = (from x in lexena.NazwaStatusu
-                                   join y in lexena.StatusSprawy on x.Id equals y.NazwaStatusu_Id
-                                   where y.Sprawa_id == idSprawy
-                                   orderby x.Krok descending
-                                   select x).FirstOrDefault();
-
-                        Utils.LogWriter("Ustalenie kroku  ");
-                        if (oststat == null || nazstat == null)
+                        if (spr != null)
                         {
-                            Utils.LogWriter("Ustalenie kroku  - brak statusu LexEna");
-                        }
-                        else
-                        if (oststat.Krok > nazstat.Krok)
-                        {
+                            nazstat = (from x in lexena.NazwaStatusu
+                                       where x.Krok == krok
+                                       select x).FirstOrDefault();
 
+                            oststat = (from x in lexena.NazwaStatusu
+                                       join y in lexena.StatusSprawy on x.Id equals y.NazwaStatusu_Id
+                                       where y.Sprawa_id == idSprawy
+                                       orderby x.Krok descending
+                                       select x).FirstOrDefault();
 
-                            Utils.LogWriter("Sprawa ma już wyższy status " + oststat.Krok.ToString() + " " + Sygnatura);
-                            this.addError(ErrLevel.Warning, 703, "Sprawa ma już wyższy status " + oststat.Krok.ToString() + " dokument  " + docName, Sygnatura);
+                            Utils.LogWriter("Ustalenie kroku  ");
+                            if (oststat == null || nazstat == null)
+                            {
+                                Utils.LogWriter("Ustalenie kroku  - brak statusu LexEna");
+                            }
+                            else if (oststat.Krok > nazstat.Krok)
+                            {
+                                Utils.LogWriter("Sprawa ma już wyższy status " + oststat.Krok.ToString() + " " + Sygnatura);
+                                this.addError(ErrLevel.Warning, 703, "Sprawa ma już wyższy status " + oststat.Krok.ToString() + " dokument  " + docName, Sygnatura);
+                            }
 
                         }
                         Utils.LogWriter("Wyszukanie w Wienie  ");
@@ -1895,7 +1906,8 @@ namespace LexEnaTrs.Web.Imports
                             iserror = true;
                             this.addError(ErrLevel.Error, -704, "Brak sprawy w systemie Wiena " + Sygnatura + " w systemie Energii", Sygnatura);
                             this.errDescription = "Brak sprawy w systemie Wiena " + Sygnatura + " w systemie Energii";
-                            lexena.Sprawa.Context.Refresh(System.Data.Objects.RefreshMode.StoreWins, spr);
+                            if (spr != null)
+                                lexena.Sprawa.Context.Refresh(System.Data.Objects.RefreshMode.StoreWins, spr);
                             return false;
                         }
                         if (spr != null)
@@ -1905,55 +1917,53 @@ namespace LexEnaTrs.Web.Imports
                             idSprawy = 0;
                             
                         }
-                        Utils.LogWriter(" Znaleziono w Wiena  Id = " + idSprawy.ToString());
-                        switch (dt)
+                        Utils.LogWriter(" Znaleziono w Wiena  Id = " + wiena_id.ToString());
+                        if (spr != null)
                         {
-                            case docTypes.Pozew:
-                                dowys = (from z in lexena.DokWys
-                                         where z.Sprawa_id == idSprawy && z.TypDok == typdokLexEna && z.DataDok == dataDokumentu
-                                         select z).FirstOrDefault();
+                            switch (dt)
+                            {
+                                case docTypes.Pozew:
+                                    dowys = (from z in lexena.DokWys
+                                             where z.Sprawa_id == idSprawy && z.TypDok == typdokLexEna && z.DataDok == dataDokumentu
+                                             select z).FirstOrDefault();
 
-                                break;
-                            case docTypes.Nakaz:
-                                dood = (from z in lexena.DokOdebr
-                                        where z.Sprawa_id == idSprawy && z.TypDok == typdokLexEna && z.DataDokumentu == dataDokumentu
-                                        select z).FirstOrDefault();
-                                break;
+                                    break;
+                                case docTypes.Nakaz:
+                                    dood = (from z in lexena.DokOdebr
+                                            where z.Sprawa_id == idSprawy && z.TypDok == typdokLexEna && z.DataDokumentu == dataDokumentu
+                                            select z).FirstOrDefault();
+                                    break;
 
-                            case docTypes.Klauzula:
-                                dood = (from z in lexena.DokOdebr
-                                        where z.Sprawa_id == idSprawy && z.TypDok == typdokLexEna && z.DataDokumentu == dataDokumentu
-                                        select z).FirstOrDefault();
-                                break;
+                                case docTypes.Klauzula:
+                                    dood = (from z in lexena.DokOdebr
+                                            where z.Sprawa_id == idSprawy && z.TypDok == typdokLexEna && z.DataDokumentu == dataDokumentu
+                                            select z).FirstOrDefault();
+                                    break;
 
-                            case docTypes.Umorzenie:
-                                dood = (from z in lexena.DokOdebr
-                                        where z.Sprawa_id == idSprawy && z.TypDok == typdokLexEna && z.DataDokumentu == dataDokumentu
-                                        select z).FirstOrDefault();
-                                break;
-                            case docTypes.UmorzenieEPU:
-                                dood = (from z in lexena.DokOdebr
-                                        where z.Sprawa_id == idSprawy && z.TypDok == typdokLexEna && z.DataDokumentu == dataDokumentu
-                                        select z).FirstOrDefault();
-                                break;
-                            case docTypes.UmorzenieSplata:
-                                dood = (from z in lexena.DokOdebr
-                                        where z.Sprawa_id == idSprawy && z.TypDok == typdokLexEna && z.DataDokumentu == dataDokumentu
-                                        select z).FirstOrDefault();
-                                break;
+                                case docTypes.Umorzenie:
+                                    dood = (from z in lexena.DokOdebr
+                                            where z.Sprawa_id == idSprawy && z.TypDok == typdokLexEna && z.DataDokumentu == dataDokumentu
+                                            select z).FirstOrDefault();
+                                    break;
+                                case docTypes.UmorzenieEPU:
+                                    dood = (from z in lexena.DokOdebr
+                                            where z.Sprawa_id == idSprawy && z.TypDok == typdokLexEna && z.DataDokumentu == dataDokumentu
+                                            select z).FirstOrDefault();
+                                    break;
+                                case docTypes.UmorzenieSplata:
+                                    dood = (from z in lexena.DokOdebr
+                                            where z.Sprawa_id == idSprawy && z.TypDok == typdokLexEna && z.DataDokumentu == dataDokumentu
+                                            select z).FirstOrDefault();
+                                    break;
 
-                            case docTypes.ZwrotPozwu:
-                            case docTypes.ZgloszenieWierzytelnosci:
-                                dood = (from z in lexena.DokOdebr
-                                        where z.Sprawa_id == idSprawy && z.TypDok == typdokLexEna && z.DataDokumentu == dataDokumentu
-                                        select z).FirstOrDefault();
-                                break;
-
+                                case docTypes.ZwrotPozwu:
+                                case docTypes.ZgloszenieWierzytelnosci:
+                                    dood = (from z in lexena.DokOdebr
+                                            where z.Sprawa_id == idSprawy && z.TypDok == typdokLexEna && z.DataDokumentu == dataDokumentu
+                                            select z).FirstOrDefault();
+                                    break;
+                            }
                         }
-
-
-
-
 
                         if (czyodebr)
                         {
@@ -2375,7 +2385,7 @@ doWieny:
                                 skan sk = null;
                                 sk = wiena.skan.Where(a => a.id_dok_odebr == dok_odebrany.ident).FirstOrDefault();
 
-                                if (pdf != null)
+                                if (sk == null)
                                 {
                                     pws_new = true;
                                     sk = new skan();
@@ -3379,11 +3389,18 @@ doWieny:
 
 
 
-                        lexena.SaveChanges();
-                        Utils.LogWriter("Zapisano do LexEna  " + docName);
+                        if (spr != null)
+                        {
+                            lexena.SaveChanges();
+                            Utils.LogWriter("Zapisano do LexEna  " + docName);
+                        }
                         wiena.SaveChanges();
                         Utils.LogWriter("Zapisano do wieny  " + docName);
 
+                        if (spr == null && theError.level == ErrLevel.OK)
+                        {
+                            theError.description = "OK - zaimportowano do Wieny; nie zaimportowano do LexEny, ponieważ nie ma takiej sprawy w LexEnie.";
+                        }
 
                         this.addError(theError.level, theError.code, theError.description, theError.reference);
                         Utils.LogWriter(" Import OK:  " + docName + " " + Sygnatura);

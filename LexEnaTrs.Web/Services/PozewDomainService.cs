@@ -1921,6 +1921,7 @@ namespace LexEnaTrs.Web
         [Invoke()]
         public string ImportDocumentsZipXLSX(string guidZip, string filenamezip, string documentxlsx, string filenamexlsx, int User_Id, int Jednostka_id)// sklej html'i         
         {
+            string etapImportu = "przygotowanie archiwum ZIP";
             try
             {
 
@@ -1930,16 +1931,25 @@ namespace LexEnaTrs.Web
                     impValid.FirmaTyp = -1;
                     User_Id = -User_Id;
                 }
+                etapImportu = "odczyt XLSX i import dokumentów";
                 impValid.ValidateDocument();
+                etapImportu = "zapis wyniku importu";
                 return impValid.UpdateImportStatusInfo(filenamezip + "/" + filenamexlsx, User_Id, Jednostka_id, -1);
-
-                return "";
 
             }
             catch (Exception e)
             {
-
-                return "error: " + e.Message;
+                string blad = "Błąd importu ZIP/XLSX (" + etapImportu + "): " + e.Message;
+                try
+                {
+                    Utils.LogWriter("Import ZIP/XLSX: " + filenamezip + " / " + filenamexlsx +
+                        "; etap: " + etapImportu + Environment.NewLine + e.ToString());
+                }
+                catch (Exception logError)
+                {
+                    return blad + Environment.NewLine + "Nie udało się zapisać szczegółów błędu w logu: " + logError.Message;
+                }
+                return blad + Environment.NewLine + "Szczegóły błędu zapisano w HtmlFiles/LexEnaLog.txt na serwerze aplikacji.";
             }
 
 
