@@ -20,8 +20,15 @@ namespace LexEnaTrs.Web
     // Also consider adding roles to restrict access as appropriate.
     // [RequiresAuthentication]
     [EnableClientAccess()]
-    public class LexEnaMeritumDomainService : LinqToEntitiesDomainService<LexEnaMeritumEntities>
+    public partial class LexEnaMeritumDomainService : LinqToEntitiesDomainService<LexEnaMeritumEntities>
     {
+
+        [RequiresAuthentication]
+        public IQueryable<BillingImportBatch> GetBillingImportBatches(int firma)
+        {
+            return this.ObjectContext.BillingImportBatch.Where(batch => batch.Firma == firma)
+                .OrderByDescending(batch => batch.CreatedAt);
+        }
 
         // TODO:
         // Consider constraining the results of your query method.  If you need additional input you can
@@ -752,8 +759,10 @@ namespace LexEnaTrs.Web
             return this.ObjectContext.JednostkaWindykacji.Where(a=>a.Id == Id).FirstOrDefault();
         }
 
+        [RequiresAuthentication]
         public void InsertJednostkaWindykacji(JednostkaWindykacji jednostkaWindykacji)
         {
+            ValidateDistributionOffice(jednostkaWindykacji);
             if ((jednostkaWindykacji.EntityState != EntityState.Detached))
             {
                 this.ObjectContext.ObjectStateManager.ChangeObjectState(jednostkaWindykacji, EntityState.Added);
@@ -764,8 +773,10 @@ namespace LexEnaTrs.Web
             }
         }
 
+        [RequiresAuthentication]
         public void UpdateJednostkaWindykacji(JednostkaWindykacji currentJednostkaWindykacji)
         {
+            ValidateDistributionOffice(currentJednostkaWindykacji);
             this.ObjectContext.JednostkaWindykacji.AttachAsModified(currentJednostkaWindykacji, this.ChangeSet.GetOriginal(currentJednostkaWindykacji));
         }
 

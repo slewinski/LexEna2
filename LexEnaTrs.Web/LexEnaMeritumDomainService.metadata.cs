@@ -11,6 +11,73 @@ namespace LexEnaTrs.Web
     using System.ServiceModel.DomainServices.Server;
 
 
+    [MetadataType(typeof(BillingImportBatch.BillingImportBatchMetadata))]
+    public partial class BillingImportBatch
+    {
+        internal sealed class BillingImportBatchMetadata
+        {
+            private BillingImportBatchMetadata() { }
+
+            [Key]
+            public Guid Id { get; set; }
+
+            public int Firma { get; set; }
+
+            [Required]
+            [StringLength(100)]
+            public string Name { get; set; }
+
+            [Required]
+            [StringLength(260)]
+            public string SourceFileName { get; set; }
+
+            public DateTime CreatedAt { get; set; }
+
+            public int CreatedBy { get; set; }
+
+            public int BranchId { get; set; }
+
+            public int SymbolId { get; set; }
+
+            [Required]
+            [StringLength(50)]
+            public string SymbolName { get; set; }
+
+            public int FirstNumber { get; set; }
+
+            public int Year { get; set; }
+
+            [Required]
+            [StringLength(50)]
+            public string DocumentName { get; set; }
+
+            public DateTime BookingDate { get; set; }
+
+            [Required]
+            [StringLength(32)]
+            public string Status { get; set; }
+
+            public int CaseCount { get; set; }
+
+            public int ImportedCount { get; set; }
+
+            public decimal TotalAmount { get; set; }
+
+            [Exclude]
+            public string ImportXml { get; set; }
+
+            [Exclude]
+            public string DistributionXml { get; set; }
+
+            public Nullable<DateTime> DistributionUpdatedAt { get; set; }
+
+            [Required]
+            [StringLength(20)]
+            public string DistributionState { get; set; }
+
+        }
+    }
+
     // The MetadataTypeAttribute identifies aspnet_MembershipMetadata as the class
     // that carries additional metadata for the aspnet_Membership class.
     [MetadataTypeAttribute(typeof(aspnet_Membership.aspnet_MembershipMetadata))]
@@ -932,6 +999,16 @@ namespace LexEnaTrs.Web
                 private JednostkaWindykacjiMetadata()
                 {
                 }
+
+                [Display(Name = "Kancelaria w Wienie")]
+                public Nullable<int> WienaFirmaId { get; set; }
+
+                [Display(Name = "Uczestniczy w przydziale")]
+                public bool UczestniczyWPrzydziale { get; set; }
+
+                [Display(Name = "Symbol spraw w Wienie")]
+                [StringLength(10)]
+                public string SymbolSprawWiena { get; set; }
 
                 public int Id { get; set; }
 

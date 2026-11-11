@@ -3137,7 +3137,7 @@ namespace LexEnaTrs.Web
                     {
                         foreach (firma s in lst1)
                         {
-                            lst.Add(new TypSlownikFiltered((s.nazwa + " " + s.nazwa1).Trim(), s.ident, Convert.ToInt16(s.typ_firmy), s.id_oddzial ?? 0, 0));
+                            lst.Add(new TypSlownikFiltered(((s.nazwa ?? String.Empty).Trim() + " " + (s.nazwa1 ?? String.Empty).Trim()).Trim(), s.ident, Convert.ToInt16(s.typ_firmy), s.id_oddzial ?? 0, 0));
                         }
 
 
@@ -3515,7 +3515,7 @@ namespace LexEnaTrs.Web
                     if (lsttmp != null & lsttmp.Count > 0)
                     {
                         foreach (firma s in lsttmp)
-                            oddzialy.Add(new TypSlownikFiltered(s.nazwa1, s.ident, s.typ_firmy ?? 0, s.id_oddzial ?? 0, 1));
+                            oddzialy.Add(new TypSlownikFiltered(((s.nazwa ?? String.Empty).Trim() + " " + (s.nazwa1 ?? String.Empty).Trim()).Trim(), s.ident, s.typ_firmy ?? 0, s.id_oddzial ?? 0, 1));
 
                     }
 
@@ -3539,7 +3539,7 @@ namespace LexEnaTrs.Web
 
                     List<firma> lstknc = wienaContext.firma.Where(a => a.typ == 9 && a.aktywna == 1).OrderBy(a => a.ident).ToList();
 
-                    if (lstknc != null & lstkn.Count > 0)
+                    if (lstknc != null && lstknc.Count > 0)
                     {
                         foreach (firma s in lstknc)
                         { if (!String.IsNullOrWhiteSpace(s.nazwa))

@@ -96,7 +96,7 @@
             Exception innerException = exception.InnerException;
             while (innerException != null)
             {
-                fullStackTrace += "\nCaused by: " + exception.Message + "\n\n" + exception.StackTrace;
+                fullStackTrace += "\nCaused by: " + innerException.Message + "\n\n" + innerException.StackTrace;
                 innerException = innerException.InnerException;
             }
 
@@ -118,7 +118,7 @@
             Exception innerException = exception.InnerException;
             while (innerException != null)
             {
-                fullStackTrace += "\nCaused by: " + exception.Message + "\n\n" + exception.StackTrace;
+                fullStackTrace += "\nCaused by: " + innerException.Message + "\n\n" + innerException.StackTrace;
                 innerException = innerException.InnerException;
             }
 

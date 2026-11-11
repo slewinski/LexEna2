@@ -1,11 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
+using System.Text;
+using System.Xml;
 
 
 namespace LexEnaTrs.Web.Models
 {
+    // Shared by Silverlight and the server. Keep the existing XML envelope, but send
+    // only editable choices; the server already owns the complete billing document.
+    public static class BillingImportSelectionSerializer
+    {
+        public static string ToBase64(IEnumerable<SprImportDescriptor> rows)
+        {
+            if (rows == null) throw new ArgumentNullException("rows");
+            using (var output = new MemoryStream())
+            {
+                var settings = new XmlWriterSettings
+                {
+                    Encoding = new UTF8Encoding(false),
+                    OmitXmlDeclaration = true
+                };
+                using (var writer = XmlWriter.Create(output, settings))
+                {
+                    writer.WriteStartElement("ImportSprawBilling");
+                    writer.WriteStartElement("SprawaDescriptor");
+                    foreach (var row in rows)
+                    {
+                        if (row == null) throw new InvalidOperationException("Brak danych pozycji paczki.");
+                        writer.WriteStartElement("SprImportDescriptor");
+                        writer.WriteElementString("BatchRowNumber", XmlConvert.ToString(row.BatchRowNumber));
+                        writer.WriteElementString("czyrej", XmlConvert.ToString(row.czyrej));
+                        writer.WriteElementString("CzyUstawowe", XmlConvert.ToString(row.CzyUstawowe));
+                        writer.WriteEndElement();
+                    }
+                    writer.WriteEndElement();
+                    writer.WriteEndElement();
+                }
+                return Convert.ToBase64String(output.ToArray());
+            }
+        }
+    }
+
     /// <remarks/>
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -122,6 +160,12 @@ namespace LexEnaTrs.Web.Models
     public class SprImportDescriptor:INotifyPropertyChanged
 
     {
+        // Identifiers and summary used by the persisted batch import screen.
+        public int BatchRowNumber { get; set; }
+        public bool CanImport { get; set; }
+        public int WienaCaseId { get; set; }
+        public decimal BatchAmount { get; set; }
+
         private int czyUstawoweField;
         private bool czy_okField;
         private bool czyrejField;

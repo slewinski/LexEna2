@@ -208,6 +208,7 @@
                         <telerikNavigation:RadTreeViewItem DropPosition="Inside" Header="Integracja z Wiena" IsTabStop="True" TabNavigation="Once" IsExpanded="True" ToolTipService.ToolTip="Funkcje narzędziowe" IsEditable="False">
                       
                             <telerikNavigation:RadTreeViewItem Header="Import danych z syst. billingowych"  Visibility="Visible" Tag="ImportBilling"  />
+                            <telerikNavigation:RadTreeViewItem Header="Import paczek spraw — poczekalnia" Visibility="Visible" Tag="ImportBillingPackages" />
                             <telerikNavigation:RadTreeViewItem Header="Import zaliczek komorniczych"  Visibility="Visible" Tag="ImportZaliczek"  />
                             <telerikNavigation:RadTreeViewItem Header="Usuwanie kosztów po umorzeniu"  Visibility="Visible" Tag="UsunKoszty"  />
                             <telerikNavigation:RadTreeViewItem Header="Sprawy bez Uz2"  Visibility="Visible" Tag="BezUz2"  />

@@ -877,6 +877,9 @@ namespace LexEnaTrs
                         importBilling = new ImportBilling();
                         this.MainWorkspace.Child = importBilling;
                         break;
+                    case "ImportBillingPackages":
+                        this.MainWorkspace.Child = new ImportBillingPackages();
+                        break;
                     case "ImportZaliczek":
                         importZal = new  ToolsImportZal();
                         this.MainWorkspace.Child = importZal;

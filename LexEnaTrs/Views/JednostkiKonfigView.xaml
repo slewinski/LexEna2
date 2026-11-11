@@ -5,14 +5,16 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" xmlns:my="clr-namespace:LexEnaTrs.Web"
 			   xmlns:local="clr-namespace:LexEnaTrs"
+               xmlns:views="clr-namespace:LexEnaTrs.Views" Loaded="UserControl_Loaded"
 			   >
     <UserControl.Resources>
+        <views:WienaDistributionSymbolList x:Key="WienaDistributionSymbols" />
         <DataTemplate x:Key="JednostkaWindykFormTemplate" >
             <Grid Margin="0">
                 <Grid Margin="1,1,1,1">
 
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="100" />
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
 
                     </Grid.RowDefinitions>
@@ -25,6 +27,11 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="50" />
                             <RowDefinition Height="50" />
+                            <RowDefinition Height="35" />
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="25" />
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="Auto" />
 
                         </Grid.RowDefinitions>
 
@@ -36,6 +43,34 @@
                         <telerik:DataFormComboBoxField  DataMemberBinding = "{Binding TypJednostki, Mode=TwoWay}" Grid.Row="1" Grid.Column="1"  
 				ItemsSource="{Binding rodzajeJednostek, Source={StaticResource SlownikRodzajeJednostek}}" DisplayMemberPath="Nazwa" SelectedValuePath="Numer" x:Name = "TypJednostki" ToolTipService.ToolTip="Wybierz typ jednostki"  Margin="0,0,0,0" d:LayoutOverrides="GridBox" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                         <TextBlock HorizontalAlignment="Right"  Grid.Row="1" Grid.Column="0"   Margin="0,5,0,0" TextWrapping="Wrap" Text="Typ jednostki" VerticalAlignment="Top"/>
+                        <telerik:DataFormCheckBoxField Grid.Row="2" Grid.ColumnSpan="2"
+                            Label="Uczestniczy w przydziale" HorizontalAlignment="Left"
+                            DataMemberBinding="{Binding UczestniczyWPrzydziale, Mode=TwoWay}" />
+                        <telerik:DataFormComboBoxField Grid.Row="3" Grid.ColumnSpan="2" Width="540"
+                            Label="Kancelaria w Wienie" HorizontalAlignment="Left"
+                            DataMemberBinding="{Binding WienaFirmaId, Mode=TwoWay}"
+                            ItemsSource="{Binding typKancelarieWiena, Source={StaticResource KonfiguracjaWiena}}"
+                            DisplayMemberPath="Nazwa" SelectedValuePath="Numer"
+                            Loaded="WienaKancelariaField_Loaded"
+                            ToolTipService.ToolTip="Wybierz odpowiadającą kancelarię w Wienie. Bez udziału w przydziale powiązanie jest opcjonalne." />
+                        <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="10,0,0,0">
+                            <TextBlock Text="ID kancelarii w Wienie: " />
+                            <TextBlock Text="{Binding WienaFirmaId, TargetNullValue='brak powiązania'}" FontWeight="Bold" />
+                        </StackPanel>
+                        <telerik:DataFormComboBoxField Grid.Row="5" Grid.ColumnSpan="2" Width="540"
+                            Label="Symbol spraw w Wienie" HorizontalAlignment="Left"
+                            DataMemberBinding="{Binding SymbolSprawWiena, Mode=OneWay}"
+                            ItemsSource="{StaticResource WienaDistributionSymbols}"
+                            DisplayMemberPath="DisplayName" SelectedValuePath="Symbol"
+                            Loaded="WienaSymbolField_Loaded"
+                            ToolTipService.ToolTip="Wybierz symbol z tabeli symbol w Wienie. Przy oznaczeniu podano oddziały, w których występuje." />
+                        <StackPanel Grid.Row="6" Grid.ColumnSpan="2" Margin="10,0,0,8">
+                            <TextBlock TextWrapping="Wrap" Text="Symbol jest wymagany przed zatwierdzeniem podziału. Wybierz „Brak symbolu”, aby usunąć przypisanie." />
+                            <StackPanel Orientation="Horizontal" Margin="0,2,0,0">
+                                <TextBlock Text="Zapisany symbol: " />
+                                <TextBlock Text="{Binding SymbolSprawWiena, TargetNullValue='brak'}" FontWeight="Bold" />
+                            </StackPanel>
+                        </StackPanel>
                     </Grid>
                     
                     <Grid Grid.Row="1" Width="550"  HorizontalAlignment="Left">
@@ -179,25 +214,37 @@
     </UserControl.Resources>
 
     <Grid x:Name="LayoutRoot" Background="White" Height="Auto">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="474" />
-            <ColumnDefinition />
+            <ColumnDefinition Width="2*" MinWidth="420" />
+            <ColumnDefinition Width="3*" MinWidth="550" />
         </Grid.ColumnDefinitions>
-        <telerik:RadDomainDataSource AutoLoad="True" Height="0"   x:Name="JednostkiWindykacjidds" QueryName="GetJednostkaWindykacjiQuery" Width="0" Grid.Column="1" >
+        <Grid Grid.ColumnSpan="2" Margin="4,4,4,8">
+            <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+            <TextBlock x:Name="SymbolLoadStatus" Text="Odczyt symboli spraw z Wieny..." TextWrapping="Wrap" VerticalAlignment="Center" />
+            <telerik:RadButton x:Name="RetrySymbolsButton" Grid.Column="1" Content="Ponów odczyt symboli" Click="RetrySymbols_Click" Visibility="Collapsed" Margin="8,0,0,0" Padding="8,4" />
+        </Grid>
+        <telerik:RadDomainDataSource AutoLoad="False" Height="0"   x:Name="JednostkiWindykacjidds" QueryName="GetJednostkaWindykacjiQuery" Width="0" Grid.Column="1" Grid.Row="1" >
             <telerik:RadDomainDataSource.DomainContext>
                 <my:LexEnaMeritumDomainContext />
             </telerik:RadDomainDataSource.DomainContext>
 
         </telerik:RadDomainDataSource>
-        <telerik:RadGridView HorizontalAlignment="Left" Name="JednostkiWindykacjiGridView" ItemsSource="{Binding DataView,ElementName=JednostkiWindykacjidds}" IsReadOnly="True" VerticalAlignment="Top"  IsFilteringAllowed="False" IsEnabled="True" AutoGenerateColumns="False" CanUserSortColumns="False" ShowGroupPanel="False" Width="470">
+        <telerik:RadGridView Grid.Row="1" HorizontalAlignment="Stretch" Name="JednostkiWindykacjiGridView" ItemsSource="{Binding DataView,ElementName=JednostkiWindykacjidds}" IsReadOnly="True" VerticalAlignment="Top"  IsFilteringAllowed="False" IsEnabled="True" AutoGenerateColumns="False" CanUserSortColumns="False" ShowGroupPanel="False" Margin="0,0,4,0">
             <telerik:RadGridView.Columns>
-                <telerik:GridViewDataColumn  Header="Typ" Width="200" DataMemberBinding="{Binding TypJednostki,Converter={StaticResource TypJednostkiConverter}}" IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5" TextAlignment="Center" />
+                <telerik:GridViewDataColumn  Header="Typ" Width="150" DataMemberBinding="{Binding TypJednostki,Converter={StaticResource TypJednostkiConverter}}" IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5" TextAlignment="Center" />
                 <telerik:GridViewDataColumn  Header="Nazwa" Width="*" DataMemberBinding="{Binding Nazwa}" IsFilterable="false"  HeaderTextAlignment="Center" MinWidth="5" TextAlignment="Center"  />
+                <telerik:GridViewCheckBoxColumn Header="W przydziale" Width="95" DataMemberBinding="{Binding UczestniczyWPrzydziale}" IsReadOnly="True" />
+                <telerik:GridViewDataColumn Header="ID Wiena" Width="70" DataMemberBinding="{Binding WienaFirmaId}" IsReadOnly="True" />
+                <telerik:GridViewDataColumn Header="Symbol Wiena" Width="100" DataMemberBinding="{Binding SymbolSprawWiena}" IsReadOnly="True" />
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
-        <telerik:RadDataForm Name="JednostkiDataForm" ItemsSource="{Binding DataView,ElementName=JednostkiWindykacjidds}" AutoGenerateFields="False" CancelButtonContent="Anuluj" Grid.Column="1" Margin="0,0,0,0"
+        <telerik:RadDataForm Name="JednostkiDataForm" ItemsSource="{Binding DataView,ElementName=JednostkiWindykacjidds}" AutoGenerateFields="False" CancelButtonContent="Anuluj" Grid.Column="1" Grid.Row="1" Margin="0,0,0,0" IsEnabled="False"
                              ReadOnlyTemplate="{StaticResource JednostkaWindykFormTemplate}"
                              NewItemTemplate="{StaticResource JednostkaWindykFormTemplate}"
-                             EditTemplate="{StaticResource JednostkaWindykFormTemplate}"  EditEnded="JednostkiDataForm_EditEnded" AddedNewItem="JednostkiDataForm_AddedNewItem"  DeletingItem="JednostkiDataForm_DeletingItem" />
+                             EditTemplate="{StaticResource JednostkaWindykFormTemplate}"  EditEnding="JednostkiDataForm_EditEnding" EditEnded="JednostkiDataForm_EditEnded" AddedNewItem="JednostkiDataForm_AddedNewItem"  DeletingItem="JednostkiDataForm_DeletingItem" />
     </Grid>
 </UserControl>

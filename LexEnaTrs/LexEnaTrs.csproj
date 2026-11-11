@@ -185,6 +185,9 @@
     <Compile Include="..\LexEnaTrs.Web\Models\BillingImportClasses.cs">
       <Link>BillingImportClasses.cs</Link>
     </Compile>
+    <Compile Include="..\LexEnaTrs.Web\Models\BillingDistribution.cs">
+      <Link>Models\BillingDistribution.cs</Link>
+    </Compile>
     <Compile Include="..\LexEnaTrs.Web\Models\CCNB.cs">
       <Link>Models\CCNB.cs</Link>
     </Compile>
@@ -308,6 +311,12 @@
     </Compile>
     <Compile Include="Views\ImportBilling\ImportBilling.xaml.cs">
       <DependentUpon>ImportBilling.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ImportBilling\ImportBillingPackages.xaml.cs">
+      <DependentUpon>ImportBillingPackages.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ImportBilling\BillingDistributionView.xaml.cs">
+      <DependentUpon>BillingDistributionView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\NewPasswordWindow.xaml.cs">
       <DependentUpon>NewPasswordWindow.xaml</DependentUpon>
@@ -643,6 +652,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\ImportBilling\ImportBilling.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ImportBilling\ImportBillingPackages.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ImportBilling\BillingDistributionView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

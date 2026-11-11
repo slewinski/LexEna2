@@ -360,6 +360,12 @@
     <Compile Include="BIG\nicciOutput.cs" />
     <Compile Include="Imports\DaysOffCalc.cs" />
     <Compile Include="Imports\ImportBillingHelper.cs" />
+    <Compile Include="Imports\BillingImportBatchService.cs" />
+    <Compile Include="Imports\BillingDistributionService.cs" />
+    <Compile Include="Imports\BillingDistributionApproval.cs" />
+    <Compile Include="Imports\BillingDistributionManualAssignment.cs" />
+    <Compile Include="Imports\BillingDistributionSignaturePreview.cs" />
+    <Compile Include="Imports\BillingDistributionHistory.cs" />
     <Compile Include="Imports\ImportValidators.cs" />
     <Compile Include="Imports\Tools1\NalSprawHelper.cs" />
     <Compile Include="Imports\Tools1\ZalKomHelper.cs" />
@@ -371,6 +377,7 @@
       <DependentUpon>LexEnaMeritumModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\BillingImportClasses.cs" />
+    <Compile Include="Models\BillingDistribution.cs" />
     <Compile Include="Models\CCNB.cs" />
     <Compile Include="Models\CountDokOdebr.cs" />
     <Compile Include="Models\DataAnnotationFix.cs" />

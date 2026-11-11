@@ -1,0 +1,124 @@
+<UserControl x:Class="LexEnaTrs.Views.BillingDistributionView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+    Loaded="UserControl_Loaded">
+    <telerik:RadBusyIndicator x:Name="BusyIndicator" BusyContent="Odczyt statusów i przygotowanie podziału...">
+        <Grid Background="White" Margin="12">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <StackPanel Margin="0,0,0,8">
+                <TextBlock x:Name="BatchTitle" FontSize="17" FontWeight="Bold" TextWrapping="Wrap" />
+                <TextBlock Margin="0,5,0,0" TextWrapping="Wrap"
+                    Text="Do podziału kwalifikują się wyłącznie sprawy z aktualnym statusem Wieny 85. Pozostałe sprawy są wyszarzone i nie wpływają na liczbę ani wartość przydziału." />
+                <TextBlock Margin="0,4,0,0" TextWrapping="Wrap"
+                    Text="Kwota podziału to suma należności do zapłaty z XML paczki. Najpierw zaproponuj podział, a po sprawdzeniu wyniku zatwierdź go i zadekretuj sprawy w Wienie." />
+                <TextBlock Margin="0,4,0,0" TextWrapping="Wrap"
+                    Text="Automatyczny podział przypisuje znanego dłużnika do kancelarii z jego najnowszej wcześniejszej sprawy. Przed zatwierdzeniem możesz ręcznie wybrać inną kancelarię; zmiana wchodzi do bilansu." />
+            </StackPanel>
+            <StackPanel Grid.Row="1" Margin="0,0,0,8">
+                <StackPanel Orientation="Horizontal">
+                    <telerik:RadButton x:Name="RefreshButton" Content="Odśwież statusy i zapisany podział" Padding="10,5" Click="Refresh_Click" Margin="0,0,8,0" />
+                    <telerik:RadButton x:Name="EqualButton" Content="Ustaw równe udziały" Padding="10,5" Click="Equal_Click" Margin="0,0,8,0" IsEnabled="False" />
+                    <telerik:RadButton x:Name="CalculateButton" Content="Zaproponuj podział" Padding="10,5" Click="Calculate_Click" IsEnabled="False" />
+                </StackPanel>
+                <telerik:RadButton x:Name="ApproveButton" Content="Zatwierdź i zadekretuj w Wienie" Padding="10,5" Click="Approve_Click" HorizontalAlignment="Left" Margin="0,6,0,0" IsEnabled="False" />
+            </StackPanel>
+            <StackPanel Grid.Row="2" Margin="0,0,0,8">
+                <TextBlock Text="Kancelarie uczestniczące w podziale" FontWeight="Bold" />
+                <TextBlock Text="Ustaw osobno udział w liczbie i wartości spraw. Każda kolumna powinna sumować się do 100%. Równe udziały są zaokrąglone (np. 3 × 33,33%). Sam wybór paczki lub zmiana procentów nie wykonuje podziału." TextWrapping="Wrap" Margin="0,3,0,6" />
+                <telerik:RadGridView x:Name="OfficesGrid" MaxHeight="180" MinHeight="90"
+                    AutoGenerateColumns="False" ShowGroupPanel="False" RowIndicatorVisibility="Collapsed"
+                    IsSynchronizedWithCurrentItem="False" CanUserInsertRows="False" CanUserDeleteRows="False"
+                    IsReadOnly="True" IsFilteringAllowed="False">
+                    <telerik:RadGridView.Columns>
+                        <telerik:GridViewColumn Header="Udział" Width="50">
+                            <telerik:GridViewColumn.CellTemplate>
+                                <DataTemplate><CheckBox IsChecked="{Binding Selected, Mode=TwoWay}" IsEnabled="{Binding CanChangeSelection}" ToolTipService.ToolTip="{Binding SelectionHint}" HorizontalAlignment="Center" /></DataTemplate>
+                            </telerik:GridViewColumn.CellTemplate>
+                        </telerik:GridViewColumn>
+                        <telerik:GridViewDataColumn Header="Kancelaria LexEna" DataMemberBinding="{Binding Office.Name}" Width="*" MinWidth="140" />
+                        <telerik:GridViewDataColumn Header="ID Wiena" DataMemberBinding="{Binding Office.WienaFirmaId}" Width="65" />
+                        <telerik:GridViewDataColumn Header="Symbol spraw" DataMemberBinding="{Binding Office.SymbolSprawWiena}" Width="90" />
+                        <telerik:GridViewColumn Header="Liczba (%)" Width="85">
+                            <telerik:GridViewColumn.CellTemplate>
+                                <DataTemplate><TextBox Text="{Binding CountPercentText, Mode=OneWay}" Tag="Count" IsEnabled="{Binding Selected}" TextChanged="PercentText_TextChanged" TextAlignment="Right" Margin="3" Padding="3" ToolTipService.ToolTip="Docelowy procent liczby spraw; od 0 do 100." /></DataTemplate>
+                            </telerik:GridViewColumn.CellTemplate>
+                        </telerik:GridViewColumn>
+                        <telerik:GridViewColumn Header="Wartość (%)" Width="85">
+                            <telerik:GridViewColumn.CellTemplate>
+                                <DataTemplate><TextBox Text="{Binding AmountPercentText, Mode=OneWay}" Tag="Amount" IsEnabled="{Binding Selected}" TextChanged="PercentText_TextChanged" TextAlignment="Right" Margin="3" Padding="3" ToolTipService.ToolTip="Docelowy procent wartości spraw; od 0 do 100." /></DataTemplate>
+                            </telerik:GridViewColumn.CellTemplate>
+                        </telerik:GridViewColumn>
+                        <telerik:GridViewDataColumn Header="Sprawy" DataMemberBinding="{Binding Office.CaseCount}" Width="60" />
+                        <telerik:GridViewDataColumn Header="Cel liczby" DataMemberBinding="{Binding Office.TargetCaseCount}" Width="70" />
+                        <telerik:GridViewDataColumn Header="Przydzielona kwota" DataMemberBinding="{Binding Office.TotalAmount}" DataFormatString="{}{0:N2}" Width="125" />
+                        <telerik:GridViewDataColumn Header="Docelowa kwota" DataMemberBinding="{Binding Office.TargetAmount}" DataFormatString="{}{0:N2}" Width="115" />
+                        <telerik:GridViewDataColumn Header="Odchylenie kwoty" DataMemberBinding="{Binding Office.AmountDeviation}" DataFormatString="{}{0:N2}" Width="120" />
+                        <telerik:GridViewDataColumn Header="Konfiguracja dekretacji" DataMemberBinding="{Binding Office.SymbolIssue}" Width="230" />
+                    </telerik:RadGridView.Columns>
+                </telerik:RadGridView>
+                <TextBlock x:Name="PercentSummary" TextWrapping="Wrap" Margin="0,5,0,0" />
+            </StackPanel>
+            <StackPanel Grid.Row="3" Margin="0,0,0,8">
+                <TextBlock x:Name="ResultInfo" TextWrapping="Wrap" />
+                <TextBlock x:Name="ApprovalInfo" TextWrapping="Wrap" FontWeight="Bold" Margin="0,4,0,0" />
+                <TextBlock Text="Sygnatury docelowe są podglądem; ostateczne numery są sprawdzane podczas dekretacji." TextWrapping="Wrap" Margin="0,4,0,0" />
+                <TextBlock x:Name="FixedAssignmentInfo" TextWrapping="Wrap" FontWeight="Bold" Margin="0,4,0,0" />
+                <Border BorderBrush="#FFD2DDE8" BorderThickness="1" Padding="7" Margin="0,7,0,0">
+                    <StackPanel>
+                        <TextBlock x:Name="ManualCaseInfo" Text="Wybierz sprawę w tabeli lub kliknij w jej wierszu „Zmień kancelarię”." TextWrapping="Wrap" />
+                        <Grid Margin="0,5,0,0">
+                            <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+                            <telerik:RadComboBox x:Name="ManualOffice" DisplayMemberPath="Name" SelectedValuePath="UnitId"
+                                IsEditable="False" IsEnabled="False" MinWidth="160" Margin="0,0,8,0"
+                                SelectionChanged="ManualOffice_SelectionChanged"
+                                ToolTipService.ToolTip="Wybierz inną kancelarię spośród dopuszczonych do przydziału w konfiguracji." />
+                            <telerik:RadButton x:Name="SaveManualOfficeButton" Grid.Column="1" Content="Zapisz zmianę kancelarii"
+                                Padding="10,5" Click="SaveManualOffice_Click" IsEnabled="False" />
+                        </Grid>
+                        <TextBlock x:Name="ManualOfficeInfo" TextWrapping="Wrap" Margin="0,4,0,0" />
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+            <telerik:RadGridView x:Name="DistributionGrid" Grid.Row="4" AutoGenerateColumns="False"
+                ShowGroupPanel="False" RowIndicatorVisibility="Collapsed" IsReadOnly="True"
+                IsSynchronizedWithCurrentItem="False" CanUserInsertRows="False" CanUserDeleteRows="False"
+                SelectionMode="Single" SelectionUnit="FullRow" SelectionChanged="DistributionGrid_SelectionChanged"
+                RowLoaded="DistributionGrid_RowLoaded">
+                <telerik:RadGridView.Columns>
+                    <telerik:GridViewColumn Header="Ręczna zmiana" Width="130" IsFilterable="False">
+                        <telerik:GridViewColumn.CellTemplate>
+                            <DataTemplate><telerik:RadButton Content="Zmień kancelarię" Padding="5,2" Click="ChooseManualCase_Click" ToolTipService.ToolTip="Wybierz tę sprawę do ręcznej zmiany kancelarii przed zatwierdzeniem podziału." /></DataTemplate>
+                        </telerik:GridViewColumn.CellTemplate>
+                    </telerik:GridViewColumn>
+                    <telerik:GridViewCheckBoxColumn Header="W bilansie" DataMemberBinding="{Binding Eligible}" Width="80" />
+                    <telerik:GridViewDataColumn Header="Sygnatura Wiena" DataMemberBinding="{Binding DecreeSignature}" Width="130" />
+                    <telerik:GridViewDataColumn Header="Sygnatura przed dekretacją" DataMemberBinding="{Binding SignatureBeforeApproval}" Width="175" />
+                    <telerik:GridViewDataColumn Header="Uwagi do sygnatury docelowej" DataMemberBinding="{Binding DecreeSignatureIssue}" Width="230" />
+                    <telerik:GridViewCheckBoxColumn Header="Zadekretowana" DataMemberBinding="{Binding Decreed}" Width="105" />
+                    <telerik:GridViewDataColumn Header="Poprzednia sygnatura" DataMemberBinding="{Binding PreviousSignature}" Width="145" />
+                    <telerik:GridViewCheckBoxColumn Header="Stała kancelaria" DataMemberBinding="{Binding IsFixedAssignment}" Width="110" />
+                    <telerik:GridViewDataColumn Header="Dłużnik" DataMemberBinding="{Binding DebtorName}" Width="170" />
+                    <telerik:GridViewDataColumn Header="Nr ewidencyjny" DataMemberBinding="{Binding CustomerNumber}" Width="100" />
+                    <telerik:GridViewDataColumn Header="Kwota należności" DataMemberBinding="{Binding Amount}" DataFormatString="{}{0:N2}" Width="120" />
+                    <telerik:GridViewDataColumn Header="ID statusu" DataMemberBinding="{Binding StatusId}" Width="70" />
+                    <telerik:GridViewDataColumn Header="Aktualny status Wiena" DataMemberBinding="{Binding StatusName}" Width="230" />
+                    <telerik:GridViewDataColumn Header="Przypisana kancelaria" DataMemberBinding="{Binding AssignedOfficeName}" Width="190" />
+                    <telerik:GridViewCheckBoxColumn Header="Ręcznie" DataMemberBinding="{Binding ManualAssignment}" Width="70" />
+                    <telerik:GridViewDataColumn Header="Dotychczasowa kancelaria" DataMemberBinding="{Binding PreviousOfficeName}" Width="190" />
+                    <telerik:GridViewDataColumn Header="Podstawa przypisania" DataMemberBinding="{Binding AssignmentReason}" Width="210" />
+                    <telerik:GridViewDataColumn Header="Wymaga wyjaśnienia" DataMemberBinding="{Binding AssignmentBlockReason}" Width="260" />
+                    <telerik:GridViewDataColumn Header="Powód pominięcia" DataMemberBinding="{Binding ExclusionReason}" Width="230" />
+                </telerik:RadGridView.Columns>
+            </telerik:RadGridView>
+            <TextBlock x:Name="Summary" Grid.Row="5" TextWrapping="Wrap" Margin="0,10,0,0" />
+        </Grid>
+    </telerik:RadBusyIndicator>
+</UserControl>

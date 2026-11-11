@@ -7,6 +7,8 @@ using WienaDB.Models;
 using System.Text.RegularExpressions;
 using System.Data;
 using System.Data.SqlClient;
+using System.Data.Entity.Infrastructure;
+using System.Data.EntityClient;
 
 namespace LexEnaTrs.Web
 {
@@ -78,6 +80,43 @@ namespace LexEnaTrs.Web
         public ImportSprawBilling imp;
 
         public string ErrMsg = string.Empty;
+
+        private bool atomicImport;
+        private bool atomicCommitStarted;
+        private SprImportDescriptor[] atomicSourceRows;
+
+        // Opt-in for batch imports; the original screen retains its existing behavior.
+        public bool DoRegisterSprAtomic(SprImportDescriptor si, string oddzial, DateTime dzien,
+            string dowod, int idFirma, int firma, string system, int idKancelaria, SprImportDescriptor[] sourceRows)
+        {
+            atomicImport = true;
+            atomicCommitStarted = false;
+            atomicSourceRows = sourceRows;
+            ErrMsg = string.Empty;
+            si.WienaCaseId = 0;
+            try
+            {
+                return DoRegisterSpr(si, oddzial, dzien, dowod, idFirma, firma, system, idKancelaria);
+            }
+            finally
+            {
+                atomicImport = false;
+                atomicSourceRows = null;
+            }
+        }
+
+        private static EntityTransaction BeginImportTransaction(wiena_centralEntities context)
+        {
+            EntityConnection connection = (EntityConnection)((IObjectContextAdapter)context).ObjectContext.Connection;
+            connection.Open();
+            return connection.BeginTransaction(IsolationLevel.Serializable);
+        }
+
+        private void CheckAccountingResult(int result)
+        {
+            if (atomicImport && result < 0)
+                throw new InvalidOperationException("Nie zapisano księgowania sprawy (kod " + result + ").");
+        }
 
         private int f_zaksieguj(string konto_dest, struct_ksiegowanie ksiegowanie, string dow_dest, int id_sprawy, int Firma, wiena_centralEntities context)
         {
@@ -431,6 +470,44 @@ k in context.konto on ka.id_konta equals k.id
                 }
                 using (wiena_centralEntities context = new wiena_centralEntities())
                 {
+                  using (EntityTransaction importTransaction = atomicImport ? BeginImportTransaction(context) : null)
+                  {
+                    if (atomicImport)
+                    {
+                        // A draft may have been created before another import was completed.
+                        // Recheck the original recipient/document pairs under the same lock as the insert.
+                        foreach (SprImportDescriptor sourceRow in atomicSourceRows)
+                        {
+                            string sourceNumber = sourceRow.Odbiorca.Nr_ewidencyjny.Trim();
+                            string additionalNumberToken = ";" + sourceNumber + ";";
+                            foreach (Obciazenie sourceCharge in sourceRow.Odbiorca.Obciazenia)
+                            {
+                                string documentNumber = sourceCharge.Nr_dokumentu.Trim();
+                                // notki.tresc is SQL Server text, so explicitly cast it before
+                                // trimming/concatenation. SqlQuery shares this context's transaction.
+                                bool exists = context.Database.SqlQuery<int>(
+                                    @"SELECT TOP (1) s.ident
+                                      FROM dbo.sprawa s
+                                      INNER JOIN dbo.naleznosc n ON n.id_sprawy = s.ident
+                                      INNER JOIN dbo.firma f ON f.ident = s.id_firmy
+                                      WHERE n.tytul = @document AND f.typ_firmy = @firma
+                                        AND (s.nr_ewid = @source OR EXISTS
+                                            (SELECT 1 FROM dbo.notki nt
+                                             WHERE nt.id_sprawy = s.ident AND nt.czyus = 0
+                                               AND CHARINDEX(@token, ';' + LTRIM(RTRIM(CAST(nt.tresc AS varchar(max)))) + ';') > 0))",
+                                    new SqlParameter("@document", SqlDbType.VarChar, Math.Max(50, documentNumber.Length)) { Value = documentNumber },
+                                    new SqlParameter("@firma", Firma),
+                                    new SqlParameter("@source", SqlDbType.VarChar, Math.Max(15, sourceNumber.Length)) { Value = sourceNumber },
+                                    new SqlParameter("@token", SqlDbType.VarChar, Math.Max(17, additionalNumberToken.Length)) { Value = additionalNumberToken })
+                                    .FirstOrDefault() > 0;
+                                if (exists)
+                                {
+                                    ErrMsg = "Dokument " + documentNumber + " odbiorcy " + sourceNumber + " już istnieje w Wienie. Sprawy nie zapisano.";
+                                    return false;
+                                }
+                            }
+                        }
+                    }
                     li_typ_ksiegi = (context.symbol.Where(a => a.ident == ll_symbol).FirstOrDefault()).typ;
                     ls_oddzial = oddzial.ToUpper();
                     if (ls_typob == "90" && (String.IsNullOrWhiteSpace(ls_oddzial)))
@@ -2008,7 +2085,7 @@ k in context.konto on ka.id_konta equals k.id
                                     }
                                     catch (Exception exx)
                                     {
-                                        ;
+                                        if (atomicImport) throw;
                                     }
                                 }
                                 ll_id_nal = nal.ident;
@@ -2260,7 +2337,7 @@ k in context.konto on ka.id_konta equals k.id
                         ksiegowanie.klauzula = ld_doksie_klauzula;
                         ksiegowanie.odsetki = ld_doksie_ods;
                         ksiegowanie.id_schematu = (Firma == -1 ? 29 : 17);
-                        f_zaksieguj("2442110", ksiegowanie, as_dowod, ll_id_spr, Firma, context);
+                        CheckAccountingResult(f_zaksieguj("2442110", ksiegowanie, as_dowod, ll_id_spr, Firma, context));
                     }
 
 
@@ -2282,7 +2359,7 @@ k in context.konto on ka.id_konta equals k.id
                         ksiegowanie.wpis = ld_doksie_wpis;
                         ksiegowanie.klauzula = ld_doksie_klauzula;
                         ksiegowanie.id_schematu = (Firma == -1 ? 67 : 12);
-                        f_zaksieguj("2440001", ksiegowanie, as_dowod, ll_id_spr, Firma, context);
+                        CheckAccountingResult(f_zaksieguj("2440001", ksiegowanie, as_dowod, ll_id_spr, Firma, context));
                         // ustawienie statusu sprawy
                         ll_id_status = context.status.Where(a => a.nazwa.Contains("oczek") && a.nazwa.Contains("post") && a.nazwa.Contains("dowego") && a.etap == 1 && a.czyus == 0).Select(a => a.ident).FirstOrDefault();
                         if (ll_id_status > 0)
@@ -2301,6 +2378,7 @@ k in context.konto on ka.id_konta equals k.id
                             {
                                 Utils.LogWriter("Błąd podczas zapisu statusu " + ex.Message);
                                 this.ErrMsg = "Błąd podczas zapisu statusu " + ex.Message;
+                                if (atomicImport) throw;
                             }
 
                         }
@@ -2325,7 +2403,7 @@ k in context.konto on ka.id_konta equals k.id
                         ksiegowanie.inne_sad = ld_doksie_inne;
                         ksiegowanie.komo = ld_doksie_komo;
                         ksiegowanie.id_schematu = (Firma == -1 ? 28 : 13);
-                        f_zaksieguj("2440010", ksiegowanie, as_dowod, ll_id_spr, Firma, context);
+                        CheckAccountingResult(f_zaksieguj("2440010", ksiegowanie, as_dowod, ll_id_spr, Firma, context));
                     }
 
 
@@ -2348,7 +2426,7 @@ k in context.konto on ka.id_konta equals k.id
                         ksiegowanie.inne_sad = ld_doksie_inne;
                         ksiegowanie.komo = ld_doksie_komo;
                         ksiegowanie.id_schematu = (Firma == -1 ? 30 : 19);
-                        f_zaksieguj("2442170", ksiegowanie, as_dowod, ll_id_spr, Firma, context);
+                        CheckAccountingResult(f_zaksieguj("2442170", ksiegowanie, as_dowod, ll_id_spr, Firma, context));
                     }
 
                     if (ld_obciaz_OU > 0 || typ_konta == 6)
@@ -2367,7 +2445,7 @@ k in context.konto on ka.id_konta equals k.id
                         ksiegowanie.inne_sad = ld_doksie_inne;
                         ksiegowanie.komo = ld_doksie_komo;
                         ksiegowanie.id_schematu = (Firma == -1 ? 46 : 8);
-                        f_zaksieguj("2440002", ksiegowanie, as_dowod, ll_id_spr, Firma, context);
+                        CheckAccountingResult(f_zaksieguj("2440002", ksiegowanie, as_dowod, ll_id_spr, Firma, context));
                         ll_id_status = context.status.Where(a => a.nazwa.Contains("oczek") && a.nazwa.Contains("post") && a.nazwa.Contains("upad") && a.etap == 3 && a.czyus == 0).Select(a => a.ident).FirstOrDefault();
                         if (ll_id_status > 0)
                         {
@@ -2385,6 +2463,7 @@ k in context.konto on ka.id_konta equals k.id
                             {
                                 Utils.LogWriter("Błąd podczas zapisu statusu " + ex.Message);
                                 this.ErrMsg = "Błąd podczas zapisu statusu " + ex.Message;
+                                if (atomicImport) throw;
                             }
 
                         }
@@ -2408,7 +2487,7 @@ k in context.konto on ka.id_konta equals k.id
                         ksiegowanie.inne_sad = ld_doksie_inne;
                         ksiegowanie.komo = ld_doksie_komo;
                         ksiegowanie.id_schematu = (Firma == -1 ? 4 : 50);
-                        f_zaksieguj("2440030", ksiegowanie, as_dowod, ll_id_spr, Firma, context);
+                        CheckAccountingResult(f_zaksieguj("2440030", ksiegowanie, as_dowod, ll_id_spr, Firma, context));
                     }
 
 
@@ -2430,12 +2509,17 @@ k in context.konto on ka.id_konta equals k.id
                         ksiegowanie.koszty = ld_doksie_koszty;
                         ksiegowanie.inne_sad = ld_doksie_inne;
                         ksiegowanie.komo = ld_doksie_komo;
-                        f_zaksieguj("2442160", ksiegowanie, as_dowod, ll_id_spr, Firma, context);
+                        CheckAccountingResult(f_zaksieguj("2442160", ksiegowanie, as_dowod, ll_id_spr, Firma, context));
 
                     }
 
-
-
+                    if (importTransaction != null)
+                    {
+                        atomicCommitStarted = true;
+                        importTransaction.Commit();
+                    }
+                    si.WienaCaseId = ll_id_spr;
+                  }
                 }
 
                 return true;
@@ -2445,6 +2529,7 @@ k in context.konto on ka.id_konta equals k.id
             {
                 this.ErrMsg = "Ogólny błąd importu " + exp.Message;
                 Utils.LogWriter(this.ErrMsg);
+                if (atomicImport && atomicCommitStarted) throw;
 
                 return false;
             }

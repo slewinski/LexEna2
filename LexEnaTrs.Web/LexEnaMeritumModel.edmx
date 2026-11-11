@@ -5,6 +5,32 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="LexEnaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityType Name="BillingImportBatch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Firma" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="SourceFileName" Type="nvarchar" Nullable="false" MaxLength="260" />
+          <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="BranchId" Type="int" Nullable="false" />
+          <Property Name="SymbolId" Type="int" Nullable="false" />
+          <Property Name="SymbolName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="FirstNumber" Type="int" Nullable="false" />
+          <Property Name="Year" Type="int" Nullable="false" />
+          <Property Name="DocumentName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="BookingDate" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" Nullable="false" MaxLength="32" />
+          <Property Name="CaseCount" Type="int" Nullable="false" />
+          <Property Name="ImportedCount" Type="int" Nullable="false" />
+          <Property Name="TotalAmount" Type="decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="ImportXml" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DistributionXml" Type="nvarchar(max)" Nullable="true" />
+          <Property Name="DistributionUpdatedAt" Type="datetime" Nullable="true" />
+          <Property Name="DistributionState" Type="nvarchar" Nullable="false" MaxLength="20" DefaultValue="Planning" />
+        </EntityType>
         <EntityType Name="aspnet_Applications">
           <Key>
             <PropertyRef Name="ApplicationId" />
@@ -713,6 +739,9 @@ warning 6002: The table/view 'LexEnaPro.dbo.faktnewtbl' does not have a primary 
           <Property Name="WnioskiEgzBig" Type="int" />
           <Property Name="Nakaz" Type="int" />
           <Property Name="Nakazbuf" Type="int" />
+          <Property Name="WienaFirmaId" Type="int" Nullable="true" />
+          <Property Name="UczestniczyWPrzydziale" Type="bit" Nullable="false" DefaultValue="false" />
+          <Property Name="SymbolSprawWiena" Type="nvarchar" Nullable="true" MaxLength="10" />
         </EntityType>
         <EntityType Name="KancelariaKomornicza">
           <Key>
@@ -3918,6 +3947,7 @@ warning 6002: The table/view 'LexEnaPro.dbo.vw_UsersAspNet' does not have a prim
           <Parameter Name="OperIdLst" Type="varchar(max)" Mode="In" />
         </Function>
         <EntityContainer Name="LexEnaModelStoreContainer">
+          <EntitySet Name="BillingImportBatch" EntityType="Self.BillingImportBatch" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="aspnet_Applications" EntityType="Self.aspnet_Applications" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="aspnet_Membership" EntityType="Self.aspnet_Membership" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="aspnet_Paths" EntityType="Self.aspnet_Paths" Schema="dbo" store:Type="Tables" />
@@ -5116,7 +5146,34 @@ FROM [dbo].[vw_UsersAspNet] AS [vw_UsersAspNet]</DefiningQuery>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LexEnaModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityType Name="BillingImportBatch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Firma" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="SourceFileName" Type="String" Nullable="false" MaxLength="260" Unicode="true" FixedLength="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="BranchId" Type="Int32" Nullable="false" />
+          <Property Name="SymbolId" Type="Int32" Nullable="false" />
+          <Property Name="SymbolName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="FirstNumber" Type="Int32" Nullable="false" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+          <Property Name="DocumentName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="BookingDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="32" Unicode="true" FixedLength="false" />
+          <Property Name="CaseCount" Type="Int32" Nullable="false" />
+          <Property Name="ImportedCount" Type="Int32" Nullable="false" />
+          <Property Name="TotalAmount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="ImportXml" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="DistributionXml" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="DistributionUpdatedAt" Type="DateTime" Nullable="true" Precision="3" />
+          <Property Name="DistributionState" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" DefaultValue="Planning" />
+        </EntityType>
         <EntityContainer Name="LexEnaMeritumEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BillingImportBatch" EntityType="LexEnaModel.BillingImportBatch" />
           <EntitySet Name="aspnet_Users" EntityType="LexEnaModel.aspnet_Users" />
           <EntitySet Name="DaneDluznika" EntityType="LexEnaModel.DaneDluznika" />
           <EntitySet Name="Dekretacja" EntityType="LexEnaModel.Dekretacja" />
@@ -7431,6 +7488,9 @@ FROM [dbo].[vw_UsersAspNet] AS [vw_UsersAspNet]</DefiningQuery>
           <Property Name="WnioskiEgzBig" Type="Int32" />
           <Property Name="Nakaz" Type="Int32" />
           <Property Name="Nakazbuf" Type="Int32" />
+          <Property Name="WienaFirmaId" Type="Int32" Nullable="true" />
+          <Property Name="UczestniczyWPrzydziale" Type="Boolean" Nullable="false" DefaultValue="false" />
+          <Property Name="SymbolSprawWiena" Type="String" Nullable="true" MaxLength="10" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Dekretacja" Relationship="LexEnaModel.FK_JednostkaWindykacjiDekretacja" FromRole="JednostkaWindykacji" ToRole="Dekretacja" />
           <NavigationProperty Name="KontoEPU" Relationship="LexEnaModel.FK_KontoEPU_JednostkaWindykacji" FromRole="JednostkaWindykacji" ToRole="KontoEPU" />
           <NavigationProperty Name="SposobyEgzSlownik" Relationship="LexEnaModel.FK_SposobyEgzSlownik_JednostkaWindykacji" FromRole="JednostkaWindykacji" ToRole="SposobyEgzSlownik" />
@@ -9624,6 +9684,33 @@ FROM [dbo].[vw_UsersAspNet] AS [vw_UsersAspNet]</DefiningQuery>
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="LexEnaModelStoreContainer" CdmEntityContainer="LexEnaMeritumEntities">
+          <EntitySetMapping Name="BillingImportBatch">
+            <EntityTypeMapping TypeName="LexEnaModel.BillingImportBatch">
+              <MappingFragment StoreEntitySet="BillingImportBatch">
+                <ScalarProperty Name="DistributionXml" ColumnName="DistributionXml" />
+                <ScalarProperty Name="DistributionUpdatedAt" ColumnName="DistributionUpdatedAt" />
+                <ScalarProperty Name="DistributionState" ColumnName="DistributionState" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Firma" ColumnName="Firma" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SourceFileName" ColumnName="SourceFileName" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+                <ScalarProperty Name="SymbolId" ColumnName="SymbolId" />
+                <ScalarProperty Name="SymbolName" ColumnName="SymbolName" />
+                <ScalarProperty Name="FirstNumber" ColumnName="FirstNumber" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="DocumentName" ColumnName="DocumentName" />
+                <ScalarProperty Name="BookingDate" ColumnName="BookingDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CaseCount" ColumnName="CaseCount" />
+                <ScalarProperty Name="ImportedCount" ColumnName="ImportedCount" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="ImportXml" ColumnName="ImportXml" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="aspnet_Users">
             <EntityTypeMapping TypeName="LexEnaModel.aspnet_Users">
               <MappingFragment StoreEntitySet="aspnet_Users">
@@ -10811,6 +10898,9 @@ FROM [dbo].[vw_UsersAspNet] AS [vw_UsersAspNet]</DefiningQuery>
           <EntitySetMapping Name="JednostkaWindykacji">
             <EntityTypeMapping TypeName="LexEnaModel.JednostkaWindykacji">
               <MappingFragment StoreEntitySet="JednostkaWindykacji">
+                <ScalarProperty Name="WienaFirmaId" ColumnName="WienaFirmaId" />
+                <ScalarProperty Name="UczestniczyWPrzydziale" ColumnName="UczestniczyWPrzydziale" />
+                <ScalarProperty Name="SymbolSprawWiena" ColumnName="SymbolSprawWiena" />
                 <ScalarProperty Name="Nakazbuf" ColumnName="Nakazbuf" />
                 <ScalarProperty Name="Nakaz" ColumnName="Nakaz" />
                 <ScalarProperty Name="WnioskiEgzBig" ColumnName="WnioskiEgzBig" />

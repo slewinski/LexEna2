@@ -1,0 +1,169 @@
+<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+    x:Class="LexEnaTrs.Views.ImportBillingPackages" Loaded="UserControl_Loaded">
+    <telerik:RadBusyIndicator x:Name="BusyIndicator" BusyContent="Przetwarzanie paczki...">
+        <Grid Background="White" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackPanel Margin="0,0,0,12">
+                <TextBlock Text="Import paczek spraw do Wieny" FontSize="18" FontWeight="Bold" />
+                <TextBlock Text="Krok 1: wczytaj XML, sprawdź paczkę i zapisz sprawy na sygnaturze poczekalni."
+                           Margin="0,4,0,0" TextWrapping="Wrap" />
+            </StackPanel>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300" MinWidth="220" />
+                    <ColumnDefinition Width="12" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Zapisane paczki" FontWeight="Bold" Margin="0,0,0,8" />
+                    <StackPanel Grid.Row="1" Margin="0,0,0,8">
+                        <StackPanel Orientation="Horizontal">
+                            <telerik:RadButton Content="Nowa paczka" Click="NewBatch_Click" Margin="0,0,6,0" Padding="8,4" />
+                            <telerik:RadButton Content="Odśwież" Click="Refresh_Click" Margin="0,0,6,0" Padding="8,4" />
+                            <telerik:RadButton Content="Otwórz" Click="OpenBatch_Click" Padding="8,4" />
+                        </StackPanel>
+                        <telerik:RadButton x:Name="DeleteBatchButton" Content="Usuń paczkę" Click="DeleteBatch_Click"
+                            IsEnabled="False" HorizontalAlignment="Left" Margin="0,6,0,0" Padding="8,4"
+                            ToolTipService.ToolTip="Usuwa otwartą paczkę z LexEna. Dostępne tylko przed rozpoczęciem zapisu spraw do Wieny." />
+                    </StackPanel>
+                    <telerik:RadGridView x:Name="BatchGrid" Grid.Row="2" AutoGenerateColumns="False"
+                                         IsReadOnly="True" ShowGroupPanel="False" RowIndicatorVisibility="Collapsed"
+                                         SelectionMode="Single" IsSynchronizedWithCurrentItem="False"
+                                         SelectionChanged="BatchGrid_SelectionChanged">
+                        <telerik:RadGridView.Columns>
+                            <telerik:GridViewDataColumn Header="Paczka" DataMemberBinding="{Binding Name}" Width="150" />
+                            <telerik:GridViewDataColumn Header="Podział" DataMemberBinding="{Binding DistributionStateText}" Width="145" />
+                            <telerik:GridViewDataColumn Header="Import" DataMemberBinding="{Binding StatusText}" Width="130" />
+                            <telerik:GridViewDataColumn Header="Utworzono" DataMemberBinding="{Binding CreatedAt}" DataFormatString="{}{0:yyyy-MM-dd HH:mm}" Width="120" />
+                            <telerik:GridViewDataColumn Header="Sprawy" DataMemberBinding="{Binding CaseCount}" Width="65" />
+                            <telerik:GridViewDataColumn Header="W Wienie" DataMemberBinding="{Binding ImportedCount}" Width="70" />
+                        </telerik:RadGridView.Columns>
+                    </telerik:RadGridView>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <ContentControl x:Name="BatchSettings" HorizontalContentAlignment="Stretch">
+                      <StackPanel>
+                        <TextBlock Text="Oznaczenie paczki" FontWeight="Bold" />
+                        <TextBox x:Name="BatchName" MaxLength="100" Margin="0,4,0,8" Height="25" />
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="140" />
+                                <ColumnDefinition Width="140" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Margin="0,0,8,8">
+                                <TextBlock Text="Oddział Wieny" />
+                                <telerik:RadComboBox x:Name="Branch" Margin="0,4,0,0" Height="25"
+                                    ItemsSource="{Binding typOddzialyWiena, Source={StaticResource SlownikSlownikOddzialowWiena}}"
+                                    SelectedValuePath="Numer" DisplayMemberPath="Nazwa" SelectionChanged="Branch_SelectionChanged" />
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" Margin="0,0,8,8">
+                                <TextBlock Text="Data księgowania" />
+                                <telerik:RadDatePicker x:Name="BookingDate" Culture="pl-PL" Margin="0,4,0,0" Height="25" />
+                            </StackPanel>
+                            <StackPanel Grid.Column="2" Margin="0,0,0,8">
+                                <TextBlock Text="Dokument księgowy" />
+                                <telerik:RadComboBox x:Name="DocumentType" Margin="0,4,0,0" Height="25"
+                                    ItemsSource="{Binding typOznaczeniaDowodowWiena, Source={StaticResource SlownikDowodowWiena}}"
+                                    SelectedValuePath="Nazwa" DisplayMemberPath="Nazwa" />
+                            </StackPanel>
+                        </Grid>
+                        <TextBlock Text="Sygnatura poczekalni — oznaczenie pierwszej sprawy" />
+                        <Grid Margin="0,4,0,8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="20" />
+                                <ColumnDefinition Width="90" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <telerik:RadComboBox x:Name="Symbol" SelectedValuePath="Numer" DisplayMemberPath="Nazwa"
+                                Height="25" Margin="0,0,8,0" SelectionChanged="Symbol_SelectionChanged" />
+                            <TextBox x:Name="FirstNumber" Grid.Column="1" Height="25" MaxLength="9" />
+                            <TextBlock Grid.Column="2" Text="/" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                            <telerik:RadNumericUpDown x:Name="BatchYear" Grid.Column="3" Height="25" IsInteger="True"
+                                NumberDecimalDigits="0" Minimum="2010" Maximum="2099" ValueChanged="BatchYear_ValueChanged" />
+                            <telerik:RadButton x:Name="ReadXmlButton" Grid.Column="4" Content="Wczytaj XML i utwórz paczkę..."
+                                Margin="10,0,0,0" Padding="8,4" Click="ReadXml_Click" />
+                        </Grid>
+                      </StackPanel>
+                    </ContentControl>
+                    <TextBlock x:Name="BatchInfo" Grid.Row="1" TextWrapping="Wrap" Margin="0,4,0,8" />
+                    <Border Grid.Row="2" Background="#FFF0F5FA" Padding="8" Margin="0,0,0,8">
+                        <TextBlock x:Name="StateInfo" TextWrapping="Wrap"
+                            Text="Nadaj paczce własne oznaczenie i wybierz sygnaturę poczekalni. Paczka zostanie zachowana po wczytaniu XML." />
+                    </Border>
+                    <telerik:RadGridView x:Name="CasesGrid" Grid.Row="3" AutoGenerateColumns="False"
+                        ShowGroupPanel="False" RowIndicatorVisibility="Collapsed" SelectionMode="Single"
+                        IsSynchronizedWithCurrentItem="False" CanUserInsertRows="False" CanUserDeleteRows="False"
+                        RowDetailsVisibilityMode="VisibleWhenSelected" CellEditEnded="CasesGrid_CellEditEnded">
+                        <telerik:RadGridView.RowDetailsTemplate>
+                            <DataTemplate>
+                                <telerik:RadGridView ItemsSource="{Binding Odbiorca.Obciazenia}" IsReadOnly="True"
+                                    AutoGenerateColumns="False" ShowGroupPanel="False" RowIndicatorVisibility="Collapsed"
+                                    CanUserInsertRows="False" CanUserDeleteRows="False" MaxHeight="180" Margin="12,4">
+                                    <telerik:RadGridView.Columns>
+                                        <telerik:GridViewDataColumn Header="Dokument" DataMemberBinding="{Binding Nr_dokumentu}" />
+                                        <telerik:GridViewDataColumn Header="Kwota obciążenia" DataMemberBinding="{Binding Kwota_obciazenia}" DataFormatString="{}{0:N2}" />
+                                        <telerik:GridViewDataColumn Header="Do zapłaty" DataMemberBinding="{Binding Kwota_do_zaplaty}" DataFormatString="{}{0:N2}" />
+                                        <telerik:GridViewDataColumn Header="Termin płatności" DataMemberBinding="{Binding Data_platnosci}" DataFormatString="{}{0:yyyy-MM-dd}" />
+                                    </telerik:RadGridView.Columns>
+                                </telerik:RadGridView>
+                            </DataTemplate>
+                        </telerik:RadGridView.RowDetailsTemplate>
+                        <telerik:RadGridView.Columns>
+                            <telerik:GridViewCheckBoxColumn Header="Wpisać?" DataMemberBinding="{Binding czyrej, Mode=TwoWay}"
+                                AutoSelectOnEdit="True" EditTriggers="CellClick" />
+                            <telerik:GridViewCheckBoxColumn Header="W Wienie" DataMemberBinding="{Binding czy_ok}" IsReadOnly="True" />
+                            <telerik:GridViewDataColumn Header="Sygnatura poczekalni" DataMemberBinding="{Binding sygn_obciaz}" IsReadOnly="True" />
+                            <telerik:GridViewDataColumn Header="Nr ewidencyjny" DataMemberBinding="{Binding Odbiorca.Nr_ewidencyjny}" IsReadOnly="True" />
+                            <telerik:GridViewDataColumn Header="Dłużnik" DataMemberBinding="{Binding Odbiorca.Nazwa}" IsReadOnly="True" Width="200" />
+                            <telerik:GridViewDataColumn Header="Kwota należności" DataMemberBinding="{Binding BatchAmount}" DataFormatString="{}{0:N2}" IsReadOnly="True" />
+                            <telerik:GridViewDataColumn Header="PESEL" DataMemberBinding="{Binding Odbiorca.PESEL}" IsReadOnly="True" />
+                            <telerik:GridViewDataColumn Header="NIP" DataMemberBinding="{Binding Odbiorca.NIP}" IsReadOnly="True" />
+                            <telerik:GridViewComboBoxColumn Header="Odsetki" UniqueName="InterestType"
+                                DataMemberBinding="{Binding CzyUstawowe, Mode=TwoWay}" SelectedValueMemberPath="Numer"
+                                DisplayMemberPath="Nazwa" IsFilterable="False" EditTriggers="CellClick" />
+                            <telerik:GridViewDataColumn Header="ID sprawy Wiena" DataMemberBinding="{Binding WienaCaseId}" IsReadOnly="True" />
+                            <telerik:GridViewDataColumn Header="Informacja" DataMemberBinding="{Binding message}" IsReadOnly="True" Width="260" />
+                        </telerik:RadGridView.Columns>
+                    </telerik:RadGridView>
+                    <StackPanel Grid.Row="4" Margin="0,10,0,0">
+                        <TextBlock x:Name="Summary" TextWrapping="Wrap" Margin="0,0,0,8" />
+                        <TextBlock Text="Zapis wyboru zachowuje zaznaczenia i odsetki w LexEna. Utworzenie spraw dodaje je do poczekalni Wieny i zamyka paczkę. Nie wymaga wcześniejszego kliknięcia zapisu wyboru."
+                            TextWrapping="Wrap" Margin="0,0,0,8" />
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <telerik:RadButton x:Name="DistributionButton" Content="Podział na kancelarie..." Click="Distribution_Click"
+                                ToolTipService.ToolTip="Odczytuje statusy Wieny i otwiera podział spraw z paczki między kancelarie."
+                                IsEnabled="False" Padding="10,5" Margin="0,0,8,0" />
+                            <telerik:RadButton x:Name="SaveDraftButton" Content="Zapisz wybór (LexEna)" Click="SaveDraft_Click"
+                                ToolTipService.ToolTip="Zachowuje zaznaczenia spraw i odsetki do późniejszej pracy. Nie tworzy spraw w Wienie."
+                                IsEnabled="False" Padding="10,5" Margin="0,0,8,0" />
+                            <telerik:RadButton x:Name="RegisterButton" Content="Utwórz sprawy w Wienie" Click="Register_Click"
+                                ToolTipService.ToolTip="Tworzy wybrane sprawy na sygnaturze poczekalni Wieny, uwzględniając bieżące zaznaczenia i odsetki."
+                                IsEnabled="False" Padding="10,5" />
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Grid>
+    </telerik:RadBusyIndicator>
+</UserControl>
